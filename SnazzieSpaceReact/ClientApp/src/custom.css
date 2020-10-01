@@ -1,4 +1,13 @@
 /* Provide sufficient contrast against white background */
+
+#root {
+ height:100vh;
+}
+
+svg {
+  max-height: 100%;
+  max-width: 100%;
+}
 a {
   color: #0366d6;
 }

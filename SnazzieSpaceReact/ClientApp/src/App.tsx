@@ -4,12 +4,15 @@ import { Main } from "./components/Main";
 
 import "./custom.css";
 import { Switch } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Projects } from "./pages/Projects";
 
 const App: React.FunctionComponent = () => {
   return (
     <Switch>
       <Main>
-      
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/Projects" component={Projects}></Route>
       </Main>
     </Switch>
   );

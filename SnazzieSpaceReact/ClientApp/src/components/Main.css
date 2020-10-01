@@ -17,6 +17,7 @@
     padding: 0 24px;
     cursor: pointer;
     transition: color 0.3s;
+    color:white;
 }
 
 .trigger:hover {
