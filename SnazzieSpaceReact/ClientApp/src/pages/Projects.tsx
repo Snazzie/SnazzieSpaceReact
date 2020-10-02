@@ -1,7 +1,7 @@
-import { Avatar, Card, PageHeader, Skeleton } from "antd";
+import { Card, PageHeader } from "antd";
 import Meta from "antd/lib/card/Meta";
 import React from "react";
-import "./projects.css"
+import "./projects.scss"
 export const Projects: React.FunctionComponent = () => {
   return (
     <><PageHeader
