@@ -4,13 +4,12 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  StarFilled,
 } from '@ant-design/icons';
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { Link, useLocation } from "react-router-dom";
 import "./Main.css";
-import SubMenu from 'antd/lib/menu/SubMenu';
 const { Sider, Content } = Layout;
 export const Main: React.FunctionComponent = props => {
 
@@ -32,16 +31,12 @@ export const Main: React.FunctionComponent = props => {
               onClick: toggleNavbar,
             })}
             </span>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname === "/" ? "/home" : location.pathname]}>
-            <Menu.Item key="/Home" icon={<UserOutlined />}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname === "/" ? "/" : location.pathname + location.hash]}>
+            <Menu.Item key="/" icon={<UserOutlined />}>
               Home <Link to={"/"}/>
             </Menu.Item>
-            <SubMenu key="/Projects" icon={<UserOutlined />} title="Projects">
-              <Menu.Item key="/Projects#GithubDarkTheme">Github Dark Theme<Link to={"/Projects#GithubDarkTheme"} /></Menu.Item>
-              <Menu.Item key="/Projects#Affinity">Affinity <Link to={"/Projects#Affinity"} /></Menu.Item>
-              <Menu.Item key="5">Snap Repo</Menu.Item>
-              <Menu.Item key="5">Rhythm Unity</Menu.Item>
-            </SubMenu>
+              <Menu.Item key="/Projects" icon={<StarFilled />}>Projects<Link to={"/Projects"} /></Menu.Item>
+
 
           </Menu>
         </Sider>
