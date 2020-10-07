@@ -26,21 +26,8 @@ export const Projects: React.FunctionComponent = () => {
           description="Quality dark themes for developers"
         />
       </Card>
-      <Card
-        style={{ width: 300 }}
-        cover={
-          <img
-            alt="example"
-            src={`https://avatars2.githubusercontent.com/u/55282763?s=400&u=6de6bebec65ca7e8102b96d354a2da3102919da9&v=4`}
-          />
-        }
-        actions={[]}
-      >
-        <Meta
-          title="Dark Theme Hub"
-          description="Quality dark themes for developers"
-        />
-      </Card></div>
+
+      </div>
     </>
   );
 };
