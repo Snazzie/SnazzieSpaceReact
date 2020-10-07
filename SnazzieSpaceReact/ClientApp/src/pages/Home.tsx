@@ -16,21 +16,21 @@ export const Home: React.FunctionComponent = () => {
           <div className="socialRow">
             <a
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="https://github.com/snazzie"
             >
               <GithubIcon />{" "}
             </a>
             <a
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="https://linkedin.com/in/cooper-a-m/"
             >
               <LinkedInIcon />
             </a>
             <a
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="https://twitter.com/ItsSnazzie"
             >
               <TwitterIcon />
