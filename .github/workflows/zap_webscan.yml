@@ -1,8 +1,9 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Zap Webscan
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
   zap_scan:
