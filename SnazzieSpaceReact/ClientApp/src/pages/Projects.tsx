@@ -15,6 +15,7 @@ export const Projects: React.FunctionComponent = () => {
           style={{ width: 300 }}
           cover={
             <img
+              alt="image"
               src={`https://avatars2.githubusercontent.com/u/55282763?s=400&u=6de6bebec65ca7e8102b96d354a2da3102919da9&v=4`}
             />
           }
@@ -31,6 +32,7 @@ export const Projects: React.FunctionComponent = () => {
           style={{ width: 300 }}
           cover={
             <img
+              alt="image"
               src={`https://i.gyazo.com/5a5abc0e46d96b90602fc1087a9b5863.png`}
             />
           }
