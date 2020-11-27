@@ -12,7 +12,7 @@ export const Projects: React.FunctionComponent = () => {
         <Card
           hoverable
           onClick={() => window.open("https://github.com/darkthemehub", "_blank")}
-          style={{ width: 300 }}
+          style={{ width: 300, height: 300 }}
           cover={
             <img
               alt="image"
@@ -29,7 +29,7 @@ export const Projects: React.FunctionComponent = () => {
         <Card
           hoverable
           onClick={() => window.open("https://github.com/Snazzie/Affinity", "_blank")}
-          style={{ width: 300 }}
+          style={{ width: 300, height: 300, background: "#1d1d1d" }}
           cover={
             <img
               alt="image"
