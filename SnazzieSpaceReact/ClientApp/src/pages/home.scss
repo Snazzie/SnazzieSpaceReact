@@ -1,5 +1,4 @@
 .container {
-  position: absolute;
   align-content: center;
   height: 100%;
   width: 100%;
@@ -17,7 +16,10 @@
 }
 
 #home {
-  background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.8), rgba(0, 0, 1, 0.8)), url(../resources/images/codebackground.jpg);
+  background-image: linear-gradient(to bottom,
+      rgba(1, 1, 1, 0.8),
+      rgba(0, 0, 1, 0.8)),
+    url(../resources/images/codebackground.jpg);
 }
 
 .socialRow {
@@ -27,7 +29,6 @@
   justify-content: center;
   column-gap: 3em;
   grid-template-columns: repeat(3, 5em);
-
 
   a {
     fill: purple;
@@ -40,10 +41,7 @@
     svg:hover {
       fill: inherit;
     }
-
   }
-
-
 }
 
 .anticon-down-circle {
@@ -59,18 +57,19 @@
   svg:hover {
     fill: white;
   }
-
 }
 
 html,
 body {
-  scroll-behavior: smooth;
   margin: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   padding: 0;
   background: #1d1d1d !important;
+  overflow-x: hidden;
   scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+
 }
 
 section {
@@ -80,4 +79,47 @@ section {
   box-sizing: border-box;
   border: 1px solid red !important;
   scroll-snap-align: center;
+}
+
+.cards {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  cursor: pointer;
+
+  .card {
+    display: grid;
+    grid-template-columns: 40% auto;
+    max-width: 300px;
+    max-height: 120px;
+
+    img {
+      align-self: center;
+    }
+
+    .detail {
+      color: white;
+      padding: 5%;
+      background-image: linear-gradient(0.45turn,
+          rgb(22, 27, 92),
+          rgb(126, 5, 126));
+      transition: all 0.5s ease;
+
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: inherit;
+      }
+    }
+  }
+
+  .card:hover {
+    border: 3px solid purple;
+    transition: all 0.5s ease;
+    margin: 1%;
+  }
 }

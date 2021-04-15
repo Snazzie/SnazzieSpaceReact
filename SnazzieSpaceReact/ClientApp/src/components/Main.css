@@ -32,12 +32,6 @@
     position: relative;
 }
 
-h1,
-h2,
-h3,
-h4 {
-    color: white;
-}
 ::-webkit-scrollbar {
     width: 0.8em;
 }
