@@ -2,7 +2,7 @@
   "name": "website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://snazzie.space/",
+  "homepage": "https://snazzie.github.io/SnazzieSpaceReact",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
