@@ -12,7 +12,6 @@ import {
   Section,
   useScrollSection,
 } from 'react-scroll-section';
-import Meta from "antd/lib/card/Meta";
 import { Layout, Menu, Card, PageHeader } from "antd";
 
 import {
@@ -56,21 +55,21 @@ export const Home: React.FunctionComponent = () => {
               <div className="socialRow">
                 <a
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   href="https://github.com/snazzie"
                 >
                   <GithubIcon />{" "}
                 </a>
                 <a
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   href="https://linkedin.com/in/cooper-a-m/"
                 >
                   <LinkedInIcon />
                 </a>
                 <a
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                   href="https://twitter.com/ItsSnazzie"
                 >
                   <TwitterIcon />
