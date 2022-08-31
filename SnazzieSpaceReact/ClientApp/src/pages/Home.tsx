@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import SnazzieLogo from "../resources/svg/SnazzieLogo";
 import {
   GithubIcon,
@@ -22,11 +22,15 @@ import {
 } from "@ant-design/icons";
 const { Sider, Header, Content } = Layout;
 
+
+
 export const Home: React.FunctionComponent = () => {
   const sections = useScrollSections();
 
   const homeSection = useScrollSection('home');
   const projectsSection = useScrollSection('projects');
+
+
   return (
     <>
       <ScrollingProvider>
@@ -35,12 +39,11 @@ export const Home: React.FunctionComponent = () => {
           <Menu
             theme="dark"
             mode="horizontal"
-
           >
-            <Menu.Item key="#home" icon={<UserOutlined />} onClick={homeSection.onClick}>
+            <Menu.Item key="#home" icon={<UserOutlined />} onClick={() =>window.location.hash = "home"}>
               Home
             </Menu.Item>
-            <Menu.Item key="#Projects" icon={<StarFilled />} onClick={projectsSection.onClick}>
+            <Menu.Item key="#Projects" icon={<StarFilled />} onClick={() =>window.location.hash ="projects"}>
               Projects
             </Menu.Item>
           </Menu>
@@ -83,12 +86,9 @@ export const Home: React.FunctionComponent = () => {
         </Section>
 
         <Section id="projects">
-
           <div className="container">
-            <PageHeader
-              className="site-page-header"
-              title="Projects"
-            />
+
+          <h1 style={{justifySelf: "center", fontSize:60}}>Projects</h1>
             <div className="cards">
               <ProjectCard
                 onClick={() => window.open("https://github.com/darkthemehub", "_blank")}
@@ -97,11 +97,23 @@ export const Home: React.FunctionComponent = () => {
                 description="Dark themes for developers"
               />
               <ProjectCard
-                onClick={() => window.open("https://github.com/Snazzie/Affinity", "_blank")}
-                imgSource="https://i.gyazo.com/5a5abc0e46d96b90602fc1087a9b5863.png"
-                title="Affinity"
-                description="Windows 10 Application Affinity (CPU Threads) Manager"
+                onClick={() => window.open("https://github.com/DarkThemeHub/CssToStyleFiles", "_blank")}
+                imgSource={`https://avatars2.githubusercontent.com/u/55282763?s=400&u=6de6bebec65ca7e8102b96d354a2da3102919da9&v=4`}
+                title="CssToStyleFiles"
+                description="Generates multiple types of style files used for applying custom themes to websites"
               />
+              <ProjectCard
+                onClick={() => window.open("https://github.com/Vital-Utilities/Vital-Utilities", "_blank")}
+                imgSource={`https://avatars.githubusercontent.com/u/98346237?s=200&v=4`}
+                title="Vital Utilities"
+                description="Modern Windows Task Manager alternative with bells and whistles"
+              />
+              <ProjectCard
+              onClick={() => window.open("https://github.com/Snazzie/Rhythm-Unity", "_blank")}
+              imgSource={`https://avatars.githubusercontent.com/u/19627023?v=4`}
+              title="Rhythm Unity"
+              description="OSU Clone made in Unity"
+            />
 
             </div>
           </div>

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnazzieSpaceReact", "SnazzieSpaceReact\SnazzieSpaceReact.csproj", "{E90C8371-40F8-4899-98F0-7373E66D6A3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnazzieSpaceReact", "SnazzieSpaceReact\SnazzieSpaceReact.csproj", "{E90C8371-40F8-4899-98F0-7373E66D6A3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

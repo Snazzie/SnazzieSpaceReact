@@ -8,15 +8,15 @@
     "antd": "^4.6.6",
     "jquery": "^3.5.1",
     "merge": "^1.2.1",
-    "node-sass": "^4.14.1",
     "oidc-client": "^1.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^5.0.1",
     "react-scroll-section": "^3.0.2",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "sass": "^1.54.7"
   },
   "devDependencies": {
     "@types/react": "^16.9.49",
