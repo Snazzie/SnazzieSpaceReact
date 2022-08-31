@@ -1,0 +1,140 @@
+h1,
+h2,
+h3,
+h4,
+span,
+div,
+.ant-page-header-heading-title {
+  color: white;
+}
+
+.ant-menu.ant-menu-dark {
+  background: none;
+}
+
+.ant-layout-header {
+  background: rgba(40, 46, 72, 0.57)
+}
+
+.container {
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  padding: 10%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 50%;
+  margin: auto;
+  justify-content: center;
+  column-gap: 3em;
+}
+
+#home {
+  background: black;
+  /*  background-image: linear-gradient(to bottom,
+   rgba(1, 1, 1, 0.8),
+   rgba(0, 0, 1, 0.8)),
+ url(../resources/images/codebackground.jpg); */
+}
+
+.socialRow {
+  margin: auto;
+  width: 50%;
+  display: grid;
+  justify-content: center;
+  column-gap: 3em;
+  grid-template-columns: repeat(3, 5em);
+
+  a {
+    fill: purple;
+
+    svg {
+      fill: white;
+      transition: all 0.5s ease;
+    }
+
+    svg:hover {
+      fill: inherit;
+    }
+  }
+}
+
+.anticon-down-circle {
+  margin-top: 30px;
+  font-size: 50px;
+  cursor: pointer;
+
+  svg {
+    fill: gray;
+    transition: all 0.5s ease;
+  }
+
+  svg:hover {
+    fill: white;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  background: #1d1d1d !important;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+
+}
+
+section {
+  display: block;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+}
+
+.cards {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  cursor: pointer;
+  flex-wrap: wrap;
+
+  .card {
+    display: grid;
+    grid-template-columns: 40% auto;
+    width: 300px;
+    height: 120px;
+
+    img {
+      align-self: center;
+    }
+
+    .detail {
+      color: white;
+      padding: 5%;
+      background-image: linear-gradient(0.45turn, rgb(19, 23, 45), rgb(128, 0, 128));
+      transition: all 0.5s ease;
+
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: inherit;
+      }
+    }
+  }
+
+  .card:hover {
+    transition: all 0.5s ease;
+  }
+}
