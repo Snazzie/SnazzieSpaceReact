@@ -35,21 +35,18 @@ export const Home: React.FunctionComponent = () => {
           <Menu theme="dark" mode="horizontal">
             <Menu.Item
               key="#home"
-              icon={<UserOutlined />}
               onClick={() => (window.location.hash = "home")}
             >
               Home
             </Menu.Item>
             <Menu.Item
               key="#aboutme"
-              icon={<StarFilled />}
               onClick={() => (window.location.hash = "aboutme")}
             >
               About me
             </Menu.Item>
             <Menu.Item
               key="#Projects"
-              icon={<StarFilled />}
               onClick={() => (window.location.hash = "projects")}
             >
               Projects
