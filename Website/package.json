@@ -2,7 +2,7 @@
   "name": "website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://snazzie.github.io/SnazzieSpaceReact",
+  "homepage": "https://snazzie.space",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
@@ -11,7 +11,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "add-domain": "echo \"snazzie.space\" > build/CNAME"
+    "add-domain": "echo \"snazzie.space\" > dist/CNAME"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
