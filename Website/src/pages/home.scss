@@ -23,6 +23,9 @@ div,
   display: grid;
   padding: 10%;
 
+
+
+
   .aboutme {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -36,6 +39,8 @@ div,
 
 
   @media screen and (max-width: 800px) {
+    padding: 5%;
+
     .aboutme {
       display: grid;
       grid-template-columns: 100%;
@@ -46,7 +51,7 @@ div,
       }
 
       p {
-        width: 200;
+        width: 80%;
       }
     }
   }
