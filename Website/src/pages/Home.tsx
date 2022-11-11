@@ -95,15 +95,8 @@ export const Home: React.FunctionComponent = () => {
         <Section id="aboutme">
           <div className="container">
             <h1 style={{ justifySelf: "center", fontSize: 60 }}>About me</h1>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "50% auto",
-                gap: 10,
-              }}
-            >
+            <div className="aboutme">
               <img
-                style={{ justifySelf: "end" }}
                 src="https://avatars.githubusercontent.com/u/19627023?v=4"
               />
               <p style={{ fontSize: 20 }}>
