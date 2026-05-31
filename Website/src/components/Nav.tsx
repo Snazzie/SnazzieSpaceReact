@@ -3,19 +3,16 @@ import { motion, useReducedMotion } from "motion/react";
 import { EASE, D } from "@/lib/motion";
 
 const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#aboutme", label: "About me" },
-  { href: "#projects", label: "Projects" },
+  { href: "#aboutme", label: "About", id: "aboutme" },
+  { href: "#projects", label: "Projects", id: "projects" },
 ];
-
-const SECTION_IDS = ["home", "aboutme", "projects"];
 
 export function Nav() {
   const reduce = useReducedMotion();
-  const [active, setActive] = useState<string>("home");
+  const [active, setActive] = useState<string>(LINKS[0].id);
 
   useEffect(() => {
-    const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
       (el): el is HTMLElement => el !== null,
     );
     if (sections.length === 0) return;
@@ -34,31 +31,43 @@ export function Nav() {
 
   return (
     <motion.header
-      initial={reduce ? false : { y: -64, opacity: 0 }}
+      initial={reduce ? false : { y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: D.base, ease: EASE }}
-      className="fixed top-0 z-50 w-full border-b border-border bg-background/70 backdrop-blur"
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center pt-4"
     >
-      <nav className="mx-auto flex h-16 max-w-5xl items-center gap-6 px-6">
+      <nav className="pointer-events-auto flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
+        <a
+          href="#home"
+          aria-label="Home"
+          className="flex items-center gap-2 px-3 text-sm font-semibold text-foreground"
+        >
+          <span className="size-2 rounded-full bg-foreground" aria-hidden />
+          Aaron
+        </a>
         {LINKS.map((link) => {
-          const id = link.href.slice(1);
-          const isActive = active === id;
+          const isActive = active === link.id;
           return (
             <a
               key={link.href}
               href={link.href}
-              className={`relative text-sm transition-colors ${
-                isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}
+              aria-current={isActive ? "page" : undefined}
+              className="relative rounded-full px-3.5 py-2 text-sm transition-colors"
             >
-              {link.label}
               {isActive && (
                 <motion.span
-                  layoutId="nav-active"
-                  className="absolute -bottom-1 left-0 right-0 h-px bg-foreground"
-                  transition={{ duration: 0.25, ease: EASE }}
+                  layoutId="nav-glider"
+                  className="absolute inset-0 rounded-full bg-foreground"
+                  transition={{ duration: reduce ? 0 : 0.3, ease: EASE }}
                 />
               )}
+              <span
+                className={`relative z-10 transition-colors ${
+                  isActive ? "text-background" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </span>
             </a>
           );
         })}
