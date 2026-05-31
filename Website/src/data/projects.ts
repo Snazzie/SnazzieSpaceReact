@@ -59,7 +59,8 @@ export const projects: Project[] = [
     video: "https://github.com/user-attachments/assets/9200c90d-b039-4616-9b27-9c8e7c53a8ca",
     details: [
       "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
-      "Live telemetry dashboard with lap recording and side-by-side comparison",
+      "Live telemetry dashboard with lap recording",
+      "Detailed lap analysis with automatic corner detection, sector splits, and side-by-side lap comparison with time deltas",
       "Optional AI coaching per lap via your own API key",
       "Tune catalog and car browser with community setup data",
     ],
