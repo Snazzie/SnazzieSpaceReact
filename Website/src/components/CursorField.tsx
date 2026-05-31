@@ -58,9 +58,9 @@ export function CursorField() {
             "radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)",
           backgroundSize: "38px 38px",
           WebkitMaskImage:
-            "radial-gradient(circle 260px at var(--mx) var(--my), #000 0%, transparent 70%)",
+            "radial-gradient(circle 260px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 62%, transparent 78%)",
           maskImage:
-            "radial-gradient(circle 260px at var(--mx) var(--my), #000 0%, transparent 70%)",
+            "radial-gradient(circle 260px at var(--mx) var(--my), #000 0%, rgba(0,0,0,0.85) 25%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.2) 62%, transparent 78%)",
         }}
       />
       <div
@@ -69,7 +69,7 @@ export function CursorField() {
           left: "var(--mx)",
           top: "var(--my)",
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.045) 22%, rgba(255,255,255,0.025) 42%, rgba(255,255,255,0.01) 58%, transparent 72%)",
           transition: "left 0.18s ease, top 0.18s ease",
         }}
       />
