@@ -5,6 +5,7 @@ export interface Project {
   image: string; // card image URL
   featured: boolean;
   tech?: string[]; // shown as badges on featured cards
+  imageFit?: "cover" | "contain"; // featured card image fit; default cover
 }
 
 export const projects: Project[] = [
@@ -32,6 +33,7 @@ export const projects: Project[] = [
     href: "https://cloudcat.dev",
     image: "https://cloudcat.dev/logo.png",
     featured: true,
+    imageFit: "contain",
     tech: ["C#", "Rust", "RabbitMQ", "TimescaleDB", "React", "TypeScript"],
   },
   {

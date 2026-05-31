@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project }: { project: Project }) {
-  const { title, description, href, image, featured, tech } = project;
+  const { title, description, href, image, featured, tech, imageFit } = project;
 
   if (featured) {
     return (
@@ -12,7 +12,11 @@ export function ProjectCard({ project }: { project: Project }) {
           <img
             alt={title}
             src={image}
-            className="aspect-video w-full bg-black object-cover"
+            className={
+              imageFit === "contain"
+                ? "aspect-video w-full bg-black object-contain p-6"
+                : "aspect-video w-full bg-black object-cover"
+            }
           />
           <div className="flex flex-1 flex-col gap-3 p-5">
             <h3 className="text-base font-semibold text-foreground">{title}</h3>
