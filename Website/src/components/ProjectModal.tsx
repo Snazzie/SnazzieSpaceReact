@@ -57,7 +57,7 @@ export function ProjectModal({
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/60 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
-          aria-describedby={undefined}
+          aria-describedby="project-modal-desc"
           className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-border bg-card shadow-xl outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
         >
           {/* Hero */}
@@ -100,7 +100,7 @@ export function ProjectModal({
             <DialogPrimitive.Title className="text-xl font-bold text-foreground">
               {title}
             </DialogPrimitive.Title>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+            <p id="project-modal-desc" className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
             {tech && tech.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {tech.map((t) => (

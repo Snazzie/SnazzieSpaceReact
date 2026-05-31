@@ -69,8 +69,16 @@ export function ProjectCard({
       <>
         <motion.div
           {...revealProps}
+          role="button"
+          tabIndex={0}
           onClick={() => setModalOpen(true)}
-          className={`group relative block cursor-pointer overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setModalOpen(true);
+            }
+          }}
+          className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
         >
           {video && !reduce && (
             <>
