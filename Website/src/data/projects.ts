@@ -14,16 +14,18 @@ export const projects: Project[] = [
     description:
       "Personal wealth dashboard — tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
     href: "https://lunarportfolio.com",
-    image: "https://lunarportfolio.com/og/index.png",
+    image: "https://lunarportfolio.com/favicon.svg",
     featured: true,
+    imageFit: "contain",
     tech: ["Expo", "React Native", "Convex"],
   },
   {
     title: "RaceIQ",
     description: "AI-powered coaching tool that helps sim racers improve their lap times.",
     href: "https://github.com/SpeedHQ/RaceIQ",
-    image: "https://opengraph.githubassets.com/1/SpeedHQ/RaceIQ",
+    image: "https://raw.githubusercontent.com/SpeedHQ/RaceIQ/main/assets/raceiq-logo.png",
     featured: true,
+    imageFit: "contain",
     tech: ["TypeScript", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
   },
   {
