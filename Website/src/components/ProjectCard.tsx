@@ -15,16 +15,26 @@ export function ProjectCard({ project }: { project: Project }) {
       <Card
         className={
           featured
-            ? "grid w-[340px] grid-rows-[auto_1fr] overflow-hidden border-0 bg-transparent"
+            ? "flex h-[380px] w-[340px] flex-col overflow-hidden border-0 bg-transparent"
             : "grid h-[120px] w-[300px] grid-cols-[40%_auto] overflow-hidden border-0 bg-transparent"
         }
       >
         <img
           alt={title}
           src={image}
-          className="h-full w-full self-center bg-[#1d1d1d] object-cover"
+          className={
+            featured
+              ? "h-[170px] w-full shrink-0 bg-[#1d1d1d] object-contain p-4"
+              : "h-full w-full self-center bg-[#1d1d1d] object-cover"
+          }
         />
-        <div className="card-detail p-4 text-white">
+        <div
+          className={
+            featured
+              ? "card-detail flex-1 overflow-hidden p-4 text-white"
+              : "card-detail p-4 text-white"
+          }
+        >
           <h4 className="m-0 text-lg font-semibold text-white">{title}</h4>
           <p className="mt-2 text-sm text-white/90">{description}</p>
           {featured && tech && tech.length > 0 && (
