@@ -38,7 +38,7 @@ export function ProjectCard({
   index?: number;
   className?: string;
 }) {
-  const { title, description, href, image, featured, tech, supersedes, supersededBy, video } = project;
+  const { title, description, href, image, featured, tech, supersedes, supersededBy, video, bgImage } = project;
   // Called unconditionally (before the featured early-return) to keep hook order stable.
   const [expanded, setExpanded] = useState(false);
   const reduce = useReducedMotion();
@@ -88,12 +88,26 @@ export function ProjectCard({
             />
           </>
         )}
+        {bgImage && !video && (
+          <>
+            <img
+              aria-hidden
+              src={bgImage}
+              alt=""
+              className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
+            />
+          </>
+        )}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{ background: SPOTLIGHT }}
         />
-        <div className={`relative z-20 transition-opacity duration-300 ${video && !reduce ? "group-hover:opacity-0" : ""}`}>
+        <div className={`relative z-20 transition-opacity duration-300 ${(video && !reduce) || bgImage ? "group-hover:opacity-0" : ""}`}>
           <LogoTile src={image} alt={title} />
           <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
             {title}

@@ -36,7 +36,7 @@ export function Projects() {
             key={project.title}
             project={project}
             index={i}
-            className={i === 0 ? "sm:col-span-2" : ""}
+            className=""
           />
         ))}
       </div>

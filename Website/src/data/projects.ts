@@ -9,6 +9,7 @@ export interface Project {
   supersedes?: string; // title of an older project this one replaces
   supersededBy?: string; // title of the newer project that replaced this one
   video?: string; // optional autoplay background video for featured cards
+  bgImage?: string; // optional static background image for featured cards
 }
 
 export const projects: Project[] = [
@@ -21,6 +22,16 @@ export const projects: Project[] = [
     featured: true,
     imageFit: "contain",
     tech: ["Expo", "React Native", "Convex"],
+  },
+  {
+    title: "smartdos",
+    description:
+      "Wireless AP scanner and deauth attack orchestrator with terminal UI, for ethical penetration testing.",
+    href: "https://github.com/Snazzie/smartdos",
+    image: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
+    bgImage: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
+    featured: true,
+    tech: ["Rust"],
   },
   {
     title: "RaceIQ",
