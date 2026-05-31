@@ -38,7 +38,7 @@ export function ProjectCard({
   index?: number;
   className?: string;
 }) {
-  const { title, description, href, image, featured, tech, supersedes, supersededBy } = project;
+  const { title, description, href, image, featured, tech, supersedes, supersededBy, video } = project;
   // Called unconditionally (before the featured early-return) to keep hook order stable.
   const [expanded, setExpanded] = useState(false);
   const reduce = useReducedMotion();
@@ -71,28 +71,44 @@ export function ProjectCard({
         rel="noopener noreferrer"
         className={`group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
       >
+        {video && !reduce && (
+          <>
+            <video
+              aria-hidden
+              src={video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
+            />
+          </>
+        )}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           style={{ background: SPOTLIGHT }}
         />
-        <LogoTile src={image} alt={title} />
-        <h3 className="relative z-20 mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
-          {title}
-          <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
-        </h3>
-        <p className="relative z-20 mt-2 text-sm leading-relaxed text-muted-foreground">
-          {description}
-        </p>
-        {tech && tech.length > 0 && (
-          <div className="relative z-20 mt-4 flex flex-wrap gap-1.5">
-            {tech.map((t) => (
-              <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                {t}
-              </Badge>
-            ))}
-          </div>
-        )}
+        <div className="relative z-20 transition-opacity duration-300 group-hover:opacity-0">
+          <LogoTile src={image} alt={title} />
+          <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
+            {title}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+          {tech && tech.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {tech.map((t) => (
+                <Badge key={t} variant="outline" className="border-border text-muted-foreground">
+                  {t}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
       </motion.a>
     );
   }

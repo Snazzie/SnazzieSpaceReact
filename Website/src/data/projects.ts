@@ -8,6 +8,7 @@ export interface Project {
   imageFit?: "cover" | "contain"; // featured card image fit; default cover
   supersedes?: string; // title of an older project this one replaces
   supersededBy?: string; // title of the newer project that replaced this one
+  video?: string; // optional autoplay background video for featured cards
 }
 
 export const projects: Project[] = [
@@ -29,6 +30,7 @@ export const projects: Project[] = [
     featured: true,
     imageFit: "contain",
     tech: ["TypeScript", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
+    video: "https://github.com/user-attachments/assets/9200c90d-b039-4616-9b27-9c8e7c53a8ca",
   },
   {
     title: "CloudCat",
