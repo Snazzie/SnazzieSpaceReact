@@ -38,7 +38,7 @@ export function Intro() {
             variants={rise}
             className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
           >
-            Software Developer · England
+            All Stack (minus embedded) · England
           </motion.p>
 
           {/* Kinetic name — per-character mask rise */}
@@ -67,9 +67,9 @@ export function Intro() {
             variants={rise}
             className="max-w-md leading-relaxed text-muted-foreground"
           >
-            Reliable software across the stack — from backend services to developer
-            tools. Mainly C#, TypeScript and Rust, shipped to production on Kubernetes
-            and Cloudflare, with a focus on performance and clean architecture.
+            Builds across the full picture: frontend interfaces, backend services,
+            cross-platform apps, cloud architecture and DevOps pipelines. Mainly
+            C#, TypeScript and Rust, with a focus on performance and clean systems.
           </motion.p>
 
           <motion.div variants={rise} className="flex flex-wrap items-center gap-2">
