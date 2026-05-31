@@ -1,5 +1,5 @@
 import SnazzieLogo from "@/components/icons/SnazzieLogo";
-import { GithubIcon, LinkedInIcon, TwitterIcon } from "@/components/icons/SocialIcons";
+import { GithubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, MapPin } from "lucide-react";
 
@@ -65,9 +65,6 @@ export function Intro() {
               </a>
               <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/cooper-a-m/" aria-label="LinkedIn">
                 <LinkedInIcon />
-              </a>
-              <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/ItsSnazzie" aria-label="Twitter">
-                <TwitterIcon />
               </a>
             </div>
           </div>
