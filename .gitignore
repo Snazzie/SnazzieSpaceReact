@@ -337,4 +337,7 @@ ASALocalRun/
 .localhistory/
 
 # BeatPulse healthcheck temp database
-healthchecksdb.superpowers/
+healthchecksdb
+
+# Superpowers brainstorm artifacts
+.superpowers/
