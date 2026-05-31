@@ -43,7 +43,7 @@ export function ProjectCard({
   const [expanded, setExpanded] = useState(false);
   const reduce = useReducedMotion();
 
-  // Cursor spotlight — sets CSS vars consumed by the overlay's radial gradient.
+  // Cursor spotlight: sets CSS vars consumed by the overlay's radial gradient.
   const onMove = reduce
     ? undefined
     : (e: React.PointerEvent<HTMLElement>) => {

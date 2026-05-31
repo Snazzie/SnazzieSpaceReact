@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     title: "Lunar Portfolio",
     description:
-      "Personal wealth dashboard — tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
+      "Personal wealth dashboard. Tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
     href: "https://lunarportfolio.com",
     image: "/logos/lunar.svg",
     featured: true,
@@ -57,7 +57,7 @@ export const projects: Project[] = [
   },
   {
     title: "Better Task Manager",
-    description: "Cross-platform task manager and system monitor — the successor to Vital Utilities.",
+    description: "Cross-platform task manager and system monitor, successor to Vital Utilities.",
     href: "https://bettertaskmanager.com",
     image: "/logos/btm.png",
     featured: false,

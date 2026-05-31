@@ -8,7 +8,7 @@ export interface Experience {
   company: string;
   role: string;
   logo: string; // /logos/*.svg
-  logoBg?: string; // chip background — set for dark wordmark logos that need a light tile
+  logoBg?: string; // chip background: set for dark wordmark logos that need a light tile
   href: string; // company site
   start: string; // "Jul 2022"
   end: string; // "Present"
@@ -103,8 +103,8 @@ export const education: Education[] = [
     period: "2015 – 2018",
     grade: "Upper Second Class Honours (2:1)",
     activities: [
-      "Head of Computing — CamFM radio station",
-      "OWASP Cambridge CTF — awarded 2nd place",
+      "Head of Computing, CamFM radio station",
+      "OWASP Cambridge CTF, awarded 2nd place",
     ],
   },
 ];

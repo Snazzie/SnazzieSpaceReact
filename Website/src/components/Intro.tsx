@@ -15,7 +15,7 @@ const container: Variants = {
 
 type VariantStyle = {
   kind: "variant";
-  /** Whether each character is masked (overflow clipped) — for slide reveals. */
+  /** Whether each character is masked (overflow clipped); used for slide reveals. */
   clip: boolean;
   container: Variants;
   char: Variants;
@@ -30,7 +30,7 @@ const rev = (s = 0.04): Variants["exit"] => ({
 
 /** Pool of per-flip transition styles; one is picked at random on each change. */
 const NAME_STYLES: NameStyle[] = [
-  // 1 — Vertical mask: chars slide up into a clipped frame, exit upward.
+  // 1: Vertical mask: chars slide up into a clipped frame, exit upward.
   {
     kind: "variant",
     clip: true,
@@ -41,7 +41,7 @@ const NAME_STYLES: NameStyle[] = [
       exit: { y: "-115%", transition: { duration: D.base, ease: EASE } },
     },
   },
-  // 2 — 3D flip: each char tumbles in on the X axis.
+  // 2: 3D flip: each char tumbles in on the X axis.
   {
     kind: "variant",
     clip: false,
@@ -52,7 +52,7 @@ const NAME_STYLES: NameStyle[] = [
       exit: { rotateX: 100, opacity: 0, y: "-30%", transition: { duration: D.fast, ease: EASE } },
     },
   },
-  // 3 — Spin pop: chars spring up from nothing while un-spinning.
+  // 3: Spin pop: chars spring up from nothing while un-spinning.
   {
     kind: "variant",
     clip: false,
@@ -68,7 +68,7 @@ const NAME_STYLES: NameStyle[] = [
       exit: { scale: 0, rotate: 160, opacity: 0, transition: { duration: D.fast, ease: EASE } },
     },
   },
-  // 4 — Glitch: RGB-split jitter with rapid opacity flicker.
+  // 4: Glitch: RGB-split jitter with rapid opacity flicker.
   {
     kind: "variant",
     clip: false,
@@ -97,7 +97,7 @@ const NAME_STYLES: NameStyle[] = [
       },
     },
   },
-  // 5 — Scramble / split-flap board (see Scramble component).
+  // 5: Scramble / split-flap board (see Scramble component).
   { kind: "scramble" },
 ];
 
@@ -228,7 +228,7 @@ export function Intro() {
         variants={container}
         className="mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16"
       >
-        {/* Left — intro */}
+        {/* Left: intro */}
         <div id="aboutme" className="flex flex-col items-start gap-5 scroll-mt-24">
           <motion.p
             variants={rise}
@@ -237,7 +237,7 @@ export function Intro() {
             Software Engineer · All Stack (minus embedded) · England
           </motion.p>
 
-          {/* Kinetic name — flips between Aaron / Snazzie with per-character mask */}
+          {/* Kinetic name: flips between Aaron / Snazzie with per-character mask */}
           <KineticName />
 
           <motion.p
@@ -312,7 +312,7 @@ export function Intro() {
           </motion.div>
         </div>
 
-        {/* Right — portrait */}
+        {/* Right: portrait */}
         <motion.div
           variants={rise}
           className="order-first flex justify-center md:order-none md:justify-end"

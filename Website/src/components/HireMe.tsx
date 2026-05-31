@@ -35,14 +35,14 @@ const paths: {
     audience: "For hiring managers",
     title: "Full-time",
     blurb:
-      "Open to permanent roles at high-velocity, ship-fast companies. One hire who covers the whole stack — frontend, backend, apps and the cloud beneath — ships fast and owns it end to end. Speed without the tech debt.",
+      "Open to permanent roles at high-velocity, ship-fast companies. One hire who covers the whole stack (frontend, backend, apps and the cloud beneath), ships fast and owns it end to end. Speed without the tech debt.",
   },
   {
     icon: Handshake,
     audience: "For founders & VCs",
     title: "Consultation",
     blurb:
-      "Backing a team that needs to build? I take products from zero to shipped, de-risk technical bets and pressure-test architecture before you scale. Fractional, advisory or hands-on — scoped per project.",
+      "Backing a team that needs to build? I take products from zero to shipped, de-risk technical bets and pressure-test architecture before you scale. Fractional, advisory or hands-on, scoped per project.",
   },
 ];
 
@@ -149,7 +149,7 @@ export function HireMe() {
         className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/90"
       >
         No WordPress. No page-builders. Real websites and apps built on
-        industry-standard frameworks and proper architecture — code that's
+        industry-standard frameworks and proper architecture, code that's
         maintainable, fast and made to last.
       </motion.p>
 
