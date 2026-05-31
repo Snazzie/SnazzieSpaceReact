@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",
-    "playwright": "^1.60.0",
     "vitest": "^4.1.7"
   }
 }

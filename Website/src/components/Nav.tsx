@@ -12,7 +12,7 @@ export function Nav() {
           <a
             key={link.href}
             href={link.href}
-            className="text-white no-underline transition-colors hover:text-[#1890ff]"
+            className="text-white no-underline transition-colors hover:text-purple-400"
           >
             {link.label}
           </a>

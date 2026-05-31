@@ -64,7 +64,3 @@ export const projects: Project[] = [
     featured: false,
   },
 ];
-
-export function featuredFirst(): Project[] {
-  return [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
-}

@@ -6,6 +6,8 @@ function SnazzieLogo() {
       className="font"
       version="1.1"
       viewBox="0 0 232.66 60"
+      role="img"
+      aria-label="Snazzie"
     >
       <defs>
         <linearGradient id="linearGradient17">
