@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { Archive, ArrowUp, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -40,39 +40,34 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="group block">
       <div
-        className={`flex items-center gap-4 rounded-lg border border-border bg-card p-4 transition group-hover:border-zinc-600 ${
+        className={`flex items-start gap-4 rounded-lg border border-border bg-card p-4 transition group-hover:border-zinc-600 ${
           supersededBy ? "opacity-60 group-hover:opacity-100" : ""
         }`}
       >
         <img
           alt={title}
           src={image}
-          className="h-12 w-12 shrink-0 self-start rounded-md bg-black object-cover"
+          className={`h-12 w-12 shrink-0 rounded-md bg-black object-cover ${
+            supersededBy ? "grayscale" : ""
+          }`}
         />
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-medium text-foreground">{title}</h3>
-            {supersededBy && (
-              <Badge
-                variant="outline"
-                className="border-border text-[10px] uppercase tracking-wide text-muted-foreground"
-              >
-                Superseded
-              </Badge>
-            )}
-          </div>
+          <h3 className="text-sm font-medium text-foreground">{title}</h3>
           <p className="line-clamp-1 text-xs text-muted-foreground">{description}</p>
           {supersedes && (
-            <span className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-[11px] text-foreground/80">
+            <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-foreground/25 px-2 py-0.5 text-[11px] font-medium text-foreground/90">
               <ArrowUp className="size-3" />
               Replaces {supersedes}
             </span>
           )}
           {supersededBy && (
-            <p className="mt-1.5 text-[11px] text-muted-foreground/70">Superseded by {supersededBy}</p>
+            <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
+              <Archive className="size-3" />
+              Superseded by {supersededBy}
+            </span>
           )}
         </div>
-        <ArrowUpRight className="size-4 shrink-0 self-start text-muted-foreground transition-colors group-hover:text-foreground" />
+        <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
       </div>
     </a>
   );
