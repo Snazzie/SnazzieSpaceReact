@@ -128,3 +128,68 @@
     @apply font-sans;
     }
 }
+
+/* ---- Dark theme base (ported from home.scss) ---- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #1d1d1d;
+  color: white;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+section {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: center;
+}
+
+/* ---- Hero section background ---- */
+#home {
+  background: black;
+}
+
+/* ---- Project card gradient detail panel (ported verbatim) ---- */
+.card-detail {
+  background-image: linear-gradient(0.45turn, rgb(19, 23, 45), rgb(128, 0, 128));
+  transition: all 0.5s ease;
+}
+
+/* ---- Social icon hover fill (ported) ---- */
+.social-link svg {
+  fill: white;
+  transition: all 0.5s ease;
+}
+.social-link:hover svg {
+  fill: purple;
+}
+
+/* ---- Scroll-down arrow hover ---- */
+.scroll-arrow svg {
+  color: gray;
+  transition: all 0.5s ease;
+}
+.scroll-arrow:hover svg {
+  color: white;
+}
+
+/* ---- Custom webkit scrollbar (ported from Main.css) ---- */
+::-webkit-scrollbar {
+  width: 0.8em;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: #1d1d1d;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 53, 53);
+  border-radius: 50px;
+  outline: 1px solid black;
+}
