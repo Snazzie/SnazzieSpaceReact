@@ -111,11 +111,13 @@ export function ProjectCard({
               />
             </>
           )}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{ background: SPOTLIGHT }}
-          />
+          {!(video && !reduce) && !bgImage && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{ background: SPOTLIGHT }}
+            />
+          )}
           <div className={`relative z-20 transition-opacity duration-300 ${(video && !reduce) || bgImage ? "group-hover:opacity-0" : ""}`}>
             <LogoTile src={image} alt={title} />
             <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">

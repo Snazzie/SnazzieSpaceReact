@@ -70,14 +70,14 @@ export function ProjectModal({
                 muted
                 loop
                 playsInline
-                className="absolute inset-0 size-full object-cover opacity-80"
+                className="absolute inset-0 size-full object-cover"
               />
             ) : bgImage ? (
               <img
                 aria-hidden
                 src={bgImage}
                 alt=""
-                className="absolute inset-0 size-full object-cover opacity-80"
+                className="absolute inset-0 size-full object-cover"
               />
             ) : (
               <img
