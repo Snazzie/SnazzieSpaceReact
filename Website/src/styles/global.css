@@ -129,67 +129,58 @@
     }
 }
 
-/* ---- Dark theme base (ported from home.scss) ---- */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background: #1d1d1d;
-  color: white;
-  overflow-x: hidden;
-  scroll-snap-type: y proximity;
+/* ---- Black-focused theme overrides (always-dark site) ---- */
+.dark {
+  --background: #000000;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #18181b;
+  --secondary-foreground: #fafafa;
+  --muted: #0a0a0a;
+  --muted-foreground: #a1a1aa;
+  --accent: #18181b;
+  --accent-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #3f3f46;
+}
+
+/* ---- Smooth anchor scrolling, offset under fixed nav ---- */
+html {
   scroll-behavior: smooth;
 }
-
-section {
-  display: block;
-  min-height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-  scroll-snap-align: center;
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
-/* ---- Hero section background ---- */
-#home {
-  background: black;
+/* ---- Social icons: monochrome, hover to foreground ---- */
+.social-link {
+  color: var(--muted-foreground);
+  transition: color 0.2s ease;
 }
-
-/* ---- Project card gradient detail panel (ported verbatim) ---- */
-.card-detail {
-  background-image: linear-gradient(0.45turn, rgb(19, 23, 45), rgb(128, 0, 128));
-  transition: all 0.5s ease;
+.social-link:hover {
+  color: var(--foreground);
 }
-
-/* ---- Social icon hover fill (ported) ---- */
 .social-link svg {
-  fill: white;
-  transition: all 0.5s ease;
-}
-.social-link:hover svg {
-  fill: purple;
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
 }
 
-/* ---- Scroll-down arrow hover ---- */
-.scroll-arrow svg {
-  color: gray;
-  transition: all 0.5s ease;
-}
-.scroll-arrow:hover svg {
-  color: white;
-}
-
-/* ---- Custom webkit scrollbar (ported from Main.css) ---- */
+/* ---- Custom scrollbar (black) ---- */
 ::-webkit-scrollbar {
-  width: 0.8em;
+  width: 0.7em;
 }
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-corner {
-  background: #1d1d1d;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(53, 53, 53);
-  border-radius: 50px;
-  outline: 1px solid black;
+  background-color: #27272a;
+  border-radius: 9999px;
 }
