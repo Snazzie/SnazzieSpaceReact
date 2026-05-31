@@ -26,20 +26,23 @@ const services: { icon: LucideIcon; label: string }[] = [
 
 const paths: {
   icon: LucideIcon;
+  audience: string;
   title: string;
   blurb: string;
 }[] = [
   {
     icon: Briefcase,
+    audience: "For hiring managers",
     title: "Full-time",
     blurb:
-      "Open to permanent roles at high-velocity, ship-fast companies — full-stack across frontend, backend, apps and the cloud infrastructure underneath. Fast, but built to hold up over time.",
+      "Open to permanent roles at high-velocity, ship-fast companies. One hire who covers the whole stack — frontend, backend, apps and the cloud beneath — ships fast and owns it end to end. Speed without the tech debt.",
   },
   {
     icon: Handshake,
+    audience: "For founders & VCs",
     title: "Consultation",
     blurb:
-      "Freelance and contract work: building a product, untangling architecture, or advising on how to ship something properly. Scoped per project.",
+      "Backing a team that needs to build? I take products from zero to shipped, de-risk technical bets and pressure-test architecture before you scale. Fractional, advisory or hands-on — scoped per project.",
   },
 ];
 
@@ -104,7 +107,10 @@ function PathCard({
       <div className="relative z-20 flex size-11 items-center justify-center rounded-lg border border-border bg-secondary">
         <Icon className="size-5 text-foreground" />
       </div>
-      <h3 className="relative z-20 mt-4 text-lg font-semibold text-foreground">
+      <span className="relative z-20 mt-4 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        {path.audience}
+      </span>
+      <h3 className="relative z-20 mt-1 text-lg font-semibold text-foreground">
         {path.title}
       </h3>
       <p className="relative z-20 mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
