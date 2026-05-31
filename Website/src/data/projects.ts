@@ -10,6 +10,7 @@ export interface Project {
   supersededBy?: string; // title of the newer project that replaced this one
   video?: string; // optional autoplay background video for featured cards
   bgImage?: string; // optional static background image for featured cards
+  github?: string; // explicit GitHub repo URL; when set, enables dual CTA buttons
 }
 
 export const projects: Project[] = [
