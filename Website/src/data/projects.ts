@@ -6,6 +6,8 @@ export interface Project {
   featured: boolean;
   tech?: string[]; // shown as badges on featured cards
   imageFit?: "cover" | "contain"; // featured card image fit; default cover
+  supersedes?: string; // title of an older project this one replaces
+  supersededBy?: string; // title of the newer project that replaced this one
 }
 
 export const projects: Project[] = [
@@ -54,11 +56,21 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    // PLACEHOLDER name + href — update once the project is public.
+    title: "Better Task Manager",
+    description: "Next-gen Windows task manager — the successor to Vital Utilities.",
+    href: "https://github.com/Vital-Utilities",
+    image: "https://avatars.githubusercontent.com/u/98346237?s=200&v=4",
+    featured: false,
+    supersedes: "Vital Utilities",
+  },
+  {
     title: "Vital Utilities",
     description: "Modern Windows Task Manager alternative with bells and whistles",
     href: "https://github.com/Vital-Utilities/Vital-Utilities",
     image: "https://avatars.githubusercontent.com/u/98346237?s=200&v=4",
     featured: false,
+    supersededBy: "Better Task Manager",
   },
   {
     title: "Rhythm Unity",
