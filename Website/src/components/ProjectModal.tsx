@@ -49,7 +49,7 @@ export function ProjectModal({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const { title, description, image, tech, video, bgImage } = project;
+  const { title, description, image, tech, video, bgImage, details } = project;
   const reduce = useReducedMotion();
 
   return (
@@ -101,6 +101,16 @@ export function ProjectModal({
               {title}
             </DialogPrimitive.Title>
             <p id="project-modal-desc" className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+            {details && details.length > 0 && (
+              <ul className="mt-3 space-y-1.5">
+                {details.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-muted-foreground/50" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
             {tech && tech.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {tech.map((t) => (

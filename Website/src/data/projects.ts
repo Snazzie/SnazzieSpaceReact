@@ -11,6 +11,7 @@ export interface Project {
   video?: string; // optional autoplay background video for featured cards
   bgImage?: string; // optional static background image for featured cards
   github?: string; // explicit GitHub repo URL; when set, enables dual CTA buttons
+  details?: string[]; // bullet points shown in the project modal
 }
 
 export const projects: Project[] = [
@@ -23,6 +24,15 @@ export const projects: Project[] = [
     featured: true,
     imageFit: "contain",
     tech: ["Expo", "React Native", "Convex"],
+    details: [
+      "iOS, Android & Web app — currently in waitlist",
+      "Live portfolio with allocation, cash balance, and performance tracking",
+      "Drill into individual stock buy/sell history and returns",
+      "Every trade, dividend, and transaction in one timeline",
+      "Smart manual portfolio with auto dividend calculations, split accounting, and income tracking",
+      "Real returns vs inflation at a glance",
+      "Bank-level security, read-only access — we can never move your money",
+    ],
   },
   {
     title: "smartdos",
@@ -33,6 +43,15 @@ export const projects: Project[] = [
     bgImage: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     featured: true,
     tech: ["Rust"],
+    details: [
+      "Linux TUI for authorized wireless penetration testing only",
+      "802.11 beacon capture across 2.4 GHz, 5 GHz, and 6 GHz with live channel hopping",
+      "Deauth injection, AuthDos, BeaconFlood, broadcast and targeted client deauth",
+      "Round-robin or parallel attack orchestration with configurable burst size",
+      "Client tracking, pursuit mode, and AP harvest mode for passive client collection",
+      "WPA handshake and PMKID capture, compatible with aircrack-ng and hashcat",
+      "Session logging and persistence across restarts",
+    ],
   },
   {
     title: "RaceIQ",
@@ -43,6 +62,15 @@ export const projects: Project[] = [
     imageFit: "contain",
     tech: ["TypeScript", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
     video: "https://github.com/user-attachments/assets/9200c90d-b039-4616-9b27-9c8e7c53a8ca",
+    details: [
+      "Supports Forza Motorsport 2023, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
+      "Live telemetry dashboard: speed, inputs, tires, suspension, G-forces, and 3D car visualization",
+      "Automatic lap and corner detection with side-by-side comparison and time deltas",
+      "Track mapping with live car position",
+      "AI coaching: per-lap technique, setup, and tire feedback via your own API key",
+      "Tune catalog and car browser with performance data across the community",
+      "Free, open-source alternative to Track Titan, Coach Dave Delta, and Racing View",
+    ],
   },
   {
     title: "CloudCat",
@@ -53,6 +81,12 @@ export const projects: Project[] = [
     featured: true,
     imageFit: "contain",
     tech: ["C#", "Rust", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
+    details: [
+      "Unified monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
+      "Smart alerting with noise reduction and escalation policies",
+      "Direct TimescaleDB access for custom analytics and advanced reporting",
+      "Cost-efficient architecture designed for modern infrastructure teams",
+    ],
   },
   {
     title: "Dark Theme Hub",
