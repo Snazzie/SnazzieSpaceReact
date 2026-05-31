@@ -4,6 +4,7 @@ import { EASE, D } from "@/lib/motion";
 
 const LINKS = [
   { href: "#aboutme", label: "About", id: "aboutme" },
+  { href: "#career", label: "Career", id: "career" },
   { href: "#projects", label: "Projects", id: "projects" },
 ];
 
