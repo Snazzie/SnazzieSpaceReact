@@ -72,6 +72,13 @@ export const projects: Project[] = [
     supersededBy: "Better Task Manager",
   },
   {
+    title: "Media on Tauri",
+    description: "Native desktop wrapper for the Plex web client, built with Tauri.",
+    href: "https://github.com/Snazzie/MediaOnTauri",
+    image: "/logos/mediaontauri.png",
+    featured: false,
+  },
+  {
     title: "Rhythm Unity",
     description: "OSU Clone made in Unity",
     href: "https://github.com/Snazzie/Rhythm-Unity",
