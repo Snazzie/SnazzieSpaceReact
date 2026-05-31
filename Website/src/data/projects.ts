@@ -38,7 +38,7 @@ export const projects: Project[] = [
     image: "/logos/cloudcat.png",
     featured: true,
     imageFit: "contain",
-    tech: ["C#", "Rust", "RabbitMQ", "TimescaleDB", "React", "TypeScript"],
+    tech: ["C#", "Rust", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
   },
   {
     title: "Dark Theme Hub",

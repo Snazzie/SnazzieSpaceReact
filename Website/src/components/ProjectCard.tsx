@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Archive, ArrowUp, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -5,6 +6,8 @@ import type { Project } from "@/data/projects";
 export function ProjectCard({ project }: { project: Project }) {
   const { title, description, href, image, featured, tech, imageFit, supersedes, supersededBy } =
     project;
+  // Called unconditionally (before the featured early-return) to keep hook order stable.
+  const [expanded, setExpanded] = useState(false);
 
   if (featured) {
     return (
@@ -37,12 +40,26 @@ export function ProjectCard({ project }: { project: Project }) {
     );
   }
 
+  // Compact "More projects" card: tap/click the body to expand the description
+  // (works on mobile); the ↗ arrow opens the project.
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="group block">
+    <div
+      className={`relative rounded-lg border border-border bg-card transition hover:border-zinc-600 ${
+        supersededBy ? "opacity-60 hover:opacity-100" : ""
+      }`}
+    >
       <div
-        className={`flex items-start gap-4 rounded-lg border border-border bg-card p-4 transition group-hover:border-zinc-600 ${
-          supersededBy ? "opacity-60 group-hover:opacity-100" : ""
-        }`}
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        onClick={() => setExpanded((v) => !v)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setExpanded((v) => !v);
+          }
+        }}
+        className="flex cursor-pointer items-start gap-4 p-4 pr-10 text-left"
       >
         <img
           alt={title}
@@ -53,7 +70,9 @@ export function ProjectCard({ project }: { project: Project }) {
         />
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-medium text-foreground">{title}</h3>
-          <p className="line-clamp-1 text-xs text-muted-foreground">{description}</p>
+          <p className={`text-xs text-muted-foreground ${expanded ? "" : "line-clamp-1"}`}>
+            {description}
+          </p>
           {supersedes && (
             <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-foreground/25 px-2 py-0.5 text-[11px] font-medium text-foreground/90">
               <ArrowUp className="size-3" />
@@ -67,8 +86,16 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           )}
         </div>
-        <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
       </div>
-    </a>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${title}`}
+        className="absolute right-3 top-3 text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowUpRight className="size-4" />
+      </a>
+    </div>
   );
 }

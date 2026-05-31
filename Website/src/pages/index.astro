@@ -1,8 +1,7 @@
 ---
 import "@/styles/global.css";
 import { Nav } from "@/components/Nav";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
+import { Intro } from "@/components/Intro";
 import { Projects } from "@/components/Projects";
 ---
 
@@ -20,8 +19,7 @@ import { Projects } from "@/components/Projects";
   </head>
   <body class="bg-background text-foreground antialiased">
     <Nav />
-    <Hero />
-    <About />
-    <Projects />
+    <Intro />
+    <Projects client:visible />
   </body>
 </html>
