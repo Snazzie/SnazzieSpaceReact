@@ -38,7 +38,7 @@ export function Intro() {
             variants={rise}
             className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
           >
-            All Stack (minus embedded) · England
+            Software Engineer · All Stack (minus embedded) · England
           </motion.p>
 
           {/* Kinetic name — per-character mask rise */}
