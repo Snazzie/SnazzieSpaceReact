@@ -50,7 +50,7 @@ export const projects: Project[] = [
   },
   {
     title: "RaceIQ",
-    description: "AI-powered coaching tool that helps sim racers improve their lap times.",
+    description: "Helps sim racers go faster and understand why they're slow.",
     href: "https://github.com/SpeedHQ/RaceIQ",
     image: "/logos/raceiq.png",
     featured: true,
