@@ -6,13 +6,13 @@ const LINKS = [
 
 export function Nav() {
   return (
-    <header className="fixed top-0 z-10 w-full bg-[rgba(40,46,72,0.57)]">
-      <nav className="flex h-16 items-center gap-8 px-6">
+    <header className="fixed top-0 z-50 w-full border-b border-border bg-background/70 backdrop-blur">
+      <nav className="mx-auto flex h-16 max-w-5xl items-center gap-6 px-6">
         {LINKS.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="text-white no-underline transition-colors hover:text-purple-400"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             {link.label}
           </a>

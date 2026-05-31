@@ -1,31 +1,37 @@
 import SnazzieLogo from "@/components/icons/SnazzieLogo";
 import { GithubIcon, LinkedInIcon, TwitterIcon } from "@/components/icons/SocialIcons";
-import { CircleArrowDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home">
-      <div className="grid h-full w-full content-center p-[10%]">
-        <div>
+    <section
+      id="home"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center gap-8 px-6"
+    >
+      <div className="flex flex-col items-center gap-6">
+        <div className="w-[280px] md:w-[360px]">
           <SnazzieLogo />
-          <div className="mx-auto grid w-1/2 grid-cols-[repeat(3,5em)] justify-center gap-x-12">
-            <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://github.com/snazzie">
-              <GithubIcon />
-            </a>
-            <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/cooper-a-m/">
-              <LinkedInIcon />
-            </a>
-            <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/ItsSnazzie">
-              <TwitterIcon />
-            </a>
-          </div>
         </div>
-        <div className="m-auto">
-          <a className="scroll-arrow" href="#aboutme">
-            <CircleArrowDown size={50} />
+        <p className="text-muted-foreground">Software developer — C#, TypeScript, Rust</p>
+        <div className="flex items-center gap-6">
+          <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://github.com/snazzie" aria-label="GitHub">
+            <GithubIcon />
+          </a>
+          <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/cooper-a-m/" aria-label="LinkedIn">
+            <LinkedInIcon />
+          </a>
+          <a className="social-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/ItsSnazzie" aria-label="Twitter">
+            <TwitterIcon />
           </a>
         </div>
       </div>
+      <a
+        href="#aboutme"
+        aria-label="Scroll to about"
+        className="absolute bottom-10 text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ChevronDown size={24} />
+      </a>
     </section>
   );
 }
