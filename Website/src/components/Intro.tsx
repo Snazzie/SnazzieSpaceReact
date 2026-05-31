@@ -251,9 +251,8 @@ export function Intro() {
             variants={rise}
             className="max-w-md leading-relaxed text-muted-foreground"
           >
-            Builds across the full picture: frontend interfaces, backend services,
-            cross-platform apps, cloud architecture and DevOps pipelines. Mainly
-            C#, TypeScript and Rust, with a focus on performance and clean systems.
+            Full-stack across frontend, backend, cross-platform apps and cloud,
+            focused on performance and clean systems.
           </motion.p>
 
           <motion.div variants={rise} className="flex flex-wrap items-center gap-2">
