@@ -1,21 +1,217 @@
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
+import { useEffect, useState } from "react";
 import { GithubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { D, EASE, rise, stagger } from "@/lib/motion";
 
-const SKILLS = ["C#", "TypeScript", "Rust", "Kubernetes", "Cloudflare"];
-const NAME = "Aaron";
+const SKILLS = ["C#", "TypeScript", "React", "Node", "Rust", "Kubernetes", "Cloudflare"];
+const NAMES = ["Aaron", "Snazzie"];
 
 const container: Variants = {
   hidden: {},
   show: { transition: stagger(0.08, 0.1) },
 };
 
-const charClip: Variants = {
-  hidden: { y: "110%" },
-  show: { y: 0, transition: { duration: D.slow, ease: EASE } },
+type VariantStyle = {
+  kind: "variant";
+  /** Whether each character is masked (overflow clipped) — for slide reveals. */
+  clip: boolean;
+  container: Variants;
+  char: Variants;
 };
+type ScrambleStyle = { kind: "scramble" };
+type NameStyle = VariantStyle | ScrambleStyle;
+
+const fwd = (s = 0.05): Variants["show"] => ({ transition: { staggerChildren: s } });
+const rev = (s = 0.04): Variants["exit"] => ({
+  transition: { staggerChildren: s, staggerDirection: -1 },
+});
+
+/** Pool of per-flip transition styles; one is picked at random on each change. */
+const NAME_STYLES: NameStyle[] = [
+  // 1 — Vertical mask: chars slide up into a clipped frame, exit upward.
+  {
+    kind: "variant",
+    clip: true,
+    container: { hidden: {}, show: fwd(0.06), exit: rev(0.045) },
+    char: {
+      hidden: { y: "115%" },
+      show: { y: 0, transition: { duration: D.slow, ease: EASE } },
+      exit: { y: "-115%", transition: { duration: D.base, ease: EASE } },
+    },
+  },
+  // 2 — 3D flip: each char tumbles in on the X axis.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.07), exit: rev(0.05) },
+    char: {
+      hidden: { rotateX: -100, opacity: 0, y: "30%" },
+      show: { rotateX: 0, opacity: 1, y: 0, transition: { duration: D.base, ease: EASE } },
+      exit: { rotateX: 100, opacity: 0, y: "-30%", transition: { duration: D.fast, ease: EASE } },
+    },
+  },
+  // 3 — Spin pop: chars spring up from nothing while un-spinning.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.055), exit: rev(0.035) },
+    char: {
+      hidden: { scale: 0, rotate: -160, opacity: 0 },
+      show: {
+        scale: 1,
+        rotate: 0,
+        opacity: 1,
+        transition: { type: "spring", stiffness: 380, damping: 16 },
+      },
+      exit: { scale: 0, rotate: 160, opacity: 0, transition: { duration: D.fast, ease: EASE } },
+    },
+  },
+  // 4 — Glitch: RGB-split jitter with rapid opacity flicker.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.03), exit: rev(0.03) },
+    char: {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: [0, 1, 0.4, 1, 0.7, 1],
+        x: [0, -6, 6, -3, 2, 0],
+        skewX: [0, 16, -12, 7, -2, 0],
+        textShadow: [
+          "0px 0px 0px rgba(255,40,90,0), 0px 0px 0px rgba(0,240,255,0)",
+          "3px 0px 0px rgba(255,40,90,0.9), -3px 0px 0px rgba(0,240,255,0.9)",
+          "-4px 0px 0px rgba(255,40,90,0.9), 4px 0px 0px rgba(0,240,255,0.9)",
+          "2px 0px 0px rgba(255,40,90,0.7), -2px 0px 0px rgba(0,240,255,0.7)",
+          "-1px 0px 0px rgba(255,40,90,0.5), 1px 0px 0px rgba(0,240,255,0.5)",
+          "0px 0px 0px rgba(255,40,90,0), 0px 0px 0px rgba(0,240,255,0)",
+        ],
+        transition: { duration: 0.6, ease: "linear" },
+      },
+      exit: {
+        opacity: [1, 0.5, 0],
+        x: [0, 9, -12],
+        skewX: [0, -16, 12],
+        transition: { duration: D.fast, ease: "linear" },
+      },
+    },
+  },
+  // 5 — Scramble / split-flap board (see Scramble component).
+  { kind: "scramble" },
+];
+
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$#%&@*+".split("");
+const randGlyph = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+
+/** Split-flap / departure-board effect: each char riffles through random glyphs, then locks. */
+function Scramble({ name, reduce }: { name: string; reduce: boolean | null }) {
+  const target = [...name];
+  const [display, setDisplay] = useState<string[]>(target);
+  const [settled, setSettled] = useState<boolean[]>(() => target.map(() => true));
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: keyed by `name`, remounts per flip
+  useEffect(() => {
+    if (reduce) {
+      setDisplay(target);
+      setSettled(target.map(() => true));
+      return;
+    }
+    let tick = 0;
+    const settleAt = target.map((_, i) => 4 + i * 3);
+    const max = Math.max(...settleAt);
+    setSettled(target.map(() => false));
+    const id = window.setInterval(() => {
+      tick += 1;
+      setDisplay(target.map((c, i) => (tick >= settleAt[i] ? c : randGlyph())));
+      setSettled(target.map((_, i) => tick >= settleAt[i]));
+      if (tick >= max) {
+        setDisplay(target);
+        setSettled(target.map(() => true));
+        window.clearInterval(id);
+      }
+    }, 50);
+    return () => window.clearInterval(id);
+  }, [name, reduce]);
+
+  return (
+    <motion.span
+      className="absolute left-0 top-0 flex"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: D.fast } }}
+      exit={{ opacity: 0, transition: { duration: D.fast } }}
+    >
+      {display.map((c, i) => (
+        <span
+          // biome-ignore lint/suspicious/noArrayIndexKey: positional glyph slot
+          key={i}
+          className={`inline-block pb-[0.06em] tabular-nums transition-colors ${
+            settled[i] ? "" : "text-muted-foreground/70"
+          }`}
+        >
+          {c}
+        </span>
+      ))}
+    </motion.span>
+  );
+}
+
+function KineticName() {
+  const reduce = useReducedMotion();
+  // Hold both the current name index and the style chosen for this name.
+  const [{ index, style }, setState] = useState({ index: 0, style: 0 });
+
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(() => {
+      setState((prev) => {
+        let next = Math.floor(Math.random() * NAME_STYLES.length);
+        if (next === prev.style) next = (next + 1) % NAME_STYLES.length;
+        return { index: (prev.index + 1) % NAMES.length, style: next };
+      });
+    }, 3500);
+    return () => window.clearInterval(id);
+  }, [reduce]);
+
+  const name = NAMES[index];
+  const active = NAME_STYLES[style];
+
+  return (
+    <h1 className="relative inline-flex text-[clamp(3rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-tight [perspective:700px]">
+      {/* invisible sizer reserves the box so absolutely-layered names can cross-fade */}
+      <span aria-hidden className="invisible whitespace-pre pb-[0.06em]">
+        Snazzie
+      </span>
+      {/* no mode="wait": outgoing and incoming animate together for a fluid swap */}
+      <AnimatePresence initial={false}>
+        {active.kind === "scramble" ? (
+          <Scramble key={name} name={name} reduce={reduce} />
+        ) : (
+          <motion.span
+            key={name}
+            className="absolute left-0 top-0 flex"
+            variants={active.container}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+          >
+            {[...name].map((ch, i) => (
+              <span
+                // biome-ignore lint/suspicious/noArrayIndexKey: fixed static string
+                key={i}
+                className={`inline-block pb-[0.06em] ${active.clip ? "overflow-hidden" : ""}`}
+              >
+                <motion.span variants={active.char} className="inline-block">
+                  {ch}
+                </motion.span>
+              </span>
+            ))}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </h1>
+  );
+}
 
 export function Intro() {
   const reduce = useReducedMotion();
@@ -41,20 +237,8 @@ export function Intro() {
             Software Engineer · All Stack (minus embedded) · England
           </motion.p>
 
-          {/* Kinetic name — per-character mask rise */}
-          <h1 className="flex flex-wrap overflow-hidden text-[clamp(3rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-tight">
-            {[...NAME].map((ch, i) => (
-              <span
-                // biome-ignore lint/suspicious/noArrayIndexKey: fixed static string
-                key={i}
-                className="inline-block overflow-hidden pb-[0.06em]"
-              >
-                <motion.span variants={charClip} className="inline-block">
-                  {ch}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
+          {/* Kinetic name — flips between Aaron / Snazzie with per-character mask */}
+          <KineticName />
 
           <motion.p
             variants={rise}

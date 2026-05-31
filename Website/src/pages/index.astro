@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import { CursorField } from "@/components/CursorField";
 import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
+import { Quote } from "@/components/Quote";
 import { Career } from "@/components/Career";
 import { Projects } from "@/components/Projects";
 import { HireMe } from "@/components/HireMe";
@@ -24,6 +25,7 @@ import { HireMe } from "@/components/HireMe";
     <CursorField client:load />
     <Nav client:load />
     <Intro client:load />
+    <Quote client:visible />
     <Career client:visible />
     <Projects client:visible />
     <HireMe client:visible />
