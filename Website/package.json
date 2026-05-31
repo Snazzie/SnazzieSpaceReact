@@ -36,5 +36,8 @@
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "vitest": "^4.1.7"
+  },
+  "overrides": {
+    "vite": "7.3.3"
   }
 }
