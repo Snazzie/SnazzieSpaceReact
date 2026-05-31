@@ -1,8 +1,7 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import SnazzieLogo from "@/components/icons/SnazzieLogo";
 import { GithubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { D, EASE, rise, stagger } from "@/lib/motion";
 
 const SKILLS = ["C#", "TypeScript", "Rust", "Kubernetes", "Cloudflare"];
@@ -21,9 +20,6 @@ const charClip: Variants = {
 export function Intro() {
   const reduce = useReducedMotion();
   const initial = reduce ? false : "hidden";
-  const loop = reduce
-    ? {}
-    : { animate: { scale: [1, 1.06, 1], opacity: [0.6, 1, 0.6] } };
 
   return (
     <section
@@ -37,48 +33,46 @@ export function Intro() {
         className="mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16"
       >
         {/* Left — intro */}
-        <div id="aboutme" className="flex flex-col items-start gap-6 scroll-mt-24">
-          <motion.div variants={rise} className="w-[240px] md:w-[300px]">
-            <SnazzieLogo />
-          </motion.div>
+        <div id="aboutme" className="flex flex-col items-start gap-5 scroll-mt-24">
+          <motion.p
+            variants={rise}
+            className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
+          >
+            Software Developer · England
+          </motion.p>
 
-          <div className="flex flex-col gap-2">
-            {/* Kinetic name — per-character mask rise */}
-            <h1 className="flex overflow-hidden text-3xl font-semibold tracking-tight md:text-4xl">
-              {[...NAME].map((ch, i) => (
-                <span
-                  // biome-ignore lint/suspicious/noArrayIndexKey: fixed static string
-                  key={i}
-                  className="inline-block overflow-hidden pb-[0.06em] leading-none"
-                >
-                  <motion.span variants={charClip} className="inline-block">
-                    {ch}
-                  </motion.span>
-                </span>
-              ))}
-            </h1>
-            <motion.p
-              variants={rise}
-              className="text-base text-muted-foreground md:text-lg"
-            >
-              Software Developer
-            </motion.p>
-          </div>
+          {/* Kinetic name — per-character mask rise */}
+          <h1 className="flex flex-wrap overflow-hidden text-[clamp(3rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-tight">
+            {[...NAME].map((ch, i) => (
+              <span
+                // biome-ignore lint/suspicious/noArrayIndexKey: fixed static string
+                key={i}
+                className="inline-block overflow-hidden pb-[0.06em]"
+              >
+                <motion.span variants={charClip} className="inline-block">
+                  {ch}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+
+          <motion.p
+            variants={rise}
+            className="text-[clamp(1rem,2.4vw,1.35rem)] text-muted-foreground"
+          >
+            builds things that last
+          </motion.p>
 
           <motion.p
             variants={rise}
             className="max-w-md leading-relaxed text-muted-foreground"
           >
-            I build reliable software across the stack — from backend services to
-            developer tools. I work mainly in C#, TypeScript and Rust, and ship to
-            production on Kubernetes and Cloudflare, with a focus on performance,
-            clean architecture and things that last.
+            Reliable software across the stack — from backend services to developer
+            tools. Mainly C#, TypeScript and Rust, shipped to production on Kubernetes
+            and Cloudflare, with a focus on performance and clean architecture.
           </motion.p>
 
-          <motion.div
-            variants={rise}
-            className="flex flex-wrap items-center gap-2"
-          >
+          <motion.div variants={rise} className="flex flex-wrap items-center gap-2">
             {SKILLS.map((skill) => (
               <motion.div
                 key={skill}
@@ -92,20 +86,14 @@ export function Intro() {
 
           <motion.div
             variants={rise}
-            className="flex items-center gap-1.5 text-sm text-muted-foreground"
-          >
-            <MapPin size={15} />
-            England
-          </motion.div>
-
-          <motion.div
-            variants={rise}
             className="mt-2 flex flex-wrap items-center gap-5"
           >
             <motion.a
               href="#projects"
               whileHover={
-                reduce ? undefined : { y: -2, boxShadow: "0 8px 30px rgba(255,255,255,0.13)" }
+                reduce
+                  ? undefined
+                  : { y: -2, boxShadow: "0 8px 30px rgba(255,255,255,0.13)" }
               }
               transition={{ duration: 0.2, ease: EASE }}
               className="group inline-flex items-center gap-2 rounded-md border border-border bg-foreground px-5 py-2.5 text-sm font-medium text-background"
@@ -149,7 +137,7 @@ export function Intro() {
             <motion.div
               aria-hidden
               className="absolute -inset-4 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_70%)] blur-2xl"
-              {...loop}
+              animate={reduce ? undefined : { scale: [1, 1.06, 1], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
             />
             {!reduce && (
@@ -168,6 +156,20 @@ export function Intro() {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Scroll cue */}
+      {!reduce && (
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: D.base }}
+          className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground"
+        >
+          <span>scroll</span>
+          <span className="h-9 w-px bg-gradient-to-b from-muted-foreground to-transparent" />
+        </motion.div>
+      )}
     </section>
   );
 }

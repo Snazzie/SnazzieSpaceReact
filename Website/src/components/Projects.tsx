@@ -17,14 +17,30 @@ export function Projects() {
 
   return (
     <section id="projects" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
-      <motion.h1 {...headingProps} className="mb-10 text-3xl font-semibold md:text-4xl">
+      <motion.p
+        {...headingProps}
+        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
+      >
+        Selected work
+      </motion.p>
+      <motion.h2
+        {...headingProps}
+        className="mb-10 mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
+      >
         Projects
-      </motion.h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      </motion.h2>
+
+      <div className="grid gap-4 sm:grid-cols-2">
         {featured.map((project, i) => (
-          <ProjectCard key={project.title} project={project} index={i} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            index={i}
+            className={i === 0 ? "sm:col-span-2" : ""}
+          />
         ))}
       </div>
+
       <motion.h2
         {...headingProps}
         className="mb-6 mt-16 text-sm font-medium uppercase tracking-wide text-muted-foreground"

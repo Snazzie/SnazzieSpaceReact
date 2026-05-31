@@ -15,11 +15,30 @@ const reveal: Variants = {
 };
 
 const SPOTLIGHT =
-  "radial-gradient(380px circle at var(--cx, 50%) var(--cy, 50%), rgba(255,255,255,0.06), transparent 60%)";
+  "radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(255,255,255,0.06), transparent 60%)";
 
-export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
-  const { title, description, href, image, featured, tech, imageFit, supersedes, supersededBy } =
-    project;
+function LogoTile({ src, alt, dim = false }: { src: string; alt: string; dim?: boolean }) {
+  return (
+    <div className="relative z-20 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-secondary">
+      <img
+        src={src}
+        alt={alt}
+        className={`size-full object-contain p-1.5 ${dim ? "grayscale" : ""}`}
+      />
+    </div>
+  );
+}
+
+export function ProjectCard({
+  project,
+  index = 0,
+  className = "",
+}: {
+  project: Project;
+  index?: number;
+  className?: string;
+}) {
+  const { title, description, href, image, featured, tech, supersedes, supersededBy } = project;
   // Called unconditionally (before the featured early-return) to keep hook order stable.
   const [expanded, setExpanded] = useState(false);
   const reduce = useReducedMotion();
@@ -50,40 +69,30 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group block"
+        className={`group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
       >
-        <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition duration-200 group-hover:-translate-y-1 group-hover:border-zinc-600">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{ background: SPOTLIGHT }}
-          />
-          <img
-            alt={title}
-            src={image}
-            className={
-              imageFit === "contain"
-                ? "aspect-video w-full bg-black object-contain p-6"
-                : "aspect-video w-full bg-black object-cover"
-            }
-          />
-          <div className="relative z-20 flex flex-1 flex-col gap-3 p-5">
-            <h3 className="flex items-center gap-1.5 text-base font-semibold text-foreground">
-              {title}
-              <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
-            </h3>
-            <p className="text-sm text-muted-foreground">{description}</p>
-            {tech && tech.length > 0 && (
-              <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
-                {tech.map((t) => (
-                  <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
-            )}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{ background: SPOTLIGHT }}
+        />
+        <LogoTile src={image} alt={title} />
+        <h3 className="relative z-20 mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
+          {title}
+          <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
+        </h3>
+        <p className="relative z-20 mt-2 text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+        {tech && tech.length > 0 && (
+          <div className="relative z-20 mt-4 flex flex-wrap gap-1.5">
+            {tech.map((t) => (
+              <Badge key={t} variant="outline" className="border-border text-muted-foreground">
+                {t}
+              </Badge>
+            ))}
           </div>
-        </div>
+        )}
       </motion.a>
     );
   }
@@ -93,13 +102,13 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
   return (
     <motion.div
       {...revealProps}
-      className={`group relative overflow-hidden rounded-lg border border-border bg-card transition hover:border-zinc-600 ${
+      className={`group relative overflow-hidden rounded-xl border border-border bg-card transition hover:border-zinc-600 ${
         supersededBy ? "opacity-60 hover:opacity-100" : ""
-      }`}
+      } ${className}`}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-10 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 z-10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{ background: SPOTLIGHT }}
       />
       <div
@@ -115,13 +124,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         }}
         className="relative z-20 flex cursor-pointer items-start gap-4 p-4 pr-10 text-left"
       >
-        <img
-          alt={title}
-          src={image}
-          className={`h-12 w-12 shrink-0 rounded-md bg-black object-cover ${
-            supersededBy ? "grayscale" : ""
-          }`}
-        />
+        <LogoTile src={image} alt={title} dim={!!supersededBy} />
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-medium text-foreground">{title}</h3>
           <p className={`text-xs text-muted-foreground ${expanded ? "" : "line-clamp-1"}`}>

@@ -6,11 +6,16 @@
 
 ## Goal
 
-Elevate the existing minimal-black personal site to a "wow" first impression through
-motion and craft only. No new content, no color/theme changes, no layout restructure,
-no literal space motif. The wow comes from choreographed entrances, a subtle interactive
-cursor field, kinetic typography, scroll-driven reveals, and consistent micro-interactions —
-all expressed in the current stark black/white developer aesthetic.
+Redesign the personal site into the layout validated in the browser mockups, elevated with
+motion and craft, while staying in the current minimal-black aesthetic. No color/theme change
+and no literal space motif. The hero is rebuilt (wordmark dropped, large kinetic "Aaron" lede,
+eyebrow + tagline) and the projects section adopts logo-tile cards (first featured full-width).
+The wow comes from choreographed entrances, a subtle interactive cursor field, kinetic
+typography, scroll-driven reveals, and consistent micro-interactions.
+
+**Correction (post-review):** the first implementation pass layered motion onto the *old*
+layout. The user wanted the page rebuilt to match the approved mockups — this spec and the
+implementation were revised accordingly.
 
 Validated interactively via browser mockups (hero + projects); the user approved the feel
 and intensity of both.
@@ -18,9 +23,9 @@ and intensity of both.
 ## Constraints
 
 - **Theme:** Minimal black (current). Wow via craft, not decoration. No space/cosmic imagery.
-- **No content changes:** Same copy, same projects, same sections (Nav, Intro, Projects).
-- **No layout restructure:** Preserve the existing grids and the compact-card expand /
-  supersede behavior in `ProjectCard`.
+- **Match the mockups:** Hero and projects layout follow the approved browser mockups.
+- **Preserve semantics:** Same projects/data, same sections (Nav, Intro, Projects); the
+  compact-card tap-to-expand and supersede behavior in `ProjectCard` is kept.
 - **Performance:** One dependency only. No layout thrash; animate transform/opacity.
 - **Accessibility:** Every motion path honors `prefers-reduced-motion`.
 - **Verification:** `tsc -b && vite build` must pass (CI parity). No `any` types.
@@ -131,7 +136,6 @@ does not mount, and the portrait orbit/breathe loops are disabled.
 
 ## Out of Scope
 
-- Content/copy changes, new sections, new projects.
+- New sections or new projects; data-model changes.
 - Color or theme changes; any space/cosmic visual motif.
-- Layout/grid restructure (e.g. wide-featured hero card) — explicitly preserved as-is.
-- SEO, routing, or data-model changes.
+- SEO or routing changes.
