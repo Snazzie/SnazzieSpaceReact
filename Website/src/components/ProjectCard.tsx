@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Archive, ArrowUp, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { D, EASE } from "@/lib/motion";
+import { ProjectModal } from "@/components/ProjectModal";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -41,6 +42,7 @@ export function ProjectCard({
   const { title, description, href, image, featured, tech, supersedes, supersededBy, video, bgImage } = project;
   // Called unconditionally (before the featured early-return) to keep hook order stable.
   const [expanded, setExpanded] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const reduce = useReducedMotion();
 
   // Cursor spotlight: sets CSS vars consumed by the overlay's radial gradient.
@@ -64,66 +66,67 @@ export function ProjectCard({
 
   if (featured) {
     return (
-      <motion.a
-        {...revealProps}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
-      >
-        {video && !reduce && (
-          <>
-            <video
-              aria-hidden
-              src={video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
-            />
-          </>
-        )}
-        {bgImage && !video && (
-          <>
-            <img
-              aria-hidden
-              src={bgImage}
-              alt=""
-              className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
-            />
-          </>
-        )}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ background: SPOTLIGHT }}
-        />
-        <div className={`relative z-20 transition-opacity duration-300 ${(video && !reduce) || bgImage ? "group-hover:opacity-0" : ""}`}>
-          <LogoTile src={image} alt={title} />
-          <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
-            {title}
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
-          {tech && tech.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {tech.map((t) => (
-                <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                  {t}
-                </Badge>
-              ))}
-            </div>
+      <>
+        <motion.div
+          {...revealProps}
+          onClick={() => setModalOpen(true)}
+          className={`group relative block cursor-pointer overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
+        >
+          {video && !reduce && (
+            <>
+              <video
+                aria-hidden
+                src={video}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
+              />
+            </>
           )}
-        </div>
-      </motion.a>
+          {bgImage && !video && (
+            <>
+              <img
+                aria-hidden
+                src={bgImage}
+                alt=""
+                className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-t from-card via-card/70 to-card/30 transition-opacity duration-300 group-hover:opacity-0"
+              />
+            </>
+          )}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{ background: SPOTLIGHT }}
+          />
+          <div className={`relative z-20 transition-opacity duration-300 ${(video && !reduce) || bgImage ? "group-hover:opacity-0" : ""}`}>
+            <LogoTile src={image} alt={title} />
+            <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
+              {title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
+            {tech && tech.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {tech.map((t) => (
+                  <Badge key={t} variant="outline" className="border-border text-muted-foreground">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </div>
+        </motion.div>
+        <ProjectModal project={project} open={modalOpen} onOpenChange={setModalOpen} />
+      </>
     );
   }
 

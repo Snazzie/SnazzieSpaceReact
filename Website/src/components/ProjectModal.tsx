@@ -1,4 +1,4 @@
-import * as DialogPrimitive from "radix-ui/react-dialog";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Badge } from "@/components/ui/badge";
 import { useReducedMotion } from "motion/react";
 import type { Project } from "@/data/projects";
