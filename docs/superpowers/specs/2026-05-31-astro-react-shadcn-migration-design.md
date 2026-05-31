@@ -96,11 +96,11 @@ Featured (`featured: true`, shown first, with `tech`):
 
 | Title | href | image | summary | tech |
 |---|---|---|---|---|
-| Lunar Portfolio | https://lunarportfolio.com | https://lunarportfolio.com/og/index.png | Personal wealth dashboard — tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth. | Astro, TypeScript |
+| Lunar Portfolio | https://lunarportfolio.com | https://lunarportfolio.com/og/index.png | Personal wealth dashboard — tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth. | Expo, React Native, Convex |
 | RaceIQ | https://github.com/SpeedHQ/RaceIQ | https://opengraph.githubassets.com/1/SpeedHQ/RaceIQ | AI-powered coaching tool that helps sim racers improve their lap times. | TypeScript, Bun, Mastra AI, Hono, Drizzle / libSQL |
 | CloudCat | https://cloudcat.dev | https://cloudcat.dev/logo.png | Cloud monitoring dashboard for Redis, PostgreSQL and RabbitMQ with smart alerts. | Astro, SolidJS, TypeScript |
 
-> Tech stacks above are inferred from each project's source / live build (RaceIQ `package.json`; Lunar & CloudCat `generator` meta + island chunks). Confirm or correct during spec review.
+> Tech tags describe the **product** (app), not its marketing page. Lunar's app is Expo / React Native / Convex; `lunarportfolio.com` is its Astro landing page (the card links there as it's the public entry point). RaceIQ tech from its `package.json`; CloudCat from its live build. Confirm during spec review.
 
 Existing (`featured: false`, kept below):
 
