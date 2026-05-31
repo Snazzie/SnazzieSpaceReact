@@ -9,8 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deploy": "astro build && gh-pages -d dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -33,6 +33,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vitest": "^4.1.7"
   }
 }
