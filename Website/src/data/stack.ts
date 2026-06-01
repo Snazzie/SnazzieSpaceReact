@@ -22,6 +22,9 @@ import {
   siVite,
   siStripe,
   siFirebase,
+  siSqlite,
+  siBetterauth,
+  siRevenuecat,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -45,7 +48,7 @@ export const stack: StackGroup[] = [
       { name: "TypeScript", icon: siTypescript },
       { name: "Rust", icon: siRust },
       { name: "JavaScript", icon: siJavascript },
-      { name: "SQL" },
+      { name: "SQL", icon: siSqlite },
     ],
   },
   {
@@ -69,7 +72,7 @@ export const stack: StackGroup[] = [
       { name: "Convex", icon: siConvex },
       { name: "Drizzle", icon: siDrizzle },
       { name: "Mastra AI" },
-      { name: "Better Auth" },
+      { name: "Better Auth", icon: siBetterauth },
     ],
   },
   {
@@ -89,7 +92,7 @@ export const stack: StackGroup[] = [
     label: "Payments & Monetization",
     items: [
       { name: "Stripe", icon: siStripe },
-      { name: "RevenueCat" },
+      { name: "RevenueCat", icon: siRevenuecat },
     ],
   },
   {
