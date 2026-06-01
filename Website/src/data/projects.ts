@@ -75,7 +75,7 @@ export const projects: Project[] = [
     image: "/cloudcat-dashboard.png",
     featured: true,
     imageFit: "contain",
-    tech: ["C#", "Rust", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
+    tech: ["C#", "Rust", "Docker", "Kubernetes", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
     details: [
       "Monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
       "Smart alerts with noise reduction and escalation policies",
