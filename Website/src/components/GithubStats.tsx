@@ -170,7 +170,7 @@ function DualYearChart({
                 whileInView={{ height: `${Math.max((y.contributions / maxContrib) * 100, 2)}%` }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: D.slow, ease: EASE, delay: i * 0.05 }}
-                className="w-full max-w-10 rounded-t-md bg-gradient-to-t from-zinc-800 to-zinc-600"
+                className="w-full max-w-6 rounded-t-md bg-gradient-to-t from-zinc-800 to-zinc-600 sm:max-w-10"
                 title={`${y.contributions.toLocaleString()} contributions in ${y.year}`}
               />
             </li>
