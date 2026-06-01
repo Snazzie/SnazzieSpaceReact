@@ -4,7 +4,6 @@ import "@/styles/global.css";
 import { CursorField } from "@/components/CursorField";
 import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
-import { Quote } from "@/components/Quote";
 import { Career } from "@/components/Career";
 import { TechStack } from "@/components/TechStack";
 import { Projects } from "@/components/Projects";
@@ -87,7 +86,6 @@ const images: Record<string, string> = {
     <Nav client:load />
     <main>
       <Intro client:load avatarSrc={images[avatarUrl]} />
-      <Quote client:visible />
       <Career client:visible />
       <TechStack client:visible />
       <Projects client:visible images={images} />
