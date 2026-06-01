@@ -176,7 +176,7 @@ export function Traffic() {
 
   const stats = [
     { icon: Activity, label: "Requests", value: snapshot.totals.requests },
-    { icon: Eye, label: "Page views", value: snapshot.totals.pageViews },
+    { icon: Eye, label: "Unique page views", value: snapshot.totals.pageViews },
     { icon: Globe2, label: "Countries reached", value: snapshot.totals.countries },
   ];
 
