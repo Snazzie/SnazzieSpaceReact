@@ -1,19 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { Archive, ArrowUp, ArrowUpRight, Apple, Smartphone, Monitor, Globe } from "lucide-react";
+import { Archive, ArrowUp, ArrowUpRight, Smartphone, Monitor, Globe } from "lucide-react";
 import { FaWindows } from "react-icons/fa6";
+import { siApple } from "simple-icons";
 import type { Project } from "@/data/projects";
 import { D, EASE } from "@/lib/motion";
 import { ProjectModal } from "@/components/ProjectModal";
 
 const PLATFORM_TAGS = new Set(["iOS", "Android", "Windows", "macOS", "Linux", "Web"]);
 
+function AppleLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-4 fill-muted-foreground" aria-hidden>
+      <path d={siApple.path} />
+    </svg>
+  );
+}
+
 export function getPlatformIcon(tag: string) {
   switch (tag) {
     case "iOS":
     case "macOS":
-      return <Apple className="size-4" />;
+      return <AppleLogo />;
     case "Android":
       return <Smartphone className="size-4" />;
     case "Windows":
