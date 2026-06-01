@@ -1,23 +1,22 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { Eye, Globe2, Users } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
-import { compact, smoothPath } from "@/lib/chart";
+import { compact } from "@/lib/chart";
 import { useTraffic, flagEmoji } from "@/lib/useTraffic";
-import { worldMap, WORLD_VIEWBOX } from "@/data/worldMap";
-import type { TrafficCountry, TrafficDay } from "@/data/traffic";
+import { worldGeo } from "@/data/worldGeo";
+import type { TrafficCountry } from "@/data/traffic";
 import { SectionUnderline } from "@/components/SectionUnderline";
+import { Globe } from "@/components/Globe";
+import { Breakdowns } from "@/components/Breakdowns";
 
-/** Pretty country names keyed by alpha-2, sourced from the generated map. */
+/** Pretty country names keyed by alpha-2, sourced from the generated geometry. */
 const COUNTRY_NAMES: Record<string, string> = Object.fromEntries(
-  worldMap.map((c) => [c.code, c.name]),
+  worldGeo.features.map((f) => {
+    const p = f.properties as { code: string; name: string };
+    return [p.code, p.name];
+  }),
 );
-
-function fmtDate(iso: string): string {
-  const [, m, d] = iso.split("-");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${months[Number(m) - 1]} ${Number(d)}`;
-}
 
 function snapshotDate(iso: string): string {
   const d = new Date(iso);
@@ -55,13 +54,13 @@ function CountStat({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
-      className="rounded-2xl border border-border bg-card p-6"
+      className="rounded-2xl border border-border bg-card p-5"
     >
       <Icon className="size-5 text-muted-foreground" aria-hidden />
-      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
+      <p className="mt-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
       </p>
-      <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+      <p className="mt-0.5 text-sm text-muted-foreground">{label}</p>
     </motion.div>
   );
 }
@@ -81,15 +80,15 @@ function DayTrend({ days }: { days: TrafficDay[] }) {
   const labelEvery = Math.max(1, Math.ceil(n / 6));
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm font-medium uppercase tracking-wide text-foreground/60">
+    <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-medium uppercase tracking-wide text-foreground/60">
           Page views by day
         </p>
         <span className="text-xs text-muted-foreground">last {n} days</span>
       </div>
 
-      <div className="relative h-44">
+      <div className="relative h-36">
         <svg
           aria-hidden
           viewBox="0 0 100 100"
@@ -135,7 +134,6 @@ function DayTrend({ days }: { days: TrafficDay[] }) {
           />
         )}
 
-        {/* Hit areas: one per day, keyboard accessible. */}
         <div className="absolute inset-0 flex">
           {days.map((d, i) => (
             <button
@@ -178,79 +176,27 @@ function DayTrend({ days }: { days: TrafficDay[] }) {
   );
 }
 
-/** World choropleth tinted by visit share, with a top-countries legend. */
-function GeoMap({ countries }: { countries: TrafficCountry[] }) {
+/** Rotating globe alongside a top-countries legend. */
+function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
   const reduce = useReducedMotion();
-  const [hover, setHover] = useState<string | null>(null);
-  const byCode = useMemo(() => new Map(countries.map((c) => [c.code, c])), [countries]);
-  const max = Math.max(...countries.map((c) => c.visits), 1);
   const top = countries.slice(0, 6);
   const topMax = Math.max(...top.map((c) => c.visits), 1);
 
-  const fill = (code: string): string => {
-    const c = byCode.get(code);
-    if (!c) return "rgb(255 255 255 / 0.04)";
-    const o = 0.18 + 0.82 * Math.sqrt(c.visits / max);
-    return `rgb(96 165 250 / ${o.toFixed(3)})`;
-  };
-
-  const hovered = hover ? byCode.get(hover) : null;
-
   return (
-    <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
-      <div className="relative rounded-2xl border border-border bg-card p-3 sm:p-4">
-        <svg
-          viewBox={WORLD_VIEWBOX}
-          className="h-auto w-full"
-          role="img"
-          aria-label="World map of traffic origin by country"
-        >
-          <title>Traffic origin by country</title>
-          {worldMap.map((c) => {
-            const has = byCode.has(c.code);
-            return (
-              <path
-                key={c.code}
-                d={c.d}
-                fill={fill(c.code)}
-                stroke="rgb(255 255 255 / 0.10)"
-                strokeWidth={0.4}
-                className={has ? "cursor-default transition-[fill] duration-200" : ""}
-                onMouseEnter={has ? () => setHover(c.code) : undefined}
-                onMouseLeave={has ? () => setHover((h) => (h === c.code ? null : h)) : undefined}
-              />
-            );
-          })}
-        </svg>
-        {hovered && (
-          <div
-            role="status"
-            className="pointer-events-none absolute left-1/2 top-3 z-20 w-max -translate-x-1/2 rounded-lg border border-border bg-card/95 px-3 py-1.5 text-xs shadow-lg backdrop-blur-sm"
-          >
-            <span className="mr-1">{flagEmoji(hovered.code)}</span>
-            <span className="font-semibold text-foreground">
-              {COUNTRY_NAMES[hovered.code] ?? hovered.code}
-            </span>
-            <span className="ml-2 text-sky-400 tabular-nums">
-              {hovered.visits.toLocaleString()} visits
-            </span>
-          </div>
-        )}
-      </div>
+    <div className="grid items-center gap-4 rounded-2xl border border-border bg-card p-4 sm:p-5 lg:grid-cols-[1fr_1fr]">
+      <Globe countries={countries} />
 
-      <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
-        <p className="mb-4 text-sm font-medium uppercase tracking-wide text-foreground/60">
+      <div>
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-foreground/60">
           Top countries
         </p>
-        <ul className="space-y-3">
+        <ul className="space-y-2.5">
           {top.map((c, i) => (
             <li key={c.code}>
               <div className="mb-1 flex items-center justify-between gap-2 text-sm">
                 <span className="flex min-w-0 items-center gap-2">
                   <span aria-hidden>{flagEmoji(c.code)}</span>
-                  <span className="truncate text-foreground/90">
-                    {COUNTRY_NAMES[c.code] ?? c.code}
-                  </span>
+                  <span className="truncate text-foreground/90">{COUNTRY_NAMES[c.code] ?? c.code}</span>
                 </span>
                 <span className="shrink-0 tabular-nums text-muted-foreground">
                   {c.visits.toLocaleString()}
@@ -293,7 +239,7 @@ export function Traffic() {
   ];
 
   return (
-    <section id="traffic" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
+    <section id="traffic" className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24">
       <motion.p
         {...headingProps}
         className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
@@ -310,17 +256,16 @@ export function Traffic() {
       </div>
       <SectionUnderline />
 
-      <div className="mb-4 grid grid-cols-3 gap-3 sm:gap-4">
-        {stats.map((s, i) => (
-          <CountStat key={s.label} icon={s.icon} label={s.label} value={s.value} index={i} />
-        ))}
-      </div>
+      <div className="grid gap-3">
+        <div className="grid grid-cols-3 gap-3">
+          {stats.map((s, i) => (
+            <CountStat key={s.label} icon={s.icon} label={s.label} value={s.value} index={i} />
+          ))}
+        </div>
 
-      <div className="mb-4">
-        <DayTrend days={snapshot.byDay} />
+        <GeoPanel countries={snapshot.byCountry} />
+        <Breakdowns snapshot={snapshot} />
       </div>
-
-      <GeoMap countries={snapshot.byCountry} />
     </section>
   );
 }

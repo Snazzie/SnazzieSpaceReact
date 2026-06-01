@@ -24,7 +24,7 @@ export const projects: Project[] = [
     image: "/lunar-home.webp",
     featured: true,
     imageFit: "contain",
-    tech: ["iOS", "Android", "Expo", "React Native", "Convex"],
+    tech: ["iOS", "Android", "Expo", "React Native", "Convex", "AI Agent"],
     details: [
       "iOS, Android & Web app",
       "Connects investments, pensions, and savings in one place",

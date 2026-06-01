@@ -2,9 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Globe, FileText, Code, MonitorSmartphone, Cpu } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
-import { useTraffic } from "@/lib/useTraffic";
-import type { TrafficBreakdown } from "@/data/traffic";
-import { SectionUnderline } from "@/components/SectionUnderline";
+import type { TrafficBreakdown, TrafficSnapshot } from "@/data/traffic";
 
 /** One labelled horizontal-bar breakdown panel. */
 function Panel({
@@ -26,21 +24,20 @@ function Panel({
       initial={reduce ? (false as const) : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
-      className="rounded-2xl border border-border bg-card p-5 sm:p-6"
+      transition={{ duration: D.base, ease: EASE, delay: index * 0.05 }}
+      className="rounded-2xl border border-border bg-card p-4 sm:p-5"
     >
-      <div className="mb-4 flex items-center gap-2">
+      <div className="mb-3 flex items-center gap-2">
         <Icon className="size-4 text-muted-foreground" aria-hidden />
-        <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">{title}</h3>
+        <h3 className="text-xs font-medium uppercase tracking-wide text-foreground/60">{title}</h3>
       </div>
       {rows.length === 0 ? (
         <p className="text-sm text-muted-foreground">Collecting data&hellip;</p>
       ) : (
-        <ul className="space-y-2.5">
-          {rows.map((r, i) => (
+        <ul className="space-y-2">
+          {rows.slice(0, 5).map((r, i) => (
             <li key={r.label} className="relative">
-              <div className="relative flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm">
-                {/* Bar sits behind the label/value row. */}
+              <div className="relative flex items-center justify-between gap-2 rounded-md px-2 py-1 text-sm">
                 <motion.span
                   aria-hidden
                   className="absolute inset-y-0 left-0 rounded-md bg-foreground/[0.06]"
@@ -64,16 +61,8 @@ function Panel({
   );
 }
 
-export function NerdStats() {
-  const reduce = useReducedMotion();
-  const snapshot = useTraffic();
-  const headingProps = {
-    initial: reduce ? (false as const) : { opacity: 0, y: 16 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.5 },
-    transition: { duration: D.base, ease: EASE },
-  };
-
+/** Condensed grid of traffic breakdown panels (the "nerd stats"). */
+export function Breakdowns({ snapshot }: { snapshot: TrafficSnapshot }) {
   const panels = [
     { icon: Globe, title: "Top referrers", rows: snapshot.topReferrers },
     { icon: FileText, title: "Top pages", rows: snapshot.topPaths },
@@ -83,28 +72,10 @@ export function NerdStats() {
   ];
 
   return (
-    <section id="nerd" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
-      <motion.p
-        {...headingProps}
-        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
-      >
-        For the nerds
-      </motion.p>
-      <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
-        <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
-          Traffic, broken down
-        </motion.h2>
-        <motion.p {...headingProps} className="text-sm text-muted-foreground">
-          By visits &middot; last {snapshot.rangeDays} days
-        </motion.p>
-      </div>
-      <SectionUnderline />
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {panels.map((p, i) => (
-          <Panel key={p.title} icon={p.icon} title={p.title} rows={p.rows} index={i} />
-        ))}
-      </div>
-    </section>
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {panels.map((p, i) => (
+        <Panel key={p.title} icon={p.icon} title={p.title} rows={p.rows} index={i} />
+      ))}
+    </div>
   );
 }

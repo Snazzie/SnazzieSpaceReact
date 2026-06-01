@@ -11,7 +11,6 @@ const LINKS = [
   { href: "#projects", label: "Projects", id: "projects" },
   { href: "#github", label: "GitHub", id: "github" },
   { href: "#traffic", label: "Traffic", id: "traffic" },
-  { href: "#nerd", label: "Stats", id: "nerd" },
   { href: "#hire", label: "Hire Me", id: "hire" },
 ];
 
