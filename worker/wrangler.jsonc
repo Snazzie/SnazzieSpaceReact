@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "snazzie-github-stats",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-01",
+  "observability": { "enabled": true },
+  // Weekly: Mondays at 06:00 UTC.
+  "triggers": { "crons": ["0 6 * * 1"] },
+  "kv_namespaces": [
+    { "binding": "STATS", "id": "8a72d7e2281f458682db02c920092ef9" }
+  ],
+  "vars": {
+    "GITHUB_USERNAME": "Snazzie",
+    // Lock this down to your Cloudflare Pages origin once you know the URL,
+    // e.g. "https://snazziespacereact.pages.dev" or your custom domain.
+    // "*" is fine for a public stats feed.
+    "ALLOWED_ORIGIN": "*"
+  }
+}

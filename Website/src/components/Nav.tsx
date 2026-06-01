@@ -3,9 +3,10 @@ import { motion, useReducedMotion } from "motion/react";
 import { EASE, D } from "@/lib/motion";
 
 const LINKS = [
-  { href: "#aboutme", label: "About", id: "aboutme" },
   { href: "#career", label: "Career", id: "career" },
+  { href: "#stack", label: "Stack", id: "stack" },
   { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#github", label: "GitHub", id: "github" },
   { href: "#hire", label: "Hire Me", id: "hire" },
 ];
 
@@ -41,7 +42,7 @@ export function Nav() {
       <nav className="pointer-events-auto flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
         <a
           href="#home"
-          aria-label="Home"
+          aria-label="Aaron, home"
           className="flex items-center gap-2 px-3 text-sm font-semibold text-foreground"
         >
           <span className="size-2 rounded-full bg-foreground" aria-hidden />

@@ -5,7 +5,9 @@ import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
 import { Quote } from "@/components/Quote";
 import { Career } from "@/components/Career";
+import { TechStack } from "@/components/TechStack";
 import { Projects } from "@/components/Projects";
+import { GithubStats } from "@/components/GithubStats";
 import { HireMe } from "@/components/HireMe";
 ---
 
@@ -22,12 +24,16 @@ import { HireMe } from "@/components/HireMe";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="relative bg-background text-foreground antialiased">
-    <CursorField client:load />
+    <CursorField client:idle />
     <Nav client:load />
-    <Intro client:load />
-    <Quote client:visible />
-    <Career client:visible />
-    <Projects client:visible />
-    <HireMe client:visible />
+    <main>
+      <Intro client:load />
+      <Quote client:visible />
+      <Career client:visible />
+      <TechStack client:visible />
+      <Projects client:visible />
+      <GithubStats client:visible />
+      <HireMe client:visible />
+    </main>
   </body>
 </html>
