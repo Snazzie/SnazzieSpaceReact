@@ -17,7 +17,6 @@ export interface TrafficSnapshot {
   statuses: TrafficBreakdown[];
   contentTypes: TrafficBreakdown[];
   httpVersions: TrafficBreakdown[];
-  referrers?: TrafficBreakdown[];
 }
 export interface TrafficData {
   updatedAt: string;
