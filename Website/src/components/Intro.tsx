@@ -407,6 +407,8 @@ export function Intro({
               src={avatarSrc}
               width={288}
               height={288}
+              fetchPriority="high"
+              loading="eager"
             />
           </div>
         </motion.div>

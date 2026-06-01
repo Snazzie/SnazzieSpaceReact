@@ -145,7 +145,7 @@ function DualYearChart({
       <div className="flex items-stretch gap-2 sm:gap-3">
         {/* Left axis: contributions scale (drives the bars). */}
         <div className="flex w-12 shrink-0 items-stretch gap-1 sm:w-14">
-          <span className="self-center rotate-180 text-[0.6rem] uppercase tracking-wider text-muted-foreground/60 [writing-mode:vertical-rl]">
+          <span className="self-center rotate-180 text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl]">
             Contributions
           </span>
           <div className="relative h-52 flex-1">
@@ -300,7 +300,7 @@ function DualYearChart({
                 </span>
               ))}
             </div>
-            <span className="self-center text-[0.6rem] uppercase tracking-wider text-muted-foreground/60 [writing-mode:vertical-rl]">
+            <span className="self-center text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl]">
               Lines changed
             </span>
           </div>
