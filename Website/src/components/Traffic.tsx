@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { Eye, Globe2, Users } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
 import { useTraffic, flagEmoji } from "@/lib/useTraffic";
+import { ScrollBorderProvider, useScrollBorderColor } from "@/lib/scrollBorder";
 import { worldGeo } from "@/data/worldGeo";
 import type { TrafficCountry } from "@/data/traffic";
 import { SectionUnderline } from "@/components/SectionUnderline";
@@ -40,6 +41,7 @@ function CountStat({
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const mv = useMotionValue(0);
   const display = useTransform(mv, (v: number) => compact(Math.round(v)));
+  const borderColor = useScrollBorderColor(index * 0.05);
 
   useEffect(() => {
     if (reduce || !inView) return;
@@ -54,6 +56,7 @@ function CountStat({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
+      style={{ borderColor }}
       className="rounded-2xl border border-border bg-card p-5"
     >
       <Icon className="size-5 text-muted-foreground" aria-hidden />
@@ -65,125 +68,18 @@ function CountStat({
   );
 }
 
-/** Smoothed area chart of daily page views over the window. */
-function DayTrend({ days }: { days: TrafficDay[] }) {
-  const reduce = useReducedMotion();
-  const [active, setActive] = useState<number | null>(null);
-  const n = days.length;
-  const max = Math.max(...days.map((d) => d.pageViews), 1);
-  const px = (i: number) => (n <= 1 ? 50 : (i / (n - 1)) * 100);
-  const py = (v: number) => 100 - (v / max) * 92 - 4;
-
-  const pts = days.map((d, i) => [px(i), py(d.pageViews)] as [number, number]);
-  const line = smoothPath(pts);
-  const area = n >= 2 ? `${line} L${px(n - 1).toFixed(2)},100 L${px(0).toFixed(2)},100 Z` : "";
-  const labelEvery = Math.max(1, Math.ceil(n / 6));
-
-  return (
-    <div className="rounded-2xl border border-border bg-card p-4 sm:p-5">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-foreground/60">
-          Page views by day
-        </p>
-        <span className="text-xs text-muted-foreground">last {n} days</span>
-      </div>
-
-      <div className="relative h-36">
-        <svg
-          aria-hidden
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-          className="absolute inset-0 size-full overflow-visible"
-        >
-          <defs>
-            <linearGradient id="traffic-area" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="rgb(96 165 250 / 0.28)" />
-              <stop offset="100%" stopColor="rgb(96 165 250 / 0)" />
-            </linearGradient>
-          </defs>
-          {area && (
-            <motion.path
-              d={area}
-              fill="url(#traffic-area)"
-              initial={reduce ? false : { opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: D.slow, ease: EASE, delay: 0.2 }}
-            />
-          )}
-          <motion.path
-            d={line}
-            fill="none"
-            stroke="rgb(96 165 250)"
-            strokeWidth={2}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            vectorEffect="non-scaling-stroke"
-            initial={reduce ? false : { pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: D.slow, ease: EASE }}
-          />
-        </svg>
-
-        {active !== null && (
-          <div
-            aria-hidden
-            className="pointer-events-none absolute top-0 bottom-0 w-px -translate-x-1/2 bg-foreground/15"
-            style={{ left: `${px(active)}%` }}
-          />
-        )}
-
-        <div className="absolute inset-0 flex">
-          {days.map((d, i) => (
-            <button
-              key={d.date}
-              type="button"
-              className="min-w-0 flex-1 cursor-default rounded-sm outline-none focus-visible:bg-foreground/5"
-              onMouseEnter={() => setActive(i)}
-              onMouseLeave={() => setActive((a) => (a === i ? null : a))}
-              onFocus={() => setActive(i)}
-              onBlur={() => setActive(null)}
-              aria-label={`${fmtDate(d.date)}: ${d.pageViews} page views, ${d.visits} visits`}
-            />
-          ))}
-        </div>
-
-        {active !== null && (
-          <div
-            role="status"
-            className="pointer-events-none absolute top-1 z-20 w-max -translate-x-1/2 rounded-lg border border-border bg-card/95 px-3 py-2 text-xs shadow-lg backdrop-blur-sm"
-            style={{ left: `${Math.min(Math.max(px(active), 12), 88)}%` }}
-          >
-            <p className="font-semibold text-foreground">{fmtDate(days[active].date)}</p>
-            <p className="mt-1 text-sky-400">{days[active].pageViews.toLocaleString()} views</p>
-            <p className="text-muted-foreground">{days[active].visits.toLocaleString()} visits</p>
-          </div>
-        )}
-      </div>
-
-      <div className="mt-2 flex">
-        {days.map((d, i) => (
-          <span
-            key={d.date}
-            className="min-w-0 flex-1 text-center text-[0.65rem] tabular-nums text-muted-foreground"
-          >
-            {i % labelEvery === 0 ? fmtDate(d.date) : ""}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /** Rotating globe alongside a top-countries legend. */
 function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
   const reduce = useReducedMotion();
   const top = countries.slice(0, 6);
   const topMax = Math.max(...top.map((c) => c.visits), 1);
+  const borderColor = useScrollBorderColor(0.15);
 
   return (
-    <div className="grid items-center gap-4 rounded-2xl border border-border bg-card p-4 sm:p-5 lg:grid-cols-[1fr_1fr]">
+    <motion.div
+      style={{ borderColor }}
+      className="grid items-center gap-4 rounded-2xl border border-border bg-card p-4 sm:p-5 lg:grid-cols-[1fr_1fr]"
+    >
       <Globe countries={countries} />
 
       <div>
@@ -218,7 +114,7 @@ function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
           )}
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -256,7 +152,7 @@ export function Traffic() {
       </div>
       <SectionUnderline />
 
-      <div className="grid gap-3">
+      <ScrollBorderProvider className="grid gap-3">
         <div className="grid grid-cols-3 gap-3">
           {stats.map((s, i) => (
             <CountStat key={s.label} icon={s.icon} label={s.label} value={s.value} index={i} />
@@ -265,7 +161,7 @@ export function Traffic() {
 
         <GeoPanel countries={snapshot.byCountry} />
         <Breakdowns snapshot={snapshot} />
-      </div>
+      </ScrollBorderProvider>
     </section>
   );
 }

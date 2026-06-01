@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Globe, FileText, Code, MonitorSmartphone, Cpu } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
+import { useScrollBorderColor } from "@/lib/scrollBorder";
 import type { TrafficBreakdown, TrafficSnapshot } from "@/data/traffic";
 
 /** One labelled horizontal-bar breakdown panel. */
@@ -18,6 +19,7 @@ function Panel({
 }) {
   const reduce = useReducedMotion();
   const max = Math.max(...rows.map((r) => r.visits), 1);
+  const borderColor = useScrollBorderColor(0.2 + index * 0.05);
 
   return (
     <motion.div
@@ -25,6 +27,7 @@ function Panel({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: D.base, ease: EASE, delay: index * 0.05 }}
+      style={{ borderColor }}
       className="rounded-2xl border border-border bg-card p-4 sm:p-5"
     >
       <div className="mb-3 flex items-center gap-2">
