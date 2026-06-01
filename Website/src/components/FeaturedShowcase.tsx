@@ -47,7 +47,7 @@ function Media({
   // The media element sizes to its own intrinsic aspect ratio (height-capped),
   // so the border + background hug the media exactly with no letterbox bars.
   const cls =
-    "h-auto max-h-[58svh] w-auto max-w-full rounded-2xl bg-secondary" +
+    "h-auto max-h-[35svh] md:max-h-[58svh] w-auto max-w-full rounded-2xl bg-secondary" +
     (index === 0 ? "" : " border border-border");
   if (video && !reduce) {
     return (
@@ -130,11 +130,11 @@ function Panel({
     <div
       ref={ref}
       id={projectSlug(project.title)}
-      className="sticky top-0 flex h-[100svh] items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
+      className="sticky top-0 flex h-[100svh] items-start md:items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
     >
       <motion.div
         style={animate ? { scale, opacity } : undefined}
-        className="mx-auto grid w-full max-w-6xl items-center gap-8 px-6 md:grid-cols-2 md:gap-12"
+        className="mx-auto grid w-full max-w-6xl items-center gap-8 px-6 pt-20 md:pt-0 md:grid-cols-2 md:gap-12"
       >
         {/* Media: border/background hug the media's own aspect ratio. */}
         <div className={`flex justify-center ${flip ? "md:order-2 md:justify-end" : "md:justify-start"}`}>
@@ -147,7 +147,7 @@ function Panel({
             {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
           <div className="mt-3 flex flex-wrap items-center gap-3">
-            <h3 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            <h3 className="text-2xl font-semibold tracking-tight md:text-4xl">
               {project.title}
             </h3>
             {platforms.length > 0 && (
@@ -161,7 +161,7 @@ function Panel({
               </div>
             )}
           </div>
-          <p className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground">
+          <p className="mt-4 max-w-prose text-sm md:text-base leading-relaxed text-muted-foreground">
             {project.description}
           </p>
 

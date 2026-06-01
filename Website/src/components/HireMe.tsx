@@ -153,7 +153,7 @@ export function HireMe() {
       </motion.p>
       <motion.h2
         {...headingProps}
-        className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
+        className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl"
       >
         Hire me
       </motion.h2>
@@ -161,7 +161,7 @@ export function HireMe() {
 
       <motion.p
         {...headingProps}
-        className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/90"
+        className="mt-4 max-w-2xl text-base md:text-lg leading-relaxed text-foreground/90"
       >
         Product engineer who ships. Full-stack across web, mobile and cloud —
         React, native apps, backend APIs and the infrastructure beneath them.

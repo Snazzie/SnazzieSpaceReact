@@ -59,7 +59,7 @@ function CountStat({
       style={{ borderColor }}
       className="rounded-2xl border border-border bg-card p-5"
     >
-      <p className="flex items-center gap-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
+      <p className="flex items-center gap-2 text-xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
         <Icon className="size-5 text-muted-foreground" aria-hidden />
       </p>
@@ -193,7 +193,7 @@ export function Traffic({ initialData }: { initialData: TrafficData }) {
         Analytics &middot; {isAll ? "all sites" : "this site"}
       </motion.p>
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
-        <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
+        <motion.h2 {...headingProps} className="text-2xl font-semibold tracking-tight md:text-4xl">
           {isAll ? "Traffic across all my sites" : "Traffic to snazzie.space"}
         </motion.h2>
         <motion.p {...headingProps} className="text-sm text-muted-foreground">

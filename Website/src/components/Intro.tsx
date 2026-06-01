@@ -245,7 +245,7 @@ function KineticName() {
   const active = NAME_STYLES[style];
 
   return (
-    <h1 className="relative inline-flex text-[clamp(3rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-tight [perspective:700px]">
+    <h1 className="relative inline-flex text-[clamp(2.5rem,9vw,5.5rem)] font-semibold leading-[0.95] tracking-tight [perspective:700px]">
       {/* invisible sizer reserves the box so absolutely-layered names can cross-fade */}
       <span aria-hidden className="invisible whitespace-pre pb-[0.06em]">
         Snazzie

@@ -203,7 +203,7 @@ export function Career() {
       </motion.p>
       <motion.h2
         {...headingProps}
-        className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
+        className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl"
       >
         Career
       </motion.h2>

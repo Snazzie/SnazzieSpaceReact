@@ -268,7 +268,7 @@ function StatCard({
       transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
       className="rounded-2xl border border-border bg-card p-6"
     >
-      <p className="flex items-center gap-2 text-3xl font-semibold tracking-tight tabular-nums">
+      <p className="flex items-center gap-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
         <Icon className="size-5 text-muted-foreground" aria-hidden />
       </p>
@@ -295,7 +295,7 @@ export function GithubStats({ initialProfile }: { initialProfile: GithubProfile 
   return (
     <section id="github" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
-        <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
+        <motion.h2 {...headingProps} className="text-2xl font-semibold tracking-tight md:text-4xl">
           GitHub activity
         </motion.h2>
         <motion.a
