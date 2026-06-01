@@ -22,9 +22,11 @@ export function projectSlug(title: string) {
 function Media({
   project,
   images,
+  index,
 }: {
   project: Project;
   images?: Record<string, string>;
+  index: number;
 }) {
   const reduce = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -45,7 +47,8 @@ function Media({
   // The media element sizes to its own intrinsic aspect ratio (height-capped),
   // so the border + background hug the media exactly with no letterbox bars.
   const cls =
-    "h-auto max-h-[58svh] w-auto max-w-full rounded-2xl border border-border bg-secondary";
+    "h-auto max-h-[58svh] w-auto max-w-full rounded-2xl bg-secondary" +
+    (index === 0 ? "" : " border border-border");
   if (video && !reduce) {
     return (
       <video
@@ -135,7 +138,7 @@ function Panel({
       >
         {/* Media: border/background hug the media's own aspect ratio. */}
         <div className={`flex justify-center ${flip ? "md:order-2 md:justify-end" : "md:justify-start"}`}>
-          <Media project={project} images={images} />
+          <Media project={project} images={images} index={index} />
         </div>
 
         {/* Text */}

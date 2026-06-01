@@ -9,6 +9,7 @@ import { Career } from "@/components/Career";
 import { TechStack } from "@/components/TechStack";
 import { Projects } from "@/components/Projects";
 import { GithubStats } from "@/components/GithubStats";
+import { Traffic } from "@/components/Traffic";
 import { HireMe } from "@/components/HireMe";
 
 import raceiqImg from "@/assets/logos/raceiq.png";
@@ -70,6 +71,7 @@ const images: Record<string, string> = {
       <TechStack client:visible />
       <Projects client:visible images={images} />
       <GithubStats client:visible />
+      <Traffic client:visible />
       <HireMe client:visible />
     </main>
   </body>

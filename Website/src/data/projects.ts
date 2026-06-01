@@ -24,7 +24,7 @@ export const projects: Project[] = [
     image: "/lunar-home.webp",
     featured: true,
     imageFit: "contain",
-    tech: ["iOS", "Android", "Expo", "React Native", "Convex"],
+    tech: ["iOS", "Android", "Expo", "React Native", "Convex", "AI Agent"],
     details: [
       "iOS, Android & Web app",
       "Connects investments, pensions, and savings in one place",
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     image: "/btm-performance.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "macOS"],
+    tech: ["Windows", "macOS", "Tauri"],
     supersedes: "Vital Utilities",
     details: [
       "Cross-platform task manager and system monitor for Windows and macOS",

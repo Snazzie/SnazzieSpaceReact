@@ -4,16 +4,21 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-05-01",
   "observability": { "enabled": true },
-  // Weekly: Mondays at 06:00 UTC.
+  // Weekly: Mondays at 06:00 UTC. One cron refreshes both snapshots.
   "triggers": { "crons": ["0 6 * * 1"] },
   "kv_namespaces": [
-    { "binding": "STATS", "id": "8a72d7e2281f458682db02c920092ef9" }
+    { "binding": "STATS", "id": "8a72d7e2281f458682db02c920092ef9" },
+    { "binding": "TRAFFIC", "id": "fe9ab4db270f42958237273778e40e09" }
   ],
   "vars": {
     "GITHUB_USERNAME": "Snazzie",
     // Lock this down to your Cloudflare Pages origin once you know the URL,
     // e.g. "https://snazziespacereact.pages.dev" or your custom domain.
     // "*" is fine for a public stats feed.
-    "ALLOWED_ORIGIN": "*"
+    "ALLOWED_ORIGIN": "*",
+    // Traffic route source: snazzie.space zone. The API token is a secret:
+    // `wrangler secret put CF_ANALYTICS_TOKEN` (Zone Analytics: Read). Unset
+    // CF_ZONE_TAG to disable /traffic (site shows its static fallback).
+    "CF_ZONE_TAG": "3bd3ceb284f12ef770a1dab9b728509b"
   }
 }
