@@ -35,7 +35,7 @@ const paths: {
     audience: "For hiring managers",
     title: "Full-time",
     blurb:
-      "Open to permanent roles at high-velocity, ship-fast companies. One hire who covers the whole stack (frontend, backend, apps and the cloud beneath), ships fast and owns it end to end. Speed without the tech debt.",
+      "Open to permanent roles at high-velocity, ship-fast teams. One hire across the whole stack (frontend, backend, apps and the cloud beneath), ships fast and owns it end to end.",
   },
   {
     icon: Handshake,
