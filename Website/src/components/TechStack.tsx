@@ -57,7 +57,13 @@ function TechTile({ tech, index }: { tech: Tech; index: number }) {
             "radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%)",
         }}
       />
-      {tech.icon ? (
+      {tech.logoUrl ? (
+        <img
+          src={tech.logoUrl}
+          alt={tech.name}
+          className="relative z-10 size-5 shrink-0 transition-transform duration-200 group-hover:scale-110"
+        />
+      ) : tech.icon ? (
         <svg
           role="img"
           aria-hidden

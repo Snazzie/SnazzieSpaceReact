@@ -33,6 +33,8 @@ export interface Tech {
   name: string;
   /** simple-icons brand icon; omit when none exists and a monogram is shown instead. */
   icon?: SimpleIcon;
+  /** custom logo URL for brands not in simple-icons */
+  logoUrl?: string;
 }
 
 export interface StackGroup {
@@ -73,7 +75,7 @@ export const stack: StackGroup[] = [
       { name: "Hono", icon: siHono },
       { name: "Convex", icon: siConvex },
       { name: "Drizzle", icon: siDrizzle },
-      { name: "Mastra AI" },
+      { name: "Mastra AI", logoUrl: "/mastra-logo.svg" },
       { name: "Better Auth", icon: siBetterauth },
     ],
   },
