@@ -48,11 +48,11 @@ async function zoneTags() {
 
 async function fetchDays(zoneTag) {
   const now = new Date();
-  const from = utcDate(now, DAYS - 1);
-  const lt = utcDate(now, -1);
+  const from = new Date(now.getTime() - DAYS * 86400000).toISOString();
+  const lt = now.toISOString();
   const query = `{ viewer { zones(filter:{zoneTag:"${zoneTag}"}) {
-    httpRequests1dGroups(limit:40, filter:{date_geq:"${from}", date_lt:"${lt}"}) {
-      dimensions { date }
+    httpRequestsAdaptiveGroups(limit:10000, filter:{datetime_geq:"${from}", datetime_lt:"${lt}", requestSource:"eyeball"}, orderBy:[datetimeHour_ASC]) {
+      dimensions { datetimeHour }
       sum {
         requests pageViews
         countryMap { clientCountryName requests }
@@ -60,11 +60,12 @@ async function fetchDays(zoneTag) {
         responseStatusMap { edgeResponseStatus requests }
         contentTypeMap { edgeResponseContentTypeName requests }
         clientHTTPVersionMap { clientHTTPProtocol requests }
+        refererMap { clientRefererHost requests }
       }
     }
   } } }`;
   const data = await gql(query);
-  return data.viewer.zones[0]?.httpRequests1dGroups ?? [];
+  return data.viewer.zones[0]?.httpRequestsAdaptiveGroups ?? [];
 }
 
 const top = (tally, limit, drop = []) =>
@@ -81,25 +82,28 @@ async function snapshotFor(tags) {
   const status = new Map();
   const contentType = new Map();
   const httpVersion = new Map();
+  const referer = new Map();
   const add = (m, k, v) => m.set(k, (m.get(k) ?? 0) + v);
 
   let zonesWithData = 0;
   for (const tag of tags) {
-    const days = await fetchDays(tag).catch((e) => {
+    const hours = await fetchDays(tag).catch((e) => {
       process.stderr.write(`warn: zone ${tag} failed: ${e.message}\n`);
       return [];
     });
-    if (days.length) zonesWithData++;
-    for (const d of days) {
-      const day = dayMap.get(d.dimensions.date) ?? { requests: 0, pageViews: 0 };
-      day.requests += d.sum.requests;
-      day.pageViews += d.sum.pageViews;
-      dayMap.set(d.dimensions.date, day);
-      for (const c of d.sum.countryMap ?? []) add(country, c.clientCountryName.toUpperCase(), c.requests);
-      for (const b of d.sum.browserMap ?? []) add(browser, b.uaBrowserFamily, b.pageViews);
-      for (const s of d.sum.responseStatusMap ?? []) add(status, String(s.edgeResponseStatus), s.requests);
-      for (const t of d.sum.contentTypeMap ?? []) add(contentType, t.edgeResponseContentTypeName, t.requests);
-      for (const v of d.sum.clientHTTPVersionMap ?? []) add(httpVersion, v.clientHTTPProtocol, v.requests);
+    if (hours.length) zonesWithData++;
+    for (const h of hours) {
+      const dateStr = h.dimensions.datetimeHour.split('T')[0];
+      const day = dayMap.get(dateStr) ?? { requests: 0, pageViews: 0 };
+      day.requests += h.sum.requests;
+      day.pageViews += h.sum.pageViews;
+      dayMap.set(dateStr, day);
+      for (const c of h.sum.countryMap ?? []) add(country, c.clientCountryName.toUpperCase(), c.requests);
+      for (const b of h.sum.browserMap ?? []) add(browser, b.uaBrowserFamily, b.pageViews);
+      for (const s of h.sum.responseStatusMap ?? []) add(status, String(s.edgeResponseStatus), s.requests);
+      for (const t of h.sum.contentTypeMap ?? []) add(contentType, t.edgeResponseContentTypeName, t.requests);
+      for (const v of h.sum.clientHTTPVersionMap ?? []) add(httpVersion, v.clientHTTPProtocol, v.requests);
+      for (const r of h.sum.refererMap ?? []) add(referer, r.clientRefererHost, r.requests);
     }
   }
 
@@ -125,6 +129,7 @@ async function snapshotFor(tags) {
     statuses: top(status, TOP_N),
     contentTypes: top(contentType, TOP_N, ["unknown", "empty"]),
     httpVersions: top(httpVersion, TOP_N),
+    referers: top(referer, TOP_N, ["", "-"]),
   };
 }
 

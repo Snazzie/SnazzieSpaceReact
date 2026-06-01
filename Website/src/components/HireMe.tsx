@@ -30,20 +30,23 @@ const paths: {
   audience: string;
   title: string;
   blurb: string;
+  accentClass: string;
 }[] = [
   {
     icon: Briefcase,
     audience: "For hiring managers",
     title: "Full-time",
     blurb:
-      "Open to permanent roles at high-velocity, ship-fast teams. One hire across the whole stack (frontend, backend, apps and the cloud beneath), ships fast and owns it end to end.",
+      "Open to senior IC or lead roles at high-velocity teams. One hire covers the full stack — web, mobile, backend and cloud. Ships fast, owns outcomes.",
+    accentClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-400",
   },
   {
     icon: Handshake,
     audience: "For founders & VCs",
-    title: "Consultation",
+    title: "Contract / advisory",
     blurb:
-      "Backing a team that needs to build? I take products from zero to shipped, de-risk technical bets and pressure-test architecture before you scale. Fractional, advisory or hands-on, scoped per project.",
+      "Take a product from zero to shipped, or pressure-test your architecture before you scale. Available fractional, advisory, or hands-on. Scoped per project.",
+    accentClass: "bg-violet-500/10 border-violet-500/30 text-violet-400",
   },
 ];
 
@@ -102,11 +105,13 @@ function PathCard({
   return (
     <motion.div
       {...cardProps}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-500"
     >
       <Spotlight />
-      <div className="relative z-20 flex size-11 items-center justify-center rounded-lg border border-border bg-secondary">
-        <Icon className="size-5 text-foreground" />
+      <div
+        className={`relative z-20 flex size-11 items-center justify-center rounded-lg border ${path.accentClass}`}
+      >
+        <Icon className="size-5" />
       </div>
       <span className="relative z-20 mt-4 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
         {path.audience}
@@ -132,10 +137,18 @@ export function HireMe() {
 
   return (
     <section id="hire" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 left-0 h-96 w-2/3 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.03),transparent_65%)]"
+      />
       <motion.p
         {...headingProps}
-        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
+        className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
       >
+        <span className="relative flex size-2">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden" />
+          <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+        </span>
         Available for work
       </motion.p>
       <motion.h2
@@ -150,9 +163,9 @@ export function HireMe() {
         {...headingProps}
         className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/90"
       >
-        No WordPress. No page-builders. Real websites and apps built on
-        industry-standard frameworks and proper architecture, code that's
-        maintainable, fast and made to last.
+        Product engineer who ships. Full-stack across web, mobile and cloud —
+        React, native apps, backend APIs and the infrastructure beneath them.
+        Built to last, not to hand off.
       </motion.p>
 
       <motion.ul
