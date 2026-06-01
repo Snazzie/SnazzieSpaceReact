@@ -142,10 +142,10 @@ function DualYearChart({
 
   return (
     <>
-      <div className="flex items-stretch gap-2 sm:gap-3">
+      <div className="flex items-stretch gap-1 sm:gap-3">
         {/* Left axis: contributions scale (drives the bars). */}
-        <div className="flex w-12 shrink-0 items-stretch gap-1 sm:w-14">
-          <span className="self-center rotate-180 text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl]">
+        <div className="flex w-8 shrink-0 items-stretch gap-0.5 sm:w-14 sm:gap-1">
+          <span className="hidden self-center rotate-180 text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl] sm:inline">
             Contributions
           </span>
           <div className="relative h-52 flex-1">
@@ -288,7 +288,7 @@ function DualYearChart({
 
         {/* Right axis: lines-changed scale (drives the trend lines). */}
         {withLines && (
-          <div className="flex w-14 shrink-0 items-stretch gap-1 sm:w-16">
+          <div className="flex w-10 shrink-0 items-stretch gap-0.5 sm:w-16 sm:gap-1">
             <div className="relative h-52 flex-1">
               {ticks.map((f) => (
                 <span
@@ -300,15 +300,15 @@ function DualYearChart({
                 </span>
               ))}
             </div>
-            <span className="self-center text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl]">
+            <span className="hidden self-center text-[0.6rem] uppercase tracking-wider text-muted-foreground [writing-mode:vertical-rl] sm:inline">
               Lines changed
             </span>
           </div>
         )}
       </div>
 
-      <div className="mt-2 flex gap-2 sm:gap-3">
-        <div className="w-12 shrink-0 sm:w-14" aria-hidden />
+      <div className="mt-2 flex gap-1 sm:gap-3">
+        <div className="w-8 shrink-0 sm:w-14" aria-hidden />
         <ul className="flex flex-1">
           {years.map((y) => (
             <li
@@ -319,7 +319,7 @@ function DualYearChart({
             </li>
           ))}
         </ul>
-        {withLines && <div className="w-14 shrink-0 sm:w-16" aria-hidden />}
+        {withLines && <div className="w-10 shrink-0 sm:w-16" aria-hidden />}
       </div>
     </>
   );
@@ -339,7 +339,7 @@ export function GithubStats() {
   };
 
   return (
-    <section id="github" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+    <section id="github" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
       <motion.p
         {...headingProps}
         className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
@@ -387,12 +387,12 @@ export function GithubStats() {
         })}
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-6">
+      <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-2">
           <p className="text-sm font-medium uppercase tracking-wide text-foreground/60">
             Activity by year
           </p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <span className="h-2.5 w-2 rounded-sm bg-gradient-to-t from-zinc-800 to-zinc-600" aria-hidden />
               contributions

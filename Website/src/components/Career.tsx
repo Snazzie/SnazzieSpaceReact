@@ -204,7 +204,7 @@ export function Career() {
         {...headingProps}
         className="mb-10 mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
       >
-        Experience
+        Career
       </motion.h2>
 
       <div className="space-y-4">
