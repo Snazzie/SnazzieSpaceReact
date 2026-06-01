@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import { D, EASE, rise, stagger } from "@/lib/motion";
 
-const SKILLS = ["C#", "TypeScript", "React", "Node", "Rust", "Kubernetes", "Cloudflare"];
+const SKILLS = ["C#", "TypeScript", "React", "Node", "Rust", "Kubernetes", "Cloudflare", "AI Agents"];
 const NAMES = ["Aaron", "Snazzie"];
 
 const container: Variants = {
@@ -97,7 +97,75 @@ const NAME_STYLES: NameStyle[] = [
       },
     },
   },
-  // 5: Scramble / split-flap board (see Scramble component).
+  // 5: Blur focus: chars resolve out of a soft blur while rising slightly.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.05), exit: rev(0.035) },
+    char: {
+      hidden: { opacity: 0, filter: "blur(12px)", y: "20%" },
+      show: {
+        opacity: 1,
+        filter: "blur(0px)",
+        y: 0,
+        transition: { duration: D.slow, ease: EASE },
+      },
+      exit: {
+        opacity: 0,
+        filter: "blur(12px)",
+        y: "-20%",
+        transition: { duration: D.base, ease: EASE },
+      },
+    },
+  },
+  // 6: Elastic drop: chars spring down from above and settle with overshoot.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.06), exit: rev(0.04) },
+    char: {
+      hidden: { y: "-120%", opacity: 0 },
+      show: {
+        y: 0,
+        opacity: 1,
+        transition: { type: "spring", stiffness: 320, damping: 14 },
+      },
+      exit: { y: "120%", opacity: 0, transition: { duration: D.fast, ease: EASE } },
+    },
+  },
+  // 7: Horizontal swipe: chars slide in from the left through a clipped frame.
+  {
+    kind: "variant",
+    clip: true,
+    container: { hidden: {}, show: fwd(0.05), exit: rev(0.04) },
+    char: {
+      hidden: { x: "-115%" },
+      show: { x: 0, transition: { duration: D.slow, ease: EASE } },
+      exit: { x: "115%", transition: { duration: D.base, ease: EASE } },
+    },
+  },
+  // 8: Depth punch: chars zoom in oversized and blurred, then snap to place.
+  {
+    kind: "variant",
+    clip: false,
+    container: { hidden: {}, show: fwd(0.05), exit: rev(0.035) },
+    char: {
+      hidden: { scale: 2.4, opacity: 0, filter: "blur(8px)" },
+      show: {
+        scale: 1,
+        opacity: 1,
+        filter: "blur(0px)",
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      },
+      exit: {
+        scale: 0.4,
+        opacity: 0,
+        filter: "blur(8px)",
+        transition: { duration: D.fast, ease: EASE },
+      },
+    },
+  },
+  // 9: Scramble / split-flap board (see Scramble component).
   { kind: "scramble" },
 ];
 
