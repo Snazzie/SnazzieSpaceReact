@@ -38,7 +38,7 @@ const paths: {
     title: "Full-time",
     blurb:
       "Open to senior IC or lead roles at high-velocity teams. One hire covers the full stack — web, mobile, backend and cloud. Ships fast, owns outcomes.",
-    accentClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-400",
+    accentClass: "bg-secondary border-border text-foreground/70",
   },
   {
     icon: Handshake,
@@ -46,7 +46,7 @@ const paths: {
     title: "Contract / advisory",
     blurb:
       "Take a product from zero to shipped, or pressure-test your architecture before you scale. Available fractional, advisory, or hands-on. Scoped per project.",
-    accentClass: "bg-violet-500/10 border-violet-500/30 text-violet-400",
+    accentClass: "bg-secondary border-border text-foreground/70",
   },
 ];
 
