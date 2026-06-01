@@ -49,7 +49,8 @@ export function ProjectModal({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
-  const { title, description, image, tech, video, bgImage, details } = project;
+  const { title, description, image, tech, video: projectVideo, bgVideo, bgImage, details } = project;
+  const video = projectVideo || bgVideo;
   const reduce = useReducedMotion();
 
   return (

@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { EASE, D } from "@/lib/motion";
+import { SectionUnderline } from "@/components/SectionUnderline";
 
 export function Projects({ images }: { images?: Record<string, string> } = {}) {
   const featured = projects.filter((p) => p.featured);
@@ -25,10 +26,11 @@ export function Projects({ images }: { images?: Record<string, string> } = {}) {
       </motion.p>
       <motion.h2
         {...headingProps}
-        className="mb-10 mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
+        className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
       >
         Projects
       </motion.h2>
+      <SectionUnderline />
 
       <div className="grid gap-4 sm:grid-cols-2">
         {featured.map((project, i) => (

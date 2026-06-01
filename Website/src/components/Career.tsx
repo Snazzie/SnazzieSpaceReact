@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, Award, CalendarDays, GraduationCap, MapPin } from "lucide-react";
 import { experience, education, type Experience, type Education } from "@/data/experience";
 import { D, EASE } from "@/lib/motion";
+import { SectionUnderline } from "@/components/SectionUnderline";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -202,10 +203,11 @@ export function Career() {
       </motion.p>
       <motion.h2
         {...headingProps}
-        className="mb-10 mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
+        className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl"
       >
         Career
       </motion.h2>
+      <SectionUnderline className="mb-10" />
 
       <div className="space-y-4">
         {experience.map((job, i) => (

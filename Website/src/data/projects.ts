@@ -23,7 +23,7 @@ export const projects: Project[] = [
     image: "/logos/lunar.svg",
     featured: true,
     imageFit: "contain",
-    tech: ["Expo", "React Native", "Convex"],
+    tech: ["iOS", "Android", "Expo", "React Native", "Convex"],
     details: [
       "iOS, Android & Web app",
       "Connects investments, pensions, and savings in one place",
@@ -39,7 +39,8 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     bgImage: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     featured: true,
-    tech: ["Rust"],
+    tech: ["Linux", "Rust"],
+    video: "/smartdos-bg.mp4",
     details: [
       "Linux TUI — keyboard-driven, no GUI required",
       "Scans nearby access points across 2.4 GHz, 5 GHz, and 6 GHz",
@@ -55,8 +56,8 @@ export const projects: Project[] = [
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",
-    tech: ["TypeScript", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
-    video: "https://github.com/user-attachments/assets/9200c90d-b039-4616-9b27-9c8e7c53a8ca",
+    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
+    video: "/raceiq-bg.mp4",
     details: [
       "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
       "Live telemetry dashboard with lap recording",
@@ -101,6 +102,7 @@ export const projects: Project[] = [
     href: "https://bettertaskmanager.com",
     image: "/logos/btm.png",
     featured: false,
+    tech: ["Windows", "macOS"],
     supersedes: "Vital Utilities",
   },
   {
@@ -123,6 +125,8 @@ export const projects: Project[] = [
     description: "OSU Clone made in Unity",
     href: "https://github.com/Snazzie/Rhythm-Unity",
     image: "https://avatars.githubusercontent.com/u/19627023?v=4",
-    featured: false,
+    featured: true,
+    bgVideo: "/hero-bg.webm",
+    tech: ["Windows", "Android", "Unity", "C#"],
   },
 ];

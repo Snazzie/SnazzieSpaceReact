@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
+import { SectionUnderline } from "@/components/SectionUnderline";
 
 const LINKEDIN = "https://linkedin.com/in/cooper-a-m/";
 
@@ -143,6 +144,7 @@ export function HireMe() {
       >
         Hire me
       </motion.h2>
+      <SectionUnderline className="mb-4" />
 
       <motion.p
         {...headingProps}

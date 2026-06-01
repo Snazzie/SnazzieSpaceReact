@@ -1,10 +1,40 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { Archive, ArrowUp, ArrowUpRight } from "lucide-react";
+import { Archive, ArrowUp, ArrowUpRight, Apple, Smartphone, Monitor, Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { D, EASE } from "@/lib/motion";
 import { ProjectModal } from "@/components/ProjectModal";
+
+const PLATFORM_TAGS = new Set(["iOS", "Android", "Windows", "macOS", "Linux", "Web"]);
+
+function getPlatformIcon(tag: string) {
+  switch (tag) {
+    case "iOS":
+    case "macOS":
+      return (
+        <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden>
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.3-3.14-2.53C4.25 17.12 3.5 14.42 5.02 12.81c.75-.92 1.94-1.5 3.14-1.52 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.08 3.81-.92.65.03 2.47.26 3.64 1.9-.09.06-1.92 1.11-1.88 3.31.03 2.52 2.02 3.42 2.07 3.44-.03.07-.2.1-.42.1-.88-.01-1.73-.26-2.34-.76z" />
+        </svg>
+      );
+    case "Android":
+      return <Smartphone className="size-4" />;
+    case "Windows":
+    case "Linux":
+      return <Monitor className="size-4" />;
+    case "Web":
+      return <Globe className="size-4" />;
+    default:
+      return null;
+  }
+}
+
+function getTechBadges(tech: string[] | undefined) {
+  if (!tech) return { platforms: [], other: [] };
+  const platforms = tech.filter((t) => PLATFORM_TAGS.has(t));
+  const other = tech.filter((t) => !PLATFORM_TAGS.has(t));
+  return { platforms, other };
+}
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -41,12 +71,23 @@ export function ProjectCard({
   className?: string;
   images?: Record<string, string>;
 }) {
-  const { title, description, href, featured, tech, supersedes, supersededBy, video } = project;
+  const { title, description, href, featured, tech, supersedes, supersededBy, video: projectVideo, bgVideo } = project;
+  const video = projectVideo || bgVideo;
   // Resolve raw data URLs to Astro-optimized variants when a map entry exists.
   const image = (images && images[project.image]) || project.image;
   const bgImage = project.bgImage ? (images && images[project.bgImage]) || project.bgImage : undefined;
   const [modalOpen, setModalOpen] = useState(false);
   const reduce = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // React sets `muted` as a property after the autoplay check, so the browser
+  // can treat the element as unmuted and block autoplay. Force it on mount.
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el || reduce) return;
+    el.muted = true;
+    el.play().catch(() => {});
+  }, [reduce, video]);
 
   // Cursor spotlight: sets CSS vars consumed by the overlay's radial gradient.
   const onMove = reduce
@@ -81,11 +122,12 @@ export function ProjectCard({
               setModalOpen(true);
             }
           }}
-          className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 ${className}`}
+          className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600 min-h-52 ${className}`}
         >
           {video && !reduce && (
             <>
               <video
+                ref={videoRef}
                 aria-hidden
                 src={video}
                 autoPlay
@@ -123,13 +165,25 @@ export function ProjectCard({
           )}
           <div className={`relative z-20 transition-opacity duration-300 ${(video && !reduce) || bgImage ? "group-hover:opacity-0" : ""}`}>
             <LogoTile src={image} alt={title} />
-            <h3 className="mt-4 flex items-center gap-1.5 text-lg font-semibold text-foreground">
-              {title}
-            </h3>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <h3 className="text-lg font-semibold text-foreground">
+                {title}
+              </h3>
+              {tech && getTechBadges(tech).platforms.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {getTechBadges(tech).platforms.map((t) => (
+                    <span key={t} className="flex items-center gap-1 text-xs text-muted-foreground">
+                      {getPlatformIcon(t)}
+                      <span className="hidden sm:inline">{t}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
-            {tech && tech.length > 0 && (
+            {tech && getTechBadges(tech).other.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-1.5">
-                {tech.map((t) => (
+                {getTechBadges(tech).other.map((t) => (
                   <Badge key={t} variant="outline" className="border-border text-muted-foreground">
                     {t}
                   </Badge>
@@ -168,7 +222,18 @@ export function ProjectCard({
         <div className="relative z-20 flex items-start gap-4 p-4 pr-10">
           <LogoTile src={image} alt={title} dim={!!supersededBy} />
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-medium text-foreground">{title}</h3>
+            <div className="flex flex-wrap items-center gap-1.5">
+              <h3 className="text-sm font-medium text-foreground">{title}</h3>
+              {tech && getTechBadges(tech).platforms.length > 0 && (
+                <div className="flex gap-1">
+                  {getTechBadges(tech).platforms.map((t) => (
+                    <span key={t} className="flex items-center gap-0.5 text-xs text-muted-foreground">
+                      {getPlatformIcon(t)}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
             <p className="line-clamp-1 text-xs text-muted-foreground">{description}</p>
             {supersedes && (
               <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-foreground/25 px-2 py-0.5 text-[11px] font-medium text-foreground/90">

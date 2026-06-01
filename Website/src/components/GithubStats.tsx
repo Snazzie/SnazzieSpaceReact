@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useMotionValue, useTransform, useReducedMotion } from "motion/react";
 import { Activity, ArrowUpRight, CircleDot, FolderGit2, GitFork, Star } from "lucide-react";
 import { siGithub } from "simple-icons";
 import { github, type GithubProfile, type GithubYear } from "@/data/github";
 import { D, EASE } from "@/lib/motion";
+import { SectionUnderline } from "@/components/SectionUnderline";
 
 /** Live stats endpoint (Cloudflare Worker); env var overrides the deployed default. */
 const STATS_URL =
@@ -325,6 +326,46 @@ function DualYearChart({
   );
 }
 
+function StatCard({
+  stat,
+  value,
+  index,
+}: {
+  stat: (typeof STATS)[number];
+  value: number;
+  index: number;
+}) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const mv = useMotionValue(0);
+  const display = useTransform(mv, (v: number) => compact(Math.round(v)));
+  const Icon = stat.icon;
+
+  useEffect(() => {
+    if (reduce || !inView) return;
+    const controls = animate(mv, value, { duration: D.slow * 1.5, ease: EASE });
+    return () => controls.stop();
+  }, [inView, value, reduce, mv]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={reduce ? (false as const) : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
+      className="rounded-2xl border border-border bg-card p-6"
+    >
+      <Icon className="size-5 text-muted-foreground" aria-hidden />
+      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
+        {reduce ? compact(value) : <motion.span>{display}</motion.span>}
+      </p>
+      <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+    </motion.div>
+  );
+}
+
 export function GithubStats() {
   const reduce = useReducedMotion();
   const profile = useGithubProfile();
@@ -346,7 +387,7 @@ export function GithubStats() {
       >
         Open source
       </motion.p>
-      <div className="mb-10 mt-2 flex flex-wrap items-end justify-between gap-4">
+      <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
           GitHub activity
         </motion.h2>
@@ -364,27 +405,17 @@ export function GithubStats() {
           <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
         </motion.a>
       </div>
+      <SectionUnderline />
 
       <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-        {STATS.map((stat, i) => {
-          const Icon = stat.icon;
-          return (
-            <motion.div
-              key={stat.key}
-              initial={reduce ? (false as const) : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: D.base, ease: EASE, delay: i * 0.06 }}
-              className="rounded-2xl border border-border bg-card p-6"
-            >
-              <Icon className="size-5 text-muted-foreground" aria-hidden />
-              <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
-                {compact(profile.totals[stat.key])}
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-            </motion.div>
-          );
-        })}
+        {STATS.map((stat, i) => (
+          <StatCard
+            key={stat.key}
+            stat={stat}
+            value={profile.totals[stat.key]}
+            index={i}
+          />
+        ))}
       </div>
 
       <div className="rounded-2xl border border-border bg-card p-4 sm:p-6">
