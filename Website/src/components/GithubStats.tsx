@@ -138,9 +138,30 @@ function DualYearChart({
     { value: (y) => y.deletions, stroke: "rgb(251 113 133)", fill: "rgb(244 63 94 / 0.08)", dot: "bg-rose-400" },
   ];
 
+  const ticks = [0, 0.5, 1];
+
   return (
     <>
-      <div className="relative h-52">
+      <div className="flex items-stretch gap-2 sm:gap-3">
+        {/* Left axis: contributions scale (drives the bars). */}
+        <div className="flex w-12 shrink-0 items-stretch gap-1 sm:w-14">
+          <span className="self-center rotate-180 text-[0.6rem] uppercase tracking-wider text-muted-foreground/60 [writing-mode:vertical-rl]">
+            Contributions
+          </span>
+          <div className="relative h-52 flex-1">
+            {ticks.map((f) => (
+              <span
+                key={f}
+                className="absolute right-0 -translate-y-1/2 text-[0.6rem] tabular-nums text-muted-foreground"
+                style={{ top: `${f * 100}%` }}
+              >
+                {compact(Math.round(maxContrib * (1 - f)))}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative h-52 flex-1">
         <ul className="flex h-full items-end gap-2 sm:gap-4">
           {years.map((y, i) => (
             <li key={y.year} className="flex h-full min-w-0 flex-1 items-end justify-center">
@@ -263,18 +284,43 @@ function DualYearChart({
             )}
           </div>
         )}
+        </div>
+
+        {/* Right axis: lines-changed scale (drives the trend lines). */}
+        {withLines && (
+          <div className="flex w-14 shrink-0 items-stretch gap-1 sm:w-16">
+            <div className="relative h-52 flex-1">
+              {ticks.map((f) => (
+                <span
+                  key={f}
+                  className="absolute left-0 -translate-y-1/2 text-[0.6rem] tabular-nums text-muted-foreground"
+                  style={{ top: `${f * 100}%` }}
+                >
+                  {compact(Math.round(maxLines * (1 - f)))}
+                </span>
+              ))}
+            </div>
+            <span className="self-center text-[0.6rem] uppercase tracking-wider text-muted-foreground/60 [writing-mode:vertical-rl]">
+              Lines changed
+            </span>
+          </div>
+        )}
       </div>
 
-      <ul className="mt-2 flex gap-2 sm:gap-4">
-        {years.map((y) => (
-          <li
-            key={y.year}
-            className="min-w-0 flex-1 text-center text-[0.7rem] tabular-nums text-muted-foreground"
-          >
-            &apos;{String(y.year).slice(2)}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-2 flex gap-2 sm:gap-3">
+        <div className="w-12 shrink-0 sm:w-14" aria-hidden />
+        <ul className="flex flex-1 gap-2 sm:gap-4">
+          {years.map((y) => (
+            <li
+              key={y.year}
+              className="min-w-0 flex-1 text-center text-[0.7rem] tabular-nums text-muted-foreground"
+            >
+              &apos;{String(y.year).slice(2)}
+            </li>
+          ))}
+        </ul>
+        {withLines && <div className="w-14 shrink-0 sm:w-16" aria-hidden />}
+      </div>
     </>
   );
 }
