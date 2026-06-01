@@ -36,12 +36,25 @@ function Media({
     ? (images && images[project.bgImage]) || project.bgImage
     : undefined;
 
-  // React sets `muted` as a property after the autoplay check, so force it on.
+  // Only play video when the panel is in the viewport — prevents 2-3 MB
+  // of off-screen video data from being fetched on page load.
   useEffect(() => {
     const el = videoRef.current;
     if (!el || reduce) return;
     el.muted = true;
-    el.play().catch(() => {});
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [reduce, video]);
 
   // The media element sizes to its own intrinsic aspect ratio (height-capped),
@@ -55,7 +68,7 @@ function Media({
         ref={videoRef}
         aria-hidden
         src={video}
-        autoPlay
+        preload="none"
         muted
         loop
         playsInline
@@ -64,9 +77,26 @@ function Media({
     );
   }
   if (bgImage) {
-    return <img aria-hidden src={bgImage} alt="" className={cls} />;
+    return (
+      <img
+        aria-hidden
+        src={bgImage}
+        alt=""
+        loading="lazy"
+        className={cls}
+      />
+    );
   }
-  return <img src={image} alt={project.title} className={cls} />;
+  return (
+    <img
+      src={image}
+      alt={project.title}
+      loading="lazy"
+      width={project.imgWidth}
+      height={project.imgHeight}
+      className={cls}
+    />
+  );
 }
 
 function Panel({

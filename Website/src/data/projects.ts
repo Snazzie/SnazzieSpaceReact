@@ -13,6 +13,8 @@ export interface Project {
   bgImage?: string; // optional static background image for featured cards
   github?: string; // explicit GitHub repo URL; when set, enables dual CTA buttons
   details?: string[]; // bullet points shown in the project modal
+  imgWidth?: number; // native image width for aspect-ratio hint
+  imgHeight?: number; // native image height for aspect-ratio hint
 }
 
 export const projects: Project[] = [
@@ -21,9 +23,11 @@ export const projects: Project[] = [
     description:
       "Personal wealth dashboard. Tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
     href: "https://lunarportfolio.com",
-    image: "/lunar-home.webp",
+    image: "/lunar-home-sm.webp",
     featured: true,
     imageFit: "contain",
+    imgWidth: 400,
+    imgHeight: 867,
     tech: ["iOS", "Android", "Expo", "React Native", "Convex", "AI Agent"],
     details: [
       "iOS, Android & Web app",
@@ -72,9 +76,11 @@ export const projects: Project[] = [
     description:
       "Cloud monitoring dashboard for Redis, PostgreSQL and RabbitMQ with smart alerts.",
     href: "https://cloudcat.dev",
-    image: "/cloudcat-dashboard.png",
+    image: "/cloudcat-dashboard.webp",
     featured: true,
     imageFit: "contain",
+    imgWidth: 1200,
+    imgHeight: 507,
     tech: ["C#", "Rust", "Docker", "Kubernetes", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
     details: [
       "Monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
@@ -101,9 +107,11 @@ export const projects: Project[] = [
     title: "Better Task Manager",
     description: "Cross-platform task manager and system monitor, successor to Vital Utilities.",
     href: "https://bettertaskmanager.com",
-    image: "/btm-performance.png",
+    image: "/btm-performance.webp",
     featured: true,
     imageFit: "contain",
+    imgWidth: 1200,
+    imgHeight: 707,
     tech: ["Windows", "macOS", "Tauri", "Rust", "React", "Convex", "Stripe"],
     supersedes: "Vital Utilities",
     details: [

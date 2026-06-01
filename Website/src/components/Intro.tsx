@@ -317,13 +317,12 @@ export function Intro({
             builds things that last
           </motion.p>
 
-          <motion.p
-            variants={rise}
-            className="max-w-md leading-relaxed text-muted-foreground"
-          >
+          {/* Plain element — no motion wrapper so the browser paints this text
+              immediately as the LCP candidate without waiting for JS hydration. */}
+          <p className="max-w-md leading-relaxed text-muted-foreground">
             Full-stack across frontend, backend, cross-platform apps and cloud,
             focused on performance and clean systems.
-          </motion.p>
+          </p>
 
           <motion.div variants={rise} className="flex flex-wrap items-center gap-2">
             {SKILLS.map((skill) => (
