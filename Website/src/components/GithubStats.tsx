@@ -294,12 +294,6 @@ export function GithubStats({ initialProfile }: { initialProfile: GithubProfile 
 
   return (
     <section id="github" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
-      <motion.p
-        {...headingProps}
-        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
-      >
-        Open source
-      </motion.p>
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
           GitHub activity
