@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { Archive, ArrowUp, ArrowUpRight, Smartphone, Monitor, Globe } from "lucide-react";
+import { Archive, ArrowUp, ArrowUpRight, Smartphone, Globe } from "lucide-react";
 import { FaWindows } from "react-icons/fa6";
-import { siApple } from "simple-icons";
+import { siApple, siLinux } from "simple-icons";
 import type { Project } from "@/data/projects";
 import { D, EASE } from "@/lib/motion";
 import { ProjectModal } from "@/components/ProjectModal";
@@ -18,6 +18,14 @@ function AppleLogo() {
   );
 }
 
+function LinuxLogo() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-4 fill-muted-foreground" aria-hidden>
+      <path d={siLinux.path} />
+    </svg>
+  );
+}
+
 export function getPlatformIcon(tag: string) {
   switch (tag) {
     case "iOS":
@@ -28,7 +36,7 @@ export function getPlatformIcon(tag: string) {
     case "Windows":
       return <FaWindows className="size-4" />;
     case "Linux":
-      return <Monitor className="size-4" />;
+      return <LinuxLogo />;
     case "Web":
       return <Globe className="size-4" />;
     default:
