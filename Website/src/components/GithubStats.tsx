@@ -162,7 +162,7 @@ function DualYearChart({
         </div>
 
         <div className="relative h-52 flex-1">
-        <ul className="flex h-full items-end gap-2 sm:gap-4">
+        <ul className="flex h-full items-end">
           {years.map((y, i) => (
             <li key={y.year} className="flex h-full min-w-0 flex-1 items-end justify-center">
               <motion.div
@@ -309,7 +309,7 @@ function DualYearChart({
 
       <div className="mt-2 flex gap-2 sm:gap-3">
         <div className="w-12 shrink-0 sm:w-14" aria-hidden />
-        <ul className="flex flex-1 gap-2 sm:gap-4">
+        <ul className="flex flex-1">
           {years.map((y) => (
             <li
               key={y.year}
