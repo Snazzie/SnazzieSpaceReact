@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { EASE, D } from "@/lib/motion";
 
@@ -17,6 +17,7 @@ export function Nav() {
   const reduce = useReducedMotion();
   const [active, setActive] = useState<string>("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
@@ -35,6 +36,21 @@ export function Nav() {
     for (const section of sections) observer.observe(section);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = (e: MouseEvent | TouchEvent) => {
+      if (mobileNavRef.current && !mobileNavRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [menuOpen]);
 
   const activeLabel = LINKS.find((l) => l.id === active)?.label ?? "";
 
@@ -84,7 +100,7 @@ export function Nav() {
       </nav>
 
       {/* Mobile nav */}
-      <div className="pointer-events-auto flex md:hidden flex-col items-stretch gap-2 w-full px-4">
+      <div ref={mobileNavRef} className="pointer-events-auto flex md:hidden flex-col items-stretch gap-2 w-full px-4">
         <nav className="flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
           <a
             href="#home"

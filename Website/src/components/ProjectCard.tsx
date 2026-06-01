@@ -45,8 +45,6 @@ export function ProjectCard({
   // Resolve raw data URLs to Astro-optimized variants when a map entry exists.
   const image = (images && images[project.image]) || project.image;
   const bgImage = project.bgImage ? (images && images[project.bgImage]) || project.bgImage : undefined;
-  // Called unconditionally (before the featured early-return) to keep hook order stable.
-  const [expanded, setExpanded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const reduce = useReducedMotion();
 
@@ -145,62 +143,59 @@ export function ProjectCard({
     );
   }
 
-  // Compact "More projects" card: tap/click the body to expand the description
-  // (works on mobile); the ↗ arrow opens the project.
   return (
-    <motion.div
-      {...revealProps}
-      className={`group relative overflow-hidden rounded-xl border border-border bg-card transition hover:border-zinc-600 ${
-        supersededBy ? "opacity-60 hover:opacity-100" : ""
-      } ${className}`}
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: SPOTLIGHT }}
-      />
-      <div
+    <>
+      <motion.div
+        {...revealProps}
         role="button"
         tabIndex={0}
-        aria-expanded={expanded}
-        onClick={() => setExpanded((v) => !v)}
+        onClick={() => setModalOpen(true)}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            setExpanded((v) => !v);
+            setModalOpen(true);
           }
         }}
-        className="relative z-20 flex cursor-pointer items-start gap-4 p-4 pr-10 text-left"
+        className={`group relative cursor-pointer overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-zinc-600 ${
+          supersededBy ? "opacity-60 hover:opacity-100" : ""
+        } ${className}`}
       >
-        <LogoTile src={image} alt={title} dim={!!supersededBy} />
-        <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-medium text-foreground">{title}</h3>
-          <p className={`text-xs text-muted-foreground ${expanded ? "" : "line-clamp-1"}`}>
-            {description}
-          </p>
-          {supersedes && (
-            <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-foreground/25 px-2 py-0.5 text-[11px] font-medium text-foreground/90">
-              <ArrowUp className="size-3" />
-              Replaces {supersedes}
-            </span>
-          )}
-          {supersededBy && (
-            <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
-              <Archive className="size-3" />
-              Superseded by {supersededBy}
-            </span>
-          )}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{ background: SPOTLIGHT }}
+        />
+        <div className="relative z-20 flex items-start gap-4 p-4 pr-10">
+          <LogoTile src={image} alt={title} dim={!!supersededBy} />
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm font-medium text-foreground">{title}</h3>
+            <p className="line-clamp-1 text-xs text-muted-foreground">{description}</p>
+            {supersedes && (
+              <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-foreground/25 px-2 py-0.5 text-[11px] font-medium text-foreground/90">
+                <ArrowUp className="size-3" />
+                Replaces {supersedes}
+              </span>
+            )}
+            {supersededBy && (
+              <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
+                <Archive className="size-3" />
+                Superseded by {supersededBy}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open ${title}`}
-        className="absolute right-3 top-3 z-30 text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowUpRight className="size-4" />
-      </a>
-    </motion.div>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${title}`}
+          onClick={(e) => e.stopPropagation()}
+          className="absolute right-3 top-3 z-30 text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <ArrowUpRight className="size-4" />
+        </a>
+      </motion.div>
+      <ProjectModal project={project} open={modalOpen} onOpenChange={setModalOpen} />
+    </>
   );
 }
