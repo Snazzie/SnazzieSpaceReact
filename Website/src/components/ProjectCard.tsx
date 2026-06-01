@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Archive, ArrowUp, ArrowUpRight, Apple, Smartphone, Monitor, Globe } from "lucide-react";
+import { FaWindows } from "react-icons/fa6";
 import type { Project } from "@/data/projects";
 import { D, EASE } from "@/lib/motion";
 import { ProjectModal } from "@/components/ProjectModal";
@@ -16,6 +17,7 @@ export function getPlatformIcon(tag: string) {
     case "Android":
       return <Smartphone className="size-4" />;
     case "Windows":
+      return <FaWindows className="size-4" />;
     case "Linux":
       return <Monitor className="size-4" />;
     case "Web":
