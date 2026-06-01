@@ -46,6 +46,7 @@ interface TrafficSnapshot {
   statuses: TrafficBreakdown[];
   contentTypes: TrafficBreakdown[];
   httpVersions: TrafficBreakdown[];
+  referrers: TrafficBreakdown[];
 }
 /** What gets stored / served: both scopes plus a shared timestamp. */
 interface TrafficData {
@@ -64,6 +65,7 @@ interface Day1d {
     responseStatusMap: Array<{ edgeResponseStatus: number; requests: number }>;
     contentTypeMap: Array<{ edgeResponseContentTypeName: string; requests: number }>;
     clientHTTPVersionMap: Array<{ clientHTTPProtocol: string; requests: number }>;
+    clientRefererMap: Array<{ clientRefererHost: string; requests: number }> | null;
   };
 }
 
@@ -118,6 +120,7 @@ async function fetchDays(env: Env, zoneTag: string): Promise<Day1d[]> {
             responseStatusMap { edgeResponseStatus requests }
             contentTypeMap { edgeResponseContentTypeName requests }
             clientHTTPVersionMap { clientHTTPProtocol requests }
+            clientRefererMap { clientRefererHost requests }
           }
         }
       }
@@ -147,6 +150,7 @@ async function snapshotFor(env: Env, zoneTags: string[]): Promise<TrafficSnapsho
   const status = new Map<string, number>();
   const contentType = new Map<string, number>();
   const httpVersion = new Map<string, number>();
+  const referrer = new Map<string, number>();
   const add = (m: Map<string, number>, k: string, v: number) => m.set(k, (m.get(k) ?? 0) + v);
 
   let zonesWithData = 0;
@@ -163,6 +167,7 @@ async function snapshotFor(env: Env, zoneTags: string[]): Promise<TrafficSnapsho
       for (const s of d.sum.responseStatusMap ?? []) add(status, String(s.edgeResponseStatus), s.requests);
       for (const t of d.sum.contentTypeMap ?? []) add(contentType, t.edgeResponseContentTypeName, t.requests);
       for (const v of d.sum.clientHTTPVersionMap ?? []) add(httpVersion, v.clientHTTPProtocol, v.requests);
+      for (const r of d.sum.clientRefererMap ?? []) add(referrer, r.clientRefererHost, r.requests);
     }
   }
 
@@ -189,6 +194,7 @@ async function snapshotFor(env: Env, zoneTags: string[]): Promise<TrafficSnapsho
     statuses: topBreakdown(status, TOP_N),
     contentTypes: topBreakdown(contentType, TOP_N, ["unknown", "empty"]),
     httpVersions: topBreakdown(httpVersion, TOP_N),
+    referrers: topBreakdown(referrer, TOP_N, ["", "-", "direct"]),
   };
 }
 

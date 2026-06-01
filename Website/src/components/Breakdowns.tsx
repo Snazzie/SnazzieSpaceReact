@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { Activity, Code, Cpu, FileText } from "lucide-react";
+import { Activity, Code, Cpu, FileText, Link2 } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
 import { useScrollBorderColor } from "@/lib/scrollBorder";
@@ -71,6 +71,7 @@ export function Breakdowns({ snapshot }: { snapshot: TrafficSnapshot }) {
     { icon: Activity, title: "Status codes", rows: snapshot.statuses },
     { icon: FileText, title: "Content types", rows: snapshot.contentTypes },
     { icon: Cpu, title: "HTTP versions", rows: snapshot.httpVersions },
+    ...(snapshot.referrers?.length ? [{ icon: Link2, title: "Referrers", rows: snapshot.referrers }] : []),
   ];
 
   return (
