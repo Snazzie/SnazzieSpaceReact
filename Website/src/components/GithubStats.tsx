@@ -10,7 +10,7 @@ import { SectionUnderline } from "@/components/SectionUnderline";
 /** Live stats endpoint (Cloudflare Worker); env var overrides the deployed default. */
 const STATS_URL =
   (import.meta.env.PUBLIC_GITHUB_STATS_URL as string | undefined) ??
-  "https://snazzie-github-stats.snazzieops.workers.dev";
+  "https://snazzie-github-stats.snazzieops.workers.dev/ghstats";
 
 /** Narrow an unknown fetch payload to the shape the section renders. */
 function isProfile(value: unknown): value is GithubProfile {

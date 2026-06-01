@@ -25,8 +25,8 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
     canvas.height = size * dpr;
     ctx.scale(dpr, dpr);
 
-    const byCode = new Map(countries.map((c) => [c.code, c.visits]));
-    const max = Math.max(...countries.map((c) => c.visits), 1);
+    const byCode = new Map(countries.map((c) => [c.code, c.requests]));
+    const max = Math.max(...countries.map((c) => c.requests), 1);
 
     const projection = geoOrthographic()
       .scale(size / 2 - 2)
@@ -43,26 +43,26 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
       ctx.clearRect(0, 0, size, size);
       projection.rotate([lambda, tilt, 0]);
 
-      // Ocean sphere.
+      // Ocean sphere (foreground #fafafa at low alpha — monochrome theme).
       ctx.beginPath();
       path({ type: "Sphere" });
-      ctx.fillStyle = "rgb(96 165 250 / 0.05)";
+      ctx.fillStyle = "rgb(250 250 250 / 0.03)";
       ctx.fill();
 
-      // Countries.
+      // Countries: visited ones brighten toward foreground by visit share.
       for (const f of features) {
         const v = byCode.get((f.properties as { code: string }).code);
         ctx.beginPath();
         path(f);
         if (v !== undefined) {
-          const o = 0.22 + 0.78 * Math.sqrt(v / max);
-          ctx.fillStyle = `rgb(96 165 250 / ${o.toFixed(3)})`;
+          const o = 0.2 + 0.8 * Math.sqrt(v / max);
+          ctx.fillStyle = `rgb(250 250 250 / ${o.toFixed(3)})`;
         } else {
-          ctx.fillStyle = "rgb(255 255 255 / 0.06)";
+          ctx.fillStyle = "rgb(250 250 250 / 0.05)";
         }
         ctx.fill();
         ctx.lineWidth = 0.4;
-        ctx.strokeStyle = "rgb(255 255 255 / 0.10)";
+        ctx.strokeStyle = "rgb(250 250 250 / 0.10)";
         ctx.stroke();
       }
 
@@ -70,7 +70,7 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
       ctx.beginPath();
       path({ type: "Sphere" });
       ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgb(255 255 255 / 0.18)";
+      ctx.strokeStyle = "rgb(250 250 250 / 0.18)";
       ctx.stroke();
     }
 

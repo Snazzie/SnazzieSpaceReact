@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "motion/react";
-import { Eye, Globe2, Users } from "lucide-react";
+import { Activity, Eye, Globe2 } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
 import { useTraffic, flagEmoji } from "@/lib/useTraffic";
@@ -31,7 +31,7 @@ function CountStat({
   value,
   index,
 }: {
-  icon: typeof Eye;
+  icon: typeof Activity;
   label: string;
   value: number;
   index: number;
@@ -72,7 +72,7 @@ function CountStat({
 function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
   const reduce = useReducedMotion();
   const top = countries.slice(0, 6);
-  const topMax = Math.max(...top.map((c) => c.visits), 1);
+  const topMax = Math.max(...top.map((c) => c.requests), 1);
   const borderColor = useScrollBorderColor(0.15);
 
   return (
@@ -95,14 +95,14 @@ function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
                   <span className="truncate text-foreground/90">{COUNTRY_NAMES[c.code] ?? c.code}</span>
                 </span>
                 <span className="shrink-0 tabular-nums text-muted-foreground">
-                  {c.visits.toLocaleString()}
+                  {c.requests.toLocaleString()}
                 </span>
               </div>
               <div className="h-1.5 overflow-hidden rounded-full bg-foreground/5">
                 <motion.div
-                  className="h-full rounded-full bg-sky-400/70"
+                  className="h-full rounded-full bg-foreground/70"
                   initial={reduce ? false : { width: 0 }}
-                  whileInView={{ width: `${(c.visits / topMax) * 100}%` }}
+                  whileInView={{ width: `${(c.requests / topMax) * 100}%` }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: D.slow, ease: EASE, delay: i * 0.05 }}
                 />
@@ -118,9 +118,55 @@ function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
   );
 }
 
+/** Site / All segmented toggle, animated like the nav glider. */
+function ScopeTabs({
+  scope,
+  setScope,
+  allZones,
+}: {
+  scope: "site" | "all";
+  setScope: (s: "site" | "all") => void;
+  allZones: number;
+}) {
+  const reduce = useReducedMotion();
+  const tabs = [
+    { id: "site" as const, label: "snazzie.space" },
+    { id: "all" as const, label: allZones > 1 ? `All ${allZones} sites` : "All sites" },
+  ];
+  return (
+    <div className="inline-flex rounded-full border border-border bg-card p-1 text-sm">
+      {tabs.map((t) => {
+        const active = scope === t.id;
+        return (
+          <button
+            key={t.id}
+            type="button"
+            onClick={() => setScope(t.id)}
+            aria-pressed={active}
+            className="relative rounded-full px-4 py-1.5 font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {active && (
+              <motion.span
+                layoutId="traffic-scope"
+                className="absolute inset-0 rounded-full bg-foreground"
+                transition={{ duration: reduce ? 0 : 0.3, ease: EASE }}
+              />
+            )}
+            <span className={`relative z-10 ${active ? "text-background" : "text-muted-foreground"}`}>
+              {t.label}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Traffic() {
   const reduce = useReducedMotion();
-  const snapshot = useTraffic();
+  const data = useTraffic();
+  const [scope, setScope] = useState<"site" | "all">("site");
+  const snapshot = data[scope];
   const headingProps = {
     initial: reduce ? (false as const) : { opacity: 0, y: 16 },
     whileInView: { opacity: 1, y: 0 },
@@ -129,10 +175,12 @@ export function Traffic() {
   };
 
   const stats = [
+    { icon: Activity, label: "Requests", value: snapshot.totals.requests },
     { icon: Eye, label: "Page views", value: snapshot.totals.pageViews },
-    { icon: Users, label: "Visits", value: snapshot.totals.visits },
     { icon: Globe2, label: "Countries reached", value: snapshot.totals.countries },
   ];
+
+  const isAll = scope === "all";
 
   return (
     <section id="traffic" className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24">
@@ -140,16 +188,26 @@ export function Traffic() {
         {...headingProps}
         className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
       >
-        Analytics
+        Analytics &middot; {isAll ? "all sites" : "this site"}
       </motion.p>
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <motion.h2 {...headingProps} className="text-3xl font-semibold tracking-tight md:text-4xl">
-          Site traffic
+          {isAll ? "Traffic across all my sites" : "Traffic to snazzie.space"}
         </motion.h2>
         <motion.p {...headingProps} className="text-sm text-muted-foreground">
-          Last {snapshot.rangeDays} days &middot; snapshot as of {snapshotDate(snapshot.updatedAt)}
+          Last {snapshot.rangeDays} days &middot; snapshot as of {snapshotDate(data.updatedAt)}
         </motion.p>
       </div>
+      <motion.p {...headingProps} className="mt-2 max-w-prose text-sm text-muted-foreground">
+        {isAll
+          ? `Aggregate traffic across every domain on my Cloudflare account over the last ${snapshot.rangeDays} days.`
+          : `Real visitors to this very page over the last ${snapshot.rangeDays} days, straight from Cloudflare analytics.`}
+      </motion.p>
+
+      <motion.div {...headingProps} className="mt-4">
+        <ScopeTabs scope={scope} setScope={setScope} allZones={data.all.zones} />
+      </motion.div>
+
       <SectionUnderline />
 
       <ScrollBorderProvider className="grid gap-3">

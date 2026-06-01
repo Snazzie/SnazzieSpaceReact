@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
-import { Globe, FileText, Code, MonitorSmartphone, Cpu } from "lucide-react";
+import { Activity, Code, Cpu, FileText } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
 import { useScrollBorderColor } from "@/lib/scrollBorder";
@@ -12,13 +12,13 @@ function Panel({
   rows,
   index,
 }: {
-  icon: typeof Globe;
+  icon: typeof Activity;
   title: string;
   rows: TrafficBreakdown[];
   index: number;
 }) {
   const reduce = useReducedMotion();
-  const max = Math.max(...rows.map((r) => r.visits), 1);
+  const max = Math.max(...rows.map((r) => r.value), 1);
   const borderColor = useScrollBorderColor(0.2 + index * 0.05);
 
   return (
@@ -45,7 +45,7 @@ function Panel({
                   aria-hidden
                   className="absolute inset-y-0 left-0 rounded-md bg-foreground/[0.06]"
                   initial={reduce ? false : { width: 0 }}
-                  whileInView={{ width: `${(r.visits / max) * 100}%` }}
+                  whileInView={{ width: `${(r.value / max) * 100}%` }}
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ duration: D.slow, ease: EASE, delay: i * 0.04 }}
                 />
@@ -53,7 +53,7 @@ function Panel({
                   {r.label}
                 </span>
                 <span className="relative z-10 shrink-0 tabular-nums text-muted-foreground">
-                  {compact(r.visits)}
+                  {compact(r.value)}
                 </span>
               </div>
             </li>
@@ -64,18 +64,17 @@ function Panel({
   );
 }
 
-/** Condensed grid of traffic breakdown panels (the "nerd stats"). */
+/** Condensed grid of traffic breakdown panels (the "nerd stats"), all from the zone. */
 export function Breakdowns({ snapshot }: { snapshot: TrafficSnapshot }) {
   const panels = [
-    { icon: Globe, title: "Top referrers", rows: snapshot.topReferrers },
-    { icon: FileText, title: "Top pages", rows: snapshot.topPaths },
     { icon: Code, title: "Browsers", rows: snapshot.browsers },
-    { icon: Cpu, title: "Operating systems", rows: snapshot.os },
-    { icon: MonitorSmartphone, title: "Devices", rows: snapshot.devices },
+    { icon: Activity, title: "Status codes", rows: snapshot.statuses },
+    { icon: FileText, title: "Content types", rows: snapshot.contentTypes },
+    { icon: Cpu, title: "HTTP versions", rows: snapshot.httpVersions },
   ];
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {panels.map((p, i) => (
         <Panel key={p.title} icon={p.icon} title={p.title} rows={p.rows} index={i} />
       ))}

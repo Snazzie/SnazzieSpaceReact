@@ -25,6 +25,7 @@ import {
   siSqlite,
   siBetterauth,
   siRevenuecat,
+  siTauri,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -57,6 +58,7 @@ export const stack: StackGroup[] = [
       { name: "React", icon: siReact },
       { name: "React Native", icon: siReact },
       { name: "Expo", icon: siExpo },
+      { name: "Tauri", icon: siTauri },
       { name: "Astro", icon: siAstro },
       { name: "Tailwind", icon: siTailwindcss },
       { name: "Vite", icon: siVite },

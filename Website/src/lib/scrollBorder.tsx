@@ -16,13 +16,17 @@ import {
  */
 const ScrollProgressContext = createContext<MotionValue<number> | null>(null);
 
-/** Neutral -> sky -> emerald -> violet -> neutral, keyed to scroll progress. */
+/**
+ * Monochrome luminance sweep using the shadcn dark tokens: border (#262626) ->
+ * muted-foreground (#a1a1aa) -> foreground (#fafafa) and back. Borders brighten
+ * to near-white at mid-scroll, then settle, staying on-theme.
+ */
 const BORDER_RAMP = [
-  "rgb(39 39 42)",
-  "rgb(96 165 250)",
-  "rgb(52 211 153)",
-  "rgb(167 139 250)",
-  "rgb(39 39 42)",
+  "rgb(38 38 38)",
+  "rgb(161 161 170)",
+  "rgb(250 250 250)",
+  "rgb(161 161 170)",
+  "rgb(38 38 38)",
 ];
 const RAMP_STOPS = [0, 0.25, 0.5, 0.75, 1];
 
@@ -34,8 +38,10 @@ export function ScrollBorderProvider({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  // 0 when the grid's top reaches the viewport bottom, 1 when its bottom leaves the top.
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  // Delayed onset: 0 only once the grid's top reaches the viewport centre (so the
+  // effect doesn't fire while the section is merely peeking in), 1 when its
+  // bottom reaches the centre.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end center"] });
 
   return (
     <div ref={ref} className={className}>
