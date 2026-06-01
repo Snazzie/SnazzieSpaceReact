@@ -103,7 +103,7 @@ export function TechStack() {
       </motion.h2>
       <SectionUnderline />
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {stack.map((group, gi) => (
           <motion.div
             key={group.label}

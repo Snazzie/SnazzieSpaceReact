@@ -8,15 +8,11 @@ import { ProjectModal } from "@/components/ProjectModal";
 
 const PLATFORM_TAGS = new Set(["iOS", "Android", "Windows", "macOS", "Linux", "Web"]);
 
-function getPlatformIcon(tag: string) {
+export function getPlatformIcon(tag: string) {
   switch (tag) {
     case "iOS":
     case "macOS":
-      return (
-        <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden>
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.3-3.14-2.53C4.25 17.12 3.5 14.42 5.02 12.81c.75-.92 1.94-1.5 3.14-1.52 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.08 3.81-.92.65.03 2.47.26 3.64 1.9-.09.06-1.92 1.11-1.88 3.31.03 2.52 2.02 3.42 2.07 3.44-.03.07-.2.1-.42.1-.88-.01-1.73-.26-2.34-.76z" />
-        </svg>
-      );
+      return <Apple className="size-4" />;
     case "Android":
       return <Smartphone className="size-4" />;
     case "Windows":
@@ -29,7 +25,7 @@ function getPlatformIcon(tag: string) {
   }
 }
 
-function getTechBadges(tech: string[] | undefined) {
+export function getTechBadges(tech: string[] | undefined) {
   if (!tech) return { platforms: [], other: [] };
   const platforms = tech.filter((t) => PLATFORM_TAGS.has(t));
   const other = tech.filter((t) => !PLATFORM_TAGS.has(t));

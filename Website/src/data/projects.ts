@@ -9,6 +9,7 @@ export interface Project {
   supersedes?: string; // title of an older project this one replaces
   supersededBy?: string; // title of the newer project that replaced this one
   video?: string; // optional autoplay background video for featured cards
+  bgVideo?: string; // optional looping background video (alias used by some cards)
   bgImage?: string; // optional static background image for featured cards
   github?: string; // explicit GitHub repo URL; when set, enables dual CTA buttons
   details?: string[]; // bullet points shown in the project modal
@@ -20,7 +21,7 @@ export const projects: Project[] = [
     description:
       "Personal wealth dashboard. Tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
     href: "https://lunarportfolio.com",
-    image: "/logos/lunar.svg",
+    image: "/lunar-home.webp",
     featured: true,
     imageFit: "contain",
     tech: ["iOS", "Android", "Expo", "React Native", "Convex"],
@@ -56,7 +57,7 @@ export const projects: Project[] = [
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "Hono", "Drizzle / libSQL"],
+    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "Hono", "Drizzle", "SQLite"],
     video: "/raceiq-bg.mp4",
     details: [
       "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
@@ -71,7 +72,7 @@ export const projects: Project[] = [
     description:
       "Cloud monitoring dashboard for Redis, PostgreSQL and RabbitMQ with smart alerts.",
     href: "https://cloudcat.dev",
-    image: "/logos/cloudcat.png",
+    image: "/cloudcat-dashboard.png",
     featured: true,
     imageFit: "contain",
     tech: ["C#", "Rust", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
@@ -100,16 +101,25 @@ export const projects: Project[] = [
     title: "Better Task Manager",
     description: "Cross-platform task manager and system monitor, successor to Vital Utilities.",
     href: "https://bettertaskmanager.com",
-    image: "/logos/btm.png",
-    featured: false,
+    image: "/btm-performance.png",
+    featured: true,
+    imageFit: "contain",
     tech: ["Windows", "macOS"],
     supersedes: "Vital Utilities",
+    details: [
+      "Cross-platform task manager and system monitor for Windows and macOS",
+      "Per-core CPU usage, temperature, and clock speed at a glance",
+      "Live GPU, memory, network, power, and disk metrics",
+      "Top resource consumers with per-process breakdown",
+      "Package temperature and fan speed readouts",
+    ],
   },
   {
     title: "Vital Utilities",
     description: "Modern Windows Task Manager alternative with bells and whistles",
     href: "https://github.com/Vital-Utilities/Vital-Utilities",
     image: "https://avatars.githubusercontent.com/u/98346237?s=200&v=4",
+    bgImage: "/vital-utilities.png",
     featured: false,
     supersededBy: "Better Task Manager",
   },
@@ -128,5 +138,11 @@ export const projects: Project[] = [
     featured: true,
     bgVideo: "/hero-bg.webm",
     tech: ["Windows", "Android", "Unity", "C#"],
+    details: [
+      "Auto play mode for learning and showcase replays",
+      "Translates osu! maps to custom game format for broad compatibility",
+      "Real-time hit detection and feedback scoring system",
+      "Combo tracking and performance statistics",
+    ],
   },
 ];

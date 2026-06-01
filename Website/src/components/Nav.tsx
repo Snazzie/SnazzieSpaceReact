@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { EASE, D } from "@/lib/motion";
+import { projects } from "@/data/projects";
+import { projectSlug } from "@/components/FeaturedShowcase";
 
 const LINKS = [
   { href: "#home", label: "About", id: "home" },
@@ -13,9 +15,15 @@ const LINKS = [
 
 const NAV_LINKS = LINKS.filter((l) => l.id !== "home");
 
+const FEATURED = projects
+  .filter((p) => p.featured)
+  .map((p) => ({ title: p.title, slug: projectSlug(p.title) }));
+
 export function Nav() {
   const reduce = useReducedMotion();
   const [active, setActive] = useState<string>("home");
+  const [activeProject, setActiveProject] = useState<string>("");
+  const [projectsHover, setProjectsHover] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +43,57 @@ export function Nav() {
     );
     for (const section of sections) observer.observe(section);
     return () => observer.disconnect();
+  }, []);
+
+  // Track which featured panel is currently shown. The panels are stacked
+  // `sticky top-0`, so they all stay pinned once reached — an IntersectionObserver
+  // only ever fires on the way down and never reverts when scrolling up. Compute
+  // it from scroll position instead. `offsetTop` reflects layout position and is
+  // unaffected by sticky painting, so the doc offsets stay correct.
+  useEffect(() => {
+    const panels = FEATURED.map((p) => document.getElementById(p.slug)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (panels.length === 0) return;
+
+    const docTop = (el: HTMLElement) => {
+      let y = 0;
+      let n: HTMLElement | null = el;
+      while (n) {
+        y += n.offsetTop;
+        n = n.offsetParent as HTMLElement | null;
+      }
+      return y;
+    };
+
+    let raf = 0;
+    const compute = () => {
+      raf = 0;
+      const vh = window.innerHeight;
+      // A panel becomes the topmost (pinned, covering the rest) once the scroll
+      // position reaches its natural top. The current one is the highest such.
+      const pos = window.scrollY + 2;
+      const tops = panels.map(docTop);
+      let idx = -1;
+      for (let i = 0; i < tops.length; i++) {
+        if (tops[i] <= pos) idx = i;
+      }
+      // Only within the showcase span (not past the last panel).
+      if (idx >= 0 && pos < tops[tops.length - 1] + vh) {
+        setActiveProject(panels[idx].id);
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(compute);
+    };
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -73,12 +132,13 @@ export function Nav() {
         </a>
         {NAV_LINKS.map((link) => {
           const isActive = active === link.id;
-          return (
+          const activeFeatured =
+            link.id === "projects" ? FEATURED.find((p) => p.slug === activeProject) : undefined;
+          const linkAnchor = (
             <a
-              key={link.href}
               href={link.href}
               aria-current={isActive ? "page" : undefined}
-              className="relative rounded-full px-3.5 py-2 text-sm transition-colors"
+              className="relative block rounded-full px-3.5 py-2 text-sm transition-colors"
             >
               {isActive && (
                 <motion.span
@@ -88,13 +148,83 @@ export function Nav() {
                 />
               )}
               <span
-                className={`relative z-10 transition-colors ${
+                className={`relative z-10 flex items-center gap-2 transition-colors ${
                   isActive ? "text-background" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
+                {/* While in the projects section, extend inline with the current project. */}
+                {isActive && activeFeatured && (
+                  <>
+                    <span aria-hidden className="opacity-40">
+                      |
+                    </span>
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      <motion.span
+                        key={activeFeatured.slug}
+                        initial={reduce ? false : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: reduce ? 0 : 0.22, ease: EASE }}
+                        className="whitespace-nowrap"
+                      >
+                        {activeFeatured.title}
+                      </motion.span>
+                    </AnimatePresence>
+                  </>
+                )}
               </span>
             </a>
+          );
+
+          if (link.id !== "projects") {
+            return <div key={link.href}>{linkAnchor}</div>;
+          }
+
+          // Projects: dropdown of featured projects, shown on hover only.
+          const open = projectsHover;
+          return (
+            <div
+              key={link.href}
+              className="relative"
+              onMouseEnter={() => setProjectsHover(true)}
+              onMouseLeave={() => setProjectsHover(false)}
+            >
+              {linkAnchor}
+              <AnimatePresence>
+                {open && (
+                  <motion.div
+                    initial={reduce ? false : { opacity: 0, y: -6, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                    transition={{ duration: 0.18, ease: EASE }}
+                    className="absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-card/90 p-1.5 backdrop-blur-md"
+                  >
+                    {FEATURED.map((p, i) => {
+                      const on = activeProject === p.slug;
+                      return (
+                        <a
+                          key={p.slug}
+                          href={`#${p.slug}`}
+                          onClick={() => setProjectsHover(false)}
+                          aria-current={on ? "true" : undefined}
+                          className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors ${
+                            on
+                              ? "bg-foreground font-medium text-background"
+                              : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                          }`}
+                        >
+                          <span className={`font-mono text-xs ${on ? "text-background/70" : "text-muted-foreground/60"}`}>
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          {p.title}
+                        </a>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           );
         })}
       </nav>
@@ -110,8 +240,19 @@ export function Nav() {
             <span className="size-2 rounded-full bg-foreground" aria-hidden />
             Aaron
           </a>
-          <span className="flex-1 text-center text-sm text-muted-foreground">
-            {activeLabel}
+          <span className="relative flex-1 overflow-hidden text-center text-sm text-muted-foreground">
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.span
+                key={activeLabel}
+                initial={reduce ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: reduce ? 0 : 0.22, ease: EASE }}
+                className="block"
+              >
+                {activeLabel}
+              </motion.span>
+            </AnimatePresence>
           </span>
           <button
             type="button"
@@ -152,20 +293,40 @@ export function Nav() {
               {NAV_LINKS.map((link) => {
                 const isActive = active === link.id;
                 return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`flex items-center justify-between px-5 py-3.5 text-sm transition-colors ${
-                      isActive
-                        ? "bg-foreground font-medium text-background"
-                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-                    }`}
-                  >
-                    {link.label}
-                    {isActive && <span className="size-1.5 rounded-full bg-background" />}
-                  </a>
+                  <div key={link.href}>
+                    <a
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`flex items-center justify-between px-5 py-3.5 text-sm transition-colors ${
+                        isActive
+                          ? "bg-foreground font-medium text-background"
+                          : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                      }`}
+                    >
+                      {link.label}
+                      {isActive && <span className="size-1.5 rounded-full bg-background" />}
+                    </a>
+                    {link.id === "projects" && (
+                      <div className="border-l border-border/60 pl-4 pb-1">
+                        {FEATURED.map((p) => {
+                          const on = activeProject === p.slug;
+                          return (
+                            <a
+                              key={p.slug}
+                              href={`#${p.slug}`}
+                              onClick={() => setMenuOpen(false)}
+                              className={`block px-5 py-2.5 text-sm transition-colors ${
+                                on ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"
+                              }`}
+                            >
+                              {p.title}
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </motion.div>
