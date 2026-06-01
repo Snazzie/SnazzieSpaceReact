@@ -59,12 +59,12 @@ function CountStat({
       style={{ borderColor }}
       className="rounded-2xl border border-border bg-card p-5"
     >
-      <p className="text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
+      <p className="flex items-center gap-2 text-2xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
+        <Icon className="size-5 text-muted-foreground" aria-hidden />
       </p>
-      <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-sm text-muted-foreground">
         {label}
-        <Icon className="size-4 text-muted-foreground" aria-hidden />
       </p>
     </motion.div>
   );

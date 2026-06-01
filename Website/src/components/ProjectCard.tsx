@@ -235,7 +235,7 @@ export function ProjectCard({
           style={{ background: SPOTLIGHT }}
         />
         <div className="relative z-20 flex items-start gap-4 p-4 pr-10">
-          <LogoTile src={image} alt={title} dim={!!supersededBy} />
+          <LogoTile src={image} alt={title} />
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-1.5">
               <h3 className="text-sm font-medium text-foreground">{title}</h3>

@@ -290,13 +290,13 @@ export function Intro({
   return (
     <section
       id="home"
-      className="relative z-10 flex min-h-[100svh] items-center px-6 pt-24 pb-20"
+      className="relative z-10 flex min-h-[100svh] items-start md:items-center px-6 pt-24 pb-20"
     >
       <motion.div
         initial={initial}
         animate="show"
         variants={container}
-        className="mx-auto grid w-full max-w-5xl items-center gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16"
+        className="mx-auto grid w-full max-w-5xl items-center gap-6 md:grid-cols-[1.2fr_1fr] md:gap-16"
       >
         {/* Left: intro */}
         <div id="aboutme" className="flex flex-col items-start gap-5 scroll-mt-24">
@@ -402,7 +402,7 @@ export function Intro({
               />
             )}
             <img
-              className="relative h-44 w-44 rounded-full border border-border object-cover md:h-72 md:w-72"
+              className="relative h-36 w-36 sm:h-44 sm:w-44 rounded-full border border-border object-cover md:h-72 md:w-72"
               alt="Aaron"
               src={avatarSrc}
               width={288}
