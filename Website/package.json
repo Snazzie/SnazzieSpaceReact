@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
-    "deploy": "astro build && gh-pages -d dist"
+    "deploy": "astro build && wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -40,7 +40,6 @@
   "devDependencies": {
     "@types/d3-geo": "^3.1.0",
     "@types/topojson-client": "^3.1.5",
-    "gh-pages": "^6.3.0",
     "i18n-iso-countries": "^7.14.0",
     "topojson-client": "^3.1.0",
     "vitest": "^4.1.7",

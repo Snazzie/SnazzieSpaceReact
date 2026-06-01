@@ -1,0 +1,24 @@
+name: Weekly site refresh
+
+# Bump a counter to trigger a Cloudflare Pages rebuild, which fetches fresh
+# GitHub stats and traffic data at build time.
+on:
+  schedule:
+    - cron: "0 6 * * 0" # Sunday 06:00 UTC — after worker KV refresh
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          n=$(cat Website/.build-week 2>/dev/null || echo 0)
+          echo $((n + 1)) > Website/.build-week
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Website/.build-week
+          git commit -m "chore: weekly rebuild #$((n + 1))"
+          git push

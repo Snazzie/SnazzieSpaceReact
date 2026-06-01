@@ -2,48 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { animate, motion, useInView, useMotionValue, useTransform, useReducedMotion } from "motion/react";
 import { Activity, ArrowUpRight, CircleDot, FolderGit2, GitFork, Star } from "lucide-react";
 import { siGithub } from "simple-icons";
-import { github, type GithubProfile, type GithubYear } from "@/data/github";
+import { type GithubProfile, type GithubYear } from "@/data/github";
 import { D, EASE } from "@/lib/motion";
 import { compact, smoothPath } from "@/lib/chart";
 import { SectionUnderline } from "@/components/SectionUnderline";
-
-/** Live stats endpoint (Cloudflare Worker); env var overrides the deployed default. */
-const STATS_URL =
-  (import.meta.env.PUBLIC_GITHUB_STATS_URL as string | undefined) ??
-  "https://snazzie-github-stats.snazzieops.workers.dev/ghstats";
-
-/** Narrow an unknown fetch payload to the shape the section renders. */
-function isProfile(value: unknown): value is GithubProfile {
-  if (typeof value !== "object" || value === null) return false;
-  const v = value as Record<string, unknown>;
-  return (
-    typeof v.totals === "object" &&
-    v.totals !== null &&
-    Array.isArray(v.years) &&
-    typeof v.username === "string"
-  );
-}
-
-/** Seed with the static snapshot, then replace with live worker data when it arrives. */
-function useGithubProfile(): GithubProfile {
-  const [profile, setProfile] = useState<GithubProfile>(github);
-
-  useEffect(() => {
-    if (!STATS_URL) return;
-    const controller = new AbortController();
-    fetch(STATS_URL, { signal: controller.signal })
-      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))))
-      .then((data: unknown) => {
-        if (isProfile(data)) setProfile(data);
-      })
-      .catch(() => {
-        /* keep static fallback on any error */
-      });
-    return () => controller.abort();
-  }, []);
-
-  return profile;
-}
 
 const STATS = [
   { key: "repositories", label: "Repositories", icon: FolderGit2 },
@@ -317,9 +279,9 @@ function StatCard({
   );
 }
 
-export function GithubStats() {
+export function GithubStats({ initialProfile }: { initialProfile: GithubProfile }) {
   const reduce = useReducedMotion();
-  const profile = useGithubProfile();
+  const profile = initialProfile;
   const maxContrib = Math.max(...profile.years.map((y) => y.contributions), 1);
   const maxLines = Math.max(...profile.years.flatMap((y) => [y.additions, y.deletions]), 1);
   const hasLines = profile.totals.additions > 0 || profile.totals.deletions > 0;

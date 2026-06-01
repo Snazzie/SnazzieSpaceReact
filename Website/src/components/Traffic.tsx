@@ -3,10 +3,10 @@ import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransf
 import { Activity, Eye, Globe2 } from "lucide-react";
 import { D, EASE } from "@/lib/motion";
 import { compact } from "@/lib/chart";
-import { useTraffic, flagEmoji } from "@/lib/useTraffic";
+import { flagEmoji } from "@/lib/useTraffic";
 import { ScrollBorderProvider, useScrollBorderColor } from "@/lib/scrollBorder";
 import { worldGeo } from "@/data/worldGeo";
-import type { TrafficCountry } from "@/data/traffic";
+import type { TrafficCountry, TrafficData } from "@/data/traffic";
 import { SectionUnderline } from "@/components/SectionUnderline";
 import { Globe } from "@/components/Globe";
 import { Breakdowns } from "@/components/Breakdowns";
@@ -164,9 +164,9 @@ function ScopeTabs({
   );
 }
 
-export function Traffic() {
+export function Traffic({ initialData }: { initialData: TrafficData }) {
   const reduce = useReducedMotion();
-  const data = useTraffic();
+  const data = initialData;
   const [scope, setScope] = useState<"site" | "all">("site");
   const snapshot = data[scope];
   const headingProps = {
