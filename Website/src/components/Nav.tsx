@@ -20,6 +20,15 @@ const FEATURED = projects
   .filter((p) => p.featured)
   .map((p) => ({ title: p.title, slug: projectSlug(p.title) }));
 
+// Steps the inline nav cycles through while #projects is active: each featured
+// panel, then the trailing "More projects" block. Without the final entry the
+// inline label sticks on the last panel (Rhythm Unity) all the way through the
+// more-projects grid instead of advancing to "More".
+const SHOWCASE =
+  projects.length > FEATURED.length
+    ? [...FEATURED, { title: "More", slug: "more-projects" }]
+    : FEATURED;
+
 export function Nav() {
   const reduce = useReducedMotion();
   const [active, setActive] = useState<string>("home");
@@ -34,11 +43,21 @@ export function Nav() {
     );
     if (sections.length === 0) return;
 
+    // Track every section currently crossing the detection band. The callback
+    // only ever delivers *changed* entries, so "last entry wins" flips active to
+    // a newly-entering section (e.g. #github) while the previous one (#projects,
+    // whose #more-projects tail is still in the band) hasn't changed and is
+    // absent from the batch. Instead keep a running set and always pick the
+    // topmost intersecting section in document order (LINKS is in that order).
+    const visible = new Set<string>();
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
         }
+        const top = LINKS.find((l) => visible.has(l.id));
+        if (top) setActive(top.id);
       },
       { rootMargin: "-40% 0px -55% 0px" },
     );
@@ -52,7 +71,7 @@ export function Nav() {
   // it from scroll position instead. `offsetTop` reflects layout position and is
   // unaffected by sticky painting, so the doc offsets stay correct.
   useEffect(() => {
-    const panels = FEATURED.map((p) => document.getElementById(p.slug)).filter(
+    const panels = SHOWCASE.map((p) => document.getElementById(p.slug)).filter(
       (el): el is HTMLElement => el !== null,
     );
     if (panels.length === 0) return;
@@ -134,7 +153,7 @@ export function Nav() {
         {NAV_LINKS.map((link) => {
           const isActive = active === link.id;
           const activeFeatured =
-            link.id === "projects" ? FEATURED.find((p) => p.slug === activeProject) : undefined;
+            link.id === "projects" ? SHOWCASE.find((p) => p.slug === activeProject) : undefined;
           const linkAnchor = (
             <a
               href={link.href}
@@ -335,6 +354,15 @@ export function Nav() {
                             </a>
                           );
                         })}
+                        {projects.length > FEATURED.length && (
+                          <a
+                            href="#more-projects"
+                            onClick={() => setMenuOpen(false)}
+                            className="block px-5 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            → More
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>

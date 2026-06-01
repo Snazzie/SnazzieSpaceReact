@@ -20,7 +20,7 @@ export function Projects({ images }: { images?: Record<string, string> } = {}) {
     <section id="projects" className="relative z-10">
       <FeaturedShowcase projects={featured} images={images} />
 
-      <div id="more-projects" className="mx-auto max-w-5xl px-6 pb-24 pt-24 md:pb-32">
+      <div id="more-projects" className="mx-auto max-w-5xl px-6 pb-12 pt-12 md:pb-16">
         <motion.h2
           {...headingProps}
           className="mb-6 text-sm font-medium uppercase tracking-wide text-muted-foreground"

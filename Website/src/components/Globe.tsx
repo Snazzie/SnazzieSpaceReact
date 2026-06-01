@@ -6,14 +6,32 @@ import type { TrafficCountry } from "@/data/traffic";
 
 /**
  * Rotating orthographic globe rendered to a canvas. Countries with traffic are
- * tinted by visit share; the rest sit faint. Drawing on canvas (not 174 SVG
+ * tinted by request share; the rest sit faint. Drawing on canvas (not 174 SVG
  * paths per frame) keeps the spin cheap. Rotation pauses when offscreen and is
  * disabled under prefers-reduced-motion.
+ *
+ * The rotation angle and tint data live in refs so a `countries` change (e.g.
+ * switching the Site/All tab) re-tints in place without restarting the loop or
+ * resetting the orientation.
  */
 export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; size?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const reduce = useReducedMotion();
+  const lambdaRef = useRef(18);
+  const dataRef = useRef<{ byCode: Map<string, number>; max: number }>({ byCode: new Map(), max: 1 });
+  const drawRef = useRef<() => void>(() => {});
 
+  // Refresh tint data on a countries change, then redraw at the current angle.
+  useEffect(() => {
+    dataRef.current = {
+      byCode: new Map(countries.map((c) => [c.code, c.requests])),
+      max: Math.max(...countries.map((c) => c.requests), 1),
+    };
+    drawRef.current();
+  }, [countries]);
+
+  // Set up the canvas + animation loop once. Does not depend on `countries`, so
+  // the spin and orientation survive data/tab changes.
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
@@ -25,23 +43,19 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
     canvas.height = size * dpr;
     ctx.scale(dpr, dpr);
 
-    const byCode = new Map(countries.map((c) => [c.code, c.requests]));
-    const max = Math.max(...countries.map((c) => c.requests), 1);
-
     const projection = geoOrthographic()
       .scale(size / 2 - 2)
       .translate([size / 2, size / 2])
       .clipAngle(90);
     const path = geoPath(projection, ctx);
     const features = worldGeo.features;
-
-    let lambda = 18;
     const tilt = -16;
 
     function draw() {
       if (!ctx) return;
+      const { byCode, max } = dataRef.current;
       ctx.clearRect(0, 0, size, size);
-      projection.rotate([lambda, tilt, 0]);
+      projection.rotate([lambdaRef.current, tilt, 0]);
 
       // Ocean sphere (foreground #fafafa at low alpha — monochrome theme).
       ctx.beginPath();
@@ -49,7 +63,7 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
       ctx.fillStyle = "rgb(250 250 250 / 0.03)";
       ctx.fill();
 
-      // Countries: visited ones brighten toward foreground by visit share.
+      // Countries: ones with traffic brighten toward foreground by request share.
       for (const f of features) {
         const v = byCode.get((f.properties as { code: string }).code);
         ctx.beginPath();
@@ -73,6 +87,7 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
       ctx.strokeStyle = "rgb(250 250 250 / 0.18)";
       ctx.stroke();
     }
+    drawRef.current = draw;
 
     if (reduce) {
       draw();
@@ -85,7 +100,7 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
     function tick(t: number) {
       if (!running) return;
       if (t - last > 33) {
-        lambda = (lambda + 0.3) % 360;
+        lambdaRef.current = (lambdaRef.current + 0.3) % 360;
         draw();
         last = t;
       }
@@ -110,8 +125,9 @@ export function Globe({ countries, size = 360 }: { countries: TrafficCountry[]; 
       running = false;
       cancelAnimationFrame(raf);
       io.disconnect();
+      drawRef.current = () => {};
     };
-  }, [countries, size, reduce]);
+  }, [size, reduce]);
 
   return (
     <canvas
