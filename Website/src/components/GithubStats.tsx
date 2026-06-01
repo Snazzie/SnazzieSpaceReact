@@ -306,11 +306,13 @@ function StatCard({
       transition={{ duration: D.base, ease: EASE, delay: index * 0.06 }}
       className="rounded-2xl border border-border bg-card p-6"
     >
-      <Icon className="size-5 text-muted-foreground" aria-hidden />
-      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">
+      <p className="text-3xl font-semibold tracking-tight tabular-nums">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
       </p>
-      <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
+      <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
+        {stat.label}
+        <Icon className="size-4 text-muted-foreground" aria-hidden />
+      </p>
     </motion.div>
   );
 }
