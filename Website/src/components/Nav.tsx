@@ -222,6 +222,16 @@ export function Nav() {
                         </a>
                       );
                     })}
+                    {projects.length > FEATURED.length && (
+                      <a
+                        href="#more-projects"
+                        onClick={() => setProjectsHover(false)}
+                        className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-muted/50 hover:text-foreground transition-colors"
+                      >
+                        <span className="font-mono text-xs text-muted-foreground/60">→</span>
+                        More
+                      </a>
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
