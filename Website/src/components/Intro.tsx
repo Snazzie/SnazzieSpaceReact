@@ -281,7 +281,9 @@ function KineticName() {
   );
 }
 
-export function Intro() {
+export function Intro({
+  avatarSrc = "https://avatars.githubusercontent.com/u/19627023?v=4",
+}: { avatarSrc?: string } = {}) {
   const reduce = useReducedMotion();
   const initial = reduce ? false : "hidden";
 
@@ -402,7 +404,9 @@ export function Intro() {
             <img
               className="relative h-44 w-44 rounded-full border border-border object-cover md:h-72 md:w-72"
               alt="Aaron"
-              src="https://avatars.githubusercontent.com/u/19627023?v=4"
+              src={avatarSrc}
+              width={288}
+              height={288}
             />
           </div>
         </motion.div>

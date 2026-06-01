@@ -3,7 +3,7 @@ import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 import { EASE, D } from "@/lib/motion";
 
-export function Projects() {
+export function Projects({ images }: { images?: Record<string, string> } = {}) {
   const featured = projects.filter((p) => p.featured);
   const others = projects.filter((p) => !p.featured);
   const reduce = useReducedMotion();
@@ -36,6 +36,7 @@ export function Projects() {
             key={project.title}
             project={project}
             index={i}
+            images={images}
             className=""
           />
         ))}
@@ -49,7 +50,7 @@ export function Projects() {
       </motion.h2>
       <div className="grid gap-4 sm:grid-cols-2">
         {others.map((project, i) => (
-          <ProjectCard key={project.title} project={project} index={i} />
+          <ProjectCard key={project.title} project={project} index={i} images={images} />
         ))}
       </div>
     </section>

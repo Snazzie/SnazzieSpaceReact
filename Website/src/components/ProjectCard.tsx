@@ -34,12 +34,17 @@ export function ProjectCard({
   project,
   index = 0,
   className = "",
+  images,
 }: {
   project: Project;
   index?: number;
   className?: string;
+  images?: Record<string, string>;
 }) {
-  const { title, description, href, image, featured, tech, supersedes, supersededBy, video, bgImage } = project;
+  const { title, description, href, featured, tech, supersedes, supersededBy, video } = project;
+  // Resolve raw data URLs to Astro-optimized variants when a map entry exists.
+  const image = (images && images[project.image]) || project.image;
+  const bgImage = project.bgImage ? (images && images[project.bgImage]) || project.bgImage : undefined;
   // Called unconditionally (before the featured early-return) to keep hook order stable.
   const [expanded, setExpanded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);

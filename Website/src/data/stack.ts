@@ -20,6 +20,8 @@ import {
   siDocker,
   siGit,
   siVite,
+  siStripe,
+  siFirebase,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -66,6 +68,8 @@ export const stack: StackGroup[] = [
       { name: "Hono", icon: siHono },
       { name: "Convex", icon: siConvex },
       { name: "Drizzle", icon: siDrizzle },
+      { name: "Mastra AI" },
+      { name: "Better Auth" },
     ],
   },
   {
@@ -77,7 +81,22 @@ export const stack: StackGroup[] = [
       { name: "Docker", icon: siDocker },
       { name: "Kubernetes", icon: siKubernetes },
       { name: "Cloudflare", icon: siCloudflare },
+      { name: "Firebase", icon: siFirebase },
       { name: "Git", icon: siGit },
+    ],
+  },
+  {
+    label: "Payments & Monetization",
+    items: [
+      { name: "Stripe", icon: siStripe },
+      { name: "RevenueCat" },
+    ],
+  },
+  {
+    label: "Testing",
+    items: [
+      { name: "Playwright" },
+      { name: "Maestro" },
     ],
   },
 ];
