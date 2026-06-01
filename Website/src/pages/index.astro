@@ -80,6 +80,19 @@ const images: Record<string, string> = {
       content="Aaron (Snazzie), software developer. Projects: Lunar Portfolio, RaceIQ, CloudCat and more."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      (function () {
+        var h = window.innerHeight;
+        document.documentElement.style.setProperty("--vh", h + "px");
+        var lastW = window.innerWidth;
+        window.addEventListener("resize", function () {
+          if (window.innerWidth !== lastW) {
+            lastW = window.innerWidth;
+            document.documentElement.style.setProperty("--vh", window.innerHeight + "px");
+          }
+        });
+      })();
+    </script>
   </head>
   <body class="relative bg-background text-foreground antialiased">
     <CursorField client:idle />

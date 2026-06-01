@@ -290,7 +290,7 @@ export function Intro({
   return (
     <section
       id="home"
-      className="relative z-10 flex min-h-[100svh] items-start md:items-center px-6 pt-24 pb-20"
+      className="relative z-10 flex min-h-[100dvh] items-start md:items-center px-6 pt-24 pb-20"
     >
       <motion.div
         initial={initial}

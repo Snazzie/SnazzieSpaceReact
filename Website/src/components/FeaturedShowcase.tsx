@@ -47,7 +47,7 @@ function Media({
   // The media element sizes to its own intrinsic aspect ratio (height-capped),
   // so the border + background hug the media exactly with no letterbox bars.
   const cls =
-    "h-auto max-h-[35svh] md:max-h-[58svh] w-auto max-w-full rounded-2xl bg-secondary" +
+    "h-auto max-h-[32dvh] md:max-h-[55dvh] w-auto max-w-full rounded-2xl bg-secondary" +
     (index === 0 ? "" : " border border-border");
   if (video && !reduce) {
     return (
@@ -130,7 +130,7 @@ function Panel({
     <div
       ref={ref}
       id={projectSlug(project.title)}
-      className="sticky top-0 flex h-[100svh] items-start md:items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
+      className="sticky top-0 flex h-[100dvh] items-start md:items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
     >
       <motion.div
         style={animate ? { scale, opacity } : undefined}
@@ -186,7 +186,7 @@ function Panel({
             </div>
           )}
 
-          <div className="mt-7 flex flex-wrap items-center gap-4">
+          <div className="mt-4 md:mt-7 flex flex-wrap items-center gap-4">
             {links.map((link) => (
               <a
                 key={link.href}
