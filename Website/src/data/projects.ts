@@ -104,7 +104,7 @@ export const projects: Project[] = [
     image: "/btm-performance.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "macOS", "Tauri"],
+    tech: ["Windows", "macOS", "Tauri", "Rust", "React", "Convex", "Stripe"],
     supersedes: "Vital Utilities",
     details: [
       "Cross-platform task manager and system monitor for Windows and macOS",
