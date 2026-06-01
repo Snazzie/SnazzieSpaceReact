@@ -81,6 +81,7 @@ export const stack: StackGroup[] = [
     label: "Data & Infra",
     items: [
       { name: "PostgreSQL", icon: siPostgresql },
+      { name: "SQLite", icon: siSqlite },
       { name: "Redis", icon: siRedis },
       { name: "RabbitMQ", icon: siRabbitmq },
       { name: "Docker", icon: siDocker },
