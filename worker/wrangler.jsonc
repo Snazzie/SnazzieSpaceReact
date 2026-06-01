@@ -14,6 +14,12 @@
     // Lock this down to your Cloudflare Pages origin once you know the URL,
     // e.g. "https://snazziespacereact.pages.dev" or your custom domain.
     // "*" is fine for a public stats feed.
-    "ALLOWED_ORIGIN": "*"
+    "ALLOWED_ORIGIN": "*",
+    // Cloudflare Web Analytics (traffic snapshot). Account tag + the site tag
+    // (beacon token) from the Web Analytics dashboard. The API token itself is
+    // a secret: `wrangler secret put CF_ANALYTICS_TOKEN` (Account Analytics: Read).
+    // Leave these unset to disable the /traffic feed (site shows static fallback).
+    "CF_ACCOUNT_ID": "",
+    "CF_SITE_TAG": ""
   }
 }

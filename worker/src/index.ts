@@ -15,6 +15,12 @@ export interface Env {
   GITHUB_USERNAME: string;
   /** CORS allow-origin, e.g. your site origin or "*". */
   ALLOWED_ORIGIN: string;
+  /** API token with `Account Analytics: Read`. Set via `wrangler secret put`. */
+  CF_ANALYTICS_TOKEN?: string;
+  /** Cloudflare account tag (id) that owns the Web Analytics site. */
+  CF_ACCOUNT_ID?: string;
+  /** Web Analytics site tag (the beacon token). */
+  CF_SITE_TAG?: string;
 }
 
 interface GithubYear {
@@ -47,6 +53,40 @@ const VERSION_KEY = "profile:version";
 const CHART_YEARS = 7;
 /** Worker/edge cache lifetime: 7 days, matching the weekly cron refresh. */
 const CACHE_SECONDS = 604800;
+
+const TRAFFIC_KEY = "traffic";
+const TRAFFIC_VERSION_KEY = "traffic:version";
+/** Trailing window for the traffic snapshot. */
+const TRAFFIC_DAYS = 30;
+/** How many rows to keep per breakdown (referrers, paths, browsers, ...). */
+const TRAFFIC_TOP_N = 8;
+
+interface TrafficBreakdown {
+  label: string;
+  visits: number;
+}
+interface TrafficDay {
+  date: string;
+  pageViews: number;
+  visits: number;
+}
+interface TrafficCountry {
+  code: string;
+  pageViews: number;
+  visits: number;
+}
+interface TrafficSnapshot {
+  updatedAt: string;
+  rangeDays: number;
+  totals: { pageViews: number; visits: number; countries: number };
+  byDay: TrafficDay[];
+  byCountry: TrafficCountry[];
+  topReferrers: TrafficBreakdown[];
+  topPaths: TrafficBreakdown[];
+  browsers: TrafficBreakdown[];
+  os: TrafficBreakdown[];
+  devices: TrafficBreakdown[];
+}
 
 interface RepoNode {
   name: string;
@@ -330,14 +370,211 @@ async function refresh(env: Env): Promise<{ body: string; version: string }> {
   return { body, version: profile.updatedAt };
 }
 
-/** Edge cache key includes the data version so a cron refresh invalidates it. */
-function versionedKey(request: Request, version: string): Request {
-  return new Request(`${new URL(request.url).origin}/v/${encodeURIComponent(version)}`);
+/**
+ * Cloudflare Web Analytics (RUM) snapshot.
+ *
+ * Queries `rumPageloadEventsAdaptiveGroups` (account-scoped) over a trailing
+ * 30-day window for the configured site tag. `count` is page views and
+ * `sum.visits` is visits. Each breakdown is fetched independently and is
+ * fault-tolerant: a single failing dimension (e.g. a schema field rename)
+ * yields an empty list for that breakdown rather than sinking the whole
+ * snapshot. The country dimension returns an ISO-3166-1 alpha-2 code.
+ */
+interface RumRow {
+  count: number;
+  sum: { visits: number };
+  dimensions: Record<string, string>;
+}
+
+const RUM_DATASET = "rumPageloadEventsAdaptiveGroups";
+
+/** YYYY-MM-DD in UTC, `offsetDays` before `now` (0 = today). */
+function utcDate(now: Date, offsetDays: number): string {
+  const d = new Date(now.getTime() - offsetDays * 86400000);
+  return d.toISOString().slice(0, 10);
+}
+
+async function cfGql<T>(env: Env, query: string): Promise<T> {
+  const res = await fetch("https://api.cloudflare.com/client/v4/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.CF_ANALYTICS_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) throw new Error(`Cloudflare API ${res.status}: ${await res.text()}`);
+  const json = (await res.json()) as { data?: T; errors?: unknown };
+  if ((json.errors && (json.errors as unknown[]).length) || !json.data) {
+    throw new Error(`Cloudflare GraphQL error: ${JSON.stringify(json.errors)}`);
+  }
+  return json.data;
+}
+
+/** One grouped RUM query over the window, ordered by page views, top `limit`. */
+async function rumGroup(
+  env: Env,
+  from: string,
+  to: string,
+  dimension: string,
+  limit: number,
+  orderBy = "count_DESC",
+): Promise<RumRow[]> {
+  const query = `{
+    viewer {
+      accounts(filter: { accountTag: "${env.CF_ACCOUNT_ID}" }) {
+        ${RUM_DATASET}(
+          limit: ${limit}
+          orderBy: [${orderBy}]
+          filter: { AND: [{ date_geq: "${from}" }, { date_leq: "${to}" }, { siteTag: "${env.CF_SITE_TAG}" }] }
+        ) {
+          count
+          sum { visits }
+          dimensions { ${dimension} }
+        }
+      }
+    }
+  }`;
+  const data = await cfGql<{ viewer: { accounts: Array<Record<string, RumRow[]>> } }>(env, query);
+  return data.viewer.accounts[0]?.[RUM_DATASET] ?? [];
+}
+
+/** Map a grouped RUM result to a label/visits breakdown, dropping blank keys. */
+function toBreakdown(rows: RumRow[], key: string, limit: number): TrafficBreakdown[] {
+  return rows
+    .map((r) => ({ label: r.dimensions[key] ?? "", visits: r.sum.visits }))
+    .filter((b) => b.label !== "")
+    .slice(0, limit);
+}
+
+/** Best-effort breakdown: any failure yields []. */
+async function safeGroup(
+  env: Env,
+  from: string,
+  to: string,
+  dimension: string,
+  limit: number,
+): Promise<RumRow[]> {
+  return rumGroup(env, from, to, dimension, limit).catch(() => []);
+}
+
+async function computeTraffic(env: Env): Promise<TrafficSnapshot> {
+  const now = new Date();
+  const to = utcDate(now, 0);
+  const from = utcDate(now, TRAFFIC_DAYS - 1);
+
+  // Daily series drives both the trend chart and the headline totals.
+  const dayRows = await safeGroup(env, from, to, "date", TRAFFIC_DAYS + 2);
+  const byDay: TrafficDay[] = dayRows
+    .map((r) => ({ date: r.dimensions.date, pageViews: r.count, visits: r.sum.visits }))
+    .filter((d) => Boolean(d.date))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const [countryRows, referrers, paths, browsers, os, devices] = await Promise.all([
+    safeGroup(env, from, to, "countryName", 250),
+    safeGroup(env, from, to, "refererHost", TRAFFIC_TOP_N + 4),
+    safeGroup(env, from, to, "requestPath", TRAFFIC_TOP_N),
+    safeGroup(env, from, to, "userAgentBrowser", TRAFFIC_TOP_N),
+    safeGroup(env, from, to, "userAgentOS", TRAFFIC_TOP_N),
+    safeGroup(env, from, to, "deviceType", TRAFFIC_TOP_N),
+  ]);
+
+  const byCountry: TrafficCountry[] = countryRows
+    .map((r) => ({ code: (r.dimensions.countryName ?? "").toUpperCase(), pageViews: r.count, visits: r.sum.visits }))
+    .filter((c) => c.code !== "" && c.code !== "XX");
+
+  return {
+    updatedAt: now.toISOString(),
+    rangeDays: TRAFFIC_DAYS,
+    totals: {
+      pageViews: byDay.reduce((s, d) => s + d.pageViews, 0),
+      visits: byDay.reduce((s, d) => s + d.visits, 0),
+      countries: byCountry.length,
+    },
+    byDay,
+    byCountry,
+    topReferrers: toBreakdown(referrers, "refererHost", TRAFFIC_TOP_N),
+    topPaths: toBreakdown(paths, "requestPath", TRAFFIC_TOP_N),
+    browsers: toBreakdown(browsers, "userAgentBrowser", TRAFFIC_TOP_N),
+    os: toBreakdown(os, "userAgentOS", TRAFFIC_TOP_N),
+    devices: toBreakdown(devices, "deviceType", TRAFFIC_TOP_N),
+  };
+}
+
+/**
+ * Recompute the traffic snapshot and store it. Unlike GitHub line counts,
+ * traffic values legitimately move week to week, so this is a fresh overwrite.
+ * No-op (leaving any prior snapshot intact) when credentials are unset or the
+ * fetch yields nothing usable, so an outage never overwrites good data with zeros.
+ */
+async function refreshTraffic(env: Env): Promise<void> {
+  if (!env.CF_ANALYTICS_TOKEN || !env.CF_ACCOUNT_ID || !env.CF_SITE_TAG) return;
+  const snapshot = await computeTraffic(env);
+  if (snapshot.totals.pageViews === 0 && snapshot.byCountry.length === 0) return;
+  const body = JSON.stringify(snapshot);
+  await env.STATS.put(TRAFFIC_KEY, body);
+  await env.STATS.put(TRAFFIC_VERSION_KEY, snapshot.updatedAt);
+}
+
+/** Edge cache key includes the dataset + its version so a refresh invalidates it. */
+function versionedKey(request: Request, namespace: string, version: string): Request {
+  return new Request(
+    `${new URL(request.url).origin}/v/${namespace}/${encodeURIComponent(version)}`,
+  );
+}
+
+/**
+ * Serve a KV snapshot as JSON with CORS + versioned edge caching.
+ *
+ * Serve-only: the cron and the manual populate scripts are the sole writers, so
+ * the expensive computes never run on a user request. A cold KV (fresh deploy /
+ * eviction) returns 503 and the site keeps its static fallback rather than
+ * triggering a subrequest/CPU blowout.
+ */
+async function serve(
+  request: Request,
+  env: Env,
+  ctx: ExecutionContext,
+  namespace: string,
+  versionKey: string,
+  dataKey: string,
+): Promise<Response> {
+  const cache = caches.default;
+
+  const version = await env.STATS.get(versionKey);
+  if (!version) {
+    return new Response("warming up", { status: 503, headers: corsHeaders(env) });
+  }
+
+  // Cheap version probe; on an edge hit we serve without reading the full body.
+  const cacheKey = versionedKey(request, namespace, version);
+  const hit = await cache.match(cacheKey);
+  if (hit) return hit;
+
+  const body = await env.STATS.get(dataKey);
+  if (!body) {
+    return new Response("warming up", { status: 503, headers: corsHeaders(env) });
+  }
+
+  // Cache at the Worker/edge only: s-maxage drives caches.default (7 days),
+  // max-age=0 keeps the browser from holding its own stale copy. The versioned
+  // key means a weekly cron refresh produces a new key and supersedes this one.
+  const response = new Response(body, {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": `public, max-age=0, s-maxage=${CACHE_SECONDS}`,
+      ...corsHeaders(env),
+    },
+  });
+  ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  return response;
 }
 
 export default {
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    // Independent: a failure in one snapshot must not abort the other.
     ctx.waitUntil(refresh(env));
+    ctx.waitUntil(refreshTraffic(env).catch(() => {}));
   },
 
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -348,38 +585,11 @@ export default {
       return new Response("Method Not Allowed", { status: 405, headers: corsHeaders(env) });
     }
 
-    const cache = caches.default;
-
-    // Serve-only: the cron and the manual populate script are the sole writers.
-    // The expensive multi-repo scan never runs on a user request, so a cold KV
-    // (fresh deploy / eviction) returns 503 and the site keeps its static fallback
-    // rather than triggering a subrequest/CPU blowout.
-    const version = await env.STATS.get(VERSION_KEY);
-    if (!version) {
-      return new Response("warming up", { status: 503, headers: corsHeaders(env) });
+    const { pathname } = new URL(request.url);
+    if (pathname === "/traffic") {
+      return serve(request, env, ctx, "traffic", TRAFFIC_VERSION_KEY, TRAFFIC_KEY);
     }
-
-    // Cheap version probe; on an edge hit we serve without reading the full body.
-    const cacheKey = versionedKey(request, version);
-    const hit = await cache.match(cacheKey);
-    if (hit) return hit;
-
-    const body = await env.STATS.get(KV_KEY);
-    if (!body) {
-      return new Response("warming up", { status: 503, headers: corsHeaders(env) });
-    }
-
-    // Cache at the Worker/edge only: s-maxage drives caches.default (7 days),
-    // max-age=0 keeps the browser from holding its own stale copy. The versioned
-    // key means a weekly cron refresh produces a new key and supersedes this one.
-    const response = new Response(body, {
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": `public, max-age=0, s-maxage=${CACHE_SECONDS}`,
-        ...corsHeaders(env),
-      },
-    });
-    ctx.waitUntil(cache.put(cacheKey, response.clone()));
-    return response;
+    // Default route: GitHub profile snapshot.
+    return serve(request, env, ctx, "profile", VERSION_KEY, KV_KEY);
   },
 } satisfies ExportedHandler<Env>;
