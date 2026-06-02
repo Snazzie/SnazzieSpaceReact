@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   motion,
   useReducedMotion,
@@ -7,8 +7,9 @@ import {
   type MotionValue,
 } from "motion/react";
 import { stack, type Tech } from "@/data/stack";
-import { D, EASE, ISO } from "@/lib/motion";
 import { SectionUnderline } from "@/components/SectionUnderline";
+
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /** True once the viewport is at the `md` breakpoint (>= 768px). */
 function useIsDesktop(): boolean {
@@ -41,48 +42,11 @@ function monogram(name: string): string {
   return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
 }
 
-function TechTile({
-  tech,
-  progress,
-  start,
-  iso,
-  disabled,
-}: {
-  tech: Tech;
-  progress: MotionValue<number>;
-  start: number;
-  iso: boolean;
-  disabled: boolean;
-}) {
-  const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const stops = snapStops(start, 0.14);
-  // Lag behind the slab, then drop in and snap; hold settled through progress=1.
-  const opacity = useTransform(progress, [start, start + 0.02, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [...stops, 1], [0.4, 0.9, 1.06, 1, 1]);
-  // Desktop: fall in from empty space high above the card along the 3D axis,
-  // then click flush (Z lift + a long Y drop, with a snap overshoot).
-  const z = useTransform(progress, [...stops, 1], [160, 34, -10, 0, 0]);
-  const yIso = useTransform(progress, [...stops, 1], [-300, -70, 14, 0, 0]);
-  // Flat fallback: plain rise.
-  const yFlat = useTransform(progress, [...stops, 1], [40, 8, -3, 0, 0]);
-
-  const style = disabled
-    ? ({ "--brand": brand } as React.CSSProperties)
-    : iso
-      ? ({ "--brand": brand, opacity, scale, z, y: yIso } as unknown as React.CSSProperties)
-      : ({ "--brand": brand, opacity, scale, y: yFlat } as unknown as React.CSSProperties);
-
+function TechTileContent({ tech }: { tech: Tech }) {
   return (
-    <motion.li
-      style={style}
-      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5"
-    >
+    <>
       {tech.logoUrl ? (
-        <img
-          src={tech.logoUrl}
-          alt={tech.name}
-          className="size-5 shrink-0"
-        />
+        <img src={tech.logoUrl} alt={tech.name} className="size-5 shrink-0" />
       ) : tech.icon ? (
         <svg
           role="img"
@@ -100,27 +64,45 @@ function TechTile({
       <span className="text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
         {tech.name}
       </span>
-    </motion.li>
+    </>
   );
 }
 
-/** Faint dotted, recessed back pane the slabs click into. */
-function Pegboard() {
+function TechTile({
+  tech,
+  progress,
+  start,
+  anim,
+}: {
+  tech: Tech;
+  progress: MotionValue<number>;
+  start: number;
+  anim: boolean;
+}) {
+  const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
+  const stops = snapStops(start, 0.13);
+  // Drop in from above the (now flat) card and snap; hold settled through 1.
+  const opacity = useTransform(progress, [start, start + 0.02, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [...stops, 1], [0.5, 0.92, 1.05, 1, 1]);
+  const y = useTransform(progress, [...stops, 1], [-52, -10, 5, 0, 0]);
+
+  const tileClass =
+    "group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5";
+
+  if (!anim) {
+    return (
+      <li className={tileClass} style={{ "--brand": brand } as React.CSSProperties}>
+        <TechTileContent tech={tech} />
+      </li>
+    );
+  }
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute -inset-8 -z-10 rounded-3xl border border-border/60 bg-card/20"
-      style={{
-        transform: "translateZ(-40px)",
-        backgroundImage:
-          "radial-gradient(circle, color-mix(in srgb, var(--border) 90%, transparent) 1px, transparent 1px)",
-        backgroundSize: "22px 22px",
-        maskImage:
-          "radial-gradient(ellipse 82% 78% at 50% 44%, #000 46%, transparent 100%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 82% 78% at 50% 44%, #000 46%, transparent 100%)",
-      }}
-    />
+    <motion.li
+      style={{ "--brand": brand, opacity, scale, y } as unknown as React.CSSProperties}
+      className={tileClass}
+    >
+      <TechTileContent tech={tech} />
+    </motion.li>
   );
 }
 
@@ -128,36 +110,37 @@ function Slab({
   group,
   index,
   progress,
-  iso,
-  disabled,
+  anim,
+  offset,
+  cardRef,
 }: {
   group: (typeof stack)[number];
   index: number;
   progress: MotionValue<number>;
-  iso: boolean;
-  disabled: boolean;
+  anim: boolean;
+  offset: { dx: number; dy: number } | undefined;
+  cardRef: (el: HTMLDivElement | null) => void;
 }) {
-  // Slabs are visible from the start (as the edge-on side-profile stack); the
-  // plane rotation reveals their faces, then tags drop in.
-  const cardStart = 0.06 + index * 0.03;
-  const tileBase = 0.44 + index * 0.045;
+  // Tags drop in after the cards have fanned out into the flat grid.
+  const tileBase = 0.54 + index * 0.04;
 
-  // Hold the settled value through progress=1 so a slab never fades back out.
-  const opacity = useTransform(progress, [0, 0.04, 1], [0, 1, 1]);
-  // Flat fallback: rise in along Y, staggered.
-  const y = useTransform(progress, [cardStart, cardStart + 0.16, 1], [40, 0, 0]);
+  // Stage 1: stack flips from edge-on (side profile) to facing the viewer.
+  const rotateX = useTransform(progress, [0, 0.15, 0.2, 0.24, 1], [90, 30, -6, 0, 0]);
+  // Stage 2: cards fan out from the collapsed pile to their grid slots.
+  const dx = offset?.dx ?? 0;
+  const dy = offset?.dy ?? 0;
+  const layer = index * 9; // neat per-card offset so the start reads as a deck
+  const fan = [0.24, 0.4, 0.5, 0.56, 1] as const;
+  const x = useTransform(progress, fan, [dx, dx * 0.3, -dx * 0.05, 0, 0]);
+  const y = useTransform(progress, fan, [dy + layer, dy * 0.3, -dy * 0.05, 0, 0]);
+  const scale = useTransform(progress, [0.24, 0.56, 1], [0.92, 1, 1]);
+  const opacity = useTransform(progress, [0, 0.02, 1], [0, 1, 1]);
 
-  const style = disabled
-    ? undefined
-    : iso
-      ? ({ opacity, transformStyle: "preserve-3d" } as unknown as React.CSSProperties)
-      : ({ opacity, y } as unknown as React.CSSProperties);
+  const cardClass =
+    "relative rounded-2xl border border-border bg-card/80 p-5 before:absolute before:inset-0 before:-z-10 before:translate-x-[3px] before:translate-y-[4px] before:rounded-2xl before:bg-zinc-800/70 before:content-['']";
 
-  return (
-    <motion.div
-      style={style}
-      className="relative rounded-2xl border border-border bg-card/60 p-5 before:absolute before:inset-0 before:-z-10 before:translate-x-[3px] before:translate-y-[4px] before:rounded-2xl before:bg-zinc-800/70 before:content-['']"
-    >
+  const inner = (
+    <>
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
           {group.label}
@@ -166,21 +149,30 @@ function Slab({
           {group.items.length}
         </span>
       </div>
-      <ul
-        className="flex flex-wrap gap-2.5"
-        style={iso ? { transformStyle: "preserve-3d" } : undefined}
-      >
+      <ul className="flex flex-wrap gap-2.5">
         {group.items.map((tech, i) => (
           <TechTile
             key={tech.name}
             tech={tech}
             progress={progress}
-            start={tileBase + i * 0.025}
-            iso={iso}
-            disabled={disabled}
+            start={tileBase + i * 0.022}
+            anim={anim}
           />
         ))}
       </ul>
+    </>
+  );
+
+  if (!anim) {
+    return <div className={cardClass}>{inner}</div>;
+  }
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ x, y, rotateX, scale, opacity } as unknown as React.CSSProperties}
+      className={cardClass}
+    >
+      {inner}
     </motion.div>
   );
 }
@@ -188,16 +180,40 @@ function Slab({
 export function TechStack() {
   const reduce = useReducedMotion();
   const desktop = useIsDesktop();
-  const iso = desktop && !reduce;
-  const disabled = Boolean(reduce);
+  const anim = desktop && !reduce;
 
-  // The tall outer section is the scroll track; the inner content pins (sticky)
-  // and the assembly scrubs as you scroll through the track.
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardEls = useRef<(HTMLDivElement | null)[]>([]);
+  const [offsets, setOffsets] = useState<{ dx: number; dy: number }[]>([]);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+
+  // Measure each card's grid slot so it can collapse to the deck and fan back.
+  // offsetLeft/Top are layout positions (unaffected by transforms), so this is
+  // stable to re-run on resize even while the cards are mid-transform.
+  useIsoLayoutEffect(() => {
+    if (!anim) return;
+    const measure = () => {
+      const grid = gridRef.current;
+      if (!grid) return;
+      const ax = grid.clientWidth / 2;
+      const ay = grid.clientHeight / 2;
+      setOffsets(
+        cardEls.current.map((el) =>
+          el
+            ? { dx: ax - (el.offsetLeft + el.offsetWidth / 2), dy: ay - (el.offsetTop + el.offsetHeight / 2) }
+            : { dx: 0, dy: 0 },
+        ),
+      );
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [anim]);
 
   const heading = (
     <>
@@ -211,65 +227,47 @@ export function TechStack() {
     </>
   );
 
-  // Stage 1->2: the stack starts edge-on (side profile) and the whole plane
-  // rotates open to reveal the card faces, with a resistance-then-snap settle.
-  const planeRX = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.3, 0.4, 1],
-    [86, 44, 16, ISO.rotateX, ISO.rotateX],
-  );
-
-  const board = (
-    <div style={iso ? { perspective: `${ISO.perspective}px` } : undefined}>
-      <motion.div
-        className="relative"
-        style={
-          iso
-            ? {
-                rotateX: planeRX,
-                rotateZ: ISO.rotateZ,
-                transformStyle: "preserve-3d",
-                transformOrigin: "center 60%",
-              }
-            : undefined
-        }
-      >
-        {iso && <Pegboard />}
-        <div
-          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-          style={iso ? { transformStyle: "preserve-3d" } : undefined}
-        >
-          {stack.map((group, gi) => (
-            <Slab
-              key={group.label}
-              group={group}
-              index={gi}
-              progress={scrollYProgress}
-              iso={iso}
-              disabled={disabled}
-            />
-          ))}
-        </div>
-      </motion.div>
+  const grid = (
+    <div
+      ref={gridRef}
+      className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      style={anim ? { transformStyle: "preserve-3d" } : undefined}
+    >
+      {stack.map((group, gi) => (
+        <Slab
+          key={group.label}
+          group={group}
+          index={gi}
+          progress={scrollYProgress}
+          anim={anim}
+          offset={offsets[gi]}
+          cardRef={(el) => {
+            cardEls.current[gi] = el;
+          }}
+        />
+      ))}
     </div>
   );
 
-  // Reduced motion: render flat, in-flow, fully assembled.
-  if (disabled) {
+  // Static fallback (reduced motion / mobile): plain flat grid, in flow.
+  if (!anim) {
     return (
       <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
         {heading}
-        <div className="mt-10">{board}</div>
+        <div className="mt-10">{grid}</div>
       </section>
     );
   }
 
-  // Pinned scrub: tall track + sticky viewport-height stage.
+  // Pinned scrub: tall track + sticky stage. The grid sits on a perspective
+  // parent so the cards flip in 3D, and settles to a flat, head-on grid.
   return (
     <section ref={sectionRef} id="stack" className="relative z-10 h-[220vh]">
       <div className="sticky top-0 flex min-h-screen flex-col justify-center mx-auto max-w-5xl px-6 py-16">
         {heading}
-        <div className="mt-10">{board}</div>
+        <div className="mt-10" style={{ perspective: "1200px" }}>
+          {grid}
+        </div>
       </div>
     </section>
   );
