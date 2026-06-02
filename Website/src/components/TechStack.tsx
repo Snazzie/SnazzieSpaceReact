@@ -85,16 +85,15 @@ function Slab({
   index: number;
   progress: MotionValue<number>;
   anim: boolean;
-  offset: { dx: number; dy: number } | undefined;
+  offset: { dx: number; dy: number; stackY: number } | undefined;
   cardRef: (el: HTMLDivElement | null) => void;
 }) {
   const count = stack.length;
 
   const dx = offset?.dx ?? 0;
   const dy = offset?.dy ?? 0;
-  // Vertical offset that lays the cards out as a light, neat stack at center.
-  const stackGap = 32;
-  const stackY = (index - (count - 1) / 2) * stackGap;
+  // stackY from measured heights ensures bottom edges are uniformly spaced.
+  const stackY = offset?.stackY ?? (index - (count - 1) / 2) * 32;
   // One continuous, monotonic motion across the whole scroll (no sequential
   // snaps, no overshoot, no dead zone): the stack rotates up while it fans out
   // to the grid slots, all overlapping and settling together near the end.
@@ -103,24 +102,7 @@ function Slab({
   const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
   const cardBase =
     "relative flex flex-col rounded-2xl border border-border bg-card p-5";
-  // Flat fallback only: a simple coplanar lip for a hint of depth.
-  const flatCardClass = `${cardBase} before:absolute before:inset-x-0 before:top-full before:-mt-3 before:h-5 before:-z-10 before:rounded-b-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']`;
-
-  // Real 3D depth: a perpendicular bottom wall face. Because it's a true
-  // perpendicular surface in the card's preserve-3d space, the plate thickness
-  // stays correct at every tilt angle and zoom instead of foreshortening away.
-  const DEPTH = 10;
-  const wall = (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 top-full origin-top"
-      style={{
-        height: DEPTH,
-        transform: "rotateX(90deg)",
-        background: "linear-gradient(to bottom, #2a2a2e, #101012)",
-      }}
-    />
-  );
+  const flatCardClass = cardBase;
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5">
@@ -167,7 +149,6 @@ function Slab({
     >
       {tiles}
       {footer}
-      {wall}
     </motion.div>
   );
 }
@@ -180,7 +161,7 @@ export function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const cardEls = useRef<(HTMLDivElement | null)[]>([]);
-  const [offsets, setOffsets] = useState<{ dx: number; dy: number }[]>([]);
+  const [offsets, setOffsets] = useState<{ dx: number; dy: number; stackY: number }[]>([]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -197,11 +178,21 @@ export function TechStack() {
       if (!grid) return;
       const ax = grid.clientWidth / 2;
       const ay = grid.clientHeight / 2;
+      const els = cardEls.current;
+      const count = els.length;
+      const heights = els.map((el) => el?.offsetHeight ?? 0);
+      const avgH = heights.reduce((a, b) => a + b, 0) / count;
+      // Uniform 32px bottom-edge spacing, stack centred on ay:
+      // stackY_i = (i-(count-1)/2)*32 + (avgH - h_i)/2
       setOffsets(
-        cardEls.current.map((el) =>
+        els.map((el, i) =>
           el
-            ? { dx: ax - (el.offsetLeft + el.offsetWidth / 2), dy: ay - (el.offsetTop + el.offsetHeight / 2) }
-            : { dx: 0, dy: 0 },
+            ? {
+                dx: ax - (el.offsetLeft + el.offsetWidth / 2),
+                dy: ay - (el.offsetTop + el.offsetHeight / 2),
+                stackY: (i - (count - 1) / 2) * 32 + (avgH - el.offsetHeight) / 2,
+              }
+            : { dx: 0, dy: 0, stackY: 0 },
         ),
       );
     };
