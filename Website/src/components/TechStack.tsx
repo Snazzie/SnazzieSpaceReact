@@ -26,15 +26,6 @@ function useIsDesktop(): boolean {
   return desktop;
 }
 
-/**
- * Resistance-then-snap easing expressed as uneven scroll stops: the value
- * crawls most of the way (resistance), accelerates through, overshoots, then
- * settles. `s` is the window start, `span` its length in scroll progress.
- */
-function snapStops(s: number, span: number): [number, number, number, number] {
-  return [s, s + span * 0.62, s + span * 0.82, s + span];
-}
-
 /** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
 function monogram(name: string): string {
   const words = name.split(/\s+/);
@@ -68,41 +59,17 @@ function TechTileContent({ tech }: { tech: Tech }) {
   );
 }
 
-function TechTile({
-  tech,
-  progress,
-  start,
-  anim,
-}: {
-  tech: Tech;
-  progress: MotionValue<number>;
-  start: number;
-  anim: boolean;
-}) {
+function TechTile({ tech }: { tech: Tech }) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const stops = snapStops(start, 0.13);
-  // Drop in from above the (now flat) card and snap; hold settled through 1.
-  const opacity = useTransform(progress, [start, start + 0.02, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [...stops, 1], [0.5, 0.92, 1.05, 1, 1]);
-  const y = useTransform(progress, [...stops, 1], [-52, -10, 5, 0, 0]);
-
-  const tileClass =
-    "group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5";
-
-  if (!anim) {
-    return (
-      <li className={tileClass} style={{ "--brand": brand } as React.CSSProperties}>
-        <TechTileContent tech={tech} />
-      </li>
-    );
-  }
+  // Tags are static on the card face; they are simply revealed as the card
+  // rotates open. Only the hover colour change remains.
   return (
-    <motion.li
-      style={{ "--brand": brand, opacity, scale, y } as unknown as React.CSSProperties}
-      className={tileClass}
+    <li
+      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5"
+      style={{ "--brand": brand } as React.CSSProperties}
     >
       <TechTileContent tech={tech} />
-    </motion.li>
+    </li>
   );
 }
 
@@ -121,58 +88,89 @@ function Slab({
   offset: { dx: number; dy: number } | undefined;
   cardRef: (el: HTMLDivElement | null) => void;
 }) {
-  // Tags drop in after the cards have fanned out into the flat grid.
-  const tileBase = 0.54 + index * 0.04;
+  const count = stack.length;
 
-  // Stage 1: stack flips from edge-on (side profile) to facing the viewer.
-  const rotateX = useTransform(progress, [0, 0.15, 0.2, 0.24, 1], [90, 30, -6, 0, 0]);
-  // Stage 2: cards fan out from the collapsed pile to their grid slots.
+  // Stage 1: a stack of cards seen long-edge-on (tilted back so only each
+  // card's bottom edge label shows), staggered into a readable vertical stack.
+  const rotateX = useTransform(progress, [0, 0.15, 0.2, 0.24, 1], [76, 24, -5, 0, 0]);
   const dx = offset?.dx ?? 0;
   const dy = offset?.dy ?? 0;
-  const layer = index * 9; // neat per-card offset so the start reads as a deck
+  // Vertical offset that lays the cards out as a light, neat stack at center.
+  const stackGap = 32;
+  const stackY = (index - (count - 1) / 2) * stackGap;
+  // Stage 2: cards stand up and fan out from the stack to their grid slots.
   const fan = [0.24, 0.4, 0.5, 0.56, 1] as const;
   const x = useTransform(progress, fan, [dx, dx * 0.3, -dx * 0.05, 0, 0]);
-  const y = useTransform(progress, fan, [dy + layer, dy * 0.3, -dy * 0.05, 0, 0]);
-  const scale = useTransform(progress, [0.24, 0.56, 1], [0.92, 1, 1]);
+  const y = useTransform(progress, fan, [dy + stackY, dy * 0.3, -dy * 0.05, 0, 0]);
+  const scale = useTransform(progress, [0.24, 0.56, 1], [0.94, 1, 1]);
   const opacity = useTransform(progress, [0, 0.02, 1], [0, 1, 1]);
+  // The edge label is the visible strip while stacked; it fades as cards open.
+  // Hold at 0 through progress=1 so it never extrapolates back in.
+  const edgeLabelOpacity = useTransform(progress, [0.05, 0.18, 1], [1, 0, 0]);
+  // The normal in-card header fades in once the cards are facing the viewer.
+  const headerOpacity = useTransform(progress, [0.18, 0.3, 1], [0, 1, 1]);
 
+  // Chunky extruded bottom edge gives each card the depth of a ~2cm plate.
   const cardClass =
-    "relative rounded-2xl border border-border bg-card/80 p-5 before:absolute before:inset-0 before:-z-10 before:translate-x-[3px] before:translate-y-[4px] before:rounded-2xl before:bg-zinc-800/70 before:content-['']";
+    "relative rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-13px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
 
-  const inner = (
-    <>
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
-          {group.label}
-        </h3>
-        <span className="rounded-full border border-border px-2 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
-          {group.items.length}
-        </span>
-      </div>
-      <ul className="flex flex-wrap gap-2.5">
-        {group.items.map((tech, i) => (
-          <TechTile
-            key={tech.name}
-            tech={tech}
-            progress={progress}
-            start={tileBase + i * 0.022}
-            anim={anim}
-          />
-        ))}
-      </ul>
-    </>
+  const header = (
+    <div className="mb-4 flex items-center justify-between">
+      <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
+        {group.label}
+      </h3>
+      <span className="rounded-full border border-border px-2 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
+        {group.items.length}
+      </span>
+    </div>
+  );
+
+  const tiles = (
+    <ul className="flex flex-wrap gap-2.5">
+      {group.items.map((tech) => (
+        <TechTile key={tech.name} tech={tech} />
+      ))}
+    </ul>
   );
 
   if (!anim) {
-    return <div className={cardClass}>{inner}</div>;
+    return (
+      <div className={cardClass}>
+        {header}
+        {tiles}
+      </div>
+    );
   }
   return (
     <motion.div
       ref={cardRef}
-      style={{ x, y, rotateX, scale, opacity } as unknown as React.CSSProperties}
+      style={
+        {
+          x,
+          y,
+          rotateX,
+          scale,
+          opacity,
+          transformOrigin: "center bottom",
+        } as unknown as React.CSSProperties
+      }
       className={cardClass}
     >
-      {inner}
+      <motion.div style={{ opacity: headerOpacity }}>{header}</motion.div>
+      {tiles}
+      {/* Bottom edge label visible in the stacked side profile. */}
+      <motion.div
+        aria-hidden
+        style={{ opacity: edgeLabelOpacity }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 rounded-b-2xl border-t border-border bg-card px-5 py-2"
+      >
+        <span className="text-sm font-medium uppercase tracking-wide text-foreground/80">
+          {group.label}
+        </span>
+        <span className="text-[0.7rem] font-medium text-muted-foreground">
+          {group.items.length}
+        </span>
+      </motion.div>
     </motion.div>
   );
 }
