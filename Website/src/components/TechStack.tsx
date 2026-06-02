@@ -104,26 +104,9 @@ function Slab({
   const y = useTransform(progress, fan, [dy + stackY, dy * 0.3, -dy * 0.05, 0, 0]);
   const scale = useTransform(progress, [0.24, 0.56, 1], [0.94, 1, 1]);
   const opacity = useTransform(progress, [0, 0.02, 1], [0, 1, 1]);
-  // The edge label is the visible strip while stacked; it fades as cards open.
-  // Hold at 0 through progress=1 so it never extrapolates back in.
-  const edgeLabelOpacity = useTransform(progress, [0.05, 0.18, 1], [1, 0, 0]);
-  // The normal in-card header fades in once the cards are facing the viewer.
-  const headerOpacity = useTransform(progress, [0.18, 0.3, 1], [0, 1, 1]);
-
   // Chunky extruded bottom edge gives each card the depth of a ~2cm plate.
   const cardClass =
-    "relative rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-13px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
-
-  const header = (
-    <div className="mb-4 flex items-center justify-between">
-      <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
-        {group.label}
-      </h3>
-      <span className="rounded-full border border-border px-2 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
-        {group.items.length}
-      </span>
-    </div>
-  );
+    "relative flex flex-col rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-13px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5">
@@ -133,11 +116,24 @@ function Slab({
     </ul>
   );
 
+  // The title lives permanently at the bottom edge: it's the visible label in
+  // the stacked side profile and stays as the card's footer in the flat grid.
+  const footer = (
+    <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
+      <span className="text-sm font-medium uppercase tracking-wide text-foreground/80">
+        {group.label}
+      </span>
+      <span className="text-[0.7rem] font-medium text-muted-foreground">
+        {group.items.length}
+      </span>
+    </div>
+  );
+
   if (!anim) {
     return (
       <div className={cardClass}>
-        {header}
         {tiles}
+        {footer}
       </div>
     );
   }
@@ -156,21 +152,8 @@ function Slab({
       }
       className={cardClass}
     >
-      <motion.div style={{ opacity: headerOpacity }}>{header}</motion.div>
       {tiles}
-      {/* Bottom edge label visible in the stacked side profile. */}
-      <motion.div
-        aria-hidden
-        style={{ opacity: edgeLabelOpacity }}
-        className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 rounded-b-2xl border-t border-border bg-card px-5 py-2"
-      >
-        <span className="text-sm font-medium uppercase tracking-wide text-foreground/80">
-          {group.label}
-        </span>
-        <span className="text-[0.7rem] font-medium text-muted-foreground">
-          {group.items.length}
-        </span>
-      </motion.div>
+      {footer}
     </motion.div>
   );
 }
