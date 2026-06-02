@@ -103,7 +103,6 @@ function Slab({
   const x = useTransform(progress, fan, [dx, dx * 0.3, -dx * 0.05, 0, 0]);
   const y = useTransform(progress, fan, [dy + stackY, dy * 0.3, -dy * 0.05, 0, 0]);
   const scale = useTransform(progress, [0.24, 0.56, 1], [0.94, 1, 1]);
-  const opacity = useTransform(progress, [0, 0.02, 1], [0, 1, 1]);
   // Chunky extruded bottom edge gives each card the depth of a ~2cm plate.
   const cardClass =
     "relative flex flex-col rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-18px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
@@ -146,7 +145,6 @@ function Slab({
           y,
           rotateX,
           scale,
-          opacity,
           transformOrigin: "center bottom",
         } as unknown as React.CSSProperties
       }
