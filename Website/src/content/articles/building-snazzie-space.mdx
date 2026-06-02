@@ -1,0 +1,26 @@
+---
+title: "Building snazzie.space: A Deep Dive into the Stack"
+date: 2026-06-02
+excerpt: "How I built this portfolio with Astro, React, Tailwind 4, and Cloudflare — and the decisions that shaped each layer."
+tags: ["astro", "react", "cloudflare", "typescript"]
+draft: false
+---
+
+## Why Astro
+
+Astro's island architecture is a perfect fit for a portfolio site. The bulk of the page is static HTML — fast, indexable, zero JS overhead — with React islands hydrating only where interactivity matters.
+
+## The Stack
+
+- **Astro 6** for routing and static generation
+- **React 19** for interactive sections (GitHub stats, traffic globe, tech stack 3D grid)
+- **Tailwind 4** via Vite plugin — no PostCSS, faster builds
+- **Cloudflare Pages** for hosting + **Cloudflare Workers** for the GitHub stats API
+
+## Cloudflare Worker
+
+GitHub's GraphQL API doesn't support CORS for browser requests, so a Cloudflare Worker acts as a weekly caching layer. It fetches contribution data every Monday, writes to KV, and serves it with edge caching. The frontend seeds from static data and hydrates live.
+
+## What's Next
+
+Articles. You're reading the first one.
