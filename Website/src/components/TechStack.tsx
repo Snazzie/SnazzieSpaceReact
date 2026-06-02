@@ -1,25 +1,30 @@
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import { stack, type Tech } from "@/data/stack";
-import { D, EASE } from "@/lib/motion";
 import { SectionUnderline } from "@/components/SectionUnderline";
 
-const reveal: Variants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  show: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: D.base, ease: EASE, delay: i * 0.035 },
-  }),
-};
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-const groupReveal: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: D.base, ease: EASE, delay: i * 0.08 },
-  }),
-};
+/** True once the viewport is at the `md` breakpoint (>= 768px). */
+function useIsDesktop(): boolean {
+  const [desktop, setDesktop] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return desktop;
+}
 
 /** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
 function monogram(name: string): string {
@@ -28,113 +33,239 @@ function monogram(name: string): string {
   return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
 }
 
-function TechTile({ tech, index }: { tech: Tech; index: number }) {
-  const reduce = useReducedMotion();
-  const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const onMove = reduce
-    ? undefined
-    : (e: React.PointerEvent<HTMLElement>) => {
-        const r = e.currentTarget.getBoundingClientRect();
-        e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-      };
+function TechTileContent({ tech }: { tech: Tech }) {
   return (
-    <motion.li
-      custom={index}
-      variants={reveal}
-      initial={reduce ? (false as const) : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      onPointerMove={onMove}
-      style={{ "--brand": brand } as React.CSSProperties}
-      className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 transition duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:border-[color-mix(in_srgb,var(--brand)_55%,var(--border))] hover:shadow-[0_0_24px_-4px_color-mix(in_srgb,var(--brand)_45%,transparent)]"
-    >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%)",
-        }}
-      />
+    <>
       {tech.logoUrl ? (
-        <img
-          src={tech.logoUrl}
-          alt={tech.name}
-          className="relative z-10 size-5 shrink-0 transition-transform duration-200 group-hover:scale-110"
-        />
+        <img src={tech.logoUrl} alt={tech.name} className="size-5 shrink-0" />
       ) : tech.icon ? (
         <svg
           role="img"
           aria-hidden
           viewBox="0 0 24 24"
-          className="relative z-10 size-5 shrink-0 fill-muted-foreground transition-[fill,transform] duration-200 group-hover:fill-[var(--brand)] group-hover:scale-110"
+          className="size-5 shrink-0 fill-muted-foreground transition-[fill] duration-200 group-hover:fill-[var(--brand)]"
         >
           <path d={tech.icon.path} />
         </svg>
       ) : (
-        <span className="relative z-10 flex size-5 shrink-0 items-center justify-center rounded text-[0.65rem] font-bold text-muted-foreground transition-[color,transform] duration-200 group-hover:text-foreground group-hover:scale-110">
+        <span className="flex size-5 shrink-0 items-center justify-center rounded text-[0.65rem] font-bold text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
           {monogram(tech.name)}
         </span>
       )}
-      <span className="relative z-10 text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
+      <span className="text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
         {tech.name}
       </span>
-    </motion.li>
+    </>
+  );
+}
+
+function TechTile({ tech }: { tech: Tech }) {
+  const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
+  // Tags are static on the card face; they are simply revealed as the card
+  // rotates open. Only the hover colour change remains.
+  return (
+    <li
+      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5"
+      style={{ "--brand": brand } as React.CSSProperties}
+    >
+      <TechTileContent tech={tech} />
+    </li>
+  );
+}
+
+function Slab({
+  group,
+  index,
+  progress,
+  anim,
+  offset,
+  cardRef,
+}: {
+  group: (typeof stack)[number];
+  index: number;
+  progress: MotionValue<number>;
+  anim: boolean;
+  offset: { dx: number; dy: number; stackY: number } | undefined;
+  cardRef: (el: HTMLDivElement | null) => void;
+}) {
+  const count = stack.length;
+
+  const dx = offset?.dx ?? 0;
+  const dy = offset?.dy ?? 0;
+  // stackY from measured heights ensures bottom edges are uniformly spaced.
+  const stackY = offset?.stackY ?? (index - (count - 1) / 2) * 32;
+  // One continuous, monotonic motion across the whole scroll (no sequential
+  // snaps, no overshoot, no dead zone): the stack rotates up while it fans out
+  // to the grid slots, all overlapping and settling together near the end.
+  const rotateX = useTransform(progress, [0, 0.28, 0.58, 0.88, 1], [72, 42, 12, 0, 0]);
+  const x = useTransform(progress, [0, 0.15, 0.88, 1], [dx, dx, 0, 0]);
+  const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
+  const cardBase =
+    "relative flex flex-col rounded-2xl border border-border bg-card p-5";
+  const flatCardClass = cardBase;
+
+  const tiles = (
+    <ul className="flex flex-wrap gap-2.5">
+      {group.items.map((tech) => (
+        <TechTile key={tech.name} tech={tech} />
+      ))}
+    </ul>
+  );
+
+  // The title lives permanently at the bottom edge: it's the visible label in
+  // the stacked side profile and stays as the card's footer in the flat grid.
+  const footer = (
+    <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
+      <span className="text-sm font-medium uppercase tracking-wide text-foreground/80">
+        {group.label}
+      </span>
+      <span className="text-[0.7rem] font-medium text-muted-foreground">
+        {group.items.length}
+      </span>
+    </div>
+  );
+
+  if (!anim) {
+    return (
+      <div className={flatCardClass}>
+        {tiles}
+        {footer}
+      </div>
+    );
+  }
+  return (
+    <motion.div
+      ref={cardRef}
+      style={
+        {
+          x,
+          y,
+          rotateX,
+          transformOrigin: "center bottom",
+          transformStyle: "preserve-3d",
+        } as unknown as React.CSSProperties
+      }
+      className={cardBase}
+    >
+      {tiles}
+      {footer}
+    </motion.div>
   );
 }
 
 export function TechStack() {
   const reduce = useReducedMotion();
-  const headingProps = {
-    initial: reduce ? (false as const) : { opacity: 0, y: 16 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.5 },
-    transition: { duration: D.base, ease: EASE },
-  };
+  const desktop = useIsDesktop();
+  const anim = desktop && !reduce;
 
-  return (
-    <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
-      <motion.p
-        {...headingProps}
-        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
-      >
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardEls = useRef<(HTMLDivElement | null)[]>([]);
+  const [offsets, setOffsets] = useState<{ dx: number; dy: number; stackY: number }[]>([]);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Measure each card's grid slot so it can collapse to the deck and fan back.
+  // offsetLeft/Top are layout positions (unaffected by transforms), so this is
+  // stable to re-run on resize even while the cards are mid-transform.
+  useIsoLayoutEffect(() => {
+    if (!anim) return;
+    const measure = () => {
+      const grid = gridRef.current;
+      if (!grid) return;
+      const ax = grid.clientWidth / 2;
+      const ay = grid.clientHeight / 2;
+      const els = cardEls.current;
+      const count = els.length;
+      const heights = els.map((el) => el?.offsetHeight ?? 0);
+      const avgH = heights.reduce((a, b) => a + b, 0) / count;
+      // Uniform 32px bottom-edge spacing, stack centred on ay:
+      // stackY_i = (i-(count-1)/2)*32 + (avgH - h_i)/2
+      setOffsets(
+        els.map((el, i) =>
+          el
+            ? {
+                dx: ax - (el.offsetLeft + el.offsetWidth / 2),
+                dy: ay - (el.offsetTop + el.offsetHeight / 2),
+                stackY: (i - (count - 1) / 2) * 32 + (avgH - el.offsetHeight) / 2,
+              }
+            : { dx: 0, dy: 0, stackY: 0 },
+        ),
+      );
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [anim]);
+
+  // Begin slightly into the animation so the resting/entry pose is the readable
+  // angled stack rather than the very-steep first frame.
+  const p = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
+
+  // Virtual camera: start zoomed into the big thick stack (fills the screen)
+  // and panned up, then zoom/pan out so the cards return to original size and
+  // fit the grid.
+  const zoom = useTransform(p, [0, 0.88, 1], [2.1, 1, 1]);
+  const camY = useTransform(p, [0, 0.88, 1], [-150, 0, 0]);
+
+  const heading = (
+    <div className="text-center">
+      <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
         What I build with
-      </motion.p>
-      <motion.h2
-        {...headingProps}
-        className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl"
-      >
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">
         Tech stack
-      </motion.h2>
+      </h2>
       <SectionUnderline />
+    </div>
+  );
 
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {stack.map((group, gi) => (
-          <motion.div
-            key={group.label}
-            custom={gi}
-            variants={groupReveal}
-            initial={reduce ? (false as const) : "hidden"}
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="rounded-2xl border border-border bg-card/50 p-5 transition-colors duration-300 hover:border-zinc-700"
-          >
-            <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
-                {group.label}
-              </h3>
-              <span className="rounded-full border border-border px-2 py-0.5 text-[0.7rem] font-medium text-muted-foreground">
-                {group.items.length}
-              </span>
-            </div>
-            <ul className="flex flex-wrap gap-2.5">
-              {group.items.map((tech, i) => (
-                <TechTile key={tech.name} tech={tech} index={i} />
-              ))}
-            </ul>
+  const grid = (
+    <div
+      ref={gridRef}
+      className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+      style={anim ? { transformStyle: "preserve-3d" } : undefined}
+    >
+      {stack.map((group, gi) => (
+        <Slab
+          key={group.label}
+          group={group}
+          index={gi}
+          progress={p}
+          anim={anim}
+          offset={offsets[gi]}
+          cardRef={(el) => {
+            cardEls.current[gi] = el;
+          }}
+        />
+      ))}
+    </div>
+  );
+
+  // Static fallback (reduced motion / mobile): plain flat grid, in flow.
+  if (!anim) {
+    return (
+      <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+        {heading}
+        <div className="mt-10">{grid}</div>
+      </section>
+    );
+  }
+
+  // Pinned scrub: tall track + sticky stage. The grid sits on a perspective
+  // parent so the cards flip in 3D, and settles to a flat, head-on grid.
+  return (
+    <section ref={sectionRef} id="stack" className="relative z-10 h-[220vh]">
+      <div className="sticky top-0 flex min-h-screen flex-col justify-center mx-auto max-w-5xl px-6 py-16">
+        {heading}
+        <div className="mt-10" style={{ perspective: "1200px" }}>
+          <motion.div style={{ scale: zoom, y: camY, transformStyle: "preserve-3d" }}>
+            {grid}
           </motion.div>
-        ))}
+        </div>
       </div>
     </section>
   );

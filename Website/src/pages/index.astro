@@ -94,13 +94,13 @@ const images: Record<string, string> = {
       })();
     </script>
   </head>
-  <body class="relative bg-background text-foreground antialiased">
+  <body class="relative bg-background text-foreground antialiased [overflow-x:clip]">
     <CursorField client:idle />
     <Nav client:load />
     <main>
       <Intro client:load avatarSrc={images[avatarUrl]} />
       <Career client:visible />
-      <TechStack client:visible />
+      <TechStack client:load />
       <Projects client:visible images={images} />
       <GithubStats client:visible initialProfile={githubProfile} />
       <Traffic client:visible initialData={trafficData} />

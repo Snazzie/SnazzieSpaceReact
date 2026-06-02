@@ -130,7 +130,13 @@ function Panel({
     };
     measure();
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    // Re-measure when page height changes (e.g. TechStack 220vh section above shifts layout)
+    const ro = new ResizeObserver(measure);
+    ro.observe(document.documentElement);
+    return () => {
+      window.removeEventListener("resize", measure);
+      ro.disconnect();
+    };
   }, []);
   const scale = useTransform(scrollY, [span[0], span[1]], [1, 0.92]);
   const opacity = useTransform(
