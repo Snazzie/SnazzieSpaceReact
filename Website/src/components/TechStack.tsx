@@ -106,7 +106,7 @@ function Slab({
   const opacity = useTransform(progress, [0, 0.02, 1], [0, 1, 1]);
   // Chunky extruded bottom edge gives each card the depth of a ~2cm plate.
   const cardClass =
-    "relative flex flex-col rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-13px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
+    "relative flex flex-col rounded-2xl border border-border bg-card/90 p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-18px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5">
@@ -196,6 +196,12 @@ export function TechStack() {
     return () => window.removeEventListener("resize", measure);
   }, [anim]);
 
+  // Virtual camera: start zoomed into the big thick stack (fills the screen)
+  // and panned up, then zoom/pan out so the cards return to original size and
+  // fit the grid.
+  const zoom = useTransform(scrollYProgress, [0, 0.5, 0.6, 1], [2.1, 1.06, 1, 1]);
+  const camY = useTransform(scrollYProgress, [0, 0.5, 0.6, 1], [-150, -12, 0, 0]);
+
   const heading = (
     <>
       <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
@@ -247,7 +253,9 @@ export function TechStack() {
       <div className="sticky top-0 flex min-h-screen flex-col justify-center mx-auto max-w-5xl px-6 py-16">
         {heading}
         <div className="mt-10" style={{ perspective: "1200px" }}>
-          {grid}
+          <motion.div style={{ scale: zoom, y: camY, transformStyle: "preserve-3d" }}>
+            {grid}
+          </motion.div>
         </div>
       </div>
     </section>
