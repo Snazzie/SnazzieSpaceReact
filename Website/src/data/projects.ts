@@ -30,7 +30,6 @@ export const projects: Project[] = [
     imgHeight: 867,
     tech: ["iOS", "Android", "Expo", "React Native", "Convex", "AI Agent"],
     details: [
-      "iOS, Android & Web app",
       "Connects investments, pensions, and savings in one place",
       "Shows real returns adjusted for inflation",
       "Tracks trades, dividends, and transactions in a single timeline",
@@ -49,8 +48,7 @@ export const projects: Project[] = [
     details: [
       "Linux TUI — keyboard-driven, no GUI required",
       "Scans nearby access points across 2.4 GHz, 5 GHz, and 6 GHz",
-      "Orchestrates deauth, AuthDos, and BeaconFlood attacks on selected targets",
-      "For authorized penetration testing only",
+      "Orchestrates deauth and AuthDos attacks on selected targets",
     ],
   },
   {
