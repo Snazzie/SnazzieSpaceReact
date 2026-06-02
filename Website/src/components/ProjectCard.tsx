@@ -77,6 +77,8 @@ function LogoTile({ src, alt, dim = false }: { src: string; alt: string; dim?: b
       <img
         src={src}
         alt={alt}
+        width={48}
+        height={48}
         className={`size-full object-contain p-1.5 ${dim ? "grayscale" : ""}`}
       />
     </div>
@@ -171,6 +173,8 @@ export function ProjectCard({
                 aria-hidden
                 src={bgImage}
                 alt=""
+                width={400}
+                height={300}
                 className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
               />
               <div

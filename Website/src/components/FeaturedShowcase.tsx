@@ -82,6 +82,8 @@ function Media({
         aria-hidden
         src={bgImage}
         alt=""
+        width={1200}
+        height={800}
         loading="lazy"
         className={cls}
       />

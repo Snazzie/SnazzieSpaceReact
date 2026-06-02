@@ -37,7 +37,7 @@ function TechTileContent({ tech }: { tech: Tech }) {
   return (
     <>
       {tech.logoUrl ? (
-        <img src={tech.logoUrl} alt={tech.name} className="size-5 shrink-0" />
+        <img src={tech.logoUrl} alt={tech.name} width={20} height={20} className="size-5 shrink-0" />
       ) : tech.icon ? (
         <svg
           role="img"

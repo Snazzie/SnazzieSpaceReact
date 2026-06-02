@@ -78,12 +78,16 @@ export function ProjectModal({
                 aria-hidden
                 src={bgImage}
                 alt=""
+                width={800}
+                height={600}
                 className="absolute inset-0 size-full object-cover"
               />
             ) : (
               <img
                 src={image}
                 alt={title}
+                width={800}
+                height={600}
                 className="absolute inset-0 size-full object-contain p-8 opacity-60"
               />
             )}

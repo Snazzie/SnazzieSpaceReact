@@ -25,7 +25,7 @@ function LogoTile({ src, alt, bg }: { src: string; alt: string; bg?: string }) {
       }`}
       style={bg ? { background: bg } : undefined}
     >
-      <img src={src} alt={alt} className={`size-full object-contain ${bg ? "p-2" : "p-1.5"}`} />
+      <img src={src} alt={alt} width={48} height={48} className={`size-full object-contain ${bg ? "p-2" : "p-1.5"}`} />
     </div>
   );
 }
