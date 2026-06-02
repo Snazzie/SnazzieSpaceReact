@@ -53,11 +53,11 @@ function TechTile({
   disabled: boolean;
 }) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const stops = snapStops(start, 0.14);
-  // Lag behind the slab, fly in, then snap; hold settled through progress=1.
+  const stops = snapStops(start, 0.16);
+  // Lag behind the slab, fly up, then snap; hold settled through progress=1.
   const opacity = useTransform(progress, [start, start + 0.03, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [...stops, 1], [0.45, 0.94, 1.04, 1, 1]);
-  const y = useTransform(progress, [...stops, 1], [22, 5, -2, 0, 0]);
+  const scale = useTransform(progress, [...stops, 1], [0.3, 0.92, 1.06, 1, 1]);
+  const y = useTransform(progress, [...stops, 1], [40, 8, -3, 0, 0]);
 
   const style = disabled
     ? ({ "--brand": brand } as React.CSSProperties)
@@ -129,10 +129,11 @@ function Slab({
   disabled: boolean;
 }) {
   // Card clicks in first; its tiles begin once the slab has nearly landed.
-  const cardStart = index * 0.07;
-  const cardSpan = 0.26;
+  const cardStart = index * 0.06;
+  const cardSpan = 0.22;
   const cardStops = snapStops(cardStart, cardSpan);
-  const tileBase = cardStart + 0.2;
+  // Tiles start once the slab has landed, so they clearly lag behind it.
+  const tileBase = cardStart + cardSpan;
 
   // Hold the settled value through progress=1 so a slab never fades back out.
   const opacity = useTransform(progress, [cardStart, cardStart + 0.04, 1], [0, 1, 1]);
@@ -165,7 +166,7 @@ function Slab({
             key={tech.name}
             tech={tech}
             progress={progress}
-            start={tileBase + i * 0.025}
+            start={tileBase + i * 0.035}
             disabled={disabled}
           />
         ))}
