@@ -143,6 +143,7 @@ const posts = (await getCollection('articles', ({ data }) => !data.draft))
                 var match = (card.getAttribute('data-search-title') || '').includes(q)
                   || (card.getAttribute('data-search-excerpt') || '').includes(q)
                   || (card.getAttribute('data-search-tags') || '').includes(q);
+                if (match) card.classList.remove('hidden');
                 card.style.display = match ? '' : 'none';
                 if (match) visible++;
               }
