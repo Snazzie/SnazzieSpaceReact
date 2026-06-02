@@ -1,0 +1,70 @@
+---
+import '@/styles/global.css';
+import { getCollection } from 'astro:content';
+import ArticleCard from '@/components/articles/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles tagged "{tag}" — Aaron Cooper</title>
+    <meta name="description" content={`Articles tagged ${tag} by Aaron Cooper.`} />
+    <link rel="canonical" href={`https://snazzie.space/articles/tag/${tag}/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-background text-foreground antialiased">
+    <main class="min-h-screen pt-20 pb-24">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <nav aria-label="Breadcrumb" class="mb-10">
+          <a href="/articles/" class="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
+            &larr; All articles
+          </a>
+        </nav>
+
+        <div class="mb-12">
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            Tagged: <span class="text-white/60">{tag}</span>
+          </h1>
+          <p class="mt-2 text-sm text-white/40">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+        </div>
+
+        {posts.length === 0 ? (
+          <p class="text-white/40">No articles with this tag.</p>
+        ) : (
+          <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <ArticleCard
+                title={post.data.title}
+                excerpt={post.data.excerpt}
+                date={post.data.date}
+                tags={post.data.tags}
+                slug={post.id}
+                heroImage={post.data.heroImage}
+              />
+            ))}
+          </div>
+        )}
+
+      </div>
+    </main>
+  </body>
+</html>
