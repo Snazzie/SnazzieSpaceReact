@@ -57,11 +57,12 @@ function TechTile({
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
   const stops = snapStops(start, 0.16);
   // Lag behind the slab, then drop in and snap; hold settled through progress=1.
-  const opacity = useTransform(progress, [start, start + 0.03, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [...stops, 1], [0.5, 0.95, 1.05, 1, 1]);
-  // Desktop: descend from above the pane along the 3D axis (Z lift + Y drop).
-  const z = useTransform(progress, [...stops, 1], [90, 18, -8, 0, 0]);
-  const yIso = useTransform(progress, [...stops, 1], [-48, -10, 4, 0, 0]);
+  const opacity = useTransform(progress, [start, start + 0.02, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [...stops, 1], [0.4, 0.9, 1.06, 1, 1]);
+  // Desktop: fall in from empty space high above the card along the 3D axis,
+  // then click flush (Z lift + a long Y drop, with a snap overshoot).
+  const z = useTransform(progress, [...stops, 1], [160, 34, -10, 0, 0]);
+  const yIso = useTransform(progress, [...stops, 1], [-300, -70, 14, 0, 0]);
   // Flat fallback: plain rise.
   const yFlat = useTransform(progress, [...stops, 1], [40, 8, -3, 0, 0]);
 
