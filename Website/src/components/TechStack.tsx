@@ -45,23 +45,31 @@ function TechTile({
   tech,
   progress,
   start,
+  iso,
   disabled,
 }: {
   tech: Tech;
   progress: MotionValue<number>;
   start: number;
+  iso: boolean;
   disabled: boolean;
 }) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
   const stops = snapStops(start, 0.16);
-  // Lag behind the slab, fly up, then snap; hold settled through progress=1.
+  // Lag behind the slab, then drop in and snap; hold settled through progress=1.
   const opacity = useTransform(progress, [start, start + 0.03, 1], [0, 1, 1]);
-  const scale = useTransform(progress, [...stops, 1], [0.3, 0.92, 1.06, 1, 1]);
-  const y = useTransform(progress, [...stops, 1], [40, 8, -3, 0, 0]);
+  const scale = useTransform(progress, [...stops, 1], [0.5, 0.95, 1.05, 1, 1]);
+  // Desktop: descend from above the pane along the 3D axis (Z lift + Y drop).
+  const z = useTransform(progress, [...stops, 1], [90, 18, -8, 0, 0]);
+  const yIso = useTransform(progress, [...stops, 1], [-48, -10, 4, 0, 0]);
+  // Flat fallback: plain rise.
+  const yFlat = useTransform(progress, [...stops, 1], [40, 8, -3, 0, 0]);
 
   const style = disabled
     ? ({ "--brand": brand } as React.CSSProperties)
-    : ({ "--brand": brand, opacity, scale, y } as unknown as React.CSSProperties);
+    : iso
+      ? ({ "--brand": brand, opacity, scale, z, y: yIso } as unknown as React.CSSProperties)
+      : ({ "--brand": brand, opacity, scale, y: yFlat } as unknown as React.CSSProperties);
 
   return (
     <motion.li
@@ -144,7 +152,7 @@ function Slab({
   const style = disabled
     ? undefined
     : iso
-      ? ({ opacity, z } as unknown as React.CSSProperties)
+      ? ({ opacity, z, transformStyle: "preserve-3d" } as unknown as React.CSSProperties)
       : ({ opacity, y } as unknown as React.CSSProperties);
 
   return (
@@ -167,6 +175,7 @@ function Slab({
             tech={tech}
             progress={progress}
             start={tileBase + i * 0.035}
+            iso={iso}
             disabled={disabled}
           />
         ))}
