@@ -65,7 +65,7 @@ function TechTile({ tech }: { tech: Tech }) {
   // rotates open. Only the hover colour change remains.
   return (
     <li
-      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5"
+      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 cursor-pointer"
       style={{ "--brand": brand } as React.CSSProperties}
     >
       <TechTileContent tech={tech} />
@@ -105,7 +105,7 @@ function Slab({
   const flatCardClass = cardBase;
 
   const tiles = (
-    <ul className="flex flex-wrap gap-2.5">
+    <ul className="flex flex-wrap gap-2.5 pointer-events-auto">
       {group.items.map((tech) => (
         <TechTile key={tech.name} tech={tech} />
       ))}
@@ -143,6 +143,7 @@ function Slab({
           rotateX,
           transformOrigin: "center bottom",
           transformStyle: "preserve-3d",
+          pointerEvents: "auto",
         } as unknown as React.CSSProperties
       }
       className={cardBase}
