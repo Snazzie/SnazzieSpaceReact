@@ -19,7 +19,7 @@ Astro's island architecture is a perfect fit for a portfolio site. The bulk of t
 
 ## Cloudflare Worker
 
-GitHub's GraphQL API doesn't support CORS for browser requests, so a Cloudflare Worker acts as a weekly caching layer. It fetches contribution data every Monday, writes to KV, and serves it with edge caching. The frontend seeds from static data and hydrates live.
+The GitHub stats section is powered by a Cloudflare Worker with a weekly cron job (Monday 06:00 UTC). It fetches contribution data via GitHub's GraphQL API using a PAT — keeping the token server-side and pulling private contributions. Results are written to KV storage and served with edge caching. The site deploys weekly to pick up the fresh data baked into the static build.
 
 ## What's Next
 
