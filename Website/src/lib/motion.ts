@@ -38,8 +38,8 @@ export const SNAP_SPRING: Transition = {
 /** Bounce params for drag snap-back, matched to {@link SNAP_SPRING}. */
 export const SNAP_BOUNCE = { bounceStiffness: 700, bounceDamping: 18 } as const;
 
-/** Subtle isometric lean for the tech-stack pegboard plane (degrees). */
-export const ISO = { rotateX: 14, rotateZ: -4, perspective: 1400 } as const;
+/** Isometric lean for the tech-stack pegboard plane (degrees / px perspective). */
+export const ISO = { rotateX: 26, rotateZ: -7, perspective: 1100 } as const;
 
 /** Total seconds of the slab entrance (resistance + snap). */
 export const SLAB_ENTRANCE_S = 0.92;

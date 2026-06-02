@@ -45,19 +45,20 @@ function slabVariants(flat: boolean): Variants {
     };
   }
   return {
-    hidden: { opacity: 0, y: -60, scale: 1.05 },
+    hidden: { opacity: 0, z: 220 },
     show: (i: number) => ({
       opacity: [0, 1, 1, 1],
-      y: [-60, -6, 7, 0],
-      scale: [1.05, 1.02, 0.995, 1],
+      // Pop out toward the viewer, drift back slowly (resistance), then click
+      // flush into the pane with a small overshoot past it and settle.
+      z: [220, 40, -14, 0],
       transition: {
-        delay: i * 0.12,
+        delay: i * 0.1,
         duration: SLAB_ENTRANCE_S,
         times: [0, 0.62, 0.82, 1],
         ease: [
           [0.16, 1, 0.3, 1], // resistance: slow decel approach
-          [0.7, 0, 0.84, 0], // snap: accelerate through the slot
-          [0.34, 1, 0.3, 1], // settle
+          [0.7, 0, 0.84, 0], // snap: accelerate into the pane
+          [0.34, 1, 0.3, 1], // settle flush
         ],
       },
     }),
@@ -142,15 +143,16 @@ function Pegboard() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute -inset-6 -z-10"
+      className="pointer-events-none absolute -inset-8 -z-10 rounded-3xl border border-border/60 bg-card/20"
       style={{
+        transform: "translateZ(-40px)",
         backgroundImage:
           "radial-gradient(circle, color-mix(in srgb, var(--border) 90%, transparent) 1px, transparent 1px)",
         backgroundSize: "22px 22px",
         maskImage:
-          "radial-gradient(ellipse 80% 72% at 50% 42%, #000 38%, transparent 100%)",
+          "radial-gradient(ellipse 82% 78% at 50% 44%, #000 46%, transparent 100%)",
         WebkitMaskImage:
-          "radial-gradient(ellipse 80% 72% at 50% 42%, #000 38%, transparent 100%)",
+          "radial-gradient(ellipse 82% 78% at 50% 44%, #000 46%, transparent 100%)",
       }}
     />
   );
@@ -173,7 +175,7 @@ function Slab({
         dragElastic: 0.16,
         dragConstraints: { top: 0, bottom: 0, left: 0, right: 0 },
         dragTransition: SNAP_BOUNCE,
-        whileHover: { y: -6, scale: 1.012, transition: SNAP_SPRING },
+        whileHover: { z: 36, transition: SNAP_SPRING },
         whileTap: { cursor: "grabbing" },
       } as const);
 
@@ -259,7 +261,10 @@ export function TechStack() {
           }
         >
           {!flat && <Pegboard />}
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div
+            className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+            style={flat ? undefined : { transformStyle: "preserve-3d" }}
+          >
             {stack.map((group, gi) => (
               <Slab key={group.label} group={group} index={gi} flat={flat} />
             ))}
