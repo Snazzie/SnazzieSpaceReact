@@ -1,0 +1,139 @@
+---
+import '@/styles/global.css';
+import { getCollection, render } from 'astro:content';
+import TagList from '@/components/articles/TagList.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const wordCount = post.body?.split(/\s+/).length ?? 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 238));
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} — Aaron Cooper</title>
+    <meta name="description" content={post.data.excerpt} />
+    <link rel="canonical" href={`https://snazzie.space/articles/${post.id}/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.data.title,
+      "description": post.data.excerpt,
+      "datePublished": post.data.date.toISOString(),
+      ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
+      "author": {
+        "@type": "Person",
+        "name": "Aaron Cooper",
+        "url": "https://snazzie.space"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Aaron Cooper",
+        "url": "https://snazzie.space"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://snazzie.space/articles/${post.id}/`
+      },
+      "keywords": post.data.tags.join(", "),
+      "wordCount": wordCount,
+      "timeRequired": `PT${readingTime}M`
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://snazzie.space/" },
+        { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://snazzie.space/articles/" },
+        { "@type": "ListItem", "position": 3, "name": post.data.title }
+      ]
+    })} />
+  </head>
+  <body class="bg-background text-foreground antialiased">
+    <main class="min-h-screen pt-20 pb-24">
+      <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <nav aria-label="Breadcrumb" class="mb-10">
+          <a href="/articles/" class="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
+            &larr; All articles
+          </a>
+        </nav>
+
+        <header class="mb-12">
+          <div class="flex items-center gap-3 text-sm text-white/50 mb-4">
+            <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+            <span>&middot;</span>
+            <span>{readingTime} min read</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
+            {post.data.title}
+          </h1>
+          <p class="mt-4 text-lg text-white/60">{post.data.excerpt}</p>
+          {post.data.tags.length > 0 && (
+            <div class="mt-6">
+              <TagList tags={post.data.tags} />
+            </div>
+          )}
+        </header>
+
+        {post.data.heroImage && (
+          <div class="aspect-[16/9] rounded-xl overflow-hidden mb-12 border border-white/10">
+            <img
+              src={post.data.heroImage}
+              alt={`Cover image for ${post.data.title}`}
+              width="1200"
+              height="675"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        <div class="prose prose-invert prose-base max-w-none
+          prose-headings:font-semibold prose-headings:tracking-tight
+          prose-a:text-white prose-a:underline prose-a:underline-offset-4 prose-a:hover:text-white/80
+          prose-strong:text-white
+          prose-code:text-white/80 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
+          prose-blockquote:border-white/20 prose-blockquote:text-white/60
+          prose-li:marker:text-white/30
+          prose-hr:border-white/10
+        ">
+          <Content />
+        </div>
+
+        <nav class="mt-16 pt-8 border-t border-white/10" aria-label="Article navigation">
+          <a href="/articles/" class="text-sm text-white/50 hover:text-white transition-colors">
+            &larr; All articles
+          </a>
+        </nav>
+
+      </article>
+    </main>
+
+    <script is:inline>
+      document.querySelectorAll('.prose a[href^="http"]').forEach(function (a) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      });
+    </script>
+  </body>
+</html>
