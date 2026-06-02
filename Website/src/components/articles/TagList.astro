@@ -1,0 +1,22 @@
+---
+export interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{tags.length > 0 && (
+  <ul class="flex flex-wrap gap-1.5" aria-label="Tags">
+    {tags.map((tag) => (
+      <li>
+        <a
+          href={`/articles/tag/${tag}/`}
+          class="inline-block px-2.5 py-0.5 text-xs rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-colors"
+        >
+          {tag}
+        </a>
+      </li>
+    ))}
+  </ul>
+)}
