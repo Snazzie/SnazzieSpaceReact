@@ -55,7 +55,7 @@ function TechTile({
   disabled: boolean;
 }) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const stops = snapStops(start, 0.16);
+  const stops = snapStops(start, 0.14);
   // Lag behind the slab, then drop in and snap; hold settled through progress=1.
   const opacity = useTransform(progress, [start, start + 0.02, 1], [0, 1, 1]);
   const scale = useTransform(progress, [...stops, 1], [0.4, 0.9, 1.06, 1, 1]);
@@ -137,23 +137,20 @@ function Slab({
   iso: boolean;
   disabled: boolean;
 }) {
-  // Card clicks in first; its tiles begin once the slab has nearly landed.
-  const cardStart = index * 0.06;
-  const cardSpan = 0.22;
-  const cardStops = snapStops(cardStart, cardSpan);
-  // Tiles start once the slab has landed, so they clearly lag behind it.
-  const tileBase = cardStart + cardSpan;
+  // Slabs are visible from the start (as the edge-on side-profile stack); the
+  // plane rotation reveals their faces, then tags drop in.
+  const cardStart = 0.06 + index * 0.03;
+  const tileBase = 0.44 + index * 0.045;
 
   // Hold the settled value through progress=1 so a slab never fades back out.
-  const opacity = useTransform(progress, [cardStart, cardStart + 0.04, 1], [0, 1, 1]);
-  // Desktop: slide in along Z (into the pane). Flat: rise in along Y.
-  const z = useTransform(progress, [...cardStops, 1], [240, 44, -14, 0, 0]);
-  const y = useTransform(progress, [...cardStops, 1], [44, 10, -4, 0, 0]);
+  const opacity = useTransform(progress, [0, 0.04, 1], [0, 1, 1]);
+  // Flat fallback: rise in along Y, staggered.
+  const y = useTransform(progress, [cardStart, cardStart + 0.16, 1], [40, 0, 0]);
 
   const style = disabled
     ? undefined
     : iso
-      ? ({ opacity, z, transformStyle: "preserve-3d" } as unknown as React.CSSProperties)
+      ? ({ opacity, transformStyle: "preserve-3d" } as unknown as React.CSSProperties)
       : ({ opacity, y } as unknown as React.CSSProperties);
 
   return (
@@ -169,13 +166,16 @@ function Slab({
           {group.items.length}
         </span>
       </div>
-      <ul className="flex flex-wrap gap-2.5">
+      <ul
+        className="flex flex-wrap gap-2.5"
+        style={iso ? { transformStyle: "preserve-3d" } : undefined}
+      >
         {group.items.map((tech, i) => (
           <TechTile
             key={tech.name}
             tech={tech}
             progress={progress}
-            start={tileBase + i * 0.035}
+            start={tileBase + i * 0.025}
             iso={iso}
             disabled={disabled}
           />
@@ -211,15 +211,25 @@ export function TechStack() {
     </>
   );
 
+  // Stage 1->2: the stack starts edge-on (side profile) and the whole plane
+  // rotates open to reveal the card faces, with a resistance-then-snap settle.
+  const planeRX = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.3, 0.4, 1],
+    [86, 44, 16, ISO.rotateX, ISO.rotateX],
+  );
+
   const board = (
     <div style={iso ? { perspective: `${ISO.perspective}px` } : undefined}>
-      <div
+      <motion.div
         className="relative"
         style={
           iso
             ? {
-                transform: `rotateX(${ISO.rotateX}deg) rotateZ(${ISO.rotateZ}deg)`,
+                rotateX: planeRX,
+                rotateZ: ISO.rotateZ,
                 transformStyle: "preserve-3d",
+                transformOrigin: "center 60%",
               }
             : undefined
         }
@@ -240,7 +250,7 @@ export function TechStack() {
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 
