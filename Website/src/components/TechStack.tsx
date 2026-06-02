@@ -194,11 +194,15 @@ export function TechStack() {
     return () => window.removeEventListener("resize", measure);
   }, [anim]);
 
+  // Begin slightly into the animation so the resting/entry pose is the readable
+  // angled stack rather than the very-steep first frame.
+  const p = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
+
   // Virtual camera: start zoomed into the big thick stack (fills the screen)
   // and panned up, then zoom/pan out so the cards return to original size and
   // fit the grid.
-  const zoom = useTransform(scrollYProgress, [0, 0.5, 0.6, 1], [2.1, 1.06, 1, 1]);
-  const camY = useTransform(scrollYProgress, [0, 0.5, 0.6, 1], [-150, -12, 0, 0]);
+  const zoom = useTransform(p, [0, 0.5, 0.6, 1], [2.1, 1.06, 1, 1]);
+  const camY = useTransform(p, [0, 0.5, 0.6, 1], [-150, -12, 0, 0]);
 
   const heading = (
     <div className="text-center">
@@ -223,7 +227,7 @@ export function TechStack() {
           key={group.label}
           group={group}
           index={gi}
-          progress={scrollYProgress}
+          progress={p}
           anim={anim}
           offset={offsets[gi]}
           cardRef={(el) => {
