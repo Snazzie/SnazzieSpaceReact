@@ -90,19 +90,17 @@ function Slab({
 }) {
   const count = stack.length;
 
-  // Stage 1: a stack of cards seen long-edge-on (tilted back so only each
-  // card's bottom edge label shows), staggered into a readable vertical stack.
-  const rotateX = useTransform(progress, [0, 0.15, 0.2, 0.24, 1], [76, 24, -5, 0, 0]);
   const dx = offset?.dx ?? 0;
   const dy = offset?.dy ?? 0;
   // Vertical offset that lays the cards out as a light, neat stack at center.
   const stackGap = 32;
   const stackY = (index - (count - 1) / 2) * stackGap;
-  // Stage 2: cards stand up and fan out from the stack to their grid slots.
-  const fan = [0.24, 0.4, 0.5, 0.56, 1] as const;
-  const x = useTransform(progress, fan, [dx, dx * 0.3, -dx * 0.05, 0, 0]);
-  const y = useTransform(progress, fan, [dy + stackY, dy * 0.3, -dy * 0.05, 0, 0]);
-  const scale = useTransform(progress, [0.24, 0.56, 1], [0.94, 1, 1]);
+  // One continuous, monotonic motion across the whole scroll (no sequential
+  // snaps, no overshoot, no dead zone): the stack rotates up while it fans out
+  // to the grid slots, all overlapping and settling together near the end.
+  const rotateX = useTransform(progress, [0, 0.28, 0.58, 0.88, 1], [72, 42, 12, 0, 0]);
+  const x = useTransform(progress, [0, 0.15, 0.88, 1], [dx, dx, 0, 0]);
+  const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
   // Consistent thin extruded edge BELOW the card (never overlapping the face,
   // so it can't tint the body) gives each card the depth of a ~2cm plate.
   const cardClass =
@@ -145,7 +143,6 @@ function Slab({
           x,
           y,
           rotateX,
-          scale,
           transformOrigin: "center bottom",
         } as unknown as React.CSSProperties
       }
@@ -202,8 +199,8 @@ export function TechStack() {
   // Virtual camera: start zoomed into the big thick stack (fills the screen)
   // and panned up, then zoom/pan out so the cards return to original size and
   // fit the grid.
-  const zoom = useTransform(p, [0, 0.5, 0.6, 1], [2.1, 1.06, 1, 1]);
-  const camY = useTransform(p, [0, 0.5, 0.6, 1], [-150, -12, 0, 0]);
+  const zoom = useTransform(p, [0, 0.88, 1], [2.1, 1, 1]);
+  const camY = useTransform(p, [0, 0.88, 1], [-150, 0, 0]);
 
   const heading = (
     <div className="text-center">
