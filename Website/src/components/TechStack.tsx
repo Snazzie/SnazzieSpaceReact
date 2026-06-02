@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import { stack, type Tech } from "@/data/stack";
-import { D, EASE, ISO, SLAB_ENTRANCE_S, SNAP_BOUNCE, SNAP_SPRING } from "@/lib/motion";
+import { D, EASE, ISO } from "@/lib/motion";
 import { SectionUnderline } from "@/components/SectionUnderline";
 
 /** True once the viewport is at the `md` breakpoint (>= 768px). */
@@ -19,61 +25,14 @@ function useIsDesktop(): boolean {
   return desktop;
 }
 
-const reveal: Variants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  show: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: D.base, ease: EASE, delay: i * 0.035 },
-  }),
-};
-
 /**
- * Slab entrance. On the flat fallback it is a plain rise-and-fade; on the
- * isometric plane it drifts down slowly (resistance) then snaps through its
- * slot with a small overshoot and settle.
+ * Resistance-then-snap easing expressed as uneven scroll stops: the value
+ * crawls most of the way (resistance), accelerates through, overshoots, then
+ * settles. `s` is the window start, `span` its length in scroll progress.
  */
-function slabVariants(flat: boolean): Variants {
-  if (flat) {
-    return {
-      hidden: { opacity: 0, y: 16 },
-      show: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: D.base, ease: EASE, delay: i * 0.05 },
-      }),
-    };
-  }
-  return {
-    hidden: { opacity: 0, z: 220 },
-    show: (i: number) => ({
-      opacity: [0, 1, 1, 1],
-      // Pop out toward the viewer, drift back slowly (resistance), then click
-      // flush into the pane with a small overshoot past it and settle.
-      z: [220, 40, -14, 0],
-      transition: {
-        delay: i * 0.1,
-        duration: SLAB_ENTRANCE_S,
-        times: [0, 0.62, 0.82, 1],
-        ease: [
-          [0.16, 1, 0.3, 1], // resistance: slow decel approach
-          [0.7, 0, 0.84, 0], // snap: accelerate into the pane
-          [0.34, 1, 0.3, 1], // settle flush
-        ],
-      },
-    }),
-  };
+function snapStops(s: number, span: number): [number, number, number, number] {
+  return [s, s + span * 0.62, s + span * 0.82, s + span];
 }
-
-/** One-shot ring + glow pulse fired as the slab snaps home. */
-const lockCue: Variants = {
-  hidden: { opacity: 0, scale: 0.88 },
-  show: (i: number) => ({
-    opacity: [0, 0.6, 0],
-    scale: [0.9, 1.04, 1.08],
-    transition: { delay: i * 0.12 + 0.58, duration: 0.45, ease: "easeOut" },
-  }),
-};
 
 /** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
 function monogram(name: string): string {
@@ -82,63 +41,60 @@ function monogram(name: string): string {
   return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
 }
 
-function TechTile({ tech, index }: { tech: Tech; index: number }) {
-  const reduce = useReducedMotion();
+function TechTile({
+  tech,
+  progress,
+  start,
+  disabled,
+}: {
+  tech: Tech;
+  progress: MotionValue<number>;
+  start: number;
+  disabled: boolean;
+}) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const onMove = reduce
-    ? undefined
-    : (e: React.PointerEvent<HTMLElement>) => {
-        const r = e.currentTarget.getBoundingClientRect();
-        e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-      };
+  const stops = snapStops(start, 0.1);
+  const opacity = useTransform(progress, [start, start + 0.02], [0, 1]);
+  const scale = useTransform(progress, stops, [0.55, 0.96, 1.03, 1]);
+  const y = useTransform(progress, stops, [10, 2, -1, 0]);
+
+  const style = disabled
+    ? ({ "--brand": brand } as React.CSSProperties)
+    : ({ "--brand": brand, opacity, scale, y } as unknown as React.CSSProperties);
+
   return (
     <motion.li
-      custom={index}
-      variants={reveal}
-      initial={reduce ? (false as const) : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      onPointerMove={onMove}
-      style={{ "--brand": brand } as React.CSSProperties}
-      className="group relative flex items-center gap-2.5 overflow-hidden rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 transition duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:border-[color-mix(in_srgb,var(--brand)_55%,var(--border))] hover:shadow-[0_0_24px_-4px_color-mix(in_srgb,var(--brand)_45%,transparent)]"
+      style={style}
+      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5"
     >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--brand) 22%, transparent), transparent 70%)",
-        }}
-      />
       {tech.logoUrl ? (
         <img
           src={tech.logoUrl}
           alt={tech.name}
-          className="relative z-10 size-5 shrink-0 transition-transform duration-200 group-hover:scale-110"
+          className="size-5 shrink-0"
         />
       ) : tech.icon ? (
         <svg
           role="img"
           aria-hidden
           viewBox="0 0 24 24"
-          className="relative z-10 size-5 shrink-0 fill-muted-foreground transition-[fill,transform] duration-200 group-hover:fill-[var(--brand)] group-hover:scale-110"
+          className="size-5 shrink-0 fill-muted-foreground transition-[fill] duration-200 group-hover:fill-[var(--brand)]"
         >
           <path d={tech.icon.path} />
         </svg>
       ) : (
-        <span className="relative z-10 flex size-5 shrink-0 items-center justify-center rounded text-[0.65rem] font-bold text-muted-foreground transition-[color,transform] duration-200 group-hover:text-foreground group-hover:scale-110">
+        <span className="flex size-5 shrink-0 items-center justify-center rounded text-[0.65rem] font-bold text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
           {monogram(tech.name)}
         </span>
       )}
-      <span className="relative z-10 text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
+      <span className="text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
         {tech.name}
       </span>
     </motion.li>
   );
 }
 
-/** Faint dotted pegboard backplate sitting behind the slabs on the iso plane. */
+/** Faint dotted, recessed back pane the slabs click into. */
 function Pegboard() {
   return (
     <div
@@ -161,45 +117,38 @@ function Pegboard() {
 function Slab({
   group,
   index,
-  flat,
+  progress,
+  iso,
+  disabled,
 }: {
   group: (typeof stack)[number];
   index: number;
-  flat: boolean;
+  progress: MotionValue<number>;
+  iso: boolean;
+  disabled: boolean;
 }) {
-  const drag = flat
-    ? {}
-    : ({
-        drag: true,
-        dragSnapToOrigin: true,
-        dragElastic: 0.16,
-        dragConstraints: { top: 0, bottom: 0, left: 0, right: 0 },
-        dragTransition: SNAP_BOUNCE,
-        whileHover: { z: 36, transition: SNAP_SPRING },
-        whileTap: { cursor: "grabbing" },
-      } as const);
+  // Card clicks in first; its tiles begin once the slab has nearly landed.
+  const cardStart = index * 0.05;
+  const cardSpan = 0.22;
+  const cardStops = snapStops(cardStart, cardSpan);
+  const tileBase = cardStart + cardSpan * 0.75;
+
+  const opacity = useTransform(progress, [cardStart, cardStart + 0.04], [0, 1]);
+  // Desktop: slide in along Z (into the pane). Flat: rise in along Y.
+  const z = useTransform(progress, cardStops, [240, 44, -14, 0]);
+  const y = useTransform(progress, cardStops, [44, 10, -4, 0]);
+
+  const style = disabled
+    ? undefined
+    : iso
+      ? ({ opacity, z } as unknown as React.CSSProperties)
+      : ({ opacity, y } as unknown as React.CSSProperties);
 
   return (
     <motion.div
-      custom={index}
-      variants={slabVariants(flat)}
-      initial={flat ? (false as const) : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      {...drag}
-      className="relative rounded-2xl border border-border bg-card/60 p-5 transition-colors duration-300 before:absolute before:inset-0 before:-z-10 before:translate-x-[3px] before:translate-y-[4px] before:rounded-2xl before:bg-zinc-800/70 before:content-[''] hover:border-zinc-700"
+      style={style}
+      className="relative rounded-2xl border border-border bg-card/60 p-5 before:absolute before:inset-0 before:-z-10 before:translate-x-[3px] before:translate-y-[4px] before:rounded-2xl before:bg-zinc-800/70 before:content-['']"
     >
-      {!flat && (
-        <motion.span
-          aria-hidden
-          custom={index}
-          variants={lockCue}
-          className="pointer-events-none absolute -inset-px rounded-2xl ring-1 ring-zinc-300/70"
-          style={{
-            boxShadow: "0 0 30px -6px color-mix(in srgb, var(--border) 80%, white)",
-          }}
-        />
-      )}
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-sm font-medium uppercase tracking-wide text-foreground/60">
           {group.label}
@@ -210,7 +159,13 @@ function Slab({
       </div>
       <ul className="flex flex-wrap gap-2.5">
         {group.items.map((tech, i) => (
-          <TechTile key={tech.name} tech={tech} index={i} />
+          <TechTile
+            key={tech.name}
+            tech={tech}
+            progress={progress}
+            start={tileBase + i * 0.018}
+            disabled={disabled}
+          />
         ))}
       </ul>
     </motion.div>
@@ -220,7 +175,14 @@ function Slab({
 export function TechStack() {
   const reduce = useReducedMotion();
   const desktop = useIsDesktop();
-  const flat = Boolean(reduce) || !desktop;
+  const iso = desktop && !reduce;
+  const disabled = Boolean(reduce);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
 
   const headingProps = {
     initial: reduce ? (false as const) : { opacity: 0, y: 16 },
@@ -230,7 +192,11 @@ export function TechStack() {
   };
 
   return (
-    <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+    <section
+      ref={sectionRef}
+      id="stack"
+      className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32"
+    >
       <motion.p
         {...headingProps}
         className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
@@ -247,26 +213,33 @@ export function TechStack() {
 
       <div
         className="mt-10"
-        style={flat ? undefined : { perspective: `${ISO.perspective}px` }}
+        style={iso ? { perspective: `${ISO.perspective}px` } : undefined}
       >
         <div
           className="relative"
           style={
-            flat
-              ? undefined
-              : {
+            iso
+              ? {
                   transform: `rotateX(${ISO.rotateX}deg) rotateZ(${ISO.rotateZ}deg)`,
                   transformStyle: "preserve-3d",
                 }
+              : undefined
           }
         >
-          {!flat && <Pegboard />}
+          {iso && <Pegboard />}
           <div
             className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-            style={flat ? undefined : { transformStyle: "preserve-3d" }}
+            style={iso ? { transformStyle: "preserve-3d" } : undefined}
           >
             {stack.map((group, gi) => (
-              <Slab key={group.label} group={group} index={gi} flat={flat} />
+              <Slab
+                key={group.label}
+                group={group}
+                index={gi}
+                progress={scrollYProgress}
+                iso={iso}
+                disabled={disabled}
+              />
             ))}
           </div>
         </div>
