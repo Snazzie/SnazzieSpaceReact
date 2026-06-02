@@ -50,7 +50,6 @@ export const projects: Project[] = [
       "Linux TUI — keyboard-driven, no GUI required",
       "Scans nearby access points across 2.4 GHz, 5 GHz, and 6 GHz",
       "Orchestrates deauth, AuthDos, and BeaconFlood attacks on selected targets",
-      "Captures WPA handshakes and PMKIDs for offline cracking",
       "For authorized penetration testing only",
     ],
   },
