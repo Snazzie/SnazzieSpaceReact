@@ -203,7 +203,7 @@ export function TechStack() {
   const camY = useTransform(scrollYProgress, [0, 0.5, 0.6, 1], [-150, -12, 0, 0]);
 
   const heading = (
-    <>
+    <div className="text-center">
       <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
         What I build with
       </p>
@@ -211,7 +211,7 @@ export function TechStack() {
         Tech stack
       </h2>
       <SectionUnderline />
-    </>
+    </div>
   );
 
   const grid = (
