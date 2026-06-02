@@ -103,9 +103,10 @@ function Slab({
   const x = useTransform(progress, fan, [dx, dx * 0.3, -dx * 0.05, 0, 0]);
   const y = useTransform(progress, fan, [dy + stackY, dy * 0.3, -dy * 0.05, 0, 0]);
   const scale = useTransform(progress, [0.24, 0.56, 1], [0.94, 1, 1]);
-  // Chunky extruded bottom edge gives each card the depth of a ~2cm plate.
+  // Consistent thin extruded edge BELOW the card (never overlapping the face,
+  // so it can't tint the body) gives each card the depth of a ~2cm plate.
   const cardClass =
-    "relative flex flex-col rounded-2xl border border-border bg-card p-5 before:absolute before:inset-x-0 before:top-0 before:bottom-[-18px] before:-z-10 before:rounded-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
+    "relative flex flex-col rounded-2xl border border-border bg-card p-5 before:absolute before:inset-x-0 before:top-full before:-mt-3 before:h-5 before:-z-10 before:rounded-b-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5">
