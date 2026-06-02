@@ -53,10 +53,11 @@ function TechTile({
   disabled: boolean;
 }) {
   const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  const stops = snapStops(start, 0.1);
-  const opacity = useTransform(progress, [start, start + 0.02], [0, 1]);
-  const scale = useTransform(progress, stops, [0.55, 0.96, 1.03, 1]);
-  const y = useTransform(progress, stops, [10, 2, -1, 0]);
+  const stops = snapStops(start, 0.14);
+  // Lag behind the slab, fly in, then snap; hold settled through progress=1.
+  const opacity = useTransform(progress, [start, start + 0.03, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [...stops, 1], [0.45, 0.94, 1.04, 1, 1]);
+  const y = useTransform(progress, [...stops, 1], [22, 5, -2, 0, 0]);
 
   const style = disabled
     ? ({ "--brand": brand } as React.CSSProperties)
@@ -128,15 +129,16 @@ function Slab({
   disabled: boolean;
 }) {
   // Card clicks in first; its tiles begin once the slab has nearly landed.
-  const cardStart = index * 0.05;
-  const cardSpan = 0.22;
+  const cardStart = index * 0.07;
+  const cardSpan = 0.26;
   const cardStops = snapStops(cardStart, cardSpan);
-  const tileBase = cardStart + cardSpan * 0.75;
+  const tileBase = cardStart + 0.2;
 
-  const opacity = useTransform(progress, [cardStart, cardStart + 0.04], [0, 1]);
+  // Hold the settled value through progress=1 so a slab never fades back out.
+  const opacity = useTransform(progress, [cardStart, cardStart + 0.04, 1], [0, 1, 1]);
   // Desktop: slide in along Z (into the pane). Flat: rise in along Y.
-  const z = useTransform(progress, cardStops, [240, 44, -14, 0]);
-  const y = useTransform(progress, cardStops, [44, 10, -4, 0]);
+  const z = useTransform(progress, [...cardStops, 1], [240, 44, -14, 0, 0]);
+  const y = useTransform(progress, [...cardStops, 1], [44, 10, -4, 0, 0]);
 
   const style = disabled
     ? undefined
@@ -163,7 +165,7 @@ function Slab({
             key={tech.name}
             tech={tech}
             progress={progress}
-            start={tileBase + i * 0.018}
+            start={tileBase + i * 0.025}
             disabled={disabled}
           />
         ))}
@@ -178,71 +180,75 @@ export function TechStack() {
   const iso = desktop && !reduce;
   const disabled = Boolean(reduce);
 
+  // The tall outer section is the scroll track; the inner content pins (sticky)
+  // and the assembly scrubs as you scroll through the track.
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "center center"],
+    offset: ["start start", "end end"],
   });
 
-  const headingProps = {
-    initial: reduce ? (false as const) : { opacity: 0, y: 16 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.5 },
-    transition: { duration: D.base, ease: EASE },
-  };
-
-  return (
-    <section
-      ref={sectionRef}
-      id="stack"
-      className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32"
-    >
-      <motion.p
-        {...headingProps}
-        className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"
-      >
+  const heading = (
+    <>
+      <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
         What I build with
-      </motion.p>
-      <motion.h2
-        {...headingProps}
-        className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl"
-      >
+      </p>
+      <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">
         Tech stack
-      </motion.h2>
+      </h2>
       <SectionUnderline />
+    </>
+  );
 
+  const board = (
+    <div style={iso ? { perspective: `${ISO.perspective}px` } : undefined}>
       <div
-        className="mt-10"
-        style={iso ? { perspective: `${ISO.perspective}px` } : undefined}
+        className="relative"
+        style={
+          iso
+            ? {
+                transform: `rotateX(${ISO.rotateX}deg) rotateZ(${ISO.rotateZ}deg)`,
+                transformStyle: "preserve-3d",
+              }
+            : undefined
+        }
       >
+        {iso && <Pegboard />}
         <div
-          className="relative"
-          style={
-            iso
-              ? {
-                  transform: `rotateX(${ISO.rotateX}deg) rotateZ(${ISO.rotateZ}deg)`,
-                  transformStyle: "preserve-3d",
-                }
-              : undefined
-          }
+          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          style={iso ? { transformStyle: "preserve-3d" } : undefined}
         >
-          {iso && <Pegboard />}
-          <div
-            className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-            style={iso ? { transformStyle: "preserve-3d" } : undefined}
-          >
-            {stack.map((group, gi) => (
-              <Slab
-                key={group.label}
-                group={group}
-                index={gi}
-                progress={scrollYProgress}
-                iso={iso}
-                disabled={disabled}
-              />
-            ))}
-          </div>
+          {stack.map((group, gi) => (
+            <Slab
+              key={group.label}
+              group={group}
+              index={gi}
+              progress={scrollYProgress}
+              iso={iso}
+              disabled={disabled}
+            />
+          ))}
         </div>
+      </div>
+    </div>
+  );
+
+  // Reduced motion: render flat, in-flow, fully assembled.
+  if (disabled) {
+    return (
+      <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+        {heading}
+        <div className="mt-10">{board}</div>
+      </section>
+    );
+  }
+
+  // Pinned scrub: tall track + sticky viewport-height stage.
+  return (
+    <section ref={sectionRef} id="stack" className="relative z-10 h-[220vh]">
+      <div className="sticky top-0 flex min-h-screen flex-col justify-center mx-auto max-w-5xl px-6 py-16">
+        {heading}
+        <div className="mt-10">{board}</div>
       </div>
     </section>
   );
