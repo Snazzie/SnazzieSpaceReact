@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import { getCollection } from 'astro:content';
 import ArticleCard from '@/components/articles/ArticleCard.astro';
+import { LunarArticles } from '@/components/LunarArticles';
 
 const PAGE_SIZE = 12;
 
@@ -104,6 +105,9 @@ const posts = (await getCollection('articles', ({ data }) => !data.draft))
           </div>
         )}
 
+      </div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <LunarArticles client:idle />
       </div>
     </main>
 
