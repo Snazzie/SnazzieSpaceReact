@@ -101,10 +101,26 @@ function Slab({
   const rotateX = useTransform(progress, [0, 0.28, 0.58, 0.88, 1], [72, 42, 12, 0, 0]);
   const x = useTransform(progress, [0, 0.15, 0.88, 1], [dx, dx, 0, 0]);
   const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
-  // Consistent thin extruded edge BELOW the card (never overlapping the face,
-  // so it can't tint the body) gives each card the depth of a ~2cm plate.
-  const cardClass =
-    "relative flex flex-col rounded-2xl border border-border bg-card p-5 before:absolute before:inset-x-0 before:top-full before:-mt-3 before:h-5 before:-z-10 before:rounded-b-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']";
+  const cardBase =
+    "relative flex flex-col rounded-2xl border border-border bg-card p-5";
+  // Flat fallback only: a simple coplanar lip for a hint of depth.
+  const flatCardClass = `${cardBase} before:absolute before:inset-x-0 before:top-full before:-mt-3 before:h-5 before:-z-10 before:rounded-b-2xl before:bg-gradient-to-b before:from-zinc-700 before:to-zinc-950 before:content-['']`;
+
+  // Real 3D depth: a perpendicular bottom wall face. Because it's a true
+  // perpendicular surface in the card's preserve-3d space, the plate thickness
+  // stays correct at every tilt angle and zoom instead of foreshortening away.
+  const DEPTH = 10;
+  const wall = (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 top-full origin-top"
+      style={{
+        height: DEPTH,
+        transform: "rotateX(90deg)",
+        background: "linear-gradient(to bottom, #2a2a2e, #101012)",
+      }}
+    />
+  );
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5">
@@ -129,7 +145,7 @@ function Slab({
 
   if (!anim) {
     return (
-      <div className={cardClass}>
+      <div className={flatCardClass}>
         {tiles}
         {footer}
       </div>
@@ -144,12 +160,14 @@ function Slab({
           y,
           rotateX,
           transformOrigin: "center bottom",
+          transformStyle: "preserve-3d",
         } as unknown as React.CSSProperties
       }
-      className={cardClass}
+      className={cardBase}
     >
       {tiles}
       {footer}
+      {wall}
     </motion.div>
   );
 }
