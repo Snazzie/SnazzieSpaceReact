@@ -85,23 +85,16 @@ Add "Articles" link to the existing `Nav.tsx` component pointing to `/articles`.
 
 The `/articles` feed page includes a separate "From Lunar" section below the main feed, displaying articles from `lunarportfolio.com`.
 
-### CORS solution: Worker proxy
-Direct browser fetch to `lunarportfolio.com/rss.xml` is blocked by CORS. Solution: add a `/lunar-rss` route to the existing Cloudflare Worker (`worker/src/index.ts`) that:
-- Fetches `https://lunarportfolio.com/rss.xml` server-side
-- Returns the XML with `Access-Control-Allow-Origin: *`
-- Edge-caches via `caches.default` with `Cache-Control: max-age=3600` (same pattern as `/ghstats`)
+### CORS
+`lunarportfolio.com/rss.xml` is served with `Access-Control-Allow-Origin: *` via a `_headers` file in LunarLanding's `public/` directory (already committed). Direct browser fetch works with no proxy needed.
 
 ### Client component: `LunarArticles.tsx`
 - React component with `client:idle` directive on the articles page
-- Fetches `${WORKER_BASE}/lunar-rss` on mount
+- Fetches `https://lunarportfolio.com/rss.xml` directly on mount
 - Parses RSS XML via `DOMParser`
 - Renders up to 6 most recent Lunar articles as a card grid (same `ArticleCard`-style layout)
 - Loading skeleton + silent error fallback (section disappears if fetch fails)
 - Section heading: "From Lunar" with link to `lunarportfolio.com`
-
-### Worker change
-- New route `GET /lunar-rss` in `worker/src/index.ts`
-- No new KV bindings needed — no cron, just a live proxy with edge cache
 
 ---
 
@@ -134,4 +127,4 @@ Both are bun-installable, no config changes needed beyond adding the Tailwind pl
 - `Website/package.json` — add `@astrojs/rss`, `@tailwindcss/typography`
 - `Website/astro.config.mjs` — no changes needed (sitemap already present)
 - `Website/src/styles/global.css` — add `@plugin '@tailwindcss/typography'`
-- `worker/src/index.ts` — add `GET /lunar-rss` proxy route
+- `LunarLanding/public/_headers` — already committed (CORS on `/rss.xml`)
