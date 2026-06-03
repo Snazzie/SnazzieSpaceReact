@@ -66,8 +66,8 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `LLMs` | "L-L-Ms" | `LLMs[EH1 L, EH1 L, EH1 M Z]` |
 | `CSS` | "C-S-S" | `CSS[S IY1 EH1 S EH1 S]` |
 | `PAT` | "P-A-T" | `PAT[P AE1 T]` |
-| `KV` | "K-V" | `KV[K EY1 V IY1]` |
-| `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
+| `KV` | "K-V" | `KV[K EY1, V IY1]` |
+| `UTC` | "U-T-C" | `UTC[Y UW1, T IH1, S IY1]` |
 | `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
 | `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
 | `SQL` | "sequel" | `SQL[S IY1 K W AH0 L]` |

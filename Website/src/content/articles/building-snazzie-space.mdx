@@ -19,7 +19,7 @@ Astro's island architecture is a perfect fit for a portfolio site. The bulk of t
 
 ## Cloudflare Worker
 
-The GitHub stats section is powered by a Cloudflare Worker with a weekly cron job — Monday, six in the morning UTC[Y UW1 T IH1 S IY1]. It fetches contribution data via GitHub's GraphQL[G R AE1 F Q L] API using a PAT[P AE1 T] — keeping the token server-side and pulling private contributions. Results are written to KV[K EY1 V IY1] storage and served with edge caching. The site deploys weekly to pick up the fresh data baked into the static build.
+The GitHub stats section is powered by a Cloudflare Worker with a weekly cron job — Monday, six in the morning UTC[Y UW1 T IH1 S IY1]. It fetches contribution data via GitHub's GraphQL[G R AE1 F Q L] API using a PAT[P AE1 T] — keeping the token server-side and pulling private contributions. Results are written to KV[K EY1, V IY1] storage and served with edge caching. The site deploys weekly to pick up the fresh data baked into the static build.
 
 ## Cloudflare Traffic Stats
 
