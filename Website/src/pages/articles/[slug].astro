@@ -23,6 +23,23 @@ const formattedDate = post.data.date.toLocaleDateString('en-GB', {
 const wordCount = post.body?.split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 238));
 
+function buildTtsScript(body: string): string {
+  let t = body;
+  t = t.replace(/^---.*?---\s*/s, '');
+  t = t.replace(/^(import|export)\s+.*$/gm, '');
+  t = t.replace(/<[^>]+>/g, '');
+  t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+  t = t.replace(/^#{1,6}\s+(.+)$/gm, '$1...');
+  t = t.replace(/\*{1,3}([^*]+)\*{1,3}/g, '$1');
+  t = t.replace(/`[^`]+`/g, '');
+  t = t.replace(/```.*?```/gs, '');
+  t = t.replace(/\S+(\[[^\]]+\])/g, '$1');
+  t = t.replace(/\n{3,}/g, '\n\n');
+  return t.trim();
+}
+
+const ttsScript = buildTtsScript(post.body ?? '');
+
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 const audioPath = `/audio/${post.id}.flac`;
@@ -184,12 +201,12 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
             id="mdx-toggle"
             class="text-xs text-white/30 hover:text-white/60 transition-colors font-mono mb-4"
           >
-            &lt;/&gt; view source
+            ♪ voice script
           </button>
           <pre
             id="mdx-source"
             class="hidden text-xs text-white/50 bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 overflow-x-auto whitespace-pre-wrap break-words font-mono leading-relaxed"
-          >{post.body}</pre>
+          >{ttsScript}</pre>
         </div>
 
         <nav class="mt-8" aria-label="Article navigation">
@@ -208,7 +225,7 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         if (!btn || !src) return;
         btn.addEventListener('click', function () {
           var hidden = src.classList.toggle('hidden');
-          btn.textContent = hidden ? '</> view source' : '</> hide source';
+          btn.textContent = hidden ? '♪ voice script' : '♪ hide script';
         });
       })();
     </script>
