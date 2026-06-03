@@ -1,7 +1,6 @@
 ---
 import { getImage } from "astro:assets";
 import "@/styles/global.css";
-import { CursorField } from "@/components/CursorField";
 import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
 import { Career } from "@/components/Career";
@@ -225,7 +224,6 @@ const images: Record<string, string> = {
     </script>
   </head>
   <body class="relative bg-background text-foreground antialiased [overflow-x:clip]">
-    <CursorField client:idle />
     <Nav client:load role="navigation" aria-label="Main navigation" />
     <main role="main">
       <Intro client:visible avatarSrc={images[avatarUrl]} />
