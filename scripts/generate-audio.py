@@ -30,6 +30,7 @@ AUDIO_DIR = Path(__file__).parent.parent / "Website/public/audio"
 VOICES_DIR = Path(__file__).parent / "voices"
 SAMPLE_RATE = 24000
 WAVEFORM_BARS = 200
+SPEECH_SPEED = 1.15
 
 REF_AUDIO = str(VOICES_DIR / "seedtts_ref.wav")
 REF_TEXT = (
@@ -101,7 +102,7 @@ def generate(slug: str, model) -> None:
     text = strip_mdx(mdx.read_text())
     print(f"  {slug}: {len(text)} chars -> {out.name}")
 
-    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT)
+    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
     generate_waveform(slug)
     print(f"  done: {slug}")
