@@ -19,7 +19,7 @@ import raceiqImg from "@/assets/logos/raceiq.png";
 import cloudcatImg from "@/assets/logos/cloudcat.png";
 import btmImg from "@/assets/logos/btm.png";
 import mediaImg from "@/assets/logos/mediaontauri.png";
-import avatarImg from "@/assets/avatar.png";
+import avatarImg from "@/assets/avatar.webp";
 import shotImg from "@/assets/smartdos-screenshot.png";
 import darkthemehubImg from "@/assets/darkthemehub.png";
 import vitalImg from "@/assets/vital.png";
@@ -69,13 +69,13 @@ const [raceiq, cloudcat, btm, media, avatar, shot, darkthemehub, vital] =
     opt(darkthemehubImg, 256),
     opt(vitalImg, 256),
   ]);
-const avatarUrl = "https://avatars.githubusercontent.com/u/19627023?v=4";
+const avatarUrl = "/images/avatar.webp";
 const images: Record<string, string> = {
   "/logos/raceiq.png": raceiq.src,
   "/logos/cloudcat.png": cloudcat.src,
   "/logos/btm.png": btm.src,
   "/logos/mediaontauri.png": media.src,
-  [avatarUrl]: avatar.src,
+  [avatarUrl]: avatarImg.src,
   "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png":
     shot.src,
   "https://avatars2.githubusercontent.com/u/55282763?s=400&v=4": darkthemehub.src,

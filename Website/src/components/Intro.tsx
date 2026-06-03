@@ -1,5 +1,6 @@
-import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
+import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, type Variants } from "motion/react";
 import { useEffect, useState } from "react";
+import { AvatarParallax } from "@/components/AvatarParallax";
 import { GithubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
@@ -281,15 +282,29 @@ function KineticName() {
   );
 }
 
-export function Intro({
-  avatarSrc = "https://avatars.githubusercontent.com/u/19627023?v=4",
-}: { avatarSrc?: string } = {}) {
+
+export function Intro() {
   const reduce = useReducedMotion();
   const initial = reduce ? false : "hidden";
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (reduce) return;
+    mx.set(e.clientX / window.innerWidth - 0.5);
+    my.set(e.clientY / window.innerHeight - 0.5);
+  };
+
+  const onMouseLeave = () => {
+    animate(mx, 0, { type: "spring", stiffness: 120, damping: 18 });
+    animate(my, 0, { type: "spring", stiffness: 120, damping: 18 });
+  };
 
   return (
     <section
       id="home"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       className="relative z-10 flex min-h-[100dvh] items-start md:items-center px-6 pt-24 pb-20"
     >
       <motion.div
@@ -385,31 +400,7 @@ export function Intro({
           variants={rise}
           className="order-first flex justify-center md:order-none md:justify-end"
         >
-          <div className="relative">
-            <motion.div
-              aria-hidden
-              className="absolute -inset-4 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_70%)] blur-2xl"
-              animate={reduce ? undefined : { scale: [1, 1.06, 1], opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-            />
-            {!reduce && (
-              <motion.div
-                aria-hidden
-                className="absolute -inset-2.5 rounded-full border border-white/10"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 22, ease: "linear", repeat: Infinity }}
-              />
-            )}
-            <img
-              className="relative h-36 w-36 sm:h-44 sm:w-44 rounded-full border border-border object-cover md:h-72 md:w-72"
-              alt="Aaron"
-              src={avatarSrc}
-              width={288}
-              height={288}
-              fetchPriority="high"
-              loading="eager"
-            />
-          </div>
+          <AvatarParallax className="h-36 w-36 sm:h-44 sm:w-44 md:h-[420px] md:w-[420px]" mx={mx} my={my} reduce={reduce} />
         </motion.div>
       </motion.div>
 

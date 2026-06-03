@@ -185,6 +185,59 @@ section[id] {
   fill: currentColor;
 }
 
+/* ---- Avatar glitch: stacked strips shift + hue-rotate independently ---- */
+/* Technique: multiple img copies, each clipped to a horizontal band,        */
+/* animated with translateX + hue-rotate. Base stays greyscale.              */
+
+@keyframes glitch-strip-1 {
+  0%, 68%, 96%, 100% { opacity: 0;    transform: translateX(0);    clip-path: inset(10% 0 65% 0); }
+  70%                { opacity: 0.9;  transform: translateX(-12px); clip-path: inset(10% 0 65% 0); }
+  80%                { opacity: 0.8;  transform: translateX(-12px); clip-path: inset(38% 0 42% 0); }
+  86%                { opacity: 0.7;  transform: translateX(-12px); clip-path: inset(62% 0 18% 0); }
+  90%                { opacity: 0.3;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
+  94%                { opacity: 0.1;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
+}
+
+@keyframes glitch-strip-2 {
+  0%, 70%, 90%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(55% 0 25% 0); }
+  72%                { opacity: 0.85; transform: translateX(10px); clip-path: inset(55% 0 25% 0); }
+  80%                { opacity: 0.7;  transform: translateX(10px); clip-path: inset(20% 0 60% 0); }
+  86%                { opacity: 0.2;  transform: translateX(0);    clip-path: inset(20% 0 60% 0); }
+}
+
+@keyframes glitch-strip-3 {
+  0%, 72%, 88%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(70% 0 8% 0); }
+  74%                { opacity: 0.95; transform: translateX(-8px); clip-path: inset(70% 0 8% 0); }
+  79%                { opacity: 0.8;  transform: translateX(-8px); clip-path: inset(30% 0 50% 0); }
+  82%                { opacity: 0.6;  transform: translateX(-8px); clip-path: inset(5%  0 75% 0); }
+  86%                { opacity: 0.15; transform: translateX(0);    clip-path: inset(5%  0 75% 0); }
+}
+
+.avatar-glitch-base {
+  filter: grayscale(1);
+}
+.avatar-glitch-strip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+.avatar-glitch-strip-1 {
+  animation: glitch-strip-1 9s steps(1) infinite;
+  opacity: 0;
+}
+.avatar-glitch-strip-2 {
+  animation: glitch-strip-2 9s steps(1) infinite;
+  opacity: 0;
+}
+.avatar-glitch-strip-3 {
+  animation: glitch-strip-3 9s steps(1) infinite;
+  opacity: 0;
+}
+
 /* ---- Custom scrollbar (black) ---- */
 ::-webkit-scrollbar {
   width: 0.7em;

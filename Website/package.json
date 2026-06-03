@@ -13,7 +13,8 @@
     "deploy": "astro build && wrangler pages deploy dist",
     "audio": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py",
     "audio:all": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --all",
-    "audio:waveforms": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --waveforms"
+    "audio:waveforms": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --waveforms",
+    "avatar:layers": "node scripts/gen-avatar-layers.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -44,10 +45,12 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "@huggingface/transformers": "^4.2.0",
     "@types/d3-geo": "^3.1.0",
     "@types/topojson-client": "^3.1.5",
     "i18n-iso-countries": "^7.14.0",
     "playwright": "^1.60.0",
+    "sharp": "^0.34.5",
     "topojson-client": "^3.1.0",
     "vitest": "^4.1.7",
     "world-atlas": "^2.0.2"

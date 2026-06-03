@@ -169,6 +169,7 @@ export function TechStack() {
     offset: ["start start", "end end"],
   });
 
+
   // Measure each card's grid slot so it can collapse to the deck and fan back.
   // offsetLeft/Top are layout positions (unaffected by transforms), so this is
   // stable to re-run on resize even while the cards are mid-transform.
