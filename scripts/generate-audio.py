@@ -45,6 +45,8 @@ def strip_mdx(text: str) -> str:
     text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r"\1", text)
     text = re.sub(r"`[^`]+`", "", text)
     text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+    # word[PHONEME] → [PHONEME]: keep OmniVoice phoneme, drop written form
+    text = re.sub(r"\S+(\[[^\]]+\])", r"\1", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 

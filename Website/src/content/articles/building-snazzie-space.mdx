@@ -8,22 +8,22 @@ draft: false
 
 ## Why Astro
 
-Astro's island architecture is a perfect fit for a portfolio site. The bulk of the page is static HTML — fast, indexable, zero JS overhead — with React islands hydrating only where interactivity matters.
+Astro's island architecture is a perfect fit for a portfolio site. The bulk of the page is static HTML — fast, indexable, zero JavaScript overhead — with React islands hydrating only where interactivity matters.
 
 ## The Stack
 
 - **Astro 6** for routing and static generation
 - **React 19** for interactive sections (GitHub stats, traffic globe, tech stack 3D grid)
-- **Tailwind 4** via Vite plugin — no PostCSS, faster builds
+- **Tailwind 4** via Vite plugin — no PostCSS[P OW1 S T S IH1 S EH0 S], faster builds
 - **Cloudflare Pages** for hosting + **Cloudflare Workers** for the GitHub stats API
 
 ## Cloudflare Worker
 
-The GitHub stats section is powered by a Cloudflare Worker with a weekly cron job (Monday 06:00 UTC). It fetches contribution data via GitHub's GraphQL API using a PAT — keeping the token server-side and pulling private contributions. Results are written to KV storage and served with edge caching. The site deploys weekly to pick up the fresh data baked into the static build.
+The GitHub stats section is powered by a Cloudflare Worker with a weekly cron job — Monday, six in the morning UTC[Y UW1 T IH1 S IY1]. It fetches contribution data via GitHub's GraphQL[G R AE1 F Q L] API using a PAT[P AE1 T] — keeping the token server-side and pulling private contributions. Results are written to KV[K EY1 V IY0] storage and served with edge caching. The site deploys weekly to pick up the fresh data baked into the static build.
 
 ## Cloudflare Traffic Stats
 
-The Traffic section pulls real visitor analytics directly from Cloudflare's zone API — pageviews, unique visits, and country breakdown. Same worker serves both the GitHub stats and the analytics endpoint, keeping all Cloudflare API calls server-side behind the PAT.
+The Traffic section pulls real visitor analytics directly from Cloudflare's zone API — pageviews, unique visits, and country breakdown. Same worker serves both the GitHub stats and the analytics endpoint, keeping all Cloudflare API calls server-side behind the PAT[P AE1 T].
 
 ## What's Next
 
