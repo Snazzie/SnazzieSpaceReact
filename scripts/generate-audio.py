@@ -28,7 +28,7 @@ VOICES_DIR = Path(__file__).parent / "voices"
 SAMPLE_RATE = 24000
 WAVEFORM_BARS = 200
 
-REF_AUDIO = str(VOICES_DIR / "nature.wav")
+REF_AUDIO = str(VOICES_DIR / "seedtts_ref.wav")
 REF_TEXT = (
     "Some call me nature. Others call me Mother Nature. "
     "I've been here for over four point and five billion years, "
