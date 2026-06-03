@@ -109,6 +109,8 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
             <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
             <span>&middot;</span>
             <span>{readingTime} min read</span>
+            <span>&middot;</span>
+            <button id="mdx-toggle" class="font-mono hover:text-white transition-colors">see raw script</button>
           </div>
           <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
             {post.data.title}
@@ -183,33 +185,27 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
           </div>
         )}
 
-        <div class="prose prose-invert prose-base max-w-none
-          prose-headings:font-semibold prose-headings:tracking-tight
-          prose-a:text-white prose-a:underline prose-a:underline-offset-4 prose-a:hover:text-white/80
-          prose-strong:text-white
-          prose-code:text-white/80 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
-          prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
-          prose-blockquote:border-white/20 prose-blockquote:text-white/60
-          prose-li:marker:text-white/30
-          prose-hr:border-white/10
-        ">
-          <Content />
+        <div id="article-content">
+          <div class="prose prose-invert prose-base max-w-none
+            prose-headings:font-semibold prose-headings:tracking-tight
+            prose-a:text-white prose-a:underline prose-a:underline-offset-4 prose-a:hover:text-white/80
+            prose-strong:text-white
+            prose-code:text-white/80 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
+            prose-blockquote:border-white/20 prose-blockquote:text-white/60
+            prose-li:marker:text-white/30
+            prose-hr:border-white/10
+          ">
+            <Content />
+          </div>
         </div>
 
-        <div class="mt-16 pt-8 border-t border-white/10">
-          <button
-            id="mdx-toggle"
-            class="text-xs text-white/30 hover:text-white/60 transition-colors font-mono mb-4"
-          >
-            ♪ voice script
-          </button>
-          <pre
-            id="mdx-source"
-            class="hidden text-xs text-white/50 bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 overflow-x-auto whitespace-pre-wrap break-words font-mono leading-relaxed"
-          >{ttsScript}</pre>
-        </div>
+        <pre
+          id="raw-script"
+          class="hidden text-xs text-white/50 bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 overflow-x-auto whitespace-pre-wrap break-words font-mono leading-relaxed"
+        >{post.body}</pre>
 
-        <nav class="mt-8" aria-label="Article navigation">
+        <nav class="mt-16 pt-8 border-t border-white/10" aria-label="Article navigation">
           <a href="/articles/" class="text-sm text-white/50 hover:text-white transition-colors">
             &larr; All articles
           </a>
@@ -220,12 +216,16 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
 
     <script is:inline>
       (function () {
-        var btn = document.getElementById('mdx-toggle');
-        var src = document.getElementById('mdx-source');
-        if (!btn || !src) return;
+        var btn     = document.getElementById('mdx-toggle');
+        var content = document.getElementById('article-content');
+        var raw     = document.getElementById('raw-script');
+        if (!btn || !content || !raw) return;
+        var showing = false;
         btn.addEventListener('click', function () {
-          var hidden = src.classList.toggle('hidden');
-          btn.textContent = hidden ? '♪ voice script' : '♪ hide script';
+          showing = !showing;
+          content.classList.toggle('hidden', showing);
+          raw.classList.toggle('hidden', !showing);
+          btn.textContent = showing ? 'see rendered' : 'see raw script';
         });
       })();
     </script>
