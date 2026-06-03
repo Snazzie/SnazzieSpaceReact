@@ -151,39 +151,38 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
                 </div>
               </div>
 
-              <div class="flex items-center gap-4">
+              <div class="flex items-center gap-3">
                 <button
                   id="audio-play-btn"
                   aria-label="Play article audio"
-                  class="flex-shrink-0 w-11 h-11 flex items-center justify-center rounded-full bg-white text-black hover:bg-white/90 active:scale-95 transition-all duration-150 shadow-lg shadow-white/10"
+                  class="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-white text-black hover:bg-white/90 active:scale-95 transition-all duration-150 shadow-lg shadow-white/10"
                 >
-                  <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 translate-x-px">
+                  <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 translate-x-px">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
-                  <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 hidden">
+                  <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 hidden">
                     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                   </svg>
                 </button>
 
-                <div class="flex-1 min-w-0">
-                  <div class="relative cursor-pointer" id="audio-track" style="height:48px">
-                    <canvas id="audio-waveform" class="absolute inset-0 w-full h-full"></canvas>
-                    <input
-                      id="audio-seek"
-                      type="range"
-                      min="0"
-                      max="100"
-                      value="0"
-                      step="0.1"
-                      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                  </div>
-                  <div class="flex items-center justify-between mt-1.5">
-                    <span id="audio-current" class="text-[11px] text-white/30 tabular-nums">0:00</span>
-                    <span id="audio-duration" class="text-[11px] text-white/30 tabular-nums">0:00</span>
-                  </div>
+                <div class="relative cursor-pointer flex-1 min-w-0" id="audio-track" style="height:36px">
+                  <canvas id="audio-waveform" class="absolute inset-0 w-full h-full"></canvas>
+                  <input
+                    id="audio-seek"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  />
                 </div>
 
+                <div class="flex-shrink-0 flex items-center gap-1 text-[11px] text-white/30 tabular-nums">
+                  <span id="audio-current">0:00</span>
+                  <span>/</span>
+                  <span id="audio-duration">0:00</span>
+                </div>
               </div>
             </div>
             <audio id="article-audio" preload="metadata" src={audioPath}
