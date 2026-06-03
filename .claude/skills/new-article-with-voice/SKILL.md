@@ -124,7 +124,7 @@ React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles thes
 
 ## Step 4 — Generate audio
 
-First delete `dist/` to prevent stale cache, then build to write the `.txt` TTS script:
+The build auto-generates `.txt` TTS scripts into `Website/public/audio/` via the `tts-txt-generator` Astro integration. Delete `dist/` first to prevent stale cache, then build:
 
 ```powershell
 Remove-Item -Recurse -Force "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\dist" -ErrorAction SilentlyContinue
@@ -132,10 +132,10 @@ Set-Location "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website"
 bun run build
 ```
 
-**Validate txt before generating audio.** Read the first few lines of `Website/dist/audio/<slug>.txt` and confirm the content matches your MDX changes. If it shows old content, the build cache was stale — delete `dist/` and rebuild again.
+**Validate txt before generating audio.** Read the first few lines of `Website/public/audio/<slug>.txt` and confirm the content matches your MDX changes.
 
 ```powershell
-Get-Content "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\dist\audio\<slug>.txt" | Select-Object -First 3
+Get-Content "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\public\audio\<slug>.txt" | Select-Object -First 3
 ```
 
 Only proceed once the txt reflects the current MDX.
@@ -171,7 +171,7 @@ git commit -m "feat(articles): add <slug> article with voice"
 - [ ] OmniVoice markers on every occurrence of terms in phoneme table
 - [ ] No raw URLs — all domains wrapped as markdown links
 - [ ] `dist/` deleted before build (prevents stale cache)
-- [ ] `bun run build` passes
-- [ ] `dist/audio/<slug>.txt` confirmed to match MDX changes
+- [ ] `bun run build` passes (integration writes txt to `public/audio/`)
+- [ ] `public/audio/<slug>.txt` confirmed to match MDX changes
 - [ ] FLAC + waveform JSON generated
 - [ ] Committed
