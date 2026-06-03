@@ -16,7 +16,10 @@ import argparse
 import json
 import re
 import sys
+import warnings
 from pathlib import Path
+
+warnings.filterwarnings("ignore", message="Couldn't find ffmpeg", category=RuntimeWarning)
 
 import numpy as np
 import soundfile as sf
@@ -35,6 +38,13 @@ REF_TEXT = (
     "twenty-two thousand five hundred times longer than you."
 )
 
+# Words OmniVoice mispronounces — mapped to CMU phoneme annotations.
+# strip_mdx converts word[PHONEME] → [PHONEME] before TTS, so these are
+# applied before that step.
+WORD_SUBS: dict[str, str] = {
+    "stays": "stays[S T EY1 Z]",
+}
+
 
 def strip_mdx(text: str) -> str:
     text = re.sub(r"^---.*?---\s*", "", text, flags=re.DOTALL)
@@ -46,7 +56,9 @@ def strip_mdx(text: str) -> str:
     text = re.sub(r" {2,}", " ", text)
     text = re.sub(r"`[^`]+`", "", text)
     text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
-    text = text.replace("—", ", ")
+    text = re.sub(r"[–—―]", ", ", text)
+    for word, replacement in WORD_SUBS.items():
+        text = re.sub(rf"\b{re.escape(word)}\b", replacement, text, flags=re.IGNORECASE)
     # word[PHONEME] → [PHONEME]: keep OmniVoice phoneme, drop written form
     text = re.sub(r"\S+(\[[^\]]+\])", r"\1", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
