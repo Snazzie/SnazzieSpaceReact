@@ -33,6 +33,7 @@ VOICES_DIR = Path(__file__).parent / "voices"
 SAMPLE_RATE = 24000
 WAVEFORM_BARS = 200
 SPEECH_SPEED = 1.15
+SPEECH_INSTRUCT = "male, young adult, american accent"
 SEED = 42
 
 REF_AUDIO = str(VOICES_DIR / "seedtts_ref.wav")
@@ -77,7 +78,7 @@ def generate(slug: str, model) -> None:
     text = txt.read_text(encoding="utf-8")
     print(f"  {slug}: {len(text)} chars -> {out.name}")
 
-    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
+    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, instruct=SPEECH_INSTRUCT, speed=SPEECH_SPEED)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
     generate_waveform(slug)
     print(f"  done: {slug}")
@@ -90,7 +91,7 @@ def generate_sample(name: str, text: str, model) -> None:
     SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
     out = SAMPLES_DIR / f"{name}.flac"
     print(f"  {name}: {text!r} -> {out.name}")
-    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
+    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, instruct=SPEECH_INSTRUCT, speed=SPEECH_SPEED)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
     print(f"  done")
 

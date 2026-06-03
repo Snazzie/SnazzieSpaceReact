@@ -11,9 +11,10 @@
     "preview": "astro preview",
     "test": "vitest run",
     "deploy": "astro build && wrangler pages deploy dist",
-    "audio": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py",
-    "audio:all": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --all",
-    "audio:waveforms": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --waveforms",
+    "audio": "python ../scripts/generate-audio.py --seed 42",
+    "audio:all": "python ../scripts/generate-audio.py --seed 42 --all",
+    "audio:waveforms": "python ../scripts/generate-audio.py --seed 42 --waveforms",
+    "audio:sample": "python ../scripts/generate-audio.py --seed 42 --sample",
     "avatar:layers": "node scripts/gen-avatar-layers.mjs",
     "avatar:grain": "node scripts/gen-grain.mjs"
   },

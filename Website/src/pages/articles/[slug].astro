@@ -46,6 +46,7 @@ function buildTtsScript(body: string): string {
     t = t.replace(new RegExp(`\\b${word}\\b`, 'gi'), replacement); // known mispronunciation fixes
   }
   t = t.replace(/\S+(\[[^\]]+\])/g, '$1');                     // word[PHONEME] → [PHONEME]
+  t = t.replace(/[›»«‹]/g, '');                               // strip decorative arrow/quote chars
   t = t.replace(/\n+/g, ' ... ');                              // flatten newlines → inline pause markers
   t = t.replace(/ {2,}/g, ' ');                               // collapse spaces created by flatten
   return t.trim();

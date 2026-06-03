@@ -13,27 +13,27 @@ Each article on [snazzie.space](https://snazzie.space) is an MDX file. When you 
   <div class="flex items-stretch gap-0 min-w-[520px]">
     <div class="flex-1 rounded-xl border border-white/10 bg-white/[0.03] p-4">
       <div class="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">Step 1</div>
-      <div class="text-sm font-semibold text-white mb-1">Write article</div>
-      <div class="text-xs text-white/50">MDX file with frontmatter, prose, and phoneme annotations inline</div>
+      <div class="text-sm font-semibold text-white mb-1">Write MDX article</div>
+      <div class="text-xs text-white/50">Prose, frontmatter, and content — no phoneme annotations yet.</div>
     </div>
     <div class="flex items-center px-2 text-white/20 text-lg select-none">›</div>
     <div class="flex-1 rounded-xl border border-white/10 bg-white/[0.03] p-4">
       <div class="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">Step 2</div>
-      <div class="text-sm font-semibold text-white mb-1">LLM enrichment</div>
-      <div class="text-xs text-white/50">Custom skill annotates acronyms and unusual terms with CMU phonemes</div>
+      <div class="text-sm font-semibold text-white mb-1">Enrich with LLM</div>
+      <div class="text-xs text-white/50">Custom skill annotates acronyms and unusual terms with CMU phonemes from a curated list.</div>
     </div>
     <div class="flex items-center px-2 text-white/20 text-lg select-none">›</div>
     <div class="flex-1 rounded-xl border border-white/10 bg-white/[0.03] p-4">
       <div class="text-[10px] font-semibold uppercase tracking-widest text-white/30 mb-2">Step 3</div>
       <div class="text-sm font-semibold text-white mb-1">Python TTS model</div>
-      <div class="text-xs text-white/50">OmniVoice generates FLAC audio + waveform JSON, committed with the article</div>
+      <div class="text-xs text-white/50">OmniVoice generates FLAC audio + waveform JSON, committed with the article.</div>
     </div>
   </div>
 </div>
 
 ## The content layer
 
-Articles live in `Website/src/content/articles/` as MDX files. Astro's content collections type-check the frontmatter at build time — title, date, excerpt, tags, draft flag. The slug comes from the filename.
+Articles live in the content directory as MDX files. Astro's content collections type-check the frontmatter at build time — title, date, excerpt, tags, draft flag. The slug comes from the filename.
 
 MDX gets rendered at build time. No client-side markdown parsing, no JavaScript fetching content on load. The page that reaches you is static HTML[EY1 CH T IY1 EH1 M EH1 L]. Astro ships zero JavaScript by default, so the only scripts on an article page are the audio player and a small toggle for the raw TTS script view — hit **see raw script** at the top of any article to see exactly what text gets fed to the voice model.
 
@@ -45,9 +45,7 @@ The TTS model, OmniVoice, uses CMU[S IY1 EH1 M Y UW1] ARPAbet[AA1 R P AH0 B EH2 
 The API[EY1 P IY0 AY1] handles the request.
 ```
 
-The display layer strips the `[...]` part so the reader sees "API". The TTS pipeline receives the phoneme sequence instead of the raw letters. A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
-
-Here's what the difference sounds like for four common terms:
+The display layer strips the bracket content so the reader sees "API". The TTS pipeline receives the phoneme sequence instead of the raw letters. A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
 
 <div data-tts-skip class="not-prose my-6 rounded-xl border border-white/[0.08] overflow-hidden">
   <table class="w-full text-sm">
@@ -87,8 +85,8 @@ The same annotation system also handles paralinguistic markers — pauses, soft 
 
 ## Audio generation
 
-The Astro build processes each MDX file and writes a `.txt` containing the cleaned TTS script. That file is the single source of truth — it strips MDX syntax, converts em dashes to pauses, flips phoneme annotations from `word[PHONEME]` to `[PHONEME]`, and excludes any block marked `data-tts-skip`. The "see raw script" toggle on each article shows exactly this output.
+The Astro build processes each MDX file and writes a plain text TTS script. That file is the single source of truth — it strips MDX syntax, converts em dashes to pauses, flips phoneme annotations from written form to their phoneme sequence, and excludes any HTML[EY1 CH T IY1 EH1 M EH1 L] block marked with `data-tts-skip` — the comparison table above uses this to stay out of the narration. The "see raw script" toggle on each article shows exactly this output.
 
-A Python script then reads the `.txt`, seeds the RNG for reproducibility, and passes the text to OmniVoice running on CUDA with a fixed reference voice sample. Every article uses the same reference wav, so the voice is consistent. Speed is set to 1.15x. Output is a FLAC and a waveform JSON — 200 normalised peak amplitude values used to render the player visualisation.
+A Python script then reads that file, seeds the RNG for reproducibility, and passes the text to OmniVoice running on CUDA with a fixed reference voice sample. Every article uses the same reference wav, so the voice is consistent. Speed is set to 1.15x. Output is a FLAC and a waveform JSON — 200 normalised peak amplitude values used to render the player visualisation.
 
 Both files are committed with the article and served statically from Cloudflare's CDN[S IH1 D IH0 EH1 N]. No API[EY1 P IY0 AY1] calls at read time. The TTS inference runs once on my machine before commit. After that it's just a file.
