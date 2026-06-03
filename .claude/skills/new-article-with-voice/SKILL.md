@@ -70,7 +70,7 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
 | `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
 | `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
-| `SQL` | "sequel" | `SQL[S IH1 K W AH0 L]` |
+| `SQL` | "sequel" | `SQL[S IY1 K W AO0 L]` |
 | `HTML` | "H-T-M-L" | `HTML[EY1 CH T IH1 EH1 M EH1 L]` |
 | `URL` | "U-R-L" | `URL[Y UW1 AA1 R EH1 L]` |
 | `SEO` | "S-E-O" | `SEO[EH1 S IY0 OW0]` |
@@ -110,11 +110,10 @@ Standalone, stripped from display. Use sparingly — 1-2 per article max, only w
 | `[question-ei]` | Skeptical question |
 | `[question-yi]` | Light questioning |
 | `[surprise-ah]` | Mild surprise reveal |
-| `[surprise-oh]` | Clear surprise |
 | `[surprise-wa]` | Strong surprise |
 | `[surprise-yo]` | Punchy surprise |
 
-Place at the start of a sentence. Do NOT use `[laughter]` or `[dissatisfaction-hnn]`.
+Place at the start of a sentence. Do NOT use `[laughter]`, `[dissatisfaction-hnn]`, or `[surprise-oh]`.
 
 ### Do NOT annotate
 React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles these fine.

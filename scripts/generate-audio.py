@@ -16,6 +16,7 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 import warnings
 from pathlib import Path
 
@@ -52,12 +53,12 @@ def strip_mdx(text: str) -> str:
     text = re.sub(r"^(import|export)\s+.*$", "", text, flags=re.MULTILINE)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-    text = re.sub(r"^#{1,6}\s+(.+)$", r"\1...", text, flags=re.MULTILINE)
+    text = re.sub(r"^#{1,6}\s+(.+)$", r"... \1...", text, flags=re.MULTILINE)
     text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r" \1 ", text)
     text = re.sub(r" {2,}", " ", text)
     text = re.sub(r"`[^`]+`", "", text)
     text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
-    text = re.sub(r"[–—―]", ", ", text)
+    text = "".join(", " if unicodedata.category(c) == "Pd" and ord(c) != 0x2D else c for c in text)
     for word, replacement in WORD_SUBS.items():
         text = re.sub(rf"\b{re.escape(word)}\b", replacement, text, flags=re.IGNORECASE)
     # word[PHONEME] → [PHONEME]: keep OmniVoice phoneme, drop written form
@@ -99,7 +100,7 @@ def generate(slug: str, model) -> None:
     out = AUDIO_DIR / f"{slug}.flac"
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 
-    text = strip_mdx(mdx.read_text())
+    text = strip_mdx(mdx.read_text(encoding="utf-8"))
     print(f"  {slug}: {len(text)} chars -> {out.name}")
 
     audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
