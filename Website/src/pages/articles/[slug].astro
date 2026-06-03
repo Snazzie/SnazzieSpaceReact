@@ -33,7 +33,7 @@ function buildTtsScript(body: string): string {
   let t = body;
   t = t.replace(/^---.*?---\s*/s, '');                         // strip frontmatter
   t = t.replace(/^(import|export)\s+.*$/gm, '');               // strip MDX imports/exports
-  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?<\/[^>]+>/g, ''); // strip data-tts-skip blocks including content
+  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?^<\/\w+>/gm, ''); // strip data-tts-skip blocks — outer closing tag is at col 0
   t = t.replace(/```.*?```/gs, '');                            // strip code blocks BEFORE tag/inline strip
   t = t.replace(/`[^`]+`/g, '');                               // strip inline code BEFORE tag strip (prevents empty backtick pairs eating content)
   t = t.replace(/<[^>]+>/g, '');                               // strip JSX/HTML tags
@@ -58,7 +58,7 @@ function buildDisplayScript(body: string): string {
   let t = body;
   t = t.replace(/^---.*?---\s*/s, '');                         // strip frontmatter
   t = t.replace(/^(import|export)\s+.*$/gm, '');               // strip MDX imports/exports
-  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?<\/[^>]+>/g, ''); // strip data-tts-skip blocks including content
+  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?^<\/\w+>/gm, ''); // strip data-tts-skip blocks — outer closing tag is at col 0
   t = t.replace(/```.*?```/gs, '');                            // strip code blocks BEFORE tag/inline strip
   t = t.replace(/`[^`]+`/g, '');                               // strip inline code BEFORE tag strip
   t = t.replace(/<[^>]+>/g, '');                               // strip JSX/HTML tags

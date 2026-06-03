@@ -59,21 +59,21 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | Written | Sounds like | Marker |
 |---------|-------------|--------|
 | `ASP.NET` | "A-S-P dot net" | `ASP.NET[AE1 S P IH0 DAA1 T N EH1 T]` |
-| `SSR` | "S-S-R" | `SSR[EH1 S EH1 S AA1 R]` |
+| `SSR` | "S-S-R" | `SSR[EH0 S, EH0 S, AA1 R]` |
 | `CDN` | "C-D-N" | `CDN[S IH1 D IH0 EH1 N]` |
 | `CMS` | "C-M-S" | `CMS[S IH1 EH0 M EH0 S]` |
-| `LLM` | "L-L-M" | `LLM[EH1 L EH0 M]` |
-| `LLMs` | "L-L-Ms" | `LLMs[EH1 L EH0 M Z]` |
+| `LLM` | "L-L-M" | `LLM[EH1 L, EH1 L, EH1 M]` |
+| `LLMs` | "L-L-Ms" | `LLMs[EH1 L, EH1 L, EH1 M Z]` |
 | `CSS` | "C-S-S" | `CSS[S IY1 EH1 S EH1 S]` |
 | `PAT` | "P-A-T" | `PAT[P AE1 T]` |
-| `KV` | "K-V" | `KV[K EY1 V IY0]` |
+| `KV` | "K-V" | `KV[K EY1 V IY1]` |
 | `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
 | `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
 | `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
 | `SQL` | "sequel" | `SQL[S IY1 K W AH0 L]` |
 | `HTML` | "H-T-M-L" | `HTML[EY1 CH T IY1 EH1 M EH1 L]` |
 | `URL` | "U-R-L" | `URL[Y UW1 AA1 R EH1 L]` |
-| `SEO` | "S-E-O" | `SEO[EH1 S IY0 OW0]` |
+| `SEO` | "S-E-O" | `SEO[EH0 S IY1 OW1]` |
 
 **Tech names / frameworks** (correct pronunciation):
 

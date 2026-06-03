@@ -1,7 +1,7 @@
 ---
 title: "The Stack Behind These Articles"
 date: 2026-06-03
-excerpt: "MDX, a local Python TTS pipeline, and a canvas waveform player — here's how the articles on this site actually work."
+excerpt: "MDX, phoneme annotations, OmniVoice on CUDA, and a static FLAC — here's the full pipeline behind every article on this site."
 tags: ["astro", "mdx", "tts", "audio", "web-development"]
 draft: false
 featured: true
@@ -39,7 +39,7 @@ MDX gets rendered at build time. No client-side markdown parsing, no JavaScript 
 
 ## Phoneme annotations
 
-The TTS model — OmniVoice, released by k2-fsa — uses CMU[S IY1 EH1 M Y UW1] ARPAbet[AA1 R P AH0 B EH2 T] phonemes. Acronyms and unusual terms get annotated inline in the MDX:
+The TTS model, OmniVoice, uses CMU[S IY1 EH1 M Y UW1] ARPAbet[AA1 R P AH0 B EH2 T] phonemes. Acronyms and unusual terms get annotated inline in the MDX:
 
 ```
 The API[EY1 P IY0 AY1] handles the request.
@@ -59,24 +59,24 @@ Here's what the difference sounds like for four common terms:
     </thead>
     <tbody>
       <tr class="border-b border-white/[0.05]">
-        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">API</span><span class="text-red-400/70 mr-2">"ape-y"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/api-without.flac" aria-label="Play without marker">&#9654;</button></td>
-        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[EY1 P IY0 AY1]'}</code><span class="text-green-400/70 mr-2">"A-P-I"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/api-with.flac" aria-label="Play with marker">&#9654;</button></td>
-      </tr>
-      <tr class="border-b border-white/[0.05]">
         <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">SQL</span><span class="text-red-400/70 mr-2">"s-q-l"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/sql-without.flac" aria-label="Play without marker">&#9654;</button></td>
         <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[S IY1 K W AH0 L]'}</code><span class="text-green-400/70 mr-2">"sequel"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/sql-with.flac" aria-label="Play with marker">&#9654;</button></td>
       </tr>
       <tr class="border-b border-white/[0.05]">
-        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">Astro</span><span class="text-red-400/70 mr-2">"ast-ro" (flat)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/astro-without.flac" aria-label="Play without marker">&#9654;</button></td>
-        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[AE1 S T R OW0]'}</code><span class="text-green-400/70 mr-2">"AE-stro"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/astro-with.flac" aria-label="Play with marker">&#9654;</button></td>
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">KV</span><span class="text-red-400/70 mr-2">(silent)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/kv-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[K EY1 V IY1]'}</code><span class="text-green-400/70 mr-2">"K-V"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/kv-with.flac" aria-label="Play with marker">&#9654;</button></td>
       </tr>
       <tr class="border-b border-white/[0.05]">
-        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">CSS</span><span class="text-red-400/70 mr-2">"css" (garbled)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/css-without.flac" aria-label="Play without marker">&#9654;</button></td>
-        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[S IY1 EH1 S EH1 S]'}</code><span class="text-green-400/70 mr-2">"C-S-S"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/css-with.flac" aria-label="Play with marker">&#9654;</button></td>
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">SSR</span><span class="text-red-400/70 mr-2">"sarr"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/ssr-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[EH0 S, EH0 S, AA1 R]'}</code><span class="text-green-400/70 mr-2">"S-S-R"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/ssr-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+      <tr class="border-b border-white/[0.05]">
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">LLM</span><span class="text-red-400/70 mr-2">(silent)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/llm-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[EH1 L, EH1 L, EH1 M]'}</code><span class="text-green-400/70 mr-2">"EL-EL-EM"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/llm-with.flac" aria-label="Play with marker">&#9654;</button></td>
       </tr>
       <tr>
-        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">NumPy</span><span class="text-red-400/70 mr-2">"num-pee"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/numpy-without.flac" aria-label="Play without marker">&#9654;</button></td>
-        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[N AH1 M P AY0]'}</code><span class="text-green-400/70 mr-2">"num-pie"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/numpy-with.flac" aria-label="Play with marker">&#9654;</button></td>
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">UTC</span><span class="text-red-400/70 mr-2">"you-tee"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/utc-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[Y UW1 T IH1 S IY1]'}</code><span class="text-green-400/70 mr-2">"U-T-C"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/utc-with.flac" aria-label="Play with marker">&#9654;</button></td>
       </tr>
     </tbody>
   </table>
@@ -87,28 +87,8 @@ The same annotation system also handles paralinguistic markers — pauses, soft 
 
 ## Audio generation
 
-A Python script runs locally before committing. It takes a slug and does five things:
+The Astro build processes each MDX file and writes a `.txt` containing the cleaned TTS script. That file is the single source of truth — it strips MDX syntax, converts em dashes to pauses, flips phoneme annotations from `word[PHONEME]` to `[PHONEME]`, and excludes any block marked `data-tts-skip`. The "see raw script" toggle on each article shows exactly this output.
 
-First, it reads the MDX file with explicit UTF-8 encoding. That matters on Windows, where the default encoding decodes em dash bytes as a euro sign, which OmniVoice then reads as "euro." Every em dash becomes a comma for a natural pause. Regular hyphens stay — "real-time" should sound like "real-time," not "real, time."
+A Python script then reads the `.txt`, seeds the RNG for reproducibility, and passes the text to OmniVoice running on CUDA with a fixed reference voice sample. Every article uses the same reference wav, so the voice is consistent. Speed is set to 1.15x. Output is a FLAC and a waveform JSON — 200 normalised peak amplitude values used to render the player visualisation.
 
-Second, it strips MDX syntax: frontmatter, import/export statements, HTML[EY1 CH T IY1 EH1 M EH1 L] tags, markdown links (keeping the display text), bold, code spans, code blocks. Headers get an ellipsis before and after to create a beat between sections.
-
-Third, phoneme annotations flip: `word[PHONEME]` becomes `[PHONEME]`, dropping the written form. A word substitution map handles terms OmniVoice consistently mispronounces regardless of phoneme markers.
-
-Fourth, the cleaned text goes to OmniVoice running on CUDA with a reference voice sample. The same wav file is used every time, so every article has the same voice. Speech speed is set to 1.15x — slightly faster than the model default, which reads a little slow.
-
-Fifth, the output writes to a FLAC file and a waveform JSON. The waveform is 200 normalised peak values between 0 and 1, computed by chunking the audio samples and taking the max absolute amplitude per chunk.
-
-## The player
-
-The article page checks at build time whether the FLAC exists. If it does, a player renders above the article body. If not, nothing renders — there's no broken UI or missing element, the section just isn't there.
-
-The waveform is a `<canvas>` element. The 200 peak values draw as rounded bars scaled to canvas height, accounting for device pixel ratio. Bars left of the playhead render full white. Unplayed bars render at reduced opacity scaled by their amplitude, so quieter sections look visually quieter.
-
-The seek input overlays the canvas at zero opacity. Clicking anywhere on the waveform scrubs the audio without any visible range input. Volume is a separate control.
-
-The `<audio>` element uses `preload="metadata"` so duration loads on page paint without buffering the file.
-
-## How it fits together
-
-The FLAC ships with the static build and serves from Cloudflare's CDN[S IH1 D IH0 EH1 N]. No API[EY1 P IY0 AY1] calls at read time, no server processing, nothing to go wrong in production. The expensive part — the TTS inference — runs once on my machine before the commit. After that it's just a file.
+Both files are committed with the article and served statically from Cloudflare's CDN[S IH1 D IH0 EH1 N]. No API[EY1 P IY0 AY1] calls at read time. The TTS inference runs once on my machine before commit. After that it's just a file.

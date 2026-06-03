@@ -85,27 +85,14 @@ def generate(slug: str, model) -> None:
 
 SAMPLES_DIR = AUDIO_DIR / "samples"
 
-# Pairs of (name, without-marker text, with-marker phoneme text)
-# (name, with-phoneme) — "without" clip uses name as-is (lowercase forces mispronunciation)
-PHONEME_SAMPLES = [
-    ("api",   "[EY1 P IY0 AY1]"),
-    ("sql",   "[S IY1 K W AH0 L]"),
-    ("astro", "[AE1 S T R OW0]"),
-    ("css",   "[S IY1 EH1 S EH1 S]"),
-    ("numpy", "[N AH1 M P AY0]"),
-]
 
-
-def generate_samples(model) -> None:
+def generate_sample(name: str, text: str, model) -> None:
     SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
-    print(f"Generating {len(PHONEME_SAMPLES) * 2} sample clips...")
-    for name, with_phoneme in PHONEME_SAMPLES:
-        for variant, text in (("without", name), ("with", with_phoneme)):
-            out = SAMPLES_DIR / f"{name}-{variant}.flac"
-            print(f"  {name}-{variant}: {text!r} -> {out.name}")
-            audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
-            sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
-    print("  done")
+    out = SAMPLES_DIR / f"{name}.flac"
+    print(f"  {name}: {text!r} -> {out.name}")
+    audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
+    sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
+    print(f"  done")
 
 
 def detect_device() -> str:
@@ -130,15 +117,17 @@ def main() -> None:
     parser.add_argument("slug", nargs="?", help="Article slug (filename without .mdx)")
     parser.add_argument("--all", action="store_true", help="Regenerate all audio+waveforms")
     parser.add_argument("--waveforms", action="store_true", help="Regenerate waveforms only (no TTS)")
-    parser.add_argument("--samples", action="store_true", help="Regenerate phoneme comparison sample clips")
+    parser.add_argument("--sample", nargs=2, metavar=("NAME", "TEXT"),
+                        help="Generate a single sample clip: --sample <name> <text>")
     parser.add_argument("--seed", type=int, default=SEED, help=f"RNG seed for reproducible output (default: {SEED})")
     args = parser.parse_args()
     SEED = args.seed
     torch.manual_seed(SEED)
 
-    if args.samples:
+    if args.sample:
+        name, text = args.sample
         model = load_model()
-        generate_samples(model)
+        generate_sample(name, text, model)
         return
 
     if args.waveforms:
