@@ -86,6 +86,26 @@ For new terms not in this table: spell each letter as a phoneme or find the CMU 
 https://snazzie.space                    ← TTS reads full URL ✗
 ```
 
+### Paralinguistic markers
+
+Standalone, stripped from display. Use sparingly — 1-2 per article max, only where tone genuinely fits.
+
+| Marker | Use when |
+|--------|----------|
+| `[sigh]` | Resigned acceptance, "here we are again" moments |
+| `[confirmation-en]` | Affirming a point mid-thought |
+| `[question-en]` | Rhetorical "right?" beat |
+| `[question-ah]` | Soft questioning tone |
+| `[question-oh]` | Surprised question |
+| `[question-ei]` | Skeptical question |
+| `[question-yi]` | Light questioning |
+| `[surprise-ah]` | Mild surprise reveal |
+| `[surprise-oh]` | Clear surprise |
+| `[surprise-wa]` | Strong surprise |
+| `[surprise-yo]` | Punchy surprise |
+
+Place at the start of a sentence. Do NOT use `[laughter]` or `[dissatisfaction-hnn]`.
+
 ### Do NOT annotate
 React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles these fine.
 
