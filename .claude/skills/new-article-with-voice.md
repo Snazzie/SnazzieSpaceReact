@@ -64,7 +64,7 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `CMS` | "C-M-S" | `CMS[S IH1 EH0 M EH0 S]` |
 | `LLM` | "L-L-M" | `LLM[EH1 L EH0 M]` |
 | `LLMs` | "L-L-Ms" | `LLMs[EH1 L EH0 M Z]` |
-| `CSS` | "C-S-S" | `CSS[S IH1 EH0 S EH0 S]` |
+| `CSS` | "C-S-S" | `CSS[S IY1 EH1 S EH1 S]` |
 | `PAT` | "P-A-T" | `PAT[P AE1 T]` |
 | `KV` | "K-V" | `KV[K EY1 V IY0]` |
 | `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
@@ -86,7 +86,7 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `Actix` | "ak-tiks" | `Actix[AE1 K T IH0 K S]` |
 | `Elysia` | "eh-lee-see-ah" | `Elysia[EH1 L IH0 S IY0 AH0]` |
 | `Hono` | "ho-no" | `Hono[HH OW1 N OW0]` |
-| `PostCSS` | "post-C-S-S" | `PostCSS[P OW1 S T S IH1 S EH0 S]` |
+| `PostCSS` | "post-C-S-S" | `PostCSS[P OW1 S T S IY1 EH1 S EH1 S]` |
 
 For new terms: look up the CMU pronunciation dictionary, or spell each letter/syllable as ARPAbet phonemes.
 
