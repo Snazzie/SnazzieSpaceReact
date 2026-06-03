@@ -1,86 +1,63 @@
 ---
 title: "Why Are You Still Using WordPress?"
 date: 2026-06-03
-excerpt: "WordPress is bloated, expensive, and slow. Astro + LLMs let you build the site you actually want—for free."
+excerpt: "WordPress was the right call in 2005. The reasons you picked it have quietly stopped being true."
 tags: ["wordpress", "astro", "web-development", "design", "llm"]
 draft: false
 ---
 
-You're still using WordPress because it works. But "works" isn't the same as "right."
+You're still on WordPress because it works. Fair. But "works" and "still the right choice" are different claims, and the gap between them has been widening for years.
 
-In 2005, WordPress democratized web publishing. You didn't need a developer or a server — you got a web presence. That was revolutionary. But it's 2026 now, and the problem WordPress solved is no longer your constraint. What used to be the best trade-off has become dead weight.
+Back in 2005, WordPress made a real trade. You gave up control over the underlying code and got, in return, a website without a developer or a server bill. That was an extraordinary deal. The thing worth noticing in 2026 is that almost every term of that deal has quietly expired.
 
-## The Five Things Dragging You Down
+## The slow tax you stopped noticing
 
-### Bloat
+WordPress isn't slow because the people who build it are careless. It's slow because it's an application pretending to be a website. Every page boot drags a database, a theme layer, and whatever plugins you've accumulated along the way. You're running software to render text that never changes.
 
-WordPress is slow. Not because the platform can't be fast, but because it's optimized for flexibility at the cost of everything else. Themes, plugins, a database CMS — you're running a small application just to serve static content. Every site loads the entire plugin ecosystem whether it uses it or not. You're also one theme update away from breaking something you spent hours customizing.
+That overhead is the part visitors feel. The part *you* feel is worse, and it shows up the moment you try to change something.
 
-The middleman adds friction. You can't see the actual HTML and CSS anymore — they're hidden behind abstraction layers. Want to change how something looks? Hope the theme's customizer exposes a control for it. Want to change how it behaves? Pray a plugin exists.
+Want to move a section, tighten a color, adjust spacing? You're not editing your site. You're negotiating with a theme. If the customizer exposes a control for what you want, you're lucky. If it doesn't, you're hunting for a plugin, and now two plugins disagree, and you're debugging a conflict between code you didn't write and can't read. A change that should take thirty seconds takes an afternoon, and you ship it nervous.
 
-### Slow Iteration
+This is the design ceiling nobody warns you about when you start. You don't pick the site you want. You pick the template that's closest, then spend months making peace with the distance. Every layout you can't quite get, every animation the theme won't allow, is a small surrender of the thing you actually had in your head.
 
-Change your site color? Rebuild. Add a new section? Update the theme and hope it doesn't conflict with your existing plugins. That conflict between two plugins? Welcome to debugging something you don't own.
+## The bills that don't show up on the invoice
 
-Real iteration means making a change and seeing the result immediately. With WordPress, you're waiting for rebuilds, managing dependencies, and gambling that your changes won't break the fragile plugin ecosystem. A designer shouldn't need to think about database migrations or plugin version compatibility.
+The obvious costs are easy to total: hosting, a premium theme, the three plugins that went paid the year after you adopted them. The expensive costs are the ones that hide.
 
-### Design Ceiling
+Maintenance is a subscription you pay in attention. There's always an update waiting, and updating is the moment things break, so you either update and brace, or skip it and accumulate risk. That risk has a name: WordPress is the most-attacked CMS on the internet precisely because it's everywhere. The admin panel is a door. The database is a vault. Every plugin is another window left open. You're not running a website, you're maintaining a small fortress, and the siege never lifts.
 
-You're not building the site you want. You're choosing from templates and hoping one is close enough. If it's not, you're either paying a developer thousands of dollars or living with compromise.
+A static site doesn't play this game. There's no admin panel to breach, no database to dump, no plugin with a buried vulnerability, because there's no server logic at all. It's flat files on a CDN. You ship it once and stop thinking about it. Hosting that on Cloudflare's free tier costs nothing for the kind of traffic a portfolio or landing page actually sees.
 
-This is the real tax — not time, not money, but the slow death of your vision. Every color, every layout, every animation is a choice someone else made for you.
+## What actually changed
 
-### Maintenance Costs
+Here's the part that reframes everything. The reason you accepted WordPress's trade in the first place was the developer. Custom meant expensive. Expensive meant a salary or an agency, so you took the template and called it good.
 
-Hosting, premium themes, premium plugins, ongoing maintenance — it adds up. Even if you get everything for free, your *time* isn't free. Every month there's a new update, a new vulnerability, a new plugin that's broken.
+That constraint is the one that broke.
 
-Compare that to a static site on Cloudflare: free tier covers most portfolios and landing pages. Push to git, it deploys. Done.
+An LLM will scaffold your components, write your CSS, build the layout, and rework it when you change your mind, in the time it takes to describe what you want. You don't need to master JavaScript. You need to learn to describe a design and read back what comes out, which is a far shorter climb than learning WordPress's stack of abstractions ever was. The iteration loop that used to mean a developer ticket and a three-day wait now means a sentence and a refresh.
 
-### Security Headaches
+Pair that with Astro, a framework that ships static HTML by default and only adds JavaScript where you genuinely need interaction, and the old trade inverts. You get the control WordPress took from you, without the developer it used to require.
 
-WordPress is a target because it's everywhere. The admin panel is an attack surface. Plugins are attack surfaces. Your database can be breached. You're in an arms race with attackers, and it never ends.
+## Proof, not theory
 
-A static site has no admin panel. It has no database. It has no backend to breach. It's stateless by definition. Ship it once, and you're done. No more patches, no more updates, no more anxiety about the next zero-day.
+**snazzie.space** is built this way. Custom sections, GitHub stats pulled live through a serverless backend, traffic numbers straight from Cloudflare. No WordPress theme reaches that, and the design answers to nobody but the person who built it.
 
-## What Changed: LLMs Made Custom Development Accessible
+**bettertaskmanager.com** is the case for native interactivity. It's app-like and fast because the interactivity is part of the architecture, not a plugin bolted onto a CMS that was never meant to carry it.
 
-Three years ago, building a custom site meant hiring a developer. That was the tradeoff you made when you chose WordPress — less design freedom, but no developer salary.
+**lunarportfolio.com** is what a designer ships when the template stops being the boss. Custom layout, custom motion, custom brand, deployed to a free CDN with nothing to patch on Monday.
 
-That constraint just evaporated.
+Fast, custom, free to host, and there's nothing standing there waiting to be hacked.
 
-LLMs can scaffold components, generate layouts, write CSS, and iterate rapidly. You don't need to *understand* JavaScript deeply; you need to know how to talk to an AI. That's learnable. More importantly, it's faster than learning WordPress's abstraction layers.
+## The honest catch
 
-A designer can now prompt their way to a custom button, a custom layout, a custom animation. The iteration cycle that used to take days with a developer now takes minutes.
+This isn't free of cost. WordPress is point-and-click, and prompting your way through a build is a different muscle. You have to get comfortable telling an AI what you want and judging what it gives back.
 
-## Here's What You Can Build Instead
+But weigh the two learning curves honestly. WordPress asks you to learn its themes, its plugins, its customizer, its update rituals, its security hygiene, and the specific failure modes of a dozen plugins you didn't choose. The new way asks you to learn how to describe a design. One of those curves got dramatically shorter in the last three years. The other never did.
 
-**snazzie.space** is a portfolio built with Astro. Custom sections, GitHub stats powered by a serverless backend, traffic analytics from Cloudflare. None of it is possible with WordPress templates. The design isn't constrained by what a theme allows — it's exactly what the builder wanted.
+## The moment
 
-**bettertaskmanager.com** demonstrates what's possible when you're not fighting against a CMS. It's interactive, app-like, fast. WordPress plugins can mimic this, but you're papering over a fundamentally incompatible architecture. With Astro, the interactivity is native.
+WordPress solved 2005's problem: you needed a website and shouldn't have to hire a developer to get one.
 
-**lunarportfolio.com** is what happens when a designer takes ownership of the design process. Not limited by template options, not waiting for developer sprints. Custom layouts, custom interactions, custom brand. Deployed to Cloudflare.
+LLMs solved 2026's: you shouldn't have to compromise your design because custom was too expensive. That last sentence was WordPress's final advantage, and it's spent.
 
-All three are:
-- **Fast** — no bloat, no database queries, pure speed
-- **Custom** — exactly what the builder wanted, not what a template allowed
-- **Free to host** — Cloudflare's free tier
-- **Secure** — nothing to hack
-- **Low maintenance** — deployed once, no updates
-
-## The Tradeoff Isn't What You Think It Is
-
-You need to be comfortable with code and prompts. WordPress is point-and-click; Astro + LLM-powered iteration requires learning to speak to an AI. That sounds harder than WordPress.
-
-It's not. WordPress's "ease" costs you in bloat, slow iteration, design compromise, maintenance burden, and security anxiety. Learning to prompt and trust an AI handles all five.
-
-The tradeoff is real, but it's not a steep one. LLMs have erased the learning curve.
-
-## The Moment
-
-WordPress solved a critical problem in 2005. You need a web presence, and you shouldn't need to hire a developer or understand servers.
-
-In 2026, LLMs solved the *next* critical problem: you shouldn't need to compromise on design because custom development is too expensive. That was WordPress's last advantage. It's gone now.
-
-You're not saving time anymore. You're paying in bloat, slow iteration, design compromise, maintenance burden, and security headaches. The math stopped working years ago. You just haven't migrated yet.
-
-Astro + Cloudflare + LLMs is the new standard. The template is no longer the constraint.
+You're not saving time anymore. You're paying for it in load times, in afternoons lost to plugin conflicts, in the design you settled for, in updates you're scared to run. The math stopped working a while ago. The only thing left is the migration.
