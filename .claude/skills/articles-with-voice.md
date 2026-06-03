@@ -43,24 +43,6 @@ Common patterns in these articles:
 
 For new acronyms/proper nouns, look up CMU phonemes or spell out the letters: `API[EY1 P IY0 AY1]`.
 
-## Paralinguistic Markers
-
-Standalone — no preceding word. Stripped from display, injected into TTS audio.
-
-| Marker | Effect |
-|--------|--------|
-| `[laughter]` | Natural laughter |
-| `[dissatisfaction-hnn]` | Frustrated "hnn" sound |
-| `[surprise-oh]` | Surprised "oh" |
-
-Use sparingly. Fits best at the start of a sentence or paragraph for emotional colour.
-
-**Good:**
-```
-[dissatisfaction-hnn] A change that should take thirty seconds takes an afternoon.
-[laughter] LLMs don't write perfect Rust.
-```
-
 ## URLs and Domain Names
 
 Write domain names as plain text for TTS to read naturally. Markdown links are fine for display — the link text is what TTS reads.

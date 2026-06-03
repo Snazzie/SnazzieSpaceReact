@@ -79,13 +79,6 @@ Apply to every occurrence of these terms:
 
 For new tech terms not in this table: spell out each letter as a phoneme, or find the CMU dict entry.
 
-### Paralinguistic markers
-Standalone, stripped from display. Use at most 1-2 per article.
-
-- `[laughter]` — before a wry/ironic line
-- `[dissatisfaction-hnn]` — before expressing a pain point or frustration
-- `[surprise-oh]` — before a reveal or counterintuitive fact
-
 ### Domain names in prose
 Write as readable text, not raw URLs:
 ```mdx
