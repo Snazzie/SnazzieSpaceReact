@@ -10,7 +10,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
-    "deploy": "astro build && wrangler pages deploy dist"
+    "deploy": "astro build && wrangler pages deploy dist",
+    "audio": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py",
+    "audio:all": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --all",
+    "audio:waveforms": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --waveforms"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
@@ -44,6 +47,7 @@
     "@types/d3-geo": "^3.1.0",
     "@types/topojson-client": "^3.1.5",
     "i18n-iso-countries": "^7.14.0",
+    "playwright": "^1.60.0",
     "topojson-client": "^3.1.0",
     "vitest": "^4.1.7",
     "world-atlas": "^2.0.2"
