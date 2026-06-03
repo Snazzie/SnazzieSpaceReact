@@ -70,7 +70,7 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
 | `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
 | `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
-| `SQL` | "sequel" | `SQL[S IY1 K W AO0 L]` |
+| `SQL` | "sequel" | `SQL[S IY1 K W AH0 L]` |
 | `HTML` | "H-T-M-L" | `HTML[EY1 CH T IH1 EH1 M EH1 L]` |
 | `URL` | "U-R-L" | `URL[Y UW1 AA1 R EH1 L]` |
 | `SEO` | "S-E-O" | `SEO[EH1 S IY0 OW0]` |

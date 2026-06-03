@@ -77,7 +77,7 @@ function GlitchStrip({ cls, mx, my }: { cls: string; mx: MV; my: MV }) {
   return (
     <motion.img
       aria-hidden
-      src="/images/avatar.webp"
+      src="https://avatars.githubusercontent.com/u/19627023?v=4"
       alt=""
       style={{ x, y }}
       className={`avatar-glitch-strip ${cls}`}
