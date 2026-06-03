@@ -190,27 +190,27 @@ section[id] {
 /* animated with translateX + hue-rotate. Base stays greyscale.              */
 
 @keyframes glitch-strip-1 {
-  0%, 68%, 96%, 100% { opacity: 0;    transform: translateX(0);    clip-path: inset(10% 0 65% 0); }
-  70%                { opacity: 0.9;  transform: translateX(-12px); clip-path: inset(10% 0 65% 0); }
-  80%                { opacity: 0.8;  transform: translateX(-12px); clip-path: inset(38% 0 42% 0); }
-  86%                { opacity: 0.7;  transform: translateX(-12px); clip-path: inset(62% 0 18% 0); }
-  90%                { opacity: 0.3;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
-  94%                { opacity: 0.1;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
+  0%, 28%, 100% { opacity: 0;    transform: translateX(0);    clip-path: inset(10% 0 65% 0); }
+  2%            { opacity: 0.9;  transform: translateX(-12px); clip-path: inset(10% 0 65% 0); }
+  12%           { opacity: 0.8;  transform: translateX(-12px); clip-path: inset(38% 0 42% 0); }
+  18%           { opacity: 0.7;  transform: translateX(-12px); clip-path: inset(62% 0 18% 0); }
+  22%           { opacity: 0.3;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
+  26%           { opacity: 0.1;  transform: translateX(0);     clip-path: inset(62% 0 18% 0); }
 }
 
 @keyframes glitch-strip-2 {
-  0%, 70%, 90%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(55% 0 25% 0); }
-  72%                { opacity: 0.85; transform: translateX(10px); clip-path: inset(55% 0 25% 0); }
-  80%                { opacity: 0.7;  transform: translateX(10px); clip-path: inset(20% 0 60% 0); }
-  86%                { opacity: 0.2;  transform: translateX(0);    clip-path: inset(20% 0 60% 0); }
+  0%, 20%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(55% 0 25% 0); }
+  2%            { opacity: 0.85; transform: translateX(10px); clip-path: inset(55% 0 25% 0); }
+  10%           { opacity: 0.7;  transform: translateX(10px); clip-path: inset(20% 0 60% 0); }
+  16%           { opacity: 0.2;  transform: translateX(0);    clip-path: inset(20% 0 60% 0); }
 }
 
 @keyframes glitch-strip-3 {
-  0%, 72%, 88%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(70% 0 8% 0); }
-  74%                { opacity: 0.95; transform: translateX(-8px); clip-path: inset(70% 0 8% 0); }
-  79%                { opacity: 0.8;  transform: translateX(-8px); clip-path: inset(30% 0 50% 0); }
-  82%                { opacity: 0.6;  transform: translateX(-8px); clip-path: inset(5%  0 75% 0); }
-  86%                { opacity: 0.15; transform: translateX(0);    clip-path: inset(5%  0 75% 0); }
+  0%, 16%, 100% { opacity: 0;    transform: translateX(0);   clip-path: inset(70% 0 8% 0); }
+  2%            { opacity: 0.95; transform: translateX(-8px); clip-path: inset(70% 0 8% 0); }
+  7%            { opacity: 0.8;  transform: translateX(-8px); clip-path: inset(30% 0 50% 0); }
+  10%           { opacity: 0.6;  transform: translateX(-8px); clip-path: inset(5%  0 75% 0); }
+  14%           { opacity: 0.15; transform: translateX(0);    clip-path: inset(5%  0 75% 0); }
 }
 
 .avatar-glitch-base {
@@ -226,47 +226,16 @@ section[id] {
   user-select: none;
 }
 .avatar-glitch-strip-1 {
-  animation: glitch-strip-1 9s steps(1) infinite;
+  animation: glitch-strip-1 9s steps(1) 4s infinite;
   opacity: 0;
 }
 .avatar-glitch-strip-2 {
-  animation: glitch-strip-2 9s steps(1) infinite;
+  animation: glitch-strip-2 9s steps(1) 4s infinite;
   opacity: 0;
 }
 .avatar-glitch-strip-3 {
-  animation: glitch-strip-3 9s steps(1) infinite;
+  animation: glitch-strip-3 9s steps(1) 4s infinite;
   opacity: 0;
-}
-
-/* ---- Film grain overlay ---- */
-/* Technique: real Gaussian noise texture, oversized + shifted each frame.    */
-/* mix-blend-mode: soft-light brightens/darkens like actual silver halide.    */
-@keyframes film-grain-shift {
-  0%   { transform: translate(0, 0); }
-  10%  { transform: translate(-5%, -10%); }
-  20%  { transform: translate(-15%, 5%); }
-  30%  { transform: translate(7%, -25%); }
-  40%  { transform: translate(-5%, 25%); }
-  50%  { transform: translate(-15%, 10%); }
-  60%  { transform: translate(15%, 0%); }
-  70%  { transform: translate(0%, 15%); }
-  80%  { transform: translate(3%, 35%); }
-  90%  { transform: translate(-10%, 10%); }
-}
-
-.film-grain::after {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  opacity: 0.18;
-  mix-blend-mode: soft-light;
-  background-image: url('/images/grain.png');
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: film-grain-shift 0.12s steps(10) infinite;
 }
 
 /* ---- Custom scrollbar (black) ---- */
