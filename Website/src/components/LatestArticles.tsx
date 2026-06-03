@@ -14,8 +14,8 @@ interface Props {
 
 export function LatestArticles({ articles }: Props) {
   return (
-    <section id="articles" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
-      <div>
+    <section id="articles" className="relative px-6 py-24 sm:px-10 lg:px-20">
+      <div className="max-w-5xl mx-auto">
         <div className="flex items-baseline gap-4">
           <h2 className="text-2xl font-bold tracking-tight text-foreground">Articles</h2>
           <a href="/articles" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
