@@ -70,6 +70,7 @@ const [raceiq, cloudcat, btm, media, avatar, shot, darkthemehub, vital] =
     opt(vitalImg, 256),
   ]);
 const avatarUrl = "/images/avatar.webp";
+const ogImage = `https://snazzie.space${avatar.src}`;
 const images: Record<string, string> = {
   "/logos/raceiq.png": raceiq.src,
   "/logos/cloudcat.png": cloudcat.src,
@@ -102,18 +103,18 @@ const images: Record<string, string> = {
     <meta property="og:title" content="Aaron Cooper - Full-Stack Software Engineer" />
     <meta property="og:description" content="React, TypeScript, Rust, and cloud infrastructure developer. Building scalable applications with focus on performance." />
     <meta property="og:url" content="https://snazzie.space/" />
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/19627023?v=4" />
+    <meta property="og:image" content="{ogImage}" />
     <meta property="og:type" content="profile" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Aaron Cooper - Full-Stack Engineer" />
     <meta name="twitter:description" content="Building scalable applications with React, TypeScript, and cloud infrastructure." />
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/19627023?v=4" />
+    <meta name="twitter:image" content="{ogImage}" />
 
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/19627023?v=4" />
+    <link rel="apple-touch-icon" href="{ogImage}" />
     <link rel="manifest" href="/manifest.json" />
 
     <script type="application/ld+json">
@@ -124,7 +125,7 @@ const images: Record<string, string> = {
       "alternateName": "Snazzie",
       "jobTitle": "Full-Stack Software Engineer",
       "url": "https://snazzie.space",
-      "image": "https://avatars.githubusercontent.com/u/19627023?v=4",
+      "image": "{ogImage}",
       "sameAs": [
         "https://github.com/snazzie",
         "https://linkedin.com/in/cooper-a-m/"
