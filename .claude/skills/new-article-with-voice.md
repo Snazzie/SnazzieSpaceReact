@@ -1,5 +1,5 @@
 ---
-name: new-article
+name: new-article-with-voice
 description: End-to-end skill for creating a new snazzie.space article — write content, embed OmniVoice markers, generate audio, commit. Use when user asks to write a new article.
 ---
 
