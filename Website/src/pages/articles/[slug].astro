@@ -23,31 +23,72 @@ const formattedDate = post.data.date.toLocaleDateString('en-GB', {
 const wordCount = post.body?.split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 238));
 
+// Canonical TTS processing — single source of truth.
+// Python generate-audio.py reads the .txt output this writes; "see raw script" shows it.
+const WORD_SUBS: Record<string, string> = {
+  "stays": "stays[S T EY1 Z]",
+};
+
 function buildTtsScript(body: string): string {
   let t = body;
-  t = t.replace(/^---.*?---\s*/s, '');
-  t = t.replace(/^(import|export)\s+.*$/gm, '');
-  t = t.replace(/<[^>]+>/g, '');
-  t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-  t = t.replace(/^#{1,6}\s+(.+)$/gm, '$1...');
-  t = t.replace(/\*{1,3}([^*]+)\*{1,3}/g, '$1');
-  t = t.replace(/`[^`]+`/g, '');
-  t = t.replace(/```.*?```/gs, '');
-  t = t.replace(/\S+(\[[^\]]+\])/g, '$1');
-  t = t.replace(/\n{3,}/g, '\n\n');
+  t = t.replace(/^---.*?---\s*/s, '');                         // strip frontmatter
+  t = t.replace(/^(import|export)\s+.*$/gm, '');               // strip MDX imports/exports
+  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?<\/[^>]+>/g, ''); // strip data-tts-skip blocks including content
+  t = t.replace(/```.*?```/gs, '');                            // strip code blocks BEFORE tag/inline strip
+  t = t.replace(/`[^`]+`/g, '');                               // strip inline code BEFORE tag strip (prevents empty backtick pairs eating content)
+  t = t.replace(/<[^>]+>/g, '');                               // strip JSX/HTML tags
+  t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');               // markdown links → display text only
+  t = t.replace(/^#{1,6}\s+(.+)$/gm, '$1.');                   // headers: trailing period for post-header pause (pre-header pause comes from paragraph break)
+  t = t.replace(/\*{1,3}([^*]+)\*{1,3}/g, ' $1 ');            // strip bold/italic markers
+  t = t.replace(/ {2,}/g, ' ');                                // collapse multiple spaces
+  t = t.replace(/[–—―]/g, ', ');                               // em/en dashes → comma pause
+  for (const [word, replacement] of Object.entries(WORD_SUBS)) {
+    t = t.replace(new RegExp(`\\b${word}\\b`, 'gi'), replacement); // known mispronunciation fixes
+  }
+  t = t.replace(/\S+(\[[^\]]+\])/g, '$1');                     // word[PHONEME] → [PHONEME]
+  t = t.replace(/\n+/g, ' ... ');                              // flatten newlines → inline pause markers
+  t = t.replace(/ {2,}/g, ' ');                               // collapse spaces created by flatten
   return t.trim();
 }
 
 const ttsScript = buildTtsScript(post.body ?? '');
 
-import { existsSync, readFileSync } from 'node:fs';
+// Display version: all TTS transforms applied but newlines preserved — shows exactly what Python gets, structured for readability
+function buildDisplayScript(body: string): string {
+  let t = body;
+  t = t.replace(/^---.*?---\s*/s, '');                         // strip frontmatter
+  t = t.replace(/^(import|export)\s+.*$/gm, '');               // strip MDX imports/exports
+  t = t.replace(/<[^>]*data-tts-skip[^>]*>[\s\S]*?<\/[^>]+>/g, ''); // strip data-tts-skip blocks including content
+  t = t.replace(/```.*?```/gs, '');                            // strip code blocks BEFORE tag/inline strip
+  t = t.replace(/`[^`]+`/g, '');                               // strip inline code BEFORE tag strip
+  t = t.replace(/<[^>]+>/g, '');                               // strip JSX/HTML tags
+  t = t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');               // markdown links → display text only
+  t = t.replace(/^#{1,6}\s+(.+)$/gm, '$1.');                   // headers: trailing period for post-header pause
+  t = t.replace(/\*{1,3}([^*]+)\*{1,3}/g, ' $1 ');            // strip bold/italic markers
+  t = t.replace(/ {2,}/g, ' ');                                // collapse multiple spaces
+  t = t.replace(/[–—―]/g, ', ');                               // em/en dashes → comma pause
+  for (const [word, replacement] of Object.entries(WORD_SUBS)) {
+    t = t.replace(new RegExp(`\\b${word}\\b`, 'gi'), replacement);
+  }
+  t = t.replace(/\S+(\[[^\]]+\])/g, '$1');                     // word[PHONEME] → [PHONEME]
+  t = t.replace(/\n{3,}/g, '\n\n');                            // normalise blank lines
+  return t.trim();
+}
+
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+const audioDir = join(process.cwd(), 'public', 'audio');
 const audioPath = `/audio/${post.id}.flac`;
-const hasAudio = existsSync(join(process.cwd(), 'public', 'audio', `${post.id}.flac`));
-const waveformPath = join(process.cwd(), 'public', 'audio', `${post.id}-waveform.json`);
+const hasAudio = existsSync(join(audioDir, `${post.id}.flac`));
+const waveformPath = join(audioDir, `${post.id}-waveform.json`);
 const waveformData: number[] = hasAudio && existsSync(waveformPath)
   ? JSON.parse(readFileSync(waveformPath, 'utf8'))
   : [];
+
+// Write canonical TTS script so Python reads JS-processed text, not raw MDX
+import { mkdirSync } from 'node:fs';
+mkdirSync(audioDir, { recursive: true });
+writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
 ---
 
 <!doctype html>
@@ -239,7 +280,7 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         <pre
           id="raw-script"
           class="hidden text-xs text-white/50 bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 overflow-x-auto whitespace-pre-wrap break-words font-mono leading-relaxed"
-        >{post.body}</pre>
+        >{buildDisplayScript(post.body ?? '')}</pre>
 
         <nav class="mt-16 pt-8 border-t border-white/10" aria-label="Article navigation">
           <a href="/articles/" class="text-sm text-white/50 hover:text-white transition-colors">
@@ -400,6 +441,17 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         });
         resizeCanvas(bodyCanvas);
         requestAnimationFrame(function () { resizeCanvas(stickyCanvas); });
+      })();
+    </script>
+    <script is:inline>
+      (function () {
+        document.querySelectorAll('.sample-play').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var src = btn.getAttribute('data-src');
+            if (!src) return;
+            new Audio(src).play();
+          });
+        });
       })();
     </script>
   </body>

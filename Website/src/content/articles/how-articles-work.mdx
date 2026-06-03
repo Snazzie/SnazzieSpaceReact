@@ -45,7 +45,43 @@ The TTS model — OmniVoice, released by k2-fsa — uses CMU[S IY1 EH1 M Y UW1] 
 The API[EY1 P IY0 AY1] handles the request.
 ```
 
-The display layer strips the `[...]` part so the reader sees "API". The TTS pipeline receives the phoneme sequence instead of the raw letters. Without this, OmniVoice would read "API[EY1 P IY0 AY1]" as "ah-pee" or "SQL[S IY1 K W AH0 L]" as something that doesn't resemble "sequel." A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
+The display layer strips the `[...]` part so the reader sees "API". The TTS pipeline receives the phoneme sequence instead of the raw letters. A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
+
+Here's what the difference sounds like for four common terms:
+
+<div data-tts-skip class="not-prose my-6 rounded-xl border border-white/[0.08] overflow-hidden">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-white/[0.08]">
+        <th class="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/30">Without marker</th>
+        <th class="text-left px-4 py-3 text-xs font-semibold uppercase tracking-widest text-white/30">With marker</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b border-white/[0.05]">
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">API</span><span class="text-red-400/70 mr-2">"ape-y"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/api-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[EY1 P IY0 AY1]'}</code><span class="text-green-400/70 mr-2">"A-P-I"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/api-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+      <tr class="border-b border-white/[0.05]">
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">SQL</span><span class="text-red-400/70 mr-2">"s-q-l"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/sql-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[S IY1 K W AH0 L]'}</code><span class="text-green-400/70 mr-2">"sequel"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/sql-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+      <tr class="border-b border-white/[0.05]">
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">Astro</span><span class="text-red-400/70 mr-2">"ast-ro" (flat)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/astro-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[AE1 S T R OW0]'}</code><span class="text-green-400/70 mr-2">"AE-stro"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/astro-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+      <tr class="border-b border-white/[0.05]">
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">CSS</span><span class="text-red-400/70 mr-2">"css" (garbled)</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/css-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[S IY1 EH1 S EH1 S]'}</code><span class="text-green-400/70 mr-2">"C-S-S"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/css-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+      <tr>
+        <td class="px-4 py-3"><span class="font-mono text-white/40 text-xs mr-2">NumPy</span><span class="text-red-400/70 mr-2">"num-pee"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/numpy-without.flac" aria-label="Play without marker">&#9654;</button></td>
+        <td class="px-4 py-3"><code class="font-mono text-white/30 text-xs mr-2 not-italic bg-transparent p-0">{'[N AH1 M P AY0]'}</code><span class="text-green-400/70 mr-2">"num-pie"</span><button class="sample-play inline-flex items-center justify-center w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-[9px] text-white/60" data-src="/audio/samples/numpy-with.flac" aria-label="Play with marker">&#9654;</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 The same annotation system also handles paralinguistic markers — pauses, soft questions, mild surprise — placed at the start of sentences to shape delivery. These are stripped from the display entirely.
 

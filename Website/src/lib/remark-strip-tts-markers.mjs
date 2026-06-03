@@ -8,7 +8,13 @@ export default function remarkStripTtsMarkers() {
   return (tree) => {
     visit(tree, 'text', (node, index, parent) => {
       if (parent?.type === 'element' && (parent.tagName === 'code' || parent.tagName === 'pre')) return;
-      const cleaned = node.value.replace(/\[[^\]]+\]/g, '').replace(/  +/g, ' ');
+      // \[...\] = escaped display brackets (kept, backslash stripped)
+      // [...] = TTS marker (removed)
+      const cleaned = node.value
+        .replace(/\\(\[[^\]]+\])/g, '\x00$1\x00')   // protect escaped brackets
+        .replace(/\[[^\]]+\]/g, '')                  // strip TTS markers
+        .replace(/\x00(\[[^\]]+\])\x00/g, '$1')      // restore escaped brackets
+        .replace(/  +/g, ' ');
       if (cleaned.trim() === '') {
         parent.children.splice(index, 1);
         return index;

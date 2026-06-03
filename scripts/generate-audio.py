@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Generate audio narration + waveform JSON for articles using OmniVoice TTS.
 
+Requires bun run build first — the Astro build writes <slug>.txt files to
+Website/public/audio/ containing the pre-processed TTS script.
+
 Usage:
     python scripts/generate-audio.py                        # all articles missing audio
     python scripts/generate-audio.py dynamic-vs-ssr         # specific slug
@@ -14,9 +17,7 @@ Output:
 
 import argparse
 import json
-import re
 import sys
-import unicodedata
 import warnings
 from pathlib import Path
 
@@ -32,6 +33,7 @@ VOICES_DIR = Path(__file__).parent / "voices"
 SAMPLE_RATE = 24000
 WAVEFORM_BARS = 200
 SPEECH_SPEED = 1.15
+SEED = 42
 
 REF_AUDIO = str(VOICES_DIR / "seedtts_ref.wav")
 REF_TEXT = (
@@ -39,32 +41,6 @@ REF_TEXT = (
     "I've been here for over four point and five billion years, "
     "twenty-two thousand five hundred times longer than you."
 )
-
-# Words OmniVoice mispronounces — mapped to CMU phoneme annotations.
-# strip_mdx converts word[PHONEME] → [PHONEME] before TTS, so these are
-# applied before that step.
-WORD_SUBS: dict[str, str] = {
-    "stays": "stays[S T EY1 Z]",
-}
-
-
-def strip_mdx(text: str) -> str:
-    text = re.sub(r"^---.*?---\s*", "", text, flags=re.DOTALL)          # strip frontmatter
-    text = re.sub(r"^(import|export)\s+.*$", "", text, flags=re.MULTILINE)  # strip MDX imports/exports
-    text = re.sub(r"<[^>]+>", "", text)                                  # strip JSX/HTML tags
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)                 # markdown links → display text only
-    text = re.sub(r"^#{1,6}\s+(.+)$", r"... \1...", text, flags=re.MULTILINE)  # headers: pause before and after
-    text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r" \1 ", text)              # strip bold/italic markers
-    text = re.sub(r" {2,}", " ", text)                                   # collapse multiple spaces
-    text = re.sub(r"`[^`]+`", "", text)                                  # strip inline code
-    text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)               # strip code blocks
-    text = "".join(", " if unicodedata.category(c) == "Pd" and ord(c) != 0x2D else c for c in text)  # em/en dashes → comma pause (skip regular hyphens)
-    for word, replacement in WORD_SUBS.items():                          # apply known mispronunciation fixes
-        text = re.sub(rf"\b{re.escape(word)}\b", replacement, text, flags=re.IGNORECASE)
-    text = re.sub(r"\S+(\[[^\]]+\])", r"\1", text)                       # word[PHONEME] → [PHONEME]: drop written form, keep phoneme for OmniVoice
-    text = re.sub(r"\n{3,}", "\n\n", text)                               # normalise excess blank lines
-    text = text.replace("\n\n", "...\n\n")                               # paragraph breaks → ellipsis pause
-    return text.strip()
 
 
 def compute_waveform(flac_path: Path, n_bars: int = WAVEFORM_BARS) -> list[float]:
@@ -92,21 +68,44 @@ def generate_waveform(slug: str) -> None:
 
 
 def generate(slug: str, model) -> None:
-    mdx = ARTICLES_DIR / f"{slug}.mdx"
-    if not mdx.exists():
-        print(f"  not found: {mdx}")
+    txt = AUDIO_DIR / f"{slug}.txt"
+    if not txt.exists():
+        print(f"  skip (no .txt — run bun build first): {slug}")
         return
 
     out = AUDIO_DIR / f"{slug}.flac"
-    AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-
-    text = strip_mdx(mdx.read_text(encoding="utf-8"))
+    text = txt.read_text(encoding="utf-8")
     print(f"  {slug}: {len(text)} chars -> {out.name}")
 
     audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
     generate_waveform(slug)
     print(f"  done: {slug}")
+
+
+SAMPLES_DIR = AUDIO_DIR / "samples"
+
+# Pairs of (name, without-marker text, with-marker phoneme text)
+# (name, with-phoneme) — "without" clip uses name as-is (lowercase forces mispronunciation)
+PHONEME_SAMPLES = [
+    ("api",   "[EY1 P IY0 AY1]"),
+    ("sql",   "[S IY1 K W AH0 L]"),
+    ("astro", "[AE1 S T R OW0]"),
+    ("css",   "[S IY1 EH1 S EH1 S]"),
+    ("numpy", "[N AH1 M P AY0]"),
+]
+
+
+def generate_samples(model) -> None:
+    SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"Generating {len(PHONEME_SAMPLES) * 2} sample clips...")
+    for name, with_phoneme in PHONEME_SAMPLES:
+        for variant, text in (("without", name), ("with", with_phoneme)):
+            out = SAMPLES_DIR / f"{name}-{variant}.flac"
+            print(f"  {name}-{variant}: {text!r} -> {out.name}")
+            audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, speed=SPEECH_SPEED)
+            sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
+    print("  done")
 
 
 def detect_device() -> str:
@@ -126,11 +125,21 @@ def load_model():
 
 
 def main() -> None:
+    global SEED
     parser = argparse.ArgumentParser()
     parser.add_argument("slug", nargs="?", help="Article slug (filename without .mdx)")
     parser.add_argument("--all", action="store_true", help="Regenerate all audio+waveforms")
     parser.add_argument("--waveforms", action="store_true", help="Regenerate waveforms only (no TTS)")
+    parser.add_argument("--samples", action="store_true", help="Regenerate phoneme comparison sample clips")
+    parser.add_argument("--seed", type=int, default=SEED, help=f"RNG seed for reproducible output (default: {SEED})")
     args = parser.parse_args()
+    SEED = args.seed
+    torch.manual_seed(SEED)
+
+    if args.samples:
+        model = load_model()
+        generate_samples(model)
+        return
 
     if args.waveforms:
         slugs = [p.stem for p in sorted(AUDIO_DIR.glob("*.flac"))]
@@ -144,9 +153,9 @@ def main() -> None:
     if args.slug:
         slugs = [args.slug]
     elif args.all:
-        slugs = [p.stem for p in sorted(ARTICLES_DIR.glob("*.mdx"))]
+        slugs = [p.stem for p in sorted(AUDIO_DIR.glob("*.txt"))]
     else:
-        all_slugs = [p.stem for p in sorted(ARTICLES_DIR.glob("*.mdx"))]
+        all_slugs = [p.stem for p in sorted(AUDIO_DIR.glob("*.txt"))]
         slugs = [s for s in all_slugs if not (AUDIO_DIR / f"{s}.flac").exists()]
         if not slugs:
             print("All articles already have audio. Use --all to regenerate.")

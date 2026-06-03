@@ -120,6 +120,14 @@ React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles thes
 
 ## Step 4 — Generate audio
 
+First run the Astro build to write the `.txt` TTS script (all text processing happens in JS):
+
+```bash
+cd Website && bun run build
+```
+
+Then generate audio — Python reads the `.txt`, sends to OmniVoice, writes FLAC:
+
 ```powershell
 $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "User") + ";" + [System.Environment]::GetEnvironmentVariable("PATH", "Machine")
 $env:PYTHONIOENCODING = "utf-8"
@@ -133,11 +141,7 @@ Regenerate all: `python scripts/generate-audio.py --all`
 
 ## Step 5 — Verify build
 
-```bash
-cd Website && bun run build 2>&1 | tail -5
-```
-
-Must complete with no errors before committing.
+Build already ran in Step 4. Check it passed with no errors.
 
 ## Step 6 — Commit
 
