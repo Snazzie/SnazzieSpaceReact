@@ -50,6 +50,10 @@ Slug: lowercase, hyphens, derived from title. E.g. "Why Bun Won" → `why-bun-wo
 - Display (remark plugin strips `[...]`): reader sees `writtenForm`
 - TTS (`strip_mdx` converts `word[phoneme]` → `[phoneme]`): OmniVoice receives phoneme
 
+**Multi-group format** — use when OmniVoice merges letters in a single phoneme block:
+- 2-letter acronyms: space-separated groups — `KV[K EY1] [V IY1]` → `[K EY1] [V IY1]`
+- 3+ letter acronyms: comma-separated — `SSR[EH0 S, EH0 S, AA1 R]`
+
 ### Phoneme table — apply to every occurrence
 
 Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequence.
