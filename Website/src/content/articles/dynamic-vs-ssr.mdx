@@ -1,14 +1,14 @@
 ---
-title: "Your Site Is Dynamic. That Doesn't Mean You Need SSR."
+title: "Stop Confusing Dynamic Web Pages With SSR"
 date: 2026-06-03
 excerpt: "Dynamic content and server-side rendering are not the same thing. Mixing them up is why people over-engineer sites that Cloudflare's free tier could serve perfectly."
 tags: ["ssr", "web-development", "cloudflare", "astro", "javascript"]
 draft: false
 ---
 
-Here's the conversation that plays out constantly in developer forums: someone has a portfolio with a live GitHub commit count, or a landing page that pulls pricing from a database, or a blog with a view counter. They want to move to Cloudflare. Then they say the thing: "but my site is dynamic, so I can't use static hosting."
+Your site fetches data from an API[EY1 P IY0 AY1]. The content updates. You've decided this means you need SSR[EH1 S EH1 S AA1 R]. You are wrong, and this mistake is costing you complexity you don't need.
 
-This is the confusion worth unpacking, because it's sending people toward infrastructure they don't need.
+Dynamic content and server-side rendering are not the same thing. Conflating them is how people end up running full SSR[EH1 S EH1 S AA1 R] frameworks on sites that a static host and a fetch call could serve perfectly.
 
 ## Dynamic and SSR are not synonyms
 
