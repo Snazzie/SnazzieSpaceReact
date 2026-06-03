@@ -124,11 +124,21 @@ React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles thes
 
 ## Step 4 — Generate audio
 
-First run the Astro build to write the `.txt` TTS script (all text processing happens in JS):
+First delete `dist/` to prevent stale cache, then build to write the `.txt` TTS script:
 
-```bash
-cd Website && bun run build
+```powershell
+Remove-Item -Recurse -Force "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\dist" -ErrorAction SilentlyContinue
+Set-Location "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website"
+bun run build
 ```
+
+**Validate txt before generating audio.** Read the first few lines of `Website/dist/audio/<slug>.txt` and confirm the content matches your MDX changes. If it shows old content, the build cache was stale — delete `dist/` and rebuild again.
+
+```powershell
+Get-Content "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\dist\audio\<slug>.txt" | Select-Object -First 3
+```
+
+Only proceed once the txt reflects the current MDX.
 
 Then generate audio — Python reads the `.txt`, sends to OmniVoice, writes FLAC:
 
@@ -160,6 +170,8 @@ git commit -m "feat(articles): add <slug> article with voice"
 - [ ] Opinionated take — not a tutorial or overview
 - [ ] OmniVoice markers on every occurrence of terms in phoneme table
 - [ ] No raw URLs — all domains wrapped as markdown links
+- [ ] `dist/` deleted before build (prevents stale cache)
 - [ ] `bun run build` passes
+- [ ] `dist/audio/<slug>.txt` confirmed to match MDX changes
 - [ ] FLAC + waveform JSON generated
 - [ ] Committed
