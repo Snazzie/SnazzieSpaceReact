@@ -52,33 +52,43 @@ Slug: lowercase, hyphens, derived from title. E.g. "Why Bun Won" → `why-bun-wo
 
 ### Phoneme table — apply to every occurrence
 
-| Written | Marker |
-|---------|--------|
-| `ASP.NET` | `ASP.NET[AE1 S P IH0 DAA1 T N EH1 T]` |
-| `SSR` | `SSR[EH1 S EH1 S AA1 R]` |
-| `CDN` | `CDN[S IH1 D IH0 EH1 N]` |
-| `CMS` | `CMS[S IH1 EH0 M EH0 S]` |
-| `LLM` | `LLM[EH1 L EH0 M]` |
-| `LLMs` | `LLMs[EH1 L EH0 M Z]` |
-| `CSS` | `CSS[S IH1 EH0 S EH0 S]` |
-| `PAT` | `PAT[P AE1 T]` |
-| `KV` | `KV[K EY1 V IY0]` |
-| `UTC` | `UTC[Y UW1 T IH1 S IY1]` |
-| `GraphQL` | `GraphQL[G R AE1 F Q L]` |
-| `NumPy` | `NumPy[N AH1 M P AY0]` |
-| `Axum` | `Axum[AE1 K S AH0 M]` |
-| `Actix` | `Actix[AE1 K T IH0 K S]` |
-| `Elysia` | `Elysia[EH1 L IH0 S IY0 AH0]` |
-| `Hono` | `Hono[HH OW1 N OW0]` |
-| `PostCSS` | `PostCSS[P OW1 S T S IH1 S EH0 S]` |
-| `API` | `API[EY1 P IY0 AY1]` |
-| `APIs` | `APIs[EY1 P IY0 AY1 Z]` |
-| `SQL` | `SQL[S IH1 K W AH0 L]` |
-| `HTML` | `HTML[EY1 CH T IH1 EH1 M EH1 L]` |
-| `URL` | `URL[Y UW1 AA1 R EH1 L]` |
-| `SEO` | `SEO[EH1 S IY0 OW0]` |
+Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequence.
 
-For new terms not in this table: spell each letter as a phoneme or find the CMU dict entry.
+**Acronyms / initialisms** (spell each letter):
+
+| Written | Sounds like | Marker |
+|---------|-------------|--------|
+| `ASP.NET` | "A-S-P dot net" | `ASP.NET[AE1 S P IH0 DAA1 T N EH1 T]` |
+| `SSR` | "S-S-R" | `SSR[EH1 S EH1 S AA1 R]` |
+| `CDN` | "C-D-N" | `CDN[S IH1 D IH0 EH1 N]` |
+| `CMS` | "C-M-S" | `CMS[S IH1 EH0 M EH0 S]` |
+| `LLM` | "L-L-M" | `LLM[EH1 L EH0 M]` |
+| `LLMs` | "L-L-Ms" | `LLMs[EH1 L EH0 M Z]` |
+| `CSS` | "C-S-S" | `CSS[S IH1 EH0 S EH0 S]` |
+| `PAT` | "P-A-T" | `PAT[P AE1 T]` |
+| `KV` | "K-V" | `KV[K EY1 V IY0]` |
+| `UTC` | "U-T-C" | `UTC[Y UW1 T IH1 S IY1]` |
+| `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
+| `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
+| `SQL` | "sequel" | `SQL[S IH1 K W AH0 L]` |
+| `HTML` | "H-T-M-L" | `HTML[EY1 CH T IH1 EH1 M EH1 L]` |
+| `URL` | "U-R-L" | `URL[Y UW1 AA1 R EH1 L]` |
+| `SEO` | "S-E-O" | `SEO[EH1 S IY0 OW0]` |
+
+**Tech names / frameworks** (correct pronunciation):
+
+| Written | Sounds like | Marker |
+|---------|-------------|--------|
+| `Astro` | "astro" (as in astronaut) | `Astro[AE1 S T R OW0]` |
+| `GraphQL` | "graph-Q-L" | `GraphQL[G R AE1 F Q L]` |
+| `NumPy` | "num-pie" | `NumPy[N AH1 M P AY0]` |
+| `Axum` | "ax-um" | `Axum[AE1 K S AH0 M]` |
+| `Actix` | "ak-tiks" | `Actix[AE1 K T IH0 K S]` |
+| `Elysia` | "eh-lee-see-ah" | `Elysia[EH1 L IH0 S IY0 AH0]` |
+| `Hono` | "ho-no" | `Hono[HH OW1 N OW0]` |
+| `PostCSS` | "post-C-S-S" | `PostCSS[P OW1 S T S IH1 S EH0 S]` |
+
+For new terms: look up the CMU pronunciation dictionary, or spell each letter/syllable as ARPAbet phonemes.
 
 ### Domain names in prose
 ```mdx
