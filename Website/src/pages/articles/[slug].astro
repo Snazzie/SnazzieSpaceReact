@@ -179,7 +179,20 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
           <Content />
         </div>
 
-        <nav class="mt-16 pt-8 border-t border-white/10" aria-label="Article navigation">
+        <div class="mt-16 pt-8 border-t border-white/10">
+          <button
+            id="mdx-toggle"
+            class="text-xs text-white/30 hover:text-white/60 transition-colors font-mono mb-4"
+          >
+            &lt;/&gt; view source
+          </button>
+          <pre
+            id="mdx-source"
+            class="hidden text-xs text-white/50 bg-white/[0.03] border border-white/[0.08] rounded-xl p-5 overflow-x-auto whitespace-pre-wrap break-words font-mono leading-relaxed"
+          >{post.body}</pre>
+        </div>
+
+        <nav class="mt-8" aria-label="Article navigation">
           <a href="/articles/" class="text-sm text-white/50 hover:text-white transition-colors">
             &larr; All articles
           </a>
@@ -188,6 +201,17 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
       </article>
     </main>
 
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('mdx-toggle');
+        var src = document.getElementById('mdx-source');
+        if (!btn || !src) return;
+        btn.addEventListener('click', function () {
+          var hidden = src.classList.toggle('hidden');
+          btn.textContent = hidden ? '</> view source' : '</> hide source';
+        });
+      })();
+    </script>
     <script is:inline>
       document.querySelectorAll('.prose a[href^="http"]').forEach(function (a) {
         a.setAttribute('target', '_blank');
