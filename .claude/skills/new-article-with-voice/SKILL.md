@@ -11,17 +11,17 @@ Creates a complete article from topic to committed FLAC in one session. Also use
 
 If the user hasn't specified, ask:
 - **Topic / working title**
-- **Angle** — what's the argument or take? (snazzie.space articles are opinionated, not tutorials)
+- **Type** — opinionated take (argue a position) or tech showcase (explain how something was built)
 - **Target length** — short (~300 words) / medium (~800) / long (~1500)
 
-One question at a time. Don't start writing until you have the angle.
+One question at a time. Don't start writing until you have the type.
 
 ## Step 2 — Write the article
 
 ### Voice and style
 - First-person or direct second-person ("you") — matches existing articles
-- Opinionated: take a clear position, defend it
-- No hedging ("it depends", "some people say") — state a view
+- **Opinionated**: take a clear position, defend it. No hedging ("it depends", "some people say") — state a view
+- **Tech showcase**: explain how something was built, what the pieces are, why each was chosen. Still first-person. Still direct. No padding.
 - Short paragraphs, no filler, no summaries that repeat what was just said
 - Headers as signposts, not topic sentences — they frame what follows, not describe it
 - Conversational but not casual — the register is "smart person talking to a peer"
@@ -71,7 +71,7 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `API` | "A-P-I" | `API[EY1 P IY0 AY1]` |
 | `APIs` | "A-P-Is" | `APIs[EY1 P IY0 AY1 Z]` |
 | `SQL` | "sequel" | `SQL[S IY1 K W AH0 L]` |
-| `HTML` | "H-T-M-L" | `HTML[EY1 CH T IH1 EH1 M EH1 L]` |
+| `HTML` | "H-T-M-L" | `HTML[EY1 CH T IY1 EH1 M EH1 L]` |
 | `URL` | "U-R-L" | `URL[Y UW1 AA1 R EH1 L]` |
 | `SEO` | "S-E-O" | `SEO[EH1 S IY0 OW0]` |
 

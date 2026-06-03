@@ -7,6 +7,7 @@ import { visit } from 'unist-util-visit';
 export default function remarkStripTtsMarkers() {
   return (tree) => {
     visit(tree, 'text', (node, index, parent) => {
+      if (parent?.type === 'element' && (parent.tagName === 'code' || parent.tagName === 'pre')) return;
       const cleaned = node.value.replace(/\[[^\]]+\]/g, '').replace(/  +/g, ' ');
       if (cleaned.trim() === '') {
         parent.children.splice(index, 1);

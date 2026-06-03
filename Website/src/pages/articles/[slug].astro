@@ -95,16 +95,56 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
     })} />
   </head>
   <body class="bg-background text-foreground antialiased">
-    <main class="min-h-screen pt-20 pb-24">
+    <header id="sticky-header" class="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-white/5 -translate-y-full transition-transform duration-200">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-3">
+        <a href="/articles/" class="text-sm text-white/50 hover:text-white transition-colors shrink-0">&larr; Articles</a>
+        <span class="text-white/20 shrink-0 hidden sm:inline">&middot;</span>
+        <span class="text-sm font-medium text-white truncate flex-1 min-w-0 hidden sm:block">{post.data.title}</span>
+
+        {hasAudio && (
+          <div class="flex items-center gap-2 shrink-0 ml-auto">
+            <button
+              id="s-play-btn"
+              aria-label="Play article audio"
+              class="w-7 h-7 flex items-center justify-center rounded-full bg-white text-black hover:bg-white/90 active:scale-95 transition-all duration-150"
+            >
+              <svg id="s-icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 translate-x-px">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg id="s-icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 hidden">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+            </button>
+
+            <div class="relative hidden sm:block" id="s-track" style="width:180px;height:36px">
+              <canvas id="s-waveform" class="absolute inset-0 w-full h-full"></canvas>
+              <input id="s-seek" type="range" min="0" max="100" value="0" step="0.1"
+                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+            </div>
+
+            <div class="flex items-center gap-0.5 text-[11px] text-white/30 tabular-nums">
+              <span id="s-current">0:00</span>
+              <span class="text-white/20">/</span>
+              <span id="s-duration">0:00</span>
+            </div>
+
+            <input id="s-volume" type="range" min="0" max="1" value="0.5" step="0.05"
+              aria-label="Volume" class="hidden sm:block w-14 h-0.5 accent-white/40 cursor-pointer" />
+          </div>
+        )}
+      </div>
+    </header>
+
+    <main class="min-h-screen pt-10 pb-24">
       <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <nav aria-label="Breadcrumb" class="mb-10">
+        <nav aria-label="Breadcrumb" class="mb-8">
           <a href="/articles/" class="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
             &larr; All articles
           </a>
         </nav>
 
-        <header class="mb-12">
+        <header id="article-header" class="mb-10">
           <div class="flex items-center gap-3 text-sm text-white/50 mb-4">
             <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
             <span>&middot;</span>
@@ -124,7 +164,7 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         </header>
 
         {hasAudio && (
-          <div class="mb-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm overflow-hidden">
+          <div id="body-audio-player" class="mb-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm overflow-hidden transition-opacity duration-300">
             <div class="px-5 pt-5 pb-5">
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-2">
@@ -138,25 +178,13 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 text-white/25">
                     <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06z"/>
                   </svg>
-                  <input
-                    id="audio-volume"
-                    type="range"
-                    min="0"
-                    max="1"
-                    value="0.5"
-                    step="0.05"
-                    aria-label="Volume"
-                    class="w-20 h-1 accent-white/50 cursor-pointer"
-                  />
+                  <input id="audio-volume" type="range" min="0" max="1" value="0.5" step="0.05"
+                    aria-label="Volume" class="w-20 h-1 accent-white/50 cursor-pointer" />
                 </div>
               </div>
-
               <div class="flex items-center gap-3">
-                <button
-                  id="audio-play-btn"
-                  aria-label="Play article audio"
-                  class="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-white text-black hover:bg-white/90 active:scale-95 transition-all duration-150 shadow-lg shadow-white/10"
-                >
+                <button id="audio-play-btn" aria-label="Play article audio"
+                  class="flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-white text-black hover:bg-white/90 active:scale-95 transition-all duration-150 shadow-lg shadow-white/10">
                   <svg id="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 translate-x-px">
                     <path d="M8 5v14l11-7z"/>
                   </svg>
@@ -164,20 +192,11 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
                     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                   </svg>
                 </button>
-
                 <div class="relative cursor-pointer flex-1 min-w-0" id="audio-track" style="height:36px">
                   <canvas id="audio-waveform" class="absolute inset-0 w-full h-full"></canvas>
-                  <input
-                    id="audio-seek"
-                    type="range"
-                    min="0"
-                    max="100"
-                    value="0"
-                    step="0.1"
-                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
+                  <input id="audio-seek" type="range" min="0" max="100" value="0" step="0.1"
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                 </div>
-
                 <div class="flex-shrink-0 flex items-center gap-1 text-[11px] text-white/30 tabular-nums">
                   <span id="audio-current">0:00</span>
                   <span>/</span>
@@ -191,7 +210,7 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         )}
 
         {post.data.heroImage && (
-          <div class="aspect-[16/9] rounded-xl overflow-hidden mb-12 border border-white/10">
+          <div class="aspect-[16/9] rounded-xl overflow-hidden mb-10 border border-white/10">
             <img
               src={post.data.heroImage}
               alt={`Cover image for ${post.data.title}`}
@@ -233,6 +252,21 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
 
     <script is:inline>
       (function () {
+        var stickyHeader = document.getElementById('sticky-header');
+        var articleHeader = document.getElementById('article-header');
+        var bodyPlayer = document.getElementById('body-audio-player');
+        if (!stickyHeader || !articleHeader) return;
+        new IntersectionObserver(function (entries) {
+          var visible = entries[0].isIntersecting;
+          stickyHeader.classList.toggle('-translate-y-full', visible);
+          stickyHeader.classList.toggle('translate-y-0', !visible);
+          if (bodyPlayer) bodyPlayer.style.opacity = visible ? '1' : '0.2';
+          if (!visible && window.__redrawStickyWaveform) window.__redrawStickyWaveform();
+        }, { threshold: 0 }).observe(articleHeader);
+      })();
+    </script>
+    <script is:inline>
+      (function () {
         var btn     = document.getElementById('mdx-toggle');
         var content = document.getElementById('article-content');
         var raw     = document.getElementById('raw-script');
@@ -257,28 +291,10 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         var audio = document.getElementById('article-audio');
         if (!audio) return;
 
-        var btn       = document.getElementById('audio-play-btn');
-        var seek      = document.getElementById('audio-seek');
-        var volume    = document.getElementById('audio-volume');
-        var currentEl = document.getElementById('audio-current');
-        var durationEl= document.getElementById('audio-duration');
-        var iconPlay  = document.getElementById('icon-play');
-        var iconPause = document.getElementById('icon-pause');
-        var canvas    = document.getElementById('audio-waveform');
-        var ctx       = canvas.getContext('2d');
-
-        if (volume) {
-          audio.volume = 0.5;
-          volume.addEventListener('input', function () {
-            audio.volume = volume.value;
-          });
-        }
-
-        var peaks = [];
-        try { peaks = JSON.parse(audio.dataset.waveform || '[]'); } catch(e) {}
-
         var DPR = window.devicePixelRatio || 1;
         var playPct = 0;
+        var peaks = [];
+        try { peaks = JSON.parse(audio.dataset.waveform || '[]'); } catch(e) {}
 
         function fmt(s) {
           if (!isFinite(s)) return '0:00';
@@ -286,83 +302,104 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
           return m + ':' + (sec < 10 ? '0' : '') + sec;
         }
 
-        function resize() {
-          canvas.width  = canvas.offsetWidth  * DPR;
-          canvas.height = canvas.offsetHeight * DPR;
-          draw();
-        }
-
-        function draw() {
+        function drawCanvas(canvas) {
+          if (!canvas) return;
+          var ctx = canvas.getContext('2d');
           var W = canvas.width, H = canvas.height;
           ctx.clearRect(0, 0, W, H);
           if (!peaks.length) return;
-
-          var n    = peaks.length;
-          var gap  = Math.round(DPR * 1.5);
+          var n = peaks.length, gap = Math.round(DPR * 1.5);
           var barW = Math.max(1, (W - gap * (n - 1)) / n);
-          var cx   = Math.floor(playPct * W);   // playhead x in canvas px
-
+          var cx = Math.floor(playPct * W);
           for (var i = 0; i < n; i++) {
-            var barH   = Math.max(DPR * 2, peaks[i] * H * 0.92);
-            var x      = i * (barW + gap);
-            var played = (x + barW) <= cx;
-            var head   = x <= cx && cx < (x + barW);
-
-            if (played) {
-              ctx.fillStyle = 'rgba(255,255,255,0.85)';
-            } else if (head) {
-              ctx.fillStyle = 'rgba(255,255,255,0.95)';
-            } else {
-              ctx.fillStyle = 'rgba(255,255,255,' + (0.12 + peaks[i] * 0.12) + ')';
-            }
-
+            var barH = Math.max(DPR * 2, peaks[i] * H * 0.92);
+            var x = i * (barW + gap);
+            var played = (x + barW) <= cx, head = x <= cx && cx < (x + barW);
+            ctx.fillStyle = played ? 'rgba(255,255,255,0.85)' : head ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,' + (0.12 + peaks[i] * 0.12) + ')';
             var y = (H - barH) / 2;
-            ctx.beginPath();
-            ctx.roundRect(x, y, barW, barH, Math.min(barW / 2, DPR * 2));
-            ctx.fill();
+            ctx.beginPath(); ctx.roundRect(x, y, barW, barH, Math.min(barW / 2, DPR * 2)); ctx.fill();
           }
         }
 
-        function update() {
+        function resizeCanvas(canvas) {
+          if (!canvas) return;
+          canvas.width  = canvas.offsetWidth  * DPR;
+          canvas.height = canvas.offsetHeight * DPR;
+          drawCanvas(canvas);
+        }
+
+        var bodyCanvas  = document.getElementById('audio-waveform');
+        var stickyCanvas = document.getElementById('s-waveform');
+
+        function updateUI() {
           playPct = audio.duration ? audio.currentTime / audio.duration : 0;
-          seek.value = playPct * 100;
-          currentEl.textContent = fmt(audio.currentTime);
-          draw();
+          var pct100 = playPct * 100;
+          var cur = fmt(audio.currentTime);
+          var seek = document.getElementById('audio-seek');
+          var sCur = document.getElementById('audio-current');
+          if (seek)  seek.value = pct100;
+          if (sCur)  sCur.textContent = cur;
+          var sSeek = document.getElementById('s-seek');
+          var sSCur = document.getElementById('s-current');
+          if (sSeek) sSeek.value = pct100;
+          if (sSCur) sSCur.textContent = cur;
+          drawCanvas(bodyCanvas);
+          drawCanvas(stickyCanvas);
         }
 
-        btn.addEventListener('click', function () {
-          if (audio.paused) audio.play(); else audio.pause();
-        });
-
-        audio.addEventListener('play', function () {
-          iconPlay.classList.add('hidden');
-          iconPause.classList.remove('hidden');
-        });
-        audio.addEventListener('pause', function () {
-          iconPlay.classList.remove('hidden');
-          iconPause.classList.add('hidden');
-        });
-        audio.addEventListener('ended', function () {
-          iconPlay.classList.remove('hidden');
-          iconPause.classList.add('hidden');
-        });
-        audio.addEventListener('timeupdate', update);
-        audio.addEventListener('loadedmetadata', function () {
-          durationEl.textContent = fmt(audio.duration);
-        });
-        if (audio.readyState >= 1 && audio.duration) {
-          durationEl.textContent = fmt(audio.duration);
+        function setPlayState(playing) {
+          var ip = document.getElementById('icon-play'),   ipu = document.getElementById('icon-pause');
+          var sp = document.getElementById('s-icon-play'), spu = document.getElementById('s-icon-pause');
+          if (ip)  ip.classList.toggle('hidden', playing);
+          if (ipu) ipu.classList.toggle('hidden', !playing);
+          if (sp)  sp.classList.toggle('hidden', playing);
+          if (spu) spu.classList.toggle('hidden', !playing);
         }
 
-        seek.addEventListener('input', function () {
-          if (audio.duration) {
-            audio.currentTime = (seek.value / 100) * audio.duration;
-            update();
-          }
-        });
+        function setDuration() {
+          var d = fmt(audio.duration);
+          var el = document.getElementById('audio-duration');
+          var sel = document.getElementById('s-duration');
+          if (el)  el.textContent = d;
+          if (sel) sel.textContent = d;
+        }
 
-        window.addEventListener('resize', resize);
-        resize();
+        var volume = document.getElementById('audio-volume');
+        var sVolume = document.getElementById('s-volume');
+        audio.volume = 0.5;
+        if (volume)  volume.addEventListener('input', function () { audio.volume = volume.value; if (sVolume) sVolume.value = volume.value; });
+        if (sVolume) sVolume.addEventListener('input', function () { audio.volume = sVolume.value; if (volume) volume.value = sVolume.value; });
+
+        var btn  = document.getElementById('audio-play-btn');
+        var sBtn = document.getElementById('s-play-btn');
+        function togglePlay() { if (audio.paused) audio.play(); else audio.pause(); }
+        if (btn)  btn.addEventListener('click', togglePlay);
+        if (sBtn) sBtn.addEventListener('click', togglePlay);
+
+        var seek  = document.getElementById('audio-seek');
+        var sSeekEl = document.getElementById('s-seek');
+        function seekTo(val) { if (audio.duration) { audio.currentTime = (val / 100) * audio.duration; updateUI(); } }
+        if (seek)    seek.addEventListener('input',    function () { seekTo(seek.value); });
+        if (sSeekEl) sSeekEl.addEventListener('input', function () { seekTo(sSeekEl.value); });
+
+        audio.addEventListener('play',         function () { setPlayState(true); });
+        audio.addEventListener('pause',        function () { setPlayState(false); });
+        audio.addEventListener('ended',        function () { setPlayState(false); });
+        audio.addEventListener('timeupdate',   updateUI);
+        audio.addEventListener('loadedmetadata', setDuration);
+        if (audio.readyState >= 1 && audio.duration) setDuration();
+
+        window.__redrawStickyWaveform = function () {
+          resizeCanvas(stickyCanvas);
+          drawCanvas(stickyCanvas);
+        };
+
+        window.addEventListener('resize', function () {
+          resizeCanvas(bodyCanvas);
+          resizeCanvas(stickyCanvas);
+        });
+        resizeCanvas(bodyCanvas);
+        requestAnimationFrame(function () { resizeCanvas(stickyCanvas); });
       })();
     </script>
   </body>

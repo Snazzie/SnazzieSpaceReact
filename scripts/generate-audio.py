@@ -49,21 +49,21 @@ WORD_SUBS: dict[str, str] = {
 
 
 def strip_mdx(text: str) -> str:
-    text = re.sub(r"^---.*?---\s*", "", text, flags=re.DOTALL)
-    text = re.sub(r"^(import|export)\s+.*$", "", text, flags=re.MULTILINE)
-    text = re.sub(r"<[^>]+>", "", text)
-    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
-    text = re.sub(r"^#{1,6}\s+(.+)$", r"... \1...", text, flags=re.MULTILINE)
-    text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r" \1 ", text)
-    text = re.sub(r" {2,}", " ", text)
-    text = re.sub(r"`[^`]+`", "", text)
-    text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
-    text = "".join(", " if unicodedata.category(c) == "Pd" and ord(c) != 0x2D else c for c in text)
-    for word, replacement in WORD_SUBS.items():
+    text = re.sub(r"^---.*?---\s*", "", text, flags=re.DOTALL)          # strip frontmatter
+    text = re.sub(r"^(import|export)\s+.*$", "", text, flags=re.MULTILINE)  # strip MDX imports/exports
+    text = re.sub(r"<[^>]+>", "", text)                                  # strip JSX/HTML tags
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)                 # markdown links → display text only
+    text = re.sub(r"^#{1,6}\s+(.+)$", r"... \1...", text, flags=re.MULTILINE)  # headers: pause before and after
+    text = re.sub(r"\*{1,3}([^*]+)\*{1,3}", r" \1 ", text)              # strip bold/italic markers
+    text = re.sub(r" {2,}", " ", text)                                   # collapse multiple spaces
+    text = re.sub(r"`[^`]+`", "", text)                                  # strip inline code
+    text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)               # strip code blocks
+    text = "".join(", " if unicodedata.category(c) == "Pd" and ord(c) != 0x2D else c for c in text)  # em/en dashes → comma pause (skip regular hyphens)
+    for word, replacement in WORD_SUBS.items():                          # apply known mispronunciation fixes
         text = re.sub(rf"\b{re.escape(word)}\b", replacement, text, flags=re.IGNORECASE)
-    # word[PHONEME] → [PHONEME]: keep OmniVoice phoneme, drop written form
-    text = re.sub(r"\S+(\[[^\]]+\])", r"\1", text)
-    text = re.sub(r"\n{3,}", "\n\n", text)
+    text = re.sub(r"\S+(\[[^\]]+\])", r"\1", text)                       # word[PHONEME] → [PHONEME]: drop written form, keep phoneme for OmniVoice
+    text = re.sub(r"\n{3,}", "\n\n", text)                               # normalise excess blank lines
+    text = text.replace("\n\n", "...\n\n")                               # paragraph breaks → ellipsis pause
     return text.strip()
 
 
