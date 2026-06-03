@@ -39,6 +39,8 @@ export function AvatarParallax({
         className="w-full h-full object-cover grayscale"
         fetchPriority="high"
         loading="eager"
+        width="840"
+        height="840"
       />
 
       {/* Depth layers — parallax shift, no glitch class so they stay visible */}

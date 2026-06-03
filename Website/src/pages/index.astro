@@ -42,9 +42,12 @@ const [githubProfile, trafficData] = await Promise.all([
   safeFetch<TrafficData>(`${WORKER_BASE}/analytics`, traffic),
 ]);
 
-const rawArticles = (await getCollection('articles', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const allArticles = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featured = allArticles.find((a) => a.data.featured);
+const latest = allArticles.filter((a) => !a.data.featured).slice(0, featured ? 2 : 3);
+const rawArticles = featured ? [featured, ...latest] : latest;
 
 const latestArticles: ArticleTeaser[] = rawArticles.map((p) => ({
   slug: p.id,
