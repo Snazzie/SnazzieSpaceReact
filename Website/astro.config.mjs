@@ -6,15 +6,15 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
-import remarkStripTtsMarkers from './src/lib/remark-strip-tts-markers.mjs';
+import rehypeStripTtsMarkers from './src/lib/remark-strip-tts-markers.mjs';
 
 export default defineConfig({
   site: "https://snazzie.space",
   base: "/",
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [react(), mdx({ rehypePlugins: [rehypeStripTtsMarkers] }), sitemap()],
 
   markdown: {
-    remarkPlugins: [remarkStripTtsMarkers],
+    rehypePlugins: [rehypeStripTtsMarkers],
   },
 
   vite: {
