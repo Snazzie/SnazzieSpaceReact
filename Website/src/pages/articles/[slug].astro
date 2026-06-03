@@ -351,6 +351,9 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
         audio.addEventListener('loadedmetadata', function () {
           durationEl.textContent = fmt(audio.duration);
         });
+        if (audio.readyState >= 1 && audio.duration) {
+          durationEl.textContent = fmt(audio.duration);
+        }
 
         seek.addEventListener('input', function () {
           if (audio.duration) {
