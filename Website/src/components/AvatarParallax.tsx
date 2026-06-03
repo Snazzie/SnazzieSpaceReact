@@ -29,7 +29,7 @@ export function AvatarParallax({
 }) {
   return (
     <div
-      className={`film-grain relative overflow-hidden rounded-full border border-border ${className ?? ""}`}
+      className={`relative overflow-hidden rounded-full border border-border ${className ?? ""}`}
       style={{ isolation: "isolate" }}
     >
       {/* Base — always visible, grayscale, no parallax */}
