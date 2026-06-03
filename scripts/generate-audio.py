@@ -83,7 +83,7 @@ def generate(slug: str, model) -> None:
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 
     text = strip_mdx(mdx.read_text())
-    print(f"  {slug}: {len(text)} chars → {out.name}")
+    print(f"  {slug}: {len(text)} chars -> {out.name}")
 
     audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
