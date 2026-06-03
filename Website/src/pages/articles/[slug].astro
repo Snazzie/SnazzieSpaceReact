@@ -179,7 +179,7 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
                 />
               </div>
             </div>
-            <audio id="article-audio" preload="none" src={audioPath}
+            <audio id="article-audio" preload="metadata" src={audioPath}
               data-waveform={JSON.stringify(waveformData)}></audio>
           </div>
         )}
