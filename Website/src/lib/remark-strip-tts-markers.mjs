@@ -6,8 +6,8 @@ import { visit } from 'unist-util-visit';
 export default function remarkStripTtsMarkers() {
   return (tree) => {
     visit(tree, 'text', (node, index, parent) => {
-      const cleaned = node.value.replace(/\[[^\]]+\](?!\()/g, '').replace(/  +/g, ' ').trim();
-      if (cleaned === '') {
+      const cleaned = node.value.replace(/\[[^\]]+\](?!\()/g, '').replace(/  +/g, ' ');
+      if (cleaned.trim() === '') {
         parent.children.splice(index, 1);
         return index;
       }
