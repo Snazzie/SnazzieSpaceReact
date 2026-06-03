@@ -29,7 +29,7 @@ export function AvatarParallax({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-full border border-border ${className ?? ""}`}
+      className={`film-grain relative overflow-hidden rounded-full border border-border ${className ?? ""}`}
       style={{ isolation: "isolate" }}
     >
       {/* Base — always visible, grayscale, no parallax */}
@@ -77,7 +77,7 @@ function GlitchStrip({ cls, mx, my }: { cls: string; mx: MV; my: MV }) {
   return (
     <motion.img
       aria-hidden
-      src="https://avatars.githubusercontent.com/u/19627023?v=4"
+      src="/images/avatar.webp"
       alt=""
       style={{ x, y }}
       className={`avatar-glitch-strip ${cls}`}

@@ -14,7 +14,8 @@
     "audio": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py",
     "audio:all": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --all",
     "audio:waveforms": "source /tmp/kokoro-env/bin/activate && python3 ../scripts/generate-audio.py --waveforms",
-    "avatar:layers": "node scripts/gen-avatar-layers.mjs"
+    "avatar:layers": "node scripts/gen-avatar-layers.mjs",
+    "avatar:grain": "node scripts/gen-grain.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

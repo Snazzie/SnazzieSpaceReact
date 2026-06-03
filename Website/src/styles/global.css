@@ -238,6 +238,37 @@ section[id] {
   opacity: 0;
 }
 
+/* ---- Film grain overlay ---- */
+/* Technique: real Gaussian noise texture, oversized + shifted each frame.    */
+/* mix-blend-mode: soft-light brightens/darkens like actual silver halide.    */
+@keyframes film-grain-shift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-5%, -10%); }
+  20%  { transform: translate(-15%, 5%); }
+  30%  { transform: translate(7%, -25%); }
+  40%  { transform: translate(-5%, 25%); }
+  50%  { transform: translate(-15%, 10%); }
+  60%  { transform: translate(15%, 0%); }
+  70%  { transform: translate(0%, 15%); }
+  80%  { transform: translate(3%, 35%); }
+  90%  { transform: translate(-10%, 10%); }
+}
+
+.film-grain::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+  background-image: url('/images/grain.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: film-grain-shift 0.12s steps(10) infinite;
+}
+
 /* ---- Custom scrollbar (black) ---- */
 ::-webkit-scrollbar {
   width: 0.7em;
