@@ -37,6 +37,9 @@ function removeSkipBlocks(content) {
 }
 
 function mdxToTtsScript(content) {
+  // Normalize CRLF to LF
+  content = content.replace(/\r\n/g, '\n');
+
   // Strip frontmatter
   content = content.replace(/^---[\s\S]*?---\s*\n/, '');
 
@@ -52,8 +55,8 @@ function mdxToTtsScript(content) {
   // Convert phoneme markers: word[PHONEME] → [PHONEME]
   content = content.replace(/\S+(\[[^\]]+\])/g, '$1');
 
-  // Strip markdown headers (## text → text)
-  content = content.replace(/^#{1,6}\s+(.+)$/gm, '$1');
+  // Strip markdown headers (## text → text.) — trailing period adds TTS pause
+  content = content.replace(/^#{1,6}\s+(.+)$/gm, '$1.');
 
   // Strip markdown links [text](url) → text
   content = content.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
