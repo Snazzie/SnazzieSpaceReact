@@ -39,13 +39,7 @@ MDX gets rendered at build time. No client-side markdown parsing, no JavaScript 
 
 ## Phoneme annotations
 
-The TTS model, OmniVoice, uses CMU[S IY1 EH1 M Y UW1] ARPAbet[AA1 R P AH0 B EH2 T] phonemes. Acronyms and unusual terms get annotated inline in the MDX:
-
-```
-The API[EY1 P IY0 AY1] handles the request.
-```
-
-The display layer strips the bracket content so the reader sees "API". The TTS pipeline receives the phoneme sequence instead of the raw letters. A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
+The TTS model, OmniVoice, uses CMU[S IY1 EH1 M Y UW1] ARPAbet[AA1 R P AH0 B EH2 T] phonemes. Acronyms and unusual terms get annotated inline in the MDX with their phoneme sequence. The display layer strips the bracket content so the reader sees the term as written, while the TTS receives the correct pronunciation. A maintained table of annotated terms lives in the article skill, so new articles get consistent pronunciation without re-solving the same phoneme lookups.
 
 <div data-tts-skip class="not-prose my-6 rounded-xl border border-white/[0.08] overflow-hidden">
   <table class="w-full text-sm">
