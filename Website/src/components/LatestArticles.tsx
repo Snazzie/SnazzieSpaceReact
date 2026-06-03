@@ -16,7 +16,12 @@ export function LatestArticles({ articles }: Props) {
   return (
     <section id="articles" className="relative px-6 py-24 sm:px-10 lg:px-20">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">Articles</h2>
+        <div className="flex items-baseline gap-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">Articles</h2>
+          <a href="/articles" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            View all →
+          </a>
+        </div>
         <SectionUnderline />
 
         {articles.length === 0 ? (
@@ -60,14 +65,6 @@ export function LatestArticles({ articles }: Props) {
           </div>
         )}
 
-        <div className="mt-10 flex justify-end">
-          <a
-            href="/articles/"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            View all articles →
-          </a>
-        </div>
       </div>
     </section>
   );

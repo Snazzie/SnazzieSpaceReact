@@ -11,7 +11,7 @@ const LINKS = [
   { href: "#projects", label: "Projects", id: "projects" },
   { href: "#github", label: "GitHub", id: "github" },
   { href: "#traffic", label: "Traffic", id: "traffic" },
-  { href: "/articles", label: "Articles", id: "articles" },
+  { href: "#articles", label: "Articles", id: "articles" },
   { href: "#hire", label: "Hire Me", id: "hire" },
 ];
 
