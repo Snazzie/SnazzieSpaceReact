@@ -94,6 +94,7 @@ export default function ttsTxtIntegration() {
     name: 'tts-txt-generator',
     hooks: {
       'astro:build:start': generateAllTxt,
+      'astro:server:start': generateAllTxt,
     },
   };
 }
