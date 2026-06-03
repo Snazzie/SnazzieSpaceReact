@@ -85,7 +85,7 @@ The same annotation system also handles paralinguistic markers — pauses, soft 
 
 ## Audio generation
 
-The Astro build processes each MDX file and writes a plain text TTS script. That file is the single source of truth — it strips MDX syntax, converts em dashes to pauses, flips phoneme annotations from written form to their phoneme sequence, and excludes any HTML[EY1 CH T IY1 EH1 M EH1 L] block marked with `data-tts-skip` — the comparison table above uses this to stay out of the narration. The "see raw script" toggle on each article shows exactly this output.
+The Astro build processes each MDX file and writes a plain text TTS script. That file is the single source of truth — it strips MDX syntax, converts em dashes to pauses, flips phoneme annotations from written form to their phoneme sequence, and excludes any HTML[EY1 CH T IY1 EH1 M EH1 L] block marked with a skip attribute — the comparison table on this page uses that to stay out of the narration. The "see raw script" toggle on each article shows exactly this output.
 
 A Python script then reads that file, seeds the RNG for reproducibility, and passes the text to OmniVoice running on CUDA with a fixed reference voice sample. Every article uses the same reference wav, so the voice is consistent. Speed is set to 1.15x. Output is a FLAC and a waveform JSON — 200 normalised peak amplitude values used to render the player visualisation.
 
