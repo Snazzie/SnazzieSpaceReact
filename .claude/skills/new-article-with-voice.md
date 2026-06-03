@@ -1,11 +1,11 @@
 ---
 name: new-article-with-voice
-description: End-to-end skill for creating a new snazzie.space article — write content, embed OmniVoice markers, generate audio, commit. Use when user asks to write a new article.
+description: End-to-end skill for creating a new snazzie.space article — write content, embed OmniVoice markers, generate audio, commit. Use when user asks to write a new article or annotate an existing one.
 ---
 
-# New Article Skill
+# New Article with Voice
 
-Creates a complete article from topic to committed FLAC in one session.
+Creates a complete article from topic to committed FLAC in one session. Also use when annotating existing articles with TTS markers.
 
 ## Step 1 — Gather requirements
 
@@ -14,7 +14,7 @@ If the user hasn't specified, ask:
 - **Angle** — what's the argument or take? (snazzie.space articles are opinionated, not tutorials)
 - **Target length** — short (~300 words) / medium (~800) / long (~1500)
 
-One question at a time if needed. Don't start writing until you have the angle.
+One question at a time. Don't start writing until you have the angle.
 
 ## Step 2 — Write the article
 
@@ -44,12 +44,13 @@ Slug: lowercase, hyphens, derived from title. E.g. "Why Bun Won" → `why-bun-wo
 
 ## Step 3 — Embed OmniVoice markers
 
-After writing the body, embed markers inline. Rules from [[articles-with-voice]]:
+### How markers work
 
-### Phoneme format
-`writtenForm[PHONEME]` — display shows `writtenForm`, TTS says phoneme.
+**Format:** `writtenForm[PHONEME]`
+- Display (remark plugin strips `[...]`): reader sees `writtenForm`
+- TTS (`strip_mdx` converts `word[phoneme]` → `[phoneme]`): OmniVoice receives phoneme
 
-Apply to every occurrence of these terms:
+### Phoneme table — apply to every occurrence
 
 | Written | Marker |
 |---------|--------|
@@ -77,10 +78,9 @@ Apply to every occurrence of these terms:
 | `URL` | `URL[Y UW1 AA1 R EH1 L]` |
 | `SEO` | `SEO[EH1 S IY0 OW0]` |
 
-For new tech terms not in this table: spell out each letter as a phoneme, or find the CMU dict entry.
+For new terms not in this table: spell each letter as a phoneme or find the CMU dict entry.
 
 ### Domain names in prose
-Write as readable text, not raw URLs:
 ```mdx
 [snazzie.space](https://snazzie.space)   ← TTS reads "snazzie.space" ✓
 https://snazzie.space                    ← TTS reads full URL ✗
@@ -100,6 +100,8 @@ python scripts/generate-audio.py <slug>
 
 Generates `Website/public/audio/<slug>.flac` and `<slug>-waveform.json`.
 
+Regenerate all: `python scripts/generate-audio.py --all`
+
 ## Step 5 — Verify build
 
 ```bash
@@ -118,10 +120,9 @@ git commit -m "feat(articles): add <slug> article with voice"
 ## Checklist
 
 - [ ] Frontmatter complete (title, date, excerpt, tags, draft: false)
-- [ ] Article has a clear opinionated take — not a tutorial or overview
-- [ ] OmniVoice markers on every occurrence of terms in the phoneme table
-- [ ] 1-2 paralinguistic markers placed where tone fits
-- [ ] No raw URLs in prose — all domains wrapped as markdown links
+- [ ] Opinionated take — not a tutorial or overview
+- [ ] OmniVoice markers on every occurrence of terms in phoneme table
+- [ ] No raw URLs — all domains wrapped as markdown links
 - [ ] `bun run build` passes
 - [ ] FLAC + waveform JSON generated
 - [ ] Committed
