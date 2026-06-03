@@ -309,14 +309,12 @@ const waveformData: number[] = hasAudio && existsSync(waveformPath)
             var played = (x + barW) <= cx;
             var head   = x <= cx && cx < (x + barW);
 
-            // indigo(240) → violet(270) → rose(340) based on loudness
-            var hue = 240 + peaks[i] * 100;
             if (played) {
-              ctx.fillStyle = 'hsla(' + hue + ',80%,75%,0.92)';
+              ctx.fillStyle = 'rgba(255,255,255,0.85)';
             } else if (head) {
-              ctx.fillStyle = 'hsla(' + hue + ',85%,82%,1)';
+              ctx.fillStyle = 'rgba(255,255,255,0.95)';
             } else {
-              ctx.fillStyle = 'hsla(' + hue + ',60%,58%,' + (0.2 + peaks[i] * 0.5) + ')';
+              ctx.fillStyle = 'rgba(255,255,255,' + (0.12 + peaks[i] * 0.12) + ')';
             }
 
             var y = (H - barH) / 2;
