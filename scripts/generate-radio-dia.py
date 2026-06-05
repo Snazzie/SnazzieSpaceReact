@@ -52,6 +52,35 @@ def resample(audio: np.ndarray, src: int, dst: int) -> np.ndarray:
     return resample_poly(audio, dst // g, src // g).astype(np.float32)
 
 
+def prompt_end_sample(clip: np.ndarray, sr: int, approx_s: float) -> int:
+    """Find where the echoed prompt ends — the quietest 120ms gap near `approx_s`.
+    Adapts to Dia regenerating the prompt at a slightly different length than the input,
+    so we don't slice into the actual content (premature cut-off)."""
+    win = int(0.12 * sr)
+    lo = int(max(0.0, approx_s - 1.8) * sr)
+    hi = int(min(len(clip) - win, (approx_s + 1.8) * sr))
+    if hi <= lo:
+        return min(int(approx_s * sr), len(clip))
+    best_i, best_e = lo, 1e9
+    step = int(0.02 * sr)
+    for i in range(lo, hi, step):
+        e = float(np.sqrt((clip[i:i + win] ** 2).mean()))
+        if e < best_e:
+            best_e, best_i = e, i
+    return best_i + win  # cut at the end of the quiet gap
+
+
+def normalize_rms(clip: np.ndarray, target_rms: float = 0.09, peak_cap: float = 0.97) -> np.ndarray:
+    """Bring each chunk to a consistent loudness, then cap peaks (no clipping)."""
+    rms = float(np.sqrt((clip ** 2).mean())) if len(clip) else 0.0
+    if rms > 1e-5:
+        clip = clip * (target_rms / rms)
+    peak = float(np.max(np.abs(clip))) if len(clip) else 0.0
+    if peak > peak_cap:
+        clip = clip * (peak_cap / peak)
+    return clip.astype(np.float32)
+
+
 def build_chunks(lines: list[dict], s1: str) -> list[list[int]]:
     """Group consecutive line indices into ~CHUNK_SECS chunks. Each chunk must START on an
     S1 line (Dia requires input to begin with [S1] and alternate)."""
@@ -146,10 +175,10 @@ def generate(slug: str) -> None:
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
         clip = resample(audio, sr, OUT_SR)
-        # Drop the echoed prompt at the front (slice by prompt duration, with a small margin)
-        cut = int(prime_secs * OUT_SR)
-        if cut < len(clip):
-            clip = clip[cut:]
+        # Drop the echoed prompt: cut at the silence gap near the prompt's duration (adaptive)
+        cut = prompt_end_sample(clip, OUT_SR, prime_secs)
+        clip = clip[cut:] if cut < len(clip) else clip
+        clip = normalize_rms(clip)            # consistent per-chunk loudness
         rendered.append(clip)
         rendered.append(np.zeros(int(OUT_SR * GAP_SECS), dtype=np.float32))
         chunk_durs.append(len(clip) / OUT_SR)
@@ -157,6 +186,8 @@ def generate(slug: str) -> None:
     tmp.unlink(missing_ok=True)
 
     track = np.concatenate(rendered)
+    # Soft limiter then peak normalize — even loudness, no clipping
+    track = np.tanh(track * 1.1).astype(np.float32)
     mx = np.max(np.abs(track))
     if mx > 0:
         track = track / mx * 0.95
