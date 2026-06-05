@@ -449,12 +449,17 @@ export default function RadioStation({ episodes, cast }: Props) {
                   >
                     {m.name[0]}
                   </div>
-                  <span
-                    className="hidden text-[10px] font-medium sm:inline"
-                    style={{ color: talking ? "#fff" : "rgba(255,255,255,0.4)" }}
-                  >
-                    {m.name}
-                  </span>
+                  <div className="hidden flex-col leading-tight sm:flex">
+                    <span
+                      className="text-[10px] font-medium"
+                      style={{ color: talking ? "#fff" : "rgba(255,255,255,0.4)" }}
+                    >
+                      {m.name}
+                    </span>
+                    <span className="text-[8px] uppercase tracking-[0.5px] text-white/30">
+                      {m.role}
+                    </span>
+                  </div>
                 </div>
               );
             })}
