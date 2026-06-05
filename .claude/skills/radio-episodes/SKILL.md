@@ -65,6 +65,25 @@ retiming a line only edits its `timestamp`, never the audio.
    - Keep timestamps monotonic — the placement pass guarantees it as long as overlaps are
      sane; very large positive values just get clamped.
 
+## TTS-safe text (pronunciation rules)
+
+Line `text` is sent **verbatim** to OmniVoice — no markdown/marker stripping (unlike the
+article pipeline). So write only what should be spoken, and avoid characters the model
+mispronounces:
+
+- **No em-dashes or `--`.** OmniVoice reads `—` as "euro". Use `...` (also a natural pause)
+  or a comma instead.
+- **Encoding is UTF-8.** The generator reads/writes the episode JSON as UTF-8 explicitly;
+  keep it that way. A wrong-encoding read (Windows cp1252) mangles `—`, smart quotes, `…`
+  — another source of the "euro"/garbage artifact.
+- **No raw URLs** — say the words ("snazzie dot space"), don't paste `https://…`.
+- **Acronyms**: spell them how they should sound (e.g. "F-B-I" → write `F B I`), or avoid.
+  Radio text does **not** support the article's `word[PHONEME]` markers — that's a separate
+  MDX pipeline. For the full pronunciation/phoneme reference (acronyms, tech names, CMU
+  ARPAbet), see the **`new-article-with-voice`** skill's phoneme table; apply the same
+  spoken-form intent here, written as plain text.
+- Prefer plain ASCII punctuation: `. , ! ? ...` and the `<p:N>` pause token.
+
 ## Voice / cast config (`scripts/cast.json`)
 
 Per character: `name`, `color`, `role`, `instruct`, `speed`, `phone_filter`, `ref_audio`, `ref_text`.

@@ -60,7 +60,7 @@ def trim_silence(audio: np.ndarray, thresh: float = 0.015, pad_ms: float = 40.0)
 
 
 def load_cast() -> dict:
-    return json.loads(CAST_FILE.read_text())
+    return json.loads(CAST_FILE.read_text(encoding="utf-8"))
 
 
 def clip_hash(text: str, c: dict) -> str:
@@ -141,14 +141,14 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         print(f"  skip (no script): {slug}")
         return
 
-    episode  = json.loads(script_path.read_text())
+    episode  = json.loads(script_path.read_text(encoding="utf-8"))
     lines    = episode["lines"]
     cast     = load_cast()
     clip_dir = AUDIO_DIR / slug
     clip_dir.mkdir(parents=True, exist_ok=True)
 
     manifest_path = clip_dir / ".clips.json"
-    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
 
     print(f"  {slug}: {len(lines)} clips ({'remix' if remix else 'render'})")
 
@@ -187,7 +187,7 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         rendered += 1
         print(f"    [{i+1}/{len(lines)}] {speaker_id}: {len(clip)/SAMPLE_RATE:.1f}s (rendered)")
 
-    manifest_path.write_text(json.dumps(manifest))
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
     # Placement pass — cheap, always runs
     starts = place(lengths, lines)
@@ -196,7 +196,7 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         line["duration"]  = round(lengths[i] / SAMPLE_RATE, 3)
         line["audio"]     = f"/audio/radio/{slug}/{i}.flac"
 
-    script_path.write_text(json.dumps(episode, indent=2, ensure_ascii=False))
+    script_path.write_text(json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
     total = (max(s + l for s, l in zip(starts, lengths)) / SAMPLE_RATE) if lengths else 0
     print(f"  placed {len(lines)} clips, {rendered} (re)rendered, timeline {total:.1f}s")
 

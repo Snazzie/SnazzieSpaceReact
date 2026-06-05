@@ -64,7 +64,7 @@ def main() -> None:
 
     VOICES_DIR.mkdir(exist_ok=True)
 
-    cast = json.loads(CAST_FILE.read_text())
+    cast = json.loads(CAST_FILE.read_text(encoding="utf-8"))
     needed_speakers = set(CHARACTER_SPEAKERS.values())
 
     print(f"Streaming LibriSpeech test-clean for {len(needed_speakers)} speakers...")
@@ -118,7 +118,7 @@ def main() -> None:
         sf.write(str(out_wav), arr_resampled, TARGET_SR)
 
         out_txt = VOICES_DIR / f"{char}.txt"
-        out_txt.write_text(text)
+        out_txt.write_text(text, encoding="utf-8")
 
         # Update cast.json
         if char in cast:
@@ -127,7 +127,7 @@ def main() -> None:
 
         print(f"  {char} ({spk_id}): {out_wav.name}")
 
-    CAST_FILE.write_text(json.dumps(cast, indent=2, ensure_ascii=False))
+    CAST_FILE.write_text(json.dumps(cast, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\ncast.json updated. Run: python scripts/generate-radio.py the-truth-hour")
 
 

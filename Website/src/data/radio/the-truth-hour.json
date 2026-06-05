@@ -181,17 +181,17 @@
     },
     {
       "speaker": "barry",
-      "text": "That is — that is not how bread works.",
+      "text": "That is... that is not how bread works.",
       "overlap": -0.1,
       "timestamp": 94.955,
-      "duration": 2.263,
+      "duration": 2.287,
       "audio": "/audio/radio/the-truth-hour/22.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "That is exactly how bread works, Barry. <p:0.4> Look it up. Go on. You can't, can you? They scrubbed it.",
       "overlap": -0.1,
-      "timestamp": 97.318,
+      "timestamp": 97.342,
       "duration": 4.96,
       "audio": "/audio/radio/the-truth-hour/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "Frank... I want to thank you. For your courage. And your service. You are a patriot.",
       "overlap": -0.3,
-      "timestamp": 102.578,
+      "timestamp": 102.602,
       "duration": 5.442,
       "audio": "/audio/radio/the-truth-hour/24.flac"
     },
@@ -207,23 +207,23 @@
       "speaker": "caller-frank",
       "text": "Do not feed the pigeons. <p:0.4> You hear me? Tell everyone. Before it's too late.",
       "overlap": -0.15,
-      "timestamp": 108.17,
+      "timestamp": 108.194,
       "duration": 4.078,
       "audio": "/audio/radio/the-truth-hour/25.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "We'll be right back after this. And please — do not, under any circumstances, feed the pigeons.",
+      "text": "We'll be right back after this. And please... do not, under any circumstances, feed the pigeons.",
       "overlap": -0.25,
-      "timestamp": 112.498,
-      "duration": 6.619,
+      "timestamp": 112.522,
+      "duration": 5.72,
       "audio": "/audio/radio/the-truth-hour/26.flac"
     },
     {
       "speaker": "barry",
       "text": "...I literally fed a pigeon this morning.",
       "overlap": -0.15,
-      "timestamp": 119.267,
+      "timestamp": 118.392,
       "duration": 1.956,
       "audio": "/audio/radio/the-truth-hour/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "ronnie",
       "text": "Barry... <p:0.9> You're done, son.",
       "overlap": -0.1,
-      "timestamp": 121.323,
+      "timestamp": 120.448,
       "duration": 2.069,
       "audio": "/audio/radio/the-truth-hour/28.flac"
     }
