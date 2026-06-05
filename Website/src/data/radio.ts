@@ -89,6 +89,15 @@ export const MUSIC_TRACKS: Episode[] = [
     lines: [],
     track: "/audio/music/orange-slices-union-job.mp3",
   },
+  {
+    slug: "villain-open-mic",
+    title: "Villain Open Mic",
+    description: "Live from the rain-slick streets — every caller's a villain, every line's a confession.",
+    type: "music",
+    coverArt: "/images/radio/music/villain-open-mic.jpg",
+    lines: [],
+    track: "/audio/music/villain-open-mic.mp3",
+  },
 ];
 
 export const EPISODES: Episode[] = [
