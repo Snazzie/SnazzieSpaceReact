@@ -74,7 +74,7 @@ export const MUSIC_TRACKS: Episode[] = [
   {
     slug: "cold-metal-frown",
     title: "Cold Metal Frown",
-    description: "Late-night frequencies from the Snazzie FM vault. Plays every night around 2 AM.",
+    description: "Late-night frequencies from the Snazzie FM vault. Cold, mechanical, and a little wrong.",
     type: "music",
     coverArt: "/images/radio/music/cold-metal-frown.jpg",
     lines: [],
