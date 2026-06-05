@@ -223,15 +223,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> Sorry to cut in, the phone lines are kind of... melting?",
       "overlap": -0.2,
-      "timestamp": 92.773,
-      "duration": 2.52,
+      "timestamp": 92.765,
+      "duration": 2.62,
       "audio": "/audio/radio/coin-of-the-realm/27.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Melting how, Todd?",
       "overlap": -0.2,
-      "timestamp": 94.744,
+      "timestamp": 94.849,
       "duration": 2.0,
       "audio": "/audio/radio/coin-of-the-realm/28.flac"
     },
@@ -239,15 +239,15 @@
       "speaker": "todd",
       "text": "Like four hundred people are calling, and they all say they own a pigeon. <p:0.3> And one guy is just... cooing.",
       "overlap": -0.15,
-      "timestamp": 96.14,
-      "duration": 3.37,
+      "timestamp": 96.241,
+      "duration": 3.73,
       "audio": "/audio/radio/coin-of-the-realm/29.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "That's the community, Todd! That's the PigeonCoin army!",
       "overlap": -0.15,
-      "timestamp": 99.379,
+      "timestamp": 99.86,
       "duration": 2.88,
       "audio": "/audio/radio/coin-of-the-realm/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-gary",
       "text": "Yeah, I got a question for the kid. <p:0.4> How do I sell my PigeonCoin?",
       "overlap": -0.25,
-      "timestamp": 101.017,
+      "timestamp": 101.498,
       "duration": 6.28,
       "audio": "/audio/radio/coin-of-the-realm/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-chad",
       "text": "...You don't sell, Gary. You hold. Forever.",
       "overlap": -0.15,
-      "timestamp": 106.686,
+      "timestamp": 107.167,
       "duration": 2.16,
       "audio": "/audio/radio/coin-of-the-realm/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-gary",
       "text": "So it's worthless.",
       "overlap": -0.15,
-      "timestamp": 108.019,
+      "timestamp": 108.5,
       "duration": 2.2,
       "audio": "/audio/radio/coin-of-the-realm/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-chad",
       "text": "It's priceless, Gary. There's a difference.",
       "overlap": -0.1,
-      "timestamp": 109.655,
+      "timestamp": 110.136,
       "duration": 2.28,
       "audio": "/audio/radio/coin-of-the-realm/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "Chad, what's the coin actually worth right now? In real dollars.",
       "overlap": -0.2,
-      "timestamp": 111.353,
+      "timestamp": 111.834,
       "duration": 5.24,
       "audio": "/audio/radio/coin-of-the-realm/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-chad",
       "text": "Dollars are a fiat illusion, Barry. <p:0.3> But if you're asking, one coin is worth one pigeon.",
       "overlap": -0.15,
-      "timestamp": 116.06,
+      "timestamp": 116.541,
       "duration": 4.86,
       "audio": "/audio/radio/coin-of-the-realm/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "And what is a pigeon worth?",
       "overlap": -0.2,
-      "timestamp": 120.311,
+      "timestamp": 120.792,
       "duration": 2.24,
       "audio": "/audio/radio/coin-of-the-realm/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-chad",
       "text": "...One coin, Ronnie. It's a closed loop. Totally stable.",
       "overlap": -0.15,
-      "timestamp": 121.942,
+      "timestamp": 122.423,
       "duration": 2.8,
       "audio": "/audio/radio/coin-of-the-realm/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "barry",
       "text": "That's circular, Chad. That means it's worth nothing.",
       "overlap": -0.2,
-      "timestamp": 123.784,
+      "timestamp": 124.265,
       "duration": 4.4,
       "audio": "/audio/radio/coin-of-the-realm/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-chad",
       "text": "It means it can never crash, Barry. <p:0.3> It's pinned to itself.",
       "overlap": -0.15,
-      "timestamp": 127.593,
+      "timestamp": 128.074,
       "duration": 3.78,
       "audio": "/audio/radio/coin-of-the-realm/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "ronnie",
       "text": "Self pinned. The dream of every currency.",
       "overlap": -0.2,
-      "timestamp": 130.584,
+      "timestamp": 131.065,
       "duration": 3.32,
       "audio": "/audio/radio/coin-of-the-realm/41.flac"
     },
@@ -343,15 +343,15 @@
       "speaker": "todd",
       "text": "Ronnie, the cooing guy is still on line two. <p:0.3> He will not stop cooing.",
       "overlap": -0.2,
-      "timestamp": 133.517,
-      "duration": 2.58,
+      "timestamp": 133.99,
+      "duration": 3.06,
       "audio": "/audio/radio/coin-of-the-realm/42.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Put him through right after the break. The people want to hear the coo.",
       "overlap": -0.2,
-      "timestamp": 135.491,
+      "timestamp": 136.475,
       "duration": 5.48,
       "audio": "/audio/radio/coin-of-the-realm/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "barry",
       "text": "Please do not put the cooing man on the radio, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 140.015,
+      "timestamp": 141.0,
       "duration": 4.4,
       "audio": "/audio/radio/coin-of-the-realm/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "caller-chad",
       "text": "The coo is bullish, Barry. <p:0.3> Cooing means accumulation.",
       "overlap": -0.2,
-      "timestamp": 143.479,
+      "timestamp": 144.463,
       "duration": 3.66,
       "audio": "/audio/radio/coin-of-the-realm/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "ronnie",
       "text": "Accumulation. Write that down, folks.",
       "overlap": -0.2,
-      "timestamp": 146.81,
+      "timestamp": 147.795,
       "duration": 3.08,
       "audio": "/audio/radio/coin-of-the-realm/46.flac"
     },
@@ -383,7 +383,7 @@
       "speaker": "ronnie",
       "text": "And on that note of financial wisdom, we'll take a quick break. PigeonCoin. <p:0.3> To the moon, or at least to the roof.",
       "overlap": -0.25,
-      "timestamp": 148.69,
+      "timestamp": 149.674,
       "duration": 8.98,
       "audio": "/audio/radio/coin-of-the-realm/47.flac"
     }

@@ -73,8 +73,13 @@ def clip_hash(text: str, c: dict) -> str:
         PIPELINE_VERSION,
         text, c["ref_audio"], c["ref_text"], c["instruct"],
         f"{speed}", str(bool(c.get("phone_filter", False))),
+        f"{float(c.get('gain', 1.0))}", str(bool(c.get("distant", False))),
     ])
     return hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+
+
+# Low-pass for "distant"/off-mic voices (muffled, like across the room)
+_DISTANT_SOS = butter(4, 2600 / (SAMPLE_RATE / 2), btype="low", output="sos")
 
 
 import re
@@ -110,6 +115,11 @@ def render_clip(text: str, c: dict, model) -> np.ndarray:
     clip = np.concatenate(segments) if segments else np.zeros(int(SAMPLE_RATE * 0.3), dtype=np.float32)
     if c.get("phone_filter", False):
         clip = apply_phone_filter(clip)
+    if c.get("distant", False):          # off-mic / background: muffle (low-pass)
+        clip = sosfilt(_DISTANT_SOS, clip).astype(np.float32)
+    gain = float(c.get("gain", 1.0))     # quieter = further back in the mix
+    if gain != 1.0:
+        clip = (clip * gain).astype(np.float32)
     return clip
 
 
