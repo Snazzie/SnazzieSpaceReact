@@ -1,0 +1,295 @@
+{
+  "slug": "villain-hour",
+  "title": "Villain Hour",
+  "description": "Villain Open Mic on Snazzie FM. Four callers, each convinced they run the city. Gary just makes noises at them.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, it got dangerous. It's Villain Open Mic. If you have a scheme, the lines are open.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.76,
+      "audio": "/audio/radio/villain-hour/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I want it noted that I was against this segment.",
+      "overlap": -0.15,
+      "timestamp": 7.714,
+      "duration": 3.96,
+      "audio": "/audio/radio/villain-hour/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Noted and ignored, Barry. Winston, you're up first.",
+      "overlap": -0.2,
+      "timestamp": 10.578,
+      "duration": 4.0,
+      "audio": "/audio/radio/villain-hour/2.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Thank you, Ronnie. As I was saying, before this rabble arrived. I control the entire city. Every traffic light. Every bus.",
+      "overlap": -0.2,
+      "timestamp": 13.598,
+      "duration": 8.52,
+      "audio": "/audio/radio/villain-hour/3.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Yeah, well, the pigeons are MINE, Winston! You think you run the city? The PIGEONS run the city!",
+      "overlap": 0.3,
+      "timestamp": 20.803,
+      "duration": 5.57,
+      "audio": "/audio/radio/villain-hour/4.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Oh, here we go. The bird man.",
+      "overlap": 0.25,
+      "timestamp": 25.515,
+      "duration": 2.17,
+      "audio": "/audio/radio/villain-hour/5.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Do not call me the bird man, Winston!",
+      "overlap": 0.3,
+      "timestamp": 26.558,
+      "duration": 2.33,
+      "audio": "/audio/radio/villain-hour/6.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Okay, okay, you are BOTH broke. <p:0.3> Real power is on the blockchain, gentlemen.",
+      "overlap": 0.3,
+      "timestamp": 28.173,
+      "duration": 4.34,
+      "audio": "/audio/radio/villain-hour/7.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Nobody asked the child.",
+      "overlap": 0.25,
+      "timestamp": 31.355,
+      "duration": 2.03,
+      "audio": "/audio/radio/villain-hour/8.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "I am a FOUNDER, Winston!",
+      "overlap": 0.3,
+      "timestamp": 32.664,
+      "duration": 1.6,
+      "audio": "/audio/radio/villain-hour/9.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Blah, blah, blah. <p:0.3> Listen to you all. Ooh, I run the city. Ooh, I have pigeons.",
+      "overlap": 0.2,
+      "timestamp": 33.156,
+      "duration": 7.7,
+      "audio": "/audio/radio/villain-hour/10.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Who is that?",
+      "overlap": -0.1,
+      "timestamp": 39.753,
+      "duration": 1.56,
+      "audio": "/audio/radio/villain-hour/11.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "It's Gary. And you are all clowns. Wah, wah, wah.",
+      "overlap": 0.25,
+      "timestamp": 40.819,
+      "duration": 4.32,
+      "audio": "/audio/radio/villain-hour/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gary, please do not make the noises.",
+      "overlap": -0.15,
+      "timestamp": 44.587,
+      "duration": 3.0,
+      "audio": "/audio/radio/villain-hour/13.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "I'll make whatever noises I want, Barry. <p:0.3> Pbbbt.",
+      "overlap": 0.2,
+      "timestamp": 46.467,
+      "duration": 5.08,
+      "audio": "/audio/radio/villain-hour/14.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Let's keep it civil, gentlemen. There's room for many villains.",
+      "overlap": -0.2,
+      "timestamp": 49.95,
+      "duration": 4.92,
+      "audio": "/audio/radio/villain-hour/15.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "There is NOT room. The city is mine. Singular.",
+      "overlap": 0.25,
+      "timestamp": 53.548,
+      "duration": 3.28,
+      "audio": "/audio/radio/villain-hour/16.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Through the PIGEONS, which are mine!",
+      "overlap": 0.35,
+      "timestamp": 55.638,
+      "duration": 2.26,
+      "audio": "/audio/radio/villain-hour/17.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "You can tokenize the pigeons! <p:0.3> I'll do it right now! PigeonCoin two!",
+      "overlap": 0.3,
+      "timestamp": 57.196,
+      "duration": 3.98,
+      "audio": "/audio/radio/villain-hour/18.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Oh, here he goes again. PigeonCoin. <p:0.3> My pension is already in the first one, you little crook.",
+      "overlap": 0.25,
+      "timestamp": 60.612,
+      "duration": 8.92,
+      "audio": "/audio/radio/villain-hour/19.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It's a healthy dip, Gary!",
+      "overlap": 0.3,
+      "timestamp": 68.485,
+      "duration": 1.64,
+      "audio": "/audio/radio/villain-hour/20.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "It's a CRATER, Chad!",
+      "overlap": 0.35,
+      "timestamp": 69.03,
+      "duration": 2.1,
+      "audio": "/audio/radio/villain-hour/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, they are all yelling. I can't tell who the villain is anymore.",
+      "overlap": -0.1,
+      "timestamp": 69.939,
+      "duration": 5.68,
+      "audio": "/audio/radio/villain-hour/22.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's the beauty of it, Barry. Tonight, they all are.",
+      "overlap": -0.2,
+      "timestamp": 74.488,
+      "duration": 4.12,
+      "audio": "/audio/radio/villain-hour/23.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I am the PRIMARY villain!",
+      "overlap": 0.3,
+      "timestamp": 77.233,
+      "duration": 2.19,
+      "audio": "/audio/radio/villain-hour/24.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Pigeons!",
+      "overlap": 0.4,
+      "timestamp": 78.258,
+      "duration": 1.23,
+      "audio": "/audio/radio/villain-hour/25.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Crypto!",
+      "overlap": 0.4,
+      "timestamp": 79.149,
+      "duration": 1.16,
+      "audio": "/audio/radio/villain-hour/26.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Clowns! <p:0.2> Every one of you. Honk honk.",
+      "overlap": 0.3,
+      "timestamp": 79.715,
+      "duration": 4.52,
+      "audio": "/audio/radio/villain-hour/27.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Did he just honk?",
+      "overlap": 0.2,
+      "timestamp": 83.206,
+      "duration": 1.72,
+      "audio": "/audio/radio/villain-hour/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He honked, Barry. <p:0.3> And honestly? That's the most coherent argument we've heard all night.",
+      "overlap": -0.2,
+      "timestamp": 83.872,
+      "duration": 7.78,
+      "audio": "/audio/radio/villain-hour/29.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I will NOT be honked at!",
+      "overlap": 0.3,
+      "timestamp": 90.126,
+      "duration": 2.16,
+      "audio": "/audio/radio/villain-hour/30.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Honk.",
+      "overlap": 0.3,
+      "timestamp": 90.996,
+      "duration": 1.28,
+      "audio": "/audio/radio/villain-hour/31.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "STOP HONKING AT ME!",
+      "overlap": 0.35,
+      "timestamp": 91.912,
+      "duration": 1.73,
+      "audio": "/audio/radio/villain-hour/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We're gonna take a break before this becomes a circus. <p:0.3> Too late. It's a circus. Stay tuned.",
+      "overlap": -0.2,
+      "timestamp": 92.332,
+      "duration": 7.38,
+      "audio": "/audio/radio/villain-hour/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm leaving. I mean it this time.",
+      "overlap": -0.1,
+      "timestamp": 98.98,
+      "duration": 2.68,
+      "audio": "/audio/radio/villain-hour/34.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Honk honk, Barry.",
+      "overlap": 0.2,
+      "timestamp": 100.625,
+      "duration": 1.92,
+      "audio": "/audio/radio/villain-hour/35.flac"
+    }
+  ]
+}

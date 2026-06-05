@@ -1,0 +1,279 @@
+{
+  "slug": "after-dark",
+  "title": "The Truth Hour: After Dark",
+  "description": "The late shift. Darnell calmly explains that the moon was decommissioned in 1974. Mildred always suspected as much.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "It's after dark on Snazzie FM, and the Truth Hour goes deeper. Our caller Darnell has been waiting patiently. Darnell, you're on the air.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.2,
+      "audio": "/audio/radio/after-dark/0.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Evening, Ronnie. I'll keep this calm, because panic is exactly what they want. <p:0.4> The moon is not real.",
+      "overlap": -0.2,
+      "timestamp": 9.926,
+      "duration": 6.68,
+      "audio": "/audio/radio/after-dark/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "...The moon.",
+      "overlap": -0.15,
+      "timestamp": 16.13,
+      "duration": 1.52,
+      "audio": "/audio/radio/after-dark/2.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It's a projection, Barry. Has been since nineteen seventy four. The real one was decommissioned.",
+      "overlap": -0.15,
+      "timestamp": 16.949,
+      "duration": 6.22,
+      "audio": "/audio/radio/after-dark/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Decommissioned. I always wondered.",
+      "overlap": -0.2,
+      "timestamp": 22.7,
+      "duration": 2.92,
+      "audio": "/audio/radio/after-dark/4.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Maintenance costs, Ronnie. A real moon is very expensive to keep in orbit. So they switched to a hologram. Cheaper. Brighter.",
+      "overlap": -0.15,
+      "timestamp": 24.995,
+      "duration": 8.14,
+      "audio": "/audio/radio/after-dark/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Darnell, the tides. The tides are caused by the moon.",
+      "overlap": -0.2,
+      "timestamp": 32.604,
+      "duration": 4.36,
+      "audio": "/audio/radio/after-dark/6.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "The tides are a subscription service, Barry. <p:0.4> They run the ocean on a schedule now.",
+      "overlap": -0.15,
+      "timestamp": 36.24,
+      "duration": 5.19,
+      "audio": "/audio/radio/after-dark/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That would explain why they're so regular.",
+      "overlap": -0.2,
+      "timestamp": 40.362,
+      "duration": 3.4,
+      "audio": "/audio/radio/after-dark/8.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Twice a day, Ronnie. Like clockwork. <p:0.3> Because it is, in fact, clockwork.",
+      "overlap": -0.15,
+      "timestamp": 43.041,
+      "duration": 4.93,
+      "audio": "/audio/radio/after-dark/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, Darnell, then what about eclipses? People predict those years ahead.",
+      "overlap": -0.2,
+      "timestamp": 47.267,
+      "duration": 6.2,
+      "audio": "/audio/radio/after-dark/10.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Of course they can predict them, Barry. <p:0.3> It's a scheduled broadcast. They send out the calendar in advance. That's not science, that's programming.",
+      "overlap": -0.15,
+      "timestamp": 52.792,
+      "duration": 9.07,
+      "audio": "/audio/radio/after-dark/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The moon has a release schedule.",
+      "overlap": -0.2,
+      "timestamp": 61.22,
+      "duration": 2.64,
+      "audio": "/audio/radio/after-dark/12.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Two seasons a year, Ronnie. Full moons are the season finales.",
+      "overlap": -0.15,
+      "timestamp": 63.287,
+      "duration": 4.08,
+      "audio": "/audio/radio/after-dark/13.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "And the astronauts, Darnell? People walked on it.",
+      "overlap": -0.2,
+      "timestamp": 66.693,
+      "duration": 4.12,
+      "audio": "/audio/radio/after-dark/14.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "They walked on the previous model, Barry. <p:0.4> Before the upgrade. That footage is the last real moon we ever got.",
+      "overlap": -0.15,
+      "timestamp": 70.262,
+      "duration": 7.17,
+      "audio": "/audio/radio/after-dark/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We had the moon, and we traded it in.",
+      "overlap": -0.2,
+      "timestamp": 77.054,
+      "duration": 2.84,
+      "audio": "/audio/radio/after-dark/16.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Leased it back, Ronnie. We don't even own the moon anymore. We rent it.",
+      "overlap": -0.15,
+      "timestamp": 79.218,
+      "duration": 4.48,
+      "audio": "/audio/radio/after-dark/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "From who, Darnell? Who do we pay for the moon?",
+      "overlap": -0.2,
+      "timestamp": 83.231,
+      "duration": 3.68,
+      "audio": "/audio/radio/after-dark/18.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "You don't say the name out loud, Barry. <p:0.4> Not on a Tuesday.",
+      "overlap": -0.15,
+      "timestamp": 86.324,
+      "duration": 4.26,
+      "audio": "/audio/radio/after-dark/19.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...I knew it. <p:0.5> I KNEW IT, RONNIE.",
+      "overlap": -0.25,
+      "timestamp": 90.361,
+      "duration": 3.19,
+      "audio": "/audio/radio/after-dark/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Mildred, welcome back. You're among friends.",
+      "overlap": -0.2,
+      "timestamp": 92.973,
+      "duration": 3.56,
+      "audio": "/audio/radio/after-dark/21.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...I haven't trusted the moon since my wedding. <p:0.4> It watched me. THE WHOLE TIME.",
+      "overlap": -0.15,
+      "timestamp": 95.9,
+      "duration": 5.15,
+      "audio": "/audio/radio/after-dark/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The moon did not attend your wedding, Mildred.",
+      "overlap": -0.2,
+      "timestamp": 99.725,
+      "duration": 3.88,
+      "audio": "/audio/radio/after-dark/23.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...Then who paid for the band, Barry.",
+      "overlap": -0.15,
+      "timestamp": 102.988,
+      "duration": 2.2,
+      "audio": "/audio/radio/after-dark/24.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "She raises an excellent question.",
+      "overlap": -0.2,
+      "timestamp": 104.353,
+      "duration": 2.8,
+      "audio": "/audio/radio/after-dark/25.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...The buffet was free. <p:0.5> NOBODY ASKED WHY THE BUFFET WAS FREE.",
+      "overlap": -0.15,
+      "timestamp": 106.672,
+      "duration": 5.06,
+      "audio": "/audio/radio/after-dark/26.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A free buffet is not evidence of a lunar conspiracy, Mildred.",
+      "overlap": -0.2,
+      "timestamp": 110.873,
+      "duration": 5.08,
+      "audio": "/audio/radio/after-dark/27.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Follow the money, Barry. <p:0.3> It always leads back to the moon.",
+      "overlap": -0.15,
+      "timestamp": 114.905,
+      "duration": 4.22,
+      "audio": "/audio/radio/after-dark/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It physically cannot lead back to the moon.",
+      "overlap": -0.15,
+      "timestamp": 118.106,
+      "duration": 3.64,
+      "audio": "/audio/radio/after-dark/29.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "That's what the moon pays people to say, Barry. <p:0.3> No offense. You're probably on the payroll and don't even know it.",
+      "overlap": -0.15,
+      "timestamp": 120.813,
+      "duration": 6.89,
+      "audio": "/audio/radio/after-dark/30.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I am not on the moon's payroll.",
+      "overlap": -0.2,
+      "timestamp": 126.976,
+      "duration": 2.56,
+      "audio": "/audio/radio/after-dark/31.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...That's what a moon man would say, Barry.",
+      "overlap": -0.15,
+      "timestamp": 129.009,
+      "duration": 2.37,
+      "audio": "/audio/radio/after-dark/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And on that, we'll take a break. Don't look up. <p:0.3> Or do. It's not real anyway.",
+      "overlap": -0.25,
+      "timestamp": 130.785,
+      "duration": 6.06,
+      "audio": "/audio/radio/after-dark/33.flac"
+    }
+  ]
+}

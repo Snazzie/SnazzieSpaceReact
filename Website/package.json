@@ -16,7 +16,8 @@
     "audio:waveforms": "python ../scripts/generate-audio.py --seed 42 --waveforms",
     "audio:sample": "python ../scripts/generate-audio.py --seed 42 --sample",
     "avatar:layers": "node scripts/gen-avatar-layers.mjs",
-    "avatar:grain": "node scripts/gen-grain.mjs"
+    "avatar:grain": "node scripts/gen-grain.mjs",
+    "radio": "python ../scripts/generate-radio.py"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

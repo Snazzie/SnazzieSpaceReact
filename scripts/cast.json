@@ -1,0 +1,158 @@
+{
+  "ronnie": {
+    "name": "Ronnie Delacroix",
+    "color": "#ff6b00",
+    "role": "Host",
+    "instruct": "male, middle-aged, low pitch, american accent",
+    "speed": 0.95,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ronnie.wav",
+    "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER",
+    "gender": "M"
+  },
+  "barry": {
+    "name": "Barry Fitch",
+    "color": "#4ecdc4",
+    "role": "Co-Host",
+    "instruct": "male, middle-aged, high pitch, american accent",
+    "speed": 1.2,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/barry.wav",
+    "ref_text": "YOU WILL FIND ME CONTINUALLY SPEAKING OF FOUR MEN TITIAN HOLBEIN TURNER AND TINTORET IN ALMOST THE SAME TERMS",
+    "gender": "M"
+  },
+  "rhonda": {
+    "name": "Rhonda K.",
+    "color": "#fd79a8",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, british accent",
+    "speed": 1.0,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/rhonda.wav",
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT",
+    "gender": "F"
+  },
+  "todd": {
+    "name": "Todd",
+    "color": "#55efc4",
+    "role": "Intern",
+    "instruct": "male, young adult, chinese accent",
+    "speed": 1.6,
+    "phone_filter": false,
+    "gain": 0.4,
+    "distant": true,
+    "ref_audio": "scripts/voices/todd.wav",
+    "ref_text": "尽管受到这些指责，马英九在一次演讲中主张与中国大陆建立更加紧密的联系，并轻松获胜。",
+    "gender": "M"
+  },
+  "caller-steve": {
+    "name": "Steve",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.3,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M"
+  },
+  "caller-gary": {
+    "name": "Gary",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M"
+  },
+  "caller-linda": {
+    "name": "Linda",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, elderly, american accent",
+    "speed": 0.88,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F"
+  },
+  "caller-chad": {
+    "name": "Chad",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, young adult, american accent",
+    "speed": 1.25,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-chad.wav",
+    "ref_text": "NOTWITHSTANDING THE HIGH RESOLUTION OF HAWKEYE HE FULLY COMPREHENDED ALL THE DIFFICULTIES AND DANGER HE WAS ABOUT TO INCUR",
+    "gender": "M"
+  },
+  "caller-mildred": {
+    "name": "Mildred",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, elderly, whisper",
+    "speed": 0.85,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-mildred.wav",
+    "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON",
+    "gender": "F"
+  },
+  "caller-darnell": {
+    "name": "Darnell",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, middle-aged, low pitch",
+    "speed": 0.92,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-darnell.wav",
+    "ref_text": "EVERY ONE COULD OBSERVE HIS AGITATION AND PROSTRATION A PROSTRATION WHICH WAS INDEED THE MORE REMARKABLE SINCE PEOPLE WERE NOT ACCUSTOMED TO SEE HIM WITH HIS ARMS HANGING LISTLESSLY BY HIS SIDE HIS HEAD BEWILDERED AND HIS EYES WITH ALL THEIR BRIGHT INTELLIGENCE BEDIMMED",
+    "gender": "M"
+  },
+  "caller-patricia": {
+    "name": "Patricia",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F"
+  },
+  "caller-winston": {
+    "name": "Winston",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, elderly, british accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-winston.wav",
+    "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH",
+    "gender": "M"
+  },
+  "caller-kim": {
+    "name": "Kim",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, young adult, american accent",
+    "speed": 1.15,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-kim.wav",
+    "ref_text": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
+    "gender": "F"
+  },
+  "caller-frank": {
+    "name": "Frank",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, elderly, american accent",
+    "speed": 1.0,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-frank.wav",
+    "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS",
+    "gender": "M"
+  }
+}

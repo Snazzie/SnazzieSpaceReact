@@ -1,0 +1,18 @@
+---
+import '@/styles/global.css';
+import RadioStation from '@/components/RadioStation';
+import { EPISODES, CAST } from '@/data/radio';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snazzie FM — Radio</title>
+    <meta name="description" content="Snazzie FM: absurdist radio conversations, GTA-style." />
+  </head>
+  <body class="h-screen overflow-hidden bg-background text-foreground flex flex-col">
+    <RadioStation client:load episodes={EPISODES} cast={CAST} />
+  </body>
+</html>
