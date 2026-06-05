@@ -58,7 +58,7 @@
   background:var(--amber);cursor:pointer;}
 
 @media(max-width:600px){
-  .rl-bts-link{display:none;}
+  .rl-topbar .rl-bts-link{display:none;}
   .rl-mini-title{display:none;}
   .rl-mini-bars{display:none;}
   .rl-mini-vol{width:48px;}
