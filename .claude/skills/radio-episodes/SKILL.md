@@ -134,24 +134,33 @@ python scripts/generate-radio.py the-truth-hour --remix   # placement only, neve
 - Needs OmniVoice + ffmpeg installed; GPU (CUDA) auto-detected, falls back to CPU (slow).
 - Run via background task — full render of ~30 lines takes minutes.
 
-## Dia (experimental, 2-speaker, whole-conversation)
+## Dia2 (preferred dialogue engine, 2-speaker)
 
-An alternate engine for *natural* dialogue. Use Dia when an episode is a **2-hander** and you
-want real turn-taking/breaths over per-clip control. Tradeoffs vs OmniVoice:
+For a **2-hander** that should sound like a real conversation, use **Dia2** (`engine: "dia2"`).
+It generates with natural turn-taking and emits per-line clips, so it stays in the normal
+per-clip multitrack pipeline (cache, phone filter, drag editor, single `audio` per line).
 
-- **Exactly 2 speakers** — `[S1]`/`[S2]`, must alternate, must start `[S1]`. Author strictly
-  alternating turns; no third voice.
-- **Nonverbals** in text: `(laughs)`, `(coughs)`, `(sighs)`, `(clears throat)` — sparingly. The
-  `<p:N>` pause token is OmniVoice-only; omit it for Dia.
-- **Single track, not per-clip** — the whole episode is one FLAC at `<slug>/episode.flac`; the
-  episode JSON gets a top-level `"track"` and `"engine": "dia"`. No per-clip cache or drag-retime;
-  per-line `timestamp`/`duration` come from **faster-whisper forced alignment**.
-- Pipeline: `python scripts/generate-radio-dia.py <slug>` — chunks turns to ~16s, primes every
-  chunk with a fixed 2-voice audio prompt (reuses `cast.json` `ref_audio`/`ref_text`) for voice
-  consistency, concatenates, aligns, writes `track` + timestamps back.
-- UI: `RadioStation.tsx` branches on `episode.track` — one `AudioBufferSourceNode`, seek via buffer
-  offset; transcript highlight/seek/TrackLanes all run off `lines[].timestamp` as usual.
-- Needs `faster-whisper`; Dia weights `nari-labs/Dia-1.6B-0626` (~6GB) + DAC codec auto-download.
+- **Exactly 2 speakers** — `[S1]`/`[S2]`, alternate, start `[S1]`. Author strictly alternating turns.
+- **Emotion arc + nonverbals** — Dia2 voices escalation well; use `(laughs)`/`(sighs)`/`(gasps)`
+  etc. (from Dia's list, sparingly). The `<p:N>` token is OmniVoice-only — omit it.
+- **How it works** (`scripts/generate-radio-dia2.py`): generates the episode in ≤100s passes
+  (Dia2's limit is ~2 min / 1500 steps) for real cross-turn flow, conditions on per-speaker
+  prefixes (each speaker's `cast.json` `ref_audio`) so voices stay anchored, then splits each pass
+  into exact per-line clips using Dia2's **word timestamps** (no silence-guessing). Caller clips
+  (`phone_filter: true`) get the telephone bandpass cleanly since they're isolated.
+- **Runs in the dia2 uv env** (not the project python). Setup once: clone `nari-labs/dia2` beside
+  the repo and `uv sync` (needs `uv` + CUDA 12.8+). Then:
+  ```bash
+  uv run --project ../dia2 python scripts/generate-radio-dia2.py the-frank-tapes
+  ```
+  First run downloads Dia2-2B (~weights) + Mimi + Whisper (Whisper transcribes the prefixes).
+- Output is per-clip (`<slug>/<i>.flac`, per-line `audio`, no `track`) — plays through the normal
+  multitrack UI. `generate-radio.py --all` skips `engine: dia*` episodes.
+- Tuning: `cfg_scale` (~3-6; higher = tighter adherence), `SamplingConfig.temperature`.
+
+### Dia 1.6B (legacy, `scripts/generate-radio-dia.py`)
+Earlier single-model path: chunk generation + silence-split. Superseded by Dia2 (the silence
+split mis-placed line boundaries and voices drifted at high temperature). Kept for reference.
 
 ## UI / timeline editing (`/radio`)
 
