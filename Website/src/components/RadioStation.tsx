@@ -501,8 +501,8 @@ export default function RadioStation({ episodes, cast }: Props) {
           />
         )}
 
-        {/* Transcript */}
-        <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-1">
+        {/* Transcript — aligned table: time | speaker | text */}
+        <div className="flex-1 overflow-y-auto px-4 py-3">
           {lines.map((line, i) => {
             const member = cast[line.speaker];
             const isActive = i === activeLine;
@@ -511,20 +511,21 @@ export default function RadioStation({ episodes, cast }: Props) {
                 key={i}
                 ref={(el) => { lineRefs.current[i] = el; }}
                 onClick={() => seekToLine(line)}
-                className={`flex items-baseline gap-2 cursor-pointer rounded px-2 py-1 -mx-2 transition-colors ${
+                className={`grid grid-cols-[3rem_5.5rem_1fr] items-baseline gap-3 cursor-pointer rounded px-2 py-1 -mx-2 border-l-2 transition-colors ${
                   isActive
-                    ? "bg-[#ff6b00]/10 border-l-2 border-[#ff6b00] pl-1.5"
-                    : "hover:bg-white/[0.03]"
+                    ? "bg-[#ff6b00]/10 border-[#ff6b00]"
+                    : "border-transparent hover:bg-white/[0.03]"
                 }`}
               >
+                <span className="text-[9px] text-white/25 tabular-nums">
+                  {line.timestamp ? fmt(line.timestamp) : ""}
+                </span>
                 <span
-                  className="min-w-[52px] flex-shrink-0 text-[9px] font-bold tracking-[0.5px]"
+                  className="truncate text-[9px] font-bold tracking-[0.5px]"
                   style={{ color: member?.color ?? "#888" }}
+                  title={member?.name ?? line.speaker}
                 >
                   {member?.name ?? line.speaker}
-                </span>
-                <span className="flex-shrink-0 text-[9px] text-white/25 tabular-nums">
-                  {line.timestamp ? fmt(line.timestamp) : ""}
                 </span>
                 <span className={`text-[10px] leading-snug ${isActive ? "text-white" : "text-white/50"}`}>
                   {stripTokens(line.text)}

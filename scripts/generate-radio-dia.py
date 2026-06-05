@@ -81,18 +81,19 @@ def normalize_rms(clip: np.ndarray, target_rms: float = 0.09, peak_cap: float = 
     return clip.astype(np.float32)
 
 
+MIN_CHUNK_SECS = 8.0   # Dia wants 5-20s of audio; <5s sounds unnatural / unstable
+
 def build_chunks(lines: list[dict], s1: str) -> list[list[int]]:
-    """Group consecutive line indices into ~CHUNK_SECS chunks. Each chunk must START on an
-    S1 line (Dia requires input to begin with [S1] and alternate)."""
+    """Group turns into ~8-16s chunks that always START on an [S1] line. Breaking only at S1
+    boundaries (and only once a chunk has enough material) keeps inputs in Dia's sweet spot:
+    not so short they sound unnatural, not so long they speed up or drop words."""
     chunks, cur, cur_chars = [], [], 0
     for i, line in enumerate(lines):
-        n = len(line["text"])
-        over = cur and (cur_chars + n) / CHARS_PER_SEC > CHUNK_SECS
-        if over and line["speaker"] == s1:   # only break right before an S1 turn
+        if cur and line["speaker"] == s1 and (cur_chars / CHARS_PER_SEC) >= MIN_CHUNK_SECS:
             chunks.append(cur)
             cur, cur_chars = [], 0
         cur.append(i)
-        cur_chars += n
+        cur_chars += len(re.sub(r"\([^)]*\)", "", line["text"]))
     if cur:
         chunks.append(cur)
     return chunks
@@ -105,7 +106,7 @@ def chunk_text(idxs: list[int], lines: list[dict], tag: dict) -> str:
     return " ".join(parts)
 
 
-def generate(slug: str) -> None:
+def generate(slug: str, seed: int) -> None:
     from transformers import AutoProcessor, DiaForConditionalGeneration
 
     script_path = SCRIPTS_DIR / f"{slug}.json"
@@ -122,7 +123,7 @@ def generate(slug: str) -> None:
     # Voice anchor: a fixed 2-speaker audio prompt (ref clips) + its transcript, prepended to
     # every chunk so S1/S2 keep the SAME voice across generations. Dia echoes the prompt at the
     # front of the output, so we slice it off by the prompt's measured duration.
-    PRIME_CAP = 6.0  # seconds per speaker — keep the prompt short (Dia likes 5-10s total)
+    PRIME_CAP = 4.5  # seconds per speaker — short prompt keeps input load low (less text dropping)
     prime_parts, prime_audio = [], []
     for spk in speakers:
         c = cast[spk]
@@ -157,6 +158,11 @@ def generate(slug: str) -> None:
     rendered: list[np.ndarray] = []
     chunk_durs: list[float] = []   # spoken seconds per chunk (excludes the inter-chunk gap)
     for ci, idxs in enumerate(chunks):
+        # Re-seed before every chunk so each generation draws from the same RNG state —
+        # keeps voice/prosody consistent across chunks and the whole run reproducible.
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
         text = prime_transcript + " " + chunk_text(idxs, lines, tag)
         inputs = processor(
             text=[text],
@@ -167,7 +173,7 @@ def generate(slug: str) -> None:
         ).to(device)
         out = model.generate(
             **inputs, max_new_tokens=4096,
-            guidance_scale=3.0, temperature=1.8, top_p=0.90, top_k=45,
+            guidance_scale=4.0, temperature=1.3, top_p=0.95, top_k=50,
         )
         decoded = processor.batch_decode(out)
         processor.save_audio(decoded, str(tmp))      # documented save path
@@ -175,9 +181,13 @@ def generate(slug: str) -> None:
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
         clip = resample(audio, sr, OUT_SR)
-        # Drop the echoed prompt: cut at the silence gap near the prompt's duration (adaptive)
-        cut = prompt_end_sample(clip, OUT_SR, prime_secs)
+        # The output is the prompt's exact codes (decoder prefix) + content, so cut exactly at
+        # the prompt duration. Then trim only leading near-silence so content starts crisp.
+        cut = int(prime_secs * OUT_SR)
         clip = clip[cut:] if cut < len(clip) else clip
+        nz = np.nonzero(np.abs(clip) > 0.02)[0]
+        if len(nz):
+            clip = clip[max(0, nz[0] - int(0.05 * OUT_SR)):]
         clip = normalize_rms(clip)            # consistent per-chunk loudness
         rendered.append(clip)
         rendered.append(np.zeros(int(OUT_SR * GAP_SECS), dtype=np.float32))
@@ -223,8 +233,7 @@ def main() -> None:
     p.add_argument("slug")
     p.add_argument("--seed", type=int, default=42)
     args = p.parse_args()
-    torch.manual_seed(args.seed)
-    generate(args.slug)
+    generate(args.slug, args.seed)
 
 
 if __name__ == "__main__":
