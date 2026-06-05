@@ -229,11 +229,11 @@
 /* station post */
 .rl-posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem;
   align-items:stretch;max-width:1200px;}
-.rl-post{display:flex;flex-direction:column;height:680px;border:1px solid var(--line);
+.rl-post{display:flex;flex-direction:column;border:1px solid var(--line);
   border-radius:16px;padding:1.3rem 1.4rem;
   background:linear-gradient(180deg,var(--panel-2),rgba(0,0,0,.25));
   box-shadow:0 20px 40px -25px rgba(0,0,0,.8);}
-.rl-post-text{flex:1;overflow:hidden;}
+.rl-post-text{flex:1;}
 .rl-post-meta{margin-top:auto;}
 .rl-post-head{display:flex;align-items:center;gap:.7rem;}
 .rl-post-avatar{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
