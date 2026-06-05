@@ -191,9 +191,6 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                 <button type="button" className="rl-now-link" onClick={() => audio.tuneTo(audio.airIdx)}>
                   {audio.playing ? "❚❚ Playing" : "▶ Play this show"}
                 </button>
-                <a className="rl-now-link rl-now-link-alt" href={`/snazziefm/behindthescenes#${onAir.slug}`}>
-                  Open full player &rarr;
-                </a>
               </div>
             </>
           )}
