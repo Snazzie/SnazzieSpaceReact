@@ -25,4 +25,7 @@
   Cache-Control: no-cache, must-revalidate
 
 /
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: no-cache, must-revalidate
+
+/*.html
+  Cache-Control: no-cache, must-revalidate
