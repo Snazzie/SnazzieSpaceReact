@@ -101,9 +101,11 @@
 .rl-upnext-label{font-family:'VT323',monospace;font-size:.85rem;letter-spacing:.12em;
   color:#8a754f;flex-shrink:0;padding-top:.05rem;}
 .rl-upnext-list{display:flex;flex-direction:column;gap:.15rem;min-width:0;overflow:hidden;}
-.rl-upnext-item{font-family:'VT323',monospace;font-size:.9rem;color:#7a6840;
+.rl-upnext-item{display:flex;align-items:center;gap:.35rem;font-family:'VT323',monospace;font-size:.9rem;color:#7a6840;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rl-upnext-icon{flex-shrink:0;font-size:.8rem;opacity:.7;}
 .rl-upnext-item-first{font-size:.95rem;color:#c9b48e;}
+.rl-upnext-item-music{color:#6a5f3a;}
 
 /* now on air */
 .rl-now{margin:0 clamp(1rem,5vw,4rem) clamp(2rem,5vw,3.5rem);padding:clamp(1.4rem,3vw,2.2rem);

@@ -19,7 +19,25 @@ export default function RadioReceiver({
   playing, loading, musicIdx, musicPlaying, music, onAir,
   levels, clock, airIdx, episodes, togglePlay, tuneTo,
 }: Props) {
-  const upNext = Array.from({ length: 3 }, (_, i) => episodes[(airIdx + 1 + i) % episodes.length]);
+  // Build the interleaved queue that matches the audio engine:
+  // after each episode, a music interstitial plays before the next episode.
+  const upNext: { title: string; isMusic: boolean }[] = [];
+  if (music.length > 0) {
+    // If a music track is currently playing, next is the episode at airIdx
+    const startEpIdx = (musicIdx !== null && musicPlaying) ? airIdx : (airIdx + 1) % episodes.length;
+    const startMusicOffset = (musicIdx !== null && musicPlaying) ? 0 : 1;
+    for (let i = 0; upNext.length < 4; i++) {
+      const epIdx = (startEpIdx + i) % episodes.length;
+      upNext.push({ title: episodes[epIdx].title, isMusic: false });
+      const mIdx = (airIdx + startMusicOffset + i) % music.length;
+      upNext.push({ title: music[mIdx].title, isMusic: true });
+    }
+  } else {
+    for (let i = 0; i < 3; i++) {
+      upNext.push({ title: episodes[(airIdx + 1 + i) % episodes.length].title, isMusic: false });
+    }
+  }
+  const upNextSlice = upNext.slice(0, 4);
 
   return (
     <div className="rl-receiver">
@@ -79,9 +97,10 @@ export default function RadioReceiver({
       <div className="rl-upnext">
         <span className="rl-upnext-label">UP NEXT</span>
         <span className="rl-upnext-list">
-          {upNext.map((ep, i) => (
-            <span key={ep.slug} className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}`}>
-              {ep.title}
+          {upNextSlice.map((item, i) => (
+            <span key={i} className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}${item.isMusic ? " rl-upnext-item-music" : ""}`}>
+              <span className="rl-upnext-icon">{item.isMusic ? "♪" : "▷"}</span>
+              {item.title}
             </span>
           ))}
         </span>

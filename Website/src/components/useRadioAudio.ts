@@ -66,7 +66,9 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       const ctx = new AudioContext();
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 64;
-      analyser.smoothingTimeConstant = 0.82;
+      analyser.smoothingTimeConstant = 0.75;
+      analyser.minDecibels = -90;
+      analyser.maxDecibels = -10;
       analyser.connect(ctx.destination);
       ctxRef.current = ctx;
       analyserRef.current = analyser;
@@ -88,6 +90,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     const track = music[musicTrackIdx];
     if (!track?.track) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
     const { ctx, analyser } = getCtx();
+    await ctx.resume();
     setMusicIdx(musicTrackIdx);
     setMusicPlaying(true);
     try {
