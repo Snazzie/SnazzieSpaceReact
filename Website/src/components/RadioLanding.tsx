@@ -142,7 +142,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
 
         <div className="rl-stage">
           <figure className="rl-hosts">
-            <img src="/images/radio/hosts.png" alt="The Snazzie FM hosts live in studio" />
+            <img src="/images/radio/hosts.webp" alt="The Snazzie FM hosts live in studio" width={1200} height={675} fetchPriority="high" />
             <figcaption>Live from Snazzie Studio &middot; tonight, like every night</figcaption>
           </figure>
 

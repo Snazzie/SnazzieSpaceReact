@@ -201,6 +201,7 @@
 .rl-show-play{color:var(--amber-dim);font-size:.85rem;transition:color .18s,transform .18s;}
 .rl-show:hover .rl-show-play{color:var(--amber);transform:scale(1.3);}
 .rl-show-live{background:rgba(255,59,47,.07);}
+.rl-show-live .rl-show-desc{white-space:normal;overflow:visible;text-overflow:clip;}
 @media(max-width:620px){
   .rl-show{grid-template-columns:1fr auto;}
   .rl-show-time{grid-column:1/-1;font-size:1.05rem;}
