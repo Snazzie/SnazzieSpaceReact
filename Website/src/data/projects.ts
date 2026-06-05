@@ -19,6 +19,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Snazzie FM",
+    description:
+      "Absurdist AI radio station. Multi-voice call-in comedy generated with cloned TTS voices, played on a shared Web Audio timeline.",
+    href: "/radio",
+    image: "/images/radio/radio-card.png",
+    featured: true,
+    imageFit: "cover",
+    imgWidth: 1280,
+    imgHeight: 800,
+    tech: ["Astro", "React", "Web Audio API", "OmniVoice", "Dia2 TTS", "Python"],
+    details: [
+      "Multi-voice call-in radio comedy from a full cast of cloned TTS voices",
+      "Per-line audio clips scheduled on a shared Web Audio timeline for real overlap and talk-over",
+      "Two TTS engines: OmniVoice multitrack and Dia2 for natural 2-hander conversations",
+      "Retro broadcast landing page with an inline station feed that rolls through the lineup",
+    ],
+  },
+  {
     title: "Lunar Portfolio",
     description:
       "Personal wealth dashboard. Tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
