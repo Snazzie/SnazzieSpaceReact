@@ -444,6 +444,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                       <span className="rl-hit-body">
                         <span className="rl-hit-title">{track.title}</span>
                         <span className="rl-hit-label">Snazzie FM Originals</span>
+                        {track.description && <span className="rl-hit-desc">{track.description}</span>}
                       </span>
                       <span className="rl-hit-play">
                         {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
