@@ -403,6 +403,45 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
         </ol>
       </section>
 
+      {/* ── Top Hits ────────────────────────────────────────────────── */}
+      {music.length > 0 && (
+        <section className="rl-section">
+          <h2 className="rl-section-title">
+            <span>Top Hits</span>
+            <span className="rl-section-rule" />
+          </h2>
+          <ol className="rl-hits">
+            {music.map((track, i) => {
+              const isActive = musicIdx === i;
+              const isThisPlaying = isActive && musicPlaying;
+              const isThisLoading = isActive && musicLoading;
+              return (
+                <li key={track.slug}>
+                  <button
+                    type="button"
+                    className={`rl-hit${isActive ? " rl-hit-active" : ""}`}
+                    onClick={() => toggleMusicTrack(i)}
+                    disabled={isThisLoading}
+                  >
+                    <span className="rl-hit-rank">#{i + 1}</span>
+                    <span className="rl-hit-vinyl" aria-hidden>
+                      <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
+                    </span>
+                    <span className="rl-hit-body">
+                      <span className="rl-hit-title">{track.title}</span>
+                      <span className="rl-hit-label">Snazzie FM Originals</span>
+                    </span>
+                    <span className="rl-hit-play">
+                      {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      )}
+
       {/* ── Station dispatch (faux social post) ─────────────────────── */}
       <section className="rl-section">
         <h2 className="rl-section-title">
