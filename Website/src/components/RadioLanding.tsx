@@ -73,7 +73,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
           <span className="rl-onair-dot" />
           ON&nbsp;AIR
         </div>
-        <div className="rl-freq">STEREO</div>
+        <a href="/radio/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </header>
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -103,9 +103,13 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
             clock={clock}
             airIdx={audio.airIdx}
             episodes={episodes}
+            analyserRef={audio.analyserRef}
+            volume={audio.volume}
+            setVolume={audio.setVolume}
             togglePlay={audio.togglePlay}
             tuneTo={audio.tuneTo}
             toggleMusicTrack={audio.toggleMusicTrack}
+            nextTrack={audio.nextTrack}
           />
         </div>
       </section>
@@ -133,7 +137,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                 <button type="button" className="rl-now-link" onClick={() => audio.tuneTo(audio.airIdx)}>
                   {audio.playing ? "❚❚ Playing" : "▶ Play this show"}
                 </button>
-                <a className="rl-now-link rl-now-link-alt" href={`/radio/listen#${onAir.slug}`}>
+                <a className="rl-now-link rl-now-link-alt" href={`/radio/behindthescenes#${onAir.slug}`}>
                   Open full player &rarr;
                 </a>
               </div>
@@ -218,7 +222,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
 
       <footer className="rl-footer">
         <span>SNAZZIE FM &middot; All transmissions are fictional</span>
-        <a href="/radio/listen">Tune in &rarr;</a>
+        <a href="/radio/behindthescenes">Tune in &rarr;</a>
       </footer>
     </div>
   );

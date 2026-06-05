@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { CastMember, Episode, TranscriptLine } from "@/data/radio";
 
-const IS_DEV = import.meta.env.DEV;
 
 interface Props {
   episodes: Episode[];
@@ -32,10 +31,9 @@ function getActiveLine(lines: TranscriptLine[], currentTime: number): number {
   return active;
 }
 
-/** Multitrack debug view: one lane per speaker, blocks positioned by timestamp/duration.
- *  In dev, blocks are draggable (onMove) to retime clips on the shared timeline. */
+/** Multitrack view: one lane per speaker, blocks positioned by timestamp/duration. */
 function TrackLanes({
-  lines, cast, span, currentTime, activeLine, onSeek, onMove,
+  lines, cast, span, currentTime, activeLine, onSeek,
 }: {
   lines: TranscriptLine[];
   cast: Record<string, CastMember>;
@@ -43,42 +41,12 @@ function TrackLanes({
   currentTime: number;
   activeLine: number;
   onSeek: (t: number) => void;
-  onMove?: (i: number, newStart: number, commit: boolean) => void;
 }) {
-  const DRAG_THRESHOLD = 4; // px the pointer must travel before it counts as a drag (not a click)
   const areaRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef<{ i: number; grabDx: number; startX: number; clipStart: number; moved: boolean } | null>(null);
   const speakers = [...new Set(lines.map((l) => l.speaker))];
   const pct = (v: number) => `${(v / (span || 1)) * 100}%`;
   const segsBySpeaker = (sp: string) =>
     lines.map((l, i) => ({ l, i })).filter(({ l }) => l.speaker === sp);
-
-  function startFromClientX(clientX: number): number {
-    const rect = areaRef.current!.getBoundingClientRect();
-    return ((clientX - rect.left) / rect.width) * span;
-  }
-
-  function onBlockDown(e: React.PointerEvent, i: number, clipStart: number) {
-    if (!onMove) return;
-    e.stopPropagation();
-    e.preventDefault();
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
-    dragRef.current = { i, grabDx: startFromClientX(e.clientX) - clipStart, startX: e.clientX, clipStart, moved: false };
-  }
-  function onBlockMove(e: React.PointerEvent) {
-    const d = dragRef.current;
-    if (!d) return;
-    if (!d.moved && Math.abs(e.clientX - d.startX) < DRAG_THRESHOLD) return;  // ignore micro-movement
-    d.moved = true;
-    onMove?.(d.i, Math.max(0, startFromClientX(e.clientX) - d.grabDx), false);
-  }
-  function onBlockUp(e: React.PointerEvent) {
-    const d = dragRef.current;
-    if (!d) return;
-    dragRef.current = null;
-    if (d.moved) onMove?.(d.i, Math.max(0, startFromClientX(e.clientX) - d.grabDx), true);
-    else onSeek(d.clipStart);  // treat as a click → seek to this clip
-  }
 
   return (
     <div className="border-b border-white/5 bg-[#0b0b0b] px-2 py-1.5">
@@ -114,10 +82,7 @@ function TrackLanes({
                   {segsBySpeaker(sp).map(({ l, i }) => (
                     <div
                       key={i}
-                      onPointerDown={(e) => onBlockDown(e, i, l.timestamp ?? 0)}
-                      onPointerMove={onBlockMove}
-                      onPointerUp={onBlockUp}
-                      className={`absolute top-0 h-full rounded-sm ${onMove ? "cursor-grab active:cursor-grabbing" : ""}`}
+                      className="absolute top-0 h-full rounded-sm"
                       style={{
                         left: pct(l.timestamp ?? 0),
                         width: pct(Math.max(l.duration ?? 0, span * 0.004)),
@@ -125,7 +90,7 @@ function TrackLanes({
                         opacity: i === activeLine ? 1 : 0.45,
                         outline: i === activeLine ? `1px solid ${color}` : "none",
                       }}
-                      title={`${i}: ${l.text.slice(0, 40)} (${(l.timestamp ?? 0).toFixed(1)}s +${(l.duration ?? 0).toFixed(1)}s, ov ${l.overlap ?? 0})`}
+                      title={`${i}: ${l.text.slice(0, 40)} (${(l.timestamp ?? 0).toFixed(1)}s +${(l.duration ?? 0).toFixed(1)}s)`}
                     />
                   ))}
                 </div>
@@ -148,14 +113,14 @@ export default function RadioStation({ episodes, cast }: Props) {
   const [isPlaying, setIsPlaying]       = useState(false);
   const [currentTime, setCurrentTime]   = useState(0);
   const [activeLine, setActiveLine]     = useState(-1);
-  const [showTracks, setShowTracks]     = useState(true);
   const [ready, setReady]               = useState(false);
-  const [dirty, setDirty]               = useState(false);
-  const [saving, setSaving]             = useState(false);
+  const [volume, setVolumeState]        = useState(1);
+  const autoPlayRef = useRef(false);
 
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef     = useRef<number>(0);
   const ctxRef     = useRef<AudioContext | null>(null);
+  const gainRef    = useRef<GainNode | null>(null);
   const buffersRef = useRef<(AudioBuffer | null)[]>([]);
   const trackBufRef = useRef<AudioBuffer | null>(null);  // single whole-episode buffer (Dia)
   const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
@@ -166,10 +131,10 @@ export default function RadioStation({ episodes, cast }: Props) {
   const episode = episodes[selectedIdx];
   const [lines, setLines] = useState<TranscriptLine[]>(episode.lines);
 
-  // Keep editable lines in sync with the selected episode
-  useEffect(() => { setLines(episode.lines); setDirty(false); }, [episode.slug]);
+  // Keep lines in sync with the selected episode
+  useEffect(() => { setLines(episode.lines); }, [episode.slug]);
 
-  // Deep link: /radio/listen#<slug> selects that episode on load (from the
+  // Deep link: /radio/behindthescenes#<slug> selects that episode on load (from the
   // /radio landing page show cards). Falls back to the first episode.
   useEffect(() => {
     const slug = window.location.hash.replace(/^#/, "");
@@ -184,38 +149,21 @@ export default function RadioStation({ episodes, cast }: Props) {
     ...lines.map((l) => (l.timestamp ?? 0) + (l.duration ?? 0)),
   );
 
-  // Dev-only: drag a clip to a new start time; recompute overlap vs previous clip.
-  // Edits live in state only — the dev presses SAVE to persist them to the JSON file.
-  function moveClip(i: number, newStart: number, commit: boolean) {
-    const start = Math.max(0, Math.round(newStart * 1000) / 1000);
-    const next = lines.map((l) => ({ ...l }));
-    next[i].timestamp = i === 0 ? 0 : start;
-    if (i > 0) {
-      const prev = next[i - 1];
-      next[i].overlap = Math.round(((prev.timestamp ?? 0) + (prev.duration ?? 0) - next[i].timestamp) * 1000) / 1000;
-    }
-    setLines(next);
-    if (commit) setDirty(true);
-  }
-
-  function saveEdits() {
-    setSaving(true);
-    fetch("/api/radio-save", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug: episode.slug, lines }),
-    })
-      .then((r) => { if (!r.ok) throw new Error(); setDirty(false); })
-      .catch(() => { /* dev-only; ignore */ })
-      .finally(() => setSaving(false));
-  }
-
   function ensureCtx(): AudioContext {
     if (!ctxRef.current) {
       const AC = window.AudioContext || (window as any).webkitAudioContext;
       ctxRef.current = new AC();
+      const gain = ctxRef.current.createGain();
+      gain.gain.value = volume;
+      gain.connect(ctxRef.current.destination);
+      gainRef.current = gain;
     }
     return ctxRef.current;
+  }
+
+  function setVolume(v: number) {
+    setVolumeState(v);
+    if (gainRef.current) gainRef.current.gain.value = v;
   }
 
   function timelineNow(): number {
@@ -241,17 +189,22 @@ export default function RadioStation({ episodes, cast }: Props) {
     const decode = (url: string) =>
       fetch(url).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a)).catch(() => null);
 
+    const onReady = () => {
+      setReady(true);
+      if (autoPlayRef.current) { autoPlayRef.current = false; startPlayback(0); }
+    };
+
     if (episode.track) {
       decode(episode.track).then((buf) => {
         if (cancelled) return;
         trackBufRef.current = buf;
-        setReady(true);
+        onReady();
       });
     } else {
       Promise.all(episode.lines.map((l) => (l.audio ? decode(l.audio) : Promise.resolve(null)))).then((bufs) => {
         if (cancelled) return;
         buffersRef.current = bufs;
-        setReady(true);
+        onReady();
       });
     }
     return () => { cancelled = true; };
@@ -270,7 +223,7 @@ export default function RadioStation({ episodes, cast }: Props) {
       if (buf && from < buf.duration) {
         const src = ctx.createBufferSource();
         src.buffer = buf;
-        src.connect(ctx.destination);
+        src.connect(gainRef.current ?? ctx.destination);
         src.start(startCtxRef.current, from);
         sourcesRef.current.push(src);
       }
@@ -287,7 +240,7 @@ export default function RadioStation({ episodes, cast }: Props) {
       if (clipEnd <= from) return;  // already finished
       const src = ctx.createBufferSource();
       src.buffer = buf;
-      src.connect(ctx.destination);
+      src.connect(gainRef.current ?? ctx.destination);
       if (clipStart >= from) {
         src.start(startCtxRef.current + (clipStart - from));
       } else {
@@ -322,8 +275,9 @@ export default function RadioStation({ episodes, cast }: Props) {
     seek(line.timestamp ?? 0);
   }
 
-  function selectEpisode(idx: number) {
-    if (idx === selectedIdx) return;
+  function selectEpisode(idx: number, andPlay = false) {
+    autoPlayRef.current = andPlay;
+    if (idx === selectedIdx) { if (andPlay) togglePlay(); return; }
     stopSources();
     playingRef.current = false;
     offsetRef.current = 0;
@@ -331,6 +285,7 @@ export default function RadioStation({ episodes, cast }: Props) {
     setCurrentTime(0);
     setActiveLine(-1);
     setSelectedIdx(idx);
+    window.location.hash = episodes[idx].slug;
   }
 
   // Reset clock when switching episodes
@@ -386,33 +341,57 @@ export default function RadioStation({ episodes, cast }: Props) {
     <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
       {/* Sidebar */}
       <div className="flex w-52 flex-shrink-0 flex-col border-r border-white/5 overflow-y-auto">
-        <div className="px-4 py-3 border-b border-white/5">
-          <div className="text-[10px] font-semibold tracking-[3px] text-[#ff6b00]">📻 SNAZZIE FM</div>
+        <div className="px-4 py-3 border-b border-white/5 flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <div className="text-[10px] font-semibold tracking-[3px] text-[#ff6b00]">📻 SNAZZIE FM</div>
+            <a href="/radio" className="text-[9px] text-white/30 hover:text-white/60 transition-colors tracking-[1px]">&larr; Back</a>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-white/20 tracking-[1px]">VOL</span>
+            <input
+              type="range" min={0} max={1} step={0.01} value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+              aria-label="Volume"
+              className="flex-1 h-[3px] accent-[#ff6b00] cursor-pointer"
+            />
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto">
           <div className="px-4 pt-3 pb-1 text-[9px] font-semibold tracking-[2px] text-white/20">EPISODES</div>
           {episodes.map((ep, i) => {
             const active = i === selectedIdx;
+            const playingThis = active && isPlaying;
             return (
-              <button
+              <div
                 key={ep.slug}
-                onClick={() => selectEpisode(i)}
-                className={`w-full text-left px-4 py-3 border-l-2 transition-colors ${
+                className={`flex items-center border-l-2 transition-colors ${
                   active
                     ? "border-[#ff6b00] bg-white/[0.04]"
                     : "border-transparent hover:bg-white/[0.02] hover:border-white/10"
                 }`}
               >
-                <div className={`text-[11px] font-semibold leading-tight ${active ? "text-white" : "text-white/40"}`}>
-                  {ep.title}
-                </div>
-                <div className="mt-1 text-[9px] text-white/20">
-                  {[...new Set(ep.lines.map((l) => l.speaker))]
-                    .map((id) => cast[id]?.name ?? id)
-                    .join(", ")}
-                </div>
-              </button>
+                <button
+                  onClick={() => selectEpisode(i, false)}
+                  className="flex-1 text-left px-4 py-3 min-w-0"
+                >
+                  <div className={`text-[11px] font-semibold leading-tight truncate ${active ? "text-white" : "text-white/40"}`}>
+                    {ep.title}
+                  </div>
+                  <div className="mt-1 text-[9px] text-white/20">
+                    {[...new Set(ep.lines.map((l) => l.speaker))]
+                      .map((id) => cast[id]?.name ?? id)
+                      .join(", ")}
+                  </div>
+                </button>
+                <button
+                  onClick={() => selectEpisode(i, !playingThis)}
+                  className="pr-3 pl-1 py-3 flex-shrink-0 text-[#ff6b00]/60 hover:text-[#ff6b00] transition-colors text-[10px]"
+                  title={playingThis ? "Pause" : "Play"}
+                >
+                  {playingThis ? "❚❚" : "▶"}
+                </button>
+              </div>
             );
           })}
         </div>
@@ -435,6 +414,10 @@ export default function RadioStation({ episodes, cast }: Props) {
               {isPlaying ? "NOW ON AIR" : "SNAZZIE FM"}
             </div>
             <div className="truncate text-[12px] font-semibold text-white">{episode.title}</div>
+          </div>
+
+          <div className="text-[10px] text-white/30 tabular-nums flex-shrink-0">
+            {fmt(currentTime)} / {fmt(span)}
           </div>
 
           {/* Discord-style cast — active speaker lights up */}
@@ -473,47 +456,17 @@ export default function RadioStation({ episodes, cast }: Props) {
               );
             })}
           </div>
-
-          <button
-            onClick={() => setShowTracks((v) => !v)}
-            className={`rounded px-2 py-1 text-[9px] font-semibold tracking-[1px] transition-colors ${
-              showTracks ? "bg-[#ff6b00]/20 text-[#ff6b00]" : "text-white/30 hover:text-white/60"
-            }`}
-            title="Toggle per-speaker debug tracks"
-          >
-            TRACKS
-          </button>
-          {IS_DEV && (
-            <button
-              onClick={saveEdits}
-              disabled={!dirty || saving}
-              className={`rounded px-2 py-1 text-[9px] font-semibold tracking-[1px] transition-colors ${
-                dirty && !saving
-                  ? "bg-[#55efc4]/20 text-[#55efc4] hover:bg-[#55efc4]/30"
-                  : "text-white/15 cursor-default"
-              }`}
-              title="Save timeline edits to the episode JSON"
-            >
-              {saving ? "SAVING…" : dirty ? "SAVE*" : "SAVED"}
-            </button>
-          )}
-          <div className="text-[10px] text-white/30 tabular-nums">
-            {fmt(currentTime)} / {fmt(span)}
-          </div>
         </div>
 
         {/* Multitrack debug view */}
-        {showTracks && (
-          <TrackLanes
+        <TrackLanes
             lines={lines}
             cast={cast}
             span={span}
             currentTime={currentTime}
             activeLine={activeLine}
             onSeek={seek}
-            onMove={IS_DEV ? moveClip : undefined}
           />
-        )}
 
         {/* Transcript — aligned table: time | speaker | text */}
         <div className="flex-1 overflow-y-auto px-4 py-3">

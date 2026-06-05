@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import type React from "react";
 import type { Episode } from "@/data/radio";
 
 const NUM_BARS = 14;
@@ -11,9 +12,13 @@ export interface RadioAudioState {
   musicPlaying: boolean;
   musicLoading: boolean;
   levels: number[];
+  analyserRef: React.RefObject<AnalyserNode | null>;
+  volume: number;
+  setVolume: (v: number) => void;
   togglePlay: () => Promise<void>;
   tuneTo: (idx: number) => void;
   toggleMusicTrack: (idx: number) => Promise<void>;
+  nextTrack: () => void;
 }
 
 export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudioState {
@@ -29,9 +34,11 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [musicLoading, setMusicLoading] = useState(false);
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
+  const [volume, setVolumeState] = useState(1);
 
   const ctxRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
   const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
   const genRef = useRef(0);
   const startedRef = useRef(false);
@@ -64,16 +71,25 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   function getCtx() {
     if (!ctxRef.current) {
       const ctx = new AudioContext();
+      const gain = ctx.createGain();
+      gain.gain.value = volume;
       const analyser = ctx.createAnalyser();
-      analyser.fftSize = 64;
+      analyser.fftSize = 512;
       analyser.smoothingTimeConstant = 0.75;
       analyser.minDecibels = -90;
       analyser.maxDecibels = -10;
-      analyser.connect(ctx.destination);
+      analyser.connect(gain);
+      gain.connect(ctx.destination);
       ctxRef.current = ctx;
       analyserRef.current = analyser;
+      gainRef.current = gain;
     }
     return { ctx: ctxRef.current, analyser: analyserRef.current! };
+  }
+
+  function setVolume(v: number) {
+    setVolumeState(v);
+    if (gainRef.current) gainRef.current.gain.value = v;
   }
 
   function stopSources() {
@@ -211,6 +227,31 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     setMusicLoading(false);
   }
 
+  function nextTrack() {
+    if (!startedRef.current) return;
+    const gen = ++genRef.current;
+    stopSources();
+    if (musicPlaying && musicIdx !== null) {
+      // Skip music interstitial → go straight to next episode
+      setMusicPlaying(false);
+      setMusicIdx(null);
+      const next = (airIdx + 1) % episodes.length;
+      setAirIdx(next);
+      setPlaying(true);
+      startEpisode(next);
+    } else if (music.length > 0) {
+      // Skip current episode → play music interstitial then next episode
+      setPlaying(true);
+      startInterstitial(airIdx % music.length, (airIdx + 1) % episodes.length, gen);
+    } else {
+      // No music → skip to next episode
+      const next = (airIdx + 1) % episodes.length;
+      setAirIdx(next);
+      setPlaying(true);
+      startEpisode(next);
+    }
+  }
+
   async function toggleMusicTrack(idx: number) {
     const ctx = ctxRef.current;
     if (musicIdx === idx && musicPlaying) {
@@ -233,8 +274,12 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     musicPlaying,
     musicLoading,
     levels,
+    analyserRef,
+    volume,
+    setVolume,
     togglePlay,
     tuneTo,
     toggleMusicTrack,
+    nextTrack,
   };
 }
