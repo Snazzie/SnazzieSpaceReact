@@ -236,8 +236,8 @@
 .rl-card-bio{font-size:.9rem;color:#a99877;line-height:1.5;margin-top:.3rem;}
 
 /* station post */
-.rl-posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem;
-  align-items:stretch;max-width:1200px;}
+.rl-posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;
+  align-items:stretch;max-width:820px;margin:0 auto;}
 .rl-post{display:flex;flex-direction:column;border:1px solid var(--line);
   border-radius:16px;padding:1.3rem 1.4rem;
   background:linear-gradient(180deg,var(--panel-2),rgba(0,0,0,.25));
@@ -254,11 +254,11 @@
   width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center;}
 .rl-post-handle{font-family:'VT323',monospace;font-size:1rem;color:#a99877;}
 .rl-post-bird{margin-left:auto;color:var(--amber-dim);font-size:1.3rem;}
-.rl-post-text{margin:.9rem 0;color:#e3d2b3;line-height:1.55;font-size:1.02rem;}
+.rl-post-text{margin:.8rem 0;color:#e3d2b3;line-height:1.5;font-size:.95rem;}
 .rl-post-text strong{color:#ffd089;}
 .rl-post-tag,.rl-post-text .rl-post-tag{color:var(--amber);}
 .rl-post-photo{margin:0 0 .9rem;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0c0805;}
-.rl-post-photo img{display:block;width:100%;height:400px;object-fit:cover;object-position:center 30%;
+.rl-post-photo img{display:block;width:100%;height:240px;object-fit:cover;object-position:center 30%;
   filter:contrast(1.03) saturate(1.02);}
 .rl-post-photo-ph{aspect-ratio:16/10;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:.5rem;color:#8a754f;font-family:'VT323',monospace;font-size:1.1rem;letter-spacing:.08em;
