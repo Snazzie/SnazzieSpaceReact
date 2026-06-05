@@ -4,6 +4,7 @@ import machineTalk from "./radio/machine-talk.json";
 import healthyLiving from "./radio/healthy-living.json";
 import afterDark from "./radio/after-dark.json";
 import theSportsDesk from "./radio/the-sports-desk.json";
+import thePigeonCrash from "./radio/the-pigeon-crash.json";
 import theFrankTapes from "./radio/the-frank-tapes.json";
 
 export interface CastMember {
@@ -64,5 +65,6 @@ export const EPISODES: Episode[] = [
   episodeFrom(healthyLiving),
   episodeFrom(afterDark),
   episodeFrom(theSportsDesk),
+  episodeFrom(thePigeonCrash),
   episodeFrom(theFrankTapes),
 ];
