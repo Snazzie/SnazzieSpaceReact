@@ -46,14 +46,16 @@ function SpectrumViz({ analyserRef, active }: { analyserRef: React.RefObject<Ana
       }
 
       const totalBins = freqData!.length;
-      const NUM_BARS = 16;
+      const NUM_BARS = 48;
       const gap = 1;
       const barW = (W - gap * (NUM_BARS - 1)) / NUM_BARS;
 
       // logarithmic frequency mapping: bar i covers fMin*(fMax/fMin)^(i/N) to ^((i+1)/N)
       const nyquist = analyserRef.current ? analyserRef.current.context.sampleRate / 2 : 22050;
       const fMin = 40;
-      const fMax = nyquist;
+      // cap below nyquist — most speech/music energy is under ~10kHz,
+      // so mapping to full nyquist leaves the treble bars permanently empty
+      const fMax = Math.min(nyquist, 10000);
       const logRange = Math.log(fMax / fMin);
 
       for (let i = 0; i < NUM_BARS; i++) {

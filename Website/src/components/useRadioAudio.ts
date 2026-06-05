@@ -73,7 +73,18 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       analyser.smoothingTimeConstant = 0.75;
       analyser.minDecibels = -90;
       analyser.maxDecibels = -10;
-      analyser.connect(gain);
+      // compressor to even out loudness across episodes/tracks
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -24;
+      comp.knee.value = 30;
+      comp.ratio.value = 12;
+      comp.attack.value = 0.003;
+      comp.release.value = 0.25;
+      const makeup = ctx.createGain();
+      makeup.gain.value = 1.6; // recover level lost to compression
+      analyser.connect(comp);
+      comp.connect(makeup);
+      makeup.connect(gain);
       gain.connect(ctx.destination);
       ctxRef.current = ctx;
       analyserRef.current = analyser;
