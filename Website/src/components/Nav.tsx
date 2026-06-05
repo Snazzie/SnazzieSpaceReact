@@ -13,7 +13,6 @@ const LINKS = [
   { href: "#traffic", label: "Traffic", id: "traffic" },
   { href: "#hire", label: "Hire Me", id: "hire" },
   { href: "#articles", label: "Articles", id: "articles" },
-  { href: "/radio", label: "Radio", id: "radio" },
 ];
 
 const NAV_LINKS = LINKS.filter((l) => l.id !== "home");
