@@ -6,6 +6,7 @@
     "instruct": "male, middle-aged, low pitch, american accent",
     "speed": 0.95,
     "phone_filter": false,
+    "prefix_stretch": 1.14,
     "ref_audio": "scripts/voices/ronnie.wav",
     "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER",
     "gender": "M"

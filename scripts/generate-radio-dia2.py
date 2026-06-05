@@ -110,8 +110,8 @@ def generate(slug: str) -> None:
 
     clip_dir = AUDIO_DIR / slug
     clip_dir.mkdir(parents=True, exist_ok=True)
-    (clip_dir / "episode.flac").unlink(missing_ok=True)
-    for old in clip_dir.glob("*.flac"):
+    # remove only legacy per-clip files; keep episode.flac live until the new one is ready
+    for old in clip_dir.glob("[0-9]*.flac"):
         old.unlink()
 
     # Build prefix wavs. For phone_filter speakers, bandpass the PREFIX so Dia2 clones a
@@ -122,6 +122,12 @@ def generate(slug: str) -> None:
         wav, sr = sf.read(str(REPO_ROOT / c["ref_audio"]), dtype="float32")
         if wav.ndim > 1:
             wav = wav.mean(axis=1)
+        # prefix_stretch > 1 slows + lowers the prefix → Dia2 clones a calmer, more monotone,
+        # "stoned" cadence for that speaker (e.g. Ronnie).
+        st = float(c.get("prefix_stretch", 1.0))
+        if abs(st - 1.0) > 1e-3:
+            from scipy.signal import resample_poly
+            wav = resample_poly(wav, int(round(st * 100)), 100).astype(np.float32)
         if c.get("phone_filter"):
             sos = butter(4, [300 / (sr / 2), 3400 / (sr / 2)], btype="band", output="sos")
             wav = sosfilt(sos, wav).astype(np.float32)
@@ -181,7 +187,10 @@ def generate(slug: str) -> None:
     track = np.tanh(track * 1.05).astype(np.float32)
     pk = float(np.max(np.abs(track))) or 1.0
     track = (track / pk * 0.95).astype(np.float32)
-    sf.write(str(clip_dir / "episode.flac"), track, OUT_SR, format="flac")
+    import os
+    tmpf = clip_dir / "episode.flac.tmp"
+    sf.write(str(tmpf), track, OUT_SR, format="flac")
+    os.replace(str(tmpf), str(clip_dir / "episode.flac"))   # atomic swap — no no-sound window
 
     episode["track"] = f"/audio/radio/{slug}/episode.flac"
     for i, line in enumerate(lines):
