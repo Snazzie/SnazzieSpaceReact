@@ -276,7 +276,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
 
       <footer className="rl-footer">
         <span>SNAZZIE FM &middot; All transmissions are fictional</span>
-        <a href="/snazziefm/behindthescenes">Tune in &rarr;</a>
+        <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </footer>
     </div>
   );
