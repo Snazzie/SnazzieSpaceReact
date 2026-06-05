@@ -386,75 +386,76 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
         </section>
       )}
 
-      {/* ── Schedule / lineup ───────────────────────────────────────── */}
-      <section className="rl-section">
-        <h2 className="rl-section-title">
-          <span>Program Guide</span>
-          <span className="rl-section-rule" />
-        </h2>
-        <ol className="rl-schedule">
-          {episodes.map((ep, i) => (
-            <li key={ep.slug}>
-              <button
-                type="button"
-                className={`rl-show ${i === airIdx ? "rl-show-live" : ""}`}
-                onClick={() => tuneTo(i)}
-              >
-                <span className="rl-show-time">{SLOTS[i % SLOTS.length]}</span>
-                <span className="rl-show-body">
-                  <span className="rl-show-title">
-                    {ep.title}
-                    {i === airIdx && playing && <span className="rl-show-tag">LIVE</span>}
-                  </span>
-                  <span className="rl-show-desc">{ep.description}</span>
-                </span>
-                <span className="rl-show-play">{i === airIdx && playing ? "❚❚" : "▶"}</span>
-              </button>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* ── Top Hits ────────────────────────────────────────────────── */}
-      {music.length > 0 && (
-        <section className="rl-section">
+      {/* ── Schedule + Top Hits side-by-side ────────────────────────── */}
+      <div className="rl-guide-row">
+        <section className="rl-section rl-guide-main">
           <h2 className="rl-section-title">
-            <span>Top Hits</span>
+            <span>Program Guide</span>
             <span className="rl-section-rule" />
           </h2>
-          <ol className="rl-hits">
-            {music.map((track, i) => {
-              const isActive = musicIdx === i;
-              const isThisPlaying = isActive && musicPlaying;
-              const isThisLoading = isActive && musicLoading;
-              return (
-                <li key={track.slug}>
-                  <button
-                    type="button"
-                    className={`rl-hit${isActive ? " rl-hit-active" : ""}`}
-                    onClick={() => toggleMusicTrack(i)}
-                    disabled={isThisLoading}
-                  >
-                    <span className="rl-hit-rank">#{i + 1}</span>
-                    <span className="rl-hit-vinyl" aria-hidden>
-                      {track.coverArt
-                        ? <img src={track.coverArt} alt="" className={`rl-hit-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
-                        : <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />}
+          <ol className="rl-schedule">
+            {episodes.map((ep, i) => (
+              <li key={ep.slug}>
+                <button
+                  type="button"
+                  className={`rl-show ${i === airIdx ? "rl-show-live" : ""}`}
+                  onClick={() => tuneTo(i)}
+                >
+                  <span className="rl-show-time">{SLOTS[i % SLOTS.length]}</span>
+                  <span className="rl-show-body">
+                    <span className="rl-show-title">
+                      {ep.title}
+                      {i === airIdx && playing && <span className="rl-show-tag">LIVE</span>}
                     </span>
-                    <span className="rl-hit-body">
-                      <span className="rl-hit-title">{track.title}</span>
-                      <span className="rl-hit-label">Snazzie FM Originals</span>
-                    </span>
-                    <span className="rl-hit-play">
-                      {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
+                    <span className="rl-show-desc">{ep.description}</span>
+                  </span>
+                  <span className="rl-show-play">{i === airIdx && playing ? "❚❚" : "▶"}</span>
+                </button>
+              </li>
+            ))}
           </ol>
         </section>
-      )}
+
+        {music.length > 0 && (
+          <section className="rl-section rl-guide-hits">
+            <h2 className="rl-section-title">
+              <span>Top Hits</span>
+              <span className="rl-section-rule" />
+            </h2>
+            <ol className="rl-hits">
+              {music.map((track, i) => {
+                const isActive = musicIdx === i;
+                const isThisPlaying = isActive && musicPlaying;
+                const isThisLoading = isActive && musicLoading;
+                return (
+                  <li key={track.slug}>
+                    <button
+                      type="button"
+                      className={`rl-hit${isActive ? " rl-hit-active" : ""}`}
+                      onClick={() => toggleMusicTrack(i)}
+                      disabled={isThisLoading}
+                    >
+                      <span className="rl-hit-rank">#{i + 1}</span>
+                      <span className="rl-hit-vinyl" aria-hidden>
+                        {track.coverArt
+                          ? <img src={track.coverArt} alt="" className={`rl-hit-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
+                          : <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />}
+                      </span>
+                      <span className="rl-hit-body">
+                        <span className="rl-hit-title">{track.title}</span>
+                        <span className="rl-hit-label">Snazzie FM Originals</span>
+                      </span>
+                      <span className="rl-hit-play">
+                        {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        )}
+      </div>
 
       {/* ── Station dispatch (faux social post) ─────────────────────── */}
       <section className="rl-section">
@@ -464,46 +465,6 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
         </h2>
         <RadioPosts />
       </section>
-
-      {/* ── Station Music ───────────────────────────────────────────── */}
-      {music.length > 0 && (
-        <section className="rl-section">
-          <h2 className="rl-section-title">
-            <span>Station Music</span>
-            <span className="rl-section-rule" />
-          </h2>
-          <div className="rl-music-grid">
-            {music.map((track, i) => {
-              const isActive = musicIdx === i;
-              const isThisPlaying = isActive && musicPlaying;
-              const isThisLoading = isActive && musicLoading;
-              return (
-                <article key={track.slug} className={`rl-music-card${isActive ? " rl-music-card-active" : ""}`}>
-                  <div className="rl-vinyl" aria-hidden>
-                    {track.coverArt
-                      ? <img src={track.coverArt} alt="" className={`rl-music-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
-                      : <div className={`rl-vinyl-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`}><span className="rl-vinyl-label">FM</span></div>
-                    }
-                  </div>
-                  <div className="rl-music-body">
-                    <h3 className="rl-music-title">{track.title}</h3>
-                    <p className="rl-music-desc">{track.description}</p>
-                    <button
-                      type="button"
-                      className="rl-music-play"
-                      onClick={() => toggleMusicTrack(i)}
-                      disabled={isThisLoading}
-                    >
-                      <span>{isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}</span>
-                      {isThisLoading ? "Loading…" : isThisPlaying ? "Playing" : "Play"}
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      )}
 
       {/* ── On-air talent ───────────────────────────────────────────── */}
       <section className="rl-section">

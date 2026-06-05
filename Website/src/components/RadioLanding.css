@@ -112,6 +112,10 @@
 
 /* sections */
 .rl-section{padding:0 clamp(1rem,5vw,4rem) clamp(2.5rem,6vw,4rem);}
+.rl-guide-row{display:grid;grid-template-columns:1fr 320px;gap:0;align-items:start;}
+.rl-guide-hits{padding-left:0;}
+.rl-guide-hits .rl-hits{position:sticky;top:1rem;}
+@media(max-width:860px){.rl-guide-row{grid-template-columns:1fr;}.rl-guide-hits{padding-left:clamp(1rem,5vw,4rem);}}
 .rl-section-title{display:flex;align-items:center;gap:1.2rem;
   font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.06em;
   color:#ffce8a;margin-bottom:1.6rem;}
