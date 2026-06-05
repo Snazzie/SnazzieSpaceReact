@@ -46,9 +46,11 @@ function SpectrumViz({ analyserRef, active }: { analyserRef: React.RefObject<Ana
       }
 
       const totalBins = freqData!.length;
-      const NUM_BARS = 48;
+      // 40 bars = 40 intervals between the 41 dial ticks, so bars line up with ticks
+      const NUM_BARS = 40;
+      const slot = W / NUM_BARS;
       const gap = 1;
-      const barW = (W - gap * (NUM_BARS - 1)) / NUM_BARS;
+      const barW = slot - gap;
 
       // logarithmic frequency mapping: bar i covers fMin*(fMax/fMin)^(i/N) to ^((i+1)/N)
       const nyquist = analyserRef.current ? analyserRef.current.context.sampleRate / 2 : 22050;
@@ -68,7 +70,7 @@ function SpectrumViz({ analyserRef, active }: { analyserRef: React.RefObject<Ana
         for (let b = binLow; b < binHigh; b++) sum += freqData![b];
         const norm = sum / (count * 255);
         const h = Math.max(2, norm * H);
-        const x = i * (barW + gap);
+        const x = i * slot + gap / 2;
         const alpha = 0.3 + norm * 0.7;
         ctx2d.fillStyle = `rgba(255,158,44,${alpha})`;
         ctx2d.fillRect(x, H - h, Math.max(1, barW), h);

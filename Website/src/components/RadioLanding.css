@@ -98,8 +98,16 @@
 .rl-tick{width:1px;height:8px;background:rgba(255,200,140,.35);}
 .rl-tick-major{height:16px;background:var(--amber);}
 .rl-dial-needle{position:absolute;top:0;left:34%;width:2px;height:34px;background:var(--red);
-  box-shadow:0 0 10px rgba(255,59,47,.9);animation:rl-drift 7s ease-in-out infinite;}
-@keyframes rl-drift{0%,100%{left:30%;}50%{left:62%;}}
+  box-shadow:0 0 10px rgba(255,59,47,.9);
+  animation:rl-drift 14s cubic-bezier(.22,1,.36,1) infinite;}
+/* glide to each station then settle (hold), decelerating on arrival */
+@keyframes rl-drift{
+  0%{left:30%;}   10%{left:47%;}  18%{left:47%;}
+  28%{left:38%;}  36%{left:38%;}
+  46%{left:62%;}  54%{left:62%;}
+  64%{left:44%;}  72%{left:44%;}
+  82%{left:55%;}  90%{left:55%;}
+  100%{left:30%;}}
 .rl-dial-numbers{display:flex;justify-content:space-between;margin-top:.3rem;
   font-family:'VT323',monospace;font-size:.9rem;color:#b9966a;}
 .rl-readout{font-family:'VT323',monospace;background:#0a0a08;border:1px solid var(--line);
