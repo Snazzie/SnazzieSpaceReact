@@ -3,79 +3,99 @@
     "name": "Ronnie Delacroix",
     "color": "#ff6b00",
     "role": "Host",
-    "instruct": "male, 50s, deep baritone, slow southern drawl, smooth radio voice",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, middle-aged, low pitch, american accent",
+    "speed": 0.95,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ronnie.wav",
+    "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER"
   },
   "barry": {
     "name": "Barry Fitch",
     "color": "#4ecdc4",
     "role": "Co-Host",
-    "instruct": "male, 40s, nasally, slightly anxious, mid-atlantic accent, speaks quickly",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, middle-aged, high pitch, american accent",
+    "speed": 1.2,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/barry.wav",
+    "ref_text": "YOU WILL FIND ME CONTINUALLY SPEAKING OF FOUR MEN TITIAN HOLBEIN TURNER AND TINTORET IN ALMOST THE SAME TERMS"
   },
   "rhonda": {
     "name": "Rhonda K.",
     "color": "#fd79a8",
     "role": "Guest Expert",
-    "instruct": "female, 40s, clipped british accent, very confident, authoritative",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "female, middle-aged, british accent",
+    "speed": 1.0,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/rhonda.wav",
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT"
   },
   "todd": {
     "name": "Todd",
     "color": "#55efc4",
     "role": "Intern",
-    "instruct": "male, early 20s, slightly squeaky, nervous, quiet delivery with occasional bursts of volume",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, young adult, high pitch",
+    "speed": 1.1,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/todd.wav",
+    "ref_text": "THE PARIS PLANT LIKE THAT AT THE CRYSTAL PALACE WAS A TEMPORARY EXHIBIT"
   },
   "caller-steve": {
     "name": "Steve",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 30s, american accent, speaks too fast, slightly panicked",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.3,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "I WILL ENDEAVOUR IN MY STATEMENT TO AVOID SUCH TERMS AS WOULD SERVE TO LIMIT THE EVENTS TO ANY PARTICULAR PLACE OR GIVE A CLUE AS TO THE PEOPLE CONCERNED"
   },
   "caller-gary": {
     "name": "Gary",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 50s, gravelly voice, midwestern accent, very sure of everything",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "IT ENGENDERS A WHOLE WORLD LA PEGRE FOR WHICH READ THEFT AND A HELL LA PEGRENNE FOR WHICH READ HUNGER"
   },
   "caller-linda": {
     "name": "Linda",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "female, 60s, sweet southern grandmother, warm then increasingly alarmed",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "female, elderly, american accent",
+    "speed": 0.88,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW"
   },
   "caller-chad": {
     "name": "Chad",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 20s, bro accent, confident, incorrect about everything",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, young adult, american accent",
+    "speed": 1.25,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-chad.wav",
+    "ref_text": "IN FIVE MINUTES I WAS IN A NEW WORLD AND MY MELANCHOLY ROOM WAS FULL OF THE LIVELIEST FRENCH COMPANY"
   },
   "caller-mildred": {
     "name": "Mildred",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "female, 70s, very quiet mumble then sudden loud outbursts",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "female, elderly, whisper",
+    "speed": 0.85,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-mildred.wav",
+    "ref_text": "TO FADE AWAY LIKE MORNING BEAUTY FROM HER MORTAL DAY DOWN BY THE RIVER OF ADONA HER SOFT VOICE IS HEARD AND THUS HER GENTLE LAMENTATION FALLS LIKE MORNING DEW"
   },
   "caller-darnell": {
     "name": "Darnell",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 40s, deep calm voice, describes completely insane things with total composure",
+    "instruct": "male, middle-aged, low pitch",
+    "speed": 0.92,
+    "phone_filter": true,
     "ref_audio": "scripts/voices/seedtts_ref.wav",
     "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
   },
@@ -83,32 +103,40 @@
     "name": "Patricia",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "female, 30s, very professional and composed, completely loses composure by end",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "DO YOU SUPPOSE THAT GOD FOR THE SAKE OF A FEW LUTHERAN HERETICS WOULD DISOWN HIS ENTIRE CHURCH"
   },
   "caller-winston": {
     "name": "Winston",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 60s, british accent, condescending tone, confidently incorrect",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, elderly, british accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-winston.wav",
+    "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH"
   },
   "caller-kim": {
     "name": "Kim",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "female, 20s, valley girl cadence, unexpectedly knowledgeable and correct",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "female, young adult, american accent",
+    "speed": 1.15,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-kim.wav",
+    "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON"
   },
   "caller-frank": {
     "name": "Frank",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, 50s, italian-american accent, gets personally offended easily, emphatic",
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "instruct": "male, middle-aged, american accent, moderate pitch",
+    "speed": 1.1,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-frank.wav",
+    "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS"
   }
 }

@@ -21,6 +21,7 @@ warnings.filterwarnings("ignore", message="Couldn't find ffmpeg", category=Runti
 import numpy as np
 import soundfile as sf
 import torch
+from scipy.signal import butter, sosfilt
 
 REPO_ROOT    = Path(__file__).parent.parent
 CAST_FILE    = Path(__file__).parent / "cast.json"
@@ -30,6 +31,16 @@ SAMPLE_RATE  = 24_000
 WAVEFORM_BARS = 200
 DEFAULT_GAP  = 0.15   # seconds between lines when overlap is 0
 SPEED        = 1.15
+
+# Phone bandpass: simulate caller telephone audio (300–3400 Hz)
+_PHONE_SOS = butter(4, [300 / (SAMPLE_RATE / 2), 3400 / (SAMPLE_RATE / 2)], btype="band", output="sos")
+
+
+def apply_phone_filter(audio: np.ndarray) -> np.ndarray:
+    """Bandpass + slight noise to simulate telephone quality."""
+    filtered = sosfilt(_PHONE_SOS, audio).astype(np.float32)
+    noise = np.random.default_rng(0).normal(0, 0.002, len(filtered)).astype(np.float32)
+    return np.clip(filtered + noise, -1.0, 1.0)
 
 
 def load_cast() -> dict:
@@ -82,14 +93,18 @@ def generate_episode(slug: str, model) -> None:
         if not text or text == "...":
             clips.append(np.zeros(int(SAMPLE_RATE * 0.8), dtype=np.float32))
         else:
+            speed = float(c.get("speed", SPEED))
             audio = model.generate(
                 text=text,
                 ref_audio=str(REPO_ROOT / c["ref_audio"]),
                 ref_text=c["ref_text"],
                 instruct=c["instruct"],
-                speed=SPEED,
+                speed=speed,
             )
-            clips.append(audio[0].astype(np.float32))
+            clip = audio[0].astype(np.float32)
+            if c.get("phone_filter", False):
+                clip = apply_phone_filter(clip)
+            clips.append(clip)
         dur = len(clips[-1]) / SAMPLE_RATE
         print(f"    [{i+1}/{len(lines)}] {speaker_id}: {dur:.1f}s")
 
