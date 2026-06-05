@@ -147,7 +147,7 @@ export default function RadioStation({ episodes, cast }: Props) {
     .filter((m): m is CastMember => m !== undefined);
 
   return (
-    <div className="flex h-[600px] overflow-hidden rounded-lg border border-white/10 bg-[#0a0a0a] font-sans text-sm">
+    <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
       {/* Sidebar */}
       <div className="flex w-52 flex-shrink-0 flex-col border-r border-white/5 overflow-y-auto">
         <div className="px-4 py-3 border-b border-white/5">
