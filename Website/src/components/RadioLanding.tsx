@@ -435,19 +435,21 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                       onClick={() => toggleMusicTrack(i)}
                       disabled={isThisLoading}
                     >
-                      <span className="rl-hit-rank">#{i + 1}</span>
-                      <span className="rl-hit-vinyl" aria-hidden>
+                      <span className="rl-hit-art">
                         {track.coverArt
-                          ? <img src={track.coverArt} alt="" className={`rl-hit-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
-                          : <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />}
+                          ? <img src={track.coverArt} alt={track.title} className="rl-hit-cover" />
+                          : <span className="rl-hit-disc" aria-hidden />}
+                        <span className="rl-hit-art-overlay" aria-hidden>
+                          <span className="rl-hit-play-icon">
+                            {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
+                          </span>
+                        </span>
+                        {isThisPlaying && <span className="rl-hit-playing-badge">ON AIR</span>}
                       </span>
-                      <span className="rl-hit-body">
+                      <span className="rl-hit-info">
+                        <span className="rl-hit-rank">#{i + 1} &middot; Snazzie FM Originals</span>
                         <span className="rl-hit-title">{track.title}</span>
-                        <span className="rl-hit-label">Snazzie FM Originals</span>
                         {track.description && <span className="rl-hit-desc">{track.description}</span>}
-                      </span>
-                      <span className="rl-hit-play">
-                        {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
                       </span>
                     </button>
                   </li>
