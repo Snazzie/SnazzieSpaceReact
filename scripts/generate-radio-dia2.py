@@ -114,8 +114,24 @@ def generate(slug: str) -> None:
     for old in clip_dir.glob("*.flac"):
         old.unlink()
 
-    prefix1 = str(REPO_ROOT / cast[speakers[0]]["ref_audio"])
-    prefix2 = str(REPO_ROOT / cast[speakers[1]]["ref_audio"])
+    # Build prefix wavs. For phone_filter speakers, bandpass the PREFIX so Dia2 clones a
+    # phone-toned voice — the effect is baked into generation, not applied to split audio
+    # afterward (which leaked across line boundaries).
+    def make_prefix(spk: str, dst: Path) -> str:
+        c = cast[spk]
+        wav, sr = sf.read(str(REPO_ROOT / c["ref_audio"]), dtype="float32")
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        if c.get("phone_filter"):
+            sos = butter(4, [300 / (sr / 2), 3400 / (sr / 2)], btype="band", output="sos")
+            wav = sosfilt(sos, wav).astype(np.float32)
+            pk = float(np.max(np.abs(wav))) or 1.0
+            wav = wav / pk * 0.95
+        sf.write(str(dst), wav, sr)
+        return str(dst)
+
+    prefix1 = make_prefix(speakers[0], clip_dir / "_prefix1.wav")
+    prefix2 = make_prefix(speakers[1], clip_dir / "_prefix2.wav")
 
     print(f"  loading {REPO_2B}...")
     dia = Dia2.from_repo(REPO_2B, device="cuda" if torch.cuda.is_available() else "cpu", dtype="bfloat16")
@@ -128,9 +144,10 @@ def generate(slug: str) -> None:
     passes = build_passes(lines, speakers[0])
     print(f"  {len(lines)} lines -> {len(passes)} pass(es)")
 
-    lengths = [0] * len(lines)
-    sb0 = [0] * len(lines)
-    sb1 = [0] * len(lines)
+    PASS_GAP = 0.35
+    parts: list[np.ndarray] = []
+    line_start = [0.0] * len(lines)   # absolute start seconds (from word timestamps)
+    cursor = 0.0
 
     for pi, idxs in enumerate(passes):
         script = " ".join(f"{tag[lines[i]['speaker']]} {lines[i]['text'].strip()}" for i in idxs)
@@ -140,36 +157,40 @@ def generate(slug: str) -> None:
         if wav.ndim > 1:
             wav = wav.mean(axis=0) if wav.shape[0] < wav.shape[-1] else wav.mean(axis=1)
         wav = resample(wav, res.sample_rate, OUT_SR)
-        stamps = res.timestamps                  # [(word, start_sec), ...] aligned to script
+        pk = float(np.max(np.abs(wav))) or 1.0
+        wav = wav / pk * 0.95
+        stamps = res.timestamps          # [(word, start_sec), ...] aligned to the script
         total = len(wav) / OUT_SR
 
-        # Map each line to a [start,end] span by consuming its word count from the stamp stream
+        # Metadata only: per-line start = its first word's timestamp (no audio splitting)
         wi = 0
-        for k, i in enumerate(idxs):
-            ntok = max(1, len(tok(lines[i]["text"])))
-            start_t = stamps[wi][1] if wi < len(stamps) else (lengths and total)
-            wi = min(len(stamps), wi + ntok)
-            end_t = stamps[wi][1] if wi < len(stamps) else total
-            a, b = int(start_t * OUT_SR), int(min(total, end_t) * OUT_SR)
-            seg = wav[max(0, a):max(a + 1, b)].copy()
-            if cast[lines[i]["speaker"]].get("phone_filter"):
-                seg = phone(seg)
-            pk = float(np.max(np.abs(seg))) if len(seg) else 0.0
-            if pk > 0.97:
-                seg = seg / pk * 0.95
-            sf.write(str(clip_dir / f"{i}.flac"), seg.astype(np.float32), OUT_SR, format="flac")
-            s, e = speech_bounds(seg)
-            lengths[i] = len(seg); sb0[i] = s; sb1[i] = e
+        for i in idxs:
+            st = stamps[wi][1] if wi < len(stamps) else total
+            line_start[i] = round(cursor + min(st, total), 3)
+            wi = min(len(stamps), wi + max(1, len(tok(lines[i]["text"]))))
+        parts.append(wav)
+        parts.append(np.zeros(int(PASS_GAP * OUT_SR), dtype=np.float32))
+        cursor += total + PASS_GAP
         print(f"    pass {pi+1}/{len(passes)}: lines {idxs[0]}-{idxs[-1]}, {total:.1f}s, {len(stamps)} words")
 
-    starts = place(lengths, sb0, sb1, lines)
-    episode.pop("track", None)
+    # cleanup temp prefix wavs (don't ship them)
+    (clip_dir / "_prefix1.wav").unlink(missing_ok=True)
+    (clip_dir / "_prefix2.wav").unlink(missing_ok=True)
+
+    track = np.concatenate(parts) if parts else np.zeros(1, dtype=np.float32)
+    track = np.tanh(track * 1.05).astype(np.float32)
+    pk = float(np.max(np.abs(track))) or 1.0
+    track = (track / pk * 0.95).astype(np.float32)
+    sf.write(str(clip_dir / "episode.flac"), track, OUT_SR, format="flac")
+
+    episode["track"] = f"/audio/radio/{slug}/episode.flac"
     for i, line in enumerate(lines):
-        line["timestamp"] = round(starts[i] / OUT_SR, 3)
-        line["duration"]  = round(lengths[i] / OUT_SR, 3)
-        line["audio"]     = f"/audio/radio/{slug}/{i}.flac"
+        nxt = line_start[i + 1] if i + 1 < len(lines) else cursor
+        line["timestamp"] = line_start[i]
+        line["duration"]  = round(max(0.3, nxt - line_start[i]), 3)
+        line.pop("audio", None)
     (SCRIPTS_DIR / f"{slug}.json").write_text(json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
-    tl = (max(st + l for st, l in zip(starts, lengths)) / OUT_SR) if lengths else 0
+    tl = len(track) / OUT_SR
     print(f"  placed {len(lines)} clips, timeline {tl:.1f}s")
 
 
