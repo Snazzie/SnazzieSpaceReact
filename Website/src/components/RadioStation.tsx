@@ -157,6 +157,7 @@ export default function RadioStation({ episodes, cast }: Props) {
   const rafRef     = useRef<number>(0);
   const ctxRef     = useRef<AudioContext | null>(null);
   const buffersRef = useRef<(AudioBuffer | null)[]>([]);
+  const trackBufRef = useRef<AudioBuffer | null>(null);  // single whole-episode buffer (Dia)
   const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
   const startCtxRef = useRef(0);  // ctx.currentTime when playback (re)started
   const offsetRef   = useRef(0);  // timeline position at that start
@@ -220,26 +221,30 @@ export default function RadioStation({ episodes, cast }: Props) {
     sourcesRef.current = [];
   }
 
-  // Load + decode every clip when the episode changes
+  // Load + decode audio when the episode changes.
+  // Dia episodes: one whole-episode `track`. Others: one clip per line.
   useEffect(() => {
     let cancelled = false;
     setReady(false);
     buffersRef.current = [];
+    trackBufRef.current = null;
     const ctx = ensureCtx();
-    Promise.all(
-      episode.lines.map((l) =>
-        l.audio
-          ? fetch(l.audio)
-              .then((r) => r.arrayBuffer())
-              .then((a) => ctx.decodeAudioData(a))
-              .catch(() => null)
-          : Promise.resolve(null),
-      ),
-    ).then((bufs) => {
-      if (cancelled) return;
-      buffersRef.current = bufs;
-      setReady(true);
-    });
+    const decode = (url: string) =>
+      fetch(url).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a)).catch(() => null);
+
+    if (episode.track) {
+      decode(episode.track).then((buf) => {
+        if (cancelled) return;
+        trackBufRef.current = buf;
+        setReady(true);
+      });
+    } else {
+      Promise.all(episode.lines.map((l) => (l.audio ? decode(l.audio) : Promise.resolve(null)))).then((bufs) => {
+        if (cancelled) return;
+        buffersRef.current = bufs;
+        setReady(true);
+      });
+    }
     return () => { cancelled = true; };
   }, [episode.slug]);
 
@@ -249,6 +254,22 @@ export default function RadioStation({ episodes, cast }: Props) {
     stopSources();
     offsetRef.current = from;
     startCtxRef.current = ctx.currentTime;
+
+    // Single-track (Dia): one source, seek via buffer offset
+    if (episode.track) {
+      const buf = trackBufRef.current;
+      if (buf && from < buf.duration) {
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(startCtxRef.current, from);
+        sourcesRef.current.push(src);
+      }
+      playingRef.current = true;
+      setIsPlaying(true);
+      return;
+    }
+
     lines.forEach((line, i) => {
       const buf = buffersRef.current[i];
       if (!buf) return;
@@ -350,6 +371,8 @@ export default function RadioStation({ episodes, cast }: Props) {
     .map((id) => cast[id])
     .filter((m): m is CastMember => m !== undefined);
 
+  const activeSpeaker = isPlaying && activeLine >= 0 ? lines[activeLine]?.speaker : null;
+
   return (
     <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
       {/* Sidebar */}
@@ -385,26 +408,6 @@ export default function RadioStation({ episodes, cast }: Props) {
           })}
         </div>
 
-        {/* Cast for current episode */}
-        <div className="border-t border-white/5 px-4 py-3">
-          <div className="mb-2 text-[9px] font-semibold tracking-[2px] text-white/20">CAST</div>
-          <div className="flex flex-col gap-1.5">
-            {episodeCast.map((member) => (
-              <div key={member.id} className="flex items-center gap-2">
-                <div
-                  className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-black"
-                  style={{ background: member.color }}
-                >
-                  {member.name[0]}
-                </div>
-                <div>
-                  <span className="text-[10px] text-white/50">{member.name}</span>
-                  <span className="ml-1 text-[9px] text-white/20">— {member.role}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Right: player + transcript */}
@@ -418,12 +421,45 @@ export default function RadioStation({ episodes, cast }: Props) {
           >
             {isPlaying ? "⏸" : "⏵"}
           </button>
-          <div className="flex-1 min-w-0">
+          <div className="min-w-0 flex-shrink-0">
             <div className="text-[9px] font-semibold tracking-[2px] text-[#ff6b00]">
               {isPlaying ? "NOW ON AIR" : "SNAZZIE FM"}
             </div>
             <div className="truncate text-[12px] font-semibold text-white">{episode.title}</div>
           </div>
+
+          {/* Discord-style cast — active speaker lights up */}
+          <div className="flex flex-1 flex-wrap items-center gap-2 px-2">
+            {episodeCast.map((m) => {
+              const talking = m.id === activeSpeaker;
+              return (
+                <div
+                  key={m.id}
+                  className="flex items-center gap-1.5 transition-all duration-150"
+                  style={{ opacity: talking ? 1 : 0.4 }}
+                  title={`${m.name} — ${m.role}`}
+                >
+                  <div
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-black transition-all duration-150"
+                    style={{
+                      background: m.color,
+                      transform: talking ? "scale(1.12)" : "scale(1)",
+                      boxShadow: talking ? `0 0 0 2px #111, 0 0 0 4px ${m.color}, 0 0 12px ${m.color}` : "none",
+                    }}
+                  >
+                    {m.name[0]}
+                  </div>
+                  <span
+                    className="hidden text-[10px] font-medium sm:inline"
+                    style={{ color: talking ? "#fff" : "rgba(255,255,255,0.4)" }}
+                  >
+                    {m.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
           <button
             onClick={() => setShowTracks((v) => !v)}
             className={`rounded px-2 py-1 text-[9px] font-semibold tracking-[1px] transition-colors ${

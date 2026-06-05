@@ -1,0 +1,198 @@
+{
+  "slug": "the-frank-tapes",
+  "title": "The Frank Tapes",
+  "description": "Just Ronnie and Frank, one on one, after midnight. No Barry to keep them honest. Generated with Dia.",
+  "engine": "dia",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "It's just you and me tonight, Frank. Barry went home. Said he needed to, quote, be around normal people.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 5.2
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Normal people are the most dangerous kind, Ronnie. That's exactly who they recruit.",
+      "overlap": 0,
+      "timestamp": 5.32,
+      "duration": 3.18
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, that's why I keep you on the line. You connect the dots the rest of us are too scared to look at.",
+      "overlap": 0,
+      "timestamp": 8.98,
+      "duration": 2.94
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "I don't sleep anymore, Ronnie. Sleep is when they update you.",
+      "overlap": 0,
+      "timestamp": 12.12,
+      "duration": 2.36
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Update you. Like a phone.",
+      "overlap": 0,
+      "timestamp": 14.66,
+      "duration": 0.9
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Exactly like a phone. Why do you think you wake up tired? A real rest would leave you sharp. They don't want you sharp.",
+      "overlap": 0,
+      "timestamp": 15.88,
+      "duration": 4.48
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I did wake up tired this morning. I thought it was the coffee.",
+      "overlap": 0,
+      "timestamp": 20.6,
+      "duration": 2.02
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "The coffee is part of it, but that's a different tape. We'll get to the coffee.",
+      "overlap": 0,
+      "timestamp": 23.02,
+      "duration": 2.28
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay. Okay, walk me through tonight's, then. What did you bring me?",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Escalators, Ronnie. (laughs) Nobody questions the escalators.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I ride one almost every day. At the mall.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "And where does the staircase go, Ronnie, when it folds under at the bottom? Where does it go?",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I always assumed it just... loops around. Underneath.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "That's what the diagram says. But have you seen the diagram? Or did they just tell you about the diagram?",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I have never once seen the diagram. (laughs) I just assumed somebody had.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Nobody has, Ronnie. The steps go down, and they keep going. All the way down. To the warehouse.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The warehouse. The same warehouse from the pigeon tapes?",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "It's all one warehouse, Ronnie. It always was. The pigeons, the bread, the escalators. One roof.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That is... honestly, that's almost comforting. At least it's organized.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Oh, they're very organized. That's the scariest part. (sighs) You don't run an operation like this without a calendar.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Frank, can I ask you something, just between us? Doesn't it ever get heavy? Knowing all this?",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Every single day, Ronnie. But somebody has to stay awake. Somebody has to refuse the update.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well. You've always got a friend on this frequency. You know that.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "I know, Ronnie. And when they come for the radio towers, you'll be the first one I call.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I'd be honored, Frank. Don't feed the pigeons. Don't trust the escalators.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "And take the stairs, Ronnie. The regular ones. The ones that don't move.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We'll be right back, after this. Stay awake out there.",
+      "overlap": 0,
+      "timestamp": 25.6,
+      "duration": 91.32
+    }
+  ],
+  "track": "/audio/radio/the-frank-tapes/episode.flac"
+}

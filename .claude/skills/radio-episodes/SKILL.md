@@ -57,13 +57,14 @@ retiming a line only edits its `timestamp`, never the audio.
    "come on", "would ya") unless the staccato beat is the joke.
 5. **Pauses** — insert real silence inside a line with a token: `<p>` = 0.5s, `<p:0.8>` =
    0.8s. The UI strips tokens from the transcript; the generator turns them into silence.
-6. **Overlap / pacing** (`overlap`, seconds, relative to previous clip end):
-   - `0` → default 0.15s gap
-   - negative (e.g. `-0.2`) → that much gap after the previous clip (calm, sequential)
-   - positive (e.g. `0.4`) → talk *over* the previous clip; clamped so the previous keeps
-     ≥0.6s solo (`MIN_SOLO`). Heavy positive overlap = people talking over each other.
-   - Keep timestamps monotonic — the placement pass guarantees it as long as overlaps are
-     sane; very large positive values just get clamped.
+6. **Overlap / pacing** (`overlap`, seconds, measured between the **speech** of adjacent lines):
+   - `0` → default 0.15s gap between speech
+   - negative (e.g. `-0.2`) → that much gap after the previous line's speech (calm, sequential)
+   - positive (e.g. `0.4`) → next line's speech starts that early (talk-over); clamped so the
+     previous keeps ≥0.6s solo speech (`MIN_SOLO`).
+   - Clips are stored **full (untrimmed)** — the generator measures each clip's speech start/end
+     (`speech_bounds`) and places clips so speech flows; the silent edges just overlap harmlessly
+     in the mix. No silence is ever cut from the audio. Onsets stay monotonic.
 
 ## TTS-safe text (pronunciation rules)
 
@@ -118,6 +119,25 @@ python scripts/generate-radio.py the-truth-hour --remix   # placement only, neve
 - After rendering, the script writes `timestamp`/`duration`/`audio` back into the episode JSON.
 - Needs OmniVoice + ffmpeg installed; GPU (CUDA) auto-detected, falls back to CPU (slow).
 - Run via background task — full render of ~30 lines takes minutes.
+
+## Dia (experimental, 2-speaker, whole-conversation)
+
+An alternate engine for *natural* dialogue. Use Dia when an episode is a **2-hander** and you
+want real turn-taking/breaths over per-clip control. Tradeoffs vs OmniVoice:
+
+- **Exactly 2 speakers** — `[S1]`/`[S2]`, must alternate, must start `[S1]`. Author strictly
+  alternating turns; no third voice.
+- **Nonverbals** in text: `(laughs)`, `(coughs)`, `(sighs)`, `(clears throat)` — sparingly. The
+  `<p:N>` pause token is OmniVoice-only; omit it for Dia.
+- **Single track, not per-clip** — the whole episode is one FLAC at `<slug>/episode.flac`; the
+  episode JSON gets a top-level `"track"` and `"engine": "dia"`. No per-clip cache or drag-retime;
+  per-line `timestamp`/`duration` come from **faster-whisper forced alignment**.
+- Pipeline: `python scripts/generate-radio-dia.py <slug>` — chunks turns to ~16s, primes every
+  chunk with a fixed 2-voice audio prompt (reuses `cast.json` `ref_audio`/`ref_text`) for voice
+  consistency, concatenates, aligns, writes `track` + timestamps back.
+- UI: `RadioStation.tsx` branches on `episode.track` — one `AudioBufferSourceNode`, seek via buffer
+  offset; transcript highlight/seek/TrackLanes all run off `lines[].timestamp` as usual.
+- Needs `faster-whisper`; Dia weights `nari-labs/Dia-1.6B-0626` (~6GB) + DAC codec auto-download.
 
 ## UI / timeline editing (`/radio`)
 

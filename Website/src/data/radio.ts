@@ -4,6 +4,7 @@ import machineTalk from "./radio/machine-talk.json";
 import healthyLiving from "./radio/healthy-living.json";
 import afterDark from "./radio/after-dark.json";
 import theSportsDesk from "./radio/the-sports-desk.json";
+import theFrankTapes from "./radio/the-frank-tapes.json";
 
 export interface CastMember {
   id: string;
@@ -26,6 +27,7 @@ export interface Episode {
   title: string;
   description: string;
   lines: TranscriptLine[];
+  track?: string;  // single whole-episode file (Dia); when set, player uses one source
 }
 
 export const CAST: Record<string, CastMember> = {
@@ -45,12 +47,13 @@ export const CAST: Record<string, CastMember> = {
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
 };
 
-function episodeFrom(raw: { slug: string; title: string; description: string; lines: unknown[] }): Episode {
+function episodeFrom(raw: { slug: string; title: string; description: string; lines: unknown[]; track?: string }): Episode {
   return {
     slug:        raw.slug,
     title:       raw.title,
     description: raw.description,
     lines:       raw.lines as TranscriptLine[],
+    track:       raw.track,
   };
 }
 
@@ -61,4 +64,5 @@ export const EPISODES: Episode[] = [
   episodeFrom(healthyLiving),
   episodeFrom(afterDark),
   episodeFrom(theSportsDesk),
+  episodeFrom(theFrankTapes),
 ];

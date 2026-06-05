@@ -45,29 +45,25 @@ def apply_phone_filter(audio: np.ndarray) -> np.ndarray:
     return np.clip(sosfilt(_PHONE_SOS, audio).astype(np.float32), -1.0, 1.0)
 
 
-def trim_silence(audio: np.ndarray, thresh: float = 0.015, max_edge_ms: float = 350.0) -> np.ndarray:
-    """Cap (don't strip) leading/trailing silence.
-
-    Removes runaway model padding but KEEPS up to `max_edge_ms` of edge silence, so a
-    deliberate beat at the start/end of a line (e.g. a leading "...") survives. Use the
-    `<p:N>` token for longer, exact pauses.
-    """
+def speech_bounds(audio: np.ndarray, thresh: float = 0.015) -> tuple[int, int]:
+    """Measure (first, last) speech sample WITHOUT cutting. Used for placement only —
+    clips are stored full, and their silent edges overlap harmlessly when placed."""
     if len(audio) == 0:
-        return audio
+        return 0, 0
     mask = np.abs(audio) > thresh
     if not mask.any():
-        return audio
-    first, last = np.argmax(mask), len(mask) - np.argmax(mask[::-1])
-    keep = int(SAMPLE_RATE * max_edge_ms / 1000)
-    return audio[max(0, first - keep):min(len(audio), last + keep)]
+        return 0, len(audio)
+    first = int(np.argmax(mask))
+    last = int(len(mask) - np.argmax(mask[::-1]))
+    return first, last
 
 
 def load_cast() -> dict:
     return json.loads(CAST_FILE.read_text(encoding="utf-8"))
 
 
-# Bump when the audio pipeline (trim/filter/render) changes, to invalidate cached clips
-PIPELINE_VERSION = "2"
+# Bump when the audio pipeline (filter/render) changes, to invalidate cached clips
+PIPELINE_VERSION = "3"
 
 
 def clip_hash(text: str, c: dict) -> str:
@@ -96,7 +92,7 @@ def _tts(text: str, c: dict, model) -> np.ndarray:
         instruct=c["instruct"],
         speed=float(c.get("speed", SPEED)),
     )
-    return trim_silence(audio[0].astype(np.float32))
+    return audio[0].astype(np.float32)  # full clip — no trimming; placement aligns by speech
 
 
 def render_clip(text: str, c: dict, model) -> np.ndarray:
@@ -117,29 +113,39 @@ def render_clip(text: str, c: dict, model) -> np.ndarray:
     return clip
 
 
-def place(lengths: list[int], lines: list[dict]) -> list[int]:
-    """Compute start-sample for each clip from authored `overlap` values.
+def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: list[dict]) -> list[int]:
+    """Place full clips so SPEECH flows naturally; silent edges overlap harmlessly.
 
-    overlap > 0 : talk over the previous clip (clamped so it keeps MIN_SOLO solo)
-    overlap < 0 : gap of |overlap| seconds after the previous clip
-    overlap == 0: DEFAULT_GAP after the previous clip
+    `overlap` is measured between the speech of adjacent clips (not raw clip ends):
+      overlap > 0 : next speech begins `overlap`s before the previous speech ends (talk-over),
+                    clamped so the previous clip keeps MIN_SOLO of solo speech
+      overlap < 0 : `|overlap|`s gap between previous speech end and next speech start
+      overlap == 0: DEFAULT_GAP between speech
+    Returns clip start-samples (full clip, including its lead silence).
     """
     min_solo = int(MIN_SOLO * SAMPLE_RATE)
     starts: list[int] = []
-    cursor = 0
+    prev_speech_start = 0   # absolute samples
+    prev_speech_end = 0
     for i, line in enumerate(lines):
-        overlap = float(line.get("overlap", 0.0))
         if i == 0:
             start = 0
-        elif overlap > 0:
-            max_ov = max(0, lengths[i - 1] - min_solo)
-            start = cursor - min(int(overlap * SAMPLE_RATE), max_ov)
-        elif overlap < 0:
-            start = cursor + int(abs(overlap) * SAMPLE_RATE)
+            onset = sb_start[i]
         else:
-            start = cursor + int(DEFAULT_GAP * SAMPLE_RATE)
+            overlap = float(line.get("overlap", 0.0))
+            if overlap > 0:
+                gap = -int(overlap * SAMPLE_RATE)
+            elif overlap < 0:
+                gap = int(abs(overlap) * SAMPLE_RATE)
+            else:
+                gap = int(DEFAULT_GAP * SAMPLE_RATE)
+            onset = prev_speech_end + gap
+            onset = max(onset, prev_speech_start + min_solo)  # keep prev solo speech
+            start = max(0, onset - sb_start[i])
+            onset = start + sb_start[i]
         starts.append(start)
-        cursor = start + lengths[i]
+        prev_speech_start = onset
+        prev_speech_end = start + sb_end[i]
     return starts
 
 
@@ -162,7 +168,15 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
 
     model = None  # lazy — only loaded if a clip actually needs (re)rendering
     lengths: list[int] = []
+    sb_start: list[int] = []
+    sb_end: list[int] = []
     rendered = 0
+
+    def record(i: int, clip: np.ndarray, key: str | None):
+        s, e = speech_bounds(clip)
+        lengths.append(len(clip)); sb_start.append(s); sb_end.append(e)
+        if key is not None:
+            manifest[str(i)] = {"hash": key, "length": len(clip), "sb": [s, e]}
 
     for i, line in enumerate(lines):
         speaker_id = line["speaker"]
@@ -174,13 +188,17 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
             print(f"  WARNING: unknown speaker '{speaker_id}' at line {i}")
             silence = np.zeros(int(SAMPLE_RATE * 0.5), dtype=np.float32)
             sf.write(str(out_file), silence, SAMPLE_RATE, format="flac")
-            lengths.append(len(silence))
+            record(i, silence, None)
             continue
 
         key    = clip_hash(text, c)
         cached = manifest.get(str(i))
         if cached and cached.get("hash") == key and out_file.exists():
-            lengths.append(int(cached["length"]))
+            if "sb" in cached:
+                lengths.append(int(cached["length"])); sb_start.append(cached["sb"][0]); sb_end.append(cached["sb"][1])
+            else:  # older manifest without bounds — measure from file once
+                clip, _ = sf.read(str(out_file), dtype="float32")
+                record(i, clip.astype(np.float32), key)
             continue
 
         if remix:
@@ -190,15 +208,14 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
             model = model_loader()
         clip = render_clip(text, c, model) if text and text != "..." else np.zeros(int(SAMPLE_RATE * 0.8), dtype=np.float32)
         sf.write(str(out_file), clip, SAMPLE_RATE, format="flac")
-        manifest[str(i)] = {"hash": key, "length": len(clip)}
-        lengths.append(len(clip))
+        record(i, clip, key)
         rendered += 1
         print(f"    [{i+1}/{len(lines)}] {speaker_id}: {len(clip)/SAMPLE_RATE:.1f}s (rendered)")
 
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
-    # Placement pass — cheap, always runs
-    starts = place(lengths, lines)
+    # Placement pass — cheap, always runs. Aligns by speech, full clips overlap on silence.
+    starts = place(lengths, sb_start, sb_end, lines)
     for i, line in enumerate(lines):
         line["timestamp"] = round(starts[i] / SAMPLE_RATE, 3)
         line["duration"]  = round(lengths[i] / SAMPLE_RATE, 3)
