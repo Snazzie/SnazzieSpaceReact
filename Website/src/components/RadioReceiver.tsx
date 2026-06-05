@@ -135,8 +135,9 @@ export default function RadioReceiver({
 
   return (
     <div className="rl-receiver">
-      {/* dial */}
+      {/* dial — spectrum viz renders as background */}
       <div className="rl-dial">
+        <SpectrumViz analyserRef={analyserRef} active={playing || musicPlaying} />
         <div className="rl-dial-ticks">
           {Array.from({ length: 41 }).map((_, i) => (
             <span key={i} className={i % 5 === 0 ? "rl-tick rl-tick-major" : "rl-tick"} />
@@ -162,7 +163,6 @@ export default function RadioReceiver({
             </div>
             <div className="rl-readout-clock">{clock} &middot; STEREO &middot; SNAZZIE FM</div>
           </div>
-          <SpectrumViz analyserRef={analyserRef} active={playing || musicPlaying} />
         </div>
       </div>
 
