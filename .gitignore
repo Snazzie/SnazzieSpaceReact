@@ -343,3 +343,4 @@ healthchecksdb
 .superpowers/
 .playwright-mcp/
 scripts/_speakers.txt
+.claude/worktrees/
