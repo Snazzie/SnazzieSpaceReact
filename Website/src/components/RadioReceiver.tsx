@@ -86,9 +86,13 @@ export default function RadioReceiver({
         <button
           className="rl-next"
           type="button"
-          onClick={() => tuneTo((airIdx + 1) % episodes.length)}
+          onClick={() => {
+            const n = upNextSlice[0];
+            if (!n) return;
+            n.isMusic ? toggleMusicTrack(n.idx) : tuneTo(n.idx);
+          }}
           disabled={loading}
-          title="Next show"
+          title="Next"
         >
           &#9654;&#9654;
         </button>
