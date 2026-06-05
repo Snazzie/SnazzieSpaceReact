@@ -1,0 +1,114 @@
+{
+  "ronnie": {
+    "name": "Ronnie Delacroix",
+    "color": "#ff6b00",
+    "role": "Host",
+    "instruct": "male, 50s, deep baritone, slow southern drawl, smooth radio voice",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "barry": {
+    "name": "Barry Fitch",
+    "color": "#4ecdc4",
+    "role": "Co-Host",
+    "instruct": "male, 40s, nasally, slightly anxious, mid-atlantic accent, speaks quickly",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "rhonda": {
+    "name": "Rhonda K.",
+    "color": "#fd79a8",
+    "role": "Guest Expert",
+    "instruct": "female, 40s, clipped british accent, very confident, authoritative",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "todd": {
+    "name": "Todd",
+    "color": "#55efc4",
+    "role": "Intern",
+    "instruct": "male, early 20s, slightly squeaky, nervous, quiet delivery with occasional bursts of volume",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-steve": {
+    "name": "Steve",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 30s, american accent, speaks too fast, slightly panicked",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-gary": {
+    "name": "Gary",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 50s, gravelly voice, midwestern accent, very sure of everything",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-linda": {
+    "name": "Linda",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, 60s, sweet southern grandmother, warm then increasingly alarmed",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-chad": {
+    "name": "Chad",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 20s, bro accent, confident, incorrect about everything",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-mildred": {
+    "name": "Mildred",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, 70s, very quiet mumble then sudden loud outbursts",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-darnell": {
+    "name": "Darnell",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 40s, deep calm voice, describes completely insane things with total composure",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-patricia": {
+    "name": "Patricia",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, 30s, very professional and composed, completely loses composure by end",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-winston": {
+    "name": "Winston",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 60s, british accent, condescending tone, confidently incorrect",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-kim": {
+    "name": "Kim",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "female, 20s, valley girl cadence, unexpectedly knowledgeable and correct",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  },
+  "caller-frank": {
+    "name": "Frank",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, 50s, italian-american accent, gets personally offended easily, emphatic",
+    "ref_audio": "scripts/voices/seedtts_ref.wav",
+    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+  }
+}
