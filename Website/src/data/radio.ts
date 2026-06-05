@@ -11,8 +11,9 @@ export interface TranscriptLine {
   speaker: string;
   text: string;
   overlap?: number;
-  timestamp: number;  // seconds; 0 until audio generated
-  duration: number;   // seconds; 0 until audio generated
+  timestamp: number;  // seconds; start on the shared timeline (0 until generated)
+  duration: number;   // seconds; clip length (0 until generated)
+  audio?: string;     // /audio/radio/<slug>/<i>.flac — this line's own clip
 }
 
 export interface Episode {
@@ -20,8 +21,6 @@ export interface Episode {
   title: string;
   description: string;
   lines: TranscriptLine[];
-  audioPath: string;    // /audio/radio/<slug>.flac
-  waveformPath: string; // /audio/radio/<slug>-waveform.json
 }
 
 export const CAST: Record<string, CastMember> = {
@@ -43,12 +42,10 @@ export const CAST: Record<string, CastMember> = {
 
 function episodeFrom(raw: typeof truthHour): Episode {
   return {
-    slug:         raw.slug,
-    title:        raw.title,
-    description:  raw.description,
-    lines:        raw.lines as TranscriptLine[],
-    audioPath:    `/audio/radio/${raw.slug}.flac`,
-    waveformPath: `/audio/radio/${raw.slug}-waveform.json`,
+    slug:        raw.slug,
+    title:       raw.title,
+    description: raw.description,
+    lines:       raw.lines as TranscriptLine[],
   };
 }
 

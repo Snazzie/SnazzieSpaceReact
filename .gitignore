@@ -341,3 +341,4 @@ healthchecksdb
 
 # Superpowers brainstorm artifacts
 .superpowers/
+.playwright-mcp/

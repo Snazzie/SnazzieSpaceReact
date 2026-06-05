@@ -5,206 +5,235 @@
   "lines": [
     {
       "speaker": "ronnie",
-      "text": "You're listening to The Truth Hour on Snazzie FM. I'm your host Ronnie Delacroix, and tonight... we go there.",
+      "text": "You're listening to The Truth Hour on Snazzie FM. I'm your host, Ronnie Delacroix, and tonight... ohhh, tonight, we go there.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 7.99
+      "duration": 8.182,
+      "audio": "/audio/radio/the-truth-hour/0.flac"
     },
     {
       "speaker": "barry",
       "text": "We always go there, Ronnie.",
-      "overlap": 0.6,
-      "timestamp": 7.39,
-      "duration": 2.32
+      "overlap": -0.15,
+      "timestamp": 8.332,
+      "duration": 1.168,
+      "audio": "/audio/radio/the-truth-hour/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "We go further there.",
-      "overlap": 0.7,
-      "timestamp": 9.01,
-      "duration": 2.08
+      "overlap": -0.1,
+      "timestamp": 9.6,
+      "duration": 1.031,
+      "audio": "/audio/radio/the-truth-hour/2.flac"
     },
     {
       "speaker": "barry",
-      "text": "Further there. Sure.",
-      "overlap": 0.7,
-      "timestamp": 10.39,
-      "duration": 1.84
+      "text": "Hmm. Further there. Sure.",
+      "overlap": -0.1,
+      "timestamp": 10.731,
+      "duration": 1.497,
+      "audio": "/audio/radio/the-truth-hour/3.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Our first caller tonight says he has proof. Real proof. The kind of proof that makes governments sweat. Frank, you're on the air.",
-      "overlap": 0.1,
-      "timestamp": 12.13,
-      "duration": 9.84
+      "text": "Our first caller tonight says he has proof. Real proof. The kind of proof that makes governments... sweat. Frank, you're on the air.",
+      "overlap": -0.3,
+      "timestamp": 12.528,
+      "duration": 8.719,
+      "audio": "/audio/radio/the-truth-hour/4.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "Ronnie. Ronnie. My name is Frank and I need you to listen very carefully because what I am about to tell you is going to change your life.",
-      "overlap": 0.4,
-      "timestamp": 21.57,
-      "duration": 7.5
+      "text": "Ronnie, Ronnie, listen to me, okay? I need you to listen real careful here, because what I'm about to tell you, it's gonna change your whole life.",
+      "overlap": -0.2,
+      "timestamp": 21.447,
+      "duration": 7.937,
+      "audio": "/audio/radio/the-truth-hour/5.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "I'm ready, Frank.",
-      "overlap": 0.5,
-      "timestamp": 28.57,
-      "duration": 1.96
+      "text": "I'm ready, Frank. I'm ready.",
+      "overlap": -0.15,
+      "timestamp": 29.534,
+      "duration": 1.551,
+      "audio": "/audio/radio/the-truth-hour/6.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "Pigeons. Are not. Real.",
-      "overlap": 0.3,
-      "timestamp": 30.23,
-      "duration": 1.8
+      "text": "Pigeons... <p:0.7> they aren't real, Ronnie.",
+      "overlap": -0.25,
+      "timestamp": 31.335,
+      "duration": 2.428,
+      "audio": "/audio/radio/the-truth-hour/7.flac"
     },
     {
       "speaker": "barry",
-      "text": "I have seen many pigeons, Frank.",
-      "overlap": 0.6,
-      "timestamp": 31.43,
-      "duration": 2.72
+      "text": "...I have seen many pigeons, Frank.",
+      "overlap": -0.15,
+      "timestamp": 33.913,
+      "duration": 1.579,
+      "audio": "/audio/radio/the-truth-hour/8.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "You have seen what THEY want you to see.",
-      "overlap": 0.7,
-      "timestamp": 33.45,
-      "duration": 2.2
+      "text": "You're seeing what they want you to see, Ronnie!",
+      "overlap": -0.1,
+      "timestamp": 35.593,
+      "duration": 1.676,
+      "audio": "/audio/radio/the-truth-hour/9.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Frank, I have to say, I've always had a feeling about pigeons. Something off about the eyes.",
-      "overlap": 0.3,
-      "timestamp": 35.35,
-      "duration": 7.04
+      "text": "You know, Frank... I have always had a feeling about pigeons. Something off about the eyes.",
+      "overlap": -0.25,
+      "timestamp": 37.519,
+      "duration": 5.588,
+      "audio": "/audio/radio/the-truth-hour/10.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "The eyes are cameras, Ronnie. High resolution. They are uploaded to a server farm in Nebraska.",
-      "overlap": 0.4,
-      "timestamp": 41.99,
-      "duration": 5.11
+      "text": "Those eyes? They're cameras, Ronnie. High resolution, and all of it gets uploaded to a server farm out in Nebraska.",
+      "overlap": -0.15,
+      "timestamp": 43.256,
+      "duration": 6.25,
+      "audio": "/audio/radio/the-truth-hour/11.flac"
     },
     {
       "speaker": "barry",
-      "text": "Why Nebraska specifically?",
-      "overlap": 0.6,
-      "timestamp": 46.5,
-      "duration": 2.44
+      "text": "...Why Nebraska, specifically?",
+      "overlap": -0.1,
+      "timestamp": 49.606,
+      "duration": 1.578,
+      "audio": "/audio/radio/the-truth-hour/12.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "LOW LAND VALUE, Barry. Low land value and minimal air traffic. This is basic logic.",
-      "overlap": 0.7,
-      "timestamp": 48.24,
-      "duration": 4.67
+      "text": "Low land value, Barry! Low land value, minimal air traffic, it's just basic logic, come on!",
+      "overlap": -0.1,
+      "timestamp": 51.285,
+      "duration": 4.905,
+      "audio": "/audio/radio/the-truth-hour/13.flac"
     },
     {
       "speaker": "barry",
-      "text": "He's... he's not wrong about the land values.",
-      "overlap": 0.5,
-      "timestamp": 52.41,
-      "duration": 3.6
+      "text": "Huh. He's... he's not wrong about the land values.",
+      "overlap": -0.2,
+      "timestamp": 56.389,
+      "duration": 3.086,
+      "audio": "/audio/radio/the-truth-hour/14.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "So what you're telling me, Frank, is that every pigeon I have ever fed a pretzel to was watching me.",
-      "overlap": 0.3,
-      "timestamp": 55.71,
-      "duration": 7.56
+      "text": "So what you are telling me, Frank... is that every pigeon I have ever fed a pretzel to... was watching me.",
+      "overlap": -0.25,
+      "timestamp": 59.725,
+      "duration": 6.589,
+      "audio": "/audio/radio/the-truth-hour/15.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "Reporting on you. The pretzels go into a small compartment. They are analyzed for sodium content. This is how they track your diet.",
-      "overlap": 0.4,
-      "timestamp": 62.87,
-      "duration": 7.28
+      "text": "They're reporting on you. See, the pretzel goes into this little compartment, and they analyze it for sodium content. That's how they keep track of your diet.",
+      "overlap": -0.15,
+      "timestamp": 66.464,
+      "duration": 8.913,
+      "audio": "/audio/radio/the-truth-hour/16.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "I'm not well, Barry.",
-      "overlap": 0.6,
-      "timestamp": 69.55,
-      "duration": 2.04
+      "text": "Ohhh... <p:0.6> I'm not well, Barry.",
+      "overlap": -0.2,
+      "timestamp": 75.577,
+      "duration": 2.166,
+      "audio": "/audio/radio/the-truth-hour/17.flac"
     },
     {
       "speaker": "barry",
       "text": "You're fine, Ronnie.",
-      "overlap": 0.7,
-      "timestamp": 70.89,
-      "duration": 1.8
+      "overlap": -0.1,
+      "timestamp": 77.843,
+      "duration": 0.867,
+      "audio": "/audio/radio/the-truth-hour/18.flac"
     },
     {
       "speaker": "barry",
       "text": "Frank, how do they charge them? The pigeon drones. Where does the power come from?",
-      "overlap": 0.2,
-      "timestamp": 72.49,
-      "duration": 6.64
+      "overlap": -0.25,
+      "timestamp": 78.96,
+      "duration": 5.548,
+      "audio": "/audio/radio/the-truth-hour/19.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "Bread. Barry. The bread is a battery.",
-      "overlap": 0.4,
-      "timestamp": 78.73,
-      "duration": 2.1
+      "text": "It's the bread, Barry. The bread is the battery.",
+      "overlap": -0.2,
+      "timestamp": 84.708,
+      "duration": 2.258,
+      "audio": "/audio/radio/the-truth-hour/20.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Of course it is.",
-      "overlap": 0.6,
-      "timestamp": 80.23,
-      "duration": 1.92
+      "text": "...Of course it is.",
+      "overlap": -0.15,
+      "timestamp": 87.116,
+      "duration": 0.91,
+      "audio": "/audio/radio/the-truth-hour/21.flac"
     },
     {
       "speaker": "barry",
-      "text": "That is not how bread works.",
-      "overlap": 0.7,
-      "timestamp": 81.45,
-      "duration": 2.4
+      "text": "That is — that is not how bread works.",
+      "overlap": -0.1,
+      "timestamp": 88.126,
+      "duration": 2.263,
+      "audio": "/audio/radio/the-truth-hour/22.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "That is EXACTLY how bread works, Barry. Wake up.",
-      "overlap": 0.8,
-      "timestamp": 83.05,
-      "duration": 2.8
+      "text": "That's exactly how bread works, Barry! Wake up, would ya?",
+      "overlap": -0.1,
+      "timestamp": 90.49,
+      "duration": 2.823,
+      "audio": "/audio/radio/the-truth-hour/23.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Frank, I want to thank you for your courage. And your service. You are a patriot.",
-      "overlap": 0.3,
-      "timestamp": 85.55,
-      "duration": 6.16
+      "text": "Frank... I want to thank you. For your courage. And your service. You are a patriot.",
+      "overlap": -0.3,
+      "timestamp": 93.612,
+      "duration": 5.442,
+      "audio": "/audio/radio/the-truth-hour/24.flac"
     },
     {
       "speaker": "caller-frank",
-      "text": "Do NOT feed the pigeons. Tell everyone.",
-      "overlap": 0.4,
-      "timestamp": 91.31,
-      "duration": 2.36
+      "text": "Do not feed the pigeons, you hear me? Tell everybody!",
+      "overlap": -0.15,
+      "timestamp": 99.204,
+      "duration": 2.708,
+      "audio": "/audio/radio/the-truth-hour/25.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "We'll be right back after this message. Do not, under any circumstances, feed the pigeons.",
-      "overlap": 0.3,
-      "timestamp": 93.37,
-      "duration": 7.0
+      "text": "We'll be right back after this. And please — do not, under any circumstances, feed the pigeons.",
+      "overlap": -0.25,
+      "timestamp": 102.163,
+      "duration": 6.619,
+      "audio": "/audio/radio/the-truth-hour/26.flac"
     },
     {
       "speaker": "barry",
-      "text": "I literally fed a pigeon this morning.",
-      "overlap": 0.7,
-      "timestamp": 99.67,
-      "duration": 3.24
+      "text": "...I literally fed a pigeon this morning.",
+      "overlap": -0.15,
+      "timestamp": 108.932,
+      "duration": 1.956,
+      "audio": "/audio/radio/the-truth-hour/27.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Barry. Barry, I can't help you now.",
-      "overlap": 0.7,
-      "timestamp": 102.21,
-      "duration": 2.68
+      "text": "Barry... <p:0.9> You're done, son.",
+      "overlap": -0.1,
+      "timestamp": 110.988,
+      "duration": 2.069,
+      "audio": "/audio/radio/the-truth-hour/28.flac"
     }
   ]
 }

@@ -133,8 +133,8 @@
     "name": "Frank",
     "color": "#a29bfe",
     "role": "Caller",
-    "instruct": "male, middle-aged, american accent, moderate pitch",
-    "speed": 1.1,
+    "instruct": "male, elderly, american accent",
+    "speed": 1.0,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-frank.wav",
     "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS"
