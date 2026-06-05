@@ -338,6 +338,18 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
             <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying) ? "❚❚" : "▶"}</span>
             {loading ? "Tuning…" : (playing || musicPlaying) ? "On Air" : "Tune In"}
           </button>
+
+          {/* up next */}
+          {(() => {
+            const nextIdx = (airIdx + 1) % episodes.length;
+            const next = episodes[nextIdx];
+            return next ? (
+              <div className="rl-upnext">
+                <span className="rl-upnext-label">UP NEXT</span>
+                <span className="rl-upnext-title">{next.title}</span>
+              </div>
+            ) : null;
+          })()}
           </div>
         </div>
       </section>
@@ -425,7 +437,9 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                   >
                     <span className="rl-hit-rank">#{i + 1}</span>
                     <span className="rl-hit-vinyl" aria-hidden>
-                      <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
+                      {track.coverArt
+                        ? <img src={track.coverArt} alt="" className={`rl-hit-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
+                        : <span className={`rl-hit-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`} />}
                     </span>
                     <span className="rl-hit-body">
                       <span className="rl-hit-title">{track.title}</span>
@@ -466,9 +480,10 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
               return (
                 <article key={track.slug} className={`rl-music-card${isActive ? " rl-music-card-active" : ""}`}>
                   <div className="rl-vinyl" aria-hidden>
-                    <div className={`rl-vinyl-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`}>
-                      <span className="rl-vinyl-label">FM</span>
-                    </div>
+                    {track.coverArt
+                      ? <img src={track.coverArt} alt="" className={`rl-music-cover${isThisPlaying ? " rl-vinyl-spin" : ""}`} />
+                      : <div className={`rl-vinyl-disc${isThisPlaying ? " rl-vinyl-spin" : ""}`}><span className="rl-vinyl-label">FM</span></div>
+                    }
                   </div>
                   <div className="rl-music-body">
                     <h3 className="rl-music-title">{track.title}</h3>

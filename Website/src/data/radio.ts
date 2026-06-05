@@ -29,6 +29,7 @@ export interface Episode {
   title: string;
   description: string;
   type?: "episode" | "music";
+  coverArt?: string;  // /images/radio/music/<slug>.jpg — album art for music tracks
   lines: TranscriptLine[];
   track?: string;  // single whole-episode file (Dia); when set, player uses one source
 }
@@ -66,6 +67,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "DMV Tuesday Pigeons",
     description: "A certified banger from the Snazzie FM studio sessions. DMV vibes, pigeon energy.",
     type: "music",
+    coverArt: "/images/radio/music/dmv-tuesday-pigeons.jpg",
     lines: [],
     track: "/audio/music/dmv-tuesday-pigeons.mp3",
   },
