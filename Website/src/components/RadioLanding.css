@@ -120,6 +120,8 @@
   font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.06em;
   color:#ffce8a;margin-bottom:1.6rem;}
 .rl-section-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--amber-dim),transparent);}
+.rl-hits-label{font-family:'VT323',monospace;font-size:1rem;letter-spacing:.1em;
+  color:#8a754f;text-transform:uppercase;align-self:center;white-space:nowrap;}
 
 /* schedule */
 .rl-schedule{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
