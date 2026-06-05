@@ -110,10 +110,18 @@ Per character: `name`, `color`, `role`, `instruct`, `speed`, `phone_filter`, `re
   speaker id there and re-download — don't just edit `instruct`.
 - **Delivery/cadence comes from the reference clip**, not `instruct`. To change *how* someone
   talks (vs timbre), swap the reference. Distinct speakers give distinct voices.
-- **`speed`** — ~1.0 natural; higher = faster/manic.
-- **`phone_filter: true`** — 300–3400 Hz bandpass + light noise = telephone sound. On for callers.
-- Refresh references with `python scripts/download-voices.py` (pulls LibriSpeech test-clean,
-  one speaker per character, writes wav+txt and updates `cast.json`).
+- **Accents: the `instruct` accent token is a weak nudge — the REF dominates.** For a real
+  accent, clone a native-language reference. e.g. Todd is an Asian man via a Mandarin male clip
+  from **`google/fleurs`** (`cmn_hans_cn`) used as `ref_audio` with its Chinese `ref_text`;
+  OmniVoice then produces accented English. (Korean = `ko_kr`, Japanese = `ja_jp`, etc.) Pick a
+  male/female clip by pitch (male ≲155 Hz). `ref_text` must be the clip's real (foreign) transcript.
+- **`speed`** — ~1.0 natural; 1.5-2.0 fast/manic (Todd runs 2.0).
+- **`phone_filter: true`** — 300–3400 Hz bandpass = telephone sound. On for callers.
+- **Refreshing refs**: `python scripts/download-voices.py` pulls the gender-verified LibriSpeech
+  `CHARACTER_VOICES` set. ⚠️ It overwrites ALL `scripts/voices/*.wav`, including hand-sourced refs
+  that diverge from `CHARACTER_VOICES` (Todd = FLEURS Mandarin, Kim = LibriSpeech 8463). Don't run
+  it wholesale after diverging — do a targeted single-speaker pull instead (stream the dataset,
+  filter the one speaker, write that one `wav`/`txt`, update only its `cast.json` entry).
 
 ## Generation workflow
 
@@ -134,33 +142,44 @@ python scripts/generate-radio.py the-truth-hour --remix   # placement only, neve
 - Needs OmniVoice + ffmpeg installed; GPU (CUDA) auto-detected, falls back to CPU (slow).
 - Run via background task — full render of ~30 lines takes minutes.
 
-## Dia2 (preferred dialogue engine, 2-speaker)
+## Dia2 (best for 2-handers, `engine: "dia2"`)
 
-For a **2-hander** that should sound like a real conversation, use **Dia2** (`engine: "dia2"`).
-It generates with natural turn-taking and emits per-line clips, so it stays in the normal
-per-clip multitrack pipeline (cache, phone filter, drag editor, single `audio` per line).
+For a **2-hander** that should sound like a real conversation, use **Dia2** (`nari-labs/Dia2-2B`).
+It generates whole passes with natural turn-taking — far better flow than per-line OmniVoice.
 
-- **Exactly 2 speakers** — `[S1]`/`[S2]`, alternate, start `[S1]`. Author strictly alternating turns.
-- **Emotion arc + nonverbals** — Dia2 voices escalation well; use `(laughs)`/`(sighs)`/`(gasps)`
-  etc. (from Dia's list, sparingly). The `<p:N>` token is OmniVoice-only — omit it.
-- **How it works** (`scripts/generate-radio-dia2.py`): generates the episode in ≤100s passes
-  (Dia2's limit is ~2 min / 1500 steps) for real cross-turn flow, conditions on per-speaker
-  prefixes (each speaker's `cast.json` `ref_audio`) so voices stay anchored, then splits each pass
-  into exact per-line clips using Dia2's **word timestamps** (no silence-guessing). Caller clips
-  (`phone_filter: true`) get the telephone bandpass cleanly since they're isolated.
-- **Runs in the dia2 uv env** (not the project python). Setup once: clone `nari-labs/dia2` beside
-  the repo and `uv sync` (needs `uv` + CUDA 12.8+). Then:
+- **HARD limit: exactly 2 speakers.** The model only has `[S1]`/`[S2]` (tokenizer + parser +
+  `prefix_speaker_1/2`); there is no `[S3]`. A 3+ voice episode CANNOT use Dia2 — use OmniVoice
+  multitrack instead (e.g. Villain Hour's 6-voice brawl). Author strictly alternating turns,
+  starting `[S1]`.
+- **Single track, not per-clip.** Each pass is one continuous FLAC; passes are concatenated into
+  `<slug>/episode.flac` and the episode JSON gets a top-level `"track"`. Per-line `timestamp`/
+  `duration` are **metadata only**, recovered from Dia2's word timestamps (no audio splitting —
+  splitting leaked the phone filter and mis-placed boundaries). Plays via the **single-track** UI
+  path (`RadioStation.tsx` branches on `episode.track`).
+- **Phone filter is baked into the voice, not applied after.** For a `phone_filter` speaker, the
+  generator bandpasses that speaker's **prefix** clip, so Dia2 clones a phone-toned voice — clean,
+  no boundary leak (you can't post-filter one speaker out of a mixed track).
+- **Voice anchoring**: each speaker is conditioned by its `cast.json` `ref_audio` as a
+  per-speaker prefix (Dia2 runs Whisper on each prefix). `prefix_stretch` (float in `cast.json`,
+  e.g. `1.14`) slows + lowers a speaker's prefix → calmer/lower/"stoned" cadence.
+- **Nonverbals** `(laughs)`/`(sighs)`/`(gasps)` (Dia's list, sparingly). `<p:N>` is OmniVoice-only.
+- **Emotion arc / interruptions** — Dia2 voices escalation in one pass; cut-ins are textual
+  (trailing `...`, interrupter jumps in) since it's one track.
+- **Pipeline** (`scripts/generate-radio-dia2.py`): split into ≤100s passes at `[S1]` boundaries,
+  generate each with per-speaker prefixes, concat, write `track` + per-line timestamps. The track
+  is written to a temp file then **atomically replaced** (and `episode.flac` is not deleted
+  upfront) so a re-render never leaves the live page silent.
+- **Runs in the dia2 uv env**, not the project python. Setup once: clone `nari-labs/dia2` beside
+  the repo, `uv sync` (needs `uv` + CUDA 12.8+). Then:
   ```bash
-  uv run --project ../dia2 python scripts/generate-radio-dia2.py the-frank-tapes
+  uv run --project ../dia2 python scripts/generate-radio-dia2.py <slug>
   ```
-  First run downloads Dia2-2B (~weights) + Mimi + Whisper (Whisper transcribes the prefixes).
-- Output is per-clip (`<slug>/<i>.flac`, per-line `audio`, no `track`) — plays through the normal
-  multitrack UI. `generate-radio.py --all` skips `engine: dia*` episodes.
-- Tuning: `cfg_scale` (~3-6; higher = tighter adherence), `SamplingConfig.temperature`.
+  First run downloads Dia2-2B + Mimi + Whisper. `generate-radio.py --all` skips `engine: dia*`.
+- Tuning: `cfg_scale` (~3-6, higher = tighter), `SamplingConfig.temperature`.
 
 ### Dia 1.6B (legacy, `scripts/generate-radio-dia.py`)
-Earlier single-model path: chunk generation + silence-split. Superseded by Dia2 (the silence
-split mis-placed line boundaries and voices drifted at high temperature). Kept for reference.
+Chunk generation + silence-split. Superseded by Dia2 (silence split mis-placed boundaries, voices
+drifted at high temperature). Kept for reference only.
 
 ## UI / timeline editing (`/radio`)
 
