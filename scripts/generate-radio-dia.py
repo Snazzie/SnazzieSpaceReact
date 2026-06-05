@@ -90,6 +90,29 @@ def generate(slug: str) -> None:
     tag = {speakers[0]: "[S1]", speakers[1]: "[S2]"}
     print(f"  speaker map: {tag}")
 
+    # Voice anchor: a fixed 2-speaker audio prompt (ref clips) + its transcript, prepended to
+    # every chunk so S1/S2 keep the SAME voice across generations. Dia echoes the prompt at the
+    # front of the output, so we slice it off by the prompt's measured duration.
+    PRIME_CAP = 6.0  # seconds per speaker — keep the prompt short (Dia likes 5-10s total)
+    prime_parts, prime_audio = [], []
+    for spk in speakers:
+        c = cast[spk]
+        wav, sr = sf.read(str(REPO_ROOT / c["ref_audio"]), dtype="float32")
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        wav = resample(wav, sr, DIA_SR)
+        full_dur = len(wav) / DIA_SR
+        words = c["ref_text"].strip().split()
+        if full_dur > PRIME_CAP:           # cap audio + transcript proportionally
+            wav = wav[: int(PRIME_CAP * DIA_SR)]
+            words = words[: max(1, int(len(words) * PRIME_CAP / full_dur))]
+        prime_audio.append(wav)
+        prime_parts.append(f"{tag[spk]} {' '.join(words)}")
+    prime_transcript = " ".join(prime_parts)
+    prime_waveform = np.concatenate(prime_audio).astype(np.float32)
+    prime_secs = len(prime_waveform) / DIA_SR
+    print(f"  voice prompt: {prime_secs:.1f}s ({speakers[0]}=S1, {speakers[1]}=S2)")
+
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"  device: {device}; loading {MODEL_CK}...")
     processor = AutoProcessor.from_pretrained(MODEL_CK)
@@ -105,14 +128,16 @@ def generate(slug: str) -> None:
     rendered: list[np.ndarray] = []
     chunk_durs: list[float] = []   # spoken seconds per chunk (excludes the inter-chunk gap)
     for ci, idxs in enumerate(chunks):
-        text = chunk_text(idxs, lines, tag)   # text-only; voices consistent within a chunk
+        text = prime_transcript + " " + chunk_text(idxs, lines, tag)
         inputs = processor(
             text=[text],
+            audio=[prime_waveform],
+            sampling_rate=DIA_SR,
             padding=True,
             return_tensors="pt",
         ).to(device)
         out = model.generate(
-            **inputs, max_new_tokens=3072,
+            **inputs, max_new_tokens=4096,
             guidance_scale=3.0, temperature=1.8, top_p=0.90, top_k=45,
         )
         decoded = processor.batch_decode(out)
@@ -121,6 +146,10 @@ def generate(slug: str) -> None:
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
         clip = resample(audio, sr, OUT_SR)
+        # Drop the echoed prompt at the front (slice by prompt duration, with a small margin)
+        cut = int(prime_secs * OUT_SR)
+        if cut < len(clip):
+            clip = clip[cut:]
         rendered.append(clip)
         rendered.append(np.zeros(int(OUT_SR * GAP_SECS), dtype=np.float32))
         chunk_durs.append(len(clip) / OUT_SR)
