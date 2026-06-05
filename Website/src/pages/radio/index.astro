@@ -1,7 +1,7 @@
 ---
 import '@/styles/global.css';
 import RadioLanding from '@/components/RadioLanding';
-import { EPISODES, CAST } from '@/data/radio';
+import { EPISODES, MUSIC_TRACKS, CAST } from '@/data/radio';
 ---
 
 <!doctype html>
@@ -19,6 +19,6 @@ import { EPISODES, CAST } from '@/data/radio';
     />
   </head>
   <body class="bg-background text-foreground">
-    <RadioLanding client:load episodes={EPISODES} cast={CAST} />
+    <RadioLanding client:load episodes={EPISODES} music={MUSIC_TRACKS} cast={CAST} />
   </body>
 </html>
