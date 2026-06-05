@@ -329,7 +329,7 @@ export function Intro() {
             variants={rise}
             className="text-[clamp(1rem,2.4vw,1.35rem)] text-muted-foreground"
           >
-            builds things that last
+            builds cool things that last
           </motion.p>
 
           {/* Plain element — no motion wrapper so the browser paints this text
