@@ -12,16 +12,14 @@ interface Props {
   airIdx: number;
   episodes: Episode[];
   togglePlay: () => Promise<void>;
+  tuneTo: (idx: number) => void;
 }
-
-const NUM_BARS = 14;
 
 export default function RadioReceiver({
   playing, loading, musicIdx, musicPlaying, music, onAir,
-  levels, clock, airIdx, episodes, togglePlay,
+  levels, clock, airIdx, episodes, togglePlay, tuneTo,
 }: Props) {
-  const nextIdx = (airIdx + 1) % episodes.length;
-  const next = episodes[nextIdx];
+  const upNext = Array.from({ length: 3 }, (_, i) => episodes[(airIdx + 1 + i) % episodes.length]);
 
   return (
     <div className="rl-receiver">
@@ -62,17 +60,32 @@ export default function RadioReceiver({
         ))}
       </div>
 
-      <button className="rl-tunein" type="button" onClick={togglePlay} disabled={loading}>
-        <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying) ? "❚❚" : "▶"}</span>
-        {loading ? "Tuning…" : (playing || musicPlaying) ? "On Air" : "Tune In"}
-      </button>
+      <div className="rl-tunein-row">
+        <button className="rl-tunein" type="button" onClick={togglePlay} disabled={loading}>
+          <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying) ? "❚❚" : "▶"}</span>
+          {loading ? "Tuning…" : (playing || musicPlaying) ? "On Air" : "Tune In"}
+        </button>
+        <button
+          className="rl-next"
+          type="button"
+          onClick={() => tuneTo((airIdx + 1) % episodes.length)}
+          disabled={loading}
+          title="Next show"
+        >
+          &#9654;&#9654;
+        </button>
+      </div>
 
-      {next && (
-        <div className="rl-upnext">
-          <span className="rl-upnext-label">UP NEXT</span>
-          <span className="rl-upnext-title">{next.title}</span>
-        </div>
-      )}
+      <div className="rl-upnext">
+        <span className="rl-upnext-label">UP NEXT</span>
+        <span className="rl-upnext-list">
+          {upNext.map((ep, i) => (
+            <span key={ep.slug} className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}`}>
+              {ep.title}
+            </span>
+          ))}
+        </span>
+      </div>
     </div>
   );
 }

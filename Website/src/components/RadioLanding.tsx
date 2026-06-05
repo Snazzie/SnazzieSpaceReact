@@ -104,6 +104,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
             airIdx={audio.airIdx}
             episodes={episodes}
             togglePlay={audio.togglePlay}
+            tuneTo={audio.tuneTo}
           />
         </div>
       </section>

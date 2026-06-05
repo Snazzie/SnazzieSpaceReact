@@ -79,7 +79,8 @@
 .rl-vu-bar{flex:1;border-radius:2px 2px 0 0;
   background:linear-gradient(to top,#3fa53a 0%,#c7c531 60%,var(--red) 100%);
   transition:height .12s linear;}
-.rl-tunein{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;
+.rl-tunein-row{display:flex;gap:.5rem;}
+.rl-tunein{display:flex;align-items:center;justify-content:center;gap:.6rem;flex:1;
   padding:.7rem;border:none;border-radius:10px;cursor:pointer;font-family:inherit;
   font-weight:700;font-size:1.1rem;letter-spacing:.04em;
   color:#1a0d02;background:linear-gradient(180deg,#ffc56b,#ff8a1e);
@@ -87,13 +88,22 @@
   transition:transform .15s,box-shadow .15s;}
 .rl-tunein:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,220,150,.6),0 18px 40px -10px rgba(255,140,30,.8);}
 .rl-tunein:disabled{opacity:.7;cursor:wait;}
+.rl-next{display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:2.8rem;border:none;border-radius:10px;cursor:pointer;font-size:.7rem;
+  color:#1a0d02;background:linear-gradient(180deg,#ffc56b,#ff8a1e);
+  box-shadow:0 0 0 1px rgba(255,200,120,.4),0 14px 30px -10px rgba(255,120,20,.6);
+  transition:transform .15s,box-shadow .15s;}
+.rl-next:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,220,150,.6),0 18px 40px -10px rgba(255,140,30,.8);}
+.rl-next:disabled{opacity:.7;cursor:wait;}
 .rl-tunein-icon{font-size:.85rem;}
-.rl-upnext{display:flex;align-items:center;gap:.5rem;margin-top:.6rem;
+.rl-upnext{display:flex;align-items:flex-start;gap:.5rem;margin-top:.6rem;
   padding:.45rem .7rem;border-radius:7px;background:rgba(0,0,0,.3);border:1px solid var(--line);}
 .rl-upnext-label{font-family:'VT323',monospace;font-size:.85rem;letter-spacing:.12em;
-  color:#8a754f;flex-shrink:0;}
-.rl-upnext-title{font-family:'VT323',monospace;font-size:.95rem;color:#c9b48e;
+  color:#8a754f;flex-shrink:0;padding-top:.05rem;}
+.rl-upnext-list{display:flex;flex-direction:column;gap:.15rem;min-width:0;overflow:hidden;}
+.rl-upnext-item{font-family:'VT323',monospace;font-size:.9rem;color:#7a6840;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rl-upnext-item-first{font-size:.95rem;color:#c9b48e;}
 
 /* now on air */
 .rl-now{margin:0 clamp(1rem,5vw,4rem) clamp(2rem,5vw,3.5rem);padding:clamp(1.4rem,3vw,2.2rem);
