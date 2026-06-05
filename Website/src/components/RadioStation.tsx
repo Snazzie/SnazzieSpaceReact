@@ -47,6 +47,80 @@ function drawWaveform(canvas: HTMLCanvasElement, peaks: number[], playPct: numbe
   }
 }
 
+/** Multitrack debug view: one lane per speaker, blocks positioned by timestamp/duration. */
+function TrackLanes({
+  lines, cast, span, currentTime, activeLine, onSeek,
+}: {
+  lines: TranscriptLine[];
+  cast: Record<string, CastMember>;
+  span: number;
+  currentTime: number;
+  activeLine: number;
+  onSeek: (t: number) => void;
+}) {
+  const speakers = [...new Set(lines.map((l) => l.speaker))];
+  const pct = (v: number) => `${(v / (span || 1)) * 100}%`;
+  const segsBySpeaker = (sp: string) =>
+    lines.map((l, i) => ({ l, i })).filter(({ l }) => l.speaker === sp);
+  return (
+    <div className="border-b border-white/5 bg-[#0b0b0b] px-2 py-1.5">
+      <div className="flex gap-2">
+        {/* Label gutter */}
+        <div className="flex w-16 flex-shrink-0 flex-col gap-[3px]">
+          {speakers.map((sp) => (
+            <div
+              key={sp}
+              className="h-3 truncate text-right text-[8px] font-bold leading-3 tracking-[0.5px]"
+              style={{ color: cast[sp]?.color ?? "#888" }}
+              title={cast[sp]?.name ?? sp}
+            >
+              {cast[sp]?.name ?? sp}
+            </div>
+          ))}
+        </div>
+
+        {/* Track area + playhead */}
+        <div
+          className="relative flex-1 cursor-pointer"
+          onClick={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            onSeek(((e.clientX - rect.left) / rect.width) * span);
+          }}
+        >
+          <div className="flex flex-col gap-[3px]">
+            {speakers.map((sp) => {
+              const color = cast[sp]?.color ?? "#888";
+              return (
+                <div key={sp} className="relative h-3 rounded-sm bg-white/[0.03]">
+                  {segsBySpeaker(sp).map(({ l, i }) => (
+                    <div
+                      key={i}
+                      className="absolute top-0 h-full rounded-sm"
+                      style={{
+                        left: pct(l.timestamp ?? 0),
+                        width: pct(Math.max(l.duration ?? 0, span * 0.004)),
+                        background: color,
+                        opacity: i === activeLine ? 1 : 0.45,
+                        outline: i === activeLine ? `1px solid ${color}` : "none",
+                      }}
+                      title={`${i}: ${l.text.slice(0, 40)} (${(l.timestamp ?? 0).toFixed(1)}s +${(l.duration ?? 0).toFixed(1)}s, ov ${l.overlap ?? 0})`}
+                    />
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+          {/* Playhead spans all lanes */}
+          <div
+            className="pointer-events-none absolute inset-y-0 w-px bg-[#ff6b00]"
+            style={{ left: pct(currentTime) }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function RadioStation({ episodes, cast }: Props) {
   const [selectedIdx, setSelectedIdx]   = useState(0);
   const [isPlaying, setIsPlaying]       = useState(false);
@@ -54,6 +128,7 @@ export default function RadioStation({ episodes, cast }: Props) {
   const [duration, setDuration]         = useState(0);
   const [activeLine, setActiveLine]     = useState(-1);
   const [peaks, setPeaks]               = useState<number[]>([]);
+  const [showTracks, setShowTracks]     = useState(true);
 
   const audioRef      = useRef<HTMLAudioElement>(null);
   const canvasRef     = useRef<HTMLCanvasElement>(null);
@@ -146,6 +221,12 @@ export default function RadioStation({ episodes, cast }: Props) {
     .map((id) => cast[id])
     .filter((m): m is CastMember => m !== undefined);
 
+  // Timeline span for multitrack view = max line end, falling back to audio duration
+  const span = Math.max(
+    duration || 0,
+    ...episode.lines.map((l) => (l.timestamp ?? 0) + (l.duration ?? 0)),
+  );
+
   return (
     <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
       {/* Sidebar */}
@@ -220,6 +301,15 @@ export default function RadioStation({ episodes, cast }: Props) {
             </div>
             <div className="truncate text-[12px] font-semibold text-white">{episode.title}</div>
           </div>
+          <button
+            onClick={() => setShowTracks((v) => !v)}
+            className={`rounded px-2 py-1 text-[9px] font-semibold tracking-[1px] transition-colors ${
+              showTracks ? "bg-[#ff6b00]/20 text-[#ff6b00]" : "text-white/30 hover:text-white/60"
+            }`}
+            title="Toggle per-speaker debug tracks"
+          >
+            TRACKS
+          </button>
           <div className="text-[10px] text-white/30 tabular-nums">
             {fmt(currentTime)} / {fmt(duration || 0)}
           </div>
@@ -240,6 +330,21 @@ export default function RadioStation({ episodes, cast }: Props) {
             </div>
           )}
         </div>
+
+        {/* Multitrack debug view */}
+        {showTracks && (
+          <TrackLanes
+            lines={episode.lines}
+            cast={cast}
+            span={span}
+            currentTime={currentTime}
+            activeLine={activeLine}
+            onSeek={(t) => {
+              const audio = audioRef.current;
+              if (audio) { audio.currentTime = t; setCurrentTime(t); }
+            }}
+          />
+        )}
 
         {/* Transcript */}
         <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-1">
