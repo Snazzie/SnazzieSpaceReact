@@ -223,7 +223,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   }
 
   function nextTrack() {
-    if (!startedRef.current) return;
+    startedRef.current = true;
     const gen = ++genRef.current;
     stopSources();
     if (musicPlaying && musicIdx !== null) {
