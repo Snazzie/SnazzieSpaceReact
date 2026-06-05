@@ -37,6 +37,9 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
   const genRef = useRef(0);
   const startedRef = useRef(false);
+  // mirror of airIdx so rapid skips read a fresh value (state is stale within a tick)
+  const airIdxRef = useRef(0);
+  useEffect(() => { airIdxRef.current = airIdx; }, [airIdx]);
 
   useEffect(() => {
     let raf = 0;
@@ -113,6 +116,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     if (!track?.track) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
     const { ctx, analyser } = getCtx();
     await ctx.resume();
+    if (gen !== genRef.current) return;
     setMusicIdx(musicTrackIdx);
     setMusicPlaying(true);
     try {
@@ -137,10 +141,10 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     }
   }
 
-  async function startEpisode(idx: number) {
+  async function startEpisode(idx: number, gen: number = ++genRef.current) {
     const { ctx, analyser } = getCtx();
     await ctx.resume();
-    const gen = ++genRef.current;
+    if (gen !== genRef.current) return;
     stopSources();
     setLoading(true);
     setMusicPlaying(false);
@@ -168,7 +172,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
         lines.forEach((l, i) => bufs[i] && schedule(bufs[i], l.timestamp ?? 0));
       }
     } catch {
-      setLoading(false);
+      if (gen === genRef.current) setLoading(false);
       return;
     }
     if (gen !== genRef.current) return;
@@ -237,24 +241,26 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     startedRef.current = true;
     const gen = ++genRef.current;
     stopSources();
+    const base = airIdxRef.current;
+    const next = (base + 1) % episodes.length;
     if (musicPlaying && musicIdx !== null) {
       // Skip music interstitial → go straight to next episode
       setMusicPlaying(false);
       setMusicIdx(null);
-      const next = (airIdx + 1) % episodes.length;
+      airIdxRef.current = next;
       setAirIdx(next);
       setPlaying(true);
-      startEpisode(next);
+      startEpisode(next, gen);
     } else if (music.length > 0) {
       // Skip current episode → play music interstitial then next episode
       setPlaying(true);
-      startInterstitial(airIdx % music.length, (airIdx + 1) % episodes.length, gen);
+      startInterstitial(base % music.length, next, gen);
     } else {
       // No music → skip to next episode
-      const next = (airIdx + 1) % episodes.length;
+      airIdxRef.current = next;
       setAirIdx(next);
       setPlaying(true);
-      startEpisode(next);
+      startEpisode(next, gen);
     }
   }
 

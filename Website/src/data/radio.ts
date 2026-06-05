@@ -80,6 +80,15 @@ export const MUSIC_TRACKS: Episode[] = [
     lines: [],
     track: "/audio/music/cold-metal-frown.mp3",
   },
+  {
+    slug: "orange-slices-union-job",
+    title: "The Orange Slices (Union Job)",
+    description: "Fresh off the Snazzie FM press. Citrus-funk with a working-class chip on its shoulder.",
+    type: "music",
+    coverArt: "/images/radio/music/orange-slices-union-job.jpg",
+    lines: [],
+    track: "/audio/music/orange-slices-union-job.mp3",
+  },
 ];
 
 export const EPISODES: Episode[] = [
