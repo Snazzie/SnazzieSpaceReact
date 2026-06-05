@@ -344,7 +344,7 @@ export default function RadioStation({ episodes, cast }: Props) {
         <div className="px-4 py-3 border-b border-white/5 flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <div className="text-[10px] font-semibold tracking-[3px] text-[#ff6b00]">📻 SNAZZIE FM</div>
-            <a href="/radio" className="text-[9px] text-white/30 hover:text-white/60 transition-colors tracking-[1px]">&larr; Back</a>
+            <a href="/snazziefm" className="text-[9px] text-white/30 hover:text-white/60 transition-colors tracking-[1px]">&larr; Back</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[9px] text-white/20 tracking-[1px]">VOL</span>

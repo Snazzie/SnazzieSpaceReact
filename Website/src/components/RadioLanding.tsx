@@ -127,7 +127,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
           </div>
         </div>
 
-        <a href="/radio/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
+        <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </header>
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -191,7 +191,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
                 <button type="button" className="rl-now-link" onClick={() => audio.tuneTo(audio.airIdx)}>
                   {audio.playing ? "❚❚ Playing" : "▶ Play this show"}
                 </button>
-                <a className="rl-now-link rl-now-link-alt" href={`/radio/behindthescenes#${onAir.slug}`}>
+                <a className="rl-now-link rl-now-link-alt" href={`/snazziefm/behindthescenes#${onAir.slug}`}>
                   Open full player &rarr;
                 </a>
               </div>
@@ -276,7 +276,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
 
       <footer className="rl-footer">
         <span>SNAZZIE FM &middot; All transmissions are fictional</span>
-        <a href="/radio/behindthescenes">Tune in &rarr;</a>
+        <a href="/snazziefm/behindthescenes">Tune in &rarr;</a>
       </footer>
     </div>
   );
