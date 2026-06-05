@@ -67,7 +67,7 @@ export const MUSIC_TRACKS: Episode[] = [
     description: "A certified banger from the Snazzie FM studio sessions. DMV vibes, pigeon energy.",
     type: "music",
     lines: [],
-    track: "/audio/music/dmv-tuesday-pigeons.flac",
+    track: "/audio/music/dmv-tuesday-pigeons.mp3",
   },
   {
     slug: "cold-metal-frown",
@@ -75,7 +75,7 @@ export const MUSIC_TRACKS: Episode[] = [
     description: "Late-night frequencies from the Snazzie FM vault. Plays every night around 2 AM.",
     type: "music",
     lines: [],
-    track: "/audio/music/cold-metal-frown.flac",
+    track: "/audio/music/cold-metal-frown.mp3",
   },
 ];
 
