@@ -63,8 +63,8 @@ function episodeFrom(raw: { slug: string; title: string; description: string; li
 
 export const MUSIC_TRACKS: Episode[] = [
   {
-    slug: "dmv-tuesday-pigeons",
-    title: "DMV Tuesday Pigeons",
+    slug: "pigeon-crash",
+    title: "Pigeon Crash",
     description: "A certified banger from the Snazzie FM studio sessions. DMV vibes, pigeon energy.",
     type: "music",
     coverArt: "/images/radio/music/dmv-tuesday-pigeons.jpg",
