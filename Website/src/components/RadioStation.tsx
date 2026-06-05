@@ -169,6 +169,15 @@ export default function RadioStation({ episodes, cast }: Props) {
   // Keep editable lines in sync with the selected episode
   useEffect(() => { setLines(episode.lines); setDirty(false); }, [episode.slug]);
 
+  // Deep link: /radio/listen#<slug> selects that episode on load (from the
+  // /radio landing page show cards). Falls back to the first episode.
+  useEffect(() => {
+    const slug = window.location.hash.replace(/^#/, "");
+    if (!slug) return;
+    const idx = episodes.findIndex((e) => e.slug === slug);
+    if (idx >= 0) setSelectedIdx(idx);
+  }, []);
+
   // Timeline span = last clip end (pure data, independent of decode state)
   const span = Math.max(
     0.001,
