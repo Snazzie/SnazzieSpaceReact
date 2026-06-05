@@ -28,6 +28,7 @@ export interface Episode {
   slug: string;
   title: string;
   description: string;
+  type?: "episode" | "music";
   lines: TranscriptLine[];
   track?: string;  // single whole-episode file (Dia); when set, player uses one source
 }
@@ -58,6 +59,25 @@ function episodeFrom(raw: { slug: string; title: string; description: string; li
     track:       raw.track,
   };
 }
+
+export const MUSIC_TRACKS: Episode[] = [
+  {
+    slug: "dmv-tuesday-pigeons",
+    title: "DMV Tuesday Pigeons",
+    description: "A certified banger from the Snazzie FM studio sessions. DMV vibes, pigeon energy.",
+    type: "music",
+    lines: [],
+    track: "/audio/music/dmv-tuesday-pigeons.mp3",
+  },
+  {
+    slug: "cold-metal-frown",
+    title: "Cold Metal Frown",
+    description: "Late-night frequencies from the Snazzie FM vault. Plays every night around 2 AM.",
+    type: "music",
+    lines: [],
+    track: "/audio/music/cold-metal-frown.mp3",
+  },
+];
 
 export const EPISODES: Episode[] = [
   episodeFrom(truthHour),
