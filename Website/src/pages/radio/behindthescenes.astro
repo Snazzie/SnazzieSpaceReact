@@ -11,6 +11,7 @@ import { EPISODES, CAST } from '@/data/radio';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Snazzie FM — Radio</title>
     <meta name="description" content="Snazzie FM: absurdist radio conversations, GTA-style." />
+  <style>html,body{background:#0a0704;}</style>
   </head>
   <body class="h-screen overflow-hidden bg-background text-foreground flex flex-col">
     <RadioStation client:load episodes={EPISODES} cast={CAST} />

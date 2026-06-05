@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import type { Episode, CastMember } from "@/data/radio";
 import { useRadioAudio } from "./useRadioAudio";
 import RadioReceiver from "./RadioReceiver";
@@ -69,10 +69,64 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
       {/* ── Top ident bar ───────────────────────────────────────────── */}
       <header className="rl-topbar">
         <a href="/" className="rl-back">&larr; snazzie.space</a>
-        <div className="rl-onair">
-          <span className="rl-onair-dot" />
-          ON&nbsp;AIR
+
+        <div className="rl-topbar-center">
+          <div className="rl-onair">
+            <span className="rl-onair-dot" />
+            ON&nbsp;AIR
+          </div>
+
+          {/* Mini player */}
+          <div className="rl-mini-player">
+            <button
+              type="button"
+              className="rl-mini-play"
+              onClick={audio.togglePlay}
+              aria-label={audio.playing || audio.musicPlaying ? "Pause" : "Play"}
+            >
+              {audio.loading ? (
+                <span className="rl-mini-spinner" />
+              ) : audio.playing || audio.musicPlaying ? (
+                "❚❚"
+              ) : (
+                "▶"
+              )}
+            </button>
+            <button
+              type="button"
+              className="rl-mini-play"
+              onClick={audio.nextTrack}
+              aria-label="Next"
+            >
+              ▶▶
+            </button>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={audio.volume}
+              onChange={(e) => audio.setVolume(Number(e.target.value))}
+              aria-label="Volume"
+              className="rl-mini-vol"
+            />
+            <span className="rl-mini-title">
+              {audio.musicPlaying && audio.musicIdx !== null
+                ? (music[audio.musicIdx]?.title ?? "Music break")
+                : (episodes[audio.airIdx]?.title ?? "On air")}
+            </span>
+            <div className="rl-mini-bars" aria-hidden>
+              {audio.levels.slice(0, 8).map((v, i) => (
+                <span
+                  key={i}
+                  className="rl-mini-bar"
+                  style={{ "--h": `${Math.round(v * 100)}%` } as CSSProperties}
+                />
+              ))}
+            </div>
+          </div>
         </div>
+
         <a href="/radio/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </header>
 
