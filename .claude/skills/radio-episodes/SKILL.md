@@ -113,6 +113,8 @@ python scripts/generate-radio.py the-truth-hour --remix   # placement only, neve
   `text`, or its character's `instruct`/`speed`/`phone_filter`/`ref_audio`/`ref_text`, changes.
   So editing one line, or one character's voice, re-renders just the affected clips; everyone
   else is reused from `.clips.json`. The model loads lazily, only if something must render.
+  When the audio pipeline itself changes (trim/filter/render logic), bump `PIPELINE_VERSION`
+  in `generate-radio.py` — it's part of the hash, so all clips re-render on the next run.
 - After rendering, the script writes `timestamp`/`duration`/`audio` back into the episode JSON.
 - Needs OmniVoice + ffmpeg installed; GPU (CUDA) auto-detected, falls back to CPU (slow).
 - Run via background task — full render of ~30 lines takes minutes.

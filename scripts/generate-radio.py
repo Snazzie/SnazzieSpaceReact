@@ -41,32 +41,40 @@ _PHONE_SOS = butter(4, [300 / (SAMPLE_RATE / 2), 3400 / (SAMPLE_RATE / 2)], btyp
 
 
 def apply_phone_filter(audio: np.ndarray) -> np.ndarray:
-    """Bandpass + slight noise to simulate telephone quality."""
-    filtered = sosfilt(_PHONE_SOS, audio).astype(np.float32)
-    noise = np.random.default_rng(0).normal(0, 0.002, len(filtered)).astype(np.float32)
-    return np.clip(filtered + noise, -1.0, 1.0)
+    """Bandpass (300–3400 Hz) to simulate telephone quality. No added static."""
+    return np.clip(sosfilt(_PHONE_SOS, audio).astype(np.float32), -1.0, 1.0)
 
 
-def trim_silence(audio: np.ndarray, thresh: float = 0.015, pad_ms: float = 40.0) -> np.ndarray:
-    """Strip leading/trailing near-silence so clips start and end tight."""
+def trim_silence(audio: np.ndarray, thresh: float = 0.015, max_edge_ms: float = 350.0) -> np.ndarray:
+    """Cap (don't strip) leading/trailing silence.
+
+    Removes runaway model padding but KEEPS up to `max_edge_ms` of edge silence, so a
+    deliberate beat at the start/end of a line (e.g. a leading "...") survives. Use the
+    `<p:N>` token for longer, exact pauses.
+    """
     if len(audio) == 0:
         return audio
     mask = np.abs(audio) > thresh
     if not mask.any():
         return audio
     first, last = np.argmax(mask), len(mask) - np.argmax(mask[::-1])
-    pad = int(SAMPLE_RATE * pad_ms / 1000)
-    return audio[max(0, first - pad):min(len(audio), last + pad)]
+    keep = int(SAMPLE_RATE * max_edge_ms / 1000)
+    return audio[max(0, first - keep):min(len(audio), last + keep)]
 
 
 def load_cast() -> dict:
     return json.loads(CAST_FILE.read_text(encoding="utf-8"))
 
 
+# Bump when the audio pipeline (trim/filter/render) changes, to invalidate cached clips
+PIPELINE_VERSION = "2"
+
+
 def clip_hash(text: str, c: dict) -> str:
     """Content key for a clip — TTS is re-run only when this changes."""
     speed = float(c.get("speed", SPEED))
     payload = "|".join([
+        PIPELINE_VERSION,
         text, c["ref_audio"], c["ref_text"], c["instruct"],
         f"{speed}", str(bool(c.get("phone_filter", False))),
     ])
