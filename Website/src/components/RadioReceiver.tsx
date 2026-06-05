@@ -13,28 +13,28 @@ interface Props {
   episodes: Episode[];
   togglePlay: () => Promise<void>;
   tuneTo: (idx: number) => void;
+  toggleMusicTrack: (idx: number) => Promise<void>;
 }
 
 export default function RadioReceiver({
   playing, loading, musicIdx, musicPlaying, music, onAir,
-  levels, clock, airIdx, episodes, togglePlay, tuneTo,
+  levels, clock, airIdx, episodes, togglePlay, tuneTo, toggleMusicTrack,
 }: Props) {
-  // Build the interleaved queue that matches the audio engine:
-  // after each episode, a music interstitial plays before the next episode.
-  const upNext: { title: string; isMusic: boolean }[] = [];
+  // Build the interleaved queue matching the audio engine's playback order.
+  const upNext: { title: string; isMusic: boolean; idx: number }[] = [];
   if (music.length > 0) {
-    // If a music track is currently playing, next is the episode at airIdx
     const startEpIdx = (musicIdx !== null && musicPlaying) ? airIdx : (airIdx + 1) % episodes.length;
     const startMusicOffset = (musicIdx !== null && musicPlaying) ? 0 : 1;
     for (let i = 0; upNext.length < 4; i++) {
       const epIdx = (startEpIdx + i) % episodes.length;
-      upNext.push({ title: episodes[epIdx].title, isMusic: false });
+      upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
       const mIdx = (airIdx + startMusicOffset + i) % music.length;
-      upNext.push({ title: music[mIdx].title, isMusic: true });
+      upNext.push({ title: music[mIdx].title, isMusic: true, idx: mIdx });
     }
   } else {
-    for (let i = 0; i < 3; i++) {
-      upNext.push({ title: episodes[(airIdx + 1 + i) % episodes.length].title, isMusic: false });
+    for (let i = 0; i < 4; i++) {
+      const epIdx = (airIdx + 1 + i) % episodes.length;
+      upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
     }
   }
   const upNextSlice = upNext.slice(0, 4);
@@ -98,10 +98,15 @@ export default function RadioReceiver({
         <span className="rl-upnext-label">UP NEXT</span>
         <span className="rl-upnext-list">
           {upNextSlice.map((item, i) => (
-            <span key={i} className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}${item.isMusic ? " rl-upnext-item-music" : ""}`}>
+            <button
+              key={i}
+              type="button"
+              className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}${item.isMusic ? " rl-upnext-item-music" : ""}`}
+              onClick={() => item.isMusic ? toggleMusicTrack(item.idx) : tuneTo(item.idx)}
+            >
               <span className="rl-upnext-icon">{item.isMusic ? "♪" : "▷"}</span>
               {item.title}
-            </span>
+            </button>
           ))}
         </span>
       </div>

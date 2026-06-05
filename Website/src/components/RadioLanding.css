@@ -102,7 +102,9 @@
   color:#8a754f;flex-shrink:0;padding-top:.05rem;}
 .rl-upnext-list{display:flex;flex-direction:column;gap:.15rem;min-width:0;overflow:hidden;}
 .rl-upnext-item{display:flex;align-items:center;gap:.35rem;font-family:'VT323',monospace;font-size:.9rem;color:#7a6840;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:none;border:none;padding:0;cursor:pointer;text-align:left;width:100%;transition:color .15s;}
+.rl-upnext-item:hover{color:#c9b48e;}
 .rl-upnext-icon{flex-shrink:0;font-size:.8rem;opacity:.7;}
 .rl-upnext-item-first{font-size:.95rem;color:#c9b48e;}
 .rl-upnext-item-music{color:#6a5f3a;}
