@@ -207,15 +207,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> There are pigeons in the parking lot. <p:0.3> A lot of them. They look... organized.",
       "overlap": -0.2,
-      "timestamp": 82.313,
-      "duration": 5.28,
+      "timestamp": 82.42,
+      "duration": 7.16,
       "audio": "/audio/radio/the-pigeon-crash/25.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Organized how, Todd?",
       "overlap": -0.15,
-      "timestamp": 86.998,
+      "timestamp": 88.917,
       "duration": 2.08,
       "audio": "/audio/radio/the-pigeon-crash/26.flac"
     },
@@ -223,15 +223,15 @@
       "speaker": "todd",
       "text": "Like they're waiting for something. <p:0.4> One of them has a tiny vest.",
       "overlap": -0.15,
-      "timestamp": 88.587,
-      "duration": 3.69,
+      "timestamp": 90.493,
+      "duration": 4.96,
       "audio": "/audio/radio/the-pigeon-crash/27.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "That's my CFO! <p:0.3> Don't make eye contact, Todd, he doesn't like that.",
       "overlap": 0.2,
-      "timestamp": 91.799,
+      "timestamp": 94.949,
       "duration": 4.26,
       "audio": "/audio/radio/the-pigeon-crash/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "The bird has a vest?! Chad, the bird has a VEST?!",
       "overlap": 0.3,
-      "timestamp": 94.878,
+      "timestamp": 98.027,
       "duration": 3.8,
       "audio": "/audio/radio/the-pigeon-crash/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-chad",
       "text": "He EARNED that vest, Barry!",
       "overlap": 0.35,
-      "timestamp": 97.798,
+      "timestamp": 100.948,
       "duration": 1.68,
       "audio": "/audio/radio/the-pigeon-crash/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-gary",
       "text": "I want my pension, kid!",
       "overlap": 0.3,
-      "timestamp": 98.118,
+      "timestamp": 101.268,
       "duration": 2.32,
       "audio": "/audio/radio/the-pigeon-crash/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-chad",
       "text": "It's in the bird, Gary! It's all in the bird!",
       "overlap": 0.35,
-      "timestamp": 99.8,
+      "timestamp": 102.949,
       "duration": 2.2,
       "audio": "/audio/radio/the-pigeon-crash/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Let's everyone stay calm. The bird has our money. We process that as a community.",
       "overlap": -0.2,
-      "timestamp": 101.141,
+      "timestamp": 104.29,
       "duration": 6.24,
       "audio": "/audio/radio/the-pigeon-crash/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-patricia",
       "text": "I LIVE IN A CAR!",
       "overlap": 0.3,
-      "timestamp": 106.402,
+      "timestamp": 109.551,
       "duration": 1.84,
       "audio": "/audio/radio/the-pigeon-crash/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-chad",
       "text": "And the car is an asset, Patricia! You're basically a landlord now!",
       "overlap": 0.35,
-      "timestamp": 107.082,
+      "timestamp": 110.231,
       "duration": 3.44,
       "audio": "/audio/radio/the-pigeon-crash/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "Ronnie, I'm calling someone. I am calling an actual authority.",
       "overlap": -0.1,
-      "timestamp": 109.601,
+      "timestamp": 112.75,
       "duration": 5.12,
       "audio": "/audio/radio/the-pigeon-crash/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-chad",
       "text": "You can't stop the flock, Barry! <p:0.3> THE FLOCK IS ETERNAL!",
       "overlap": 0.4,
-      "timestamp": 113.493,
+      "timestamp": 116.643,
       "duration": 3.62,
       "audio": "/audio/radio/the-pigeon-crash/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "ronnie",
       "text": "Chad, is there any way for these people to get their money back?",
       "overlap": -0.2,
-      "timestamp": 115.968,
+      "timestamp": 119.118,
       "duration": 4.96,
       "audio": "/audio/radio/the-pigeon-crash/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-chad",
       "text": "Totally, Ronnie. They just find the bird, approach slowly, and ask nicely.",
       "overlap": -0.15,
-      "timestamp": 120.048,
+      "timestamp": 123.198,
       "duration": 3.8,
       "audio": "/audio/radio/the-pigeon-crash/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "barry",
       "text": "Ask the bird. Nicely.",
       "overlap": -0.1,
-      "timestamp": 123.306,
+      "timestamp": 126.456,
       "duration": 1.84,
       "audio": "/audio/radio/the-pigeon-crash/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "caller-chad",
       "text": "He responds to respect, Barry. And breadcrumbs. But not the battery bread, the good bread.",
       "overlap": -0.15,
-      "timestamp": 124.939,
+      "timestamp": 128.088,
       "duration": 4.6,
       "audio": "/audio/radio/the-pigeon-crash/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "caller-gary",
       "text": "I'm seventy one years old. I am not chasing a bird.",
       "overlap": -0.15,
-      "timestamp": 129.145,
+      "timestamp": 132.294,
       "duration": 4.6,
       "audio": "/audio/radio/the-pigeon-crash/42.flac"
     },
@@ -351,7 +351,7 @@
       "speaker": "caller-chad",
       "text": "Then you forfeit, Gary. Those are the terms. You signed them.",
       "overlap": -0.1,
-      "timestamp": 133.162,
+      "timestamp": 136.311,
       "duration": 3.12,
       "audio": "/audio/radio/the-pigeon-crash/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "caller-gary",
       "text": "I didn't sign anything!",
       "overlap": 0.2,
-      "timestamp": 135.451,
+      "timestamp": 138.6,
       "duration": 2.36,
       "audio": "/audio/radio/the-pigeon-crash/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "caller-chad",
       "text": "You clicked 'I agree', Gary. The bird saw.",
       "overlap": 0.25,
-      "timestamp": 136.816,
+      "timestamp": 139.966,
       "duration": 2.12,
       "audio": "/audio/radio/the-pigeon-crash/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "caller-patricia",
       "text": "How does a bird even operate a server farm?",
       "overlap": -0.15,
-      "timestamp": 138.395,
+      "timestamp": 141.544,
       "duration": 3.88,
       "audio": "/audio/radio/the-pigeon-crash/46.flac"
     },
@@ -383,7 +383,7 @@
       "speaker": "caller-chad",
       "text": "Talons, Patricia. <p:0.3> Have you ever really looked at a talon?",
       "overlap": -0.1,
-      "timestamp": 141.482,
+      "timestamp": 144.631,
       "duration": 3.86,
       "audio": "/audio/radio/the-pigeon-crash/47.flac"
     },
@@ -391,7 +391,7 @@
       "speaker": "ronnie",
       "text": "I have, actually. Off-putting little hands.",
       "overlap": -0.2,
-      "timestamp": 144.704,
+      "timestamp": 147.853,
       "duration": 3.48,
       "audio": "/audio/radio/the-pigeon-crash/48.flac"
     },
@@ -399,7 +399,7 @@
       "speaker": "barry",
       "text": "They are feet, Ronnie! They are bird feet!",
       "overlap": 0.25,
-      "timestamp": 147.195,
+      "timestamp": 150.344,
       "duration": 3.44,
       "audio": "/audio/radio/the-pigeon-crash/49.flac"
     },
@@ -407,15 +407,15 @@
       "speaker": "todd",
       "text": "Ronnie, the vest pigeon is at the window. <p:0.3> He's tapping. <p:0.4> I think it's morse code.",
       "overlap": -0.2,
-      "timestamp": 149.991,
-      "duration": 5.24,
+      "timestamp": 153.104,
+      "duration": 6.66,
       "audio": "/audio/radio/the-pigeon-crash/50.flac"
     },
     {
       "speaker": "ronnie",
       "text": "What's he saying, Todd?",
       "overlap": -0.15,
-      "timestamp": 154.378,
+      "timestamp": 158.743,
       "duration": 2.16,
       "audio": "/audio/radio/the-pigeon-crash/51.flac"
     },
@@ -423,15 +423,15 @@
       "speaker": "todd",
       "text": "I think... it says 'sell'.",
       "overlap": -0.15,
-      "timestamp": 155.963,
-      "duration": 1.35,
+      "timestamp": 160.4,
+      "duration": 1.72,
       "audio": "/audio/radio/the-pigeon-crash/52.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "DO NOT SELL! <p:0.3> That's a fake CFO, Todd! The real one would never!",
       "overlap": 0.4,
-      "timestamp": 156.677,
+      "timestamp": 161.445,
       "duration": 4.14,
       "audio": "/audio/radio/the-pigeon-crash/53.flac"
     },
@@ -439,7 +439,7 @@
       "speaker": "ronnie",
       "text": "We'll be right back. Do not, and I cannot stress this enough... do not invest in the bird.",
       "overlap": -0.2,
-      "timestamp": 160.695,
+      "timestamp": 165.463,
       "duration": 6.68,
       "audio": "/audio/radio/the-pigeon-crash/54.flac"
     },
@@ -447,7 +447,7 @@
       "speaker": "barry",
       "text": "I'm getting the notebook.",
       "overlap": -0.1,
-      "timestamp": 166.47,
+      "timestamp": 171.238,
       "duration": 2.2,
       "audio": "/audio/radio/the-pigeon-crash/55.flac"
     }

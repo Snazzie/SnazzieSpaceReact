@@ -40,7 +40,7 @@
     "speed": 1.45,
     "phone_filter": false,
     "ref_audio": "scripts/voices/todd.wav",
-    "ref_text": "THE PARIS PLANT LIKE THAT AT THE CRYSTAL PALACE WAS A TEMPORARY EXHIBIT",
+    "ref_text": "부메랑 던지기는 인기 있는 기술로, 많은 관광객이 배우고 싶어 합니다.",
     "gender": "M"
   },
   "caller-steve": {

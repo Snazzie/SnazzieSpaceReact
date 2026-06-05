@@ -231,15 +231,15 @@
       "speaker": "todd",
       "text": "Ronnie, um, a lot of people are calling about their appliances now. <p:0.3> A woman says her microwave apologized to her.",
       "overlap": -0.2,
-      "timestamp": 107.048,
-      "duration": 5.72,
+      "timestamp": 107.115,
+      "duration": 8.18,
       "audio": "/audio/radio/machine-talk/28.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Apologized for what, Todd?",
       "overlap": -0.2,
-      "timestamp": 112.329,
+      "timestamp": 114.744,
       "duration": 2.24,
       "audio": "/audio/radio/machine-talk/29.flac"
     },
@@ -247,15 +247,15 @@
       "speaker": "todd",
       "text": "She didn't say. <p:0.3> She just said it sounded very sincere.",
       "overlap": -0.15,
-      "timestamp": 114.437,
-      "duration": 3.42,
+      "timestamp": 116.855,
+      "duration": 4.46,
       "audio": "/audio/radio/machine-talk/30.flac"
     },
     {
       "speaker": "barry",
       "text": "Microwaves cannot feel remorse, Todd.",
       "overlap": -0.2,
-      "timestamp": 117.469,
+      "timestamp": 120.818,
       "duration": 3.28,
       "audio": "/audio/radio/machine-talk/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-kim",
       "text": "Genuinely none of these appliances can feel anything. <p:0.3> I am begging this entire radio station.",
       "overlap": -0.15,
-      "timestamp": 119.834,
+      "timestamp": 123.183,
       "duration": 5.02,
       "audio": "/audio/radio/machine-talk/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-winston",
       "text": "That is exactly what the appliances would want you to say, young lady.",
       "overlap": -0.15,
-      "timestamp": 124.275,
+      "timestamp": 127.624,
       "duration": 4.98,
       "audio": "/audio/radio/machine-talk/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Don't we all feel judged by our appliances, Winston. Don't we all.",
       "overlap": -0.2,
-      "timestamp": 128.357,
+      "timestamp": 131.707,
       "duration": 5.08,
       "audio": "/audio/radio/machine-talk/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "I do not feel judged by my toaster.",
       "overlap": -0.15,
-      "timestamp": 132.514,
+      "timestamp": 135.864,
       "duration": 2.88,
       "audio": "/audio/radio/machine-talk/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-winston",
       "text": "Then why do you butter so quickly, Barry? <p:0.3> What are you afraid it will see?",
       "overlap": -0.2,
-      "timestamp": 134.473,
+      "timestamp": 137.822,
       "duration": 4.96,
       "audio": "/audio/radio/machine-talk/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "I butter at a perfectly normal speed, Winston.",
       "overlap": -0.15,
-      "timestamp": 138.641,
+      "timestamp": 141.991,
       "duration": 3.88,
       "audio": "/audio/radio/machine-talk/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "ronnie",
       "text": "Do any of us, truly, butter at a normal speed?",
       "overlap": -0.2,
-      "timestamp": 141.091,
+      "timestamp": 144.44,
       "duration": 3.52,
       "audio": "/audio/radio/machine-talk/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-kim",
       "text": "Yes. <p:0.3> Everyone does. It's a completely normal thing that everyone does.",
       "overlap": -0.15,
-      "timestamp": 143.914,
+      "timestamp": 147.263,
       "duration": 4.53,
       "audio": "/audio/radio/machine-talk/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "ronnie",
       "text": "Give it time, Barry. <p:0.3> Give it time.",
       "overlap": -0.2,
-      "timestamp": 147.775,
+      "timestamp": 151.125,
       "duration": 4.14,
       "audio": "/audio/radio/machine-talk/40.flac"
     }
