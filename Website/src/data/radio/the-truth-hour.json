@@ -228,12 +228,92 @@
       "audio": "/audio/radio/the-truth-hour/27.flac"
     },
     {
+      "speaker": "barry",
+      "text": "Ronnie, I think I need to lie down.",
+      "overlap": -0.2,
+      "timestamp": 139.508,
+      "duration": 2.303,
+      "audio": "/audio/radio/the-truth-hour/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We can't lie down, Barry. We're on the air.",
+      "overlap": -0.2,
+      "timestamp": 142.011,
+      "duration": 2.654,
+      "audio": "/audio/radio/the-truth-hour/29.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Ronnie! It's Frank again. I forgot one thing.",
+      "overlap": -0.2,
+      "timestamp": 144.865,
+      "duration": 2.68,
+      "audio": "/audio/radio/the-truth-hour/30.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Go ahead, Frank.",
+      "overlap": -0.2,
+      "timestamp": 147.745,
+      "duration": 1.353,
+      "audio": "/audio/radio/the-truth-hour/31.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "The squirrels are in on it too now. <p:0.4> They've formed an alliance with the pigeons.",
+      "overlap": -0.15,
+      "timestamp": 149.248,
+      "duration": 4.977,
+      "audio": "/audio/radio/the-truth-hour/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "An alliance. <p:0.3> You heard it here first, folks.",
+      "overlap": -0.2,
+      "timestamp": 154.425,
+      "duration": 3.776,
+      "audio": "/audio/radio/the-truth-hour/33.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "And the squirrels report to the pigeons. <p:0.4> The pigeons report to Nebraska. It's a chain of command.",
+      "overlap": -0.15,
+      "timestamp": 158.352,
+      "duration": 5.959,
+      "audio": "/audio/radio/the-truth-hour/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A chain of command. For rodents.",
+      "overlap": -0.2,
+      "timestamp": 164.51,
+      "duration": 2.642,
+      "audio": "/audio/radio/the-truth-hour/35.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Bingo, Barry. <p:0.3> Now you're finally thinking.",
+      "overlap": -0.15,
+      "timestamp": 167.302,
+      "duration": 3.297,
+      "audio": "/audio/radio/the-truth-hour/36.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm getting my coat.",
+      "overlap": -0.15,
+      "timestamp": 170.749,
+      "duration": 1.511,
+      "audio": "/audio/radio/the-truth-hour/37.flac"
+    },
+    {
       "speaker": "ronnie",
       "text": "Barry... <p:0.9> You're done, son.",
       "overlap": -0.1,
-      "timestamp": 139.408,
-      "duration": 3.415,
-      "audio": "/audio/radio/the-truth-hour/28.flac"
+      "timestamp": 172.36,
+      "duration": 3.384,
+      "audio": "/audio/radio/the-truth-hour/38.flac"
     }
   ]
 }

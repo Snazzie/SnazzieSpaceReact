@@ -1,4 +1,9 @@
 import truthHour from "./radio/the-truth-hour.json";
+import coinOfTheRealm from "./radio/coin-of-the-realm.json";
+import machineTalk from "./radio/machine-talk.json";
+import healthyLiving from "./radio/healthy-living.json";
+import afterDark from "./radio/after-dark.json";
+import theSportsDesk from "./radio/the-sports-desk.json";
 
 export interface CastMember {
   id: string;
@@ -40,7 +45,7 @@ export const CAST: Record<string, CastMember> = {
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
 };
 
-function episodeFrom(raw: typeof truthHour): Episode {
+function episodeFrom(raw: { slug: string; title: string; description: string; lines: unknown[] }): Episode {
   return {
     slug:        raw.slug,
     title:       raw.title,
@@ -51,4 +56,9 @@ function episodeFrom(raw: typeof truthHour): Episode {
 
 export const EPISODES: Episode[] = [
   episodeFrom(truthHour),
+  episodeFrom(coinOfTheRealm),
+  episodeFrom(machineTalk),
+  episodeFrom(healthyLiving),
+  episodeFrom(afterDark),
+  episodeFrom(theSportsDesk),
 ];

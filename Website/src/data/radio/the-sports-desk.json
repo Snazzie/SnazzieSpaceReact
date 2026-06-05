@@ -1,0 +1,319 @@
+{
+  "slug": "the-sports-desk",
+  "title": "The Sports Desk",
+  "description": "Sports night. Steve has proof the big game was filmed months ago. Gary held the orange slices. It was a union job.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're back on Snazzie FM. We're talking sports tonight, which means Barry finally gets to participate.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.255,
+      "audio": "/audio/radio/the-sports-desk/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I know one sport, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 7.405,
+      "duration": 1.869,
+      "audio": "/audio/radio/the-sports-desk/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And that's one more than last week. Our first caller has a hot take. Steve, you're on the air.",
+      "overlap": -0.2,
+      "timestamp": 9.474,
+      "duration": 6.36,
+      "audio": "/audio/radio/the-sports-desk/2.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Ronnie, okay, I don't have a lot of time, they could trace this. <p:0.3> The big game on Sunday? It's already been played.",
+      "overlap": -0.2,
+      "timestamp": 16.034,
+      "duration": 4.678,
+      "audio": "/audio/radio/the-sports-desk/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "...It's on Sunday.",
+      "overlap": -0.15,
+      "timestamp": 20.861,
+      "duration": 1.489,
+      "audio": "/audio/radio/the-sports-desk/4.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "It was played in March, Barry. In a warehouse. They film all the games months ahead.",
+      "overlap": -0.1,
+      "timestamp": 22.451,
+      "duration": 3.72,
+      "audio": "/audio/radio/the-sports-desk/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That would save so much on scheduling.",
+      "overlap": -0.2,
+      "timestamp": 26.37,
+      "duration": 2.647,
+      "audio": "/audio/radio/the-sports-desk/6.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "That's what I'm saying, Ronnie! The players don't even know. They reshoot the reactions later.",
+      "overlap": -0.15,
+      "timestamp": 29.167,
+      "duration": 4.15,
+      "audio": "/audio/radio/the-sports-desk/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Steve, I watched a game live last week. It went to overtime.",
+      "overlap": -0.2,
+      "timestamp": 33.517,
+      "duration": 4.201,
+      "audio": "/audio/radio/the-sports-desk/8.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Overtime is added in post, Barry. <p:0.4> For drama. For the ratings.",
+      "overlap": -0.15,
+      "timestamp": 37.868,
+      "duration": 2.238,
+      "audio": "/audio/radio/the-sports-desk/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It is always the most dramatic when it matters most.",
+      "overlap": -0.2,
+      "timestamp": 40.306,
+      "duration": 3.452,
+      "audio": "/audio/radio/the-sports-desk/10.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Because it's WRITTEN that way, Ronnie!",
+      "overlap": -0.1,
+      "timestamp": 43.858,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-sports-desk/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Steve, the players have families. Someone would talk.",
+      "overlap": -0.2,
+      "timestamp": 45.818,
+      "duration": 4.259,
+      "audio": "/audio/radio/the-sports-desk/12.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "The families are in on it, Barry! <p:0.3> Why do you think athletes have so many cousins? Those are handlers.",
+      "overlap": -0.15,
+      "timestamp": 50.226,
+      "duration": 5.021,
+      "audio": "/audio/radio/the-sports-desk/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That is a lot of cousins, when you think about it.",
+      "overlap": -0.2,
+      "timestamp": 55.448,
+      "duration": 3.121,
+      "audio": "/audio/radio/the-sports-desk/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It is a normal amount of cousins, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 58.719,
+      "duration": 2.696,
+      "audio": "/audio/radio/the-sports-desk/15.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "And the refs? <p:0.3> The refs are actors, Barry. That's why they wear the stripes. So you can't recognize them at the grocery store.",
+      "overlap": -0.15,
+      "timestamp": 61.564,
+      "duration": 6.266,
+      "audio": "/audio/radio/the-sports-desk/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The stripes are so players can see them, Steve.",
+      "overlap": -0.2,
+      "timestamp": 68.03,
+      "duration": 2.882,
+      "audio": "/audio/radio/the-sports-desk/17.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "That's what they told you, Barry, and you wrote it down like a good little fan.",
+      "overlap": -0.15,
+      "timestamp": 71.062,
+      "duration": 3.358,
+      "audio": "/audio/radio/the-sports-desk/18.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Yeah, the kid's half right. <p:0.4> But it's not March. They film 'em in January. I've seen the warehouse.",
+      "overlap": -0.25,
+      "timestamp": 74.67,
+      "duration": 9.523,
+      "audio": "/audio/radio/the-sports-desk/19.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "...You've seen the warehouse?",
+      "overlap": -0.15,
+      "timestamp": 84.343,
+      "duration": 1.6,
+      "audio": "/audio/radio/the-sports-desk/20.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "I worked the warehouse, Steve. I held the orange slices. <p:0.3> Union job.",
+      "overlap": -0.15,
+      "timestamp": 86.093,
+      "duration": 6.907,
+      "audio": "/audio/radio/the-sports-desk/21.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gary, what is the warehouse like? Paint us a picture.",
+      "overlap": -0.2,
+      "timestamp": 93.201,
+      "duration": 3.498,
+      "audio": "/audio/radio/the-sports-desk/22.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Big, Ronnie. Cold. <p:0.3> They keep all the weather in there. Rain machine, snow machine, one fan the size of a bus for the windy games.",
+      "overlap": -0.15,
+      "timestamp": 96.848,
+      "duration": 13.818,
+      "audio": "/audio/radio/the-sports-desk/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "So outdoor games, in the rain... are filmed indoors, with a rain machine.",
+      "overlap": -0.2,
+      "timestamp": 110.866,
+      "duration": 5.401,
+      "audio": "/audio/radio/the-sports-desk/24.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Now you're getting it, Barry. <p:0.3> Real rain is too unpredictable. They can't afford a continuity error.",
+      "overlap": -0.15,
+      "timestamp": 116.416,
+      "duration": 7.711,
+      "audio": "/audio/radio/the-sports-desk/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The production value really is incredible when you think about it.",
+      "overlap": -0.2,
+      "timestamp": 124.328,
+      "duration": 3.691,
+      "audio": "/audio/radio/the-sports-desk/26.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Gary, did you ever see the crowd? <p:0.3> Are the fans real?",
+      "overlap": -0.2,
+      "timestamp": 128.218,
+      "duration": 3.21,
+      "audio": "/audio/radio/the-sports-desk/27.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Painted, Steve. <p:0.3> One big painting of a crowd. They wheel it in. Forty thousand fans, one canvas.",
+      "overlap": -0.15,
+      "timestamp": 131.578,
+      "duration": 9.579,
+      "audio": "/audio/radio/the-sports-desk/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I have been to a game. I was in the crowd. I am a real person.",
+      "overlap": -0.2,
+      "timestamp": 141.357,
+      "duration": 4.404,
+      "audio": "/audio/radio/the-sports-desk/29.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Are you though, Barry? <p:0.3> Or were you painted that day.",
+      "overlap": -0.15,
+      "timestamp": 145.911,
+      "duration": 4.603,
+      "audio": "/audio/radio/the-sports-desk/30.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I was not painted, Gary.",
+      "overlap": -0.15,
+      "timestamp": 150.664,
+      "duration": 1.848,
+      "audio": "/audio/radio/the-sports-desk/31.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Then how do I know about the orange slices, Barry?",
+      "overlap": -0.15,
+      "timestamp": 152.662,
+      "duration": 4.583,
+      "audio": "/audio/radio/the-sports-desk/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Checkmate, Barry. He knows about the oranges.",
+      "overlap": -0.2,
+      "timestamp": 157.445,
+      "duration": 3.341,
+      "audio": "/audio/radio/the-sports-desk/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Everyone knows about the oranges. That's just sports.",
+      "overlap": -0.15,
+      "timestamp": 160.936,
+      "duration": 4.057,
+      "audio": "/audio/radio/the-sports-desk/34.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Then who cut the oranges, Barry? <p:0.3> Go on. Name him.",
+      "overlap": -0.2,
+      "timestamp": 165.192,
+      "duration": 4.616,
+      "audio": "/audio/radio/the-sports-desk/35.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I don't know the orange guy's name, Gary. Nobody knows the orange guy.",
+      "overlap": -0.15,
+      "timestamp": 169.958,
+      "duration": 4.676,
+      "audio": "/audio/radio/the-sports-desk/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And that, friends, is the biggest cover up in sports.",
+      "overlap": -0.2,
+      "timestamp": 174.834,
+      "duration": 3.524,
+      "audio": "/audio/radio/the-sports-desk/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We'll be right back. The game's already over. <p:0.3> It's been over for months.",
+      "overlap": -0.25,
+      "timestamp": 178.608,
+      "duration": 5.406,
+      "audio": "/audio/radio/the-sports-desk/38.flac"
+    }
+  ]
+}
