@@ -1,198 +1,224 @@
 {
   "slug": "the-frank-tapes",
   "title": "The Frank Tapes",
-  "description": "Just Ronnie and Frank, one on one, after midnight. It starts calm. It does not stay calm. Generated with Dia.",
-  "engine": "dia",
+  "description": "Just Ronnie and Frank, one on one, after midnight. It starts calm. It does not stay calm. Generated with Dia2.",
+  "engine": "dia2",
   "lines": [
     {
       "speaker": "ronnie",
       "text": "It's just you and me tonight, Frank. Barry went home. Said he needed to be around normal people.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 6.14
+      "duration": 6.24,
+      "audio": "/audio/radio/the-frank-tapes/0.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "(laughs) Normal people. That's good, Ronnie. That's real good. Normal people are exactly who they recruit.",
       "overlap": 0,
-      "timestamp": 6.14,
-      "duration": 6.268
+      "timestamp": 6.093,
+      "duration": 5.84,
+      "audio": "/audio/radio/the-frank-tapes/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See, this is why I keep you on the line. Nice and easy. Walk me through it.",
       "overlap": 0,
-      "timestamp": 12.659,
-      "duration": 5.574
+      "timestamp": 12.113,
+      "duration": 4.8,
+      "audio": "/audio/radio/the-frank-tapes/2.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Okay. So. You know how you wake up tired, even after a full night's sleep?",
       "overlap": 0,
-      "timestamp": 18.233,
-      "duration": 5.5
+      "timestamp": 17.091,
+      "duration": 4.72,
+      "audio": "/audio/radio/the-frank-tapes/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Sure. I just figured that was the coffee. Or my age.",
       "overlap": 0,
-      "timestamp": 23.983,
-      "duration": 2.984
+      "timestamp": 21.989,
+      "duration": 3.28,
+      "audio": "/audio/radio/the-frank-tapes/4.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "It's not the coffee, Ronnie. Sleep is when they update you. That's when the changes go in.",
       "overlap": 0,
-      "timestamp": 26.966,
-      "duration": 5.164
+      "timestamp": 25.448,
+      "duration": 5.04,
+      "audio": "/audio/radio/the-frank-tapes/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Update me. Huh. Like a phone.",
       "overlap": 0,
-      "timestamp": 32.381,
-      "duration": 1.319
+      "timestamp": 30.667,
+      "duration": 2.4,
+      "audio": "/audio/radio/the-frank-tapes/6.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Exactly like a phone. A real rest would leave you sharp. They don't want you sharp, Ronnie. Think about it.",
       "overlap": 0,
-      "timestamp": 33.7,
-      "duration": 4.867
+      "timestamp": 33.108,
+      "duration": 6.8,
+      "audio": "/audio/radio/the-frank-tapes/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I mean... I have been a little foggy lately. But that's normal, right? That's just life.",
       "overlap": 0,
-      "timestamp": 38.817,
-      "duration": 8.149
+      "timestamp": 40.088,
+      "duration": 6.24,
+      "audio": "/audio/radio/the-frank-tapes/8.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Is it? Or is that what they updated you to think? When did you last feel truly awake?",
       "overlap": 0,
-      "timestamp": 46.965,
-      "duration": 7.871
+      "timestamp": 46.417,
+      "duration": 5.44,
+      "audio": "/audio/radio/the-frank-tapes/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I... huh. I actually can't remember. That's a strange thing to not be able to remember.",
       "overlap": 0,
-      "timestamp": 55.086,
-      "duration": 5.91
+      "timestamp": 52.037,
+      "duration": 5.12,
+      "audio": "/audio/radio/the-frank-tapes/10.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Now you're listening. Now you're awake, Ronnie. And here's the part nobody wants to hear.",
       "overlap": 0,
-      "timestamp": 60.996,
-      "duration": 6.046
+      "timestamp": 57.328,
+      "duration": 4.96,
+      "audio": "/audio/radio/the-frank-tapes/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Okay. Okay, hit me. I'm ready.",
       "overlap": 0,
-      "timestamp": 67.292,
-      "duration": 1.419
+      "timestamp": 62.467,
+      "duration": 2.32,
+      "audio": "/audio/radio/the-frank-tapes/12.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "The escalators. They're not taking you up, Ronnie. They're counting you. Every single step.",
       "overlap": 0,
-      "timestamp": 68.711,
-      "duration": 4.303
+      "timestamp": 64.967,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-frank-tapes/13.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Wait. Wait, I ride one of those every day. At the mall. Every single day, Frank.",
       "overlap": 0,
-      "timestamp": 73.264,
-      "duration": 4.446
+      "timestamp": 70.747,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-frank-tapes/14.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "And where do the steps GO when they fold under at the bottom? Where do they GO, Ronnie?",
       "overlap": 0,
-      "timestamp": 77.709,
-      "duration": 4.835
+      "timestamp": 76.527,
+      "duration": 4.48,
+      "audio": "/audio/radio/the-frank-tapes/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I don't... I always assumed they just loop around underneath, I never actually...",
       "overlap": 0,
-      "timestamp": 82.794,
-      "duration": 4.386
+      "timestamp": 81.187,
+      "duration": 5.12,
+      "audio": "/audio/radio/the-frank-tapes/16.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Nobody looks! That's the whole point! They go DOWN, Ronnie. All the way down, to the warehouse!",
       "overlap": 0,
-      "timestamp": 87.18,
-      "duration": 5.144
+      "timestamp": 86.487,
+      "duration": 6.24,
+      "audio": "/audio/radio/the-frank-tapes/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "The warehouse?! The same one from the pigeon...",
       "overlap": 0,
-      "timestamp": 92.573,
-      "duration": 3.92
+      "timestamp": 92.9,
+      "duration": 2.96,
+      "audio": "/audio/radio/the-frank-tapes/18.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "ALL one warehouse! It always was! The pigeons, the bread, the escalators, ONE ROOF!",
       "overlap": 0,
-      "timestamp": 96.493,
-      "duration": 6.922
+      "timestamp": 95.726,
+      "duration": 6.56,
+      "audio": "/audio/radio/the-frank-tapes/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Oh, I don't feel good. I don't feel good, Frank, I rode it twice today, TWICE!",
       "overlap": 0,
-      "timestamp": 103.665,
-      "duration": 4.545
+      "timestamp": 102.311,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-frank-tapes/20.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "Then they counted you twice! (gasps) You're in deep, Ronnie. You are in DEEP.",
       "overlap": 0,
-      "timestamp": 108.21,
-      "duration": 4.079
+      "timestamp": 108.064,
+      "duration": 4.72,
+      "audio": "/audio/radio/the-frank-tapes/21.flac"
     },
     {
       "speaker": "ronnie",
       "text": "What do I do?! Frank, what do I DO, tell me how to get...",
       "overlap": 0,
-      "timestamp": 112.539,
-      "duration": 4.547
+      "timestamp": 112.87,
+      "duration": 3.52,
+      "audio": "/audio/radio/the-frank-tapes/22.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "You take the stairs! The regular ones! The ones that DON'T MOVE! Promise me, Ronnie!",
       "overlap": 0,
-      "timestamp": 117.086,
-      "duration": 6.701
+      "timestamp": 116.57,
+      "duration": 5.92,
+      "audio": "/audio/radio/the-frank-tapes/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I promise! I promise, no more escalators, never again! (sighs) Okay. Okay. Deep breaths.",
       "overlap": 0,
-      "timestamp": 124.037,
-      "duration": 5.317
+      "timestamp": 122.67,
+      "duration": 6.4,
+      "audio": "/audio/radio/the-frank-tapes/24.flac"
     },
     {
       "speaker": "caller-frank",
       "text": "(sighs) Good. You're gonna be okay. Stay awake, and take the stairs. That's all any of us can do.",
       "overlap": 0,
-      "timestamp": 129.353,
-      "duration": 5.908
+      "timestamp": 129.25,
+      "duration": 6.48,
+      "audio": "/audio/radio/the-frank-tapes/25.flac"
     },
     {
       "speaker": "ronnie",
       "text": "We're gonna take a quick break. I need to sit down. Don't trust the escalators, folks. Stay awake out there.",
       "overlap": 0,
-      "timestamp": 135.511,
-      "duration": 5.594
+      "timestamp": 135.91,
+      "duration": 6.32,
+      "audio": "/audio/radio/the-frank-tapes/26.flac"
     }
-  ],
-  "track": "/audio/radio/the-frank-tapes/episode.flac"
+  ]
 }

@@ -1,23 +1,20 @@
 #!/usr/bin/env python3
-"""Dia dialogue generator for 2-speaker Snazzie FM episodes.
+"""Dia generator for Snazzie FM episodes (engine: "dia").
 
-Unlike generate-radio.py (per-line OmniVoice clips), this renders a whole 2-hander
-conversation with Dia (nari-labs/Dia-1.6B-0626) — real turn-taking — into ONE track,
-then recovers per-line timestamps with faster-whisper forced alignment so the existing
-transcript/seek UI works.
-
-Constraints (Dia): exactly 2 speakers ([S1]/[S2], alternating, must start [S1]); best on
-5-20s chunks. We chunk consecutive turns, prime every chunk with a fixed 2-voice audio
-prompt for voice consistency, concatenate, then align.
+Dia hates short inputs (<5s sounds unnatural / rambles), but we want per-line clips so
+callers can get a clean phone filter and everything drops into the per-clip multitrack
+player. Solution: generate in CONVERSATIONAL CHUNKS (8-16s, real turn-taking, stable),
+then SPLIT each chunk into per-line segments at the silence gaps between turns, and
+phone-filter only the caller segments. Best of both: natural flow + isolated voices.
 
 Usage:
     python scripts/generate-radio-dia.py the-frank-tapes
 """
 
 import argparse
+import hashlib
 import json
 import re
-import sys
 import warnings
 from pathlib import Path
 
@@ -26,6 +23,7 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import soundfile as sf
 import torch
+from scipy.signal import butter, sosfilt
 
 REPO_ROOT   = Path(__file__).parent.parent
 CAST_FILE   = Path(__file__).parent / "cast.json"
@@ -34,9 +32,15 @@ AUDIO_DIR   = REPO_ROOT / "Website/public/audio/radio"
 MODEL_CK    = "nari-labs/Dia-1.6B-0626"
 DIA_SR      = 44_100
 OUT_SR      = 24_000
-CHUNK_SECS  = 16.0          # target spoken seconds per Dia call (keep 5-20s)
-CHARS_PER_SEC = 15.0        # rough estimate to size chunks
-GAP_SECS    = 0.25          # silence between concatenated chunks
+PRIME_CAP   = 4.5     # seconds of reference per speaker (2-speaker prompt ~9s, Dia sweet spot)
+MIN_CHUNK_SECS = 8.0  # group turns into 8-16s chunks so Dia never sees a too-short input
+DEFAULT_GAP = 0.18    # gap between speech of adjacent placed clips
+MIN_SOLO    = 0.5
+CHARS_PER_SEC = 14.0
+TOKENS_PER_SEC = 86
+PIPELINE_VERSION = "dia-4"
+
+_PHONE_SOS = butter(4, [300 / (OUT_SR / 2), 3400 / (OUT_SR / 2)], btype="band", output="sos")
 
 
 def load_cast() -> dict:
@@ -52,58 +56,120 @@ def resample(audio: np.ndarray, src: int, dst: int) -> np.ndarray:
     return resample_poly(audio, dst // g, src // g).astype(np.float32)
 
 
-def prompt_end_sample(clip: np.ndarray, sr: int, approx_s: float) -> int:
-    """Find where the echoed prompt ends — the quietest 120ms gap near `approx_s`.
-    Adapts to Dia regenerating the prompt at a slightly different length than the input,
-    so we don't slice into the actual content (premature cut-off)."""
-    win = int(0.12 * sr)
-    lo = int(max(0.0, approx_s - 1.8) * sr)
-    hi = int(min(len(clip) - win, (approx_s + 1.8) * sr))
-    if hi <= lo:
-        return min(int(approx_s * sr), len(clip))
-    best_i, best_e = lo, 1e9
-    step = int(0.02 * sr)
-    for i in range(lo, hi, step):
-        e = float(np.sqrt((clip[i:i + win] ** 2).mean()))
-        if e < best_e:
-            best_e, best_i = e, i
-    return best_i + win  # cut at the end of the quiet gap
+def speech_bounds(audio: np.ndarray, thresh: float = 0.015) -> tuple[int, int]:
+    if len(audio) == 0:
+        return 0, 0
+    mask = np.abs(audio) > thresh
+    if not mask.any():
+        return 0, len(audio)
+    return int(np.argmax(mask)), int(len(mask) - np.argmax(mask[::-1]))
 
 
-def normalize_rms(clip: np.ndarray, target_rms: float = 0.09, peak_cap: float = 0.97) -> np.ndarray:
-    """Bring each chunk to a consistent loudness, then cap peaks (no clipping)."""
-    rms = float(np.sqrt((clip ** 2).mean())) if len(clip) else 0.0
-    if rms > 1e-5:
-        clip = clip * (target_rms / rms)
-    peak = float(np.max(np.abs(clip))) if len(clip) else 0.0
-    if peak > peak_cap:
-        clip = clip * (peak_cap / peak)
-    return clip.astype(np.float32)
+def apply_phone_filter(audio: np.ndarray) -> np.ndarray:
+    filtered = sosfilt(_PHONE_SOS, audio).astype(np.float32)
+    peak = float(np.max(np.abs(filtered))) if len(filtered) else 0.0
+    if peak > 0:
+        filtered = filtered / peak * 0.95
+    return filtered
 
 
-MIN_CHUNK_SECS = 8.0   # Dia wants 5-20s of audio; <5s sounds unnatural / unstable
+def clean_len(text: str) -> int:
+    return max(1, len(re.sub(r"\([^)]*\)", "", text)))
+
 
 def build_chunks(lines: list[dict], s1: str) -> list[list[int]]:
-    """Group turns into ~8-16s chunks that always START on an [S1] line. Breaking only at S1
-    boundaries (and only once a chunk has enough material) keeps inputs in Dia's sweet spot:
-    not so short they sound unnatural, not so long they speed up or drop words."""
-    chunks, cur, cur_chars = [], [], 0
+    """~8-16s chunks that start on [S1]; break at S1 boundaries once big enough."""
+    chunks, cur, chars = [], [], 0
     for i, line in enumerate(lines):
-        if cur and line["speaker"] == s1 and (cur_chars / CHARS_PER_SEC) >= MIN_CHUNK_SECS:
-            chunks.append(cur)
-            cur, cur_chars = [], 0
-        cur.append(i)
-        cur_chars += len(re.sub(r"\([^)]*\)", "", line["text"]))
+        if cur and line["speaker"] == s1 and (chars / CHARS_PER_SEC) >= MIN_CHUNK_SECS:
+            chunks.append(cur); cur, chars = [], 0
+        cur.append(i); chars += clean_len(line["text"])
     if cur:
         chunks.append(cur)
     return chunks
 
 
-def chunk_text(idxs: list[int], lines: list[dict], tag: dict) -> str:
-    parts = []
-    for i in idxs:
-        parts.append(f"{tag[lines[i]['speaker']]} {lines[i]['text'].strip()}")
-    return " ".join(parts)
+def split_turns(clip: np.ndarray, sr: int, weights: list[int]) -> list[np.ndarray]:
+    """Split a multi-turn chunk into len(weights) segments at the biggest silence gaps
+    (turn boundaries). Falls back to length-proportional split if gaps aren't found."""
+    n = len(weights)
+    if n <= 1:
+        return [clip]
+    hop, win = int(0.01 * sr), int(0.025 * sr)
+    frames = max(1, (len(clip) - win) // hop)
+    env = np.array([np.sqrt((clip[k * hop:k * hop + win] ** 2).mean()) for k in range(frames)])
+    thr = max(0.02, env.max() * 0.15) if env.size else 0.02
+    # contiguous silence runs
+    runs, k = [], 0
+    silent = env < thr
+    while k < len(silent):
+        if silent[k]:
+            j = k
+            while j < len(silent) and silent[j]:
+                j += 1
+            runs.append((k, j))
+            k = j
+        else:
+            k += 1
+    edge = int(0.3 * sr)
+    cands = []
+    for a, b in runs:
+        center = (a + b) // 2 * hop + win // 2
+        if edge < center < len(clip) - edge and (b - a) * hop >= int(0.05 * sr):
+            cands.append((b - a, center))
+    cands.sort(reverse=True)
+    bounds = sorted(c for _, c in cands[:n - 1])
+    if len(bounds) < n - 1:   # not enough gaps -> proportional split
+        total = sum(weights)
+        bounds, acc = [], 0
+        for w in weights[:-1]:
+            acc += w
+            bounds.append(int(len(clip) * acc / total))
+    segs, prev = [], 0
+    for bnd in bounds:
+        segs.append(clip[prev:bnd]); prev = bnd
+    segs.append(clip[prev:])
+    return segs
+
+
+def build_prime(speakers: list[str], tag: dict, cast: dict):
+    parts, audio = [], []
+    for spk in speakers:
+        c = cast[spk]
+        wav, sr = sf.read(str(REPO_ROOT / c["ref_audio"]), dtype="float32")
+        if wav.ndim > 1:
+            wav = wav.mean(axis=1)
+        wav = resample(wav, sr, DIA_SR)
+        words = c["ref_text"].strip().split()
+        dur = len(wav) / DIA_SR
+        if dur > PRIME_CAP:
+            wav = wav[: int(PRIME_CAP * DIA_SR)]
+            words = words[: max(1, int(len(words) * PRIME_CAP / dur))]
+        audio.append(wav)
+        parts.append(f"{tag[spk]} {' '.join(words)}")
+    return np.concatenate(audio).astype(np.float32), " ".join(parts), len(np.concatenate(audio)) / DIA_SR
+
+
+def chunk_hash(idxs, lines, tag, seed) -> str:
+    body = "|".join(f"{tag[lines[i]['speaker']]}:{lines[i]['text'].strip()}" for i in idxs)
+    return hashlib.sha1(f"{PIPELINE_VERSION}|{seed}|{body}".encode("utf-8")).hexdigest()[:16]
+
+
+def place(lengths, sb_start, sb_end, lines):
+    min_solo = int(MIN_SOLO * OUT_SR)
+    starts, prev_s, prev_e = [], 0, 0
+    for i, line in enumerate(lines):
+        if i == 0:
+            start, onset = 0, sb_start[i]
+        else:
+            ov = float(line.get("overlap", 0.0))
+            gap = -int(ov * OUT_SR) if ov > 0 else (int(abs(ov) * OUT_SR) if ov < 0 else int(DEFAULT_GAP * OUT_SR))
+            onset = max(prev_e + gap, prev_s + min_solo)
+            start = max(0, onset - sb_start[i])
+            onset = start + sb_start[i]
+        starts.append(start)
+        prev_s, prev_e = onset, start + sb_end[i]
+    return starts
 
 
 def generate(slug: str, seed: int) -> None:
@@ -113,119 +179,89 @@ def generate(slug: str, seed: int) -> None:
     episode = json.loads(script_path.read_text(encoding="utf-8"))
     lines   = episode["lines"]
     cast    = load_cast()
+    clip_dir = AUDIO_DIR / slug
+    clip_dir.mkdir(parents=True, exist_ok=True)
+    (clip_dir / "episode.flac").unlink(missing_ok=True)
 
     speakers = list(dict.fromkeys(l["speaker"] for l in lines))
     if len(speakers) != 2:
         raise SystemExit(f"Dia needs exactly 2 speakers; got {speakers}")
     tag = {speakers[0]: "[S1]", speakers[1]: "[S2]"}
-    print(f"  speaker map: {tag}")
 
-    # Voice anchor: a fixed 2-speaker audio prompt (ref clips) + its transcript, prepended to
-    # every chunk so S1/S2 keep the SAME voice across generations. Dia echoes the prompt at the
-    # front of the output, so we slice it off by the prompt's measured duration.
-    PRIME_CAP = 4.5  # seconds per speaker — short prompt keeps input load low (less text dropping)
-    prime_parts, prime_audio = [], []
-    for spk in speakers:
-        c = cast[spk]
-        wav, sr = sf.read(str(REPO_ROOT / c["ref_audio"]), dtype="float32")
-        if wav.ndim > 1:
-            wav = wav.mean(axis=1)
-        wav = resample(wav, sr, DIA_SR)
-        full_dur = len(wav) / DIA_SR
-        words = c["ref_text"].strip().split()
-        if full_dur > PRIME_CAP:           # cap audio + transcript proportionally
-            wav = wav[: int(PRIME_CAP * DIA_SR)]
-            words = words[: max(1, int(len(words) * PRIME_CAP / full_dur))]
-        prime_audio.append(wav)
-        prime_parts.append(f"{tag[spk]} {' '.join(words)}")
-    prime_transcript = " ".join(prime_parts)
-    prime_waveform = np.concatenate(prime_audio).astype(np.float32)
-    prime_secs = len(prime_waveform) / DIA_SR
-    print(f"  voice prompt: {prime_secs:.1f}s ({speakers[0]}=S1, {speakers[1]}=S2)")
-
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"  device: {device}; loading {MODEL_CK}...")
-    processor = AutoProcessor.from_pretrained(MODEL_CK)
-    model = DiaForConditionalGeneration.from_pretrained(MODEL_CK).to(device)
+    manifest_path = clip_dir / ".clips.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
 
     chunks = build_chunks(lines, speakers[0])
-    print(f"  {len(lines)} lines -> {len(chunks)} chunks")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"  {slug}: {len(lines)} lines -> {len(chunks)} chunks, device {device}")
 
-    out_dir = AUDIO_DIR / slug
-    out_dir.mkdir(parents=True, exist_ok=True)
-    tmp = out_dir / "_chunk_tmp.wav"
+    model = processor = prime = None
+    tmp = clip_dir / "_dia_tmp.wav"
+    lengths = [0] * len(lines)
+    sbs = [(0, 0)] * len(lines)
+    rendered = 0
 
-    rendered: list[np.ndarray] = []
-    chunk_durs: list[float] = []   # spoken seconds per chunk (excludes the inter-chunk gap)
     for ci, idxs in enumerate(chunks):
-        # Re-seed before every chunk so each generation draws from the same RNG state —
-        # keeps voice/prosody consistent across chunks and the whole run reproducible.
+        key = chunk_hash(idxs, lines, tag, seed)
+        if all(manifest.get(str(i), {}).get("hash") == key and (clip_dir / f"{i}.flac").exists() for i in idxs):
+            for i in idxs:
+                m = manifest[str(i)]; lengths[i] = int(m["length"]); sbs[i] = tuple(m["sb"])
+            continue
+        if model is None:
+            print(f"  loading {MODEL_CK}...")
+            processor = AutoProcessor.from_pretrained(MODEL_CK)
+            model = DiaForConditionalGeneration.from_pretrained(MODEL_CK).to(device)
+            prime = build_prime(speakers, tag, cast)
+        prime_wav, prime_tx, prime_secs = prime
+        body = " ".join(f"{tag[lines[i]['speaker']]} {lines[i]['text'].strip()}" for i in idxs)
         torch.manual_seed(seed)
         if torch.cuda.is_available():
             torch.cuda.manual_seed_all(seed)
-        text = prime_transcript + " " + chunk_text(idxs, lines, tag)
-        inputs = processor(
-            text=[text],
-            audio=[prime_waveform],
-            sampling_rate=DIA_SR,
-            padding=True,
-            return_tensors="pt",
-        ).to(device)
-        out = model.generate(
-            **inputs, max_new_tokens=4096,
-            guidance_scale=4.0, temperature=1.3, top_p=0.95, top_k=50,
-        )
-        decoded = processor.batch_decode(out)
-        processor.save_audio(decoded, str(tmp))      # documented save path
+        inputs = processor(text=[f"{prime_tx} {body}"], audio=[prime_wav],
+                           padding=True, return_tensors="pt").to(device)
+        content_secs = sum(clean_len(lines[i]["text"]) for i in idxs) / CHARS_PER_SEC
+        max_tok = max(512, min(3072, int((prime_secs + content_secs * 1.6) * TOKENS_PER_SEC) + 256))
+        out = model.generate(**inputs, max_new_tokens=max_tok,
+                             guidance_scale=4.0, temperature=1.3, top_p=0.95, top_k=50)
+        processor.save_audio(processor.batch_decode(out), str(tmp))
         audio, sr = sf.read(str(tmp), dtype="float32")
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
         clip = resample(audio, sr, OUT_SR)
-        # The output is the prompt's exact codes (decoder prefix) + content, so cut exactly at
-        # the prompt duration. Then trim only leading near-silence so content starts crisp.
         cut = int(prime_secs * OUT_SR)
-        clip = clip[cut:] if cut < len(clip) else clip
-        nz = np.nonzero(np.abs(clip) > 0.02)[0]
-        if len(nz):
-            clip = clip[max(0, nz[0] - int(0.05 * OUT_SR)):]
-        clip = normalize_rms(clip)            # consistent per-chunk loudness
-        rendered.append(clip)
-        rendered.append(np.zeros(int(OUT_SR * GAP_SECS), dtype=np.float32))
-        chunk_durs.append(len(clip) / OUT_SR)
-        print(f"    chunk {ci+1}/{len(chunks)}: lines {idxs[0]}-{idxs[-1]}, {chunk_durs[-1]:.1f}s")
+        content = clip[cut:] if cut < len(clip) else clip
+
+        segs = split_turns(content, OUT_SR, [clean_len(lines[i]["text"]) for i in idxs])
+        for i, seg in zip(idxs, segs):
+            # trim leading silence, phone-filter callers, normalize peak
+            nz = np.nonzero(np.abs(seg) > 0.02)[0]
+            if len(nz):
+                seg = seg[max(0, nz[0] - int(0.05 * OUT_SR)):]
+            if cast[lines[i]["speaker"]].get("phone_filter"):
+                seg = apply_phone_filter(seg)
+            peak = float(np.max(np.abs(seg))) if len(seg) else 0.0
+            if peak > 0.97:
+                seg = seg / peak * 0.95
+            seg = seg.astype(np.float32)
+            sf.write(str(clip_dir / f"{i}.flac"), seg, OUT_SR, format="flac")
+            s, e = speech_bounds(seg)
+            manifest[str(i)] = {"hash": key, "length": len(seg), "sb": [s, e]}
+            lengths[i] = len(seg); sbs[i] = (s, e)
+        rendered += 1
+        print(f"    chunk {ci+1}/{len(chunks)}: lines {idxs[0]}-{idxs[-1]} -> {len(segs)} segs, {len(content)/OUT_SR:.1f}s")
+
     tmp.unlink(missing_ok=True)
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
-    track = np.concatenate(rendered)
-    # Soft limiter then peak normalize — even loudness, no clipping
-    track = np.tanh(track * 1.1).astype(np.float32)
-    mx = np.max(np.abs(track))
-    if mx > 0:
-        track = track / mx * 0.95
-
-    out_flac = out_dir / "episode.flac"
-    sf.write(str(out_flac), track, OUT_SR, format="flac")
-    total = len(track) / OUT_SR
-    print(f"  track written: {out_flac} ({total:.1f}s)")
-
-    # Per-line timestamps: split each chunk's duration across its lines by spoken length.
-    offset = 0.0
-    for idxs, dur in zip(chunks, chunk_durs):
-        weights = [max(1, len(re.sub(r"\([^)]*\)", "", lines[i]["text"]))) for i in idxs]
-        wsum = sum(weights)
-        t = offset
-        for i, w in zip(idxs, weights):
-            share = dur * w / wsum
-            lines[i]["timestamp"] = round(t, 3)
-            lines[i]["duration"] = round(share, 3)
-            t += share
-        offset += dur + GAP_SECS
-
-    episode["track"] = f"/audio/radio/{slug}/episode.flac"
-    for line in lines:
-        line.pop("audio", None)
-    (SCRIPTS_DIR / f"{slug}.json").write_text(
-        json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"  timestamps + track written to {slug}.json (timeline {total:.1f}s)")
+    starts = place(lengths, [s for s, _ in sbs], [e for _, e in sbs], lines)
+    episode.pop("track", None)
+    for i, line in enumerate(lines):
+        line["timestamp"] = round(starts[i] / OUT_SR, 3)
+        line["duration"]  = round(lengths[i] / OUT_SR, 3)
+        line["audio"]     = f"/audio/radio/{slug}/{i}.flac"
+    script_path.write_text(json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
+    total = (max(st + l for st, l in zip(starts, lengths)) / OUT_SR) if lengths else 0
+    print(f"  placed {len(lines)} clips, {rendered} chunks (re)rendered, timeline {total:.1f}s")
 
 
 def main() -> None:

@@ -156,8 +156,8 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         return
 
     episode  = json.loads(script_path.read_text(encoding="utf-8"))
-    if episode.get("engine") == "dia":
-        print(f"  skip (engine=dia, use generate-radio-dia.py): {slug}")
+    if episode.get("engine", "").startswith("dia"):
+        print(f"  skip (engine={episode['engine']}, use the Dia generator): {slug}")
         return
     lines    = episode["lines"]
     cast     = load_cast()

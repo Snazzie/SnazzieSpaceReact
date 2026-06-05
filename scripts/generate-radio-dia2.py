@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""Dia2 generator for Snazzie FM episodes (engine: "dia2").
+
+Dia2 (nari-labs/Dia2-2B) is a streaming dialogue model: up to ~2 min per pass with real
+turn-taking, per-speaker prefix conditioning, and WORD TIMESTAMPS in the output. We
+generate the whole episode (split into <=~100s passes at [S1] boundaries), then use the
+word timestamps to split each pass into exact per-line clips — so callers get a clean
+phone filter and clips drop into the per-clip multitrack player. No silence-guessing.
+
+Must run inside the dia2 uv env, e.g.:
+    uv run --project ../dia2 --with soundfile --with scipy \
+        python scripts/generate-radio-dia2.py the-frank-tapes
+"""
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+import numpy as np
+import soundfile as sf
+import torch
+from scipy.signal import butter, sosfilt
+
+REPO_ROOT   = Path(__file__).parent.parent
+CAST_FILE   = Path(__file__).parent / "cast.json"
+SCRIPTS_DIR = REPO_ROOT / "Website/src/data/radio"
+AUDIO_DIR   = REPO_ROOT / "Website/public/audio/radio"
+REPO_2B     = "nari-labs/Dia2-2B"
+OUT_SR      = 24_000
+PASS_SECS   = 100.0    # keep each Dia2 pass under its ~2 min limit
+CHARS_PER_SEC = 14.0
+DEFAULT_GAP = 0.18
+MIN_SOLO    = 0.5
+
+_PHONE_SOS = butter(4, [300 / (OUT_SR / 2), 3400 / (OUT_SR / 2)], btype="band", output="sos")
+
+
+def load_cast() -> dict:
+    return json.loads(CAST_FILE.read_text(encoding="utf-8"))
+
+
+def resample(audio: np.ndarray, src: int, dst: int) -> np.ndarray:
+    if src == dst:
+        return audio.astype(np.float32)
+    from scipy.signal import resample_poly
+    from math import gcd
+    g = gcd(src, dst)
+    return resample_poly(audio, dst // g, src // g).astype(np.float32)
+
+
+def speech_bounds(a: np.ndarray, thresh: float = 0.015) -> tuple[int, int]:
+    if len(a) == 0:
+        return 0, 0
+    m = np.abs(a) > thresh
+    if not m.any():
+        return 0, len(a)
+    return int(np.argmax(m)), int(len(m) - np.argmax(m[::-1]))
+
+
+def phone(a: np.ndarray) -> np.ndarray:
+    f = sosfilt(_PHONE_SOS, a).astype(np.float32)
+    pk = float(np.max(np.abs(f))) if len(f) else 0.0
+    return (f / pk * 0.95) if pk > 0 else f
+
+
+def tok(text: str) -> list[str]:
+    return re.findall(r"[a-z0-9']+", re.sub(r"\([^)]*\)", "", text.lower()))
+
+
+def build_passes(lines: list[dict], s1: str) -> list[list[int]]:
+    """Split the episode into <=PASS_SECS passes, each starting on [S1]."""
+    passes, cur, chars = [], [], 0
+    for i, line in enumerate(lines):
+        est = len(re.sub(r"\([^)]*\)", "", line["text"]))
+        if cur and line["speaker"] == s1 and (chars + est) / CHARS_PER_SEC > PASS_SECS:
+            passes.append(cur); cur, chars = [], 0
+        cur.append(i); chars += est
+    if cur:
+        passes.append(cur)
+    return passes
+
+
+def place(lengths, sb0, sb1, lines):
+    ms = int(MIN_SOLO * OUT_SR)
+    starts, ps, pe = [], 0, 0
+    for i, line in enumerate(lines):
+        if i == 0:
+            start, onset = 0, sb0[i]
+        else:
+            ov = float(line.get("overlap", 0.0))
+            gap = -int(ov * OUT_SR) if ov > 0 else (int(abs(ov) * OUT_SR) if ov < 0 else int(DEFAULT_GAP * OUT_SR))
+            onset = max(pe + gap, ps + ms)
+            start = max(0, onset - sb0[i])
+            onset = start + sb0[i]
+        starts.append(start); ps, pe = onset, start + sb1[i]
+    return starts
+
+
+def generate(slug: str) -> None:
+    from dia2 import Dia2, GenerationConfig, SamplingConfig
+
+    episode = json.loads((SCRIPTS_DIR / f"{slug}.json").read_text(encoding="utf-8"))
+    lines = episode["lines"]
+    cast = load_cast()
+    speakers = list(dict.fromkeys(l["speaker"] for l in lines))
+    if len(speakers) != 2:
+        raise SystemExit(f"Dia2 needs exactly 2 speakers; got {speakers}")
+    tag = {speakers[0]: "[S1]", speakers[1]: "[S2]"}
+
+    clip_dir = AUDIO_DIR / slug
+    clip_dir.mkdir(parents=True, exist_ok=True)
+    (clip_dir / "episode.flac").unlink(missing_ok=True)
+    for old in clip_dir.glob("*.flac"):
+        old.unlink()
+
+    prefix1 = str(REPO_ROOT / cast[speakers[0]]["ref_audio"])
+    prefix2 = str(REPO_ROOT / cast[speakers[1]]["ref_audio"])
+
+    print(f"  loading {REPO_2B}...")
+    dia = Dia2.from_repo(REPO_2B, device="cuda" if torch.cuda.is_available() else "cpu", dtype="bfloat16")
+    cfg = GenerationConfig(
+        cfg_scale=3.0,
+        audio=SamplingConfig(temperature=0.8, top_k=50),
+        use_cuda_graph=True,
+    )
+
+    passes = build_passes(lines, speakers[0])
+    print(f"  {len(lines)} lines -> {len(passes)} pass(es)")
+
+    lengths = [0] * len(lines)
+    sb0 = [0] * len(lines)
+    sb1 = [0] * len(lines)
+
+    for pi, idxs in enumerate(passes):
+        script = " ".join(f"{tag[lines[i]['speaker']]} {lines[i]['text'].strip()}" for i in idxs)
+        res = dia.generate(script, config=cfg, prefix_speaker_1=prefix1,
+                           prefix_speaker_2=prefix2, include_prefix=False, verbose=False)
+        wav = res.waveform.detach().cpu().numpy().astype(np.float32)
+        if wav.ndim > 1:
+            wav = wav.mean(axis=0) if wav.shape[0] < wav.shape[-1] else wav.mean(axis=1)
+        wav = resample(wav, res.sample_rate, OUT_SR)
+        stamps = res.timestamps                  # [(word, start_sec), ...] aligned to script
+        total = len(wav) / OUT_SR
+
+        # Map each line to a [start,end] span by consuming its word count from the stamp stream
+        wi = 0
+        for k, i in enumerate(idxs):
+            ntok = max(1, len(tok(lines[i]["text"])))
+            start_t = stamps[wi][1] if wi < len(stamps) else (lengths and total)
+            wi = min(len(stamps), wi + ntok)
+            end_t = stamps[wi][1] if wi < len(stamps) else total
+            a, b = int(start_t * OUT_SR), int(min(total, end_t) * OUT_SR)
+            seg = wav[max(0, a):max(a + 1, b)].copy()
+            if cast[lines[i]["speaker"]].get("phone_filter"):
+                seg = phone(seg)
+            pk = float(np.max(np.abs(seg))) if len(seg) else 0.0
+            if pk > 0.97:
+                seg = seg / pk * 0.95
+            sf.write(str(clip_dir / f"{i}.flac"), seg.astype(np.float32), OUT_SR, format="flac")
+            s, e = speech_bounds(seg)
+            lengths[i] = len(seg); sb0[i] = s; sb1[i] = e
+        print(f"    pass {pi+1}/{len(passes)}: lines {idxs[0]}-{idxs[-1]}, {total:.1f}s, {len(stamps)} words")
+
+    starts = place(lengths, sb0, sb1, lines)
+    episode.pop("track", None)
+    for i, line in enumerate(lines):
+        line["timestamp"] = round(starts[i] / OUT_SR, 3)
+        line["duration"]  = round(lengths[i] / OUT_SR, 3)
+        line["audio"]     = f"/audio/radio/{slug}/{i}.flac"
+    (SCRIPTS_DIR / f"{slug}.json").write_text(json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
+    tl = (max(st + l for st, l in zip(starts, lengths)) / OUT_SR) if lengths else 0
+    print(f"  placed {len(lines)} clips, timeline {tl:.1f}s")
+
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser()
+    p.add_argument("slug")
+    args = p.parse_args()
+    generate(args.slug)
