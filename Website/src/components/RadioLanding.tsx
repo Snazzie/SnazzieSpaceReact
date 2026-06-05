@@ -20,8 +20,8 @@ const TALENT: { id: string; bio: string }[] = [
 ];
 
 const SLOTS = [
-  "10:00 PM", "11:00 PM", "12:00 AM", "1:00 AM", "2:00 AM",
-  "3:00 AM", "4:00 AM", "5:00 AM", "5:30 AM",
+  "MON 10 PM", "TUE 11 PM", "WED 12 AM", "THU 1 AM", "FRI 2 AM",
+  "SAT 10 PM", "SUN 11 PM", "MON 2 AM", "TUE 3 AM",
 ];
 
 function initials(name: string) {
