@@ -33,6 +33,7 @@ export default function RadioTopHits({ music, musicIdx, musicPlaying, musicLoadi
                   {track.coverArt
                     ? <img src={track.coverArt} alt={track.title} className="rl-hit-cover" />
                     : <span className="rl-hit-disc" aria-hidden />}
+                  <span className="rl-hit-rank">#{i + 1}</span>
                   <span className="rl-hit-art-overlay" aria-hidden>
                     <span className="rl-hit-play-icon">
                       {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
@@ -41,7 +42,6 @@ export default function RadioTopHits({ music, musicIdx, musicPlaying, musicLoadi
                   {isThisPlaying && <span className="rl-hit-playing-badge">ON AIR</span>}
                 </span>
                 <span className="rl-hit-info">
-                  <span className="rl-hit-rank">#{i + 1}</span>
                   <span className="rl-hit-title">{track.title}</span>
                   {track.description && <span className="rl-hit-desc">{track.description}</span>}
                 </span>

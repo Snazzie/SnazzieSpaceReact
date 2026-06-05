@@ -288,8 +288,11 @@
   background:rgba(0,0,0,.35);opacity:0;transition:opacity .2s;}
 .rl-hit:hover .rl-hit-art-overlay,.rl-hit-active .rl-hit-art-overlay{opacity:1;}
 .rl-hit-play-icon{font-size:2rem;color:#fff;text-shadow:0 0 12px rgba(0,0,0,.8);}
-.rl-hit-info{padding:.7rem .85rem .8rem;}
-.rl-hit-rank{font-family:'VT323',monospace;font-size:.85rem;letter-spacing:.12em;color:#8a754f;}
+.rl-hit-info{padding:.7rem .85rem .8rem;display:flex;flex-direction:column;}
+.rl-hit-rank{position:absolute;top:.45rem;left:.45rem;z-index:2;
+  font-family:'VT323',monospace;font-size:.95rem;letter-spacing:.06em;line-height:1;
+  color:#1a0d02;background:var(--amber);padding:.18rem .42rem;border-radius:4px;
+  box-shadow:0 2px 6px rgba(0,0,0,.5);}
 .rl-hit-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.05em;
   color:#f3e2c4;line-height:1.1;margin:.1rem 0 .2rem;}
 .rl-hit-label{font-family:'VT323',monospace;font-size:.85rem;color:#8a754f;letter-spacing:.04em;}
