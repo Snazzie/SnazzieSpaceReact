@@ -23,25 +23,27 @@ REPO_ROOT  = Path(__file__).parent.parent
 CAST_FILE  = Path(__file__).parent / "cast.json"
 VOICES_DIR = Path(__file__).parent / "voices"
 
-# Map character -> LibriSpeech test-clean speaker_id
-# 14 distinct speakers chosen for voice diversity
-# LibriSpeech speaker genders verified from dataset metadata
-CHARACTER_SPEAKERS = {
-    "ronnie":           1089,   # male
-    "barry":            1188,   # male
-    "rhonda":           1284,   # female
-    "todd":             2300,   # male
-    "caller-steve":     1580,   # male
-    "caller-gary":      4507,   # male
-    "caller-linda":     237,    # female
-    "caller-chad":      5142,   # male
-    "caller-mildred":   908,    # female
-    "caller-darnell":   7850,   # male
-    "caller-patricia":  2830,   # female
-    "caller-winston":   4077,   # male
-    "caller-kim":       121,    # female
-    "caller-frank":     260,    # male
+# Character -> (LibriSpeech test-clean speaker_id, gender). Genders are AUTHORITATIVE,
+# taken from LibriSpeech SPEAKERS.TXT (subset test-clean) — the ref voice's real gender
+# must match the character's name/instruct, since OmniVoice clones the ref regardless of
+# the instruct text. All 14 speakers are distinct.
+CHARACTER_VOICES = {
+    "ronnie":          (1089, "M"),
+    "barry":           (1188, "M"),
+    "rhonda":          (1284, "F"),
+    "todd":            (2300, "M"),
+    "caller-steve":    (  61, "M"),
+    "caller-gary":     ( 672, "M"),
+    "caller-linda":    ( 237, "F"),
+    "caller-chad":     (1320, "M"),
+    "caller-mildred":  ( 121, "F"),
+    "caller-darnell":  (7127, "M"),
+    "caller-patricia": (2961, "F"),
+    "caller-winston":  (4077, "M"),
+    "caller-kim":      (3570, "F"),
+    "caller-frank":    ( 260, "M"),
 }
+CHARACTER_SPEAKERS = {c: sid for c, (sid, _) in CHARACTER_VOICES.items()}
 
 # Minimum clip length to use as reference (seconds)
 MIN_CLIP_SECS = 4.0
@@ -120,12 +122,13 @@ def main() -> None:
         out_txt = VOICES_DIR / f"{char}.txt"
         out_txt.write_text(text, encoding="utf-8")
 
-        # Update cast.json
+        # Update cast.json (record gender metadata so name/voice always agree)
         if char in cast:
             cast[char]["ref_audio"] = f"scripts/voices/{char}.wav"
             cast[char]["ref_text"]  = text
+            cast[char]["gender"]    = CHARACTER_VOICES[char][1]
 
-        print(f"  {char} ({spk_id}): {out_wav.name}")
+        print(f"  {char} ({spk_id}, {CHARACTER_VOICES[char][1]}): {out_wav.name}")
 
     CAST_FILE.write_text(json.dumps(cast, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\ncast.json updated. Run: python scripts/generate-radio.py the-truth-hour")

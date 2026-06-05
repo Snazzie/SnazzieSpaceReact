@@ -7,7 +7,8 @@
     "speed": 0.95,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ronnie.wav",
-    "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER"
+    "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER",
+    "gender": "M"
   },
   "barry": {
     "name": "Barry Fitch",
@@ -17,7 +18,8 @@
     "speed": 1.2,
     "phone_filter": false,
     "ref_audio": "scripts/voices/barry.wav",
-    "ref_text": "YOU WILL FIND ME CONTINUALLY SPEAKING OF FOUR MEN TITIAN HOLBEIN TURNER AND TINTORET IN ALMOST THE SAME TERMS"
+    "ref_text": "YOU WILL FIND ME CONTINUALLY SPEAKING OF FOUR MEN TITIAN HOLBEIN TURNER AND TINTORET IN ALMOST THE SAME TERMS",
+    "gender": "M"
   },
   "rhonda": {
     "name": "Rhonda K.",
@@ -27,7 +29,8 @@
     "speed": 1.0,
     "phone_filter": false,
     "ref_audio": "scripts/voices/rhonda.wav",
-    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT"
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT",
+    "gender": "F"
   },
   "todd": {
     "name": "Todd",
@@ -37,7 +40,8 @@
     "speed": 1.1,
     "phone_filter": false,
     "ref_audio": "scripts/voices/todd.wav",
-    "ref_text": "THE PARIS PLANT LIKE THAT AT THE CRYSTAL PALACE WAS A TEMPORARY EXHIBIT"
+    "ref_text": "THE PARIS PLANT LIKE THAT AT THE CRYSTAL PALACE WAS A TEMPORARY EXHIBIT",
+    "gender": "M"
   },
   "caller-steve": {
     "name": "Steve",
@@ -47,7 +51,8 @@
     "speed": 1.3,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-steve.wav",
-    "ref_text": "I WILL ENDEAVOUR IN MY STATEMENT TO AVOID SUCH TERMS AS WOULD SERVE TO LIMIT THE EVENTS TO ANY PARTICULAR PLACE OR GIVE A CLUE AS TO THE PEOPLE CONCERNED"
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M"
   },
   "caller-gary": {
     "name": "Gary",
@@ -57,7 +62,8 @@
     "speed": 0.9,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-gary.wav",
-    "ref_text": "IT ENGENDERS A WHOLE WORLD LA PEGRE FOR WHICH READ THEFT AND A HELL LA PEGRENNE FOR WHICH READ HUNGER"
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M"
   },
   "caller-linda": {
     "name": "Linda",
@@ -67,7 +73,8 @@
     "speed": 0.88,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-linda.wav",
-    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW"
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F"
   },
   "caller-chad": {
     "name": "Chad",
@@ -77,7 +84,8 @@
     "speed": 1.25,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-chad.wav",
-    "ref_text": "IN FIVE MINUTES I WAS IN A NEW WORLD AND MY MELANCHOLY ROOM WAS FULL OF THE LIVELIEST FRENCH COMPANY"
+    "ref_text": "NOTWITHSTANDING THE HIGH RESOLUTION OF HAWKEYE HE FULLY COMPREHENDED ALL THE DIFFICULTIES AND DANGER HE WAS ABOUT TO INCUR",
+    "gender": "M"
   },
   "caller-mildred": {
     "name": "Mildred",
@@ -87,7 +95,8 @@
     "speed": 0.85,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-mildred.wav",
-    "ref_text": "TO FADE AWAY LIKE MORNING BEAUTY FROM HER MORTAL DAY DOWN BY THE RIVER OF ADONA HER SOFT VOICE IS HEARD AND THUS HER GENTLE LAMENTATION FALLS LIKE MORNING DEW"
+    "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON",
+    "gender": "F"
   },
   "caller-darnell": {
     "name": "Darnell",
@@ -96,8 +105,9 @@
     "instruct": "male, middle-aged, low pitch",
     "speed": 0.92,
     "phone_filter": true,
-    "ref_audio": "scripts/voices/seedtts_ref.wav",
-    "ref_text": "Some call me nature. Others call me Mother Nature. I've been here for over four point and five billion years, twenty-two thousand five hundred times longer than you."
+    "ref_audio": "scripts/voices/caller-darnell.wav",
+    "ref_text": "EVERY ONE COULD OBSERVE HIS AGITATION AND PROSTRATION A PROSTRATION WHICH WAS INDEED THE MORE REMARKABLE SINCE PEOPLE WERE NOT ACCUSTOMED TO SEE HIM WITH HIS ARMS HANGING LISTLESSLY BY HIS SIDE HIS HEAD BEWILDERED AND HIS EYES WITH ALL THEIR BRIGHT INTELLIGENCE BEDIMMED",
+    "gender": "M"
   },
   "caller-patricia": {
     "name": "Patricia",
@@ -107,7 +117,8 @@
     "speed": 1.05,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-patricia.wav",
-    "ref_text": "DO YOU SUPPOSE THAT GOD FOR THE SAKE OF A FEW LUTHERAN HERETICS WOULD DISOWN HIS ENTIRE CHURCH"
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F"
   },
   "caller-winston": {
     "name": "Winston",
@@ -117,7 +128,8 @@
     "speed": 0.9,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-winston.wav",
-    "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH"
+    "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH",
+    "gender": "M"
   },
   "caller-kim": {
     "name": "Kim",
@@ -127,7 +139,8 @@
     "speed": 1.15,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-kim.wav",
-    "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON"
+    "ref_text": "BUT ALREADY AT A POINT IN ECONOMIC EVOLUTION FAR ANTEDATING THE EMERGENCE OF THE LADY SPECIALISED CONSUMPTION OF GOODS AS AN EVIDENCE OF PECUNIARY STRENGTH HAD BEGUN TO WORK OUT IN A MORE OR LESS ELABORATE SYSTEM",
+    "gender": "F"
   },
   "caller-frank": {
     "name": "Frank",
@@ -137,6 +150,7 @@
     "speed": 1.0,
     "phone_filter": true,
     "ref_audio": "scripts/voices/caller-frank.wav",
-    "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS"
+    "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS",
+    "gender": "M"
   }
 }

@@ -52,10 +52,6 @@ def resample(audio: np.ndarray, src: int, dst: int) -> np.ndarray:
     return resample_poly(audio, dst // g, src // g).astype(np.float32)
 
 
-def clean_for_match(s: str) -> str:
-    return re.sub(r"[^a-z0-9 ]", "", s.lower()).split()
-
-
 def build_chunks(lines: list[dict], s1: str) -> list[list[int]]:
     """Group consecutive line indices into ~CHUNK_SECS chunks. Each chunk must START on an
     S1 line (Dia requires input to begin with [S1] and alternate)."""
@@ -107,6 +103,7 @@ def generate(slug: str) -> None:
     tmp = out_dir / "_chunk_tmp.wav"
 
     rendered: list[np.ndarray] = []
+    chunk_durs: list[float] = []   # spoken seconds per chunk (excludes the inter-chunk gap)
     for ci, idxs in enumerate(chunks):
         text = chunk_text(idxs, lines, tag)   # text-only; voices consistent within a chunk
         inputs = processor(
@@ -123,9 +120,11 @@ def generate(slug: str) -> None:
         audio, sr = sf.read(str(tmp), dtype="float32")
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
-        rendered.append(resample(audio, sr, OUT_SR))
+        clip = resample(audio, sr, OUT_SR)
+        rendered.append(clip)
         rendered.append(np.zeros(int(OUT_SR * GAP_SECS), dtype=np.float32))
-        print(f"    chunk {ci+1}/{len(chunks)}: lines {idxs[0]}-{idxs[-1]}, {len(audio)/sr:.1f}s")
+        chunk_durs.append(len(clip) / OUT_SR)
+        print(f"    chunk {ci+1}/{len(chunks)}: lines {idxs[0]}-{idxs[-1]}, {chunk_durs[-1]:.1f}s")
     tmp.unlink(missing_ok=True)
 
     track = np.concatenate(rendered)
@@ -133,48 +132,23 @@ def generate(slug: str) -> None:
     if mx > 0:
         track = track / mx * 0.95
 
-    out_dir = AUDIO_DIR / slug
-    out_dir.mkdir(parents=True, exist_ok=True)
     out_flac = out_dir / "episode.flac"
     sf.write(str(out_flac), track, OUT_SR, format="flac")
-    print(f"  track written: {out_flac} ({len(track)/OUT_SR:.1f}s)")
-
-    align(slug, episode, lines, out_flac, track)
-
-
-def align(slug: str, episode: dict, lines: list[dict], flac: Path, track: np.ndarray) -> None:
-    from faster_whisper import WhisperModel
     total = len(track) / OUT_SR
-    print("  aligning with faster-whisper...")
-    wm = WhisperModel("base.en", device="cuda" if torch.cuda.is_available() else "cpu",
-                      compute_type="float16" if torch.cuda.is_available() else "int8")
-    segments, _ = wm.transcribe(str(flac), word_timestamps=True)
-    words = [(w.word, w.start, w.end) for seg in segments for w in (seg.words or [])]
+    print(f"  track written: {out_flac} ({total:.1f}s)")
 
-    wi = 0
-    for li, line in enumerate(lines):
-        target = clean_for_match(line["text"])
-        if not target:
-            line["timestamp"] = round(words[wi][1] if wi < len(words) else 0.0, 3)
-            line["duration"] = 0.3
-            continue
-        # find the run of recognized words matching this line's first/last tokens
-        start_wi = wi
-        start_t = words[wi][1] if wi < len(words) else (lines[li-1]["timestamp"] if li else 0.0)
-        matched = 0
-        while wi < len(words) and matched < len(target):
-            w = clean_for_match(words[wi][0])
-            wi += 1
-            if w and w[0] == target[matched]:
-                matched += 1
-        end_t = words[wi - 1][2] if wi > 0 and wi <= len(words) else start_t + len(target) / 3.0
-        line["timestamp"] = round(start_t, 3)
-        line["duration"] = round(max(0.3, end_t - start_t), 3)
-
-    # enforce monotonic timestamps
-    for i in range(1, len(lines)):
-        if lines[i]["timestamp"] < lines[i - 1]["timestamp"]:
-            lines[i]["timestamp"] = lines[i - 1]["timestamp"]
+    # Per-line timestamps: split each chunk's duration across its lines by spoken length.
+    offset = 0.0
+    for idxs, dur in zip(chunks, chunk_durs):
+        weights = [max(1, len(re.sub(r"\([^)]*\)", "", lines[i]["text"]))) for i in idxs]
+        wsum = sum(weights)
+        t = offset
+        for i, w in zip(idxs, weights):
+            share = dur * w / wsum
+            lines[i]["timestamp"] = round(t, 3)
+            lines[i]["duration"] = round(share, 3)
+            t += share
+        offset += dur + GAP_SECS
 
     episode["track"] = f"/audio/radio/{slug}/episode.flac"
     for line in lines:

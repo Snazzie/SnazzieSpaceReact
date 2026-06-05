@@ -57,7 +57,16 @@ retiming a line only edits its `timestamp`, never the audio.
    "come on", "would ya") unless the staccato beat is the joke.
 5. **Pauses** — insert real silence inside a line with a token: `<p>` = 0.5s, `<p:0.8>` =
    0.8s. The UI strips tokens from the transcript; the generator turns them into silence.
-6. **Overlap / pacing** (`overlap`, seconds, measured between the **speech** of adjacent lines):
+6. **Emotional arc** — episodes should *develop*, not stay flat. Build a 3-act escalation:
+   calm/conversational → unease → agitation/near-panic. Show it in the text so the voice
+   reflects it: interjections, ellipses early; caps, `!`, repetition, and Dia nonverbals
+   (`(gasps)`, `(sighs)`) late. (Dia voices this escalation; OmniVoice less so.)
+7. **Interruptions when agitated** — as tension rises, characters cut each other off:
+   - OmniVoice (multitrack): give the interrupting line a **positive `overlap`** so its speech
+     starts before the previous line's ends — a real audio talk-over.
+   - Dia (single track, can't overlap): write the cut-in — interrupted line trails off (`...`),
+     the interrupter jumps in mid-thought. Dia voices the rush.
+8. **Overlap / pacing** (`overlap`, seconds, measured between the **speech** of adjacent lines):
    - `0` → default 0.15s gap between speech
    - negative (e.g. `-0.2`) → that much gap after the previous line's speech (calm, sequential)
    - positive (e.g. `0.4`) → next line's speech starts that early (talk-over); clamped so the
@@ -93,9 +102,14 @@ Per character: `name`, `color`, `role`, `instruct`, `speed`, `phone_filter`, `re
   `american/australian/british/canadian/chinese/indian/japanese/korean/portuguese/russian accent`,
   `male/female`, `child/teenager/young adult/middle-aged/elderly`,
   `very low/low/moderate/high/very high pitch`, `whisper`. Anything else errors out.
-- **`ref_audio` + `ref_text`** — the cloned voice + its transcript. **Delivery/cadence comes
-  from the reference clip**, not `instruct`. To change *how* someone talks (vs timbre), swap
-  the reference. Callers share generic refs; distinct LibriSpeech speakers give distinct voices.
+- **`ref_audio` + `ref_text` + `gender`** — the cloned voice + its transcript + its real gender.
+  **The ref's actual gender wins** — OmniVoice clones the ref regardless of what `instruct` says,
+  so a male character MUST use a male ref. `download-voices.py` maps each character to a
+  gender-verified LibriSpeech **test-clean** speaker (`CHARACTER_VOICES`, genders from
+  `SPEAKERS.TXT`) and writes `gender` into `cast.json`. If a voice sounds wrong-gendered, fix the
+  speaker id there and re-download — don't just edit `instruct`.
+- **Delivery/cadence comes from the reference clip**, not `instruct`. To change *how* someone
+  talks (vs timbre), swap the reference. Distinct speakers give distinct voices.
 - **`speed`** — ~1.0 natural; higher = faster/manic.
 - **`phone_filter: true`** — 300–3400 Hz bandpass + light noise = telephone sound. On for callers.
 - Refresh references with `python scripts/download-voices.py` (pulls LibriSpeech test-clean,

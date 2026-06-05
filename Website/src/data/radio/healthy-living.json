@@ -8,359 +8,359 @@
       "text": "You're listening to the Wellness Hour, here on Snazzie FM. Tonight, we heal. Our first caller has a regimen she swears by. Patricia, you're on the air.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 11.151,
+      "duration": 11.4,
       "audio": "/audio/radio/healthy-living/0.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Thank you, Ronnie. So, I follow a very simple, very clean protocol. <p:0.3> I only eat foods that are the color beige.",
       "overlap": -0.2,
-      "timestamp": 11.351,
-      "duration": 7.327,
+      "timestamp": 10.214,
+      "duration": 10.02,
       "audio": "/audio/radio/healthy-living/1.flac"
     },
     {
       "speaker": "barry",
       "text": "...Beige.",
       "overlap": -0.15,
-      "timestamp": 18.828,
-      "duration": 1.118,
+      "timestamp": 19.172,
+      "duration": 1.4,
       "audio": "/audio/radio/healthy-living/2.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Beige, Barry. Beige is calm. Beige does not inflame.",
       "overlap": -0.1,
-      "timestamp": 20.046,
-      "duration": 3.426,
+      "timestamp": 20.157,
+      "duration": 4.65,
       "audio": "/audio/radio/healthy-living/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And how do you feel?",
       "overlap": -0.2,
-      "timestamp": 23.671,
-      "duration": 1.489,
+      "timestamp": 23.638,
+      "duration": 2.04,
       "audio": "/audio/radio/healthy-living/4.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Incredible. <p:0.3> I have not felt a single emotion in eight months.",
       "overlap": -0.15,
-      "timestamp": 25.31,
-      "duration": 4.651,
+      "timestamp": 24.858,
+      "duration": 6.5,
       "audio": "/audio/radio/healthy-living/5.flac"
     },
     {
       "speaker": "barry",
       "text": "That... that doesn't sound like health, Patricia.",
       "overlap": -0.2,
-      "timestamp": 30.161,
-      "duration": 3.573,
+      "timestamp": 29.482,
+      "duration": 4.04,
       "audio": "/audio/radio/healthy-living/6.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It's balance, Barry. <p:0.4> I have achieved total beige.",
       "overlap": -0.15,
-      "timestamp": 33.884,
-      "duration": 4.01,
+      "timestamp": 32.68,
+      "duration": 5.12,
       "audio": "/audio/radio/healthy-living/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now I have to say, I admire the commitment.",
       "overlap": -0.2,
-      "timestamp": 38.094,
-      "duration": 2.945,
+      "timestamp": 36.737,
+      "duration": 3.36,
       "audio": "/audio/radio/healthy-living/8.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I drink only room temperature water, and the broth of a single, very tired potato.",
       "overlap": -0.15,
-      "timestamp": 41.188,
-      "duration": 4.926,
+      "timestamp": 38.663,
+      "duration": 7.32,
       "audio": "/audio/radio/healthy-living/9.flac"
     },
     {
       "speaker": "barry",
       "text": "A tired potato.",
       "overlap": -0.15,
-      "timestamp": 46.264,
-      "duration": 1.594,
+      "timestamp": 45.052,
+      "duration": 1.68,
       "audio": "/audio/radio/healthy-living/10.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It has to be tired, Barry. A nervous potato passes that energy on to you.",
       "overlap": -0.1,
-      "timestamp": 47.958,
-      "duration": 4.467,
+      "timestamp": 46.194,
+      "duration": 6.4,
       "audio": "/audio/radio/healthy-living/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And how do you know when a potato is tired, Patricia?",
       "overlap": -0.2,
-      "timestamp": 52.625,
-      "duration": 3.13,
+      "timestamp": 51.136,
+      "duration": 4.12,
       "audio": "/audio/radio/healthy-living/12.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "You look it in the eyes, Ronnie. <p:0.4> A tired potato cannot hold your gaze.",
       "overlap": -0.15,
-      "timestamp": 55.904,
-      "duration": 4.881,
+      "timestamp": 54.063,
+      "duration": 6.72,
       "audio": "/audio/radio/healthy-living/13.flac"
     },
     {
       "speaker": "barry",
       "text": "Potatoes don't have eyes. <p:0.3> Well. They have eyes, but they can't see.",
       "overlap": -0.2,
-      "timestamp": 60.985,
-      "duration": 5.046,
+      "timestamp": 59.936,
+      "duration": 5.82,
       "audio": "/audio/radio/healthy-living/14.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "And how would you know what a potato sees, Barry?",
       "overlap": -0.15,
-      "timestamp": 66.181,
-      "duration": 3.014,
+      "timestamp": 64.42,
+      "duration": 4.36,
       "audio": "/audio/radio/healthy-living/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "She's turning the questions back on you, Barry. That's a wellness technique.",
       "overlap": -0.2,
-      "timestamp": 69.395,
-      "duration": 5.036,
+      "timestamp": 67.081,
+      "duration": 5.96,
       "audio": "/audio/radio/healthy-living/16.flac"
     },
     {
       "speaker": "barry",
       "text": "It's not a technique, Ronnie, she just won't answer anything.",
       "overlap": -0.15,
-      "timestamp": 74.582,
-      "duration": 4.439,
+      "timestamp": 71.577,
+      "duration": 5.0,
       "audio": "/audio/radio/healthy-living/17.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I also do not sleep anymore. <p:0.3> Sleep is a habit, and I have broken it.",
       "overlap": -0.15,
-      "timestamp": 79.171,
-      "duration": 4.689,
+      "timestamp": 75.685,
+      "duration": 6.34,
       "audio": "/audio/radio/healthy-living/18.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Think of all the extra hours.",
       "overlap": -0.2,
-      "timestamp": 84.06,
-      "duration": 2.158,
+      "timestamp": 80.822,
+      "duration": 2.36,
       "audio": "/audio/radio/healthy-living/19.flac"
     },
     {
       "speaker": "barry",
       "text": "Patricia, when did you last sleep?",
       "overlap": -0.2,
-      "timestamp": 86.417,
-      "duration": 2.399,
+      "timestamp": 82.855,
+      "duration": 2.92,
       "audio": "/audio/radio/healthy-living/20.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "What year is it, Barry?",
       "overlap": -0.15,
-      "timestamp": 88.966,
-      "duration": 1.68,
+      "timestamp": 84.947,
+      "duration": 2.12,
       "audio": "/audio/radio/healthy-living/21.flac"
     },
     {
       "speaker": "barry",
       "text": "...That's not a good sign, Ronnie.",
       "overlap": -0.2,
-      "timestamp": 90.846,
-      "duration": 2.096,
+      "timestamp": 86.102,
+      "duration": 2.72,
       "audio": "/audio/radio/healthy-living/22.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Oh, honey, no. <p:0.4> Sweetheart, you need to eat a vegetable. A green one. Please.",
       "overlap": -0.25,
-      "timestamp": 93.192,
-      "duration": 5.685,
+      "timestamp": 88.032,
+      "duration": 5.94,
       "audio": "/audio/radio/healthy-living/23.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Green is loud, Linda. I cannot have loud food.",
       "overlap": -0.15,
-      "timestamp": 99.028,
-      "duration": 2.899,
+      "timestamp": 93.424,
+      "duration": 4.08,
       "audio": "/audio/radio/healthy-living/24.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "It's a green bean, dear. It's not a marching band.",
       "overlap": -0.15,
-      "timestamp": 102.076,
-      "duration": 3.1,
+      "timestamp": 96.459,
+      "duration": 3.29,
       "audio": "/audio/radio/healthy-living/25.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I can hear the green, Linda. <p:0.3> It hums.",
       "overlap": -0.15,
-      "timestamp": 105.326,
-      "duration": 3.628,
+      "timestamp": 98.959,
+      "duration": 4.38,
       "audio": "/audio/radio/healthy-living/26.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Oh, you poor thing. <p:0.4> When did you last have a hot meal, sweetheart?",
       "overlap": -0.2,
-      "timestamp": 109.154,
-      "duration": 4.771,
+      "timestamp": 102.338,
+      "duration": 4.89,
       "audio": "/audio/radio/healthy-living/27.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Heat is a stimulant, Linda. I keep everything at room temperature, including my feelings.",
       "overlap": -0.15,
-      "timestamp": 114.076,
-      "duration": 5.695,
+      "timestamp": 106.656,
+      "duration": 8.04,
       "audio": "/audio/radio/healthy-living/28.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Ronnie, this child needs a casserole and a nap.",
       "overlap": -0.2,
-      "timestamp": 119.971,
-      "duration": 3.212,
+      "timestamp": 113.366,
+      "duration": 3.51,
       "audio": "/audio/radio/healthy-living/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Let's keep it respectful, ladies. Both protocols have merit.",
       "overlap": -0.2,
-      "timestamp": 123.383,
-      "duration": 4.365,
+      "timestamp": 116.182,
+      "duration": 4.8,
       "audio": "/audio/radio/healthy-living/30.flac"
     },
     {
       "speaker": "barry",
       "text": "One of these is just not eating, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 127.897,
-      "duration": 2.51,
+      "timestamp": 120.042,
+      "duration": 3.32,
       "audio": "/audio/radio/healthy-living/31.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I have transcended eating, Barry. <p:0.3> Eating is for people with feelings.",
       "overlap": -0.15,
-      "timestamp": 130.557,
-      "duration": 4.875,
+      "timestamp": 121.969,
+      "duration": 6.78,
       "audio": "/audio/radio/healthy-living/32.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Everybody has feelings, dear. That's just being a person.",
       "overlap": -0.2,
-      "timestamp": 135.632,
-      "duration": 4.08,
+      "timestamp": 127.964,
+      "duration": 3.26,
       "audio": "/audio/radio/healthy-living/33.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Not anymore, Linda. <p:0.4> I am beige now.",
       "overlap": -0.15,
-      "timestamp": 139.862,
-      "duration": 3.607,
+      "timestamp": 130.544,
+      "duration": 4.24,
       "audio": "/audio/radio/healthy-living/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Linda, I think we have to respect Patricia's journey.",
       "overlap": -0.2,
-      "timestamp": 143.669,
-      "duration": 3.314,
+      "timestamp": 133.365,
+      "duration": 4.2,
       "audio": "/audio/radio/healthy-living/35.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Her journey is going to end in a hospital, Ronnie.",
       "overlap": -0.2,
-      "timestamp": 147.183,
-      "duration": 3.26,
+      "timestamp": 136.681,
+      "duration": 3.16,
       "audio": "/audio/radio/healthy-living/36.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Hospitals are beige, Linda. <p:0.3> I'll feel right at home.",
       "overlap": -0.15,
-      "timestamp": 150.592,
-      "duration": 3.958,
+      "timestamp": 139.432,
+      "duration": 5.1,
       "audio": "/audio/radio/healthy-living/37.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Oh, you sweet, hungry child.",
       "overlap": -0.2,
-      "timestamp": 154.751,
-      "duration": 1.986,
+      "timestamp": 143.656,
+      "duration": 2.36,
       "audio": "/audio/radio/healthy-living/38.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Patricia, before we go, what's on the menu tomorrow?",
       "overlap": -0.2,
-      "timestamp": 156.937,
-      "duration": 3.195,
+      "timestamp": 144.785,
+      "duration": 4.08,
       "audio": "/audio/radio/healthy-living/39.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "A single cracker. <p:0.4> I will look at it for one hour, and then I will put it away.",
       "overlap": -0.15,
-      "timestamp": 160.282,
-      "duration": 5.437,
+      "timestamp": 148.42,
+      "duration": 7.44,
       "audio": "/audio/radio/healthy-living/40.flac"
     },
     {
       "speaker": "barry",
       "text": "That's not a meal, Ronnie, that's a hostage situation.",
       "overlap": -0.2,
-      "timestamp": 165.919,
-      "duration": 3.908,
+      "timestamp": 154.387,
+      "duration": 4.4,
       "audio": "/audio/radio/healthy-living/41.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "I'm sending you a casserole, Patricia. <p:0.3> It's beige on top. I already checked.",
       "overlap": -0.2,
-      "timestamp": 170.026,
-      "duration": 5.336,
+      "timestamp": 158.073,
+      "duration": 5.34,
       "audio": "/audio/radio/healthy-living/42.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "...A beige casserole. <p:0.4> Linda, that might be the kindest thing anyone has ever done for me.",
       "overlap": -0.15,
-      "timestamp": 175.513,
-      "duration": 6.313,
+      "timestamp": 162.889,
+      "duration": 8.44,
       "audio": "/audio/radio/healthy-living/43.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And we'll be right back, after this beige word from our sponsor.",
       "overlap": -0.25,
-      "timestamp": 182.076,
-      "duration": 4.311,
+      "timestamp": 169.646,
+      "duration": 4.96,
       "audio": "/audio/radio/healthy-living/44.flac"
     }
   ]
