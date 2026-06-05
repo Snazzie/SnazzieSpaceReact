@@ -96,20 +96,17 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     return () => clearInterval(id);
   }, []);
 
-  // ── Inline station feed ──────────────────────────────────────────────
-  // TUNE IN plays the on-air show right here (Web Audio, same per-clip
-  // scheduling the full player uses) and rolls into the next show when it ends.
+  // ── Shared audio state ───────────────────────────────────────────────
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-  const ctxRef = useRef<AudioContext | null>(null);
-  const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
-  const genRef = useRef(0);          // bumps each (re)start; stale onended no-ops
-  const startedRef = useRef(false);  // audio graph has been started at least once
-
-  // ── Music track player state ──────────────────────────────────────────
+  // musicIdx: which music card is active (either as standalone or live-feed interstitial)
   const [musicIdx, setMusicIdx] = useState<number | null>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [musicLoading, setMusicLoading] = useState(false);
+  const ctxRef = useRef<AudioContext | null>(null);
+  const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
+  const genRef = useRef(0);
+  const startedRef = useRef(false);
 
   const stopSources = () => {
     for (const s of sourcesRef.current) { try { s.onended = null; s.stop(); } catch { /* already stopped */ } }
@@ -121,13 +118,43 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     return ctx.decodeAudioData(await res.arrayBuffer());
   };
 
+  // Play a music track as an interstitial between two episodes.
+  // When the track ends, advance to nextEpIdx and resume the episode feed.
+  async function startInterstitial(musicTrackIdx: number, nextEpIdx: number, gen: number) {
+    const track = music[musicTrackIdx];
+    if (!track?.track) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
+    const ctx = ctxRef.current!;
+    setMusicIdx(musicTrackIdx);
+    setMusicPlaying(true);
+    try {
+      const buf = await decode(ctx, track.track);
+      if (gen !== genRef.current) return;
+      const s = ctx.createBufferSource();
+      s.buffer = buf;
+      s.connect(ctx.destination);
+      s.start(ctx.currentTime + 0.1);
+      sourcesRef.current.push(s);
+      s.onended = () => {
+        if (gen !== genRef.current) return;
+        setMusicPlaying(false);
+        setMusicIdx(null);
+        setAirIdx(nextEpIdx);
+        startEpisode(nextEpIdx);
+      };
+    } catch {
+      setMusicPlaying(false);
+      setAirIdx(nextEpIdx);
+      startEpisode(nextEpIdx);
+    }
+  }
+
   async function startEpisode(idx: number) {
     const ctx = ctxRef.current ?? (ctxRef.current = new AudioContext());
     await ctx.resume();
     const gen = ++genRef.current;
     stopSources();
     setLoading(true);
-    setMusicPlaying(false);  // stop music indicator when episode starts
+    setMusicPlaying(false);
     const ep = episodes[idx];
     const t0 = ctx.currentTime + 0.15;
     let last: AudioBufferSourceNode | null = null;
@@ -148,7 +175,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
       } else {
         const lines = ep.lines.filter((l) => l.audio);
         const bufs = await Promise.all(lines.map((l) => decode(ctx, l.audio!)));
-        if (gen !== genRef.current) return;  // superseded while loading
+        if (gen !== genRef.current) return;
         lines.forEach((l, i) => bufs[i] && schedule(bufs[i], l.timestamp ?? 0));
       }
     } catch {
@@ -157,12 +184,16 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     }
     if (gen !== genRef.current) return;
     setLoading(false);
-    // When the last clip finishes, roll into the next show.
+    // Episode ends → play a music interstitial (if any), then advance.
     if (last) (last as AudioBufferSourceNode).onended = () => {
       if (gen !== genRef.current) return;
       const next = (idx + 1) % episodes.length;
-      setAirIdx(next);
-      startEpisode(next);
+      if (music.length > 0) {
+        startInterstitial(idx % music.length, next, gen);
+      } else {
+        setAirIdx(next);
+        startEpisode(next);
+      }
     };
   }
 
@@ -175,11 +206,10 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     }
     const ctx = ctxRef.current;
     if (!ctx) return;
-    if (playing) { await ctx.suspend(); setPlaying(false); }
+    if (playing) { await ctx.suspend(); setPlaying(false); setMusicPlaying(false); }
     else { await ctx.resume(); setPlaying(true); }
   }
 
-  // Clicking a show in the guide tunes straight to it.
   function tuneTo(idx: number) {
     startedRef.current = true;
     setAirIdx(idx);
@@ -187,7 +217,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     startEpisode(idx);
   }
 
-  // ── Music track playback ──────────────────────────────────────────────
+  // ── Standalone music card player ──────────────────────────────────────
   async function playMusicTrack(idx: number) {
     const track = music[idx];
     if (!track?.track) return;
@@ -198,7 +228,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
     setMusicLoading(true);
     setMusicIdx(idx);
     setMusicPlaying(true);
-    setPlaying(false);  // stop episode indicator when music starts
+    setPlaying(false);
 
     try {
       const buf = await decode(ctx, track.track);
@@ -208,7 +238,7 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
       s.connect(ctx.destination);
       s.start(ctx.currentTime + 0.1);
       sourcesRef.current.push(s);
-      s.onended = () => { if (gen === genRef.current) setMusicPlaying(false); };
+      s.onended = () => { if (gen === genRef.current) { setMusicPlaying(false); setMusicIdx(null); } };
     } catch {
       setMusicLoading(false);
       setMusicPlaying(false);
@@ -221,17 +251,14 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
   async function toggleMusicTrack(idx: number) {
     const ctx = ctxRef.current;
     if (musicIdx === idx && musicPlaying) {
-      // pause
       if (ctx) { await ctx.suspend(); setMusicPlaying(false); }
       return;
     }
     if (musicIdx === idx && !musicPlaying && ctx) {
-      // resume same track
       await ctx.resume();
       setMusicPlaying(true);
       return;
     }
-    // new track
     await playMusicTrack(idx);
   }
 
@@ -286,8 +313,12 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
           {/* readout */}
           <div className="rl-readout">
             <div className="rl-readout-row">
-              <span className="rl-readout-label">NOW</span>
-              <span className="rl-readout-title">{onAir?.title ?? "Snazzie FM"}</span>
+              <span className="rl-readout-label">{musicIdx !== null && musicPlaying ? "♪" : "NOW"}</span>
+              <span className="rl-readout-title">
+                {musicIdx !== null && musicPlaying
+                  ? (music[musicIdx]?.title ?? "Music")
+                  : (onAir?.title ?? "Snazzie FM")}
+              </span>
             </div>
             <div className="rl-readout-clock">{clock} &middot; STEREO &middot; SNAZZIE FM</div>
           </div>
@@ -298,33 +329,48 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
               <span
                 key={i}
                 className="rl-vu-bar"
-                style={{ height: `${(playing ? lv : 0.06 + lv * 0.05) * 100}%` }}
+                style={{ height: `${((playing || musicPlaying) ? lv : 0.06 + lv * 0.05) * 100}%` }}
               />
             ))}
           </div>
 
           <button className="rl-tunein" type="button" onClick={togglePlay} disabled={loading}>
-            <span className="rl-tunein-icon">{loading ? "⦿" : playing ? "❚❚" : "▶"}</span>
-            {loading ? "Tuning…" : playing ? "On Air" : "Tune In"}
+            <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying) ? "❚❚" : "▶"}</span>
+            {loading ? "Tuning…" : (playing || musicPlaying) ? "On Air" : "Tune In"}
           </button>
           </div>
         </div>
       </section>
 
       {/* ── Now on air ──────────────────────────────────────────────── */}
-      {onAir && (
+      {(onAir || (musicIdx !== null && musicPlaying)) && (
         <section className="rl-now">
-          <div className="rl-now-badge"><span className="rl-onair-dot" /> Now on air</div>
-          <h2 className="rl-now-title">{onAir.title}</h2>
-          <p className="rl-now-desc">{onAir.description}</p>
-          <div className="rl-now-actions">
-            <button type="button" className="rl-now-link" onClick={() => tuneTo(airIdx)}>
-              {playing ? "❚❚ Playing" : "▶ Play this show"}
-            </button>
-            <a className="rl-now-link rl-now-link-alt" href={`/radio/listen#${onAir.slug}`}>
-              Open full player &rarr;
-            </a>
-          </div>
+          {musicIdx !== null && musicPlaying ? (
+            <>
+              <div className="rl-now-badge"><span className="rl-onair-dot" /> ♪ Music break</div>
+              <h2 className="rl-now-title">{music[musicIdx]?.title ?? "Music"}</h2>
+              <p className="rl-now-desc">{music[musicIdx]?.description ?? ""}</p>
+              <div className="rl-now-actions">
+                <button type="button" className="rl-now-link" onClick={() => toggleMusicTrack(musicIdx)}>
+                  ❚❚ Playing
+                </button>
+              </div>
+            </>
+          ) : onAir && (
+            <>
+              <div className="rl-now-badge"><span className="rl-onair-dot" /> Now on air</div>
+              <h2 className="rl-now-title">{onAir.title}</h2>
+              <p className="rl-now-desc">{onAir.description}</p>
+              <div className="rl-now-actions">
+                <button type="button" className="rl-now-link" onClick={() => tuneTo(airIdx)}>
+                  {playing ? "❚❚ Playing" : "▶ Play this show"}
+                </button>
+                <a className="rl-now-link rl-now-link-alt" href={`/radio/listen#${onAir.slug}`}>
+                  Open full player &rarr;
+                </a>
+              </div>
+            </>
+          )}
         </section>
       )}
 
