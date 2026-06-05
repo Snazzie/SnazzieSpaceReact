@@ -83,6 +83,7 @@ export const MUSIC_TRACKS: Episode[] = [
 ];
 
 export const EPISODES: Episode[] = [
+  episodeFrom(villainHour),
   episodeFrom(truthHour),
   episodeFrom(coinOfTheRealm),
   episodeFrom(machineTalk),
@@ -90,6 +91,5 @@ export const EPISODES: Episode[] = [
   episodeFrom(afterDark),
   episodeFrom(theSportsDesk),
   episodeFrom(thePigeonCrash),
-  episodeFrom(villainHour),
   episodeFrom(theFrankTapes),
 ];

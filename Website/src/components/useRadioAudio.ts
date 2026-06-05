@@ -22,12 +22,7 @@ export interface RadioAudioState {
 }
 
 export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudioState {
-  const initialAir = (() => {
-    const h = new Date().getHours();
-    return episodes.length ? Math.floor((h / 24) * episodes.length) % episodes.length : 0;
-  })();
-
-  const [airIdx, setAirIdx] = useState(initialAir);
+  const [airIdx, setAirIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [musicIdx, setMusicIdx] = useState<number | null>(null);
