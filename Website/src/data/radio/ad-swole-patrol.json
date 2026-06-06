@@ -1,0 +1,24 @@
+{
+  "slug": "ad-swole-patrol",
+  "title": "Swole Patrol",
+  "description": "A paid message from Swole Patrol. A gym, legally.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Want gains? <p:0.2> Swole Patrol is the discount gym with no rules, no staff, and one extremely heavy rock! <p:0.2> Lift the rock. <p:0.2> Become the rock. <p:0.2> Swole Patrol, lift or perish!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.76,
+      "audio": "/audio/radio/ad-swole-patrol/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "The rock has injured everyone. <p:0> There is no exit, only the rock. <p:0> Membership is inherited by your next of kin. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 11.358,
+      "duration": 6.277,
+      "audio": "/audio/radio/ad-swole-patrol/1.flac"
+    }
+  ]
+}

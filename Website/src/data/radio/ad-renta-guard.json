@@ -1,0 +1,24 @@
+{
+  "slug": "ad-renta-guard",
+  "title": "RentaGuard",
+  "description": "A paid message from RentaGuard. Personal protection on a budget.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-nasal",
+      "text": "Feeling unsafe? <p:0.2> RentaGuard sends a discount bodyguard to your door in minutes! <p:0.2> He's large, he's loyal-ish, he's mostly sober. <p:0.2> RentaGuard, he'll probably take the hit!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.82,
+      "audio": "/audio/radio/ad-renta-guard/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Guard may switch sides for a sandwich. <p:0> Provides protection, not allegiance. <p:0> He lives with you now. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.619,
+      "duration": 6.217,
+      "audio": "/audio/radio/ad-renta-guard/1.flac"
+    }
+  ]
+}

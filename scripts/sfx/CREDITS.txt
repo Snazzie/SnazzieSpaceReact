@@ -1,0 +1,34 @@
+Cat sound effects (converted to 24kHz mono WAV via ffmpeg loudnorm):
+
+cat-pleading.wav  — "Meow of a pleading cat" (Public Domain)
+  https://commons.wikimedia.org/wiki/File:Meow_of_a_pleading_cat.oga
+cat-impatient.wav — "GettingOutImpatient" (Public Domain)
+  https://commons.wikimedia.org/wiki/File:GettingOutImpatient.ogg
+
+Both sourced from Wikimedia Commons. No attribution legally required (PD).
+
+phone-ring.wav    — "US ringback tone" (CC0)
+  https://commons.wikimedia.org/wiki/File:US_ringback_tone.ogg
+phone-hangup.wav  — synthesized US busy tone (480+620 Hz, 0.5s on/off) via ffmpeg. Generated, public domain.
+
+Cat screams + metal clatter (Freesound, all CC0 — no attribution required):
+
+cat-scream-1.wav  — "cat screech.wav" by red3zzz (CC0)
+  https://freesound.org/s/131262/
+cat-scream-2.wav  — "Cat Screams" by StormMiguel (CC0)
+  https://freesound.org/s/191938/
+cat-scream-3.wav  — "CAT SCREAM" by queen_westeros (CC0)
+  https://freesound.org/s/222590/
+metal-clatter.wav — "Pots and Pans Clatter 1" by OwlStorm (CC0)
+  https://freesound.org/s/209002/
+bg-restaurant.wav — "ambience - restaurant.WAV" by soundtracvkradio (CC0), 24k mono, loudnorm
+  https://freesound.org/s/394678/
+wok-fire.wav      — "Gas stovetop.wav" by sethlind (CC0), 24k mono, loudnorm
+  https://freesound.org/s/264990/
+
+bg-kitchen.wav     — loud "eruption" bed (16s), built by scripts/sfx/build-bg-kitchen.sh:
+                     metal-clatter looped + layered under scattered cat screams
+                     (cat-scream-1/2/3) + cat-impatient. All sources CC0/PD. Generated.
+bg-kitchen-amb.wav — quiet continuous "kitchen chaos" ambience (36s), same script: continuous
+                     wok-fire roar + two offset metal loops + cats scattered. Runs UNDER the
+                     dialogue. Generated.

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-soothe-master",
+  "title": "Soothe-Master 5000",
+  "description": "A paid message from Soothe-Master Industrial Wellness. Results not typical. Nothing is typical.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-announcer",
+      "text": "Burning? <p:0.2> Itching? <p:0.2> You need Soothe-Master 5000! <p:0.2> One squeeze and that fire goes OUT. <p:0.2> Soothe-Master 5000, sit like a winner!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.86,
+      "audio": "/audio/radio/ad-soothe-master/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Soothe-Master was tested on one hundred cat butts. <p:0> May contain side effects in humans. <p:0> Numbness, blindness, and mild glowing. <p:0> Do not inhale the nozzle. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.448,
+      "duration": 8.505,
+      "audio": "/audio/radio/ad-soothe-master/1.flac"
+    }
+  ]
+}

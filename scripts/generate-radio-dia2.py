@@ -34,10 +34,31 @@ DEFAULT_GAP = 0.18
 MIN_SOLO    = 0.5
 
 _PHONE_SOS = butter(4, [300 / (OUT_SR / 2), 3400 / (OUT_SR / 2)], btype="band", output="sos")
+_DISTANT_SOS = butter(4, 2600 / (OUT_SR / 2), btype="low", output="sos")
 
 
 def load_cast() -> dict:
     return json.loads(CAST_FILE.read_text(encoding="utf-8"))
+
+
+def render_sfx(line: dict) -> np.ndarray:
+    """Load a real sound-effect file (caller-side noise, beds) for overlay on the track.
+    Applies phone_filter/distant/gain/trim WITHOUT normalizing (so quiet beds stay quiet)."""
+    clip, sr = sf.read(str(REPO_ROOT / line["sfx"]), dtype="float32")
+    if clip.ndim > 1:
+        clip = clip.mean(axis=1).astype(np.float32)
+    clip = resample(clip, sr, OUT_SR)
+    trim = float(line.get("trim", 0.0))
+    if trim > 0:
+        clip = clip[: int(trim * OUT_SR)]
+    if line.get("phone_filter"):
+        clip = np.clip(sosfilt(_PHONE_SOS, clip).astype(np.float32), -1.0, 1.0)
+    if line.get("distant"):
+        clip = sosfilt(_DISTANT_SOS, clip).astype(np.float32)
+    gain = float(line.get("gain", 1.0))
+    if gain != 1.0:
+        clip = (clip * gain).astype(np.float32)
+    return clip
 
 
 def resample(audio: np.ndarray, src: int, dst: int) -> np.ndarray:
@@ -68,10 +89,11 @@ def tok(text: str) -> list[str]:
     return re.findall(r"[a-z0-9']+", re.sub(r"\([^)]*\)", "", text.lower()))
 
 
-def build_passes(lines: list[dict], s1: str) -> list[list[int]]:
-    """Split the episode into <=PASS_SECS passes, each starting on [S1]."""
+def build_passes(lines: list[dict], idxs: list[int], s1: str) -> list[list[int]]:
+    """Split the dialogue lines (given by `idxs`) into <=PASS_SECS passes, each starting on [S1]."""
     passes, cur, chars = [], [], 0
-    for i, line in enumerate(lines):
+    for i in idxs:
+        line = lines[i]
         est = len(re.sub(r"\([^)]*\)", "", line["text"]))
         if cur and line["speaker"] == s1 and (chars + est) / CHARS_PER_SEC > PASS_SECS:
             passes.append(cur); cur, chars = [], 0
@@ -103,9 +125,13 @@ def generate(slug: str) -> None:
     episode = json.loads((SCRIPTS_DIR / f"{slug}.json").read_text(encoding="utf-8"))
     lines = episode["lines"]
     cast = load_cast()
-    speakers = list(dict.fromkeys(l["speaker"] for l in lines))
+    # Hybrid: the Dia2 voice TRACK is built only from dialogue lines (exactly 2 speakers).
+    # Lines with an `sfx` field are rendered separately and OVERLAID on the track by the player.
+    dia_idxs = [i for i, l in enumerate(lines) if not l.get("sfx")]
+    sfx_idxs = [i for i, l in enumerate(lines) if l.get("sfx")]
+    speakers = list(dict.fromkeys(lines[i]["speaker"] for i in dia_idxs))
     if len(speakers) != 2:
-        raise SystemExit(f"Dia2 needs exactly 2 speakers; got {speakers}")
+        raise SystemExit(f"Dia2 needs exactly 2 dialogue speakers; got {speakers}")
     tag = {speakers[0]: "[S1]", speakers[1]: "[S2]"}
 
     clip_dir = AUDIO_DIR / slug
@@ -150,8 +176,8 @@ def generate(slug: str) -> None:
         use_cuda_graph=True,
     )
 
-    passes = build_passes(lines, speakers[0])
-    print(f"  {len(lines)} lines -> {len(passes)} pass(es)")
+    passes = build_passes(lines, dia_idxs, speakers[0])
+    print(f"  {len(dia_idxs)} dialogue + {len(sfx_idxs)} sfx lines -> {len(passes)} pass(es)")
 
     PASS_GAP = 0.35
     parts: list[np.ndarray] = []
@@ -196,14 +222,39 @@ def generate(slug: str) -> None:
     os.replace(str(tmpf), str(clip_dir / "episode.flac"))   # atomic swap — no no-sound window
 
     episode["track"] = f"/audio/radio/{slug}/episode.flac"
-    for i, line in enumerate(lines):
-        nxt = line_start[i + 1] if i + 1 < len(lines) else cursor
-        line["timestamp"] = line_start[i]
-        line["duration"]  = round(max(0.3, nxt - line_start[i]), 3)
-        line.pop("audio", None)
+
+    # Dialogue lines: timestamp from word stamps, duration spans to the next dialogue line.
+    # They live in the track, so they carry no per-line `audio`.
+    for k, i in enumerate(dia_idxs):
+        nxt = line_start[dia_idxs[k + 1]] if k + 1 < len(dia_idxs) else cursor
+        lines[i]["timestamp"] = line_start[i]
+        lines[i]["duration"]  = round(max(0.3, nxt - line_start[i]), 3)
+        lines[i].pop("audio", None)
+
+    # SFX lines: rendered as their own clips and OVERLAID on the track. Anchor each to the
+    # previous dialogue line's end via `overlap` (positive = starts earlier, into that line);
+    # `at` (absolute seconds) overrides. Backgrounds/accents both use this.
+    for i in sfx_idxs:
+        clip = render_sfx(lines[i])
+        sf.write(str(clip_dir / f"{i}.flac"), clip, OUT_SR, format="flac")
+        prev = max((d for d in dia_idxs if d < i), default=None)
+        nextd = min((d for d in dia_idxs if d > i), default=None)
+        ov = float(lines[i].get("overlap", 0.0))
+        if "at" in lines[i]:
+            ts = float(lines[i]["at"])
+        elif prev is not None:
+            ts = lines[prev]["timestamp"] + lines[prev]["duration"] - ov
+        elif nextd is not None:
+            ts = lines[nextd]["timestamp"] - ov
+        else:
+            ts = 0.0
+        lines[i]["timestamp"] = max(0.0, round(ts, 3))
+        lines[i]["duration"]  = round(len(clip) / OUT_SR, 3)
+        lines[i]["audio"]     = f"/audio/radio/{slug}/{i}.flac"
+
     (SCRIPTS_DIR / f"{slug}.json").write_text(json.dumps(episode, indent=2, ensure_ascii=False), encoding="utf-8")
     tl = len(track) / OUT_SR
-    print(f"  placed {len(lines)} clips, timeline {tl:.1f}s")
+    print(f"  track {tl:.1f}s, {len(dia_idxs)} dialogue lines, {len(sfx_idxs)} sfx overlays")
 
 
 if __name__ == "__main__":

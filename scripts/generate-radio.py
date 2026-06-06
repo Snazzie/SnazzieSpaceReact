@@ -63,19 +63,71 @@ def load_cast() -> dict:
 
 
 # Bump when the audio pipeline (filter/render) changes, to invalidate cached clips
-PIPELINE_VERSION = "3"
+PIPELINE_VERSION = "4"  # v4: tempo via ffmpeg atempo (WSOLA) instead of librosa phase vocoder
+
+
+def sfx_hash(path: str, line: dict) -> str:
+    """Content key for an SFX clip — re-rendered only when the file or its opts change."""
+    try:
+        file_key = hashlib.sha1((REPO_ROOT / path).read_bytes()).hexdigest()[:16]
+    except OSError:
+        file_key = "missing"
+    payload = "|".join([
+        PIPELINE_VERSION, "sfx", path, file_key,
+        str(bool(line.get("phone_filter", False))),
+        str(bool(line.get("distant", False))),
+        f"{float(line.get('gain', 1.0))}",
+        f"{float(line.get('trim', 0.0))}",
+    ])
+    return hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+
+
+def render_sfx(path: str, line: dict) -> np.ndarray:
+    """Load a real sound-effect file (already 24k mono) and apply phone/gain/distant."""
+    clip, sr = sf.read(str(REPO_ROOT / path), dtype="float32")
+    if clip.ndim > 1:
+        clip = clip.mean(axis=1).astype(np.float32)
+    if sr != SAMPLE_RATE:
+        n = int(len(clip) * SAMPLE_RATE / sr)
+        clip = np.interp(np.linspace(0, len(clip), n, endpoint=False),
+                         np.arange(len(clip)), clip).astype(np.float32)
+    trim = float(line.get("trim", 0.0))            # keep only the first `trim` seconds (0 = whole file)
+    if trim > 0:
+        clip = clip[: int(trim * SAMPLE_RATE)]
+    if line.get("phone_filter", False):
+        clip = apply_phone_filter(clip)
+    if line.get("distant", False):
+        clip = sosfilt(_DISTANT_SOS, clip).astype(np.float32)
+    gain = float(line.get("gain", 1.0))
+    if gain != 1.0:
+        clip = (clip * gain).astype(np.float32)
+    return clip
 
 
 def clip_hash(text: str, c: dict) -> str:
     """Content key for a clip — TTS is re-run only when this changes."""
     speed = float(c.get("speed", SPEED))
-    payload = "|".join([
+    parts = [
         PIPELINE_VERSION,
         text, c["ref_audio"], c["ref_text"], c["instruct"],
         f"{speed}", str(bool(c.get("phone_filter", False))),
         f"{float(c.get('gain', 1.0))}", str(bool(c.get("distant", False))),
-    ])
-    return hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+    ]
+    # Only fold these in when set, so default clips keep their existing hash.
+    tempo = float(c.get("tempo", 1.0))
+    if tempo != 1.0:
+        parts.append(f"tempo={tempo}")
+    if "num_step" in c:
+        parts.append(f"num_step={int(c['num_step'])}")
+    if "guidance_scale" in c:
+        parts.append(f"guidance_scale={float(c['guidance_scale'])}")
+    if "position_temperature" in c:
+        parts.append(f"position_temperature={float(c['position_temperature'])}")
+    if "class_temperature" in c:
+        parts.append(f"class_temperature={float(c['class_temperature'])}")
+    if "seed" in c:
+        parts.append(f"seed={int(c['seed'])}")
+    return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
 # Low-pass for "distant"/off-mic voices (muffled, like across the room)
@@ -89,15 +141,106 @@ PAUSE_RE = re.compile(r"<p(?::([0-9.]+))?>")
 DEFAULT_PAUSE = 0.5
 
 
+_GEN_KNOBS = ("num_step", "guidance_scale", "position_temperature", "class_temperature")
+
+_CAMEL_RE = re.compile(r"([a-z])([A-Z])")
+
+# Inline ARPAbet pronunciations (OmniVoice g2p override, e.g. "[HH AA1 NG K HH IY1 L]").
+# For brand names that mispronounce even when de-glued — "HonkHeal" otherwise becomes
+# "Honkeel". Keys match as whole words BEFORE de-glue; the bracketed phonemes are spoken
+# verbatim. Applied to TTS input only, so titles/transcript keep the spelled brand.
+PRONUNCIATIONS: dict[str, str] = {
+    # "BrandName": "[AA1 R P AH0 B EH2 T]",   # whole-word -> inline ARPAbet
+}
+
+
+def apply_pronunciations(text: str) -> str:
+    for word, phon in PRONUNCIATIONS.items():
+        text = re.sub(rf"\b{re.escape(word)}\b", phon, text)
+    return text
+
+
+def despace_brands(text: str) -> str:
+    """Speak glued camelCase brand names as separate words. OmniVoice can't pronounce a
+    glued token like 'HonkHeal' (renders as 'Honkyo') or 'RugCoin'/'SugarBeGone' — it
+    needs the space. Applied to TTS input only; the stored line text + titles keep the
+    camelCase branding for display. Folded into the clip hash via the render loop, so
+    affected clips re-render."""
+    return _CAMEL_RE.sub(r"\1 \2", text)
+
+# Tuning fields a single line may override on top of its cast voice (see use site).
+_LINE_OVERRIDES = ("seed", "speed", "tempo", "num_step", "guidance_scale",
+                   "position_temperature", "class_temperature", "instruct", "phone_filter")
+
+
+def _gen_config(c: dict):
+    """Optional per-voice OmniVoice inference knobs. `num_step` = denoising iterations
+    (default 32; higher = better quality, slower). `guidance_scale` = CFG (default 2.0).
+    `position_temperature` (default 5.0) / `class_temperature` (default 0.0) = sampling
+    temperature; lower = more deterministic/stable. Returns None when none set."""
+    if not any(k in c for k in _GEN_KNOBS):
+        return None
+    from omnivoice.models.omnivoice import OmniVoiceGenerationConfig
+    return OmniVoiceGenerationConfig(
+        num_step=int(c.get("num_step", 32)),
+        guidance_scale=float(c.get("guidance_scale", 2.0)),
+        position_temperature=float(c.get("position_temperature", 5.0)),
+        class_temperature=float(c.get("class_temperature", 0.0)),
+    )
+
+
+# Reusable voice-clone prompts, keyed by ref_audio path. Building a prompt preprocesses
+# the reference (silence trim + ASR-free reuse of ref_text); doing it once per voice and
+# reusing it across every clip of that voice (and across every slug in a bulk run) is the
+# "keep the voice loaded" win — no re-encoding the same reference clip-by-clip.
+_PROMPT_CACHE: dict[str, object] = {}
+
+
+def _voice_prompt(c: dict, model):
+    ref = c["ref_audio"]
+    p = _PROMPT_CACHE.get(ref)
+    if p is None:
+        p = model.create_voice_clone_prompt(str(REPO_ROOT / ref), c["ref_text"])
+        _PROMPT_CACHE[ref] = p
+    return p
+
+
 def _tts(text: str, c: dict, model) -> np.ndarray:
+    # Per-voice seed override = reroll this clip's "take" independently of the global seed.
+    # Different seed -> different realization of the same voice/text; some come out cleaner.
+    if "seed" in c:
+        torch.manual_seed(int(c["seed"]))
     audio = model.generate(
         text=text,
-        ref_audio=str(REPO_ROOT / c["ref_audio"]),
-        ref_text=c["ref_text"],
+        voice_clone_prompt=_voice_prompt(c, model),  # cached per voice (overrides ref_audio/ref_text)
         instruct=c["instruct"],
         speed=float(c.get("speed", SPEED)),
+        generation_config=_gen_config(c),
     )
     return audio[0].astype(np.float32)  # full clip — no trimming; placement aligns by speech
+
+
+def apply_tempo(clip: np.ndarray, tempo: float) -> np.ndarray:
+    """Pitch-preserving time-compression via ffmpeg `atempo` (WSOLA — clean on speech).
+    atempo accepts 0.5-2.0 per filter, so chain factors for anything outside that range."""
+    import subprocess, tempfile, os
+    factors: list[float] = []
+    t = tempo
+    while t > 2.0:
+        factors.append(2.0); t /= 2.0
+    while t < 0.5:
+        factors.append(0.5); t /= 0.5
+    factors.append(t)
+    af = ",".join(f"atempo={f:.6f}" for f in factors)
+    with tempfile.TemporaryDirectory() as d:
+        inp, outp = os.path.join(d, "in.wav"), os.path.join(d, "out.wav")
+        sf.write(inp, clip, SAMPLE_RATE)
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", inp, "-filter:a", af, outp],
+            check=True, capture_output=True,
+        )
+        out, _ = sf.read(outp, dtype="float32")
+    return out.astype(np.float32)
 
 
 def render_clip(text: str, c: dict, model) -> np.ndarray:
@@ -120,6 +263,14 @@ def render_clip(text: str, c: dict, model) -> np.ndarray:
     gain = float(c.get("gain", 1.0))     # quieter = further back in the mix
     if gain != 1.0:
         clip = (clip * gain).astype(np.float32)
+    # Pitch-preserving speed-up applied AFTER generation. Use this (not a huge `speed`) to
+    # make a clip genuinely faster: OmniVoice's `speed` token stops speeding up and starts
+    # dropping words past ~2.0, whereas tempo time-stretches the full rendered clip so every
+    # word survives. tempo > 1 = faster/shorter. Uses ffmpeg `atempo` (WSOLA) — far cleaner
+    # on speech than a phase vocoder.
+    tempo = float(c.get("tempo", 1.0))
+    if tempo != 1.0:
+        clip = apply_tempo(clip, tempo)
     return clip
 
 
@@ -134,10 +285,20 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
     Returns clip start-samples (full clip, including its lead silence).
     """
     min_solo = int(MIN_SOLO * SAMPLE_RATE)
+    same_gap = int(0.12 * SAMPLE_RATE)   # min gap between one speaker's own consecutive clips
     starts: list[int] = []
     prev_speech_start = 0   # absolute samples
     prev_speech_end = 0
+    speaker_end: dict[str, int] = {}     # last speech-end sample per speaker
     for i, line in enumerate(lines):
+        # Background beds run UNDER the dialogue: anchored to the current cursor
+        # (shifted by `overlap`, positive = starts earlier) but they do NOT advance
+        # the speech cursor, so following dialogue plays over them in parallel.
+        if line.get("background"):
+            offset = int(float(line.get("overlap", 0.0)) * SAMPLE_RATE)
+            start = max(0, prev_speech_end - sb_start[i] - offset)
+            starts.append(start)
+            continue
         if i == 0:
             start = 0
             onset = sb_start[i]
@@ -151,11 +312,20 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
                 gap = int(DEFAULT_GAP * SAMPLE_RATE)
             onset = prev_speech_end + gap
             onset = max(onset, prev_speech_start + min_solo)  # keep prev solo speech
+            # A speaker can't talk over themselves: never start before this speaker's own
+            # previous clip has finished (cross-speaker overlap is still allowed). Heavy
+            # overlaps + interleaved background SFX can otherwise collide two same-speaker
+            # clips (e.g. Chen's "is the radio" and "is BIG radio").
+            spk = line.get("speaker")
+            se = speaker_end.get(spk)
+            if se is not None and onset < se + same_gap:
+                onset = se + same_gap
             start = max(0, onset - sb_start[i])
             onset = start + sb_start[i]
         starts.append(start)
         prev_speech_start = onset
         prev_speech_end = start + sb_end[i]
+        speaker_end[line.get("speaker")] = start + sb_end[i]
     return starts
 
 
@@ -194,7 +364,24 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
     for i, line in enumerate(lines):
         speaker_id = line["speaker"]
         out_file   = clip_dir / f"{i}.flac"
-        text       = line["text"].strip()
+        text       = despace_brands(apply_pronunciations(line["text"].strip()))  # TTS only; stored text keeps branding
+
+        # Real sound-effect line (e.g. a genuine cat meow) — no TTS, no cast voice.
+        if line.get("sfx"):
+            key    = sfx_hash(line["sfx"], line)
+            cached = manifest.get(str(i))
+            if cached and cached.get("hash") == key and out_file.exists() and "sb" in cached:
+                lengths.append(int(cached["length"])); sb_start.append(cached["sb"][0]); sb_end.append(cached["sb"][1])
+                continue
+            if remix:
+                raise SystemExit(f"--remix but sfx clip {i} ({line['sfx']}) is missing/stale; run without --remix first")
+            clip = render_sfx(line["sfx"], line)
+            sf.write(str(out_file), clip, SAMPLE_RATE, format="flac")
+            record(i, clip, key)
+            rendered += 1
+            print(f"    [{i+1}/{len(lines)}] sfx {line['sfx']}: {len(clip)/SAMPLE_RATE:.1f}s (rendered)")
+            continue
+
         c          = cast.get(speaker_id)
 
         if c is None:
@@ -203,6 +390,15 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
             sf.write(str(out_file), silence, SAMPLE_RATE, format="flac")
             record(i, silence, None)
             continue
+
+        # Per-LINE tuning overrides win over the cast voice. Lets one clip reroll its
+        # seed (or tweak speed/tempo/etc.) without touching a voice shared by other
+        # scripts — e.g. rerolling a single ad's disclaimer when the shared
+        # ad-disclaimer voice flubs a word. Folds into clip_hash, so only this clip
+        # re-renders.
+        overrides = {k: line[k] for k in _LINE_OVERRIDES if k in line}
+        if overrides:
+            c = {**c, **overrides}
 
         key    = clip_hash(text, c)
         cached = manifest.get(str(i))
@@ -247,17 +443,27 @@ def detect_device() -> str:
     return "cpu"
 
 
+_MODEL = None
+
+
 def load_model():
+    """Load OmniVoice ONCE per process (memoized). When generating many slugs in one
+    run, the weights load a single time instead of per-slug — the load dominates
+    per-clip cost, so a bulk run is far cheaper than N separate invocations."""
+    global _MODEL
+    if _MODEL is not None:
+        return _MODEL
     from omnivoice import OmniVoice
     device = detect_device()
     dtype = torch.float16 if device != "cpu" else torch.float32
     print(f"  device: {device}")
-    return OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map=device, dtype=dtype)
+    _MODEL = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map=device, dtype=dtype)
+    return _MODEL
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("slug", nargs="?", help="Episode slug (filename without .json)")
+    parser.add_argument("slug", nargs="*", help="Episode slug(s) (filename without .json). Pass many for a single-process bulk run.")
     parser.add_argument("--all", action="store_true", help="Process all episodes")
     parser.add_argument("--remix", action="store_true", help="Placement only; never load the model (all clips must be cached)")
     parser.add_argument("--seed", type=int, default=42)
@@ -265,11 +471,13 @@ def main() -> None:
     torch.manual_seed(args.seed)
 
     if not args.slug and not args.all:
-        print("Specify a slug or --all")
+        print("Specify one or more slugs, or --all")
         sys.exit(1)
 
+    # Multiple slugs (or --all) run in ONE process: the model loads once and each voice's
+    # clone prompt is cached, so a bulk run is dramatically cheaper than N invocations.
     slugs = (
-        [args.slug] if args.slug
+        args.slug if args.slug
         else [p.stem for p in sorted(SCRIPTS_DIR.glob("*.json"))]
     )
     for slug in slugs:

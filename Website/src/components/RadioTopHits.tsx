@@ -39,7 +39,7 @@ export default function RadioTopHits({ music, musicIdx, musicPlaying, musicLoadi
                       {isThisLoading ? "⦿" : isThisPlaying ? "❚❚" : "▶"}
                     </span>
                   </span>
-                  {isThisPlaying && <span className="rl-hit-playing-badge">ON AIR</span>}
+                  {isThisPlaying && <span className="rl-hit-playing-badge">NOW PLAYING</span>}
                 </span>
                 <span className="rl-hit-info">
                   <span className="rl-hit-title">{track.title}</span>

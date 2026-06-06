@@ -1,0 +1,17 @@
+{
+  "slug": "ad-carls-carpets-1",
+  "title": "Carl's Carpets #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-steve",
+      "text": "Come on down to Carl's Carpets for plush carpet, rugs, and vinyl flooring, where, <p:0.4> where does the time go, honestly. <p:0.3> Sorry.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.54,
+      "audio": "/audio/radio/ad-carls-carpets-1/0.flac"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "ad-maxines-salon-2",
+  "title": "Maxine's Salon #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-gary",
+      "text": "Take two. <p:0.3> Maxine's Salon, walk-ins welcome, we do hair and nails... <p:0.4> is best a lie if I believe it? <p:0.3> Moving on.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.46,
+      "audio": "/audio/radio/ad-maxines-salon-2/0.flac"
+    }
+  ]
+}

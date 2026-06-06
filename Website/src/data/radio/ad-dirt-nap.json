@@ -1,0 +1,24 @@
+{
+  "slug": "ad-dirt-nap",
+  "title": "Dirt Nap Express",
+  "description": "A paid message from Dirt Nap Express. Why wait to die when you can save now?",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-announcer",
+      "text": "Funerals too expensive? <p:0.2> At Dirt Nap Express, we pre-bury you TODAY at a discount! <p:0.2> Beat the rush, skip the line, and rest easy knowing the hole is already dug. <p:0.2> Dirt Nap Express, go early, save big!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.44,
+      "audio": "/audio/radio/ad-dirt-nap/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Pre-burial is permanent and non-refundable. <p:0> Breathing inside the unit voids the warranty. <p:0> We are not liable for premature reanimation. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 11.268,
+      "duration": 7.583,
+      "audio": "/audio/radio/ad-dirt-nap/1.flac"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-eternal-stay",
+  "title": "Eternal Stay Resorts",
+  "description": "A paid message from Eternal Stay. The timeshare you can never leave.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-shouty",
+      "text": "Dreaming of vacation? <p:0.2> Eternal Stay Resorts offers a beautiful seaside suite for the unbeatable price of forever! <p:0.2> Check in today. <p:0.2> Check out is not a feature. <p:0.2> Eternal Stay, you live here now!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.94,
+      "audio": "/audio/radio/ad-eternal-stay/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "The contract renews automatically and indefinitely. <p:0> Maintenance fees rise every year. <p:0> Cancellation is not offered. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 12.758,
+      "duration": 6.878,
+      "audio": "/audio/radio/ad-eternal-stay/1.flac"
+    }
+  ]
+}
