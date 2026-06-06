@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import * as Tone from "tone";
 import type { CastMember, Episode, TranscriptLine } from "@/data/radio";
 
 
@@ -130,14 +131,10 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef     = useRef<number>(0);
-  const ctxRef     = useRef<AudioContext | null>(null);
-  const gainRef    = useRef<GainNode | null>(null);
-  const buffersRef = useRef<(AudioBuffer | null)[]>([]);
-  const trackBufRef = useRef<AudioBuffer | null>(null);  // single whole-episode buffer (Dia)
-  const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
-  const startCtxRef = useRef(0);  // ctx.currentTime when playback (re)started
-  const offsetRef   = useRef(0);  // timeline position at that start
-  const playingRef  = useRef(false);
+  const gainRef    = useRef<Tone.Gain | null>(null);
+  const playersRef = useRef<(Tone.Player | null)[]>([]);   // one synced clip per line
+  const trackPlayerRef = useRef<Tone.Player | null>(null); // whole-episode base track (Dia)
+  const playingRef = useRef(false);
 
   const items = [...episodes, ...ads];
   const episode = items[selectedIdx];
@@ -161,16 +158,15 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     ...lines.map((l) => (l.timestamp ?? 0) + (l.duration ?? 0)),
   );
 
-  function ensureCtx(): AudioContext {
-    if (!ctxRef.current) {
-      const AC = window.AudioContext || (window as any).webkitAudioContext;
-      ctxRef.current = new AC();
-      const gain = ctxRef.current.createGain();
-      gain.gain.value = volume;
-      gain.connect(ctxRef.current.destination);
-      gainRef.current = gain;
-    }
-    return ctxRef.current;
+  // All scheduling runs on Tone's Transport: a single timeline clock with a
+  // built-in look-ahead scheduler. Each clip is a Player .sync()'d to the
+  // Transport and .start()'d at its timestamp — Tone handles look-ahead, seek
+  // (incl. mid-clip offset), and the suspended-context race for us. This is what
+  // makes playback reliable vs. hand-rolled AudioBufferSourceNode scheduling.
+
+  function ensureGain(): Tone.Gain {
+    if (!gainRef.current) gainRef.current = new Tone.Gain(volume).toDestination();
+    return gainRef.current;
   }
 
   function setVolume(v: number) {
@@ -178,121 +174,76 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     if (gainRef.current) gainRef.current.gain.value = v;
   }
 
-  function timelineNow(): number {
-    if (!playingRef.current || !ctxRef.current) return offsetRef.current;
-    return offsetRef.current + (ctxRef.current.currentTime - startCtxRef.current);
-  }
-
-  function stopSources() {
-    for (const s of sourcesRef.current) {
-      try { s.onended = null; s.stop(); s.disconnect(); } catch { /* already stopped */ }
+  function disposePlayers() {
+    try { trackPlayerRef.current?.unsync().dispose(); } catch { /* already gone */ }
+    trackPlayerRef.current = null;
+    for (const p of playersRef.current) {
+      try { p?.unsync().dispose(); } catch { /* already gone */ }
     }
-    sourcesRef.current = [];
+    playersRef.current = [];
   }
 
-  // Load + decode audio when the episode changes.
+  // Load audio when the episode changes, building one synced Player per clip.
   // Dia episodes: one whole-episode `track`. Others: one clip per line.
   useEffect(() => {
     let cancelled = false;
     setReady(false);
-    buffersRef.current = [];
-    trackBufRef.current = null;
-    const ctx = ensureCtx();
-    const decode = (url: string) =>
-      fetch(url).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a)).catch(() => null);
+    const transport = Tone.getTransport();
+    transport.stop();
+    transport.seconds = 0;
+    disposePlayers();
+    const gain = ensureGain();
+    const load = (url: string) =>
+      Tone.ToneAudioBuffer.fromUrl(url).catch(() => null as Tone.ToneAudioBuffer | null);
 
-    const onReady = () => {
+    Promise.all([
+      episode.track ? load(episode.track) : Promise.resolve(null),
+      ...episode.lines.map((l) => (l.audio ? load(l.audio) : Promise.resolve(null))),
+    ]).then(([trackBuf, ...clipBufs]) => {
+      if (cancelled) { trackBuf?.dispose(); clipBufs.forEach((b) => b?.dispose()); return; }
+
+      if (trackBuf) {
+        trackPlayerRef.current = new Tone.Player(trackBuf).connect(gain).sync().start(0);
+      }
+      playersRef.current = episode.lines.map((line, i) => {
+        const buf = clipBufs[i];
+        if (!buf) return null;
+        return new Tone.Player(buf).connect(gain).sync().start(line.timestamp ?? 0);
+      });
+
       setReady(true);
-      if (autoPlayRef.current) { autoPlayRef.current = false; startPlayback(0); }
-    };
+      if (autoPlayRef.current) { autoPlayRef.current = false; play(); }
+    });
 
-    if (episode.track) {
-      // Hybrid: one base voice track (Dia2) PLUS any per-line SFX clips overlaid on top.
-      Promise.all([
-        decode(episode.track),
-        ...episode.lines.map((l) => (l.audio ? decode(l.audio) : Promise.resolve(null))),
-      ]).then(([trackBuf, ...clipBufs]) => {
-        if (cancelled) return;
-        trackBufRef.current = trackBuf;
-        buffersRef.current = clipBufs;
-        onReady();
-      });
-    } else {
-      Promise.all(episode.lines.map((l) => (l.audio ? decode(l.audio) : Promise.resolve(null)))).then((bufs) => {
-        if (cancelled) return;
-        buffersRef.current = bufs;
-        onReady();
-      });
-    }
     return () => { cancelled = true; };
   }, [episode.slug]);
 
-  // Small scheduling lead. Web Audio needs start times safely in the future;
-  // anchoring at exactly ctx.currentTime ("now") races the render quantum, which
-  // clips the first slice or drops clips whose offset goes negative.
-  const LEAD = 0.08;
-
-  async function startPlayback(from: number) {
-    const ctx = ensureCtx();
-    // Await resume so the schedule anchors to a RUNNING clock. The context is
-    // created suspended (no user gesture on mount); reading currentTime before
-    // resume completes anchors everything to a frozen clock → unreliable starts.
-    await ctx.resume();
-    stopSources();
-    offsetRef.current = from;
-    startCtxRef.current = ctx.currentTime + LEAD;
-
-    // Single base track (Dia2): one source, seek via buffer offset. SFX clips (below)
-    // are still scheduled on top so a hybrid episode mixes the voice track + sound effects.
-    if (episode.track) {
-      const buf = trackBufRef.current;
-      if (buf && from < buf.duration) {
-        const src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.connect(gainRef.current ?? ctx.destination);
-        src.start(startCtxRef.current, from);
-        sourcesRef.current.push(src);
-      }
-      // fall through to also schedule any per-line SFX buffers over the track
-    }
-
-    lines.forEach((line, i) => {
-      const buf = buffersRef.current[i];
-      if (!buf) return;
-      const clipStart = line.timestamp ?? 0;
-      const clipEnd   = clipStart + buf.duration;
-      if (clipEnd <= from) return;  // already finished
-      const src = ctx.createBufferSource();
-      src.buffer = buf;
-      src.connect(gainRef.current ?? ctx.destination);
-      if (clipStart >= from) {
-        src.start(startCtxRef.current + (clipStart - from));
-      } else {
-        src.start(startCtxRef.current, from - clipStart);  // mid-clip
-      }
-      sourcesRef.current.push(src);
-    });
+  async function play() {
+    await Tone.start();                 // resume the AudioContext (needs a gesture)
+    const transport = Tone.getTransport();
+    if (transport.seconds >= span) transport.seconds = 0;
+    transport.start();
     playingRef.current = true;
     setIsPlaying(true);
   }
 
-  function pausePlayback() {
-    offsetRef.current = timelineNow();
-    stopSources();
+  function pause() {
+    Tone.getTransport().pause();
     playingRef.current = false;
     setIsPlaying(false);
   }
 
   function togglePlay() {
     if (!ready) return;
-    if (playingRef.current) pausePlayback();
-    else startPlayback(offsetRef.current >= span ? 0 : offsetRef.current);
+    if (playingRef.current) pause();
+    else play();
   }
 
   function seek(t: number) {
     const clamped = Math.max(0, Math.min(t, span));
-    if (playingRef.current) startPlayback(clamped);
-    else { offsetRef.current = clamped; setCurrentTime(clamped); setActiveLine(getActiveLine(lines, clamped)); }
+    Tone.getTransport().seconds = clamped;   // synced players reschedule (incl. mid-clip)
+    setCurrentTime(clamped);
+    setActiveLine(getActiveLine(lines, clamped));
   }
 
   function seekToLine(line: TranscriptLine) {
@@ -302,22 +253,16 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   function selectEpisode(idx: number, andPlay = false) {
     autoPlayRef.current = andPlay;
     if (idx === selectedIdx) { if (andPlay) togglePlay(); return; }
-    stopSources();
+    const transport = Tone.getTransport();
+    transport.stop();
+    transport.seconds = 0;
     playingRef.current = false;
-    offsetRef.current = 0;
     setIsPlaying(false);
     setCurrentTime(0);
     setActiveLine(-1);
     setSelectedIdx(idx);
     window.location.hash = items[idx].slug;
   }
-
-  // Reset clock when switching episodes
-  useEffect(() => {
-    offsetRef.current = 0;
-    setCurrentTime(0);
-    setActiveLine(-1);
-  }, [episode.slug]);
 
   // Spacebar toggles play/pause
   useEffect(() => {
@@ -332,13 +277,11 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  // RAF loop: drive UI clock + active line from the Web Audio timeline
+  // RAF loop: drive UI clock + active line from the Transport timeline
   useEffect(() => {
     function tick() {
-      // Clamp: during the LEAD window right after start, timelineNow() is briefly
-      // negative (offset − LEAD) before the audio clock catches up.
-      const t = Math.max(0, timelineNow());
-      if (t >= span) { pausePlayback(); offsetRef.current = 0; setCurrentTime(0); setActiveLine(-1); return; }
+      const t = Tone.getTransport().seconds;
+      if (t >= span) { pause(); Tone.getTransport().seconds = 0; setCurrentTime(0); setActiveLine(-1); return; }
       setCurrentTime(t);
       const nextActive = getActiveLine(lines, t);
       setActiveLine((prev) => {
@@ -354,11 +297,10 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [isPlaying, lines, span]);
 
-  // Warm the context on the first user gesture so it's already RUNNING before the
-  // first play — the autoplay policy creates it suspended, and resuming lazily on
-  // the play click adds latency to the first start.
+  // Warm the AudioContext on the first user gesture so it's already RUNNING
+  // before the first play (autoplay policy starts it suspended).
   useEffect(() => {
-    const warm = () => { ensureCtx().resume(); };
+    const warm = () => { Tone.start(); };
     window.addEventListener("pointerdown", warm, { once: true });
     window.addEventListener("keydown", warm, { once: true });
     return () => {
@@ -367,8 +309,8 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     };
   }, []);
 
-  // Tear down the audio context on unmount
-  useEffect(() => () => { stopSources(); ctxRef.current?.close(); }, []);
+  // Tear down players + transport on unmount
+  useEffect(() => () => { Tone.getTransport().stop(); disposePlayers(); }, []);
 
   const episodeCast = [...new Set(lines.map((l) => l.speaker))]
     .map((id) => cast[id])
