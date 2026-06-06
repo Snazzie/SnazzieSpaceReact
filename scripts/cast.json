@@ -191,6 +191,6 @@
     "gender": "M",
     "tempo": 1.8,
     "num_step": 48,
-    "position_temperature": 4.0
+    "position_temperature": 1.5
   }
 }
