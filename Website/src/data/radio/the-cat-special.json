@@ -228,40 +228,53 @@
       "audio": "/audio/radio/the-cat-special/22.flac"
     },
     {
+      "speaker": "caller-bg",
+      "text": "[Chen, off the phone, shouting at his chef to catch the cat]",
+      "overlap": 1.5,
+      "timestamp": 80.566,
+      "duration": 2.56,
+      "sfx": "scripts/sfx/chen-catch.wav",
+      "background": true,
+      "phone_filter": true,
+      "distant": true,
+      "gain": 0.6,
+      "audio": "/audio/radio/the-cat-special/23.flac"
+    },
+    {
       "speaker": "ronnie",
       "text": "Sir, I can hear it, we can ALL hear it, there is a cat back there having the worst night of its life!",
       "overlap": 0.4,
-      "timestamp": 81.087,
+      "timestamp": 81.453,
       "duration": 7.44,
-      "audio": "/audio/radio/the-cat-special/23.flac"
+      "audio": "/audio/radio/the-cat-special/24.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "No cat! Do not call here again!",
       "overlap": 0.4,
-      "timestamp": 87.422,
-      "duration": 1.84,
-      "audio": "/audio/radio/the-cat-special/24.flac"
+      "timestamp": 87.735,
+      "duration": 1.9,
+      "audio": "/audio/radio/the-cat-special/25.flac"
     },
     {
       "speaker": "phone",
       "text": "[click, dial tone]",
       "overlap": 0,
-      "timestamp": 89.148,
+      "timestamp": 89.602,
       "duration": 2.2,
       "sfx": "scripts/sfx/phone-hangup.wav",
       "phone_filter": true,
       "gain": 0.6,
       "trim": 2.2,
-      "audio": "/audio/radio/the-cat-special/25.flac"
+      "audio": "/audio/radio/the-cat-special/26.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He hung up. Well, folks. We report, you decide. The special tonight? Four point two stars. Maybe skip it. We'll be right back.",
       "overlap": 0,
-      "timestamp": 91.31,
+      "timestamp": 91.451,
       "duration": 9.4,
-      "audio": "/audio/radio/the-cat-special/26.flac"
+      "audio": "/audio/radio/the-cat-special/27.flac"
     }
   ]
 }
