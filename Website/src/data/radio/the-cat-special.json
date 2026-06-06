@@ -231,14 +231,14 @@
       "speaker": "caller-bg",
       "text": "[Chen, off the phone, shouting at his chef to catch the cat]",
       "overlap": -0.5,
-      "timestamp": 84.96,
-      "duration": 4.5,
+      "timestamp": 84.673,
+      "duration": 5.5,
       "sfx": "scripts/sfx/chen-catch.wav",
       "background": true,
       "phone_filter": true,
       "distant": true,
       "gain": 0.85,
-      "trim": 4.5,
+      "trim": 5.5,
       "audio": "/audio/radio/the-cat-special/23.flac"
     },
     {

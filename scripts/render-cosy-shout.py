@@ -21,10 +21,10 @@ from cosyvoice.cli.cosyvoice import CosyVoice2
 REPO = Path("/mnt/c/Users/acoop/Documents/GitHub/SnazzieSpaceReact")
 PROMPT = REPO / "scripts/voices/chen.wav"          # Chen's voice to clone (this build takes a path)
 OUT = REPO / "scripts/sfx/chen-catch.wav"
-TEXT = "抓住它！快抓住它啊！你这个白痴！别让它跑了！"
+TEXT = "快，快点抓住它！你在干什么呢，你这个白痴！"
 # Stronger emotion cue: furious, hysterical, hoarse screaming, very fast, out of control.
 INSTRUCT = "愤怒地歇斯底里地大吼大叫，声嘶力竭，语速极快，情绪失控暴怒"
-SPEED = 1.4   # faster, frantic
+SPEED = 1.1   # slightly quick, not rushed
 
 model = CosyVoice2(str(COSY / "pretrained_models/CosyVoice2-0.5B"),
                    load_jit=False, load_trt=False, fp16=False)
