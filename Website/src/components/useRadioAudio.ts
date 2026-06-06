@@ -147,7 +147,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     setAdPlaying(true);
     try {
       const buf = await decode(ctx, ad.track);
-      if (gen !== genRef.current) return;
+      if (gen !== genRef.current) { setAdPlaying(false); setAdIdx(null); return; }
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
@@ -279,6 +279,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
 
   function tuneTo(idx: number) {
     startedRef.current = true;
+    setAdPlaying(false);
+    setAdIdx(null);
     setAirIdx(idx);
     setPlaying(true);
     startEpisode(idx);
