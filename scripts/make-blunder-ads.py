@@ -2,8 +2,9 @@
 """Emit the BLUNDER ad category: local-business owners flubbing their own InstaAd
 recording (no announcer, no disclaimer). Two shapes:
 
-  SPLIT  - a HARD FUMBLE where they stop and re-record. Two separate numbered spots
-           (`ad-<slug>-1` / `-2`, titled "<Business> #1" / "#2"), same caller voice.
+  SPLIT  - a HARD FUMBLE where they stop and re-record. Two separate spots
+           (`ad-<slug>-1` / `-2`), same caller voice. Titles are just the business name;
+           radio.ts numbers each per business "(Blunder #N)" from the slug take suffix.
   LONG   - an INTERRUPTION (dog, phone, coworker, kids, customers) they push through in
            ONE longer take. Single spot, no number.
 
@@ -60,10 +61,6 @@ SPLIT = [
      f"{GREGS}, washers, dryers, and fridges, all on sale for only, <p:0.3> uh, <p:0.4> Greg, what is the number? <p:0.3> We will fix it later.",
      f"{GREGS}, the price is, <p:0.4> still do not have it. <p:0.3> It is a good price. <p:0.3> Just come look."),
 
-    ("tonys-gym", TONYS,
-     f"And that is why we are number one! <p:0.4> Pause for laughter. <p:0.4> So come to {TONYS} to get swole.",
-     f"Wait, is it swole or swol? <p:0.3> Swole. <p:0.4> {TONYS}, weights, treadmills, and a sauna. <p:0.3> The sauna is broken."),
-
     ("lous-locksmith", LOUS,
      f"Hi, welcome to {LOUS}, we cut keys and unlock cars... <p:0.4> oh. <p:0.3> Was that the beep? <p:0.4> Do I start again?",
      f"{LOUS}, locked out? We come to you, twenty four seven... <p:0.4> was THAT the beep? <p:0.3> I never know."),
@@ -105,6 +102,15 @@ SPLIT = [
      f"Okay, they cut me off. <p:0.3> {BIGMIKES}, the address is four twenty two East Maple, next to the laundro"),
 ]
 
+# --- MERGED: two flubbed takes aired back to back as ONE spot (no number). Each take keeps
+#     its own audio clip; they just play in sequence. (slug, name, voice, [take1, take2]) ----
+MERGED = [
+    ("tonys-gym", TONYS, "caller-linda", [
+        f"And that is why we are number one! <p:0.4> Pause for laughter. <p:0.4> So come to {TONYS} to get swole.",
+        f"Wait, is it swole or swol? <p:0.3> Swole. <p:0.4> {TONYS}, weights, treadmills, and a sauna. <p:0.3> The sauna is broken.",
+    ]),
+]
+
 # --- LONG: one continuous interrupted take. (slug, name, voice, text) --------------------
 LONG = [
     ("petes-hardware", PETES, "caller-gary",
@@ -138,13 +144,18 @@ def emit(slug, title, voice, lines):
 
 
 def main():
+    # Titles carry only the business name; radio.ts appends "(Blunder #N)" per business,
+    # where N is the take number from the slug suffix (-1/-2), at load time.
     for i, (slug, name, a1, a2) in enumerate(SPLIT):
         voice = VOICES[i % len(VOICES)]
-        emit(f"{slug}-1", f"{name} #1", voice, [a1])
-        emit(f"{slug}-2", f"{name} #2", voice, [a2])
+        emit(f"{slug}-1", name, voice, [a1])
+        emit(f"{slug}-2", name, voice, [a2])
+    for slug, name, voice, takes in MERGED:
+        emit(slug, name, voice, takes)
     for slug, name, voice, text in LONG:
         emit(slug, name, voice, [text])
-    print(f"\n{len(SPLIT) * 2} split takes + {len(LONG)} long spots = {len(SPLIT) * 2 + len(LONG)} blunder ads.")
+    total = len(SPLIT) * 2 + len(MERGED) + len(LONG)
+    print(f"\n{len(SPLIT) * 2} split takes + {len(MERGED)} merged + {len(LONG)} long spots = {total} blunder ads.")
 
 
 if __name__ == "__main__":

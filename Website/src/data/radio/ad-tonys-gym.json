@@ -1,0 +1,25 @@
+{
+  "slug": "ad-tonys-gym",
+  "title": "Tony's Gym",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-linda",
+      "text": "And that is why we are number one! <p:0.4> Pause for laughter. <p:0.4> So come to Tony's Gym to get swole.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.67,
+      "audio": "/audio/radio/ad-tonys-gym/0.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Wait, is it swole or swol? <p:0.3> Swole. <p:0.4> Tony's Gym, weights, treadmills, and a sauna. <p:0.3> The sauna is broken.",
+      "overlap": 0,
+      "timestamp": 7.67,
+      "duration": 9.83,
+      "audio": "/audio/radio/ad-tonys-gym/1.flac"
+    }
+  ]
+}

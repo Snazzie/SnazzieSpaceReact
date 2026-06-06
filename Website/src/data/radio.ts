@@ -59,8 +59,7 @@ import adDavesTax1 from "./radio/ad-daves-tax-1.json";
 import adDavesTax2 from "./radio/ad-daves-tax-2.json";
 import adGregsAppliances1 from "./radio/ad-gregs-appliances-1.json";
 import adGregsAppliances2 from "./radio/ad-gregs-appliances-2.json";
-import adTonysGym1 from "./radio/ad-tonys-gym-1.json";
-import adTonysGym2 from "./radio/ad-tonys-gym-2.json";
+import adTonysGym from "./radio/ad-tonys-gym.json";
 import adLousLocksmith1 from "./radio/ad-lous-locksmith-1.json";
 import adLousLocksmith2 from "./radio/ad-lous-locksmith-2.json";
 import adHanksBbq1 from "./radio/ad-hanks-bbq-1.json";
@@ -173,10 +172,18 @@ function episodeFrom(raw: RawShow): Episode {
 
 // Ads are their own kind of show: tagged `type: "ad"`, never linked to a music track.
 // Kept separate from episodeFrom so the distinction is explicit at the call site.
+// Ads split by production type: "Pro" (professionally announced) vs "InstaAd" (recorded
+// by the business owner via the self-serve InstaAd service — the `blunder` flag marks these).
+// Each is numbered PER BUSINESS by take (recording order): the take number is the trailing
+// "-N" on the slug (InstaAd fumbles split into -1/-2); single-take spots have no suffix and
+// are take #1. Any legacy "#N" baked into the source title is stripped before the tag.
 function adFrom(raw: RawShow): Episode {
+  const base = raw.title.replace(/\s*#\d+\s*$/, "");
+  const take = raw.slug.match(/-(\d+)$/)?.[1] ?? "1";
+  const label = raw.blunder ? "InstaAd" : "Pro";
   return {
     slug:        raw.slug,
-    title:       raw.title,
+    title:       `${base} (${label} #${take})`,
     description: raw.description,
     type:        "ad",
     lines:       raw.lines as TranscriptLine[],
@@ -240,11 +247,11 @@ const STANDARD_ADS: Episode[] = [
 // Blunder ads: local owners flubbing their own InstaAd recording. Tagged
 // `blunder: true`; aired in the same rotation but grouped as their own category.
 export const BLUNDER_ADS: Episode[] = [
-  // SPLIT — hard fumbles, numbered #1/#2
+  // SPLIT — hard fumbles, two takes per business (Blunder #1 / #2 from the slug suffix)
   adSalsPizza1, adSalsPizza2, adCarlsCarpets1, adCarlsCarpets2,
   adTheWashHouse1, adTheWashHouse2, adMurphysAuto1, adMurphysAuto2,
   adDavesTax1, adDavesTax2, adGregsAppliances1, adGregsAppliances2,
-  adTonysGym1, adTonysGym2, adLousLocksmith1, adLousLocksmith2,
+  adTonysGym, adLousLocksmith1, adLousLocksmith2,
   adHanksBbq1, adHanksBbq2, adBrightSmile1, adBrightSmile2,
   adMaxinesSalon1, adMaxinesSalon2, adRapidPlumbing1, adRapidPlumbing2,
   adVincesShoes1, adVincesShoes2, adSunnyDaycare1, adSunnyDaycare2,

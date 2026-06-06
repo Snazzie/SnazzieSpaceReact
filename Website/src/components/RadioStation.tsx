@@ -155,7 +155,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   const [activeLine, setActiveLine]     = useState(-1);
   const [ready, setReady]               = useState(false);
   const [volume, setVolumeState]        = useState(loadVolume);
-  const [tab, setTab]                   = useState<"episodes" | "ads" | "blunders">("episodes");
+  const [tab, setTab]                   = useState<"episodes" | "pro" | "instaad">("episodes");
   const autoPlayRef = useRef(false);
 
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
@@ -178,7 +178,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // Keep the sidebar tab on whichever list holds the current selection.
   useEffect(() => {
     if (selectedIdx < episodes.length) setTab("episodes");
-    else setTab(items[selectedIdx]?.blunder ? "blunders" : "ads");
+    else setTab(items[selectedIdx]?.blunder ? "instaad" : "pro");
   }, [selectedIdx, episodes.length]);
 
   // Deep link: /radio/behindthescenes#<slug> selects that episode on load (from the
@@ -406,13 +406,13 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
           </div>
         </div>
 
-        {/* Tabs: episodes / standard ads / blunder ads */}
+        {/* Tabs: shows / pro (professional) ads / InstaAd (DIY self-recorded) ads */}
         <div className="flex border-b border-white/5">
-          {(["episodes", "ads", "blunders"] as const).map((t) => {
+          {(["episodes", "pro", "instaad"] as const).map((t) => {
             const count = t === "episodes" ? episodes.length
-              : t === "ads" ? ads.filter((a) => !a.blunder).length
+              : t === "pro" ? ads.filter((a) => !a.blunder).length
               : ads.filter((a) => a.blunder).length;
-            const label = t === "episodes" ? "Shows" : t === "ads" ? "Ads" : "Blunders";
+            const label = t === "episodes" ? "Shows" : t === "pro" ? "Pro Ads" : "InstaAd";
             return (
               <button
                 key={t}
@@ -431,7 +431,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
         <div className="flex-1 overflow-y-auto">
           {(tab === "episodes" ? episodes
-            : tab === "ads" ? ads.filter((a) => !a.blunder)
+            : tab === "pro" ? ads.filter((a) => !a.blunder)
             : ads.filter((a) => a.blunder)
           ).map((item) => {
             const idx = items.indexOf(item);
