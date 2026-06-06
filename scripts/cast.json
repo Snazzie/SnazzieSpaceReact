@@ -166,5 +166,27 @@
     "ref_audio": "scripts/voices/todd.wav",
     "ref_text": "尽管受到这些指责，马英九在一次演讲中主张与中国大陆建立更加紧密的联系，并轻松获胜。",
     "gender": "M"
+  },
+  "ad-announcer": {
+    "name": "Announcer",
+    "color": "#f6c945",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, high pitch, american accent",
+    "speed": 1.4,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-announcer.wav",
+    "ref_text": "I WILL ENDEAVOUR IN MY STATEMENT TO AVOID SUCH TERMS AS WOULD SERVE TO LIMIT THE EVENTS TO ANY PARTICULAR PLACE OR GIVE A CLUE AS TO THE PEOPLE CONCERNED",
+    "gender": "M"
+  },
+  "ad-disclaimer": {
+    "name": "Fine Print",
+    "color": "#9aa0a6",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, low pitch, american accent",
+    "speed": 1.6,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-disclaimer.wav",
+    "ref_text": "DO YOU SUPPOSE THAT GOD FOR THE SAKE OF A FEW LUTHERAN HERETICS WOULD DISOWN HIS ENTIRE CHURCH",
+    "gender": "M"
   }
 }
