@@ -79,7 +79,13 @@ speeding up past ~2.0 and starts DROPPING the tail of the line (truncated audio)
 rattled-off legal-tail sound, keep the disclaimer's generation `speed` modest (~1.3 so the
 WHOLE line renders) and set a `tempo` field (e.g. `2.3`) — the generator time-stretches the
 finished clip with `librosa` (pitch-preserving, lossless), so every word survives and it
-genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. `phone_filter` is `false` for both (studio ad).
+genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. (Tempo
+uses ffmpeg `atempo`/WSOLA — clean on speech; a phase vocoder sounds watery.)
+
+**Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
+`num_step` = denoising iterations (default 32; ~48 is cleaner, slower) and `guidance_scale`
+(default 2.0). Bump `num_step` if a voice sounds low-quality/artifacty. Both fold into the
+clip hash only when set, so they re-render just that voice. `phone_filter` is `false` for both (studio ad).
 
 ## Generate
 

@@ -63,7 +63,7 @@ def load_cast() -> dict:
 
 
 # Bump when the audio pipeline (filter/render) changes, to invalidate cached clips
-PIPELINE_VERSION = "3"
+PIPELINE_VERSION = "4"  # v4: tempo via ffmpeg atempo (WSOLA) instead of librosa phase vocoder
 
 
 def sfx_hash(path: str, line: dict) -> str:
@@ -113,10 +113,14 @@ def clip_hash(text: str, c: dict) -> str:
         f"{speed}", str(bool(c.get("phone_filter", False))),
         f"{float(c.get('gain', 1.0))}", str(bool(c.get("distant", False))),
     ]
-    # Only fold `tempo` in when set, so default clips keep their existing hash.
+    # Only fold these in when set, so default clips keep their existing hash.
     tempo = float(c.get("tempo", 1.0))
     if tempo != 1.0:
         parts.append(f"tempo={tempo}")
+    if "num_step" in c:
+        parts.append(f"num_step={int(c['num_step'])}")
+    if "guidance_scale" in c:
+        parts.append(f"guidance_scale={float(c['guidance_scale'])}")
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
@@ -131,6 +135,19 @@ PAUSE_RE = re.compile(r"<p(?::([0-9.]+))?>")
 DEFAULT_PAUSE = 0.5
 
 
+def _gen_config(c: dict):
+    """Optional per-voice OmniVoice inference knobs. `num_step` = denoising iterations
+    (default 32; higher = better quality, slower). `guidance_scale` = CFG (default 2.0).
+    Returns None when neither is set, so default generation is untouched."""
+    if "num_step" not in c and "guidance_scale" not in c:
+        return None
+    from omnivoice.models.omnivoice import OmniVoiceGenerationConfig
+    return OmniVoiceGenerationConfig(
+        num_step=int(c.get("num_step", 32)),
+        guidance_scale=float(c.get("guidance_scale", 2.0)),
+    )
+
+
 def _tts(text: str, c: dict, model) -> np.ndarray:
     audio = model.generate(
         text=text,
@@ -138,8 +155,32 @@ def _tts(text: str, c: dict, model) -> np.ndarray:
         ref_text=c["ref_text"],
         instruct=c["instruct"],
         speed=float(c.get("speed", SPEED)),
+        generation_config=_gen_config(c),
     )
     return audio[0].astype(np.float32)  # full clip — no trimming; placement aligns by speech
+
+
+def apply_tempo(clip: np.ndarray, tempo: float) -> np.ndarray:
+    """Pitch-preserving time-compression via ffmpeg `atempo` (WSOLA — clean on speech).
+    atempo accepts 0.5-2.0 per filter, so chain factors for anything outside that range."""
+    import subprocess, tempfile, os
+    factors: list[float] = []
+    t = tempo
+    while t > 2.0:
+        factors.append(2.0); t /= 2.0
+    while t < 0.5:
+        factors.append(0.5); t /= 0.5
+    factors.append(t)
+    af = ",".join(f"atempo={f:.6f}" for f in factors)
+    with tempfile.TemporaryDirectory() as d:
+        inp, outp = os.path.join(d, "in.wav"), os.path.join(d, "out.wav")
+        sf.write(inp, clip, SAMPLE_RATE)
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", inp, "-filter:a", af, outp],
+            check=True, capture_output=True,
+        )
+        out, _ = sf.read(outp, dtype="float32")
+    return out.astype(np.float32)
 
 
 def render_clip(text: str, c: dict, model) -> np.ndarray:
@@ -162,14 +203,14 @@ def render_clip(text: str, c: dict, model) -> np.ndarray:
     gain = float(c.get("gain", 1.0))     # quieter = further back in the mix
     if gain != 1.0:
         clip = (clip * gain).astype(np.float32)
-    # Lossless, pitch-preserving speed-up applied AFTER generation. Use this (not a huge
-    # `speed`) to make a clip genuinely faster: OmniVoice's `speed` token stops speeding up
-    # and starts dropping words past ~2.0, whereas tempo time-stretches the full rendered
-    # clip so every word survives. tempo > 1 = faster/shorter.
+    # Pitch-preserving speed-up applied AFTER generation. Use this (not a huge `speed`) to
+    # make a clip genuinely faster: OmniVoice's `speed` token stops speeding up and starts
+    # dropping words past ~2.0, whereas tempo time-stretches the full rendered clip so every
+    # word survives. tempo > 1 = faster/shorter. Uses ffmpeg `atempo` (WSOLA) — far cleaner
+    # on speech than a phase vocoder.
     tempo = float(c.get("tempo", 1.0))
     if tempo != 1.0:
-        import librosa
-        clip = librosa.effects.time_stretch(clip, rate=tempo).astype(np.float32)
+        clip = apply_tempo(clip, tempo)
     return clip
 
 
