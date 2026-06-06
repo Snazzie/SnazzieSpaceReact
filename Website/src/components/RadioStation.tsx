@@ -5,6 +5,7 @@ import type { CastMember, Episode, TranscriptLine } from "@/data/radio";
 interface Props {
   episodes: Episode[];
   cast: Record<string, CastMember>;
+  ads?: Episode[];
 }
 
 function fmt(s: number): string {
@@ -108,7 +109,7 @@ function TrackLanes({
   );
 }
 
-export default function RadioStation({ episodes, cast }: Props) {
+export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   const [selectedIdx, setSelectedIdx]   = useState(0);
   const [isPlaying, setIsPlaying]       = useState(false);
   const [currentTime, setCurrentTime]   = useState(0);
@@ -128,7 +129,8 @@ export default function RadioStation({ episodes, cast }: Props) {
   const offsetRef   = useRef(0);  // timeline position at that start
   const playingRef  = useRef(false);
 
-  const episode = episodes[selectedIdx];
+  const items = [...episodes, ...ads];
+  const episode = items[selectedIdx];
   const [lines, setLines] = useState<TranscriptLine[]>(episode.lines);
 
   // Keep lines in sync with the selected episode
@@ -139,7 +141,7 @@ export default function RadioStation({ episodes, cast }: Props) {
   useEffect(() => {
     const slug = window.location.hash.replace(/^#/, "");
     if (!slug) return;
-    const idx = episodes.findIndex((e) => e.slug === slug);
+    const idx = items.findIndex((e) => e.slug === slug);
     if (idx >= 0) setSelectedIdx(idx);
   }, []);
 
@@ -289,7 +291,7 @@ export default function RadioStation({ episodes, cast }: Props) {
     setCurrentTime(0);
     setActiveLine(-1);
     setSelectedIdx(idx);
-    window.location.hash = episodes[idx].slug;
+    window.location.hash = items[idx].slug;
   }
 
   // Reset clock when switching episodes
@@ -398,6 +400,48 @@ export default function RadioStation({ episodes, cast }: Props) {
               </div>
             );
           })}
+
+          {ads.length > 0 && (
+            <>
+              <div className="px-4 pt-3 pb-1 text-[9px] font-semibold tracking-[2px] text-white/20">ADS</div>
+              {ads.map((ad, i) => {
+                const idx = episodes.length + i;
+                const active = idx === selectedIdx;
+                const playingThis = active && isPlaying;
+                return (
+                  <div
+                    key={ad.slug}
+                    className={`flex items-center border-l-2 transition-colors ${
+                      active
+                        ? "border-[#ff6b00] bg-white/[0.04]"
+                        : "border-transparent hover:bg-white/[0.02] hover:border-white/10"
+                    }`}
+                  >
+                    <button
+                      onClick={() => selectEpisode(idx, false)}
+                      className="flex-1 text-left px-4 py-3 min-w-0"
+                    >
+                      <div className={`text-[11px] font-semibold leading-tight truncate ${active ? "text-white" : "text-white/40"}`}>
+                        {ad.title}
+                      </div>
+                      <div className="mt-1 text-[9px] text-white/20">
+                        {[...new Set(ad.lines.map((l) => l.speaker))]
+                          .map((id) => cast[id]?.name ?? id)
+                          .join(", ")}
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => selectEpisode(idx, !playingThis)}
+                      className="pr-3 pl-1 py-3 flex-shrink-0 text-[#ff6b00]/60 hover:text-[#ff6b00] transition-colors text-[10px]"
+                      title={playingThis ? "Pause" : "Play"}
+                    >
+                      {playingThis ? "❚❚" : "▶"}
+                    </button>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
 
       </div>
