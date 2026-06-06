@@ -184,7 +184,7 @@
     "color": "#9aa0a6",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, low pitch, american accent",
-    "speed": 2.3,
+    "speed": 2.8,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-disclaimer.wav",
     "ref_text": "THAT SUMMER'S EMIGRATION HOWEVER BEING MAINLY FROM THE FREE STATES GREATLY CHANGED THE RELATIVE STRENGTH OF THE TWO PARTIES",
