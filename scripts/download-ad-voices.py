@@ -23,7 +23,7 @@ MIN_CLIP_SECS = 4.0
 # wrong, change the speaker id here and re-run.
 AD_VOICES = {
     "ad-announcer":  (1580, "M"),
-    "ad-disclaimer": (7729, "M"),  # deep flat monotone "disclaimer man" (chosen via pick-disclaimer-voice.py)
+    "ad-disclaimer": (8463, "M"),  # bright tenor fast-talking "disclaimer man" (chosen via pick-disclaimer-voice.py)
 }
 
 def resample(audio, orig_sr, target_sr):
