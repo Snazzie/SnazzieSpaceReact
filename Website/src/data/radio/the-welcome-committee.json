@@ -1,0 +1,301 @@
+{
+  "slug": "the-welcome-committee",
+  "title": "The Welcome Committee",
+  "description": "Maple Court's Welcome Committee runs the friendliest bake sale in the county. It also runs license plates, a watchlist, and a man named Doug. Tonight the new neighbor calls in.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight we're celebrating community. We've got the head of the Maple Court Welcome Committee on the line, plus a brand new resident. Patricia, welcome.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "A welcome committee. That sounds nice. That sounds normal.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Thank you so much, Ronnie. And let me just say, we are a friendly street. We do a bake sale every Sunday. <p:0.3> Banana bread. Smiles. The whole thing.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Banana bread. Now that's the heart of a neighborhood, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, hi, yeah, I'm the new guy. I moved into number eleven on Tuesday. <p:0.3> Can I ask why there's a folder?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "A welcome folder, dear. Every new resident gets one.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It has my license plate in it. <p:0.3> It has a photo of my car. From above.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "From above?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "That's just Doug, with the drone. Doug does the welcome photos. <p:0.3> It's a friendly drone.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A neighbor who takes your picture. Now that's hospitality you don't see anymore.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It also has my mother's maiden name. <p:0.3> I never told anyone my mother's maiden name.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "We like to know who we're welcoming, dear. It's all in good fun.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Patricia. <p:0.3> Patricia, is the man at number eleven aware of the watchlist?",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "The WHAT?",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Doug, we are LIVE. <p:0.3> It's not a watchlist, dear. It's a community engagement spreadsheet.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait, the drone guy is named Doug AND the spreadsheet guy is named Doug?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "There is only one Doug. <p:0.3> Doug is the committee.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "One man, doing it all. Bake sale, drone, spreadsheet. <p:0.3> That's a model citizen, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Patricia, why is there a green dot next to my name and a red dot next to the lady at number nine?",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Green means we like you, dear. <p:0.3> Right now. Conditionally.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Number nine put her bins out on a Wednesday. <p:0.3> Bins are Thursday. Doug remembers.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "What happens at red, Patricia? <p:0.3> Like, what does a red dot actually mean?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Nothing happens, Barry. <p:0.3> We just stop saving her a slice. And then the lights go funny near her house.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "The lights go funny? <p:0.3> What does that mean, the lights go funny?!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug knows where the breaker is.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He maintains the infrastructure too. <p:0.3> This Doug is an asset to the community.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "He really is, Ronnie. He hasn't slept since the spring fete, bless him.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, I'd like to be taken OFF the spreadsheet. <p:0.3> Effective immediately. Take me off it.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, dear. <p:0.3> Nobody comes off the spreadsheet. You can only change color.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "You're going amber, number eleven. <p:0.3> I can see it from here. You're going amber.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Winston, are you AT the spreadsheet right now?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I am always at the spreadsheet, Barry.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "There's a drone at my window. <p:0.3> There is a drone. At my window. Right now.",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Smile, dear! It's for the newsletter!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Amber!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Red.",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Banana bread!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "MY LIGHTS!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug.",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "His lights just went out, Ronnie. <p:0.3> The new guy's lights actually went out.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And that, folks, is what a real neighborhood feels like. <p:0.4> We'll be right back, right after Patricia saves us all a slice.",
+      "overlap": -0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "...Conditionally.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

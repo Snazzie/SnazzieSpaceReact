@@ -9,14 +9,14 @@
       "text": "Babies expensive? <p:0.2> Lil' Sustenance is the budget formula that's technically food! <p:0.2> Forty percent powder, sixty percent enthusiasm. <p:0.2> Lil' Sustenance, they'll probably be fine!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 10.76,
+      "duration": 11.38,
       "audio": "/audio/radio/ad-lil-sustenance/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Lil' Sustenance is not approved for infants. <p:0> Nutritional content is estimated. <p:0> Use under supervision of someone braver. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 10.534,
+      "timestamp": 11.008,
       "duration": 6.851,
       "audio": "/audio/radio/ad-lil-sustenance/1.flac"
     }

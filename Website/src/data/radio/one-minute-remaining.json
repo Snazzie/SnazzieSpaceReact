@@ -1,0 +1,175 @@
+{
+  "slug": "one-minute-remaining",
+  "title": "One Minute Remaining",
+  "description": "Ronnie's washing machine has said one minute remaining since Tuesday. Barry is not sympathetic.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Barry. <p:0.3> I gotta talk to you about my washing machine.",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 5.34,
+      "audio": "/audio/radio/one-minute-remaining/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ohhh no. Okay. Here we go.",
+      "overlap": -0.2,
+      "timestamp": 4.495,
+      "duration": 2.12,
+      "audio": "/audio/radio/one-minute-remaining/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It says one minute remaining. One minute! So I wait. I stand there. Like an idiot.",
+      "overlap": 0,
+      "timestamp": 5.839,
+      "duration": 6.2,
+      "audio": "/audio/radio/one-minute-remaining/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "And?",
+      "overlap": -0.2,
+      "timestamp": 11.217,
+      "duration": 1.16,
+      "audio": "/audio/radio/one-minute-remaining/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Ten minutes later, Barry. Ten. Still says one minute.",
+      "overlap": 0,
+      "timestamp": 11.566,
+      "duration": 4.16,
+      "audio": "/audio/radio/one-minute-remaining/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Maybe it's just a long minute.",
+      "overlap": -0.2,
+      "timestamp": 14.963,
+      "duration": 2.52,
+      "audio": "/audio/radio/one-minute-remaining/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It is lying to me, Barry. Right to my face.",
+      "overlap": 0,
+      "timestamp": 16.728,
+      "duration": 3.24,
+      "audio": "/audio/radio/one-minute-remaining/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It does not have a face, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 19.345,
+      "duration": 2.64,
+      "audio": "/audio/radio/one-minute-remaining/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's got a little screen. That's basically a face.",
+      "overlap": -0.1,
+      "timestamp": 20.621,
+      "duration": 3.88,
+      "audio": "/audio/radio/one-minute-remaining/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So I come back an hour later. A whole hour. You know what it said?",
+      "overlap": 0,
+      "timestamp": 23.451,
+      "duration": 4.92,
+      "audio": "/audio/radio/one-minute-remaining/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "One minute.",
+      "overlap": -0.1,
+      "timestamp": 27.468,
+      "duration": 1.56,
+      "audio": "/audio/radio/one-minute-remaining/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "ONE MINUTE! <p:0.3> It's been the same minute since Tuesday, Barry!",
+      "overlap": 0.3,
+      "timestamp": 27.964,
+      "duration": 5.82,
+      "audio": "/audio/radio/one-minute-remaining/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, that's not a washing machine. That's a hostage situation.",
+      "overlap": -0.2,
+      "timestamp": 32.453,
+      "duration": 5.2,
+      "audio": "/audio/radio/one-minute-remaining/12.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So I unplugged it. Pulled the plug right out of the wall. Took my power back.",
+      "overlap": 0,
+      "timestamp": 36.492,
+      "duration": 5.84,
+      "audio": "/audio/radio/one-minute-remaining/13.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Good. Smart. Show it who's boss.",
+      "overlap": -0.2,
+      "timestamp": 41.735,
+      "duration": 2.64,
+      "audio": "/audio/radio/one-minute-remaining/14.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Plugged it back in an hour later. <p:0.3> You wanna guess what it said?",
+      "overlap": 0,
+      "timestamp": 43.469,
+      "duration": 5.3,
+      "audio": "/audio/radio/one-minute-remaining/15.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Please don't say one minute.",
+      "overlap": -0.1,
+      "timestamp": 47.627,
+      "duration": 2.4,
+      "audio": "/audio/radio/one-minute-remaining/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "One. <p:0.2> Minute.",
+      "overlap": 0,
+      "timestamp": 49.525,
+      "duration": 3.04,
+      "audio": "/audio/radio/one-minute-remaining/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It remembered. It was waiting for you.",
+      "overlap": -0.2,
+      "timestamp": 52.186,
+      "duration": 3.2,
+      "audio": "/audio/radio/one-minute-remaining/18.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now I'm scared to open it. What if it's still on one minute?",
+      "overlap": 0,
+      "timestamp": 54.516,
+      "duration": 4.48,
+      "audio": "/audio/radio/one-minute-remaining/19.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Then you wait, Ronnie. <p:0.3> It's only a minute.",
+      "overlap": -0.1,
+      "timestamp": 58.243,
+      "duration": 3.98,
+      "audio": "/audio/radio/one-minute-remaining/20.flac"
+    }
+  ]
+}

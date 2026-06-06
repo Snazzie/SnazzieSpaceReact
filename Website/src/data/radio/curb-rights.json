@@ -1,0 +1,336 @@
+{
+  "slug": "curb-rights",
+  "title": "Curb Rights",
+  "description": "Two rival food trucks share one generator and twelve feet of curb. Donna runs Donna's Diner-On-Wheels. Mr. Chen runs the taco window six feet behind her. Tonight they settle whose extension cord it is, live, while the power keeps flickering.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM. Tonight, two beloved local food trucks who park on the same block have agreed to come on the air and work things out, neighbor to neighbor. Donna, Mr. Chen, welcome.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "They share a generator, Ronnie. That's the part you skipped.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "One generator, two dreams. That's commerce, Barry. Donna, you reached out first.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "I did, Ronnie, and I'll keep it simple, sweetheart. The cord is mine. I bought it, I run it, and Chen's been plugging his little taco lights into MY cord.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "It is a shared cord, Donna. Always shared.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...It is not shared, sweetheart. <p:0.3> It is orange, it has my name on it in marker, and it lives under MY truck.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, but whose generator is it, though?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "The generator is mine. I bought the generator. She bought the cord. This is balance.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Balance. He calls it balance. <p:0.3> Ronnie, his generator runs MY fryer. When he gets mad, sweetheart, he turns me off mid-fry.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that does sound serious. A man shouldn't have a hand on another woman's fryer.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "I turn it off because she unplugs my lights! Every night, the same. I plug in, lights go dark, I look, the cord is under HER truck.",
+      "overlap": 0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Because it's MY cord, sweetheart! You don't drag a woman's cord six feet just to light up a sign that says, what does it say, Chen, say it.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "...It says, Best Tacos On The Block.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "On the BLOCK. There it is. There's the knife, Ronnie. It's a two-truck block!",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay so the sign is the real thing here. It's not the cord.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "It is the cord, Barry. The sign is just true.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "True?! Sweetheart, your line is twelve people long because I told my regulars your fish came in on a Tuesday and it is FRIDAY.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Donna, in fairness, that does sound like sabotage.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "It's marketing, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Marketing. She rerouted the line. <p:0.3> She put a little cone, Ronnie. A cone in front of my window that says, OUT OF CARNITAS, ASK DONNA.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "She made you a cone, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "And who moved my truck, Donna? Hmm? I park, I go for change, I come back, my truck is in the BUS ZONE. Forty dollar ticket. You pushed it.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Push a truck? Sweetheart, I'm a hundred and ten pounds, I couldn't push a truck if you greased it.",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "You put it in NEUTRAL and you used the slope, Donna! I have the hill on camera!",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He has the hill on camera, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Oh, you wanna do cameras? Who poured chili oil down my fryer vent, Chen? My whole truck smells like YOUR truck now! Customers think I went Mexican!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Good! Maybe finally somebody eats something with a flavor, Donna!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "FLAVOR?! My meatloaf has a Yelp page, sweetheart, it has a FOLLOWING!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> The lights just went out in here. On our end. The studio.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's just the block flickering, Todd. They share a generator. It does that when they fight.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "She unplugged me AGAIN. Right now. On the radio.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "And your fryer just took MY power down with it, sweetheart, so we're even.",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Cord!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Generator!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Sign's still true, Donna!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "MEATLOAF HAS A FOLLOWING!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait. <p:0.3> Wait, hang on. Donna, Chen, what's your last name? Both of you.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...Chen.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "...Also Chen.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "You're MARRIED?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...For the trucks, Barry. It was a tax thing. <p:0.3> One L L C, two windows. The lawyer said it was smart.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "So technically, the cord is also the generator. <p:0.3> They are one business.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...Then who do I sue, sweetheart?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Yourself, Donna. <p:0.4> Us. You sue us.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well there it is, folks. One generator, one cord, one marriage, two windows. <p:0.3> Donna, Chen... that's just good neighboring. We'll be right back, soon as the lights come up.",
+      "overlap": -0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the lights are not coming up.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "She's still got the cord, Barry.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "slug": "the-ninth-breath",
+  "title": "The Ninth Breath",
+  "description": "Wellness night meets Rhonda, founder of Pneuma, a breathwork method whose whole pitch is that you stop breathing the wrong air and save the Ninth Breath for the Sundering. The graduates call in glassy and synchronized, the dues pile up, and a calm breathing demo quietly turns into a recruitment drive that starts converting Barry on the air.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, we breathe. With us is Rhonda, founder of a wellness practice called Pneuma. Rhonda, welcome.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Breathing. Okay. I already do that one for free.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Thank you, breather. <p:0.3> You think you breathe. But you are taking, mm <p:0.3> the wrong air. Most of you will never reach the Ninth Breath.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The Ninth Breath. Now that's a journey, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "What's wrong with the first eight breaths?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "The first eight are rented, breather. <p:0.3> You only own the Ninth. And you do not get the Ninth Breath <p:0.3> until the Sundering.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "The... the what now? The Sundering?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Let's not rush her process, Barry. Rhonda, why don't you take us through a little demo.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Of course. In through the false air, breather <p:0.4> and hold. <p:0.4> Hold it. Hold it for me. <p:0.3> Now release the version of you that asks questions.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That's not... that's, in through the nose, okay, and hold, and...",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Hi Ronnie. I graduated Pneuma in the spring. <p:0.3> I gave Rhonda my car, my savings, and my second car. <p:0.3> And I've never felt freer.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Your savings? Both cars?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Dues are dues, Barry. <p:0.3> I sleep on Rhonda's lawn now, under the good air. And I've never felt freer.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now THAT is a man at peace, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Darnell, show them. <p:0.4> Take the held breath.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He's just... he's not saying anything. Darnell? <p:0.3> He's holding his breath, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "He is saving it. For the Sundering.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Is that Darnell? <p:0.3> My son does that. He won't come to dinner anymore. He just sits there at the table, not exhaling.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Your son is advancing beautifully, breather.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "He's turning a funny color, Rhonda. He won't come to dinner anymore. I made his favorite.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He's just on a deeper part of the practice, ma'am. He'll exhale at the retreat.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Yeah, hi, Chad here. <p:0.3> Forget the breathing. Rhonda, who's the upline on this? <p:0.3> Are territories still open in the north?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "The UPLINE? It's a breathing cult, Chad, there's no... there's no territory.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It's a practice, breather. <p:0.3> And yes, Chad. Bring nine recruits, and you keep the Sundering for your whole zip code.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Nine recruits, full zip code. <p:0.3> What's my cut of THEIR dues?",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Don't answer that, don't, okay everyone just take a normal breath, in, and hold, and...",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Good, breather. Now don't let it go. <p:0.3> Save it.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Barry, sweetheart, you sound like my son.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Join us, Barry. And you've never felt freer.",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Sign him as MY recruit! That's one of nine!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Welcome, breather.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Dinner!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Territory!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Alright, that's our hour. Beautiful, beautiful work tonight. <p:0.3> Barry, take us out.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Barry? <p:0.4> Barry, the sign-off.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "...",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm just... <p:0.4> I'm saving it, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Atta boy. <p:0.3> Rhonda, we'll see you and the whole studio at your free Sundering Retreat this weekend. I just booked it. <p:0.4> Breathe easy, folks. Or don't. Your choice.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

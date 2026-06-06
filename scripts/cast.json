@@ -133,6 +133,17 @@
     "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH",
     "gender": "M"
   },
+  "caller-glenda": {
+    "name": "Sister Glenda",
+    "color": "#9b59b6",
+    "role": "Caller",
+    "instruct": "female, elderly, american accent, moderate pitch",
+    "speed": 0.95,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-mildred.wav",
+    "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON",
+    "gender": "F"
+  },
   "caller-kim": {
     "name": "Kim",
     "color": "#a29bfe",
@@ -155,6 +166,30 @@
     "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS",
     "gender": "M"
   },
+  "caller-phil": {
+    "name": "Phil",
+    "color": "#7ec8e3",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, high pitch",
+    "speed": 1.0,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M",
+    "_note": "Fussy frozen-yogurt owner. Reuses caller-steve.wav ref (male middle-aged american) until a dedicated nasal/prim ref is sourced."
+  },
+  "caller-sal": {
+    "name": "Sal",
+    "color": "#c98a3a",
+    "role": "Caller",
+    "instruct": "male, elderly, american accent, low pitch",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M",
+    "_note": "Gruff working-class bait-shop owner. Reuses caller-gary.wav ref (male low pitch) until a dedicated gravelly ref is sourced."
+  },
   "caller-chen": {
     "name": "Mr. Chen",
     "color": "#e17055",
@@ -168,16 +203,53 @@
     "gender": "M",
     "_note": "Distinct Mandarin male voice (FLEURS cmn_hans_cn, scripts/pull-chen-voice.py) — NOT todd.wav, which is Todd the intern."
   },
+  "caller-donna": {
+    "name": "Donna",
+    "color": "#e84393",
+    "role": "Caller",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.1,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Feisty middle-aged food-truck owner ('sweetheart'). Reuses caller-patricia.wav ref (female middle-aged american) until a dedicated brassy ref is sourced."
+  },
+  "caller-marco": {
+    "name": "Marco",
+    "color": "#0984e3",
+    "role": "Caller",
+    "instruct": "male, young adult, american accent",
+    "speed": 1.2,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-chad.wav",
+    "ref_text": "NOTWITHSTANDING THE HIGH RESOLUTION OF HAWKEYE HE FULLY COMPREHENDED ALL THE DIFFICULTIES AND DANGER HE WAS ABOUT TO INCUR",
+    "gender": "M",
+    "_note": "Cocky younger rival food-truck owner. Reuses caller-chad.wav ref (male young adult american) until a dedicated ref is sourced."
+  },
+  "clerk-doreen": {
+    "name": "Doreen",
+    "color": "#b8860b",
+    "role": "Caller",
+    "instruct": "female, elderly, american accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F",
+    "_note": "Weary elderly bureaucratic window clerk ('hon'). Reuses caller-linda.wav ref (female elderly american) until a dedicated drawling ref is sourced."
+  },
   "ad-announcer": {
     "name": "Announcer",
     "color": "#f6c945",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, high pitch, american accent",
-    "speed": 1.1,
+    "speed": 1.0,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-announcer.wav",
     "ref_text": "I WILL ENDEAVOUR IN MY STATEMENT TO AVOID SUCH TERMS AS WOULD SERVE TO LIMIT THE EVENTS TO ANY PARTICULAR PLACE OR GIVE A CLUE AS TO THE PEOPLE CONCERNED",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-disclaimer": {
     "name": "Fine Print",
@@ -199,109 +271,119 @@
     "color": "#ff3b30",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-rage.wav",
     "ref_text": "THE ANALYSIS OF KNOWLEDGE WILL OCCUPY US UNTIL THE END OF THE THIRTEENTH LECTURE AND IS THE MOST DIFFICULT PART OF OUR WHOLE ENTERPRISE",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-surgery": {
     "name": "Surgery Pitchman",
     "color": "#34c759",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-surgery.wav",
     "ref_text": "TO FADE AWAY LIKE MORNING BEAUTY FROM HER MORTAL DAY DOWN BY THE RIVER OF ADONA HER SOFT VOICE IS HEARD AND THUS HER GENTLE LAMENTATION FALLS LIKE MORNING DEW",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-cash": {
     "name": "Cash Pitchman",
     "color": "#30b0c7",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-cash.wav",
     "ref_text": "THE SCOTTISH GENERALS AND COMMISSIONERS AFFECTED GREAT SURPRISE ON THE APPEARANCE OF THE KING AND THOUGH THEY PAID HIM ALL THE EXTERIOR RESPECT DUE TO HIS DIGNITY THEY INSTANTLY SET A GUARD UPON HIM UNDER COLOR OF PROTECTION AND MADE HIM IN REALITY A PRISONER",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-cat": {
     "name": "Cat Pitchman",
     "color": "#ff9500",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-cat.wav",
     "ref_text": "MARY TAYLOR HOWEVER RELATED THE TALE OF ZORA TO MISSUS GREY'S PRIVATE EAR LATER",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-deep": {
     "name": "Deep Pitchman",
     "color": "#5856d6",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-deep.wav",
     "ref_text": "I REMAINED THERE ALONE FOR MANY HOURS BUT I MUST ACKNOWLEDGE THAT BEFORE I LEFT THE CHAMBERS I HAD GRADUALLY BROUGHT MYSELF TO LOOK AT THE MATTER IN ANOTHER LIGHT",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-gravel": {
     "name": "Gravel Pitchman",
     "color": "#8e8e93",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-gravel.wav",
     "ref_text": "HE IS A WELCOME FIGURE AT THE GARDEN PARTIES OF THE ELECT WHO ARE ALWAYS READY TO ENCOURAGE HIM BY ACCEPTING FREE SEATS FOR HIS PLAY ACTOR MANAGERS NOD TO HIM EDITORS ALLOW HIM TO CONTRIBUTE WITHOUT CHARGE TO A SYMPOSIUM ON THE PRICE OF GOLF BALLS",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-smooth": {
     "name": "Smooth Pitchman",
     "color": "#af52de",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-smooth.wav",
     "ref_text": "HER SEA GOING QUALITIES WERE EXCELLENT AND WOULD HAVE AMPLY SUFFICED FOR A CIRCUMNAVIGATION OF THE GLOBE",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-nasal": {
     "name": "Nasal Pitchman",
     "color": "#ff2d55",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-nasal.wav",
     "ref_text": "THEY ARE CHIEFLY FORMED FROM COMBINATIONS OF THE IMPRESSIONS MADE IN CHILDHOOD",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-shouty": {
     "name": "Shouty Pitchman",
     "color": "#ffcc00",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-shouty.wav",
     "ref_text": "SHE TAUGHT HER DAUGHTER THEN BY HER OWN AFFECTION FOR IT THAT LOVE FOR A COUNTRY WHERE THEY HAD BOTH BEEN HOSPITABLY RECEIVED AND WHERE A BRILLIANT FUTURE OPENED BEFORE THEM",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   },
   "ad-ann-chipper": {
     "name": "Chipper Pitchman",
     "color": "#64d2ff",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, american accent",
-    "speed": 1.15,
+    "speed": 1.05,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-ann-chipper.wav",
     "ref_text": "NONSENSE OF COURSE I CAN'T REALLY SING EXCEPT THE WAY MY MOTHER AND GRANDMOTHER DID BEFORE ME",
-    "gender": "M"
+    "gender": "M",
+    "num_step": 80
   }
 }

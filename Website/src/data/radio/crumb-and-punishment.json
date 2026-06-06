@@ -1,0 +1,315 @@
+{
+  "slug": "crumb-and-punishment",
+  "title": "Crumb and Punishment",
+  "description": "The Maplewood Elementary PTA calls in to promote Saturday's bake sale, but treasurer Mildred runs the lemon-bar table like a cartel. Ronnie calls it community spirit, Barry calls it a felony, a terrified brownie guy tries to whistle-blow live, and Linda just wants the recipe.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight is all about giving back. The Maplewood Elementary PTA is here to tell us about Saturday's bake sale. Treasurer Mildred, welcome to the show.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, thank you, sugar. We've got cookies, we've got cupcakes, and we've got my famous lemon bars. <p:0.3> And everybody is going to buy something.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Everybody is going to buy something. That last part had a real edge to it.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's just enthusiasm, Barry. Now Mildred, how do vendors sign up for a table?",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Well sugar, it's simple. You bring your goods, I assign you a spot, and you pay the muffin tax. Ten percent of the table, right off the top, into the lockbox.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "The muffin tax.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A small fee for the fundraiser. That's just good organization, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, hi, Mildred, it's Linda from the carpool line! Your lemon bars are to die for. Could I ever get that recipe?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Linda, sweetheart. <p:0.3> Nobody gets the recipe. People have asked. Those people don't bake at Maplewood anymore.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, that sounds lovely! I'll just bring my snickerdoodles then.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Yeah, hi. <p:0.3> Longtime listener. I do the brownie table. I just want to say, on the record, that the muffin tax is not... it's not exactly voluntary?",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Darnell. Sugar. <p:0.3> Is that you on the radio?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "No. No, this is a different brownie guy. There's a lot of us. Allegedly.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that man is scared. That's a scared brownie man.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He's just passionate about the fundraiser. Go on, Darnell.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "So last spring a guy named Phil tried to sell his cookies for a quarter under list. Undercut the table. And then Phil got... a visit. I didn't say that. I'm not saying Phil got a visit.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Phil decided to bake somewhere else, that's all. We wished him well. <p:0.3> We sent flowers to the spot where his table used to be.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that's a threat. She is describing a hit on a man named Phil.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's just neighbors looking out for neighbors, Barry. That's good fellowship.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Aw, flowers! Mildred, you really do think of everything. Is that the lemon bars I smell?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Now Darnell, sugar, your brownie table did real well last month. Real well. <p:0.3> So we're adjusting your rate. It's not ten percent anymore. We're calling it the lemon bar tribute now.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "The tribute is forty percent, Mildred. Forty. <p:0.3> I'm whispering because she's in the cafeteria and I can hear the lockbox.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That's a protection racket, Ronnie. The muffin tax is a protection racket.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's a tiered membership structure, Barry. Lots of charities do tiers.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "And honestly, sugar, the tribute's a little dated too. <p:0.3> Going forward, you don't pay the family. You bake for the family.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I have a family, Mildred! I have my own actual family!",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "You have the family now, Darnell.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "It does take a village! That's so true, Mildred.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Linda, she is conscripting him! She is forcing that man into a brownie cartel!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, that sounds lovely!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It is not lovely, Linda! Run! Bake your snickerdoodles at home!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Nobody bakes at home, sugar.",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Call somebody! Call the F B I!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Allegedly!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Recipe!",
+      "overlap": 0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Alright, alright, beautiful energy, everybody. That's our show. Big thanks to Mildred and the whole Maplewood PTA. Come on out Saturday and support your local schools.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Before you sign off, sugar. <p:0.3> Snazzie FM had us on the air a full hour tonight. That's airtime. So the station owes a little muffin tax.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh. We don't really have a budget for...",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "There's a van in your parking lot, sugar. It's already loading the snack machine. <p:0.3> Don't make it a visit.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well, would you look at that. A community partnership.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That's extortion, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's a bake sale, Barry.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "And Darnell, sugar... we're not done. <p:0.3> There's a PTA across the river thinks they don't owe the territory. The Riverdale Boosters. Their fall carnival is going to have an accident. <p:0.3> You're gonna help me make sure of it.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "...I never said that.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

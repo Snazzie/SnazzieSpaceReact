@@ -9,14 +9,14 @@
       "text": "Insulin too pricey? <p:0.2> SugarBeGone is the affordable alternative brewed in a real garage! <p:0.2> Same idea, different everything. <p:0.2> SugarBeGone, probably insulin-adjacent!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 10.16,
+      "duration": 10.81,
       "audio": "/audio/radio/ad-sugar-be-gone/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Not insulin. <p:0> May be paint. <p:0> Effects range from fine to deeply not. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 10.017,
+      "timestamp": 10.671,
       "duration": 5.114,
       "audio": "/audio/radio/ad-sugar-be-gone/1.flac"
     }

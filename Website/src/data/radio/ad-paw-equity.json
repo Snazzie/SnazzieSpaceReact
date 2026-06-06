@@ -9,14 +9,14 @@
       "text": "Does your dog own its home? <p:0.2> PawEquity unlocks the value of your pet's property with one easy signature! <p:0.2> Your dog gets cash, you get the leash. <p:0.2> PawEquity, let the goodboy invest!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 9.77,
+      "duration": 10.8,
       "audio": "/audio/radio/ad-paw-equity/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "The pet does not understand the contract. <p:0> Neither do you. <p:0> The cat has already refinanced twice. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 9.649,
+      "timestamp": 10.617,
       "duration": 5.983,
       "audio": "/audio/radio/ad-paw-equity/1.flac"
     }

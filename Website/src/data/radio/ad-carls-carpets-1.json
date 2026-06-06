@@ -7,11 +7,26 @@
   "lines": [
     {
       "speaker": "caller-steve",
-      "text": "Come on down to Carl's Carpets for plush carpet, rugs, and vinyl flooring, where, <p:0.4> where does the time go, honestly. <p:0.3> Sorry.",
+      "text": "Come on down to Carl's Carpets for plush carpet, rugs, and vinyl flooring, where,",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 6.54,
-      "audio": "/audio/radio/ad-carls-carpets-1/0.flac"
+      "duration": 0.0
+    },
+    {
+      "speaker": "caller-kim",
+      "text": "Excuse me, <p:0.2> do these come in beige?",
+      "distant": true,
+      "gain": 0.5,
+      "overlap": 0.3,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "...beige. <p:0.4> Uh. <p:0.3> Where does the time go, honestly. <p:0.3> Sorry.",
+      "overlap": 0.2,
+      "timestamp": 0.0,
+      "duration": 0.0
     }
   ]
 }

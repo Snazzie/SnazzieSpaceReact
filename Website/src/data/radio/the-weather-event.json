@@ -1,0 +1,364 @@
+{
+  "slug": "the-weather-event",
+  "title": "The Weather Event",
+  "description": "One goose lands in the Snazzie FM parking lot. Ronnie names it, declares a level four advisory, and goes to rolling coverage. Barry would like to remind everyone it is a goose.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "We're interrupting the regular hour on Snazzie FM for breaking weather. Stay where you are. Do not go to the parking lot.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, it's a goose.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's a developing situation, Barry. We're getting reports. We're going live to Todd at the window.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Yeah, hi, Ronnie. So. <p:0.3> There is one goose. It's standing on the handicap spot. It hasn't moved in, like, a while.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "How big are we talking, Todd? Give the listeners a sense of scale.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Um. Goose sized.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Folks, that is a category we have not seen in this region since the spring.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Geese come every spring, Ronnie. They come every single spring.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And every spring, Barry, we are not ready. <p:0.3> The National Weather Desk has not commented, so I'm naming it myself. We're calling this one Goose Patricia.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't name a goose after a hurricane.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I already did. It's on the lower third now. Let's get a weather professional. Phil, you do the forecast over on the AM dial. You're on the air.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Thanks, Ronnie. So I pulled the radar, and I want everyone to stay calm. <p:0.3> The pressure's dropping. This bird has its own weather system now.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "A goose does not have a pressure system, Phil.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Tell that to the radar, Barry. There's a little spinny thing right where the goose is. <p:0.3> That's rotation. We don't love rotation.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Rotation. <p:0.3> Folks, I'm upgrading us to a Level Four Advisory. Bring in the pets. Fill the bathtub.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Fill the bathtub for a goose? Why?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You always fill the bathtub, Barry. That's just preparedness.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie? <p:0.3> Update. It looked at me. <p:0.4> Through the glass. I think it knows my name.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Stay calm, Todd. Do not establish dominance. Do not break eye contact.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Those are the opposite, Ronnie. You said both.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Hi, yes, I'm in my car in the lot, and the bird is between me and the Walgreens. <p:0.3> I have been here forty minutes. I have ice cream.",
+      "overlap": -0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Mildred, do not abandon the vehicle. The vehicle is your shelter now.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It's a Honda Civic, dear.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it's a Honda Civic that may save your life. Ration the ice cream.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Mildred, you can just walk around it. It's a goose. Walk wide and walk around.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It hissed at the Walgreens, dear. It hissed at the whole building.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "See, that's the hiss, Barry. That's pre-event. <p:0.3> When the goose goes quiet, that's when you run.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Run from the quiet goose? Phil, every goose state is bad in your model.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Now you understand the goose, Barry.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "It's quiet now. <p:0.4> Ronnie, it just got real quiet.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "This is it. This is the eye of Patricia. <p:0.3> Phil, what's the worst case here?",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Two geese, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Two geese is not a worst case, it's a Tuesday!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "There are six of them now.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "SIX. <p:0.3> Mildred, where did the other five come from?",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "The sky, dear. They came from the sky.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "It's making landfall! Snazzie FM is in the cone! We are IN the cone!",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "They're walking in a line! <p:0.2> Single file! Toward the doors!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Geese walk in a line! That's just how they go places!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Organized, Barry! They are ORGANIZED!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Get to your interior goose room!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "There is no interior goose room, Phil!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Wait. <p:0.3> Wait, they stopped. <p:0.4> They're, um. <p:0.3> They're waiting at the crosswalk.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Waiting for what, Todd?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "The light, Ronnie. <p:0.4> It turned green. They're crossing. <p:0.3> They used the crosswalk. They're gone.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "So it was geese, crossing a road. Like geese have done since the beginning of geese.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Or, Ronnie, they know our patterns now. <p:0.3> They've learned the lights.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "They've learned the lights. <p:0.3> Folks, I'm keeping us at a Level Four. Patricia has moved on, but Patricia has a sister.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "You don't know that it has a sister.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "They always have a sister, Barry. <p:0.3> Keep the bathtub full. We'll be right back.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "My ice cream is soup now, dear.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

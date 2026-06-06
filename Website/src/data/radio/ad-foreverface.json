@@ -9,14 +9,14 @@
       "text": "Worried about wrinkles? <p:0.2> ForeverFace seals your skin in fast-drying cosmetic cement, locking in youth permanently! <p:0.2> Smooth, firm, immovable. <p:0.2> ForeverFace, age cannot find you now!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 10.89,
+      "duration": 12.1,
       "audio": "/audio/radio/ad-foreverface/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Facial expressions are no longer available. <p:0> Cement is load-bearing and final. <p:0> Do not let it rain on your head. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 10.413,
+      "timestamp": 11.59,
       "duration": 6.426,
       "audio": "/audio/radio/ad-foreverface/1.flac"
     }

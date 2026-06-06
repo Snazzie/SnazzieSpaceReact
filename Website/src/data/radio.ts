@@ -8,6 +8,19 @@ import thePigeonCrash from "./radio/the-pigeon-crash.json";
 import villainHour from "./radio/villain-hour.json";
 import theFrankTapes from "./radio/the-frank-tapes.json";
 import theCatSpecial from "./radio/the-cat-special.json";
+import oneMinuteRemaining from "./radio/one-minute-remaining.json";
+import theSharedWall from "./radio/the-shared-wall.json";
+import theRenewalWindow from "./radio/the-renewal-window.json";
+import curbRights from "./radio/curb-rights.json";
+import theHelpfulFridge from "./radio/the-helpful-fridge.json";
+import theWelcomeCommittee from "./radio/the-welcome-committee.json";
+import theNinthBreath from "./radio/the-ninth-breath.json";
+import theFogRolledIn from "./radio/the-fog-rolled-in.json";
+import notOurWater from "./radio/not-our-water.json";
+import theNinetyYearSoup from "./radio/the-ninety-year-soup.json";
+import crumbAndPunishment from "./radio/crumb-and-punishment.json";
+import theLoyaltyWar from "./radio/the-loyalty-war.json";
+import theLendingLibrary from "./radio/the-lending-library.json";
 import adSootheMaster from "./radio/ad-soothe-master.json";
 import adLiquidRage from "./radio/ad-liquid-rage.json";
 import adBargainSurgery from "./radio/ad-bargain-surgery.json";
@@ -131,7 +144,13 @@ export const CAST: Record<string, CastMember> = {
   "caller-winston":{ id: "caller-winston",  name: "Winston",           color: "#a29bfe", role: "Caller"       },
   "caller-kim":    { id: "caller-kim",      name: "Kim",               color: "#a29bfe", role: "Caller"       },
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
+  "caller-phil":   { id: "caller-phil",     name: "Phil",              color: "#7ec8e3", role: "Caller"       },
+  "caller-sal":    { id: "caller-sal",      name: "Sal",               color: "#c98a3a", role: "Caller"       },
   "caller-chen":   { id: "caller-chen",     name: "Mr. Chen",          color: "#e17055", role: "Caller"       },
+  "caller-donna":  { id: "caller-donna",    name: "Donna",             color: "#e84393", role: "Caller"       },
+  "caller-glenda": { id: "caller-glenda",   name: "Sister Glenda",     color: "#9b59b6", role: "Caller"       },
+  "caller-marco":  { id: "caller-marco",    name: "Marco",             color: "#0984e3", role: "Caller"       },
+  "clerk-doreen":  { id: "clerk-doreen",    name: "Doreen",            color: "#b8860b", role: "Caller"       },
   "cat":           { id: "cat",             name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "cat-loud":      { id: "cat-loud",        name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "caller-bg":     { id: "caller-bg",       name: "Caller's end",      color: "#b2956a", role: "Caller BG"    },
@@ -286,4 +305,17 @@ export const EPISODES: Episode[] = [
   episodeFrom(thePigeonCrash),
   episodeFrom(theFrankTapes),
   episodeFrom(theCatSpecial),
+  episodeFrom(oneMinuteRemaining),
+  episodeFrom(theSharedWall),
+  episodeFrom(theRenewalWindow),
+  episodeFrom(curbRights),
+  episodeFrom(theHelpfulFridge),
+  episodeFrom(theWelcomeCommittee),
+  episodeFrom(theNinthBreath),
+  episodeFrom(theFogRolledIn),
+  episodeFrom(notOurWater),
+  episodeFrom(theNinetyYearSoup),
+  episodeFrom(crumbAndPunishment),
+  episodeFrom(theLoyaltyWar),
+  episodeFrom(theLendingLibrary),
 ];

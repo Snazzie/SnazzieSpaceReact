@@ -1,0 +1,392 @@
+{
+  "slug": "the-loyalty-war",
+  "title": "The Loyalty War",
+  "description": "Two rival taco trucks share one curb and one regular. Donna and Marco are here to settle whose punch card is real, and Steve has been double-dipping the whole time.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM. Tonight, two of our finest food trucks have a small disagreement about a parking spot, and we are going to be very mature about it. Donna, Marco, welcome.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a curb. They're fighting over a curb.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's a beloved curb, Barry. Donna, you've been on that corner how long?",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Eleven years, Ronnie. Eleven years, that corner is mine. Then in March, this man parks his little truck eight inches off my bumper.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "It's a public street, Donna. Public.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Eight inches, Marco! I can smell your cilantro through my serving window!",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "That's a compliment, technically.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, but it's the same food, right? You both sell tacos?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "It is NOT the same food, Barry.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "It's exactly the same food. She copied my menu.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "I copied YOURS? <p:0.3> Ronnie, he copied my loyalty card. Buy nine tacos, the tenth is free. That was my idea. Mine.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Everybody does buy nine get one free, Donna. That's not an invention, that's just being a person.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that does seem like a common arrangement.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "He copied the STAMP, Ronnie. My stamp is a little smiling taco. His is a little smiling taco. <p:0.3> Same smile.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "How do you copy a smile?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "You don't, Barry. My taco is winking. Big difference.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Yeah, hi, longtime listener. So I actually have both cards?",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...Steve?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Steve, is that you?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Hey, guys. Yeah. So I been getting nine stamps on Donna's card, and nine stamps on Marco's card, kinda at the same time?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He's playing both sides.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Steve, you told me I was your corner.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "He told ME I was his corner!",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "I mean, you're both kinda my corner? It's one corner. You're eight inches apart.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He makes a fair point. It is a shared corner.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "So which card hit ten first, Steve? Whose tenth taco did you redeem?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Uh. Well. <p:0.3> Neither, actually.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Neither?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Donna's machine ate the card at stamp nine. Said it needed a tenth stamp to give me the free one. But the free one IS the tenth. So.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...That's a glitch. We're aware of the glitch.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait, so nobody's ever actually gotten a free taco?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Mine works perfectly, Barry.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Marco's wanted a tenth stamp too.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "...That's a different glitch.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So to be clear, the free taco, on either card, requires a stamp that does not exist.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "The tenth stamp is conceptual, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Mine's aspirational.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "I got like forty cards, man. I got a shoebox. Forty cards, all stuck on nine.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Forty? Steve, you've been to Marco's twenty times!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "And you've been to Donna's twenty times, you traitor!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "I'm chasing the free one, guys! I'm in deep!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He's spent four hundred dollars chasing a free taco that doesn't exist.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "He could've just BOUGHT the tenth taco, Barry!",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Buy the taco, Steve!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Just buy the taco!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Then it's not FREE!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Move your truck, Donna!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Move YOUR truck!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Stamp my card!",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, they're all yelling about a stamp that isn't real.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's the beauty of loyalty, Barry. <p:0.3> Nobody's ever getting the free taco. They just keep coming back.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "...Wait. So I'm never getting it?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "We'll see you tomorrow, Steve.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Bring both cards.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Two trucks, one curb, forty cards, zero free tacos. <p:0.3> That's just good neighboring. We'll be right back.",
+      "overlap": -0.25,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

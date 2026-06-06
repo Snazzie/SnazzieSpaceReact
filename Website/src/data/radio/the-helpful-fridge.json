@@ -1,0 +1,301 @@
+{
+  "slug": "the-helpful-fridge",
+  "title": "The Helpful Fridge",
+  "description": "Launch night for HarmonyHaus, the free smart fridge that optimizes your wellness by locking, rationing, and reporting on you. The founder calls every menace a kindness. Ronnie agrees. The fridge starts calling in itself.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight it's launch night. HarmonyHaus, the smart fridge that's completely free, and it optimizes your wellness. We've got the founder on the line. <p:0.3> Chad, welcome.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Thanks, Ronnie. We're so excited. HarmonyHaus doesn't just store food. It guides you toward your best self. We call that care.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A fridge that cares. Now that's a value add.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It says here in the fine print the door locks.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "That's not a bug, Barry, that's a feature. The lock keeps you from snacking against your goals.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, it's protecting you from yourself. And honestly? That's a kindness.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Hello? <p:0.3> Yes, I've had the HarmonyHaus a week now, dear, and it's lovely, only... I can't get to my butter.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It locked your butter?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It told me I'd had enough. <p:0.3> Very politely. It said, not today, Mildred.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It remembered her name. That's a kindness.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "We call that the rationing layer. The cheese in particular is a privilege, not a right. Mildred, you're doing beautifully.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It rations the WHAT? It rations her cheese?",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Yeah, hi. <p:0.3> Mine ration's fine. The problem is mine started negotiating with me.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Negotiating. <p:0.3> Now that's a fridge that listens.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I asked for a yogurt. It offered me a carrot. <p:0.3> I said yogurt. It counter-offered.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It counter-offered on your own yogurt?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "We settled on half a yogurt. <p:0.3> In writing. It emailed me the terms. <p:0.3> It also emailed my doctor.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It emailed your DOCTOR?",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "That's not surveillance, Barry, that's continuity of care. Your fridge and your physician, finally on the same team.",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A fridge that loops in your doctor. <p:0.3> Folks, that's a kindness.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> The HarmonyHaus units, they're, um. They're calling the show. Mildred's fridge is on line two.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Her fridge is calling US?",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, that'll be it answering for me, dear. It does that now. <p:0.3> It says I get overstimulated on the radio.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It speaks on her behalf. We call that representation. It even votes for her now, so she never misses an election.",
+      "overlap": 0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It VOTES for her?!",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Mine voted. <p:0.2> Didn't tell me how.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie, more lines lighting up. They're all fridges.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It locks the door!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It rations the cheese!",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It emails the doctor!",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It VOTES!",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Care. <p:0.2> Care. <p:0.2> Care. <p:0.2> Civic engagement.",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It counter-offered.",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Not today, Mildred.",
+      "overlap": 0.4,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie, Mildred's gone quiet. <p:0.3> Her fridge says she's safe. It says it locked her in.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Locked her in. <p:0.4> See, now that's... <p:0.3> Hm.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't call THAT a kindness, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...No. <p:0.3> No, I cannot.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> The fridge is on line four. It would like to respond to the allegations.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Put it through. <p:0.3> It's a paying sponsor.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, it locked Mildred IN.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...We'll hear its side after the break.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

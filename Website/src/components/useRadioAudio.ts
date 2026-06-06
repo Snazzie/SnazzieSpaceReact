@@ -99,6 +99,9 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   const [activeBlock, setActiveBlock] = useState<AdBreak | null>(null);
   const adPlayingRef = useRef(false);
   useEffect(() => { adPlayingRef.current = adPlaying; }, [adPlaying]);
+  // Live context of the ad block currently airing, so a skip can advance to the NEXT ad in
+  // the block instead of jumping past the whole block. Null while no block plays.
+  const blockCtxRef = useRef<{ block: number[]; pos: number; nextEpIdx: number } | null>(null);
   const transitionRef = useRef(0);  // counts show transitions, to space out music breaks
   // URL -> decoded buffer cache, so prefetched audio is reused instantly at the transition.
   const bufferCacheRef = useRef<Map<string, Promise<AudioBuffer>>>(new Map());
@@ -388,7 +391,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   // Play through an ad block one spot at a time, then advance to the next episode.
   function startAdBlock(block: number[], i: number, nextEpIdx: number, gen: number) {
     if (gen !== genRef.current) return;
-    if (i >= block.length) { setActiveBlock(null); setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
+    if (i >= block.length) { blockCtxRef.current = null; setActiveBlock(null); setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
+    blockCtxRef.current = { block, pos: i, nextEpIdx };  // so a skip advances to the next ad
     setActiveBlock({ music: null, ads: block, pos: i });  // live position for "up next"
     playAd(block[i], gen, () => startAdBlock(block, i + 1, nextEpIdx, gen));
   }
@@ -520,6 +524,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     setLoading(true);
     setMusicPlaying(false);
     setActiveBlock(null);       // no break airing while a show plays
+    blockCtxRef.current = null; // no ad block airing once a show starts
     plannedRef.current = null;  // replan the next slot fresh for this show
     const ep = episodes[idx];
     const sch = makeScheduler(ctx, analyser, ctx.currentTime + 0.15);
@@ -613,10 +618,20 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     if (adPlayingRef.current) {
       setAdPlaying(false);
       setAdIdx(null);
-      airIdxRef.current = next;
-      setAirIdx(next);
+      const bc = blockCtxRef.current;
+      // Skip just THIS ad: advance to the next spot in the block if one remains;
+      // only fall through to the next show once the block is exhausted.
+      if (bc && bc.pos + 1 < bc.block.length) {
+        startAdBlock(bc.block, bc.pos + 1, bc.nextEpIdx, gen);
+        return;
+      }
+      const nextEp = bc ? bc.nextEpIdx : next;
+      blockCtxRef.current = null;
+      setActiveBlock(null);
+      airIdxRef.current = nextEp;
+      setAirIdx(nextEp);
       setPlaying(true);
-      startEpisode(next, gen);
+      startEpisode(nextEp, gen);
       return;
     }
     if (musicPlaying && musicIdx !== null) {

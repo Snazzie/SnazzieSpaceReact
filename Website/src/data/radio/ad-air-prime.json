@@ -9,14 +9,14 @@
       "text": "Still breathing for free like an animal? <p:0.2> AirPrime delivers premium oxygen straight to your face for one low subscription! <p:0.2> Cancel anytime, suffocate immediately. <p:0.2> AirPrime, breathe responsibly!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 11.16,
+      "duration": 11.85,
       "audio": "/audio/radio/ad-air-prime/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Free-tier air contains visible chunks. <p:0> Missed payments pause your respiration. <p:0> Inhaling competitor air is theft. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 11.026,
+      "timestamp": 11.677,
       "duration": 6.644,
       "audio": "/audio/radio/ad-air-prime/1.flac"
     }
