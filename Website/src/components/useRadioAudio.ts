@@ -297,6 +297,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     setMusicIdx(idx);
     setMusicPlaying(true);
     setPlaying(false);
+    setAdPlaying(false);
+    setAdIdx(null);
     try {
       const buf = await decode(ctx, track.track);
       if (gen !== genRef.current) return;
