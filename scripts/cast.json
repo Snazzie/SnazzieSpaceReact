@@ -159,7 +159,7 @@
     "name": "Mr. Chen",
     "color": "#e17055",
     "role": "Caller",
-    "instruct": "male, middle-aged, chinese accent, irritated",
+    "instruct": "male, middle-aged, chinese accent",
     "speed": 1.05,
     "phone_filter": true,
     "gain": 1.0,
