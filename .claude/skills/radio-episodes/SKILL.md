@@ -51,7 +51,9 @@ retiming a line only edits its `timestamp`, never the audio.
    Ronnie = smooth credulous host; Barry = anxious skeptical co-host.
 3. **Emotion comes through text, not config.** OmniVoice has no emotion/delivery instruct
    tokens — only timbre/accent/age/pitch. Convey feeling with interjections ("Ohhh", "Huh"),
-   ellipses, em-dash stammers ("That is — that is not…"), emphasis/caps, and `!`/`?`.
+   ellipses, stammers written with `...` ("That is... that is not..."), emphasis/caps, and
+   `!`/`?`. **Never use em-dashes** (`—`/`--`) to stammer — OmniVoice reads `—` as "euro"
+   (see TTS-safe rules). Use `...` or a comma.
 4. **Natural cadence over staccato.** Dramatic one-word-sentences ("Pigeons. Are not. Real.")
    render robotic. Prefer commas, contractions, and conversational fillers ("okay", "see",
    "come on", "would ya") unless the staccato beat is the joke.
@@ -59,8 +61,11 @@ retiming a line only edits its `timestamp`, never the audio.
    0.8s. The UI strips tokens from the transcript; the generator turns them into silence.
 6. **Emotional arc** — episodes should *develop*, not stay flat. Build a 3-act escalation:
    calm/conversational → unease → agitation/near-panic. Show it in the text so the voice
-   reflects it: interjections, ellipses early; caps, `!`, repetition, and Dia nonverbals
-   (`(gasps)`, `(sighs)`) late. (Dia voices this escalation; OmniVoice less so.)
+   reflects it: interjections, ellipses early; caps, `!`, repetition late.
+   - ⚠️ **Nonverbals `(gasps)`/`(sighs)`/`(laughs)` are Dia-ONLY.** OmniVoice has no nonverbal
+     tokens and reads them **aloud literally** ("open paren sighs"). In an OmniVoice
+     (multitrack) episode they must NEVER appear in `text` — convey the sigh/laugh through
+     wording instead ("Ohhh boy.", "Hah."). Only use them in `engine: dia*` episodes.
 7. **Interruptions when agitated** — as tension rises, characters cut each other off:
    - OmniVoice (multitrack): give the interrupting line a **positive `overlap`** so its speech
      starts before the previous line's ends — a real audio talk-over.
@@ -74,6 +79,54 @@ retiming a line only edits its `timestamp`, never the audio.
    - Clips are stored **full (untrimmed)** — the generator measures each clip's speech start/end
      (`speech_bounds`) and places clips so speech flows; the silent edges just overlap harmlessly
      in the mix. No silence is ever cut from the audio. Onsets stay monotonic.
+
+## Comedy craft (what makes an episode land)
+
+`villain-hour.json` is the reference for a *funny* episode. Steal these:
+
+1. **Vary line length hard.** Interleave 1-2 word zingers ("Pigeons!", "Crypto!", "Honk.")
+   with longer rants (8-9s). Uniform line lengths read flat and tire the ear. Aim for a mix
+   every few lines.
+2. **Anchor vs chaos via overlap sign.** The host/straight-man gets **negative** overlap
+   (clean space, calm, in control); the agitated callers get **positive** overlap (+0.25 to
+   +0.4, talking over each other). This contrast is what *sounds* like chaos around a steady
+   center. Don't give everyone the same overlap.
+3. **Running gag with a build.** Plant a motif and escalate it: honk → Honk → "STOP HONKING
+   AT ME!"; or a denial that inflates ("Is the radio!" → "Is BIG radio!"). Pay it off at the
+   end. One repeated bit beats five one-off jokes.
+4. **Rapid-fire climax.** Peak the episode with a volley of very short overlapping lines
+   (+0.4), one beat each, then a button. This is the "everyone yelling at once" texture.
+5. **Comic-beat pauses.** Use `<p:0.3>` *before a punchline* for timing ("He honked, Barry.
+   `<p:0.3>` And honestly? That's the most coherent argument all night."). Silence sells the joke.
+6. **Button the ending.** Close on the straight-man's dry tag, ideally a **callback** to an
+   earlier detail ("Four point two stars. Maybe skip it.") rather than a flat sign-off.
+7. **One verbal tic per character.** Each voice should be identifiable from text alone (Frank
+   = PIGEONS in caps, Chad = crypto/founder, Gary = noises). Keep it consistent.
+
+## SFX lines (real sound effects, not TTS)
+
+A line with an `sfx` field loads a real audio file instead of running TTS (handled before the
+cast lookup in `generate_episode`). Use for rings, hangups, animal noises, ambience beds.
+
+- **Fields**: `sfx` (repo-relative path to a 24k mono wav), plus optional per-line
+  `phone_filter` / `distant` / `gain` / `trim` (seconds; `0` = whole file). `speaker` is just
+  a display label (e.g. `phone`, `cat`, `cat-loud`) and still needs a `CAST` entry for color.
+- **Sourcing**: prefer CC0/PD. Freesound filtered to "Creative Commons 0" is the richest
+  source (cat screams, metal clatter, etc.); Wikimedia Commons is cleanest PD but thin on
+  aggressive sounds (its cat files are gentle meows only — no screams). Convert with
+  `ffmpeg -i in.mp3 -ac 1 -ar 24000 -af loudnorm out.wav`. Credit every file in
+  `scripts/sfx/CREDITS.txt` with title, author, license, and URL.
+- **Layered beds**: build a multi-sound bed (e.g. kitchen chaos = looped metal clatter under
+  scattered screams) with a committed, re-runnable ffmpeg script — see
+  `scripts/sfx/build-bg-kitchen.sh`. Don't leave it as an un-reproducible one-off.
+- **Long bed under overlapping dialogue**: place one long bed line, then give the *next*
+  dialogue line a large positive `overlap` (e.g. 15.5) so the talk pulls back over the bed.
+  Drop a short scream sfx line mid-bed (positive overlap) as punctuation. Verify after render:
+  bed `timestamp..timestamp+duration` should span the chaos lines; a small tail spillover past
+  the bed is fine (chaos tapers).
+- **Editing an sfx file re-renders it.** `sfx_hash` folds the file's content hash, so rebuilding
+  a bed or swapping a clip forces just that clip to re-render (don't bump `PIPELINE_VERSION`
+  for content swaps).
 
 ## TTS-safe text (pronunciation rules)
 
