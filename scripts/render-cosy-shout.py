@@ -22,12 +22,15 @@ REPO = Path("/mnt/c/Users/acoop/Documents/GitHub/SnazzieSpaceReact")
 PROMPT = REPO / "scripts/voices/chen.wav"          # Chen's voice to clone (this build takes a path)
 OUT = REPO / "scripts/sfx/chen-catch.wav"
 TEXT = "抓住它！快抓住它啊！你这个白痴！别让它跑了！"
-INSTRUCT = "用非常愤怒、暴躁的语气大喊大叫"          # shout, furious, irritable
+# Stronger emotion cue: furious, hysterical, hoarse screaming, very fast, out of control.
+INSTRUCT = "愤怒地歇斯底里地大吼大叫，声嘶力竭，语速极快，情绪失控暴怒"
+SPEED = 1.4   # faster, frantic
 
 model = CosyVoice2(str(COSY / "pretrained_models/CosyVoice2-0.5B"),
                    load_jit=False, load_trt=False, fp16=False)
 
-chunks = [r["tts_speech"] for r in model.inference_instruct2(TEXT, INSTRUCT, str(PROMPT), stream=False)]
+chunks = [r["tts_speech"] for r in
+          model.inference_instruct2(TEXT, INSTRUCT, str(PROMPT), stream=False, speed=SPEED)]
 audio = torch.cat(chunks, dim=1)
 # to 24k mono
 if model.sample_rate != 24000:
