@@ -231,7 +231,11 @@ export default function RadioReceiver({
                 key={i}
                 type="button"
                 className={cls}
-                onClick={() => item.kind === "music" ? toggleMusicTrack(item.idx) : tuneTo(item.idx)}
+                onKeyDown={(e) => { if (e.key === " ") e.preventDefault(); }}
+                onClick={(e) => {
+                  e.currentTarget.blur();
+                  item.kind === "music" ? toggleMusicTrack(item.idx) : tuneTo(item.idx);
+                }}
               >
                 <span className="rl-upnext-icon">{icon}</span>
                 {item.title}
