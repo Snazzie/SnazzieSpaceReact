@@ -201,6 +201,15 @@ Per character: `name`, `color`, `role`, `instruct`, `speed`, `phone_filter`, `re
   from **`google/fleurs`** (`cmn_hans_cn`) used as `ref_audio` with its Chinese `ref_text`;
   OmniVoice then produces accented English. (Korean = `ko_kr`, Japanese = `ja_jp`, etc.) Pick a
   male/female clip by pitch (male ≲155 Hz). `ref_text` must be the clip's real (foreign) transcript.
+- **Emotion (anger/shouting): OmniVoice and Dia2 can't do it on demand.** OmniVoice has no
+  emotion token (delivery only comes from the ref clip); Dia2 voices arcs but is English-first.
+  For a genuinely emotional clip (esp. **Mandarin**), use **CosyVoice 2** — it takes a
+  natural-language instruction ("用非常愤怒、暴躁的语气大喊大叫") plus a voice prompt and shouts in
+  that voice. It only runs in **WSL** (needs `pynini` via conda; Windows can't build it). Setup
+  lives in `scripts/wsl-cosy-setup.sh` (miniconda env `cosy`, deps minus pyworld/tensorrt, model
+  download); render one clip with `scripts/render-cosy-shout.py` (Chen's `chen.wav` as the prompt
+  path → `chen-catch.wav`). Drop the result in as a normal `sfx` overlay. Notes: this build of
+  `inference_instruct2` takes a wav PATH (not tensor); `pyworld` is stubbed (inference doesn't use it).
 - **`speed`** — ~1.0 natural; 1.5-2.0 fast/manic (Todd runs 2.0).
 - **`phone_filter: true`** — 300–3400 Hz bandpass = telephone sound. On for callers.
 - **Refreshing refs**: `python scripts/download-voices.py` pulls the gender-verified LibriSpeech
