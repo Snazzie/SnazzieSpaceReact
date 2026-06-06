@@ -71,6 +71,12 @@ retiming a line only edits its `timestamp`, never the audio.
      starts before the previous line's ends — a real audio talk-over.
    - Dia (single track, can't overlap): write the cut-in — interrupted line trails off (`...`),
      the interrupter jumps in mid-thought. Dia voices the rush.
+   - ⚠️ **A reaction can't overlap the word it reacts to.** If a line responds to the *payload*
+     at the END of the previous line (a reveal, a name, a punchline), positive `overlap` makes
+     the reply start before that word is spoken — impossible (e.g. Ronnie "...it's cat." +
+     Chen "Cat? CAT?" with overlap 0.3 = Chen reacts before "cat" is said). Use `overlap <= 0`
+     (a small beat) for reaction-to-the-last-word; reserve positive overlap for cut-ins that
+     talk over the *start/middle* of a line the speaker already sees coming.
 8. **Overlap / pacing** (`overlap`, seconds, measured between the **speech** of adjacent lines):
    - `0` → default 0.15s gap between speech
    - negative (e.g. `-0.2`) → that much gap after the previous line's speech (calm, sequential)
