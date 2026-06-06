@@ -195,9 +195,14 @@ export default function RadioStation({ episodes, cast }: Props) {
     };
 
     if (episode.track) {
-      decode(episode.track).then((buf) => {
+      // Hybrid: one base voice track (Dia2) PLUS any per-line SFX clips overlaid on top.
+      Promise.all([
+        decode(episode.track),
+        ...episode.lines.map((l) => (l.audio ? decode(l.audio) : Promise.resolve(null))),
+      ]).then(([trackBuf, ...clipBufs]) => {
         if (cancelled) return;
-        trackBufRef.current = buf;
+        trackBufRef.current = trackBuf;
+        buffersRef.current = clipBufs;
         onReady();
       });
     } else {
@@ -217,7 +222,8 @@ export default function RadioStation({ episodes, cast }: Props) {
     offsetRef.current = from;
     startCtxRef.current = ctx.currentTime;
 
-    // Single-track (Dia): one source, seek via buffer offset
+    // Single base track (Dia2): one source, seek via buffer offset. SFX clips (below)
+    // are still scheduled on top so a hybrid episode mixes the voice track + sound effects.
     if (episode.track) {
       const buf = trackBufRef.current;
       if (buf && from < buf.duration) {
@@ -227,9 +233,7 @@ export default function RadioStation({ episodes, cast }: Props) {
         src.start(startCtxRef.current, from);
         sourcesRef.current.push(src);
       }
-      playingRef.current = true;
-      setIsPlaying(true);
-      return;
+      // fall through to also schedule any per-line SFX buffers over the track
     }
 
     lines.forEach((line, i) => {

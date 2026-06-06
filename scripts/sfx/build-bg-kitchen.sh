@@ -30,7 +30,7 @@ ffmpeg -y \
   " bg-kitchen.wav
 
 # --- 36s ambience: continuous, never silent, sits low under the dialogue --------
-# Two offset metal loops keep the clatter dense/seamless; cats scattered throughout.
+# Continuous wok-fire roar + two offset metal loops keep it dense/seamless; cats scattered.
 ffmpeg -y \
   -i metal-clatter.wav \
   -i cat-scream-1.wav \
@@ -38,7 +38,9 @@ ffmpeg -y \
   -i cat-scream-3.wav \
   -i cat-impatient.wav \
   -i cat-pleading.wav \
+  -i wok-fire.wav \
   -filter_complex "
+    [6:a]atrim=0:36,volume=0.9[wok];
     [0:a]aloop=loop=-1:size=2e9,atrim=0:36,volume=0.7[ma];
     [0:a]aloop=loop=-1:size=2e9,atrim=0:36,adelay=1700|1700,volume=0.5[mb];
     [4:a]adelay=1500|1500,volume=0.7[c1];
@@ -50,7 +52,7 @@ ffmpeg -y \
     [4:a]adelay=26000|26000,volume=0.7[c7];
     [2:a]adelay=30000|30000,volume=0.85[c8];
     [1:a]adelay=33500|33500,volume=0.8[c9];
-    [ma][mb][c1][c2][c3][c4][c5][c6][c7][c8][c9]amix=inputs=11:normalize=0:duration=longest,
+    [wok][ma][mb][c1][c2][c3][c4][c5][c6][c7][c8][c9]amix=inputs=12:normalize=0:duration=longest,
     alimiter=limit=0.9,atrim=0:36,aresample=24000,aformat=channel_layouts=mono
   " bg-kitchen-amb.wav
 
