@@ -1,0 +1,31 @@
+{
+  "slug": "ad-soothe-master",
+  "title": "Soothe-Master 5000",
+  "description": "A paid message from Soothe-Master Industrial Wellness. Results not typical. Nothing is typical.",
+  "type": "ad",
+  "engine": "dia2",
+  "no_phone": ["ad-announcer", "ad-disclaimer"],
+  "lines": [
+    {
+      "speaker": "ad-announcer",
+      "text": "Burning? Itching? Sitting down like it's a hostage negotiation? Friend, you need the Soothe-Master 5000! One squeeze of our patented industrial-grade comfort paste and that fire goes OUT. Doctors are baffled. Your couch will thank you!",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Soothe-Master may cause numbness, blindness, a second opinion, and mild glowing. Do not ingest, inhale, or make eye contact with the nozzle. Not approved by anyone. Side effects include regret.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ad-announcer",
+      "text": "Soothe-Master 5000. Sit like a winner!",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

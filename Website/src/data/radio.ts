@@ -8,6 +8,7 @@ import thePigeonCrash from "./radio/the-pigeon-crash.json";
 import villainHour from "./radio/villain-hour.json";
 import theFrankTapes from "./radio/the-frank-tapes.json";
 import theCatSpecial from "./radio/the-cat-special.json";
+import adSootheMaster from "./radio/ad-soothe-master.json";
 
 export interface CastMember {
   id: string;
@@ -56,6 +57,8 @@ export const CAST: Record<string, CastMember> = {
   "cat-loud":      { id: "cat-loud",        name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "caller-bg":     { id: "caller-bg",       name: "Caller's end",      color: "#b2956a", role: "Caller BG"    },
   "phone":         { id: "phone",           name: "Phone",             color: "#636e72", role: "Caller"       },
+  "ad-announcer":  { id: "ad-announcer",    name: "Announcer",         color: "#f6c945", role: "Guest Expert"  },
+  "ad-disclaimer": { id: "ad-disclaimer",   name: "Fine Print",        color: "#9aa0a6", role: "Guest Expert"  },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -114,6 +117,10 @@ export const MUSIC_TRACKS: Episode[] = [
     lines: [],
     track: "/audio/music/orange-slices-union-job.mp3",
   },
+];
+
+export const ADS: Episode[] = [
+  episodeFrom(adSootheMaster),
 ];
 
 export const EPISODES: Episode[] = [
