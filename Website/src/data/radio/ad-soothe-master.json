@@ -9,15 +9,15 @@
       "text": "Burning? Itching? You need Soothe-Master 5000! One squeeze and that fire goes OUT. Soothe-Master 5000, sit like a winner!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 5.75,
+      "duration": 7.12,
       "audio": "/audio/radio/ad-soothe-master/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "May cause numbness, blindness, and mild glowing. Do not inhale the nozzle. Side effects include regret.",
       "overlap": 0,
-      "timestamp": 5.368,
-      "duration": 4.52,
+      "timestamp": 6.686,
+      "duration": 3.64,
       "audio": "/audio/radio/ad-soothe-master/1.flac"
     }
   ]

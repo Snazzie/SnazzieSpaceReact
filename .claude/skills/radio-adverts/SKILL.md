@@ -72,8 +72,9 @@ Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_tex
 `gender`/`speed`/`phone_filter`/`instruct`). OmniVoice honors `speed` and `phone_filter`.
 Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
 `AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
-refs. Announcer runs fast (`speed` ~1.4); the disclaimer man faster (~1.6) for the
-rattled-off legal tail. `phone_filter` is `false` for both (studio ad, not a phone caller).
+refs. The announcer is a confident, unhurried pitchman (`speed` ~1.1); the disclaimer man
+runs FAST (`speed` ~2.0) for the rattled-off legal-tail sound — speed is the main lever for
+the "typical fast disclaimer" feel. `phone_filter` is `false` for both (studio ad).
 
 ## Generate
 
