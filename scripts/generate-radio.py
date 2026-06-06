@@ -125,6 +125,8 @@ def clip_hash(text: str, c: dict) -> str:
         parts.append(f"position_temperature={float(c['position_temperature'])}")
     if "class_temperature" in c:
         parts.append(f"class_temperature={float(c['class_temperature'])}")
+    if "seed" in c:
+        parts.append(f"seed={int(c['seed'])}")
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
@@ -159,6 +161,10 @@ def _gen_config(c: dict):
 
 
 def _tts(text: str, c: dict, model) -> np.ndarray:
+    # Per-voice seed override = reroll this clip's "take" independently of the global seed.
+    # Different seed -> different realization of the same voice/text; some come out cleaner.
+    if "seed" in c:
+        torch.manual_seed(int(c["seed"]))
     audio = model.generate(
         text=text,
         ref_audio=str(REPO_ROOT / c["ref_audio"]),

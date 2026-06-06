@@ -91,7 +91,12 @@ gap that breaks the rattle.)
 **Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
 `num_step` = denoising iterations (default 32; ~48 is cleaner, slower) and `guidance_scale`
 (default 2.0). Bump `num_step` if a voice sounds low-quality/artifacty. Both fold into the
-clip hash only when set, so they re-render just that voice. `phone_filter` is `false` for both (studio ad).
+clip hash only when set, so they re-render just that voice.
+
+**Reroll a bad take with `seed`.** Generation is seeded (global default 42), so re-rendering
+gives the SAME take. Set a per-voice `seed` to reroll just that clip — a different seed is a
+different realization of the same voice/text; if a clip has an artifact or odd delivery, try
+another seed (it's in the clip hash, so changing it re-renders only that voice). `phone_filter` is `false` for both (studio ad).
 
 ## Generate
 

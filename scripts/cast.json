@@ -191,6 +191,7 @@
     "gender": "M",
     "tempo": 1.2,
     "num_step": 64,
-    "position_temperature": 1.5
+    "position_temperature": 1.5,
+    "seed": 7
   }
 }
