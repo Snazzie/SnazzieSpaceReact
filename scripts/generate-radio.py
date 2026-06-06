@@ -68,8 +68,12 @@ PIPELINE_VERSION = "3"
 
 def sfx_hash(path: str, line: dict) -> str:
     """Content key for an SFX clip — re-rendered only when the file or its opts change."""
+    try:
+        file_key = hashlib.sha1((REPO_ROOT / path).read_bytes()).hexdigest()[:16]
+    except OSError:
+        file_key = "missing"
     payload = "|".join([
-        PIPELINE_VERSION, "sfx", path,
+        PIPELINE_VERSION, "sfx", path, file_key,
         str(bool(line.get("phone_filter", False))),
         str(bool(line.get("distant", False))),
         f"{float(line.get('gain', 1.0))}",

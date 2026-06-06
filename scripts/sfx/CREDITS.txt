@@ -11,6 +11,17 @@ phone-ring.wav    — "US ringback tone" (CC0)
   https://commons.wikimedia.org/wiki/File:US_ringback_tone.ogg
 phone-hangup.wav  — synthesized US busy tone (480+620 Hz, 0.5s on/off) via ffmpeg. Generated, public domain.
 
-bg-kitchen.wav    — premixed "kitchen chaos" bed (~16s): cat-impatient + cat-pleading
-                    (both PD/CC0, see above) mixed with an ffmpeg-synthesized metal-clank
-                    layer (decaying metallic partials). Generated, public domain.
+Cat screams + metal clatter (Freesound, all CC0 — no attribution required):
+
+cat-scream-1.wav  — "cat screech.wav" by red3zzz (CC0)
+  https://freesound.org/s/131262/
+cat-scream-2.wav  — "Cat Screams" by StormMiguel (CC0)
+  https://freesound.org/s/191938/
+cat-scream-3.wav  — "CAT SCREAM" by queen_westeros (CC0)
+  https://freesound.org/s/222590/
+metal-clatter.wav — "Pots and Pans Clatter 1" by OwlStorm (CC0)
+  https://freesound.org/s/209002/
+
+bg-kitchen.wav    — "kitchen chaos" bed (16s), rebuilt by scripts/sfx/build-bg-kitchen.sh:
+                    metal-clatter looped + layered (loud) under scattered cat screams
+                    (cat-scream-1/2/3) + cat-impatient. All sources CC0/PD. Generated.
