@@ -319,12 +319,20 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   }
 
   function nextTrack() {
-    if (adPlayingRef.current) return;  // ads are unskippable
     startedRef.current = true;
     const gen = ++genRef.current;
     stopSources();
     const base = airIdxRef.current;
     const next = (base + 1) % episodes.length;
+    if (adPlayingRef.current) {
+      setAdPlaying(false);
+      setAdIdx(null);
+      airIdxRef.current = next;
+      setAirIdx(next);
+      setPlaying(true);
+      startEpisode(next, gen);
+      return;
+    }
     if (musicPlaying && musicIdx !== null) {
       // Skip music interstitial → go straight to next episode
       setMusicPlaying(false);
