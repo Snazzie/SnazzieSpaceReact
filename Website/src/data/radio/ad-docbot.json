@@ -9,14 +9,16 @@
       "text": "Need surgery? <p:0.2> The DocBot 200 operates on you at home for one flat fee! <p:0.2> It's fast, it's autonomous, it's mostly read the manual. <p:0.2> DocBot 200, hold still and trust the machine!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 10.98,
+      "audio": "/audio/radio/ad-docbot/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "DocBot is not a licensed medical device. <p:0> May operate on the wrong area. <p:0> Repairs to the patient are billed separately. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 10.749,
+      "duration": 6.781,
+      "audio": "/audio/radio/ad-docbot/1.flac"
     }
   ]
 }

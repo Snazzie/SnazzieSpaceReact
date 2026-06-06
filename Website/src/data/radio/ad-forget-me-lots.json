@@ -9,14 +9,16 @@
       "text": "Haunted by a memory? <p:0.2> One cup of Forget-Me-Lots tea wipes it clean! <p:0.2> That argument, that debt, that name. <p:0.2> Gone. <p:0.2> Forget-Me-Lots, what were we talking about?",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 9.11,
+      "audio": "/audio/radio/ad-forget-me-lots/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Forget-Me-Lots may erase more than intended. <p:0> Results are permanent and cannot be reviewed. <p:0> Not responsible for forgotten debts or relatives. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 8.676,
+      "duration": 7.791,
+      "audio": "/audio/radio/ad-forget-me-lots/1.flac"
     }
   ]
 }

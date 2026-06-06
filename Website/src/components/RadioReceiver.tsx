@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import type React from "react";
 import type { Episode } from "@/data/radio";
+import type { AdBreak } from "./useRadioAudio";
 
 function SpectrumViz({ analyserRef, active }: { analyserRef: React.RefObject<AnalyserNode | null>; active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -93,6 +94,8 @@ interface Props {
   adIdx: number | null;
   adPlaying: boolean;
   ads: Episode[];
+  breakAhead: AdBreak | null;
+  activeBlock: AdBreak | null;
   onAir: Episode | undefined;
   levels: number[];
   analyserRef: React.RefObject<AnalyserNode | null>;
@@ -108,35 +111,34 @@ interface Props {
 }
 
 export default function RadioReceiver({
-  playing, loading, musicIdx, musicPlaying, music, adIdx, adPlaying, ads, onAir,
+  playing, loading, musicIdx, musicPlaying, music, adIdx, adPlaying, ads, breakAhead, activeBlock, onAir,
   analyserRef, volume, setVolume, clock, airIdx, episodes,
   togglePlay, tuneTo, toggleMusicTrack, nextTrack,
 }: Props) {
-  // Build the full interleaved queue (one cycle) matching the audio engine's playback order.
-  const upNext: { title: string; isMusic: boolean; idx: number }[] = [];
-  if (music.length > 0) {
-    if (musicIdx !== null && musicPlaying) {
-      // Music interstitial playing; next is episode airIdx+1, then music, then episode...
-      for (let i = 0; i < episodes.length; i++) {
-        const epIdx = (airIdx + 1 + i) % episodes.length;
-        upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
-        const mIdx = (airIdx + 1 + i) % music.length;
-        upNext.push({ title: music[mIdx].title, isMusic: true, idx: mIdx });
-      }
-    } else {
-      // Episode playing; next is music[airIdx % music.length], then episode airIdx+1...
-      for (let i = 0; i < episodes.length; i++) {
-        const mIdx = (airIdx + i) % music.length;
-        upNext.push({ title: music[mIdx].title, isMusic: true, idx: mIdx });
-        const epIdx = (airIdx + 1 + i) % episodes.length;
-        upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
-      }
+  // Build the upcoming queue in the engine's real playback order: the immediate break's
+  // remaining music + ad spots (from the live block, or the one planned for after this show),
+  // then the rest of the episode cycle. Ads are display-only (no jump-to-mid-break).
+  type QueueItem = { title: string; kind: "episode" | "music" | "ad"; idx: number };
+  const upNext: QueueItem[] = [];
+
+  // 1) the break that's airing now (during an ad block / music) or planned next (during a show)
+  const brk = activeBlock ?? breakAhead;
+  if (brk) {
+    // show the leading music only when it's still upcoming (not while it's the one airing now)
+    const musicIsNow = brk === activeBlock && musicPlaying;
+    if (brk.music !== null && brk.pos < 0 && !musicIsNow && music[brk.music]) {
+      upNext.push({ title: music[brk.music].title, kind: "music", idx: brk.music });
     }
-  } else {
-    for (let i = 0; i < episodes.length; i++) {
-      const epIdx = (airIdx + 1 + i) % episodes.length;
-      upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
+    for (let i = brk.pos + 1; i < brk.ads.length; i++) {
+      const a = brk.ads[i];
+      if (ads[a]) upNext.push({ title: ads[a].title, kind: "ad", idx: a });
     }
+  }
+
+  // 2) the episode cycle after this show
+  for (let i = 0; i < episodes.length; i++) {
+    const epIdx = (airIdx + 1 + i) % episodes.length;
+    upNext.push({ title: episodes[epIdx].title, kind: "episode", idx: epIdx });
   }
   const upNextSlice = upNext;
 
@@ -210,17 +212,32 @@ export default function RadioReceiver({
       <div className="rl-upnext">
         <span className="rl-upnext-label">UP NEXT</span>
         <span className="rl-upnext-list">
-          {upNextSlice.map((item, i) => (
-            <button
-              key={i}
-              type="button"
-              className={`rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}${item.isMusic ? " rl-upnext-item-music" : ""}`}
-              onClick={() => item.isMusic ? toggleMusicTrack(item.idx) : tuneTo(item.idx)}
-            >
-              <span className="rl-upnext-icon">{item.isMusic ? "♪" : "▷"}</span>
-              {item.title}
-            </button>
-          ))}
+          {upNextSlice.map((item, i) => {
+            const cls = `rl-upnext-item${i === 0 ? " rl-upnext-item-first" : ""}`
+              + (item.kind === "music" ? " rl-upnext-item-music" : "")
+              + (item.kind === "ad" ? " rl-upnext-item-ad" : "");
+            const icon = item.kind === "music" ? "♪" : item.kind === "ad" ? "⚠" : "▷";
+            // ads are display-only (you can't jump into the middle of a commercial break)
+            if (item.kind === "ad") {
+              return (
+                <span key={i} className={cls}>
+                  <span className="rl-upnext-icon">{icon}</span>
+                  {item.title}
+                </span>
+              );
+            }
+            return (
+              <button
+                key={i}
+                type="button"
+                className={cls}
+                onClick={() => item.kind === "music" ? toggleMusicTrack(item.idx) : tuneTo(item.idx)}
+              >
+                <span className="rl-upnext-icon">{icon}</span>
+                {item.title}
+              </button>
+            );
+          })}
         </span>
       </div>
     </div>

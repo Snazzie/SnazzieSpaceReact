@@ -9,14 +9,16 @@
       "text": "Sleep like a baby on the DreamWarden, the smart mattress that watches you all night for safety! <p:0.2> It learns your breathing, your secrets, your fears. <p:0.2> DreamWarden, it knows when you're awake!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 10.72,
+      "audio": "/audio/radio/ad-dream-warden/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "The mattress retains everything it observes. <p:0> Do not attempt to sleep elsewhere. <p:0> DreamWarden has already contacted your mother. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 10.487,
+      "duration": 7.157,
+      "audio": "/audio/radio/ad-dream-warden/1.flac"
     }
   ]
 }

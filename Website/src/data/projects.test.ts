@@ -12,9 +12,11 @@ describe("projects data", () => {
     }
   });
 
-  it("every project has a valid absolute URL href and a non-empty image", () => {
+  it("every project has a valid href (absolute URL or internal route) and a non-empty image", () => {
     for (const p of projects) {
-      expect(() => new URL(p.href)).not.toThrow();
+      // absolute external links AND root-relative internal routes (e.g. /snazziefm) are both valid;
+      // the base makes a relative href parse without forcing it to be absolute.
+      expect(() => new URL(p.href, "https://snazzie.space")).not.toThrow();
       expect(p.image.length).toBeGreaterThan(0);
     }
   });

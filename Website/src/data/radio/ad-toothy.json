@@ -9,14 +9,16 @@
       "text": "Got a toothache? <p:0.2> Toothy's Discount Dental pulls ALL your teeth for the price of one! <p:0.2> No appointment, no anesthetic, no questions. <p:0.2> Toothy's, we'll find the bad one eventually!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 10.07,
+      "audio": "/audio/radio/ad-toothy/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Procedures performed by a man named Greg. <p:0> Number of teeth removed may exceed the number present. <p:0> Gums sold separately. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 9.895,
+      "duration": 7.016,
+      "audio": "/audio/radio/ad-toothy/1.flac"
     }
   ]
 }

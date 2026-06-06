@@ -9,14 +9,16 @@
       "text": "Worried about intruders? <p:0.2> MoatMaster digs a thirty-foot moat around your home overnight! <p:0.2> Add crocodiles for nine bucks. <p:0.2> No one gets in, including you. <p:0.2> MoatMaster, defend the castle!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 10.51,
+      "audio": "/audio/radio/ad-moat-master/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Crocodiles do not distinguish family from foe. <p:0> Mail service permanently suspended. <p:0> Drawbridge sold as a separate ordeal. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 10.155,
+      "duration": 6.851,
+      "audio": "/audio/radio/ad-moat-master/1.flac"
     }
   ]
 }

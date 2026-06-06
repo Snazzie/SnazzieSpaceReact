@@ -3,6 +3,7 @@ import type { Episode, CastMember } from "@/data/radio";
 import { useRadioAudio } from "./useRadioAudio";
 import RadioReceiver from "./RadioReceiver";
 import RadioTopHits from "./RadioTopHits";
+import RadioAdSpot from "./RadioAdSpot";
 import RadioPosts from "./RadioPosts";
 import "./RadioLanding.css";
 
@@ -58,6 +59,7 @@ function Portrait({ member }: { member: CastMember }) {
 export default function RadioLanding({ episodes, music = [], ads = [], cast }: Props) {
   const audio = useRadioAudio(episodes, music, ads);
   const onAir = episodes[audio.airIdx];
+  const adSpotIdx = ads.findIndex((a) => a.slug === "ad-instaad");
 
   const [clock, setClock] = useState("");
   useEffect(() => {
@@ -170,6 +172,8 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             adIdx={audio.adIdx}
             adPlaying={audio.adPlaying}
             ads={ads}
+            breakAhead={audio.breakAhead}
+            activeBlock={audio.activeBlock}
             onAir={onAir}
             levels={audio.levels}
             clock={clock}
@@ -186,8 +190,10 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
         </div>
       </section>
 
-      {/* ── Now on air ──────────────────────────────────────────────── */}
-      {(onAir || (audio.musicIdx !== null && audio.musicPlaying) || (audio.adIdx !== null && audio.adPlaying)) && (
+      {/* ── Now on air  +  sponsor spot ─────────────────────────────── */}
+      <div className="rl-now-row">
+       <div className="rl-now-col">
+        {(onAir || (audio.musicIdx !== null && audio.musicPlaying) || (audio.adIdx !== null && audio.adPlaying)) && (
         <section className="rl-now">
           {audio.adIdx !== null && audio.adPlaying ? (
             <>
@@ -213,7 +219,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             </>
           ) : onAir && (
             <>
-              <div className="rl-now-badge"><span className="rl-onair-dot" /> Now on air</div>
+              <div className="rl-now-badge"><span className="rl-onair-dot" /> Now playing</div>
               <h2 className="rl-now-title">{onAir.title}</h2>
               <p className="rl-now-desc">{onAir.description}</p>
               <div className="rl-now-actions">
@@ -224,7 +230,19 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             </>
           )}
         </section>
-      )}
+        )}
+       </div>
+        {adSpotIdx >= 0 && (
+          <RadioAdSpot
+            ad={ads[adSpotIdx]}
+            adIndex={adSpotIdx}
+            adIdx={audio.adIdx}
+            adPlaying={audio.adPlaying}
+            adLoading={audio.adLoading}
+            toggleAdSpot={audio.toggleAdSpot}
+          />
+        )}
+      </div>
 
       {/* ── Schedule + Top Hits side-by-side ────────────────────────── */}
       <div className="rl-guide-row">
@@ -245,7 +263,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
                   <span className="rl-show-body">
                     <span className="rl-show-title">
                       {ep.title}
-                      {i === audio.airIdx && audio.playing && <span className="rl-show-tag">LIVE</span>}
+                      {i === audio.airIdx && audio.playing && <span className="rl-show-tag">NOW PLAYING</span>}
                     </span>
                     <span className="rl-show-desc">{ep.description}</span>
                   </span>

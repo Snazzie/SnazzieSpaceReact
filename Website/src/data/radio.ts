@@ -154,6 +154,7 @@ export const CAST: Record<string, CastMember> = {
 const EPISODE_MUSIC: Record<string, string> = {
   "villain-hour": "villain-open-mic",
   "the-pigeon-crash": "pigeon-crash",
+  "the-truth-hour": "nebraskas-watchin",
 };
 
 type RawShow = { slug: string; title: string; description: string; lines: unknown[]; track?: string; blunder?: boolean };
@@ -230,6 +231,15 @@ export const MUSIC_TRACKS: Episode[] = [
     coverArt: "/images/radio/music/orange-slices-union-job.jpg",
     lines: [],
     track: "/audio/music/orange-slices-union-job.mp3",
+  },
+  {
+    slug: "nebraskas-watchin",
+    title: "Nebraska's Watchin'",
+    description: "Outlaw country with punk teeth — Frank's pigeon gospel, set to a stomp-clap backbeat.",
+    type: "music",
+    coverArt: "/images/radio/music/nebraskas-watchin.png",
+    lines: [],
+    track: "/audio/music/nebraskas-watchin.mp3",
   },
 ];
 

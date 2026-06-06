@@ -184,15 +184,15 @@
     "color": "#9aa0a6",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, low pitch, american accent",
-    "speed": 1.3,
+    "speed": 1.2,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-disclaimer.wav",
     "ref_text": "ELEVEN O'CLOCK HAD STRUCK IT WAS A FINE CLEAR NIGHT THEY WERE THE ONLY PERSONS ON THE ROAD AND THEY SAUNTERED LEISURELY ALONG TO AVOID PAYING THE PRICE OF FATIGUE FOR THE RECREATION PROVIDED FOR THE TOLEDANS IN THEIR VALLEY OR ON THE BANKS OF THEIR RIVER",
     "gender": "M",
-    "tempo": 1.3,
-    "num_step": 64,
+    "tempo": 1.15,
+    "num_step": 80,
     "position_temperature": 1.5,
-    "seed": 7
+    "seed": 11
   },
   "ad-ann-rage": {
     "name": "Rage Pitchman",

@@ -9,14 +9,16 @@
       "text": "Getting married? <p:0.2> InstaVows officiates your wedding in ninety seconds flat, drive-thru style! <p:0.2> No license, no waiting, no take-backs. <p:0.2> InstaVows, kiss the bride and keep moving!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 11.06,
+      "audio": "/audio/radio/ad-instavows/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "InstaVows marriages may not be legally recognized. <p:0> The officiant holds no certification. <p:0> Annulment requires a second drive-thru. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 10.744,
+      "duration": 7.408,
+      "audio": "/audio/radio/ad-instavows/1.flac"
     }
   ]
 }
