@@ -14,10 +14,10 @@
     },
     {
       "speaker": "ad-disclaimer",
-      "text": "Soothe-Master 5000 was tested on one hundred cat assholes. May contain side effects in humans. Numbness, blindness, mild glowing, and regret. Do not inhale the nozzle. Terms and conditions apply.",
+      "text": "Soothe-Master 5000 was tested on one hundred cat assholes. <p:0.1> May contain side effects in humans. Numbness, blindness, mild glowing, and regret. <p:0.1> Do not inhale the nozzle. Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 6.754,
-      "duration": 7.849,
+      "timestamp": 6.822,
+      "duration": 8.242,
       "audio": "/audio/radio/ad-soothe-master/1.flac"
     }
   ]
