@@ -228,17 +228,38 @@ It generates whole passes with natural turn-taking — far better flow than per-
   `prefix_speaker_1/2`); there is no `[S3]`. A 3+ voice episode CANNOT use Dia2 — use OmniVoice
   multitrack instead (e.g. Villain Hour's 6-voice brawl). Author strictly alternating turns,
   starting `[S1]`.
-- **Single track, not per-clip.** Each pass is one continuous FLAC; passes are concatenated into
-  `<slug>/episode.flac` and the episode JSON gets a top-level `"track"`. Per-line `timestamp`/
-  `duration` are **metadata only**, recovered from Dia2's word timestamps (no audio splitting —
-  splitting leaked the phone filter and mis-placed boundaries). Plays via the **single-track** UI
-  path (`RadioStation.tsx` branches on `episode.track`).
+- **Single voice track + optional SFX overlays (hybrid).** The dialogue is one continuous FLAC
+  per pass, concatenated into `<slug>/episode.flac` (`"track"` in the JSON). Dialogue per-line
+  `timestamp`/`duration` are **metadata only** (from word timestamps; no audio splitting). But
+  `sfx` lines ARE still supported: the generator builds the voice track from the **dialogue lines
+  only** (the 2 speakers), renders each `sfx` line as its own clip, and the player overlays those
+  clips on top of the track. `RadioStation.tsx` track-mode plays `episode.track` AND schedules any
+  line that has its own `audio`. So Dia2 episodes can keep rings, beds, animal noises, etc.
+  - SFX timing is **anchored to the previous dialogue line's end** via `overlap` (positive = starts
+    earlier, into that line), or an `at` (absolute seconds) override — because Dia2 timing is
+    model-driven, not gap-controlled. SFX that need a *gap in the dialogue* (a ring before pickup)
+    can only overlay (the track has no gap); accept slight imprecision or tune with `at`.
+- ⚠️ **Never put a second language in the Dia2 dialogue.** Dia2 detects language per *pass* and
+  renders the WHOLE pass in it — one Mandarin aside made every English (Ronnie) line in that pass
+  Chinese-accented. Render foreign asides separately with OmniVoice (multilingual) and drop them in
+  as a caller-side `sfx` overlay (see `scripts/render-aside.py` → `chen-aside.wav`). Keep the Dia2
+  track monolingual.
+- ⚠️ **Strip `<p:N>` tokens before a Dia2 render** — they're OmniVoice-only and Dia2 reads them
+  aloud. Dia2 paces itself; use commas/`...`.
 - **Phone filter is baked into the voice, not applied after.** For a `phone_filter` speaker, the
   generator bandpasses that speaker's **prefix** clip, so Dia2 clones a phone-toned voice — clean,
   no boundary leak (you can't post-filter one speaker out of a mixed track).
 - **Voice anchoring**: each speaker is conditioned by its `cast.json` `ref_audio` as a
   per-speaker prefix (Dia2 runs Whisper on each prefix). `prefix_stretch` (float in `cast.json`,
   e.g. `1.14`) slows + lowers a speaker's prefix → calmer/lower/"stoned" cadence.
+- ⚠️ **Dia2 clones the reference's LANGUAGE, not just the timbre.** A foreign-language `ref_audio`
+  (e.g. Todd/Chen's Mandarin `todd.wav`) makes Dia2 detect that pass as that language and render
+  the WHOLE pass in it — the OTHER speaker comes out accented too (Ronnie went Chinese). For an
+  accented character in Dia2, use a same-language (English) clip that already carries the accent.
+  Mint one with OmniVoice: `python scripts/render-clip.py <speaker> voices/<name>.wav "english..."`
+  (OmniVoice gives accented English from a foreign ref), then point that speaker's `ref_audio` at
+  it for Dia2. (This is the opposite of the OmniVoice rule below, where a Mandarin ref is correct —
+  OmniVoice separates ref-voice from spoken language; Dia2 does not.)
 - **Nonverbals** `(laughs)`/`(sighs)`/`(gasps)` (Dia's list, sparingly). `<p:N>` is OmniVoice-only.
 - **Emotion arc / interruptions** — Dia2 voices escalation in one pass; cut-ins are textual
   (trailing `...`, interrupter jumps in) since it's one track.
