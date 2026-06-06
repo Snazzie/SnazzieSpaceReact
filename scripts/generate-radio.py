@@ -121,6 +121,10 @@ def clip_hash(text: str, c: dict) -> str:
         parts.append(f"num_step={int(c['num_step'])}")
     if "guidance_scale" in c:
         parts.append(f"guidance_scale={float(c['guidance_scale'])}")
+    if "position_temperature" in c:
+        parts.append(f"position_temperature={float(c['position_temperature'])}")
+    if "class_temperature" in c:
+        parts.append(f"class_temperature={float(c['class_temperature'])}")
     return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
@@ -135,16 +139,22 @@ PAUSE_RE = re.compile(r"<p(?::([0-9.]+))?>")
 DEFAULT_PAUSE = 0.5
 
 
+_GEN_KNOBS = ("num_step", "guidance_scale", "position_temperature", "class_temperature")
+
+
 def _gen_config(c: dict):
     """Optional per-voice OmniVoice inference knobs. `num_step` = denoising iterations
     (default 32; higher = better quality, slower). `guidance_scale` = CFG (default 2.0).
-    Returns None when neither is set, so default generation is untouched."""
-    if "num_step" not in c and "guidance_scale" not in c:
+    `position_temperature` (default 5.0) / `class_temperature` (default 0.0) = sampling
+    temperature; lower = more deterministic/stable. Returns None when none set."""
+    if not any(k in c for k in _GEN_KNOBS):
         return None
     from omnivoice.models.omnivoice import OmniVoiceGenerationConfig
     return OmniVoiceGenerationConfig(
         num_step=int(c.get("num_step", 32)),
         guidance_scale=float(c.get("guidance_scale", 2.0)),
+        position_temperature=float(c.get("position_temperature", 5.0)),
+        class_temperature=float(c.get("class_temperature", 0.0)),
     )
 
 
