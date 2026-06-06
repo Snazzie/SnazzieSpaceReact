@@ -1,0 +1,17 @@
+{
+  "slug": "ad-lous-locksmith-2",
+  "title": "Lou's Locksmith #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-winston",
+      "text": "Lou's Locksmith, locked out? We come to you, twenty four seven... <p:0.4> was THAT the beep? <p:0.3> I never know.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.92,
+      "audio": "/audio/radio/ad-lous-locksmith-2/0.flac"
+    }
+  ]
+}

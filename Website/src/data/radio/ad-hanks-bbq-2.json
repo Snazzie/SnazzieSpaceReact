@@ -1,0 +1,17 @@
+{
+  "slug": "ad-hanks-bbq-2",
+  "title": "Hank's BBQ #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-kim",
+      "text": "Did it send? <p:0.3> Hank's BBQ, by the way, we also cater... <p:0.4> it is still going, is not it. <p:0.3> Hank's BBQ, everybody.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.11,
+      "audio": "/audio/radio/ad-hanks-bbq-2/0.flac"
+    }
+  ]
+}

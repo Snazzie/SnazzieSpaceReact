@@ -21,15 +21,20 @@ MIN_CLIP_SECS = 5.0
 WANT_POOL = 16
 
 # every speaker already in use — announcers must be distinct from all of them.
+# includes the existing ad announcers (8230/908/8224/1995) so we don't re-pull them.
 USED = {1089, 1188, 1284, 2300, 61, 672, 237, 1320, 121, 7127,
-        2961, 4077, 3570, 260, 1580, 2830, 7729, 8463, 5639}
+        2961, 4077, 3570, 260, 1580, 2830, 7729, 8463, 5639,
+        8230, 908, 8224, 1995}
 
-# new announcer cast keys (one per ad) -> (display name, color)
+# new announcer cast keys -> (display name, color). Pitch-sorted ascending, so the
+# first is the deepest and the last the highest; names roughly track that.
 ANN = [
-    ("ad-ann-rage",    "Rage Pitchman",    "#ff3b30"),
-    ("ad-ann-surgery", "Surgery Pitchman", "#34c759"),
-    ("ad-ann-cash",    "Cash Pitchman",    "#30b0c7"),
-    ("ad-ann-cat",     "Cat Pitchman",     "#ff9500"),
+    ("ad-ann-deep",    "Deep Pitchman",    "#5856d6"),
+    ("ad-ann-gravel",  "Gravel Pitchman",  "#8e8e93"),
+    ("ad-ann-smooth",  "Smooth Pitchman",  "#af52de"),
+    ("ad-ann-nasal",   "Nasal Pitchman",   "#ff2d55"),
+    ("ad-ann-shouty",  "Shouty Pitchman",  "#ffcc00"),
+    ("ad-ann-chipper", "Chipper Pitchman", "#64d2ff"),
 ]
 
 

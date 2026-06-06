@@ -116,6 +116,15 @@ NOT `<p:0.1>` etc. — a real gap breaks the rattle. Rule of thumb: any disclaim
 words needs it; just do it on all of them. A quick check that a re-rendered disclaimer is
 longer than the old take confirms the dropped text came back.
 
+**The same elision hits ANNOUNCER lines once they get long (~30+ words).** Any long line is
+a single utterance and will drop a clause. Split the announcer at SENTENCE boundaries too —
+but with a small real pause **`<p:0.2>`** (not `<p:0>`): the announcer wants a natural
+breath between sentences, unlike the breathless disclaimer. So: disclaimer = gapless `<p:0>`
+per clause; announcer = `<p:0.2>` per sentence. (`scripts/make-ads-batch.py` does the
+announcer split automatically via `split_sentences()` — insert `<p:0.2>` after each `.`/`!`/
+`?`.) If you hear words skipped in playback, it's this — re-split the offending line, don't
+blame the seed.
+
 **Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
 `num_step` = denoising iterations (default 32; 48-64 is cleaner, slower), `guidance_scale`
 (default 2.0), `position_temperature` (default 5.0; LOWER = steadier/flatter, e.g. the

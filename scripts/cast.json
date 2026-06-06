@@ -237,5 +237,71 @@
     "ref_audio": "scripts/voices/ad-ann-cat.wav",
     "ref_text": "MARY TAYLOR HOWEVER RELATED THE TALE OF ZORA TO MISSUS GREY'S PRIVATE EAR LATER",
     "gender": "M"
+  },
+  "ad-ann-deep": {
+    "name": "Deep Pitchman",
+    "color": "#5856d6",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-deep.wav",
+    "ref_text": "I REMAINED THERE ALONE FOR MANY HOURS BUT I MUST ACKNOWLEDGE THAT BEFORE I LEFT THE CHAMBERS I HAD GRADUALLY BROUGHT MYSELF TO LOOK AT THE MATTER IN ANOTHER LIGHT",
+    "gender": "M"
+  },
+  "ad-ann-gravel": {
+    "name": "Gravel Pitchman",
+    "color": "#8e8e93",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-gravel.wav",
+    "ref_text": "HE IS A WELCOME FIGURE AT THE GARDEN PARTIES OF THE ELECT WHO ARE ALWAYS READY TO ENCOURAGE HIM BY ACCEPTING FREE SEATS FOR HIS PLAY ACTOR MANAGERS NOD TO HIM EDITORS ALLOW HIM TO CONTRIBUTE WITHOUT CHARGE TO A SYMPOSIUM ON THE PRICE OF GOLF BALLS",
+    "gender": "M"
+  },
+  "ad-ann-smooth": {
+    "name": "Smooth Pitchman",
+    "color": "#af52de",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-smooth.wav",
+    "ref_text": "HER SEA GOING QUALITIES WERE EXCELLENT AND WOULD HAVE AMPLY SUFFICED FOR A CIRCUMNAVIGATION OF THE GLOBE",
+    "gender": "M"
+  },
+  "ad-ann-nasal": {
+    "name": "Nasal Pitchman",
+    "color": "#ff2d55",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-nasal.wav",
+    "ref_text": "THEY ARE CHIEFLY FORMED FROM COMBINATIONS OF THE IMPRESSIONS MADE IN CHILDHOOD",
+    "gender": "M"
+  },
+  "ad-ann-shouty": {
+    "name": "Shouty Pitchman",
+    "color": "#ffcc00",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-shouty.wav",
+    "ref_text": "SHE TAUGHT HER DAUGHTER THEN BY HER OWN AFFECTION FOR IT THAT LOVE FOR A COUNTRY WHERE THEY HAD BOTH BEEN HOSPITABLY RECEIVED AND WHERE A BRILLIANT FUTURE OPENED BEFORE THEM",
+    "gender": "M"
+  },
+  "ad-ann-chipper": {
+    "name": "Chipper Pitchman",
+    "color": "#64d2ff",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-chipper.wav",
+    "ref_text": "NONSENSE OF COURSE I CAN'T REALLY SING EXCEPT THE WAY MY MOTHER AND GRANDMOTHER DID BEFORE ME",
+    "gender": "M"
   }
 }

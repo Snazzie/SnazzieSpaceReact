@@ -6,6 +6,12 @@
     "ad-ann-surgery": { "speaker": 908,  "gender": "M", "role": "announcer",  "ad": "ad-bargain-surgery", "name": "Surgery Pitchman", "color": "#34c759", "pitch_hz": 116 },
     "ad-ann-cash":    { "speaker": 8224, "gender": "M", "role": "announcer",  "ad": "ad-instacash",       "name": "Cash Pitchman",    "color": "#30b0c7", "pitch_hz": 151 },
     "ad-ann-cat":     { "speaker": 1995, "gender": "M", "role": "announcer",  "ad": "ad-whisker-chunks",  "name": "Cat Pitchman",     "color": "#ff9500", "pitch_hz": 158 },
+    "ad-ann-deep":    { "speaker": 8455, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Deep Pitchman",    "color": "#5856d6", "pitch_hz": 105 },
+    "ad-ann-gravel":  { "speaker": 7176, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Gravel Pitchman",  "color": "#8e8e93", "pitch_hz": 115 },
+    "ad-ann-smooth":  { "speaker": 5105, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Smooth Pitchman",  "color": "#af52de", "pitch_hz": 119 },
+    "ad-ann-nasal":   { "speaker": 7021, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Nasal Pitchman",   "color": "#ff2d55", "pitch_hz": 131 },
+    "ad-ann-shouty":  { "speaker": 6930, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Shouty Pitchman",  "color": "#ffcc00", "pitch_hz": 152 },
+    "ad-ann-chipper": { "speaker": 4446, "gender": "M", "role": "announcer",  "ad": "(batch pool)",       "name": "Chipper Pitchman", "color": "#64d2ff", "pitch_hz": 157 },
     "ad-disclaimer":  { "speaker": 5639, "gender": "M", "role": "disclaimer", "shared": true,             "name": "Fine Print",       "color": "#9aa0a6", "pitch_hz": 133 }
   }
 }

@@ -1,0 +1,17 @@
+{
+  "slug": "ad-maxines-salon-1",
+  "title": "Maxine's Salon #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-gary",
+      "text": "Maxine's Salon, cuts, color, and blowouts, best prices in town, guaranteed! <p:0.4> They are not. <p:0.3> But legal said I could say it.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.26,
+      "audio": "/audio/radio/ad-maxines-salon-1/0.flac"
+    }
+  ]
+}

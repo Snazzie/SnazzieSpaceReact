@@ -1,0 +1,17 @@
+{
+  "slug": "ad-donnas-diner",
+  "title": "Donna's Diner",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-patricia",
+      "text": "Donna's Diner, best pancakes and bottomless coffee in town, open six to noon, <p:0.3> hold on, phone. <p:0.4> Donna's Diner. No, we're closed. <p:0.3> Okay, where was I. <p:0.4> We got eggs, bacon, hash browns, and fresh biscuits, <p:0.3> table four, I'll be right there! <p:0.4> Sorry. <p:0.3> Donna's Diner, come hungry, leave... <p:0.4> it's ringing again. <p:0.3> Forget it.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 32.62,
+      "audio": "/audio/radio/ad-donnas-diner/0.flac"
+    }
+  ]
+}

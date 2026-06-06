@@ -1,0 +1,22 @@
+{
+  "slug": "ad-growfast",
+  "title": "GrowFast Prime",
+  "description": "A paid message from GrowFast. Lawn fertilizer with opinions.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Want a greener yard? <p:0.2> GrowFast Prime grows grass six feet overnight, and it's starting to think! <p:0.2> Lush, vibrant, increasingly aware. <p:0.2> GrowFast Prime, the lawn that loves back!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Contains undisclosed industrial chemicals. <p:0> Do not inhale, ingest, or touch the lawn. <p:0> Runoff may affect neighboring yards. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

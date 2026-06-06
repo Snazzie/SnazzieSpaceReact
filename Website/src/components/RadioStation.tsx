@@ -155,7 +155,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   const [activeLine, setActiveLine]     = useState(-1);
   const [ready, setReady]               = useState(false);
   const [volume, setVolumeState]        = useState(loadVolume);
-  const [tab, setTab]                   = useState<"episodes" | "ads">("episodes");
+  const [tab, setTab]                   = useState<"episodes" | "ads" | "blunders">("episodes");
   const autoPlayRef = useRef(false);
 
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
@@ -177,7 +177,8 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
   // Keep the sidebar tab on whichever list holds the current selection.
   useEffect(() => {
-    setTab(selectedIdx >= episodes.length ? "ads" : "episodes");
+    if (selectedIdx < episodes.length) setTab("episodes");
+    else setTab(items[selectedIdx]?.blunder ? "blunders" : "ads");
   }, [selectedIdx, episodes.length]);
 
   // Deep link: /radio/behindthescenes#<slug> selects that episode on load (from the
@@ -405,26 +406,35 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
           </div>
         </div>
 
-        {/* Tabs: switch the list between episodes and ads */}
+        {/* Tabs: episodes / standard ads / blunder ads */}
         <div className="flex border-b border-white/5">
-          {(["episodes", "ads"] as const).map((t) => (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`flex-1 px-2 py-2.5 text-[9px] font-semibold uppercase tracking-[2px] transition-colors border-b-2 ${
-                tab === t
-                  ? "text-[#ff6b00] border-[#ff6b00] bg-white/[0.03]"
-                  : "text-white/25 border-transparent hover:text-white/50"
-              }`}
-            >
-              {t === "episodes" ? `Episodes ${episodes.length}` : `Ads ${ads.length}`}
-            </button>
-          ))}
+          {(["episodes", "ads", "blunders"] as const).map((t) => {
+            const count = t === "episodes" ? episodes.length
+              : t === "ads" ? ads.filter((a) => !a.blunder).length
+              : ads.filter((a) => a.blunder).length;
+            const label = t === "episodes" ? "Shows" : t === "ads" ? "Ads" : "Blunders";
+            return (
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`flex-1 px-1 py-2.5 text-[9px] font-semibold uppercase tracking-[1.5px] transition-colors border-b-2 ${
+                  tab === t
+                    ? "text-[#ff6b00] border-[#ff6b00] bg-white/[0.03]"
+                    : "text-white/25 border-transparent hover:text-white/50"
+                }`}
+              >
+                {label} {count}
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          {(tab === "episodes" ? episodes : ads).map((item, i) => {
-            const idx = tab === "episodes" ? i : episodes.length + i;
+          {(tab === "episodes" ? episodes
+            : tab === "ads" ? ads.filter((a) => !a.blunder)
+            : ads.filter((a) => a.blunder)
+          ).map((item) => {
+            const idx = items.indexOf(item);
             const active = idx === selectedIdx;
             const playingThis = active && isPlaying;
             return (

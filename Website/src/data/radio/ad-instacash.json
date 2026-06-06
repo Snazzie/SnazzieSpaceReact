@@ -9,14 +9,14 @@
       "text": "Need cash NOW? InstaCash 9000 wires you a thousand dollars instantly! No credit check, no questions asked, no escape!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 8.28,
+      "duration": 8.32,
       "audio": "/audio/radio/ad-instacash/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Interest rate four thousand percent, compounding hourly. <p:0> Collateral includes your car, your home, and your cousin. <p:0> Repayment is mandatory and eternal. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 8.017,
+      "timestamp": 7.987,
       "duration": 6.324,
       "audio": "/audio/radio/ad-instacash/1.flac"
     }

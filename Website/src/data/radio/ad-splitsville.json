@@ -1,0 +1,22 @@
+{
+  "slug": "ad-splitsville",
+  "title": "SplitsVille Kit",
+  "description": "A paid message from SplitsVille. Divorce in a box.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Marriage not working? <p:0.2> The SplitsVille Kit ends it in minutes, no lawyer required! <p:0.2> Just add signatures and resentment. <p:0.2> Comes with two boxes for your stuff. <p:0.2> SplitsVille, conscious uncoupling, unconscious pricing!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Kit divides assets at random. <p:0> Custody determined by a coin we provide. <p:0> The coin always lands on the dog. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

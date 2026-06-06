@@ -1,0 +1,22 @@
+{
+  "slug": "ad-ghost-ledger",
+  "title": "GhostLedger",
+  "description": "A paid message from GhostLedger. Taxes are just suggestions.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-chipper",
+      "text": "Paying taxes like a sucker? <p:0.2> GhostLedger makes your income legally invisible! <p:0.2> The government simply forgets you exist. <p:0.2> No income, no tax, no name. <p:0.2> GhostLedger, become a rumor!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "You will also be forgotten by friends and banks. <p:0> Existence cannot be restored after filing. <p:0> We have never heard of you. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

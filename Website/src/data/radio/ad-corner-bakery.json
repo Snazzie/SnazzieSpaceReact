@@ -1,0 +1,17 @@
+{
+  "slug": "ad-corner-bakery",
+  "title": "The Corner Bakery",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-frank",
+      "text": "The Corner Bakery, fresh bread, croissants, and cakes baked every morning, <p:0.3> I am not doing the jingle. <p:0.4> No, YOU did it last time. <p:0.3> We got muffins, we got pies, we got... <p:0.4> I am NOT singing it. <p:0.3> The Corner Bakery, come for the bread, stay for the... <p:0.4> fine, are we even recording? <p:0.3> Oh no.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 20.71,
+      "audio": "/audio/radio/ad-corner-bakery/0.flac"
+    }
+  ]
+}

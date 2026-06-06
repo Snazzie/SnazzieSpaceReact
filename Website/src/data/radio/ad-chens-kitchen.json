@@ -1,0 +1,24 @@
+{
+  "slug": "ad-chens-kitchen",
+  "title": "Chen's Golden Wok",
+  "description": "A paid message from Chen's Golden Wok. Family owned. Cat rumors strongly denied.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "caller-chen",
+      "text": "Hello. <p:0.2> Is Chen. <p:0.2> You hear rumor Chen cook cat. <p:0.2> Is a lie. <p:0.2> Chen serve only finest mystery meat, very tender, very cheap. <p:0.2> Come to Chen's Golden Wok, two ninety nine, all you can eat. <p:0.2> Is not cat. <p:0.2> Probably.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 15.64,
+      "audio": "/audio/radio/ad-chens-kitchen/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Chen's Golden Wok has not been inspected since the incident. <p:0> Meat is sourced locally and enthusiastically. <p:0> The neighborhood cats are fine. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 15.375,
+      "duration": 6.399,
+      "audio": "/audio/radio/ad-chens-kitchen/1.flac"
+    }
+  ]
+}

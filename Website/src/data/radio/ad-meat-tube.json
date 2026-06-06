@@ -1,0 +1,22 @@
+{
+  "slug": "ad-meat-tube",
+  "title": "Meat Tube",
+  "description": "A paid message from Meat Tube. A sandwich, structurally.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-chipper",
+      "text": "Hungry on the go? <p:0.2> Grab a Meat Tube, the protein cylinder of mystery and value! <p:0.2> One dollar, one tube, one question you won't ask. <p:0.2> Meat Tube, chew with optimism!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Contents are not classified as a single animal. <p:0> May contain bone, gristle, or surprise. <p:0> Consume at your own discretion. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

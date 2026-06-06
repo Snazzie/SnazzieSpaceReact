@@ -112,12 +112,12 @@ export default function RadioReceiver({
   analyserRef, volume, setVolume, clock, airIdx, episodes,
   togglePlay, tuneTo, toggleMusicTrack, nextTrack,
 }: Props) {
-  // Build the interleaved queue matching the audio engine's actual playback order.
+  // Build the full interleaved queue (one cycle) matching the audio engine's playback order.
   const upNext: { title: string; isMusic: boolean; idx: number }[] = [];
   if (music.length > 0) {
     if (musicIdx !== null && musicPlaying) {
       // Music interstitial playing; next is episode airIdx+1, then music, then episode...
-      for (let i = 0; upNext.length < 4; i++) {
+      for (let i = 0; i < episodes.length; i++) {
         const epIdx = (airIdx + 1 + i) % episodes.length;
         upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
         const mIdx = (airIdx + 1 + i) % music.length;
@@ -125,7 +125,7 @@ export default function RadioReceiver({
       }
     } else {
       // Episode playing; next is music[airIdx % music.length], then episode airIdx+1...
-      for (let i = 0; upNext.length < 4; i++) {
+      for (let i = 0; i < episodes.length; i++) {
         const mIdx = (airIdx + i) % music.length;
         upNext.push({ title: music[mIdx].title, isMusic: true, idx: mIdx });
         const epIdx = (airIdx + 1 + i) % episodes.length;
@@ -133,12 +133,12 @@ export default function RadioReceiver({
       }
     }
   } else {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < episodes.length; i++) {
       const epIdx = (airIdx + 1 + i) % episodes.length;
       upNext.push({ title: episodes[epIdx].title, isMusic: false, idx: epIdx });
     }
   }
-  const upNextSlice = upNext.slice(0, 4);
+  const upNextSlice = upNext;
 
   return (
     <div className="rl-receiver">

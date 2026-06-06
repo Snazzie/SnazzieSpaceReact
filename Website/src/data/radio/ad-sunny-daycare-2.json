@@ -1,0 +1,17 @@
+{
+  "slug": "ad-sunny-daycare-2",
+  "title": "Sunny Daycare #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, skipping that. <p:0.3> Sunny Daycare, we got naps, snacks, and finger painting... <p:0.4> insert price here. <p:0.3> Did it again.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.93,
+      "audio": "/audio/radio/ad-sunny-daycare-2/0.flac"
+    }
+  ]
+}

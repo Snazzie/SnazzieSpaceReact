@@ -1,0 +1,17 @@
+{
+  "slug": "ad-vinces-shoes-1",
+  "title": "Vince's Shoes #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-frank",
+      "text": "Vince's Shoes, sneakers, boots, and sandals, with unparalleled service... <p:0.3> un-par-able? <p:0.4> Unparalleled. <p:0.3> Whatever, great shoes.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.14,
+      "audio": "/audio/radio/ad-vinces-shoes-1/0.flac"
+    }
+  ]
+}

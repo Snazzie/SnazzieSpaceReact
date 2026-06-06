@@ -143,6 +143,31 @@ DEFAULT_PAUSE = 0.5
 
 _GEN_KNOBS = ("num_step", "guidance_scale", "position_temperature", "class_temperature")
 
+_CAMEL_RE = re.compile(r"([a-z])([A-Z])")
+
+# Inline ARPAbet pronunciations (OmniVoice g2p override, e.g. "[HH AA1 NG K HH IY1 L]").
+# For brand names that mispronounce even when de-glued — "HonkHeal" otherwise becomes
+# "Honkeel". Keys match as whole words BEFORE de-glue; the bracketed phonemes are spoken
+# verbatim. Applied to TTS input only, so titles/transcript keep the spelled brand.
+PRONUNCIATIONS: dict[str, str] = {
+    # "BrandName": "[AA1 R P AH0 B EH2 T]",   # whole-word -> inline ARPAbet
+}
+
+
+def apply_pronunciations(text: str) -> str:
+    for word, phon in PRONUNCIATIONS.items():
+        text = re.sub(rf"\b{re.escape(word)}\b", phon, text)
+    return text
+
+
+def despace_brands(text: str) -> str:
+    """Speak glued camelCase brand names as separate words. OmniVoice can't pronounce a
+    glued token like 'HonkHeal' (renders as 'Honkyo') or 'RugCoin'/'SugarBeGone' — it
+    needs the space. Applied to TTS input only; the stored line text + titles keep the
+    camelCase branding for display. Folded into the clip hash via the render loop, so
+    affected clips re-render."""
+    return _CAMEL_RE.sub(r"\1 \2", text)
+
 # Tuning fields a single line may override on top of its cast voice (see use site).
 _LINE_OVERRIDES = ("seed", "speed", "tempo", "num_step", "guidance_scale",
                    "position_temperature", "class_temperature", "instruct", "phone_filter")
@@ -164,6 +189,22 @@ def _gen_config(c: dict):
     )
 
 
+# Reusable voice-clone prompts, keyed by ref_audio path. Building a prompt preprocesses
+# the reference (silence trim + ASR-free reuse of ref_text); doing it once per voice and
+# reusing it across every clip of that voice (and across every slug in a bulk run) is the
+# "keep the voice loaded" win — no re-encoding the same reference clip-by-clip.
+_PROMPT_CACHE: dict[str, object] = {}
+
+
+def _voice_prompt(c: dict, model):
+    ref = c["ref_audio"]
+    p = _PROMPT_CACHE.get(ref)
+    if p is None:
+        p = model.create_voice_clone_prompt(str(REPO_ROOT / ref), c["ref_text"])
+        _PROMPT_CACHE[ref] = p
+    return p
+
+
 def _tts(text: str, c: dict, model) -> np.ndarray:
     # Per-voice seed override = reroll this clip's "take" independently of the global seed.
     # Different seed -> different realization of the same voice/text; some come out cleaner.
@@ -171,8 +212,7 @@ def _tts(text: str, c: dict, model) -> np.ndarray:
         torch.manual_seed(int(c["seed"]))
     audio = model.generate(
         text=text,
-        ref_audio=str(REPO_ROOT / c["ref_audio"]),
-        ref_text=c["ref_text"],
+        voice_clone_prompt=_voice_prompt(c, model),  # cached per voice (overrides ref_audio/ref_text)
         instruct=c["instruct"],
         speed=float(c.get("speed", SPEED)),
         generation_config=_gen_config(c),
@@ -324,7 +364,7 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
     for i, line in enumerate(lines):
         speaker_id = line["speaker"]
         out_file   = clip_dir / f"{i}.flac"
-        text       = line["text"].strip()
+        text       = despace_brands(apply_pronunciations(line["text"].strip()))  # TTS only; stored text keeps branding
 
         # Real sound-effect line (e.g. a genuine cat meow) — no TTS, no cast voice.
         if line.get("sfx"):
@@ -403,17 +443,27 @@ def detect_device() -> str:
     return "cpu"
 
 
+_MODEL = None
+
+
 def load_model():
+    """Load OmniVoice ONCE per process (memoized). When generating many slugs in one
+    run, the weights load a single time instead of per-slug — the load dominates
+    per-clip cost, so a bulk run is far cheaper than N separate invocations."""
+    global _MODEL
+    if _MODEL is not None:
+        return _MODEL
     from omnivoice import OmniVoice
     device = detect_device()
     dtype = torch.float16 if device != "cpu" else torch.float32
     print(f"  device: {device}")
-    return OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map=device, dtype=dtype)
+    _MODEL = OmniVoice.from_pretrained("k2-fsa/OmniVoice", device_map=device, dtype=dtype)
+    return _MODEL
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("slug", nargs="?", help="Episode slug (filename without .json)")
+    parser.add_argument("slug", nargs="*", help="Episode slug(s) (filename without .json). Pass many for a single-process bulk run.")
     parser.add_argument("--all", action="store_true", help="Process all episodes")
     parser.add_argument("--remix", action="store_true", help="Placement only; never load the model (all clips must be cached)")
     parser.add_argument("--seed", type=int, default=42)
@@ -421,11 +471,13 @@ def main() -> None:
     torch.manual_seed(args.seed)
 
     if not args.slug and not args.all:
-        print("Specify a slug or --all")
+        print("Specify one or more slugs, or --all")
         sys.exit(1)
 
+    # Multiple slugs (or --all) run in ONE process: the model loads once and each voice's
+    # clone prompt is cached, so a bulk run is dramatically cheaper than N invocations.
     slugs = (
-        [args.slug] if args.slug
+        args.slug if args.slug
         else [p.stem for p in sorted(SCRIPTS_DIR.glob("*.json"))]
     )
     for slug in slugs:

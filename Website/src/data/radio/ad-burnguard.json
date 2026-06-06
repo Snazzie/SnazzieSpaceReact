@@ -1,0 +1,22 @@
+{
+  "slug": "ad-burnguard",
+  "title": "BurnGuard",
+  "description": "A paid message from BurnGuard. Sunscreen, allegedly.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "Heading outside? <p:0.2> Slather on BurnGuard, the budget sunscreen with SPF one! <p:0.2> Smells like a tire, protects like a rumor. <p:0.2> BurnGuard, you'll tan, then transcend!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "May intensify the sun rather than block it. <p:0> Glows for legal reasons. <p:0> Do not apply near other people's skin. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

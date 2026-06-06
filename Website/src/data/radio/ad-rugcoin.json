@@ -1,0 +1,22 @@
+{
+  "slug": "ad-rugcoin",
+  "title": "RugCoin",
+  "description": "A paid message from RugCoin. The coin that believes in you, briefly.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-announcer",
+      "text": "Missed crypto? <p:0.2> RugCoin is the next big thing until approximately Thursday! <p:0.2> Buy in now, retire by lunch, panic by dinner. <p:0.2> RugCoin, to the moon and slightly past it!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Value determined by a man named Chad's mood. <p:0> Withdrawals are a theoretical concept. <p:0> The rug was always going to be pulled. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

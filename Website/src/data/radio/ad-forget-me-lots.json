@@ -1,0 +1,22 @@
+{
+  "slug": "ad-forget-me-lots",
+  "title": "Forget-Me-Lots",
+  "description": "A paid message from Forget-Me-Lots. The tea that erases the bad parts.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "Haunted by a memory? <p:0.2> One cup of Forget-Me-Lots tea wipes it clean! <p:0.2> That argument, that debt, that name. <p:0.2> Gone. <p:0.2> Forget-Me-Lots, what were we talking about?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Forget-Me-Lots may erase more than intended. <p:0> Results are permanent and cannot be reviewed. <p:0> Not responsible for forgotten debts or relatives. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.0
+    }
+  ]
+}

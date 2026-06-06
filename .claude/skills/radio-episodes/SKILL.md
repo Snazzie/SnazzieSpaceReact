@@ -174,10 +174,17 @@ mispronounces:
   — another source of the "euro"/garbage artifact.
 - **No raw URLs** — say the words ("snazzie dot space"), don't paste `https://…`.
 - **Acronyms**: spell them how they should sound (e.g. "F-B-I" → write `F B I`), or avoid.
-  Radio text does **not** support the article's `word[PHONEME]` markers — that's a separate
-  MDX pipeline. For the full pronunciation/phoneme reference (acronyms, tech names, CMU
-  ARPAbet), see the **`new-article-with-voice`** skill's phoneme table; apply the same
-  spoken-form intent here, written as plain text.
+- **Inline ARPAbet works.** OmniVoice reads a bracketed phoneme string verbatim, so you can
+  force any pronunciation directly in the text, e.g. `[S IY1 K W AH0 L]` for "SQL". (This is
+  the raw `[ARPAbet]` form — NOT the article's `word[PHONEME]` MDX marker, which is a separate
+  pipeline.) For the phoneme reference see the **`new-article-with-voice`** skill's table.
+- **Brand pronunciations** that misfire even when de-glued (e.g. `HonkHeal` → "Honkeel") go in
+  the `PRONUNCIATIONS` map in `generate-radio.py` (brand → inline ARPAbet). The map is applied
+  to TTS input only, so the title/transcript keep the spelled brand. Add a brand there once and
+  every ad/episode using it speaks correctly.
+- **Glued camelCase brands** (`RugCoin`, `SugarBeGone`) are auto-spaced for TTS by the
+  generator's `despace_brands` (also TTS-only) — no action needed unless the spaced form still
+  mispronounces, in which case add a `PRONUNCIATIONS` entry.
 - Prefer plain ASCII punctuation: `. , ! ? ...` and the `<p:N>` pause token.
 
 ## Voice / cast config (`scripts/cast.json`)
@@ -223,9 +230,16 @@ Per character: `name`, `color`, `role`, `instruct`, `speed`, `phone_filter`, `re
 ```bash
 # from repo root (NOT Website/)
 python scripts/generate-radio.py the-truth-hour      # render/refresh one episode
+python scripts/generate-radio.py ad-foo ad-bar ad-baz   # BULK: many slugs in ONE process
 python scripts/generate-radio.py --all               # every episode
 python scripts/generate-radio.py the-truth-hour --remix   # placement only, never loads model
 ```
+
+- **Bulk runs**: pass multiple slugs (or `--all`) in a SINGLE invocation rather than looping
+  the script per slug. The model loads ONCE per process and each voice's clone prompt is
+  cached (`create_voice_clone_prompt`, keyed by `ref_audio`), so a reused voice is encoded
+  once and reused across every clip and every slug. Looping `python generate-radio.py <slug>`
+  N times instead reloads the multi-GB model N times — far slower. Always batch bulk work.
 
 - **Caching**: a clip re-renders only when its content hash changes — i.e. when that line's
   `text`, or its character's `instruct`/`speed`/`phone_filter`/`ref_audio`/`ref_text`, changes.
