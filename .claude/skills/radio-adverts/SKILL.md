@@ -13,12 +13,17 @@ Dia2 rules, see the **radio-episodes** skill — this skill only adds what is ad
 
 ## Format (the formula)
 
-- **~13 seconds.** One Dia2 track. Keep total spoken text to roughly 35-45 words.
+- **~13 seconds.** One Dia2 track. Dia2 IGNORES the `speed` field (pace comes from the
+  voice prefix), so length is purely text-driven: ~0.45-0.5s per word. Keep total spoken
+  text to roughly **26-32 words** to land near 13s (35+ words overruns to ~18s+).
 - **Two voices, announcer + disclaimer** (Dia2's hard 2-speaker limit):
   - `ad-announcer` (`[S1]`, first line) — bright, manic hard-sell pitchman.
   - `ad-disclaimer` (`[S2]`) — flat, fast, monotone fine-print reader.
-- **Structure:** announcer pitch (hook -> absurd promise) -> disclaimer machine-guns the
-  horrifying side-effects / legal tail -> announcer button (brand + tagline).
+- **Structure:** announcer pitch (hook -> absurd promise, with the brand + tagline button
+  folded into the end of the pitch) -> disclaimer machine-guns the horrifying side-effects /
+  legal tail. **The disclaimer is ALWAYS the last line** — the grim fine print is the last
+  thing the listener hears. So a 2-line ad (announcer `[S1]`, then disclaimer `[S2]`) is the
+  default shape; any longer ad still ENDS on the disclaimer.
 - Strictly alternating turns, **first line is the announcer**, exactly 2 distinct
   speakers (Dia2 requirement).
 
