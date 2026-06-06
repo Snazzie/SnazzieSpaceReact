@@ -1,0 +1,16 @@
+Cat sound effects (converted to 24kHz mono WAV via ffmpeg loudnorm):
+
+cat-pleading.wav  — "Meow of a pleading cat" (Public Domain)
+  https://commons.wikimedia.org/wiki/File:Meow_of_a_pleading_cat.oga
+cat-impatient.wav — "GettingOutImpatient" (Public Domain)
+  https://commons.wikimedia.org/wiki/File:GettingOutImpatient.ogg
+
+Both sourced from Wikimedia Commons. No attribution legally required (PD).
+
+phone-ring.wav    — "US ringback tone" (CC0)
+  https://commons.wikimedia.org/wiki/File:US_ringback_tone.ogg
+phone-hangup.wav  — synthesized US busy tone (480+620 Hz, 0.5s on/off) via ffmpeg. Generated, public domain.
+
+bg-kitchen.wav    — premixed "kitchen chaos" bed (~16s): cat-impatient + cat-pleading
+                    (both PD/CC0, see above) mixed with an ffmpeg-synthesized metal-clank
+                    layer (decaying metallic partials). Generated, public domain.

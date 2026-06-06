@@ -66,6 +66,40 @@ def load_cast() -> dict:
 PIPELINE_VERSION = "3"
 
 
+def sfx_hash(path: str, line: dict) -> str:
+    """Content key for an SFX clip — re-rendered only when the file or its opts change."""
+    payload = "|".join([
+        PIPELINE_VERSION, "sfx", path,
+        str(bool(line.get("phone_filter", False))),
+        str(bool(line.get("distant", False))),
+        f"{float(line.get('gain', 1.0))}",
+        f"{float(line.get('trim', 0.0))}",
+    ])
+    return hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+
+
+def render_sfx(path: str, line: dict) -> np.ndarray:
+    """Load a real sound-effect file (already 24k mono) and apply phone/gain/distant."""
+    clip, sr = sf.read(str(REPO_ROOT / path), dtype="float32")
+    if clip.ndim > 1:
+        clip = clip.mean(axis=1).astype(np.float32)
+    if sr != SAMPLE_RATE:
+        n = int(len(clip) * SAMPLE_RATE / sr)
+        clip = np.interp(np.linspace(0, len(clip), n, endpoint=False),
+                         np.arange(len(clip)), clip).astype(np.float32)
+    trim = float(line.get("trim", 0.0))            # keep only the first `trim` seconds (0 = whole file)
+    if trim > 0:
+        clip = clip[: int(trim * SAMPLE_RATE)]
+    if line.get("phone_filter", False):
+        clip = apply_phone_filter(clip)
+    if line.get("distant", False):
+        clip = sosfilt(_DISTANT_SOS, clip).astype(np.float32)
+    gain = float(line.get("gain", 1.0))
+    if gain != 1.0:
+        clip = (clip * gain).astype(np.float32)
+    return clip
+
+
 def clip_hash(text: str, c: dict) -> str:
     """Content key for a clip — TTS is re-run only when this changes."""
     speed = float(c.get("speed", SPEED))
@@ -195,6 +229,23 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         speaker_id = line["speaker"]
         out_file   = clip_dir / f"{i}.flac"
         text       = line["text"].strip()
+
+        # Real sound-effect line (e.g. a genuine cat meow) — no TTS, no cast voice.
+        if line.get("sfx"):
+            key    = sfx_hash(line["sfx"], line)
+            cached = manifest.get(str(i))
+            if cached and cached.get("hash") == key and out_file.exists() and "sb" in cached:
+                lengths.append(int(cached["length"])); sb_start.append(cached["sb"][0]); sb_end.append(cached["sb"][1])
+                continue
+            if remix:
+                raise SystemExit(f"--remix but sfx clip {i} ({line['sfx']}) is missing/stale; run without --remix first")
+            clip = render_sfx(line["sfx"], line)
+            sf.write(str(out_file), clip, SAMPLE_RATE, format="flac")
+            record(i, clip, key)
+            rendered += 1
+            print(f"    [{i+1}/{len(lines)}] sfx {line['sfx']}: {len(clip)/SAMPLE_RATE:.1f}s (rendered)")
+            continue
+
         c          = cast.get(speaker_id)
 
         if c is None:

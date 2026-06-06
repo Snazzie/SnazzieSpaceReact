@@ -7,6 +7,7 @@ import theSportsDesk from "./radio/the-sports-desk.json";
 import thePigeonCrash from "./radio/the-pigeon-crash.json";
 import villainHour from "./radio/villain-hour.json";
 import theFrankTapes from "./radio/the-frank-tapes.json";
+import theCatSpecial from "./radio/the-cat-special.json";
 
 export interface CastMember {
   id: string;
@@ -50,6 +51,10 @@ export const CAST: Record<string, CastMember> = {
   "caller-winston":{ id: "caller-winston",  name: "Winston",           color: "#a29bfe", role: "Caller"       },
   "caller-kim":    { id: "caller-kim",      name: "Kim",               color: "#a29bfe", role: "Caller"       },
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
+  "caller-chen":   { id: "caller-chen",     name: "Mr. Chen",          color: "#e17055", role: "Caller"       },
+  "cat":           { id: "cat",             name: "Cat",               color: "#ffeaa7", role: "Caller"       },
+  "cat-loud":      { id: "cat-loud",        name: "Cat",               color: "#ffeaa7", role: "Caller"       },
+  "phone":         { id: "phone",           name: "Phone",             color: "#636e72", role: "Caller"       },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -120,4 +125,5 @@ export const EPISODES: Episode[] = [
   episodeFrom(theSportsDesk),
   episodeFrom(thePigeonCrash),
   episodeFrom(theFrankTapes),
+  episodeFrom(theCatSpecial),
 ];
