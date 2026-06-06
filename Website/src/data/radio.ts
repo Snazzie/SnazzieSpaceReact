@@ -32,6 +32,7 @@ export interface Episode {
   coverArt?: string;  // /images/radio/music/<slug>.jpg — album art for music tracks
   lines: TranscriptLine[];
   track?: string;  // single whole-episode file (Dia); when set, player uses one source
+  music?: string;  // slug of the music track queued after this episode (else random)
 }
 
 export const CAST: Record<string, CastMember> = {
@@ -51,6 +52,12 @@ export const CAST: Record<string, CastMember> = {
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
 };
 
+// Episode slug → linked music track slug. Episodes without an entry play a random track.
+const EPISODE_MUSIC: Record<string, string> = {
+  "villain-hour": "villain-open-mic",
+  "the-pigeon-crash": "pigeon-crash",
+};
+
 function episodeFrom(raw: { slug: string; title: string; description: string; lines: unknown[]; track?: string }): Episode {
   return {
     slug:        raw.slug,
@@ -58,10 +65,22 @@ function episodeFrom(raw: { slug: string; title: string; description: string; li
     description: raw.description,
     lines:       raw.lines as TranscriptLine[],
     track:       raw.track,
+    music:       EPISODE_MUSIC[raw.slug],
   };
 }
 
 export const MUSIC_TRACKS: Episode[] = [
+  // Villain Open Mic sits first so it queues right after Villain Hour (episodes[0]),
+  // since the interstitial after episode i is music[i % music.length].
+  {
+    slug: "villain-open-mic",
+    title: "Villain Open Mic",
+    description: "Live from the rain-slick streets — every caller's a villain, every line's a confession.",
+    type: "music",
+    coverArt: "/images/radio/music/villain-open-mic.jpg",
+    lines: [],
+    track: "/audio/music/villain-open-mic.mp3",
+  },
   {
     slug: "pigeon-crash",
     title: "Pigeon Crash",
@@ -88,15 +107,6 @@ export const MUSIC_TRACKS: Episode[] = [
     coverArt: "/images/radio/music/orange-slices-union-job.jpg",
     lines: [],
     track: "/audio/music/orange-slices-union-job.mp3",
-  },
-  {
-    slug: "villain-open-mic",
-    title: "Villain Open Mic",
-    description: "Live from the rain-slick streets — every caller's a villain, every line's a confession.",
-    type: "music",
-    coverArt: "/images/radio/music/villain-open-mic.jpg",
-    lines: [],
-    track: "/audio/music/villain-open-mic.mp3",
   },
 ];
 

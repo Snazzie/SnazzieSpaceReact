@@ -158,9 +158,9 @@ export default function RadioReceiver({
         <div className="rl-readout-inner">
           <div className="rl-readout-text">
             <div className="rl-readout-row">
-              <span className="rl-readout-label">{musicIdx !== null && musicPlaying ? "♪" : "NOW"}</span>
+              <span className="rl-readout-label">{musicIdx !== null ? "♪" : "NOW"}</span>
               <span className="rl-readout-title">
-                {musicIdx !== null && musicPlaying
+                {musicIdx !== null
                   ? (music[musicIdx]?.title ?? "Music")
                   : (onAir?.title ?? "Snazzie FM")}
               </span>

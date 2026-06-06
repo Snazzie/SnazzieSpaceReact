@@ -12,6 +12,8 @@ export interface RadioAudioState {
   musicPlaying: boolean;
   musicLoading: boolean;
   levels: number[];
+  position: number;  // seconds elapsed in current audio
+  duration: number;  // seconds total of current audio
   analyserRef: React.RefObject<AnalyserNode | null>;
   volume: number;
   setVolume: (v: number) => void;
@@ -30,6 +32,10 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   const [musicLoading, setMusicLoading] = useState(false);
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
   const [volume, setVolumeState] = useState(1);
+  const [position, setPosition] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const startTimeRef = useRef(0);   // ctx time the current audio started at
+  const durationRef = useRef(0);    // total length of the current audio
 
   const ctxRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -57,6 +63,12 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
         t += 0.04;
         setLevels(Array.from({ length: NUM_BARS }, (_, i) =>
           Math.max(0.03, 0.05 + 0.03 * Math.sin(t + i * 0.9))));
+      }
+      const ctx = ctxRef.current;
+      if (ctx && durationRef.current > 0) {
+        const pos = Math.min(durationRef.current, Math.max(0, ctx.currentTime - startTimeRef.current));
+        setPosition(pos);
+        setDuration(durationRef.current);
       }
       raf = requestAnimationFrame(tick);
     };
@@ -106,6 +118,13 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     sourcesRef.current = [];
   }
 
+  // music queued after an episode: its linked track, else a random one
+  function musicIdxForEpisode(epIdx: number): number {
+    const slug = episodes[epIdx]?.music;
+    const linked = slug ? music.findIndex((m) => m.slug === slug) : -1;
+    return linked >= 0 ? linked : Math.floor(Math.random() * music.length);
+  }
+
   async function decode(ctx: AudioContext, url: string) {
     const res = await fetch(url);
     return ctx.decodeAudioData(await res.arrayBuffer());
@@ -125,7 +144,10 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
-      s.start(ctx.currentTime + 0.1);
+      const at = ctx.currentTime + 0.1;
+      s.start(at);
+      startTimeRef.current = at;
+      durationRef.current = buf.duration;
       sourcesRef.current.push(s);
       s.onended = () => {
         if (gen !== genRef.current) return;
@@ -177,11 +199,13 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     }
     if (gen !== genRef.current) return;
     setLoading(false);
+    startTimeRef.current = t0;
+    durationRef.current = lastEnd;
     if (last) (last as AudioBufferSourceNode).onended = () => {
       if (gen !== genRef.current) return;
       const next = (idx + 1) % episodes.length;
       if (music.length > 0) {
-        startInterstitial(idx % music.length, next, gen);
+        startInterstitial(musicIdxForEpisode(idx), next, gen);
       } else {
         setAirIdx(next);
         startEpisode(next);
@@ -225,7 +249,10 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
-      s.start(ctx.currentTime + 0.1);
+      const at = ctx.currentTime + 0.1;
+      s.start(at);
+      startTimeRef.current = at;
+      durationRef.current = buf.duration;
       sourcesRef.current.push(s);
       s.onended = () => { if (gen === genRef.current) { setMusicPlaying(false); setMusicIdx(null); } };
     } catch {
@@ -254,7 +281,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     } else if (music.length > 0) {
       // Skip current episode → play music interstitial then next episode
       setPlaying(true);
-      startInterstitial(base % music.length, next, gen);
+      startInterstitial(musicIdxForEpisode(base), next, gen);
     } else {
       // No music → skip to next episode
       airIdxRef.current = next;
@@ -286,6 +313,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     musicPlaying,
     musicLoading,
     levels,
+    position,
+    duration,
     analyserRef,
     volume,
     setVolume,

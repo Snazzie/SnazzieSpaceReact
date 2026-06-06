@@ -24,6 +24,13 @@ const SLOTS = [
   "SAT · 9:00 PM", "SUN · 8:30 PM", "MON · 10:00 PM", "TUE · 9:00 PM",
 ];
 
+function fmtTime(s: number) {
+  if (!Number.isFinite(s) || s < 0) s = 0;
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${sec.toString().padStart(2, "0")}`;
+}
+
 function initials(name: string) {
   return name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 }
@@ -111,10 +118,15 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
               className="rl-mini-vol"
             />
             <span className="rl-mini-title">
-              {audio.musicPlaying && audio.musicIdx !== null
+              {audio.musicIdx !== null
                 ? (music[audio.musicIdx]?.title ?? "Music break")
                 : (episodes[audio.airIdx]?.title ?? "On air")}
             </span>
+            {audio.duration > 0 && (
+              <span className="rl-mini-time">
+                {fmtTime(audio.position)} / {fmtTime(audio.duration)}
+              </span>
+            )}
             <div className="rl-mini-bars" aria-hidden>
               {audio.levels.slice(0, 8).map((v, i) => (
                 <span
@@ -272,7 +284,12 @@ export default function RadioLanding({ episodes, music = [], cast }: Props) {
       </section>
 
       <footer className="rl-footer">
-        <span>SNAZZIE FM &middot; All transmissions are fictional</span>
+        <span>
+          SNAZZIE FM &middot; All transmissions are fictional
+          <span className="rl-footer-note">
+            Every Snazzie FM Original references a program &mdash; listen in on the lyrics.
+          </span>
+        </span>
         <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </footer>
     </div>

@@ -24,7 +24,7 @@ const POSTS: StationPost[] = [
     ),
     photo: "/images/radio/frank-studio.png",
     caption: "Frank, Snazzie Studio, moments before he asked us to unplug the cameras.",
-    time: "11:58 PM",
+    time: "9:12 PM",
     likes: "4,021",
     reposts: "877",
     replies: "312",

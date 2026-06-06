@@ -47,6 +47,8 @@
   display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
 .rl-mini-play:hover{border-color:var(--amber);color:#ffd089;}
 .rl-mini-title{font-size:1rem;color:#d8c4a3;letter-spacing:.04em;white-space:nowrap;}
+.rl-mini-time{font-family:'VT323',monospace;font-size:.95rem;color:var(--amber-dim);
+  letter-spacing:.06em;white-space:nowrap;flex-shrink:0;}
 .rl-mini-spinner{display:inline-block;width:10px;height:10px;border:2px solid rgba(255,158,44,.3);
   border-top-color:var(--amber);border-radius:50%;animation:rl-spin .7s linear infinite;}
 @keyframes rl-spin{to{transform:rotate(360deg);}}
@@ -58,10 +60,13 @@
   background:var(--amber);cursor:pointer;}
 
 @media(max-width:600px){
+  .rl-topbar{padding-top:1.1rem;padding-bottom:1.1rem;min-height:64px;}
   .rl-topbar .rl-bts-link{display:none;}
+  /* keep a compact player (play / next / time); drop the bulky bits */
   .rl-mini-title{display:none;}
   .rl-mini-bars{display:none;}
-  .rl-mini-vol{width:48px;}
+  .rl-mini-vol{display:none;}
+  .rl-mini-player{gap:.4rem;}
   .rl-topbar-center{gap:.5rem;}
 }
 
@@ -340,3 +345,4 @@
   font-family:'VT323',monospace;font-size:1.05rem;letter-spacing:.08em;color:#8a754f;}
 .rl-footer a{color:var(--amber);}
 .rl-footer a:hover{color:#ffd089;}
+.rl-footer-note{display:block;margin-top:.25rem;color:var(--amber-dim);font-size:.95rem;letter-spacing:.05em;}
