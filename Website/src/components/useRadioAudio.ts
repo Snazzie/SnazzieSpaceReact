@@ -11,6 +11,8 @@ export interface RadioAudioState {
   musicIdx: number | null;
   musicPlaying: boolean;
   musicLoading: boolean;
+  adIdx: number | null;
+  adPlaying: boolean;
   levels: number[];
   position: number;  // seconds elapsed in current audio
   duration: number;  // seconds total of current audio
@@ -23,13 +25,17 @@ export interface RadioAudioState {
   nextTrack: () => void;
 }
 
-export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudioState {
+export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episode[] = []): RadioAudioState {
   const [airIdx, setAirIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [musicIdx, setMusicIdx] = useState<number | null>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [musicLoading, setMusicLoading] = useState(false);
+  const [adIdx, setAdIdx] = useState<number | null>(null);
+  const [adPlaying, setAdPlaying] = useState(false);
+  const adPlayingRef = useRef(false);
+  useEffect(() => { adPlayingRef.current = adPlaying; }, [adPlaying]);
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
   const [volume, setVolumeState] = useState(1);
   const [position, setPosition] = useState(0);
@@ -53,7 +59,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     const freqData = new Uint8Array(32);
     const tick = () => {
       const analyser = analyserRef.current;
-      const active = playing || musicPlaying;
+      const active = playing || musicPlaying || adPlaying;
       if (analyser && active) {
         analyser.getByteFrequencyData(freqData);
         const step = Math.floor(freqData.length / NUM_BARS);
@@ -74,7 +80,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [playing, musicPlaying]);
+  }, [playing, musicPlaying, adPlaying]);
 
   useEffect(() => () => { genRef.current++; stopSources(); ctxRef.current?.close(); }, []);
 
@@ -125,6 +131,46 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     return linked >= 0 ? linked : Math.floor(Math.random() * music.length);
   }
 
+  // a random ad to air after a music break
+  function pickAd(): number {
+    return Math.floor(Math.random() * ads.length);
+  }
+
+  // play a single-track ad, then advance to the next episode
+  async function startAd(adIndex: number, nextEpIdx: number, gen: number) {
+    const ad = ads[adIndex];
+    if (!ad?.track) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
+    const { ctx, analyser } = getCtx();
+    await ctx.resume();
+    if (gen !== genRef.current) return;
+    setAdIdx(adIndex);
+    setAdPlaying(true);
+    try {
+      const buf = await decode(ctx, ad.track);
+      if (gen !== genRef.current) return;
+      const s = ctx.createBufferSource();
+      s.buffer = buf;
+      s.connect(analyser);
+      const at = ctx.currentTime + 0.1;
+      s.start(at);
+      startTimeRef.current = at;
+      durationRef.current = buf.duration;
+      sourcesRef.current.push(s);
+      s.onended = () => {
+        if (gen !== genRef.current) return;
+        setAdPlaying(false);
+        setAdIdx(null);
+        setAirIdx(nextEpIdx);
+        startEpisode(nextEpIdx);
+      };
+    } catch {
+      setAdPlaying(false);
+      setAdIdx(null);
+      setAirIdx(nextEpIdx);
+      startEpisode(nextEpIdx);
+    }
+  }
+
   async function decode(ctx: AudioContext, url: string) {
     const res = await fetch(url);
     return ctx.decodeAudioData(await res.arrayBuffer());
@@ -153,8 +199,12 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
         if (gen !== genRef.current) return;
         setMusicPlaying(false);
         setMusicIdx(null);
-        setAirIdx(nextEpIdx);
-        startEpisode(nextEpIdx);
+        if (ads.length > 0) {
+          startAd(pickAd(), nextEpIdx, gen);
+        } else {
+          setAirIdx(nextEpIdx);
+          startEpisode(nextEpIdx);
+        }
       };
     } catch {
       setMusicPlaying(false);
@@ -206,6 +256,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       const next = (idx + 1) % episodes.length;
       if (music.length > 0) {
         startInterstitial(musicIdxForEpisode(idx), next, gen);
+      } else if (ads.length > 0) {
+        startAd(pickAd(), next, gen);
       } else {
         setAirIdx(next);
         startEpisode(next);
@@ -221,7 +273,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
       return;
     }
     const { ctx } = getCtx();
-    if (playing) { await ctx.suspend(); setPlaying(false); setMusicPlaying(false); }
+    if (playing) { await ctx.suspend(); setPlaying(false); setMusicPlaying(false); setAdPlaying(false); }
     else { await ctx.resume(); setPlaying(true); }
   }
 
@@ -265,6 +317,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
   }
 
   function nextTrack() {
+    if (adPlayingRef.current) return;  // ads are unskippable
     startedRef.current = true;
     const gen = ++genRef.current;
     stopSources();
@@ -312,6 +365,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[]): RadioAudio
     musicIdx,
     musicPlaying,
     musicLoading,
+    adIdx,
+    adPlaying,
     levels,
     position,
     duration,
