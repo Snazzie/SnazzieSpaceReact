@@ -172,10 +172,11 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
     Returns clip start-samples (full clip, including its lead silence).
     """
     min_solo = int(MIN_SOLO * SAMPLE_RATE)
+    same_gap = int(0.12 * SAMPLE_RATE)   # min gap between one speaker's own consecutive clips
     starts: list[int] = []
     prev_speech_start = 0   # absolute samples
     prev_speech_end = 0
-    prev_speaker = None
+    speaker_end: dict[str, int] = {}     # last speech-end sample per speaker
     for i, line in enumerate(lines):
         # Background beds run UNDER the dialogue: anchored to the current cursor
         # (shifted by `overlap`, positive = starts earlier) but they do NOT advance
@@ -190,14 +191,6 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
             onset = sb_start[i]
         else:
             overlap = float(line.get("overlap", 0.0))
-            # A speaker can't talk over themselves. Because background lines don't
-            # advance the cursor, the previous *speaking* line may be the same
-            # speaker several lines back — a positive overlap there would overlap
-            # their own prior speech. Clamp it to a plain gap and warn.
-            if overlap > 0 and line.get("speaker") == prev_speaker:
-                print(f"    ! line {i} ({line.get('speaker')}): positive overlap onto own "
-                      f"previous line; clamped to a gap")
-                overlap = 0.0
             if overlap > 0:
                 gap = -int(overlap * SAMPLE_RATE)
             elif overlap < 0:
@@ -206,12 +199,20 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
                 gap = int(DEFAULT_GAP * SAMPLE_RATE)
             onset = prev_speech_end + gap
             onset = max(onset, prev_speech_start + min_solo)  # keep prev solo speech
+            # A speaker can't talk over themselves: never start before this speaker's own
+            # previous clip has finished (cross-speaker overlap is still allowed). Heavy
+            # overlaps + interleaved background SFX can otherwise collide two same-speaker
+            # clips (e.g. Chen's "is the radio" and "is BIG radio").
+            spk = line.get("speaker")
+            se = speaker_end.get(spk)
+            if se is not None and onset < se + same_gap:
+                onset = se + same_gap
             start = max(0, onset - sb_start[i])
             onset = start + sb_start[i]
         starts.append(start)
         prev_speech_start = onset
         prev_speech_end = start + sb_end[i]
-        prev_speaker = line.get("speaker")
+        speaker_end[line.get("speaker")] = start + sb_end[i]
     return starts
 
 

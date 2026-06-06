@@ -230,8 +230,8 @@
     {
       "speaker": "caller-bg",
       "text": "[Chen, off the phone, shouting at his chef to catch the cat]",
-      "overlap": 1.5,
-      "timestamp": 80.566,
+      "overlap": -0.5,
+      "timestamp": 82.566,
       "duration": 2.56,
       "sfx": "scripts/sfx/chen-catch.wav",
       "background": true,

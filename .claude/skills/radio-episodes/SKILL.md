@@ -85,6 +85,15 @@ retiming a line only edits its `timestamp`, never the audio.
    - Clips are stored **full (untrimmed)** — the generator measures each clip's speech start/end
      (`speech_bounds`) and places clips so speech flows; the silent edges just overlap harmlessly
      in the mix. No silence is ever cut from the audio. Onsets stay monotonic.
+   - **A speaker never talks over themselves.** `place()` tracks each speaker's last speech-end and
+     clamps any later line of the SAME speaker to start after it (cross-speaker overlap still
+     allowed). This catches collisions that heavy overlaps + interleaved background SFX would
+     otherwise cause (e.g. Chen's two denials landing on top of each other).
+   - ⚠️ **Voiced background asides count as that character's voice, but the clamp keys on the
+     `speaker` LABEL.** A Mandarin aside voiced by Chen but labelled `caller-bg` (so it shows as
+     "caller's end") is NOT seen as `caller-chen` by the clamp — so hand-place it in a gap where
+     that character isn't already speaking (give it a negative `overlap`), or it'll double up on
+     their dialogue.
 
 ## Comedy craft (what makes an episode land)
 
