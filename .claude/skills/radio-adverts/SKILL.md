@@ -73,8 +73,8 @@ Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_tex
 Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
 `AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
 refs. The announcer is a confident, unhurried pitchman (`speed` ~1.1); the disclaimer man
-runs FAST (`speed` ~2.0) for the rattled-off legal-tail sound — speed is the main lever for
-the "typical fast disclaimer" feel. `phone_filter` is `false` for both (studio ad).
+runs FAST (`speed` ~2.0-2.3) for the rattled-off legal-tail sound — speed is the main lever
+for the "typical fast disclaimer" feel; push past 2.0 if it still sounds too slow. `phone_filter` is `false` for both (studio ad).
 
 ## Generate
 
