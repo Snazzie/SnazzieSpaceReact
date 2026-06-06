@@ -39,6 +39,10 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   const adPlayingRef = useRef(false);
   useEffect(() => { adPlayingRef.current = adPlaying; }, [adPlaying]);
   const transitionRef = useRef(0);  // counts show transitions, to space out music breaks
+  // URL -> decoded buffer cache, so prefetched audio is reused instantly at the transition.
+  const bufferCacheRef = useRef<Map<string, Promise<AudioBuffer>>>(new Map());
+  // The pre-decided next between-show slot (so we can prefetch it and play it gap-free).
+  const plannedRef = useRef<{ kind: "music" | "ad"; idx: number } | null>(null);
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
   const [volume, setVolumeState] = useState(1);
   const [position, setPosition] = useState(0);
@@ -144,6 +148,14 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   // chains to the ad); otherwise ad -> next.
   function afterShow(epIdx: number, next: number, gen: number) {
     const n = transitionRef.current++;
+    // Use the pre-planned (and prefetched) slot if we have one; else decide now.
+    const plan = plannedRef.current;
+    plannedRef.current = null;
+    if (plan) {
+      if (plan.kind === "music") startInterstitial(plan.idx, next, gen);
+      else startAd(plan.idx, next, gen);
+      return;
+    }
     const doMusic = music.length > 0 && n % MUSIC_EVERY === MUSIC_EVERY - 1;
     if (doMusic) {
       startInterstitial(musicIdxForEpisode(epIdx), next, gen);
@@ -203,9 +215,43 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     };
   }
 
-  async function decode(ctx: AudioContext, url: string) {
-    const res = await fetch(url);
-    return ctx.decodeAudioData(await res.arrayBuffer());
+  function decode(ctx: AudioContext, url: string): Promise<AudioBuffer> {
+    const cache = bufferCacheRef.current;
+    const hit = cache.get(url);
+    if (hit) return hit;
+    const p = fetch(url).then((r) => r.arrayBuffer()).then((a) => ctx.decodeAudioData(a));
+    p.catch(() => cache.delete(url));  // don't cache a failed fetch/decode
+    cache.set(url, p);
+    return p;
+  }
+
+  // audio urls for an episode/ad/track (single track, or one clip per spoken line)
+  function urlsFor(ep: Episode | undefined): string[] {
+    if (!ep) return [];
+    if (ep.track) return [ep.track];
+    return ep.lines.filter((l) => l.audio).map((l) => l.audio!);
+  }
+
+  function prefetch(urls: string[]) {
+    const { ctx } = getCtx();
+    for (const u of urls) decode(ctx, u).catch(() => { /* ignore prefetch errors */ });
+  }
+
+  // Decide the next between-show slot NOW (peeking the counter, not consuming it) and warm
+  // its audio + the next episode's into the cache, so the transition plays with no gap.
+  function planAndPrefetch(currentEpIdx: number) {
+    prefetch(urlsFor(episodes[(currentEpIdx + 1) % episodes.length]));
+    if (plannedRef.current) return;
+    const n = transitionRef.current;  // peek — afterShow consumes this same n
+    if (music.length > 0 && n % MUSIC_EVERY === MUSIC_EVERY - 1) {
+      const idx = musicIdxForEpisode(currentEpIdx);
+      plannedRef.current = { kind: "music", idx };
+      if (music[idx]?.track) prefetch([music[idx].track!]);
+    } else if (ads.length > 0) {
+      const idx = pickAd();
+      plannedRef.current = { kind: "ad", idx };
+      prefetch(urlsFor(ads[idx]));
+    }
   }
 
   async function startInterstitial(musicTrackIdx: number, nextEpIdx: number, gen: number) {
@@ -218,7 +264,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     setMusicPlaying(true);
     try {
       const buf = await decode(ctx, track.track);
-      if (gen !== genRef.current) return;
+      if (gen !== genRef.current) { setMusicPlaying(false); setMusicIdx(null); return; }
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
@@ -252,6 +298,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     stopSources();
     setLoading(true);
     setMusicPlaying(false);
+    plannedRef.current = null;  // replan the next slot fresh for this show
     const ep = episodes[idx];
     const t0 = ctx.currentTime + 0.15;
     let last: AudioBufferSourceNode | null = null;
@@ -288,6 +335,8 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
       const next = (idx + 1) % episodes.length;
       afterShow(idx, next, gen);
     };
+    // Warm the next slot's audio (and next episode's) while this show plays → gap-free.
+    planAndPrefetch(idx);
   }
 
   async function togglePlay() {
@@ -326,7 +375,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     setAdIdx(null);
     try {
       const buf = await decode(ctx, track.track);
-      if (gen !== genRef.current) return;
+      if (gen !== genRef.current) { setMusicPlaying(false); setMusicIdx(null); return; }
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
