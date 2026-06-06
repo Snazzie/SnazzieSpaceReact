@@ -163,10 +163,10 @@
     "speed": 1.05,
     "phone_filter": true,
     "gain": 1.0,
-    "ref_audio": "scripts/voices/chen-en.wav",
-    "ref_text": "Hello, this is Golden Dragon restaurant. We are open until eleven tonight. The special is very good, you should try it, everybody likes it.",
+    "ref_audio": "scripts/voices/chen.wav",
+    "ref_text": "这 被 称 为 化 学 物 质 的 ph 值 你 可 以 使 用 红 甘 蓝 汁 制 作 指 示 剂",
     "gender": "M",
-    "_note": "Dia2 clones the ref LANGUAGE — a Mandarin ref makes Dia2 render the whole pass in Chinese (accenting the other speaker too). chen-en.wav is a Chinese-accented ENGLISH clip (OmniVoice, from todd.wav) so Dia2 stays English. todd.wav remains Todd's ref."
+    "_note": "Distinct Mandarin male voice (FLEURS cmn_hans_cn, scripts/pull-chen-voice.py) — NOT todd.wav, which is Todd the intern."
   },
   "ad-announcer": {
     "name": "Announcer",
