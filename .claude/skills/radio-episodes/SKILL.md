@@ -141,6 +141,12 @@ cast lookup in `generate_episode`). Use for rings, hangups, animal noises, ambie
   - ⚠️ Do NOT use the old hack (one bed line + a huge positive `overlap` like 15.5 on the next
     line to "pull dialogue back"). That made onsets fragile and only felt like a slight overlap.
     `background: true` is correct; reserve large `overlap` for genuine talk-overs.
+  - ⚠️ **Mind the speaker across a background line.** Because background lines don't advance
+    the cursor, the first dialogue line *after* one is measured against the last *speaking*
+    line — which may be the same character. A positive `overlap` there would make them talk
+    over their own earlier line. Use `overlap <= 0` (a gap, often filled by the bed's crash).
+    `place()` clamps a positive overlap onto the same prior speaker and prints a warning, but
+    author it correctly.
   - Drop short non-background scream sfx lines mid-chaos (positive overlap) as punctuation beats.
 - **Editing an sfx file re-renders it.** `sfx_hash` folds the file's content hash, so rebuilding
   a bed or swapping a clip forces just that clip to re-render (don't bump `PIPELINE_VERSION`

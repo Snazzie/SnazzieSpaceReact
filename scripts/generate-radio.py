@@ -175,6 +175,7 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
     starts: list[int] = []
     prev_speech_start = 0   # absolute samples
     prev_speech_end = 0
+    prev_speaker = None
     for i, line in enumerate(lines):
         # Background beds run UNDER the dialogue: anchored to the current cursor
         # (shifted by `overlap`, positive = starts earlier) but they do NOT advance
@@ -189,6 +190,14 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
             onset = sb_start[i]
         else:
             overlap = float(line.get("overlap", 0.0))
+            # A speaker can't talk over themselves. Because background lines don't
+            # advance the cursor, the previous *speaking* line may be the same
+            # speaker several lines back — a positive overlap there would overlap
+            # their own prior speech. Clamp it to a plain gap and warn.
+            if overlap > 0 and line.get("speaker") == prev_speaker:
+                print(f"    ! line {i} ({line.get('speaker')}): positive overlap onto own "
+                      f"previous line; clamped to a gap")
+                overlap = 0.0
             if overlap > 0:
                 gap = -int(overlap * SAMPLE_RATE)
             elif overlap < 0:
@@ -202,6 +211,7 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
         starts.append(start)
         prev_speech_start = onset
         prev_speech_end = start + sb_end[i]
+        prev_speaker = line.get("speaker")
     return starts
 
 
