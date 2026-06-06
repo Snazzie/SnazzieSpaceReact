@@ -32,15 +32,25 @@ function getActiveLine(lines: TranscriptLine[], currentTime: number): number {
   return active;
 }
 
+/** Every line currently sounding (clip window contains t) — multiple at once with overlaps. */
+function playingLines(lines: TranscriptLine[], t: number): Set<number> {
+  const s = new Set<number>();
+  for (let i = 0; i < lines.length; i++) {
+    const start = lines[i].timestamp ?? 0;
+    if (t >= start && t < start + (lines[i].duration ?? 0)) s.add(i);
+  }
+  return s;
+}
+
 /** Multitrack view: one lane per speaker, blocks positioned by timestamp/duration. */
 function TrackLanes({
-  lines, cast, span, currentTime, activeLine, onSeek,
+  lines, cast, span, currentTime, playing, onSeek,
 }: {
   lines: TranscriptLine[];
   cast: Record<string, CastMember>;
   span: number;
   currentTime: number;
-  activeLine: number;
+  playing: Set<number>;
   onSeek: (t: number) => void;
 }) {
   const areaRef = useRef<HTMLDivElement>(null);
@@ -88,8 +98,8 @@ function TrackLanes({
                         left: pct(l.timestamp ?? 0),
                         width: pct(Math.max(l.duration ?? 0, span * 0.004)),
                         background: color,
-                        opacity: i === activeLine ? 1 : 0.45,
-                        outline: i === activeLine ? `1px solid ${color}` : "none",
+                        opacity: playing.has(i) ? 1 : 0.45,
+                        outline: playing.has(i) ? `1px solid ${color}` : "none",
                       }}
                       title={`${i}: ${l.text.slice(0, 40)} (${(l.timestamp ?? 0).toFixed(1)}s +${(l.duration ?? 0).toFixed(1)}s)`}
                     />
@@ -341,7 +351,10 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     .map((id) => cast[id])
     .filter((m): m is CastMember => m !== undefined);
 
-  const activeSpeaker = isPlaying && activeLine >= 0 ? lines[activeLine]?.speaker : null;
+  // Every line sounding right now (overlaps + background beds → several at once).
+  const playing = isPlaying ? playingLines(lines, currentTime) : new Set<number>();
+  const activeSpeakers = new Set<string>();
+  playing.forEach((i) => activeSpeakers.add(lines[i].speaker));
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
@@ -471,7 +484,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
           {/* Discord-style cast — active speaker lights up */}
           <div className="flex flex-1 flex-wrap items-center gap-2 px-2">
             {episodeCast.map((m) => {
-              const talking = m.id === activeSpeaker;
+              const talking = activeSpeakers.has(m.id);
               return (
                 <div
                   key={m.id}
@@ -512,7 +525,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
             cast={cast}
             span={span}
             currentTime={currentTime}
-            activeLine={activeLine}
+            playing={playing}
             onSeek={seek}
           />
 
@@ -526,7 +539,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
             .sort((a, b) => (a.line.timestamp ?? 0) - (b.line.timestamp ?? 0))
             .map(({ line, i }) => {
             const member = cast[line.speaker];
-            const isActive = i === activeLine;
+            const isActive = playing.has(i);
             return (
               <div
                 key={i}
