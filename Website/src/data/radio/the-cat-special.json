@@ -4,26 +4,26 @@
   "description": "Ronnie calls Golden Dragon to run down a nasty rumor. The owner denies everything. The kitchen disagrees.",
   "lines": [
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "You're on Snazzie FM. We chase the truth wherever it lives, and tonight it lives in a takeout menu. There's a rumor going around about a certain restaurant. We're gonna call them. Right now.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 14.36,
+      "duration": 14.06,
       "audio": "/audio/radio/the-cat-special/0.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "It's ringing. Okay. Let's be professional about this.",
       "overlap": -0.15,
-      "timestamp": 13.564,
-      "duration": 4.2,
+      "timestamp": 13.812,
+      "duration": 4.4,
       "audio": "/audio/radio/the-cat-special/1.flac"
     },
     {
       "speaker": "phone",
       "text": "[phone ringing]",
       "overlap": -0.2,
-      "timestamp": 17.512,
+      "timestamp": 17.833,
       "duration": 8.0,
       "sfx": "scripts/sfx/phone-ring.wav",
       "gain": 0.7,
@@ -34,7 +34,7 @@
       "speaker": "caller-bg",
       "text": "[faint restaurant ambience on the caller's end]",
       "overlap": 0,
-      "timestamp": 25.503,
+      "timestamp": 25.824,
       "duration": 63.0,
       "sfx": "scripts/sfx/bg-restaurant.wav",
       "background": true,
@@ -48,23 +48,23 @@
       "speaker": "caller-chen",
       "text": "Golden Dragon, hello, we open till eleven. You want to order?",
       "overlap": 0,
-      "timestamp": 25.452,
+      "timestamp": 25.773,
       "duration": 3.7,
       "audio": "/audio/radio/the-cat-special/4.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "Not exactly. I'm calling about a rumor. Folks around town are saying the special on your menu... isn't quite what it says it is. They're saying it's cat.",
       "overlap": -0.15,
-      "timestamp": 28.199,
-      "duration": 11.11,
+      "timestamp": 28.967,
+      "duration": 12.0,
       "audio": "/audio/radio/the-cat-special/5.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "Cat? CAT? Who tell you this. This is very offensive. We are family restaurant, twenty years. No cat. Only chicken, only beef. How dare you.",
       "overlap": -0.15,
-      "timestamp": 38.484,
+      "timestamp": 40.0,
       "duration": 8.0,
       "audio": "/audio/radio/the-cat-special/6.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "caller-bg",
       "text": "[a faint, strangled yowl on the caller's end]",
       "overlap": -0.1,
-      "timestamp": 46.364,
+      "timestamp": 47.88,
       "duration": 1.9,
       "sfx": "scripts/sfx/cat-scream-3.wav",
       "phone_filter": true,
@@ -85,7 +85,7 @@
       "speaker": "caller-chen",
       "text": "Everybody talk, talk, talk, nobody know nothing. We have best reviews on the whole street. Four point two stars.",
       "overlap": 0.4,
-      "timestamp": 47.303,
+      "timestamp": 48.819,
       "duration": 6.68,
       "audio": "/audio/radio/the-cat-special/8.flac"
     },
@@ -93,7 +93,7 @@
       "speaker": "caller-bg",
       "text": "[a louder, angrier screech behind him]",
       "overlap": 0.6,
-      "timestamp": 52.327,
+      "timestamp": 53.843,
       "duration": 2.6,
       "sfx": "scripts/sfx/cat-scream-2.wav",
       "phone_filter": true,
@@ -103,34 +103,34 @@
       "audio": "/audio/radio/the-cat-special/9.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "Hold on. Hold on a second. What was that?",
       "overlap": 0.2,
-      "timestamp": 52.926,
-      "duration": 3.12,
+      "timestamp": 54.743,
+      "duration": 3.28,
       "audio": "/audio/radio/the-cat-special/10.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "What was what. I hear nothing.",
       "overlap": 0.3,
-      "timestamp": 55.056,
+      "timestamp": 56.948,
       "duration": 1.6,
       "audio": "/audio/radio/the-cat-special/11.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "That. In the back. That sounded like... a meow. Is there a cat in your kitchen right now, sir?",
       "overlap": -0.1,
-      "timestamp": 56.396,
-      "duration": 6.92,
+      "timestamp": 58.039,
+      "duration": 7.28,
       "audio": "/audio/radio/the-cat-special/12.flac"
     },
     {
       "speaker": "caller-bg",
       "text": "[Chen, muffled, yelling to his chef in the back]",
       "overlap": 2.0,
-      "timestamp": 60.365,
+      "timestamp": 62.502,
       "duration": 1.63,
       "sfx": "scripts/sfx/chen-aside.wav",
       "background": true,
@@ -143,23 +143,23 @@
       "speaker": "caller-chen",
       "text": "Eh? Hello? Sorry, say again, I am very busy here.",
       "overlap": 0,
-      "timestamp": 62.518,
+      "timestamp": 64.654,
       "duration": 2.6,
       "audio": "/audio/radio/the-cat-special/14.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "Sir, I asked if there is a cat back there. You went real quiet.",
       "overlap": 0,
-      "timestamp": 64.702,
-      "duration": 4.72,
+      "timestamp": 66.725,
+      "duration": 5.0,
       "audio": "/audio/radio/the-cat-special/15.flac"
     },
     {
       "speaker": "caller-bg",
       "text": "[the kitchen erupts: a drawer of pots hits the floor]",
       "overlap": 0.8,
-      "timestamp": 67.934,
+      "timestamp": 69.92,
       "duration": 16.0,
       "sfx": "scripts/sfx/bg-kitchen.wav",
       "background": true,
@@ -172,7 +172,7 @@
       "speaker": "caller-bg",
       "text": "[cats and clattering metal keep going in the background]",
       "overlap": 0.6,
-      "timestamp": 68.134,
+      "timestamp": 70.12,
       "duration": 21.5,
       "sfx": "scripts/sfx/bg-kitchen-amb.wav",
       "background": true,
@@ -183,26 +183,26 @@
       "audio": "/audio/radio/the-cat-special/17.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "What is all that CLANKING?! It sounds like a drawer full of pots just hit the floor, and that is DEFINITELY a cat, sir. That is several cats!",
       "overlap": -0.8,
-      "timestamp": 68.581,
-      "duration": 10.19,
+      "timestamp": 71.306,
+      "duration": 10.77,
       "audio": "/audio/radio/the-cat-special/18.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "Is the radio! Is nothing! Just the radio in the back!",
       "overlap": 0.5,
-      "timestamp": 77.52,
+      "timestamp": 80.475,
       "duration": 3.32,
       "audio": "/audio/radio/the-cat-special/19.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "That is not the radio, sir.",
       "overlap": 0.45,
-      "timestamp": 79.651,
+      "timestamp": 82.789,
       "duration": 2.24,
       "audio": "/audio/radio/the-cat-special/20.flac"
     },
@@ -210,7 +210,7 @@
       "speaker": "caller-chen",
       "text": "Is BIG radio! Very loud radio!",
       "overlap": 0.45,
-      "timestamp": 80.721,
+      "timestamp": 83.801,
       "duration": 1.45,
       "audio": "/audio/radio/the-cat-special/21.flac"
     },
@@ -218,7 +218,7 @@
       "speaker": "caller-bg",
       "text": "[a furious screech, right by the phone]",
       "overlap": 0.4,
-      "timestamp": 79.861,
+      "timestamp": 82.941,
       "duration": 2.4,
       "sfx": "scripts/sfx/cat-scream-1.wav",
       "phone_filter": true,
@@ -231,7 +231,7 @@
       "speaker": "caller-bg",
       "text": "[Chen, off the phone, shouting at his chef to catch the cat]",
       "overlap": -0.5,
-      "timestamp": 82.566,
+      "timestamp": 85.646,
       "duration": 2.56,
       "sfx": "scripts/sfx/chen-catch.wav",
       "background": true,
@@ -241,18 +241,18 @@
       "audio": "/audio/radio/the-cat-special/23.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "Sir, I can hear it, we can ALL hear it, there is a cat back there having the worst night of its life!",
       "overlap": 0.4,
-      "timestamp": 81.453,
-      "duration": 7.44,
+      "timestamp": 84.774,
+      "duration": 7.84,
       "audio": "/audio/radio/the-cat-special/24.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "No cat! Do not call here again!",
       "overlap": 0.4,
-      "timestamp": 87.735,
+      "timestamp": 91.288,
       "duration": 1.9,
       "audio": "/audio/radio/the-cat-special/25.flac"
     },
@@ -260,7 +260,7 @@
       "speaker": "phone",
       "text": "[click, dial tone]",
       "overlap": 0,
-      "timestamp": 89.602,
+      "timestamp": 93.155,
       "duration": 2.2,
       "sfx": "scripts/sfx/phone-hangup.wav",
       "phone_filter": true,
@@ -269,11 +269,11 @@
       "audio": "/audio/radio/the-cat-special/26.flac"
     },
     {
-      "speaker": "ronnie",
+      "speaker": "barry",
       "text": "He hung up. Well, folks. We report, you decide. The special tonight? Four point two stars. Maybe skip it. We'll be right back.",
       "overlap": 0,
-      "timestamp": 91.451,
-      "duration": 9.4,
+      "timestamp": 95.053,
+      "duration": 9.88,
       "audio": "/audio/radio/the-cat-special/27.flac"
     }
   ]
