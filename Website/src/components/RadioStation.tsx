@@ -227,12 +227,20 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     return () => { cancelled = true; };
   }, [episode.slug]);
 
-  function startPlayback(from: number) {
+  // Small scheduling lead. Web Audio needs start times safely in the future;
+  // anchoring at exactly ctx.currentTime ("now") races the render quantum, which
+  // clips the first slice or drops clips whose offset goes negative.
+  const LEAD = 0.08;
+
+  async function startPlayback(from: number) {
     const ctx = ensureCtx();
-    ctx.resume();
+    // Await resume so the schedule anchors to a RUNNING clock. The context is
+    // created suspended (no user gesture on mount); reading currentTime before
+    // resume completes anchors everything to a frozen clock → unreliable starts.
+    await ctx.resume();
     stopSources();
     offsetRef.current = from;
-    startCtxRef.current = ctx.currentTime;
+    startCtxRef.current = ctx.currentTime + LEAD;
 
     // Single base track (Dia2): one source, seek via buffer offset. SFX clips (below)
     // are still scheduled on top so a hybrid episode mixes the voice track + sound effects.
@@ -327,7 +335,9 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // RAF loop: drive UI clock + active line from the Web Audio timeline
   useEffect(() => {
     function tick() {
-      const t = timelineNow();
+      // Clamp: during the LEAD window right after start, timelineNow() is briefly
+      // negative (offset − LEAD) before the audio clock catches up.
+      const t = Math.max(0, timelineNow());
       if (t >= span) { pausePlayback(); offsetRef.current = 0; setCurrentTime(0); setActiveLine(-1); return; }
       setCurrentTime(t);
       const nextActive = getActiveLine(lines, t);
@@ -343,6 +353,19 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     else cancelAnimationFrame(rafRef.current);
     return () => cancelAnimationFrame(rafRef.current);
   }, [isPlaying, lines, span]);
+
+  // Warm the context on the first user gesture so it's already RUNNING before the
+  // first play — the autoplay policy creates it suspended, and resuming lazily on
+  // the play click adds latency to the first start.
+  useEffect(() => {
+    const warm = () => { ensureCtx().resume(); };
+    window.addEventListener("pointerdown", warm, { once: true });
+    window.addEventListener("keydown", warm, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", warm);
+      window.removeEventListener("keydown", warm);
+    };
+  }, []);
 
   // Tear down the audio context on unmount
   useEffect(() => () => { stopSources(); ctxRef.current?.close(); }, []);
