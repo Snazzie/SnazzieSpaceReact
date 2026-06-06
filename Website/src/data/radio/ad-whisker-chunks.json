@@ -22,10 +22,10 @@
     },
     {
       "speaker": "ad-disclaimer",
-      "text": "Whisker Chunks may contain cat. Not for cats. Or horses. Side effects include hairballs the size of tumbleweeds. Terms and conditions apply.",
+      "text": "Whisker Chunks may contain cat. <p:0> Not for cats. <p:0> Or horses. <p:0> Side effects include hairballs the size of tumbleweeds. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 15.1,
-      "duration": 4.967,
+      "timestamp": 14.967,
+      "duration": 6.338,
       "audio": "/audio/radio/ad-whisker-chunks/2.flac"
     }
   ]

@@ -14,10 +14,10 @@
     },
     {
       "speaker": "ad-disclaimer",
-      "text": "Interest rate four thousand percent, compounding hourly. Collateral includes your car, your home, and your cousin. Repayment is mandatory and eternal. Terms and conditions apply.",
+      "text": "Interest rate four thousand percent, compounding hourly. <p:0> Collateral includes your car, your home, and your cousin. <p:0> Repayment is mandatory and eternal. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 8.092,
-      "duration": 6.328,
+      "timestamp": 8.017,
+      "duration": 6.324,
       "audio": "/audio/radio/ad-instacash/1.flac"
     }
   ]

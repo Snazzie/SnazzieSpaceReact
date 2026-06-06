@@ -98,11 +98,23 @@ the finished clip with ffmpeg `atempo` (pitch-preserving, lossless), so every wo
 genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. (Tempo
 uses ffmpeg `atempo`/WSOLA — clean on speech; a phase vocoder sounds watery.)
 
-**Long disclaimer dropping words?** OmniVoice truncates the tail of a long single utterance.
-Split it into shorter TTS segments with pause tokens between clauses. For a breathless
-disclaimer use **`<p:0>`** (zero-silence split): each segment renders fully, but they
-concatenate with NO audible gap so the fast flow is preserved. (`<p:0.1>` etc. leave a real
-gap that breaks the rattle.)
+**ALWAYS split the disclaimer line with `<p:0>` between clauses.** This is not just a
+fallback — OmniVoice reliably DROPS clauses (not only the tail) from a long, fast single
+utterance, and the disclaimer is the longest+fastest line in every ad (speed 1.3 + tempo
+1.3). Symptom: whole sentences silently missing from the rendered clip even though they're
+in the script (e.g. "Not for cats." vanishing). Author every disclaimer as one `<p:0>`-
+separated segment per sentence/clause from the start:
+
+```
+"Anesthesia not included. <p:0> Surgeons not licensed, or human. <p:0> ...
+ <p:0> Terms and conditions apply."
+```
+
+`<p:0>` is a zero-silence split: each segment is TTS'd separately (so nothing elides) but
+they concatenate with NO audible gap, so the breathless rattle is preserved. Use `<p:0>`,
+NOT `<p:0.1>` etc. — a real gap breaks the rattle. Rule of thumb: any disclaimer over ~14
+words needs it; just do it on all of them. A quick check that a re-rendered disclaimer is
+longer than the old take confirms the dropped text came back.
 
 **Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
 `num_step` = denoising iterations (default 32; 48-64 is cleaner, slower), `guidance_scale`
@@ -130,7 +142,8 @@ re-running only re-renders changed lines.
 ## Checklist for a new ad
 
 1. Write `<ad-slug>.json` (announcer first, disclaimer LAST, ~30-40 words, TTS-safe; no
-   `engine`/`track`).
+   `engine`/`track`). Split the disclaimer line with `<p:0>` between every clause (see the
+   disclaimer rule above) or OmniVoice will drop sentences from it.
 2. Add it to `ADS` (+ any new announcer voice to `CAST`) in `radio.ts`. Reuse the existing
    `ad-disclaimer` for the final line.
 3. Add any new ad voice to `cast.json` (+ pull via `download-ad-voices.py` if new).

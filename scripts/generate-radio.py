@@ -143,6 +143,10 @@ DEFAULT_PAUSE = 0.5
 
 _GEN_KNOBS = ("num_step", "guidance_scale", "position_temperature", "class_temperature")
 
+# Tuning fields a single line may override on top of its cast voice (see use site).
+_LINE_OVERRIDES = ("seed", "speed", "tempo", "num_step", "guidance_scale",
+                   "position_temperature", "class_temperature", "instruct", "phone_filter")
+
 
 def _gen_config(c: dict):
     """Optional per-voice OmniVoice inference knobs. `num_step` = denoising iterations
@@ -346,6 +350,15 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
             sf.write(str(out_file), silence, SAMPLE_RATE, format="flac")
             record(i, silence, None)
             continue
+
+        # Per-LINE tuning overrides win over the cast voice. Lets one clip reroll its
+        # seed (or tweak speed/tempo/etc.) without touching a voice shared by other
+        # scripts — e.g. rerolling a single ad's disclaimer when the shared
+        # ad-disclaimer voice flubs a word. Folds into clip_hash, so only this clip
+        # re-renders.
+        overrides = {k: line[k] for k in _LINE_OVERRIDES if k in line}
+        if overrides:
+            c = {**c, **overrides}
 
         key    = clip_hash(text, c)
         cached = manifest.get(str(i))
