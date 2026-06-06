@@ -109,7 +109,7 @@ export interface Episode {
   title: string;
   description: string;
   type?: "episode" | "music" | "ad";
-  coverArt?: string;  // /images/radio/music/<slug>.jpg — album art for music tracks
+  coverArt?: string;  // /images/radio/music/<slug>.webp — album art for music tracks
   lines: TranscriptLine[];
   track?: string;  // single whole-episode file (Dia); when set, player uses one source
   music?: string;  // slug of the music track queued after this episode (else random)
@@ -201,7 +201,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "Villain Open Mic",
     description: "Live from the rain-slick streets — every caller's a villain, every line's a confession.",
     type: "music",
-    coverArt: "/images/radio/music/villain-open-mic.jpg",
+    coverArt: "/images/radio/music/villain-open-mic.webp",
     lines: [],
     track: "/audio/music/villain-open-mic.mp3",
   },
@@ -210,7 +210,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "Pigeon Crash",
     description: "A certified banger from the Snazzie FM studio sessions. DMV vibes, pigeon energy.",
     type: "music",
-    coverArt: "/images/radio/music/dmv-tuesday-pigeons.jpg",
+    coverArt: "/images/radio/music/dmv-tuesday-pigeons.webp",
     lines: [],
     track: "/audio/music/dmv-tuesday-pigeons.mp3",
   },
@@ -219,7 +219,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "Cold Metal Frown",
     description: "Late-night frequencies from the Snazzie FM vault. Cold, mechanical, and a little wrong.",
     type: "music",
-    coverArt: "/images/radio/music/cold-metal-frown.jpg",
+    coverArt: "/images/radio/music/cold-metal-frown.webp",
     lines: [],
     track: "/audio/music/cold-metal-frown.mp3",
   },
@@ -228,7 +228,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "The Orange Slices (Union Job)",
     description: "Fresh off the Snazzie FM press. Citrus-funk with a working-class chip on its shoulder.",
     type: "music",
-    coverArt: "/images/radio/music/orange-slices-union-job.jpg",
+    coverArt: "/images/radio/music/orange-slices-union-job.webp",
     lines: [],
     track: "/audio/music/orange-slices-union-job.mp3",
   },
@@ -237,7 +237,7 @@ export const MUSIC_TRACKS: Episode[] = [
     title: "Nebraska's Watchin'",
     description: "Outlaw country with punk teeth — Frank's pigeon gospel, set to a stomp-clap backbeat.",
     type: "music",
-    coverArt: "/images/radio/music/nebraskas-watchin.png",
+    coverArt: "/images/radio/music/nebraskas-watchin.webp",
     lines: [],
     track: "/audio/music/nebraskas-watchin.mp3",
   },
