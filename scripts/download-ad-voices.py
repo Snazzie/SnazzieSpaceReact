@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Targeted pull of the two advert reference voices (announcer + disclaimer).
+"""Re-pull the curated advert reference voices from the registry.
 
-Streams LibriSpeech test-clean, grabs ONLY the two speakers below, writes their
-wav+txt to scripts/voices/, and updates ONLY their cast.json entries. Does NOT
-overwrite any other voice (safe to run after Todd/Kim were hand-diverged).
+Reads the curated roster in scripts/ad-voices.json (the pinned speaker per ad voice),
+streams LibriSpeech test-clean, writes each voice's wav+txt to scripts/voices/, and
+updates ONLY those cast.json entries. Does NOT overwrite any non-ad voice (safe after
+Todd/Kim were hand-diverged). To curate the roster, edit ad-voices.json (use
+pick-announcer-voices.py / pick-disclaimer-voice.py to discover a speaker first).
 
 Usage:  python scripts/download-ad-voices.py
 """
@@ -13,18 +15,15 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import soundfile as sf
 
-CAST_FILE  = Path(__file__).parent / "cast.json"
-VOICES_DIR = Path(__file__).parent / "voices"
+CAST_FILE     = Path(__file__).parent / "cast.json"
+REGISTRY_FILE = Path(__file__).parent / "ad-voices.json"
+VOICES_DIR    = Path(__file__).parent / "voices"
 TARGET_SR  = 24_000
 MIN_CLIP_SECS = 4.0
 
-# char_name -> (test-clean speaker_id, gender). Two UNUSED speakers (not in the
-# existing 14). Both verified male in LibriSpeech SPEAKERS.TXT. If a voice sounds
-# wrong, change the speaker id here and re-run.
-AD_VOICES = {
-    "ad-announcer":  (1580, "M"),
-    "ad-disclaimer": (5639, "M"),  # bright male tenor "disclaimer man" (chosen via pick-disclaimer-voice.py)
-}
+# char_name -> (test-clean speaker_id, gender), loaded from the curated registry.
+_registry = json.loads(REGISTRY_FILE.read_text(encoding="utf-8"))["voices"]
+AD_VOICES = {k: (int(v["speaker"]), v["gender"]) for k, v in _registry.items()}
 
 def resample(audio, orig_sr, target_sr):
     if orig_sr == target_sr:

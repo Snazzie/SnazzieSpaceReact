@@ -1,0 +1,11 @@
+{
+  "_comment": "Curated registry of Snazzie FM ad voices. Pins each voice to its LibriSpeech test-clean speaker so a re-pull (scripts/download-ad-voices.py) reproduces the EXACT roster. Discovery tools (pick-announcer-voices.py / pick-disclaimer-voice.py) propose new speakers; record the chosen id here to curate. Per-voice TTS tuning (speed/tempo/num_step/position_temperature/seed/instruct) lives in scripts/cast.json.",
+  "voices": {
+    "ad-announcer":   { "speaker": 1580, "gender": "M", "role": "announcer",  "ad": "ad-soothe-master",   "name": "Announcer",        "color": "#f6c945" },
+    "ad-ann-rage":    { "speaker": 8230, "gender": "M", "role": "announcer",  "ad": "ad-liquid-rage",     "name": "Rage Pitchman",    "color": "#ff3b30", "pitch_hz": 104 },
+    "ad-ann-surgery": { "speaker": 908,  "gender": "M", "role": "announcer",  "ad": "ad-bargain-surgery", "name": "Surgery Pitchman", "color": "#34c759", "pitch_hz": 116 },
+    "ad-ann-cash":    { "speaker": 8224, "gender": "M", "role": "announcer",  "ad": "ad-instacash",       "name": "Cash Pitchman",    "color": "#30b0c7", "pitch_hz": 151 },
+    "ad-ann-cat":     { "speaker": 1995, "gender": "M", "role": "announcer",  "ad": "ad-whisker-chunks",  "name": "Cat Pitchman",     "color": "#ff9500", "pitch_hz": 158 },
+    "ad-disclaimer":  { "speaker": 5639, "gender": "M", "role": "disclaimer", "shared": true,             "name": "Fine Print",       "color": "#9aa0a6", "pitch_hz": 133 }
+  }
+}

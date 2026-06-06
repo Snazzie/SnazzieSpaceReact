@@ -74,8 +74,15 @@ in an ad.
 
 ## Voices
 
-Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_text`/
-`gender`/`speed`/`phone_filter`/`instruct`). OmniVoice honors `speed` and `phone_filter`.
+The curated ad-voice roster is pinned in **`scripts/ad-voices.json`** — each voice mapped to
+its LibriSpeech speaker id (+ which ad uses it, pitch, gender). That registry is the source
+of truth for WHICH voice; `scripts/download-ad-voices.py` reads it to re-pull the exact roster
+reproducibly. To curate, edit `ad-voices.json` (discover a candidate speaker first with the
+pickers below).
+
+Per-voice TTS tuning lives in `scripts/cast.json` like any cast member (`ref_audio`/`ref_text`/
+`gender`/`speed`/`tempo`/`num_step`/`position_temperature`/`seed`/`phone_filter`/`instruct`).
+OmniVoice honors `speed` and `phone_filter`.
 Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
 `AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
 refs. For a batch of fresh ANNOUNCER voices (one per ad, varied pitch), use
