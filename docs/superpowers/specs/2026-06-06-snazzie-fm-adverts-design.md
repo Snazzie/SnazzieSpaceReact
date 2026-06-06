@@ -20,7 +20,8 @@ Ship one seed ad and a dedicated `radio-adverts` skill.
 | Engine | Dia2 (`engine: "dia2"`, single `track` file) |
 | Voices | Two brand-new voices, NOT any existing host/caller |
 | Seed count | 1 ad — the hemorrhoid cream |
-| Skip behaviour | **Unskippable** — once an ad starts it plays through |
+| Skip behaviour | **Skippable** — skip during an ad jumps to the next episode (revised from unskippable per user) |
+| Behind-the-scenes | Ads also shown in the `RadioStation` debug player on `/snazziefm/behindthescenes`, as a labeled ADS section |
 | Content edge | Both tiers allowed (PG-13 gross-out → harder R); seed ad ~PG-13/R gross-out |
 
 ## Content model
@@ -66,17 +67,26 @@ New chain: episode end → music → **ad** → next episode.
 - New state `adIdx: number | null` + `adPlaying: boolean` so the now-playing label reads the
   ad's title/description (not the music's). Mirror the existing `musicIdx`/`musicPlaying`
   pattern.
-- **Unskippable:** while `adPlaying` is true, `nextTrack()` is a no-op (early return). The
-  skip button is disabled/hidden in this state. Skipping during *music* still works and goes
-  straight to the next episode (no ad) — skip = "get me out"; the ad only airs on a natural
-  music end.
+- **Skippable (revised):** skipping during an ad behaves like skipping during music — clear
+  `adPlaying`/`adIdx` and go straight to the next episode. `nextTrack()` gains an ad branch
+  mirroring the music branch; the skip button stays enabled during an ad.
 
 ## UI (`RadioLanding.tsx`)
 
 - Now-playing panel: when `adPlaying`, show ad title + description (reuse the music-break
   panel branch, fed by `adIdx`/ADS). A small "AD" tag distinguishes it from a music break.
-- Skip button disabled while `adPlaying`.
-- No ad entries added to the episode/music list sidebars (ads are interstitial-only).
+- Skip button stays enabled while `adPlaying` (ads are skippable).
+- No ad entries added to the landing episode/music list sidebars (ads are interstitial-only
+  on the landing page).
+
+## Behind-the-scenes (`RadioStation.tsx` / `behindthescenes.astro`)
+
+- The debug player on `/snazziefm/behindthescenes` should also list ads so they can be
+  inspected/played. `RadioStation` already supports single-track Dia2 playback (the ad's
+  `track`), so ads slot into its selectable list.
+- Add an optional `ads?: Episode[]` prop to `RadioStation`; render a labeled **ADS** section
+  in the sidebar beneath the EPISODES list, sharing one selection index space
+  (`[...episodes, ...ads]`). `behindthescenes.astro` passes `ADS`.
 
 ## The seed ad — `ad-soothe-master`
 

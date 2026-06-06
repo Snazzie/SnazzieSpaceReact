@@ -375,12 +375,21 @@ In `startEpisode`, replace the episode-end handler (lines 204-213) so an ad stil
     };
 ```
 
-- [ ] **Step 6: Make the ad unskippable**
+- [ ] **Step 6: Make the ad skippable (skip → next episode)**
 
-At the very top of `nextTrack` (immediately after `function nextTrack() {`, before `startedRef.current = true;` on line 268) add:
+In `nextTrack`, after `stopSources();` and the `base`/`next` computation, add an ad branch as the FIRST case (mirroring the music-skip branch) so skipping during an ad jumps to the next episode:
 ```ts
-    if (adPlayingRef.current) return;  // ads are unskippable
+    if (adPlayingRef.current) {
+      setAdPlaying(false);
+      setAdIdx(null);
+      airIdxRef.current = next;
+      setAirIdx(next);
+      setPlaying(true);
+      startEpisode(next, gen);
+      return;
+    }
 ```
+(`adPlayingRef` is still used here — keep it and its `useEffect` sync.)
 
 - [ ] **Step 7: Pause/resume parity for ads**
 
@@ -483,22 +492,11 @@ Update the mini-player title (lines 120-124) to show the ad title when an ad air
             </span>
 ```
 
-Disable the mini-player "next" button while an ad airs (the button on lines 102-109). Replace it with:
-```tsx
-            <button
-              type="button"
-              className="rl-mini-play"
-              onClick={audio.nextTrack}
-              disabled={audio.adPlaying}
-              aria-label="Next"
-            >
-              ▶▶
-            </button>
-```
+Leave the mini-player "next" button enabled during an ad (ads are skippable). No change to the next button needed.
 
-- [ ] **Step 2b: Disable skip in the receiver too**
+- [ ] **Step 2b: Skip works in the receiver too**
 
-The `RadioReceiver` also exposes `nextTrack`. `nextTrack` already no-ops during an ad (Task 3 Step 6), so the receiver's skip is inert during ads even without a visual change. No code change required here; the hook is the source of truth. (If `RadioReceiver` later needs a disabled visual, pass `audio.adPlaying` down — out of scope now.)
+The `RadioReceiver` also exposes `nextTrack`, which now skips an ad to the next episode (Task 3 Step 6). No code change required here.
 
 - [ ] **Step 3: Render the ad now-playing panel**
 
@@ -516,7 +514,9 @@ Add an ad branch as the FIRST case inside the section (before the existing `audi
               <h2 className="rl-now-title">{ads[audio.adIdx]?.title ?? "Advertisement"}</h2>
               <p className="rl-now-desc">{ads[audio.adIdx]?.description ?? ""}</p>
               <div className="rl-now-actions">
-                <span className="rl-now-link" aria-disabled="true">Unskippable</span>
+                <button type="button" className="rl-now-link" onClick={audio.nextTrack}>
+                  Skip ad &rarr;
+                </button>
               </div>
             </>
           ) : audio.musicIdx !== null && audio.musicPlaying ? (
@@ -638,9 +638,117 @@ git commit -m "docs(radio): add radio-adverts skill"
 
 ---
 
+## Task 7: Show ads in the behind-the-scenes debug player
+
+**Files:**
+- Modify: `Website/src/components/RadioStation.tsx`
+- Modify: `Website/src/pages/snazziefm/behindthescenes.astro`
+
+`RadioStation` already plays single-track Dia2 episodes (it branches on `episode.track`), so an ad plays with no new playback code — it just needs to appear in the selectable list. Add a labeled ADS section sharing one selection index space.
+
+- [ ] **Step 1: Accept an `ads` prop and build a combined item list**
+
+In `Website/src/components/RadioStation.tsx`:
+
+Add `ads` to `Props` (find the `Props` interface with `episodes: Episode[]` and `cast`):
+```ts
+  ads?: Episode[];
+```
+Destructure with a default and build a combined list (replace `export default function RadioStation({ episodes, cast }: Props) {`):
+```ts
+export default function RadioStation({ episodes, cast, ads = [] }: Props) {
+  const items = [...episodes, ...ads];
+```
+Then replace the internal uses of `episodes` that index into the selectable list with `items`:
+- `const episode = episodes[selectedIdx];` → `const episode = items[selectedIdx];`
+- The deep-link effect `const idx = episodes.findIndex(...)` → `const idx = items.findIndex(...)`
+
+Leave any other `episodes`-specific usage that is genuinely about episodes-only alone; the selectable list and current-selection lookups must use `items`. Verify by reading the file that every place that maps the sidebar list or reads `episodes[selectedIdx]` now uses `items`/`selectedIdx` consistently.
+
+- [ ] **Step 2: Render the ADS section in the sidebar**
+
+In the sidebar list (the `<div className="flex-1 overflow-y-auto">` that renders the `EPISODES` header and `episodes.map(...)`), change the episodes map to iterate `episodes` still (the first `episodes.length` items), and append an ADS section after it. The ad entries use index offset `episodes.length + i` so they share the `selectedIdx` space:
+```tsx
+          {ads.length > 0 && (
+            <>
+              <div className="px-4 pt-3 pb-1 text-[9px] font-semibold tracking-[2px] text-white/20">ADS</div>
+              {ads.map((ad, i) => {
+                const idx = episodes.length + i;
+                const active = idx === selectedIdx;
+                const playingThis = active && isPlaying;
+                return (
+                  <div
+                    key={ad.slug}
+                    className={`flex items-center border-l-2 transition-colors ${
+                      active
+                        ? "border-[#ff6b00] bg-white/[0.04]"
+                        : "border-transparent hover:bg-white/[0.02] hover:border-white/10"
+                    }`}
+                  >
+                    <button
+                      onClick={() => selectEpisode(idx, false)}
+                      className="flex-1 text-left px-4 py-3 min-w-0"
+                    >
+                      <div className={`text-[11px] font-semibold leading-tight truncate ${active ? "text-white" : "text-white/40"}`}>
+                        {ad.title}
+                      </div>
+                      <div className="mt-1 text-[9px] text-white/20">
+                        {[...new Set(ad.lines.map((l) => l.speaker))]
+                          .map((id) => cast[id]?.name ?? id)
+                          .join(", ")}
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => selectEpisode(idx, !playingThis)}
+                      className="pr-3 pl-1 py-3 flex-shrink-0 text-[#ff6b00]/60 hover:text-[#ff6b00] transition-colors text-[10px]"
+                      title={playingThis ? "Pause" : "Play"}
+                    >
+                      {playingThis ? "❚❚" : "▶"}
+                    </button>
+                  </div>
+                );
+              })}
+            </>
+          )}
+```
+(Keep the existing `episodes.map(...)` block above this unchanged — it still renders only `episodes`, indices `0..episodes.length-1`, which line up with `items`.)
+
+Confirm `selectEpisode` selects by index into the same list `items` (read its body — it sets `selectedIdx`; since `episode = items[selectedIdx]`, an ad index resolves to the ad). If `selectEpisode` references `episodes[idx]` internally, change that lookup to `items[idx]`.
+
+- [ ] **Step 3: Pass `ADS` from the behind-the-scenes page**
+
+In `Website/src/pages/snazziefm/behindthescenes.astro`:
+Change the import to include `ADS`:
+```ts
+import { EPISODES, ADS, CAST } from '@/data/radio';
+```
+Pass it to the component:
+```astro
+<RadioStation client:load episodes={EPISODES} ads={ADS} cast={CAST} />
+```
+
+- [ ] **Step 4: Verify the build**
+
+Run: `cd Website && bun run build`
+Expected: build succeeds.
+
+- [ ] **Step 5: Manual check**
+
+`bun dev`, open `/snazziefm/behindthescenes`. The sidebar shows an ADS section with "Soothe-Master 5000"; selecting it plays the ad's single track and shows its transcript lanes.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add Website/src/components/RadioStation.tsx Website/src/pages/snazziefm/behindthescenes.astro
+git commit -m "feat(radio): show ads in behind-the-scenes debug player"
+```
+
+---
+
 ## Final verification
 
 - [ ] `cd Website && bun run build` passes.
-- [ ] `/radio`: episode → music → Soothe-Master ad (unskippable) → next episode, with the ⚠ Advertisement now-playing panel.
-- [ ] Skip button inert during the ad; works otherwise.
-- [ ] All six commits present; no other voices' refs were overwritten (`git status` shows only the two new `scripts/voices/ad-*` files added).
+- [ ] `/radio`: episode → music → Soothe-Master ad → next episode, with the ⚠ Advertisement now-playing panel and a working "Skip ad" affordance.
+- [ ] Skip during an ad jumps to the next episode (ads are skippable).
+- [ ] `/snazziefm/behindthescenes`: ADS section lists the ad; it plays and shows its transcript.
+- [ ] No other voices' refs were overwritten (`git status` shows only the two new `scripts/voices/ad-*` files added).
