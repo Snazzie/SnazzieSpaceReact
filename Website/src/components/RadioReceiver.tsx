@@ -90,6 +90,9 @@ interface Props {
   musicIdx: number | null;
   musicPlaying: boolean;
   music: Episode[];
+  adIdx: number | null;
+  adPlaying: boolean;
+  ads: Episode[];
   onAir: Episode | undefined;
   levels: number[];
   analyserRef: React.RefObject<AnalyserNode | null>;
@@ -105,7 +108,7 @@ interface Props {
 }
 
 export default function RadioReceiver({
-  playing, loading, musicIdx, musicPlaying, music, onAir,
+  playing, loading, musicIdx, musicPlaying, music, adIdx, adPlaying, ads, onAir,
   analyserRef, volume, setVolume, clock, airIdx, episodes,
   togglePlay, tuneTo, toggleMusicTrack, nextTrack,
 }: Props) {
@@ -141,7 +144,7 @@ export default function RadioReceiver({
     <div className="rl-receiver">
       {/* dial — spectrum viz renders as background */}
       <div className="rl-dial">
-        <SpectrumViz analyserRef={analyserRef} active={playing || musicPlaying} />
+        <SpectrumViz analyserRef={analyserRef} active={playing || musicPlaying || adPlaying} />
         <div className="rl-dial-ticks">
           {Array.from({ length: 41 }).map((_, i) => (
             <span key={i} className={i % 5 === 0 ? "rl-tick rl-tick-major" : "rl-tick"} />
@@ -158,9 +161,13 @@ export default function RadioReceiver({
         <div className="rl-readout-inner">
           <div className="rl-readout-text">
             <div className="rl-readout-row">
-              <span className="rl-readout-label">{musicIdx !== null ? "♪" : "NOW"}</span>
+              <span className="rl-readout-label">
+                {adPlaying ? "AD BREAK" : musicIdx !== null ? "♪" : "NOW"}
+              </span>
               <span className="rl-readout-title">
-                {musicIdx !== null
+                {adPlaying && adIdx !== null
+                  ? (ads[adIdx]?.title ?? "Advertisement")
+                  : musicIdx !== null
                   ? (music[musicIdx]?.title ?? "Music")
                   : (onAir?.title ?? "Snazzie FM")}
               </span>
@@ -173,8 +180,8 @@ export default function RadioReceiver({
       <div className="rl-controls-row">
         <div className="rl-tunein-row">
           <button className="rl-tunein" type="button" onClick={togglePlay} disabled={loading}>
-            <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying) ? "❚❚" : "▶"}</span>
-            {loading ? "Tuning…" : (playing || musicPlaying) ? "On Air" : "Tune In"}
+            <span className="rl-tunein-icon">{loading ? "⦿" : (playing || musicPlaying || adPlaying) ? "❚❚" : "▶"}</span>
+            {loading ? "Tuning…" : (playing || musicPlaying || adPlaying) ? "On Air" : "Tune In"}
           </button>
           <button
             className="rl-next"

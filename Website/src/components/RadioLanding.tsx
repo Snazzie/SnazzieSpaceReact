@@ -167,6 +167,9 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             musicIdx={audio.musicIdx}
             musicPlaying={audio.musicPlaying}
             music={music}
+            adIdx={audio.adIdx}
+            adPlaying={audio.adPlaying}
+            ads={ads}
             onAir={onAir}
             levels={audio.levels}
             clock={clock}
