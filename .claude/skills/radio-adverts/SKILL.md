@@ -72,7 +72,10 @@ Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_tex
 `gender`/`speed`/`phone_filter`/`instruct`). OmniVoice honors `speed` and `phone_filter`.
 Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
 `AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
-refs. The announcer is a confident, unhurried pitchman (`speed` ~1.1).
+refs. For a batch of fresh ANNOUNCER voices (one per ad, varied pitch), use
+`scripts/pick-announcer-voices.py`; for the shared disclaimer man, `scripts/pick-disclaimer-voice.py`.
+Both auto-verify gender by median F0 (the ~95-160 Hz band can still admit a low female, e.g.
+LibriSpeech 8463/"Kim" at 149 Hz — exclude and re-pick if one sounds female). The announcer is a confident, unhurried pitchman (`speed` ~1.1).
 
 **Fast disclaimer: use `tempo`, NOT a big `speed`.** OmniVoice's `speed` token stops actually
 speeding up past ~2.0 and starts DROPPING the tail of the line (truncated audio). For the

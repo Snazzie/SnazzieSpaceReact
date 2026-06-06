@@ -193,5 +193,49 @@
     "num_step": 64,
     "position_temperature": 1.5,
     "seed": 7
+  },
+  "ad-ann-rage": {
+    "name": "Rage Pitchman",
+    "color": "#ff3b30",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-rage.wav",
+    "ref_text": "THE ANALYSIS OF KNOWLEDGE WILL OCCUPY US UNTIL THE END OF THE THIRTEENTH LECTURE AND IS THE MOST DIFFICULT PART OF OUR WHOLE ENTERPRISE",
+    "gender": "M"
+  },
+  "ad-ann-surgery": {
+    "name": "Surgery Pitchman",
+    "color": "#34c759",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-surgery.wav",
+    "ref_text": "TO FADE AWAY LIKE MORNING BEAUTY FROM HER MORTAL DAY DOWN BY THE RIVER OF ADONA HER SOFT VOICE IS HEARD AND THUS HER GENTLE LAMENTATION FALLS LIKE MORNING DEW",
+    "gender": "M"
+  },
+  "ad-ann-cash": {
+    "name": "Cash Pitchman",
+    "color": "#30b0c7",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-cash.wav",
+    "ref_text": "THE SCOTTISH GENERALS AND COMMISSIONERS AFFECTED GREAT SURPRISE ON THE APPEARANCE OF THE KING AND THOUGH THEY PAID HIM ALL THE EXTERIOR RESPECT DUE TO HIS DIGNITY THEY INSTANTLY SET A GUARD UPON HIM UNDER COLOR OF PROTECTION AND MADE HIM IN REALITY A PRISONER",
+    "gender": "M"
+  },
+  "ad-ann-cat": {
+    "name": "Cat Pitchman",
+    "color": "#ff9500",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-cat.wav",
+    "ref_text": "MARY TAYLOR HOWEVER RELATED THE TALE OF ZORA TO MISSUS GREY'S PRIVATE EAR LATER",
+    "gender": "M"
   }
 }

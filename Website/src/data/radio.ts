@@ -9,6 +9,10 @@ import villainHour from "./radio/villain-hour.json";
 import theFrankTapes from "./radio/the-frank-tapes.json";
 import theCatSpecial from "./radio/the-cat-special.json";
 import adSootheMaster from "./radio/ad-soothe-master.json";
+import adLiquidRage from "./radio/ad-liquid-rage.json";
+import adBargainSurgery from "./radio/ad-bargain-surgery.json";
+import adInstacash from "./radio/ad-instacash.json";
+import adWhiskerChunks from "./radio/ad-whisker-chunks.json";
 
 export interface CastMember {
   id: string;
@@ -59,6 +63,10 @@ export const CAST: Record<string, CastMember> = {
   "phone":         { id: "phone",           name: "Phone",             color: "#636e72", role: "Caller"       },
   "ad-announcer":  { id: "ad-announcer",    name: "Announcer",         color: "#f6c945", role: "Guest Expert"  },
   "ad-disclaimer": { id: "ad-disclaimer",   name: "Fine Print",        color: "#9aa0a6", role: "Guest Expert"  },
+  "ad-ann-rage":   { id: "ad-ann-rage",     name: "Rage Pitchman",     color: "#ff3b30", role: "Guest Expert"  },
+  "ad-ann-surgery":{ id: "ad-ann-surgery",  name: "Surgery Pitchman",  color: "#34c759", role: "Guest Expert"  },
+  "ad-ann-cash":   { id: "ad-ann-cash",     name: "Cash Pitchman",     color: "#30b0c7", role: "Guest Expert"  },
+  "ad-ann-cat":    { id: "ad-ann-cat",      name: "Cat Pitchman",      color: "#ff9500", role: "Guest Expert"  },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -121,6 +129,10 @@ export const MUSIC_TRACKS: Episode[] = [
 
 export const ADS: Episode[] = [
   episodeFrom(adSootheMaster),
+  episodeFrom(adLiquidRage),
+  episodeFrom(adBargainSurgery),
+  episodeFrom(adInstacash),
+  episodeFrom(adWhiskerChunks),
 ];
 
 export const EPISODES: Episode[] = [

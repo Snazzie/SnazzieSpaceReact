@@ -1,0 +1,24 @@
+{
+  "slug": "ad-liquid-rage",
+  "title": "Liquid Rage",
+  "description": "A paid message from Liquid Rage Beverage Concern. Not a beverage. Not your friend.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-rage",
+      "text": "Tired? Weak? Dangerously calm? Crack open a Liquid Rage! Forty thousand milligrams of pure electric fury in every can. Feel your heart SCREAM with you!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.89,
+      "audio": "/audio/radio/ad-liquid-rage/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Liquid Rage is not a beverage. May cause visions, jitters, and spontaneous bench pressing. Do not drink near your own heart. Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.689,
+      "duration": 3.614,
+      "audio": "/audio/radio/ad-liquid-rage/1.flac"
+    }
+  ]
+}

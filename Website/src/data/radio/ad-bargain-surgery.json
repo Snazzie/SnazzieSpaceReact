@@ -1,0 +1,24 @@
+{
+  "slug": "ad-bargain-surgery",
+  "title": "Bargain Bin Surgery",
+  "description": "A paid message from Bargain Bin Surgery. Why pay hospital prices?",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-surgery",
+      "text": "Why pay hospital prices? At Bargain Bin Surgery, we operate in the parking lot for forty bucks! Kidney, knee, whatever! We will find something to remove!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.68,
+      "audio": "/audio/radio/ad-bargain-surgery/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Anesthesia not included. Surgeons not licensed, or human. We are not responsible for extra holes. Bring your own towels. Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 10.498,
+      "duration": 3.781,
+      "audio": "/audio/radio/ad-bargain-surgery/1.flac"
+    }
+  ]
+}

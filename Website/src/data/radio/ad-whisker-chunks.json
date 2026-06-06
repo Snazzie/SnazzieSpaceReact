@@ -1,0 +1,32 @@
+{
+  "slug": "ad-whisker-chunks",
+  "title": "Whisker Chunks",
+  "description": "A paid message from Whisker Chunks, the meatiest mystery chow this side of the Rio Grande.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-cat",
+      "text": "Weeell howdy there, partner! Out here on the lonesome prairie, every cat deserves a hearty supper at the end of a long cattle drive.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.35,
+      "audio": "/audio/radio/ad-whisker-chunks/0.flac"
+    },
+    {
+      "speaker": "ad-ann-cat",
+      "text": "Whisker Chunks is the meatiest mystery chow this side of the Rio Grande! Round up the herd, fill the trough, and watch them varmints chow down!",
+      "overlap": 0,
+      "timestamp": 6.966,
+      "duration": 8.2,
+      "audio": "/audio/radio/ad-whisker-chunks/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Whisker Chunks may contain cat. Not for cats. Or horses. Side effects include hairballs the size of tumbleweeds. Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 15.122,
+      "duration": 3.591,
+      "audio": "/audio/radio/ad-whisker-chunks/2.flac"
+    }
+  ]
+}

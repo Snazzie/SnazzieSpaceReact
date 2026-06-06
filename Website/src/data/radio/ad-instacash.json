@@ -1,0 +1,24 @@
+{
+  "slug": "ad-instacash",
+  "title": "InstaCash 9000",
+  "description": "A paid message from InstaCash 9000. Your money, now. Forever ours.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-cash",
+      "text": "Need cash NOW? InstaCash 9000 wires you a thousand dollars instantly! No credit check, no questions asked, no escape!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.28,
+      "audio": "/audio/radio/ad-instacash/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Interest rate four thousand percent, compounding hourly. Collateral includes your car, your home, and your cousin. Repayment is mandatory and eternal. Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 8.133,
+      "duration": 4.576,
+      "audio": "/audio/radio/ad-instacash/1.flac"
+    }
+  ]
+}
