@@ -16,9 +16,9 @@ Ship one seed ad and a dedicated `radio-adverts` skill.
 | Question | Decision |
 |----------|----------|
 | Playlist placement | Episode → music → **ad** → next episode |
-| Voice format | Announcer (`[S1]`) + disclaimer (`[S2]`), Dia2, 2 speakers |
-| Engine | Dia2 (`engine: "dia2"`, single `track` file) |
-| Voices | Two brand-new voices, NOT any existing host/caller |
+| Voice format | Announcer + disclaimer, 2 voices |
+| Engine | **OmniVoice** (per-line clips; revised from Dia2 — Dia2 quality was poor). `startAd` schedules per-clip, keeps `track` as a fallback. |
+| Voices | Two brand-new voices, NOT any existing host/caller. `ad-disclaimer` is a single recurring "disclaimer man" reused across all ads (distinct from the announcer). |
 | Seed count | 1 ad — the hemorrhoid cream |
 | Skip behaviour | **Skippable** — skip during an ad jumps to the next episode (revised from unskippable per user) |
 | Behind-the-scenes | Ads also shown in the `RadioStation` debug player on `/snazziefm/behindthescenes`, as a labeled ADS section |

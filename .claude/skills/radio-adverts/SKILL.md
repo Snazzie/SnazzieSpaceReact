@@ -1,6 +1,6 @@
 ---
 name: radio-adverts
-description: Write, generate, and slot Snazzie FM adverts — short (~13s) skippable GTA-radio-style parody ad spots that air between episodes. Use when creating or editing a radio advert. Builds on the radio-episodes skill for the shared Dia2 pipeline.
+description: Write, generate, and slot Snazzie FM adverts — short (~13s) skippable GTA-radio-style parody ad spots that air between episodes. Use when creating or editing a radio advert. Builds on the radio-episodes skill for the shared OmniVoice pipeline.
 ---
 
 # Snazzie FM Adverts
@@ -8,24 +8,36 @@ description: Write, generate, and slot Snazzie FM adverts — short (~13s) skipp
 Short parody radio ads (~13 seconds) that air as an interstitial in the `/radio`
 playlist: **episode -> music -> ad -> next episode**. Ads are **skippable** (skip jumps to
 the next episode). They use their own voices (never host/caller voices) and are rendered
-with **Dia2** (single track, exactly 2 speakers). For the shared TTS pipeline, voices, and
-Dia2 rules, see the **radio-episodes** skill — this skill only adds what is advert-specific.
+with **OmniVoice** (the default multitrack engine — one clip per line, NOT Dia2). For the
+shared TTS pipeline, voices, overlap, and pronunciation rules, see the **radio-episodes**
+skill — this skill only adds what is advert-specific.
+
+> Engine note: ads were originally Dia2 but moved to OmniVoice (Dia2 quality was poor for
+> this). An ad is just a tiny OmniVoice episode — per-line clips, no top-level `track`.
 
 ## Format (the formula)
 
-- **~13 seconds.** One Dia2 track. Dia2 IGNORES the `speed` field (pace comes from the
-  voice prefix), so length is purely text-driven: ~0.45-0.5s per word. Keep total spoken
-  text to roughly **26-32 words** to land near 13s (35+ words overruns to ~18s+).
-- **Two voices, announcer + disclaimer** (Dia2's hard 2-speaker limit):
-  - `ad-announcer` (`[S1]`, first line) — bright, manic hard-sell pitchman.
-  - `ad-disclaimer` (`[S2]`) — flat, fast, monotone fine-print reader.
+- **~13 seconds.** Per-line OmniVoice clips. OmniVoice DOES honor each character's `speed`,
+  so the announcer (1.4) and disclaimer (1.6) actually run fast. Rough budget ~0.3-0.4s per
+  word at those speeds; ~30-40 words total lands near 10-13s. Keep it tight.
+- **Two voices, announcer + disclaimer:**
+  - `ad-announcer` — bright, manic hard-sell pitchman.
+  - `ad-disclaimer` — the recurring "disclaimer man": flat, fast, monotone fine-print reader.
 - **Structure:** announcer pitch (hook -> absurd promise, with the brand + tagline button
   folded into the end of the pitch) -> disclaimer machine-guns the horrifying side-effects /
   legal tail. **The disclaimer is ALWAYS the last line** — the grim fine print is the last
-  thing the listener hears. So a 2-line ad (announcer `[S1]`, then disclaimer `[S2]`) is the
-  default shape; any longer ad still ENDS on the disclaimer.
-- Strictly alternating turns, **first line is the announcer**, exactly 2 distinct
-  speakers (Dia2 requirement).
+  thing the listener hears. A 2-line ad (announcer, then disclaimer) is the default shape;
+  any longer ad still ENDS on the disclaimer.
+- First line is the announcer; last line is the disclaimer. (OmniVoice has no speaker-count
+  limit, but keep ads to these two roles.)
+
+## The disclaimer is one shared voice across ALL ads
+
+`ad-disclaimer` is a SINGLE recurring character — the same "disclaimer man" voice in every
+ad, so listeners recognize him. Do NOT create a new disclaimer voice per ad, and do NOT
+reuse the announcer's voice for him (he is distinct from the announcer). Every ad's final
+line uses `speaker: "ad-disclaimer"`. The announcer voice can vary per ad if you want, but
+the disclaimer stays constant.
 
 ## Tone
 
@@ -36,44 +48,52 @@ parody only, no slurs / real-world shock content. Punch up at the product, not a
 
 ## TTS-safe text
 
-Same rules as radio-episodes: text is sent verbatim to the model. No em-dashes (the long
+Same rules as radio-episodes: text is sent verbatim to OmniVoice. No em-dashes (the long
 dash reads as "euro") — use `...` or commas. ASCII punctuation only. UTF-8. Nonverbals
-`(laughs)`/`(sighs)` are Dia-only and used sparingly.
+`(laughs)`/`(sighs)` are Dia-ONLY and are read aloud literally by OmniVoice — never use them
+in an ad.
 
 ## Data + slot
 
-- Script: `Website/src/data/radio/<ad-slug>.json` — `type: "ad"`, `engine: "dia2"`,
-  2 alternating speakers. Authored fields only (`timestamp`/`duration` = 0).
+- Script: `Website/src/data/radio/<ad-slug>.json` — `type: "ad"`, NO `engine` field, NO
+  `track`. Authored fields only per line (`speaker`, `text`, `overlap`; `timestamp`/
+  `duration` = 0, no `audio`). The generator fills `timestamp`/`duration`/`audio`.
 - Register: import it in `Website/src/data/radio.ts` and add to `export const ADS`.
   Add any new ad voice to `CAST` there (reuse `role: "Guest Expert"`).
 - The player (`useRadioAudio.ts`) airs a **random** ad from `ADS` after each music break;
-  skipping during an ad jumps to the next episode. No per-episode targeting.
+  `startAd` schedules the per-line clips (or a single `track` if one exists) and advances to
+  the next episode on the last clip's end. Skipping during an ad jumps to the next episode.
 - Behind-the-scenes: ads also appear in the `RadioStation` debug player
-  (`/snazziefm/behindthescenes`) via its `ads` prop.
+  (`/snazziefm/behindthescenes`) via its `ads` prop (shared `[...episodes, ...ads]` index).
 
 ## Voices
 
 Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_text`/
-`gender`/`speed`/`instruct`). Pull new ones with the **targeted**
-`scripts/download-ad-voices.py` (add entries to its `AD_VOICES` map) — NOT the wholesale
-`download-voices.py`, which overwrites hand-sourced refs. Announcer runs fast
-(`speed` ~1.4); disclaimer faster (~1.6) for the rattled-off legal tail.
+`gender`/`speed`/`phone_filter`/`instruct`). OmniVoice honors `speed` and `phone_filter`.
+Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
+`AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
+refs. Announcer runs fast (`speed` ~1.4); the disclaimer man faster (~1.6) for the
+rattled-off legal tail. `phone_filter` is `false` for both (studio ad, not a phone caller).
 
 ## Generate
 
 ```bash
-# repo root, dia2 uv env (see radio-episodes for setup)
-uv run --project ../dia2 python scripts/generate-radio-dia2.py <ad-slug>
+# repo root, project python (same env as normal episodes)
+python scripts/generate-radio.py <ad-slug>
 ```
 
-Writes `track` + per-line timestamps back into the ad JSON. `generate-radio.py --all`
-skips `engine: dia*`, so ads are excluded from the OmniVoice batch.
+Writes per-line `timestamp`/`duration`/`audio` back into the ad JSON and one clip per line
+to `Website/public/audio/radio/<ad-slug>/<i>.flac`. Caching is per-clip (content hash), so
+re-running only re-renders changed lines.
 
 ## Checklist for a new ad
 
-1. Write `<ad-slug>.json` (2 speakers, announcer first, ~13s of text, TTS-safe).
-2. Add it to `ADS` (+ any new voice to `CAST`) in `radio.ts`.
-3. Add ad voices to `cast.json` (+ pull via `download-ad-voices.py` if new).
-4. `uv run --project ../dia2 python scripts/generate-radio-dia2.py <ad-slug>`.
-5. `cd Website && bun run build`, then check `/radio` airs it after a music break.
-6. Commit the JSON, the `<ad-slug>/` audio dir, and cast/voice changes.
+1. Write `<ad-slug>.json` (announcer first, disclaimer LAST, ~30-40 words, TTS-safe; no
+   `engine`/`track`).
+2. Add it to `ADS` (+ any new announcer voice to `CAST`) in `radio.ts`. Reuse the existing
+   `ad-disclaimer` for the final line.
+3. Add any new ad voice to `cast.json` (+ pull via `download-ad-voices.py` if new).
+4. `python scripts/generate-radio.py <ad-slug>`.
+5. `cd Website && bun run build`, then check `/radio` airs it after a music break and
+   `/snazziefm/behindthescenes` lists it under ADS.
+6. Commit the JSON, the `<ad-slug>/` clip dir (incl. `.clips.json`), and cast/voice changes.
