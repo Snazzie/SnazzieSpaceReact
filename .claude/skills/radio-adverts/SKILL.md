@@ -82,6 +82,12 @@ finished clip with `librosa` (pitch-preserving, lossless), so every word survive
 genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. (Tempo
 uses ffmpeg `atempo`/WSOLA — clean on speech; a phase vocoder sounds watery.)
 
+**Long disclaimer dropping words?** OmniVoice truncates the tail of a long single utterance.
+Split it into shorter TTS segments with pause tokens between clauses. For a breathless
+disclaimer use **`<p:0>`** (zero-silence split): each segment renders fully, but they
+concatenate with NO audible gap so the fast flow is preserved. (`<p:0.1>` etc. leave a real
+gap that breaks the rattle.)
+
 **Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
 `num_step` = denoising iterations (default 32; ~48 is cleaner, slower) and `guidance_scale`
 (default 2.0). Bump `num_step` if a voice sounds low-quality/artifacty. Both fold into the
