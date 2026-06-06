@@ -5,8 +5,9 @@ description: Write, generate, and slot Snazzie FM adverts — short (~13s) skipp
 
 # Snazzie FM Adverts
 
-Short parody radio ads (~13 seconds) that air as an interstitial in the `/radio`
-playlist: **episode -> music -> ad -> next episode**. Ads are **skippable** (skip jumps to
+Short parody radio ads (~13 seconds) that air **between every show** on the `/radio`
+playlist: **episode -> ad -> next episode**, with a music break only every `MUSIC_EVERY`-th
+transition (currently 3: episode -> music -> ad -> next). Ads are **skippable** (skip jumps to
 the next episode). They use their own voices (never host/caller voices) and are rendered
 with **OmniVoice** (the default multitrack engine — one clip per line, NOT Dia2). For the
 shared TTS pipeline, voices, overlap, and pronunciation rules, see the **radio-episodes**
@@ -17,9 +18,10 @@ skill — this skill only adds what is advert-specific.
 
 ## Format (the formula)
 
-- **~13 seconds.** Per-line OmniVoice clips. OmniVoice DOES honor each character's `speed`,
-  so the announcer (1.4) and disclaimer (1.6) actually run fast. Rough budget ~0.3-0.4s per
-  word at those speeds; ~30-40 words total lands near 10-13s. Keep it tight.
+- **~13 seconds.** Per-line OmniVoice clips. Current tuning: announcer `speed` ~1.1 (slower,
+  confident pitchman); disclaimer `speed` 1.3 + `tempo` ~1.3 (see the tempo note below).
+  ~30-40 words total lands near 10-13s. Keep it tight.
+- **Close on "Terms and conditions apply."** — the standard disclaimer-man sign-off.
 - **Two voices, announcer + disclaimer:**
   - `ad-announcer` — bright, manic hard-sell pitchman.
   - `ad-disclaimer` — the recurring "disclaimer man": flat, fast, monotone fine-print reader.
@@ -60,9 +62,13 @@ in an ad.
   `duration` = 0, no `audio`). The generator fills `timestamp`/`duration`/`audio`.
 - Register: import it in `Website/src/data/radio.ts` and add to `export const ADS`.
   Add any new ad voice to `CAST` there (reuse `role: "Guest Expert"`).
-- The player (`useRadioAudio.ts`) airs a **random** ad from `ADS` after each music break;
-  `startAd` schedules the per-line clips (or a single `track` if one exists) and advances to
-  the next episode on the last clip's end. Skipping during an ad jumps to the next episode.
+- The player (`useRadioAudio.ts`) airs a **random** ad from `ADS` between every show (`afterShow`
+  + `MUSIC_EVERY`); `startAd` schedules the per-line clips (or a single `track` if one exists)
+  and advances to the next episode on the last clip's end. Skipping during an ad jumps to the
+  next episode. The next slot's audio is **pre-decided and prefetched** during the current
+  show (decode cache + `plannedRef`) so transitions are gap-free.
+- The receiver readout shows **"AD BREAK" + the ad title** during an ad; it also surfaces in
+  the now-playing panel and mini-player.
 - Behind-the-scenes: ads also appear in the `RadioStation` debug player
   (`/snazziefm/behindthescenes`) via its `ads` prop (shared `[...episodes, ...ads]` index).
 
@@ -80,8 +86,8 @@ LibriSpeech 8463/"Kim" at 149 Hz — exclude and re-pick if one sounds female). 
 **Fast disclaimer: use `tempo`, NOT a big `speed`.** OmniVoice's `speed` token stops actually
 speeding up past ~2.0 and starts DROPPING the tail of the line (truncated audio). For the
 rattled-off legal-tail sound, keep the disclaimer's generation `speed` modest (~1.3 so the
-WHOLE line renders) and set a `tempo` field (e.g. `2.3`) — the generator time-stretches the
-finished clip with `librosa` (pitch-preserving, lossless), so every word survives and it
+WHOLE line renders) and set a `tempo` field (e.g. `1.3`-`2.0`) — the generator time-stretches
+the finished clip with ffmpeg `atempo` (pitch-preserving, lossless), so every word survives and it
 genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. (Tempo
 uses ffmpeg `atempo`/WSOLA — clean on speech; a phase vocoder sounds watery.)
 
@@ -92,9 +98,11 @@ concatenate with NO audible gap so the fast flow is preserved. (`<p:0.1>` etc. l
 gap that breaks the rattle.)
 
 **Quality knobs** (optional per-voice cast fields, passed to OmniVoice's generation_config):
-`num_step` = denoising iterations (default 32; ~48 is cleaner, slower) and `guidance_scale`
-(default 2.0). Bump `num_step` if a voice sounds low-quality/artifacty. Both fold into the
-clip hash only when set, so they re-render just that voice.
+`num_step` = denoising iterations (default 32; 48-64 is cleaner, slower), `guidance_scale`
+(default 2.0), `position_temperature` (default 5.0; LOWER = steadier/flatter, e.g. the
+disclaimer man runs ~1.5) and `class_temperature` (default 0.0). Bump `num_step` if a voice
+sounds low-quality/artifacty; drop `position_temperature` for a flatter monotone. All fold
+into the clip hash only when set, so they re-render just that voice.
 
 **Reroll a bad take with `seed`.** Generation is seeded (global default 42), so re-rendering
 gives the SAME take. Set a per-voice `seed` to reroll just that clip — a different seed is a
@@ -120,6 +128,6 @@ re-running only re-renders changed lines.
    `ad-disclaimer` for the final line.
 3. Add any new ad voice to `cast.json` (+ pull via `download-ad-voices.py` if new).
 4. `python scripts/generate-radio.py <ad-slug>`.
-5. `cd Website && bun run build`, then check `/radio` airs it after a music break and
-   `/snazziefm/behindthescenes` lists it under ADS.
+5. `cd Website && bun run build`, then check `/radio` airs it between shows (AD BREAK in the
+   receiver) and `/snazziefm/behindthescenes` lists it under ADS.
 6. Commit the JSON, the `<ad-slug>/` clip dir (incl. `.clips.json`), and cast/voice changes.
