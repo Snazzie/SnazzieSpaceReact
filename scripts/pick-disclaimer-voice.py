@@ -22,8 +22,9 @@ WANT = 8  # how many unused speakers to audition
 
 # every speaker id already in use (14 episode voices + ad-announcer 1580 + tried
 # disclaimers 2830, 7729) — never reuse one of these, the disclaimer must be distinct.
+# 8463 excluded: it is the female "Kim" speaker (slipped through the F0 gate at 149 Hz).
 USED = {1089, 1188, 1284, 2300, 61, 672, 237, 1320, 121, 7127,
-        2961, 4077, 3570, 260, 1580, 2830, 7729}
+        2961, 4077, 3570, 260, 1580, 2830, 7729, 8463}
 
 
 def median_f0(arr: np.ndarray, sr: int) -> float:
@@ -87,9 +88,10 @@ def main():
         if len(seen) >= WANT:
             break
 
-    # males = median F0 in 80-165 Hz; pick the BRIGHTEST (highest F0) male for a fast,
-    # auctioneer-style disclaimer — a lighter tenor reads as quicker than a deep voice.
-    males = {s: v for s, v in seen.items() if 110 <= v[3] <= 165}
+    # males = median F0 in 95-140 Hz (safe male band — 149+ risks female speakers like Kim).
+    # Pick the BRIGHTEST (highest F0) within it: a lighter tenor reads as quicker than a deep
+    # voice, but stays clearly male.
+    males = {s: v for s, v in seen.items() if 95 <= v[3] <= 140}
     if not males:
         raise SystemExit("No male candidate found; re-run (raise WANT) or widen the band.")
     pick = max(males, key=lambda s: males[s][3])
