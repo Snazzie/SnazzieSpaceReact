@@ -516,9 +516,15 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
             onSeek={seek}
           />
 
-        {/* Transcript — aligned table: time | speaker | text */}
+        {/* Transcript — aligned table: time | speaker | text.
+            Rendered in PLAY order (by timestamp), not array order: with heavy overlaps /
+            background SFX the script order doesn't match playback, so sort by start time.
+            Original indices are preserved for refs + active-line highlighting. */}
         <div className="flex-1 overflow-y-auto px-4 py-3">
-          {lines.map((line, i) => {
+          {lines
+            .map((line, i) => ({ line, i }))
+            .sort((a, b) => (a.line.timestamp ?? 0) - (b.line.timestamp ?? 0))
+            .map(({ line, i }) => {
             const member = cast[line.speaker];
             const isActive = i === activeLine;
             return (
