@@ -3,6 +3,7 @@
   "title": "The Frank Tapes",
   "description": "Just Ronnie and Frank, one on one, after midnight. It starts calm. It does not stay calm. Generated with Dia2.",
   "engine": "dia2",
+  "no_phone": ["caller-frank"],
   "lines": [
     {
       "speaker": "ronnie",

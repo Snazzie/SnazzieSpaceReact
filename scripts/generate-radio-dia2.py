@@ -114,6 +114,9 @@ def generate(slug: str) -> None:
     for old in clip_dir.glob("[0-9]*.flac"):
         old.unlink()
 
+    # Episodes can mark a normally-phone speaker as in-studio (no phone) for this episode.
+    no_phone = set(episode.get("no_phone", []))
+
     # Build prefix wavs. For phone_filter speakers, bandpass the PREFIX so Dia2 clones a
     # phone-toned voice — the effect is baked into generation, not applied to split audio
     # afterward (which leaked across line boundaries).
@@ -128,7 +131,7 @@ def generate(slug: str) -> None:
         if abs(st - 1.0) > 1e-3:
             from scipy.signal import resample_poly
             wav = resample_poly(wav, int(round(st * 100)), 100).astype(np.float32)
-        if c.get("phone_filter"):
+        if c.get("phone_filter") and spk not in no_phone:   # per-episode studio override
             sos = butter(4, [300 / (sr / 2), 3400 / (sr / 2)], btype="band", output="sos")
             wav = sosfilt(sos, wav).astype(np.float32)
             pk = float(np.max(np.abs(wav))) or 1.0
