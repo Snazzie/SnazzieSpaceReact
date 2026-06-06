@@ -3,26 +3,22 @@
   "title": "Soothe-Master 5000",
   "description": "A paid message from Soothe-Master Industrial Wellness. Results not typical. Nothing is typical.",
   "type": "ad",
-  "engine": "dia2",
-  "no_phone": [
-    "ad-announcer",
-    "ad-disclaimer"
-  ],
   "lines": [
     {
       "speaker": "ad-announcer",
       "text": "Burning? Itching? You need Soothe-Master 5000! One squeeze and that fire goes OUT. Soothe-Master 5000, sit like a winner!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 8.72
+      "duration": 5.75,
+      "audio": "/audio/radio/ad-soothe-master/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "May cause numbness, blindness, and mild glowing. Do not inhale the nozzle. Side effects include regret.",
       "overlap": 0,
-      "timestamp": 8.72,
-      "duration": 7.15
+      "timestamp": 5.368,
+      "duration": 4.52,
+      "audio": "/audio/radio/ad-soothe-master/1.flac"
     }
-  ],
-  "track": "/audio/radio/ad-soothe-master/episode.flac"
+  ]
 }

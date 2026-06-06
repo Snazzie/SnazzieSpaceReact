@@ -136,39 +136,52 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     return Math.floor(Math.random() * ads.length);
   }
 
-  // play a single-track ad, then advance to the next episode
+  // play an ad (per-clip OmniVoice, or a single track), then advance to the next episode
   async function startAd(adIndex: number, nextEpIdx: number, gen: number) {
     const ad = ads[adIndex];
-    if (!ad?.track) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
+    const adLines = ad?.lines?.filter((l) => l.audio) ?? [];
+    if (!ad || (!ad.track && adLines.length === 0)) { setAirIdx(nextEpIdx); startEpisode(nextEpIdx); return; }
     const { ctx, analyser } = getCtx();
     await ctx.resume();
     if (gen !== genRef.current) return;
     setAdIdx(adIndex);
     setAdPlaying(true);
-    try {
-      const buf = await decode(ctx, ad.track);
-      if (gen !== genRef.current) { setAdPlaying(false); setAdIdx(null); return; }
+    const t0 = ctx.currentTime + 0.1;
+    let last: AudioBufferSourceNode | null = null;
+    let lastEnd = 0;
+    const schedule = (buf: AudioBuffer, at: number) => {
       const s = ctx.createBufferSource();
       s.buffer = buf;
       s.connect(analyser);
-      const at = ctx.currentTime + 0.1;
-      s.start(at);
-      startTimeRef.current = at;
-      durationRef.current = buf.duration;
+      s.start(t0 + at);
       sourcesRef.current.push(s);
-      s.onended = () => {
-        if (gen !== genRef.current) return;
-        setAdPlaying(false);
-        setAdIdx(null);
-        setAirIdx(nextEpIdx);
-        startEpisode(nextEpIdx);
-      };
+      if (at + buf.duration >= lastEnd) { lastEnd = at + buf.duration; last = s; }
+    };
+    try {
+      if (ad.track) {
+        schedule(await decode(ctx, ad.track), 0);
+      } else {
+        const bufs = await Promise.all(adLines.map((l) => decode(ctx, l.audio!)));
+        if (gen !== genRef.current) { setAdPlaying(false); setAdIdx(null); return; }
+        adLines.forEach((l, i) => bufs[i] && schedule(bufs[i], l.timestamp ?? 0));
+      }
     } catch {
       setAdPlaying(false);
       setAdIdx(null);
       setAirIdx(nextEpIdx);
       startEpisode(nextEpIdx);
+      return;
     }
+    if (gen !== genRef.current) { setAdPlaying(false); setAdIdx(null); return; }
+    startTimeRef.current = t0;
+    durationRef.current = lastEnd;
+    if (last) (last as AudioBufferSourceNode).onended = () => {
+      if (gen !== genRef.current) return;
+      setAdPlaying(false);
+      setAdIdx(null);
+      setAirIdx(nextEpIdx);
+      startEpisode(nextEpIdx);
+    };
   }
 
   async function decode(ctx: AudioContext, url: string) {
