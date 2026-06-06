@@ -5,6 +5,49 @@ import type { Episode } from "@/data/radio";
 const NUM_BARS = 14;
 // An ad airs between every show; a music break only every MUSIC_EVERY-th transition.
 const MUSIC_EVERY = 3;
+// Auto loudness-match every source to one target so speech, ads and (much hotter)
+// music all play at the same perceived level. We measure each decoded buffer's
+// integrated RMS and set a per-source gain toward TARGET_RMS_DB. Music measures
+// hotter than TTS, so it gets pulled down automatically — no hand-tuned constant.
+const TARGET_RMS_DB = -20;   // dBFS RMS to normalize toward (typical speech level)
+const MAX_GAIN = 4;          // +12 dB ceiling so near-silent buffers don't explode
+const MIN_GAIN = 0.05;       // -26 dB floor
+
+// Persisted master volume, shared with the station player (RadioStation.tsx).
+const VOLUME_KEY = "snazziefm:volume";
+function loadVolume(): number {
+  if (typeof window === "undefined") return 1;
+  const v = parseFloat(window.localStorage.getItem(VOLUME_KEY) ?? "");
+  return isFinite(v) ? Math.min(1, Math.max(0, v)) : 1;
+}
+
+// Per-buffer integrated RMS, cached (measured once per decoded buffer).
+const RMS_CACHE = new WeakMap<AudioBuffer, number>();
+
+/** Linear gain that brings a buffer's RMS to TARGET_RMS_DB (clamped). */
+function bufferGain(buf: AudioBuffer): number {
+  let rms = RMS_CACHE.get(buf);
+  if (rms === undefined) {
+    let sum = 0, n = 0;
+    for (let ch = 0; ch < buf.numberOfChannels; ch++) {
+      const d = buf.getChannelData(ch);
+      for (let i = 0; i < d.length; i += 4) { sum += d[i] * d[i]; n++; }  // stride 4: cheap on long tracks
+    }
+    rms = n ? Math.sqrt(sum / n) : 0;
+    RMS_CACHE.set(buf, rms);
+  }
+  if (rms <= 0) return 1;
+  const g = Math.pow(10, (TARGET_RMS_DB - 20 * Math.log10(rms)) / 20);
+  return Math.min(MAX_GAIN, Math.max(MIN_GAIN, g));
+}
+
+/** Wire a source through its loudness-normalizing gain into the shared chain input. */
+function connectNorm(ctx: AudioContext, s: AudioBufferSourceNode, buf: AudioBuffer, input: AudioNode): void {
+  const g = ctx.createGain();
+  g.gain.value = bufferGain(buf);
+  s.connect(g);
+  g.connect(input);
+}
 
 export interface RadioAudioState {
   airIdx: number;
@@ -44,7 +87,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   // The pre-decided next between-show slot (so we can prefetch it and play it gap-free).
   const plannedRef = useRef<{ kind: "music" | "ad"; idx: number } | null>(null);
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
-  const [volume, setVolumeState] = useState(1);
+  const [volume, setVolumeState] = useState(loadVolume);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
   const startTimeRef = useRef(0);   // ctx time the current audio started at
@@ -109,10 +152,18 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
       comp.attack.value = 0.003;
       comp.release.value = 0.25;
       const makeup = ctx.createGain();
-      makeup.gain.value = 1.6; // recover level lost to compression
+      makeup.gain.value = 1.0; // unity: RMS-normalized sources need no boost (1.6 clipped)
+      // brick-wall limiter after makeup so boosted/loud clips can't clip
+      const limiter = ctx.createDynamicsCompressor();
+      limiter.threshold.value = -1;
+      limiter.knee.value = 0;
+      limiter.ratio.value = 20;
+      limiter.attack.value = 0.001;
+      limiter.release.value = 0.1;
       analyser.connect(comp);
       comp.connect(makeup);
-      makeup.connect(gain);
+      makeup.connect(limiter);
+      limiter.connect(gain);
       gain.connect(ctx.destination);
       ctxRef.current = ctx;
       analyserRef.current = analyser;
@@ -124,6 +175,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   function setVolume(v: number) {
     setVolumeState(v);
     if (gainRef.current) gainRef.current.gain.value = v;
+    try { window.localStorage.setItem(VOLUME_KEY, String(v)); } catch { /* storage blocked */ }
   }
 
   function stopSources() {
@@ -183,7 +235,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     const schedule = (buf: AudioBuffer, at: number) => {
       const s = ctx.createBufferSource();
       s.buffer = buf;
-      s.connect(analyser);
+      connectNorm(ctx, s, buf, analyser);
       s.start(t0 + at);
       sourcesRef.current.push(s);
       if (at + buf.duration >= lastEnd) { lastEnd = at + buf.duration; last = s; }
@@ -267,7 +319,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
       if (gen !== genRef.current) { setMusicPlaying(false); setMusicIdx(null); return; }
       const s = ctx.createBufferSource();
       s.buffer = buf;
-      s.connect(analyser);
+      connectNorm(ctx, s, buf, analyser);
       const at = ctx.currentTime + 0.1;
       s.start(at);
       startTimeRef.current = at;
@@ -307,7 +359,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     const schedule = (buf: AudioBuffer, at: number) => {
       const s = ctx.createBufferSource();
       s.buffer = buf;
-      s.connect(analyser);
+      connectNorm(ctx, s, buf, analyser);
       s.start(t0 + at);
       sourcesRef.current.push(s);
       if (at + buf.duration >= lastEnd) { lastEnd = at + buf.duration; last = s; }
@@ -378,7 +430,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
       if (gen !== genRef.current) { setMusicPlaying(false); setMusicIdx(null); return; }
       const s = ctx.createBufferSource();
       s.buffer = buf;
-      s.connect(analyser);
+      connectNorm(ctx, s, buf, analyser);
       const at = ctx.currentTime + 0.1;
       s.start(at);
       startTimeRef.current = at;

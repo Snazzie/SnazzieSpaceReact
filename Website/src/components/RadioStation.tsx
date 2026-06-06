@@ -18,6 +18,34 @@ function fmt(s: number): string {
 // Strip authoring-only pause tokens (<p>, <p:0.8>) for display
 const stripTokens = (t: string) => t.replace(/<p(?::[0-9.]+)?>/g, "").replace(/\s{2,}/g, " ").trim();
 
+// Persisted master volume, shared with the /radio landing player (useRadioAudio).
+const VOLUME_KEY = "snazziefm:volume";
+function loadVolume(): number {
+  if (typeof window === "undefined") return 1;
+  const v = parseFloat(window.localStorage.getItem(VOLUME_KEY) ?? "");
+  return isFinite(v) ? Math.min(1, Math.max(0, v)) : 1;
+}
+
+// Auto loudness-match: clips render at OmniVoice's raw level and vary clip-to-clip, so
+// measure each buffer's integrated RMS and set the player's volume toward one target.
+const TARGET_RMS_DB = -20;   // dBFS RMS to normalize toward
+const MIN_VOL_DB = -26, MAX_VOL_DB = 12;
+
+/** Player volume in dB that brings a buffer's RMS to TARGET_RMS_DB (clamped). */
+function normalizeDb(buf: Tone.ToneAudioBuffer): number {
+  const ab = buf.get() as AudioBuffer | undefined;
+  if (!ab) return 0;
+  let sum = 0, n = 0;
+  for (let ch = 0; ch < ab.numberOfChannels; ch++) {
+    const d = ab.getChannelData(ch);
+    for (let i = 0; i < d.length; i += 4) { sum += d[i] * d[i]; n++; }  // stride 4: cheap
+  }
+  const rms = n ? Math.sqrt(sum / n) : 0;
+  if (rms <= 0) return 0;
+  const db = TARGET_RMS_DB - 20 * Math.log10(rms);
+  return Math.min(MAX_VOL_DB, Math.max(MIN_VOL_DB, db));
+}
+
 function getActiveLine(lines: TranscriptLine[], currentTime: number): number {
   // Latest line that has started (and not fully ended where possible). Scans all
   // lines so heavy overlaps / slight non-monotonic starts stay correct.
@@ -126,12 +154,16 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   const [currentTime, setCurrentTime]   = useState(0);
   const [activeLine, setActiveLine]     = useState(-1);
   const [ready, setReady]               = useState(false);
-  const [volume, setVolumeState]        = useState(1);
+  const [volume, setVolumeState]        = useState(loadVolume);
+  const [tab, setTab]                   = useState<"episodes" | "ads">("episodes");
   const autoPlayRef = useRef(false);
 
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef     = useRef<number>(0);
-  const gainRef    = useRef<Tone.Gain | null>(null);
+  const gainRef    = useRef<Tone.Gain | null>(null);       // master volume (slider), last before destination
+  const compRef    = useRef<Tone.Compressor | null>(null); // evens loudness across clips/episodes
+  const makeupRef  = useRef<Tone.Gain | null>(null);       // recover level lost to compression
+  const limiterRef = useRef<Tone.Limiter | null>(null);    // brick-wall the loud spikes
   const playersRef = useRef<(Tone.Player | null)[]>([]);   // one synced clip per line
   const trackPlayerRef = useRef<Tone.Player | null>(null); // whole-episode base track (Dia)
   const playingRef = useRef(false);
@@ -142,6 +174,11 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
   // Keep lines in sync with the selected episode
   useEffect(() => { setLines(episode.lines); }, [episode.slug]);
+
+  // Keep the sidebar tab on whichever list holds the current selection.
+  useEffect(() => {
+    setTab(selectedIdx >= episodes.length ? "ads" : "episodes");
+  }, [selectedIdx, episodes.length]);
 
   // Deep link: /radio/behindthescenes#<slug> selects that episode on load (from the
   // /radio landing page show cards). Falls back to the first episode.
@@ -164,14 +201,30 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // (incl. mid-clip offset), and the suspended-context race for us. This is what
   // makes playback reliable vs. hand-rolled AudioBufferSourceNode scheduling.
 
-  function ensureGain(): Tone.Gain {
-    if (!gainRef.current) gainRef.current = new Tone.Gain(volume).toDestination();
-    return gainRef.current;
+  // Master dynamics chain — players feed the compressor; volume gain sits last so the
+  // slider attenuates the already-evened signal. Built once, reused across episodes.
+  //   players -> Compressor -> makeupGain -> Limiter -> volumeGain -> destination
+  // Returns the chain INPUT (compressor) for players to connect to.
+  function ensureChain(): Tone.Compressor {
+    if (!compRef.current) {
+      const gain = new Tone.Gain(volume).toDestination();
+      const limiter = new Tone.Limiter(-1).connect(gain);            // brick-wall at -1 dBFS
+      const makeup = new Tone.Gain(1.0).connect(limiter);            // unity: RMS-normalized clips need no boost (1.6 clipped)
+      const comp = new Tone.Compressor({
+        threshold: -24, knee: 30, ratio: 12, attack: 0.003, release: 0.25,
+      }).connect(makeup);
+      gainRef.current = gain;
+      limiterRef.current = limiter;
+      makeupRef.current = makeup;
+      compRef.current = comp;
+    }
+    return compRef.current;
   }
 
   function setVolume(v: number) {
     setVolumeState(v);
     if (gainRef.current) gainRef.current.gain.value = v;
+    try { window.localStorage.setItem(VOLUME_KEY, String(v)); } catch { /* storage blocked */ }
   }
 
   function disposePlayers() {
@@ -192,7 +245,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     transport.stop();
     transport.seconds = 0;
     disposePlayers();
-    const gain = ensureGain();
+    const input = ensureChain();
     const load = (url: string) =>
       Tone.ToneAudioBuffer.fromUrl(url).catch(() => null as Tone.ToneAudioBuffer | null);
 
@@ -203,12 +256,16 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
       if (cancelled) { trackBuf?.dispose(); clipBufs.forEach((b) => b?.dispose()); return; }
 
       if (trackBuf) {
-        trackPlayerRef.current = new Tone.Player(trackBuf).connect(gain).sync().start(0);
+        const p = new Tone.Player(trackBuf).connect(input);
+        p.volume.value = normalizeDb(trackBuf);   // loudness-match to target
+        trackPlayerRef.current = p.sync().start(0);
       }
       playersRef.current = episode.lines.map((line, i) => {
         const buf = clipBufs[i];
         if (!buf) return null;
-        return new Tone.Player(buf).connect(gain).sync().start(line.timestamp ?? 0);
+        const p = new Tone.Player(buf).connect(input);
+        p.volume.value = normalizeDb(buf);         // loudness-match to target
+        return p.sync().start(line.timestamp ?? 0);
       });
 
       setReady(true);
@@ -309,8 +366,15 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
     };
   }, []);
 
-  // Tear down players + transport on unmount
-  useEffect(() => () => { Tone.getTransport().stop(); disposePlayers(); }, []);
+  // Tear down players, master chain + transport on unmount
+  useEffect(() => () => {
+    Tone.getTransport().stop();
+    disposePlayers();
+    for (const node of [compRef, makeupRef, limiterRef, gainRef]) {
+      try { node.current?.dispose(); } catch { /* already gone */ }
+      node.current = null;
+    }
+  }, []);
 
   const episodeCast = [...new Set(lines.map((l) => l.speaker))]
     .map((id) => cast[id])
@@ -324,7 +388,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   return (
     <div className="flex h-screen overflow-hidden bg-[#0a0a0a] font-sans text-sm">
       {/* Sidebar */}
-      <div className="flex w-52 flex-shrink-0 flex-col border-r border-white/5 overflow-y-auto">
+      <div className="flex w-64 flex-shrink-0 flex-col border-r border-white/5 overflow-hidden">
         <div className="px-4 py-3 border-b border-white/5 flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <div className="text-[10px] font-semibold tracking-[3px] text-[#ff6b00]">📻 SNAZZIE FM</div>
@@ -341,14 +405,31 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
           </div>
         </div>
 
+        {/* Tabs: switch the list between episodes and ads */}
+        <div className="flex border-b border-white/5">
+          {(["episodes", "ads"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`flex-1 px-2 py-2.5 text-[9px] font-semibold uppercase tracking-[2px] transition-colors border-b-2 ${
+                tab === t
+                  ? "text-[#ff6b00] border-[#ff6b00] bg-white/[0.03]"
+                  : "text-white/25 border-transparent hover:text-white/50"
+              }`}
+            >
+              {t === "episodes" ? `Episodes ${episodes.length}` : `Ads ${ads.length}`}
+            </button>
+          ))}
+        </div>
+
         <div className="flex-1 overflow-y-auto">
-          <div className="px-4 pt-3 pb-1 text-[9px] font-semibold tracking-[2px] text-white/20">EPISODES</div>
-          {episodes.map((ep, i) => {
-            const active = i === selectedIdx;
+          {(tab === "episodes" ? episodes : ads).map((item, i) => {
+            const idx = tab === "episodes" ? i : episodes.length + i;
+            const active = idx === selectedIdx;
             const playingThis = active && isPlaying;
             return (
               <div
-                key={ep.slug}
+                key={item.slug}
                 className={`flex items-center border-l-2 transition-colors ${
                   active
                     ? "border-[#ff6b00] bg-white/[0.04]"
@@ -356,20 +437,20 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
                 }`}
               >
                 <button
-                  onClick={() => selectEpisode(i, false)}
+                  onClick={() => selectEpisode(idx, false)}
                   className="flex-1 text-left px-4 py-3 min-w-0"
                 >
                   <div className={`text-[11px] font-semibold leading-tight truncate ${active ? "text-white" : "text-white/40"}`}>
-                    {ep.title}
+                    {item.title}
                   </div>
-                  <div className="mt-1 text-[9px] text-white/20">
-                    {[...new Set(ep.lines.map((l) => l.speaker))]
+                  <div className="mt-1 text-[9px] text-white/20 truncate">
+                    {[...new Set(item.lines.map((l) => l.speaker))]
                       .map((id) => cast[id]?.name ?? id)
                       .join(", ")}
                   </div>
                 </button>
                 <button
-                  onClick={() => selectEpisode(i, !playingThis)}
+                  onClick={() => selectEpisode(idx, !playingThis)}
                   className="pr-3 pl-1 py-3 flex-shrink-0 text-[#ff6b00]/60 hover:text-[#ff6b00] transition-colors text-[10px]"
                   title={playingThis ? "Pause" : "Play"}
                 >
@@ -378,48 +459,6 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
               </div>
             );
           })}
-
-          {ads.length > 0 && (
-            <>
-              <div className="px-4 pt-3 pb-1 text-[9px] font-semibold tracking-[2px] text-white/20">ADS</div>
-              {ads.map((ad, i) => {
-                const idx = episodes.length + i;
-                const active = idx === selectedIdx;
-                const playingThis = active && isPlaying;
-                return (
-                  <div
-                    key={ad.slug}
-                    className={`flex items-center border-l-2 transition-colors ${
-                      active
-                        ? "border-[#ff6b00] bg-white/[0.04]"
-                        : "border-transparent hover:bg-white/[0.02] hover:border-white/10"
-                    }`}
-                  >
-                    <button
-                      onClick={() => selectEpisode(idx, false)}
-                      className="flex-1 text-left px-4 py-3 min-w-0"
-                    >
-                      <div className={`text-[11px] font-semibold leading-tight truncate ${active ? "text-white" : "text-white/40"}`}>
-                        {ad.title}
-                      </div>
-                      <div className="mt-1 text-[9px] text-white/20">
-                        {[...new Set(ad.lines.map((l) => l.speaker))]
-                          .map((id) => cast[id]?.name ?? id)
-                          .join(", ")}
-                      </div>
-                    </button>
-                    <button
-                      onClick={() => selectEpisode(idx, !playingThis)}
-                      className="pr-3 pl-1 py-3 flex-shrink-0 text-[#ff6b00]/60 hover:text-[#ff6b00] transition-colors text-[10px]"
-                      title={playingThis ? "Pause" : "Play"}
-                    >
-                      {playingThis ? "❚❚" : "▶"}
-                    </button>
-                  </div>
-                );
-              })}
-            </>
-          )}
         </div>
 
       </div>
