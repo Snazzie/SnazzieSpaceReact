@@ -189,7 +189,7 @@
     "ref_audio": "scripts/voices/ad-disclaimer.wav",
     "ref_text": "ELEVEN O'CLOCK HAD STRUCK IT WAS A FINE CLEAR NIGHT THEY WERE THE ONLY PERSONS ON THE ROAD AND THEY SAUNTERED LEISURELY ALONG TO AVOID PAYING THE PRICE OF FATIGUE FOR THE RECREATION PROVIDED FOR THE TOLEDANS IN THEIR VALLEY OR ON THE BANKS OF THEIR RIVER",
     "gender": "M",
-    "tempo": 1.8,
+    "tempo": 1.3,
     "num_step": 64,
     "position_temperature": 1.5,
     "seed": 7
