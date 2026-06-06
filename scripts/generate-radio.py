@@ -107,13 +107,17 @@ def render_sfx(path: str, line: dict) -> np.ndarray:
 def clip_hash(text: str, c: dict) -> str:
     """Content key for a clip — TTS is re-run only when this changes."""
     speed = float(c.get("speed", SPEED))
-    payload = "|".join([
+    parts = [
         PIPELINE_VERSION,
         text, c["ref_audio"], c["ref_text"], c["instruct"],
         f"{speed}", str(bool(c.get("phone_filter", False))),
         f"{float(c.get('gain', 1.0))}", str(bool(c.get("distant", False))),
-    ])
-    return hashlib.sha1(payload.encode("utf-8")).hexdigest()[:16]
+    ]
+    # Only fold `tempo` in when set, so default clips keep their existing hash.
+    tempo = float(c.get("tempo", 1.0))
+    if tempo != 1.0:
+        parts.append(f"tempo={tempo}")
+    return hashlib.sha1("|".join(parts).encode("utf-8")).hexdigest()[:16]
 
 
 # Low-pass for "distant"/off-mic voices (muffled, like across the room)
@@ -158,6 +162,14 @@ def render_clip(text: str, c: dict, model) -> np.ndarray:
     gain = float(c.get("gain", 1.0))     # quieter = further back in the mix
     if gain != 1.0:
         clip = (clip * gain).astype(np.float32)
+    # Lossless, pitch-preserving speed-up applied AFTER generation. Use this (not a huge
+    # `speed`) to make a clip genuinely faster: OmniVoice's `speed` token stops speeding up
+    # and starts dropping words past ~2.0, whereas tempo time-stretches the full rendered
+    # clip so every word survives. tempo > 1 = faster/shorter.
+    tempo = float(c.get("tempo", 1.0))
+    if tempo != 1.0:
+        import librosa
+        clip = librosa.effects.time_stretch(clip, rate=tempo).astype(np.float32)
     return clip
 
 

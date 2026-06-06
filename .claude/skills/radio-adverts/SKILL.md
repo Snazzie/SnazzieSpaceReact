@@ -72,9 +72,14 @@ Ad voices live in `scripts/cast.json` like any cast member (`ref_audio`/`ref_tex
 `gender`/`speed`/`phone_filter`/`instruct`). OmniVoice honors `speed` and `phone_filter`.
 Pull new refs with the **targeted** `scripts/download-ad-voices.py` (add entries to its
 `AD_VOICES` map) — NOT the wholesale `download-voices.py`, which overwrites hand-sourced
-refs. The announcer is a confident, unhurried pitchman (`speed` ~1.1); the disclaimer man
-runs FAST (`speed` ~2.0-2.3) for the rattled-off legal-tail sound — speed is the main lever
-for the "typical fast disclaimer" feel; push past 2.0 if it still sounds too slow. `phone_filter` is `false` for both (studio ad).
+refs. The announcer is a confident, unhurried pitchman (`speed` ~1.1).
+
+**Fast disclaimer: use `tempo`, NOT a big `speed`.** OmniVoice's `speed` token stops actually
+speeding up past ~2.0 and starts DROPPING the tail of the line (truncated audio). For the
+rattled-off legal-tail sound, keep the disclaimer's generation `speed` modest (~1.3 so the
+WHOLE line renders) and set a `tempo` field (e.g. `2.3`) — the generator time-stretches the
+finished clip with `librosa` (pitch-preserving, lossless), so every word survives and it
+genuinely sounds faster. `tempo > 1` = faster/shorter. Crank `tempo`, not `speed`. `phone_filter` is `false` for both (studio ad).
 
 ## Generate
 

@@ -184,10 +184,11 @@
     "color": "#9aa0a6",
     "role": "Guest Expert",
     "instruct": "male, middle-aged, low pitch, american accent",
-    "speed": 2.8,
+    "speed": 1.3,
     "phone_filter": false,
     "ref_audio": "scripts/voices/ad-disclaimer.wav",
     "ref_text": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "gender": "M"
+    "gender": "M",
+    "tempo": 2.3
   }
 }
