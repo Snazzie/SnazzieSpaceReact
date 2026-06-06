@@ -3,6 +3,8 @@ import type React from "react";
 import type { Episode } from "@/data/radio";
 
 const NUM_BARS = 14;
+// An ad airs between every show; a music break only every MUSIC_EVERY-th transition.
+const MUSIC_EVERY = 3;
 
 export interface RadioAudioState {
   airIdx: number;
@@ -36,6 +38,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
   const [adPlaying, setAdPlaying] = useState(false);
   const adPlayingRef = useRef(false);
   useEffect(() => { adPlayingRef.current = adPlaying; }, [adPlaying]);
+  const transitionRef = useRef(0);  // counts show transitions, to space out music breaks
   const [levels, setLevels] = useState<number[]>(() => Array(NUM_BARS).fill(0.06));
   const [volume, setVolumeState] = useState(1);
   const [position, setPosition] = useState(0);
@@ -131,9 +134,25 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     return linked >= 0 ? linked : Math.floor(Math.random() * music.length);
   }
 
-  // a random ad to air after a music break
+  // a random ad to air between shows
   function pickAd(): number {
     return Math.floor(Math.random() * ads.length);
+  }
+
+  // The between-show slot: an ad airs every transition; a music break only every
+  // MUSIC_EVERY-th one. On a music break it's music -> ad -> next (startInterstitial
+  // chains to the ad); otherwise ad -> next.
+  function afterShow(epIdx: number, next: number, gen: number) {
+    const n = transitionRef.current++;
+    const doMusic = music.length > 0 && n % MUSIC_EVERY === MUSIC_EVERY - 1;
+    if (doMusic) {
+      startInterstitial(musicIdxForEpisode(epIdx), next, gen);
+    } else if (ads.length > 0) {
+      startAd(pickAd(), next, gen);
+    } else {
+      setAirIdx(next);
+      startEpisode(next);
+    }
   }
 
   // play an ad (per-clip OmniVoice, or a single track), then advance to the next episode
@@ -267,14 +286,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     if (last) (last as AudioBufferSourceNode).onended = () => {
       if (gen !== genRef.current) return;
       const next = (idx + 1) % episodes.length;
-      if (music.length > 0) {
-        startInterstitial(musicIdxForEpisode(idx), next, gen);
-      } else if (ads.length > 0) {
-        startAd(pickAd(), next, gen);
-      } else {
-        setAirIdx(next);
-        startEpisode(next);
-      }
+      afterShow(idx, next, gen);
     };
   }
 
@@ -356,12 +368,12 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
       setAirIdx(next);
       setPlaying(true);
       startEpisode(next, gen);
-    } else if (music.length > 0) {
-      // Skip current episode → play music interstitial then next episode
+    } else if (ads.length > 0 || music.length > 0) {
+      // Skip current show → between-show slot (ad every time, occasional music) then next
       setPlaying(true);
-      startInterstitial(musicIdxForEpisode(base), next, gen);
+      afterShow(base, next, gen);
     } else {
-      // No music → skip to next episode
+      // Nothing to slot → skip straight to next episode
       airIdxRef.current = next;
       setAirIdx(next);
       setPlaying(true);

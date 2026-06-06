@@ -15,7 +15,7 @@ Ship one seed ad and a dedicated `radio-adverts` skill.
 
 | Question | Decision |
 |----------|----------|
-| Playlist placement | Episode → music → **ad** → next episode |
+| Playlist placement | **Ad between every show** (episode → ad → next); a music break only every 3rd transition (episode → music → ad → next). Revised from "music every break" per user. |
 | Voice format | Announcer + disclaimer, 2 voices |
 | Engine | **OmniVoice** (per-line clips; revised from Dia2 — Dia2 quality was poor). `startAd` schedules per-clip, keeps `track` as a fallback. |
 | Voices | Two brand-new voices, NOT any existing host/caller. `ad-disclaimer` is a single recurring "disclaimer man" reused across all ads (distinct from the announcer). |
