@@ -18,7 +18,7 @@ VOICES_DIR = Path(__file__).parent / "voices"
 TARGET_SR  = 24_000
 MIN_CLIP_SECS = 4.0
 
-# character -> (test-clean speaker_id, gender). Two UNUSED speakers (not in the
+# char_name -> (test-clean speaker_id, gender). Two UNUSED speakers (not in the
 # existing 14). Both verified male in LibriSpeech SPEAKERS.TXT. If a voice sounds
 # wrong, change the speaker id here and re-run.
 AD_VOICES = {
@@ -58,10 +58,22 @@ def main():
         print(f"  {spk}: {len(arr)/sr:.1f}s - \"{text[:60]}\"")
         if len(collected) == len(needed):
             break
+    # Validate all speakers were collected before writing anything
+    missing = []
     for char, (sid, gender) in AD_VOICES.items():
         if sid not in collected:
-            print(f"  WARN: no sample for {char} ({sid})")
-            continue
+            missing.append((char, sid))
+
+    if missing:
+        print("ERROR: Missing speaker(s) from LibriSpeech test-clean:")
+        for char, sid in missing:
+            print(f"  - {char} (speaker id {sid})")
+        print("\nNo files written. Pick an unused test-clean speaker id in AD_VOICES")
+        print("(update scripts/download-ad-voices.py and re-run).")
+        raise SystemExit(1)
+
+    # All speakers present; proceed to write files and update cast.json
+    for char, (sid, gender) in AD_VOICES.items():
         arr, sr, text = collected[sid]
         sf.write(str(VOICES_DIR / f"{char}.wav"), resample(arr, sr, TARGET_SR), TARGET_SR)
         (VOICES_DIR / f"{char}.txt").write_text(text, encoding="utf-8")
