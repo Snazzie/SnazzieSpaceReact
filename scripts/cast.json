@@ -163,9 +163,10 @@
     "speed": 1.05,
     "phone_filter": true,
     "gain": 1.0,
-    "ref_audio": "scripts/voices/todd.wav",
-    "ref_text": "尽管受到这些指责，马英九在一次演讲中主张与中国大陆建立更加紧密的联系，并轻松获胜。",
-    "gender": "M"
+    "ref_audio": "scripts/voices/chen-en.wav",
+    "ref_text": "Hello, this is Golden Dragon restaurant. We are open until eleven tonight. The special is very good, you should try it, everybody likes it.",
+    "gender": "M",
+    "_note": "Dia2 clones the ref LANGUAGE — a Mandarin ref makes Dia2 render the whole pass in Chinese (accenting the other speaker too). chen-en.wav is a Chinese-accented ENGLISH clip (OmniVoice, from todd.wav) so Dia2 stays English. todd.wav remains Todd's ref."
   },
   "ad-announcer": {
     "name": "Announcer",
