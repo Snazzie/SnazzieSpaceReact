@@ -176,6 +176,14 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
     prev_speech_start = 0   # absolute samples
     prev_speech_end = 0
     for i, line in enumerate(lines):
+        # Background beds run UNDER the dialogue: anchored to the current cursor
+        # (shifted by `overlap`, positive = starts earlier) but they do NOT advance
+        # the speech cursor, so following dialogue plays over them in parallel.
+        if line.get("background"):
+            offset = int(float(line.get("overlap", 0.0)) * SAMPLE_RATE)
+            start = max(0, prev_speech_end - sb_start[i] - offset)
+            starts.append(start)
+            continue
         if i == 0:
             start = 0
             onset = sb_start[i]

@@ -54,6 +54,7 @@ export const CAST: Record<string, CastMember> = {
   "caller-chen":   { id: "caller-chen",     name: "Mr. Chen",          color: "#e17055", role: "Caller"       },
   "cat":           { id: "cat",             name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "cat-loud":      { id: "cat-loud",        name: "Cat",               color: "#ffeaa7", role: "Caller"       },
+  "caller-bg":     { id: "caller-bg",       name: "Caller's end",      color: "#b2956a", role: "Caller BG"    },
   "phone":         { id: "phone",           name: "Phone",             color: "#636e72", role: "Caller"       },
 };
 

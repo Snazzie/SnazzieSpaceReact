@@ -109,8 +109,13 @@ A line with an `sfx` field loads a real audio file instead of running TTS (handl
 cast lookup in `generate_episode`). Use for rings, hangups, animal noises, ambience beds.
 
 - **Fields**: `sfx` (repo-relative path to a 24k mono wav), plus optional per-line
-  `phone_filter` / `distant` / `gain` / `trim` (seconds; `0` = whole file). `speaker` is just
-  a display label (e.g. `phone`, `cat`, `cat-loud`) and still needs a `CAST` entry for color.
+  `phone_filter` / `distant` / `gain` / `trim` (seconds; `0` = whole file) / `background`.
+  `speaker` is just a display label (e.g. `phone`, `cat`, `caller-bg`) and still needs a
+  `CAST` entry in `radio.ts` for color (sfx lines skip `cast.json`).
+- **Source the noise from the right place.** A sound coming from a *caller's* phone (a cat in
+  their kitchen, a TV behind them) must sound like it's on the phone line and across the room:
+  set BOTH `phone_filter: true` AND `distant: true`, and give it its own caller-side label
+  (`caller-bg`, role "Caller BG") so the transcript shows it's their end, not a studio sound.
 - **Sourcing**: prefer CC0/PD. Freesound filtered to "Creative Commons 0" is the richest
   source (cat screams, metal clatter, etc.); Wikimedia Commons is cleanest PD but thin on
   aggressive sounds (its cat files are gentle meows only — no screams). Convert with
@@ -119,11 +124,18 @@ cast lookup in `generate_episode`). Use for rings, hangups, animal noises, ambie
 - **Layered beds**: build a multi-sound bed (e.g. kitchen chaos = looped metal clatter under
   scattered screams) with a committed, re-runnable ffmpeg script — see
   `scripts/sfx/build-bg-kitchen.sh`. Don't leave it as an un-reproducible one-off.
-- **Long bed under overlapping dialogue**: place one long bed line, then give the *next*
-  dialogue line a large positive `overlap` (e.g. 15.5) so the talk pulls back over the bed.
-  Drop a short scream sfx line mid-bed (positive overlap) as punctuation. Verify after render:
-  bed `timestamp..timestamp+duration` should span the chaos lines; a small tail spillover past
-  the bed is fine (chaos tapers).
+- **Continuous background beds (`background: true`)** — THE way to run ambience *under*
+  dialogue. A `background` line is placed on the timeline but does **not advance the speech
+  cursor**, so every following dialogue line plays over it in parallel (real underlay, not a
+  per-line "slight overlap"). Its `overlap` becomes a signed anchor offset from the current
+  cursor (positive = starts that much earlier, for a crash lead-in). Stack several: e.g. a loud
+  16s "eruption" bed + a quiet 36s ambience bed, both `background: true` anchored at the same
+  point, dialogue flowing over both. Build the ambience long and never-silent (two offset metal
+  loops + cats scattered throughout) and keep its `gain` low (~0.3) so it sits under speech.
+  - ⚠️ Do NOT use the old hack (one bed line + a huge positive `overlap` like 15.5 on the next
+    line to "pull dialogue back"). That made onsets fragile and only felt like a slight overlap.
+    `background: true` is correct; reserve large `overlap` for genuine talk-overs.
+  - Drop short non-background scream sfx lines mid-chaos (positive overlap) as punctuation beats.
 - **Editing an sfx file re-renders it.** `sfx_hash` folds the file's content hash, so rebuilding
   a bed or swapping a clip forces just that clip to re-render (don't bump `PIPELINE_VERSION`
   for content swaps).

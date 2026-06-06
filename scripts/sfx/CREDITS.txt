@@ -21,7 +21,11 @@ cat-scream-3.wav  — "CAT SCREAM" by queen_westeros (CC0)
   https://freesound.org/s/222590/
 metal-clatter.wav — "Pots and Pans Clatter 1" by OwlStorm (CC0)
   https://freesound.org/s/209002/
+bg-restaurant.wav — "ambience - restaurant.WAV" by soundtracvkradio (CC0), 24k mono, loudnorm
+  https://freesound.org/s/394678/
 
-bg-kitchen.wav    — "kitchen chaos" bed (16s), rebuilt by scripts/sfx/build-bg-kitchen.sh:
-                    metal-clatter looped + layered (loud) under scattered cat screams
-                    (cat-scream-1/2/3) + cat-impatient. All sources CC0/PD. Generated.
+bg-kitchen.wav     — loud "eruption" bed (16s), built by scripts/sfx/build-bg-kitchen.sh:
+                     metal-clatter looped + layered under scattered cat screams
+                     (cat-scream-1/2/3) + cat-impatient. All sources CC0/PD. Generated.
+bg-kitchen-amb.wav — quiet continuous "kitchen chaos" ambience (36s), same script: two offset
+                     metal loops + cats scattered throughout. Runs UNDER the dialogue. Generated.
