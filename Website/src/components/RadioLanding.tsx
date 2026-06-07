@@ -26,6 +26,8 @@ const SLOTS = [
   "SAT · 9:00 PM", "SUN · 8:30 PM", "MON · 10:00 PM", "TUE · 9:00 PM",
 ];
 
+const EPISODES_PER_PAGE = 10;
+
 function fmtTime(s: number) {
   if (!Number.isFinite(s) || s < 0) s = 0;
   const m = Math.floor(s / 60);
@@ -60,6 +62,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
   const audio = useRadioAudio(episodes, music, ads);
   const onAir = episodes[audio.airIdx];
   const adSpotIdx = ads.findIndex((a) => a.slug === "ad-instaad");
+  const [currentPage, setCurrentPage] = useState(0);
 
   const [clock, setClock] = useState("");
   useEffect(() => {
@@ -252,26 +255,61 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             <span className="rl-section-rule" />
           </h2>
           <ol className="rl-schedule">
-            {episodes.map((ep, i) => (
-              <li key={ep.slug}>
-                <button
-                  type="button"
-                  className={`rl-show ${i === audio.airIdx ? "rl-show-live" : ""}`}
-                  onClick={() => audio.tuneTo(i)}
-                >
-                  <span className="rl-show-time">{SLOTS[i % SLOTS.length]}</span>
-                  <span className="rl-show-body">
-                    <span className="rl-show-title">
-                      {ep.title}
-                      {i === audio.airIdx && audio.playing && <span className="rl-show-tag">NOW PLAYING</span>}
-                    </span>
-                    <span className="rl-show-desc">{ep.description}</span>
-                  </span>
-                  <span className="rl-show-play">{i === audio.airIdx && audio.playing ? "❚❚" : "▶"}</span>
-                </button>
-              </li>
-            ))}
+            {episodes
+              .slice(currentPage * EPISODES_PER_PAGE, (currentPage + 1) * EPISODES_PER_PAGE)
+              .map((ep, localI) => {
+                const globalI = currentPage * EPISODES_PER_PAGE + localI;
+                return (
+                  <li key={ep.slug}>
+                    <button
+                      type="button"
+                      className={`rl-show ${globalI === audio.airIdx ? "rl-show-live" : ""}`}
+                      onClick={() => audio.tuneTo(globalI)}
+                    >
+                      <span className="rl-show-time">{SLOTS[globalI % SLOTS.length]}</span>
+                      <span className="rl-show-body">
+                        <span className="rl-show-title">
+                          {ep.title}
+                          {globalI === audio.airIdx && audio.playing && <span className="rl-show-tag">NOW PLAYING</span>}
+                        </span>
+                        <span className="rl-show-desc">{ep.description}</span>
+                      </span>
+                      <span className="rl-show-play">{globalI === audio.airIdx && audio.playing ? "❚❚" : "▶"}</span>
+                    </button>
+                  </li>
+                );
+              })}
           </ol>
+          {episodes.length > EPISODES_PER_PAGE && (
+            <div className="rl-pagination">
+              <button
+                type="button"
+                className="rl-pagination-btn"
+                onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+                disabled={currentPage === 0}
+              >
+                ← Prev
+              </button>
+              <span className="rl-pagination-info">
+                Page {currentPage + 1} of {Math.ceil(episodes.length / EPISODES_PER_PAGE)}
+              </span>
+              <button
+                type="button"
+                className="rl-pagination-btn"
+                onClick={() =>
+                  setCurrentPage(
+                    Math.min(
+                      Math.ceil(episodes.length / EPISODES_PER_PAGE) - 1,
+                      currentPage + 1
+                    )
+                  )
+                }
+                disabled={currentPage >= Math.ceil(episodes.length / EPISODES_PER_PAGE) - 1}
+              >
+                Next →
+              </button>
+            </div>
+          )}
         </section>
 
         {music.length > 0 && (
