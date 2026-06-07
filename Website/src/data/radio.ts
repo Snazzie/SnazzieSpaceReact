@@ -21,6 +21,16 @@ import theNinetyYearSoup from "./radio/the-ninety-year-soup.json";
 import crumbAndPunishment from "./radio/crumb-and-punishment.json";
 import theLoyaltyWar from "./radio/the-loyalty-war.json";
 import theLendingLibrary from "./radio/the-lending-library.json";
+import pleaseStayOnTheLine from "./radio/please-stay-on-the-line.json";
+import theGratitudeAudit from "./radio/the-gratitude-audit.json";
+import allTheLightsAreGreen from "./radio/all-the-lights-are-green.json";
+import theDawnBell from "./radio/the-dawn-bell.json";
+import theLittleFreeWar from "./radio/the-little-free-war.json";
+import theFamilyPlan from "./radio/the-family-plan.json";
+import theBroodIsBack from "./radio/the-brood-is-back.json";
+import theCasseroleLedger from "./radio/the-casserole-ledger.json";
+import sayLess from "./radio/say-less.json";
+import theHowlHeardRound from "./radio/the-howl-heard-round.json";
 import adSootheMaster from "./radio/ad-soothe-master.json";
 import adLiquidRage from "./radio/ad-liquid-rage.json";
 import adBargainSurgery from "./radio/ad-bargain-surgery.json";
@@ -139,6 +149,7 @@ export const CAST: Record<string, CastMember> = {
   "caller-linda":  { id: "caller-linda",    name: "Linda",             color: "#a29bfe", role: "Caller"       },
   "caller-chad":   { id: "caller-chad",     name: "Chad",              color: "#a29bfe", role: "Caller"       },
   "caller-mildred":{ id: "caller-mildred",  name: "Mildred",           color: "#a29bfe", role: "Caller"       },
+  "caller-nadia":  { id: "caller-nadia",    name: "Nadia",             color: "#00b894", role: "Caller"       },
   "caller-darnell":{ id: "caller-darnell",  name: "Darnell",           color: "#a29bfe", role: "Caller"       },
   "caller-patricia":{ id: "caller-patricia",name: "Patricia",          color: "#a29bfe", role: "Caller"       },
   "caller-winston":{ id: "caller-winston",  name: "Winston",           color: "#a29bfe", role: "Caller"       },
@@ -167,6 +178,10 @@ export const CAST: Record<string, CastMember> = {
   "ad-ann-nasal":  { id: "ad-ann-nasal",    name: "Nasal Pitchman",    color: "#ff2d55", role: "Guest Expert"  },
   "ad-ann-shouty": { id: "ad-ann-shouty",   name: "Shouty Pitchman",   color: "#ffcc00", role: "Guest Expert"  },
   "ad-ann-chipper":{ id: "ad-ann-chipper",  name: "Chipper Pitchman",  color: "#64d2ff", role: "Guest Expert"  },
+  "marigold":      { id: "marigold",        name: "Marigold",          color: "#d4a017", role: "Guest Expert" },
+  "grid-ai":       { id: "grid-ai",         name: "GreenFlow Grid",    color: "#2ecc71", role: "Guest Expert" },
+  "caller-edwin":  { id: "caller-edwin",    name: "Edwin",             color: "#a29bfe", role: "Caller"       },
+  "everkin":       { id: "everkin",         name: "EverKin",           color: "#9b59b6", role: "Guest Expert" },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -318,4 +333,14 @@ export const EPISODES: Episode[] = [
   episodeFrom(crumbAndPunishment),
   episodeFrom(theLoyaltyWar),
   episodeFrom(theLendingLibrary),
+  episodeFrom(pleaseStayOnTheLine),
+  episodeFrom(theGratitudeAudit),
+  episodeFrom(allTheLightsAreGreen),
+  episodeFrom(theDawnBell),
+  episodeFrom(theLittleFreeWar),
+  episodeFrom(theFamilyPlan),
+  episodeFrom(theBroodIsBack),
+  episodeFrom(theCasseroleLedger),
+  episodeFrom(sayLess),
+  episodeFrom(theHowlHeardRound),
 ];

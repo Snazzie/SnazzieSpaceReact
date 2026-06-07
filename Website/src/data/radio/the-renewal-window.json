@@ -7,358 +7,409 @@
       "speaker": "ronnie",
       "text": "You're on Snazzie FM. Our next caller has been sitting in a government office since this morning trying to renew a parking permit. Patricia, you're on the air.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 12.16,
+      "audio": "/audio/radio/the-renewal-window/0.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Hi, Ronnie. Yes. I'm still here. <p:0.3> I took a number this morning. I am on form fourteen.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 11.281,
+      "duration": 7.7,
+      "audio": "/audio/radio/the-renewal-window/1.flac"
     },
     {
       "speaker": "barry",
       "text": "Form fourteen of what?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 18.358,
+      "duration": 1.96,
+      "audio": "/audio/radio/the-renewal-window/2.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "They won't tell me, Barry. The lady at the window, Doreen, she just keeps sliding me another form.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 19.173,
+      "duration": 8.28,
+      "audio": "/audio/radio/the-renewal-window/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And what does form fourteen ask?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 26.351,
+      "duration": 2.64,
+      "audio": "/audio/radio/the-renewal-window/4.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It asks for my name, my address, and... the date of my death.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 28.369,
+      "duration": 5.16,
+      "audio": "/audio/radio/the-renewal-window/5.flac"
     },
     {
       "speaker": "barry",
       "text": "The date of your... okay. Just leave that one blank.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 32.484,
+      "duration": 4.16,
+      "audio": "/audio/radio/the-renewal-window/6.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It won't let me, Barry. It's a required field. There's a little red star next to it.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 35.575,
+      "duration": 7.16,
+      "audio": "/audio/radio/the-renewal-window/7.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "Ma'am. <p:0.3> If you could just estimate the date of your death, we can keep the line moving.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 41.815,
+      "duration": 5.83,
+      "audio": "/audio/radio/the-renewal-window/8.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I don't know it, Doreen.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 46.981,
+      "duration": 2.16,
+      "audio": "/audio/radio/the-renewal-window/9.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "Most people don't, hon. <p:0.3> That's section nine. Pull a number for section nine.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 47.983,
+      "duration": 6.08,
+      "audio": "/audio/radio/the-renewal-window/10.flac"
     },
     {
       "speaker": "ronnie",
       "text": "So you finish a form and they give you another form.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 53.06,
+      "duration": 4.08,
+      "audio": "/audio/radio/the-renewal-window/11.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "There are always more forms, Ronnie. I counted the stack. <p:0.3> It does not get shorter when I work. It gets taller.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 55.615,
+      "duration": 10.06,
+      "audio": "/audio/radio/the-renewal-window/12.flac"
     },
     {
       "speaker": "barry",
       "text": "Taller. The stack gets taller.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 65.052,
+      "duration": 2.6,
+      "audio": "/audio/radio/the-renewal-window/13.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Section nine asks where I was before I was born. <p:0.4> It has a drop down menu, Barry. There are options.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 66.482,
+      "duration": 9.16,
+      "audio": "/audio/radio/the-renewal-window/14.flac"
     },
     {
       "speaker": "ronnie",
       "text": "What are the options, Patricia.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 74.554,
+      "duration": 2.56,
+      "audio": "/audio/radio/the-renewal-window/15.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "The first one is, quote, the dark. <p:0.3> The second one is, the same dark. <p:0.3> The third one is, prefer not to say.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 76.598,
+      "duration": 9.8,
+      "audio": "/audio/radio/the-renewal-window/16.flac"
     },
     {
       "speaker": "barry",
       "text": "Pick prefer not to say. Always pick prefer not to say.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 85.622,
+      "duration": 4.4,
+      "audio": "/audio/radio/the-renewal-window/17.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "She can't, hon. <p:0.3> Prefer not to say generates a follow up. <p:0.3> It would like to know why.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 88.905,
+      "duration": 7.5,
+      "audio": "/audio/radio/the-renewal-window/18.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It always wants to know why, Doreen. Every box. Why, why, why.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 95.918,
+      "duration": 5.36,
+      "audio": "/audio/radio/the-renewal-window/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Doreen, how long does the renewal usually take?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 100.484,
+      "duration": 3.8,
+      "audio": "/audio/radio/the-renewal-window/20.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "Depends on the applicant, hon. <p:0.3> Some folks finish in an afternoon. <p:0.3> Some are still here from the last building.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 103.107,
+      "duration": 8.08,
+      "audio": "/audio/radio/the-renewal-window/21.flac"
     },
     {
       "speaker": "barry",
       "text": "The... last building?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 110.288,
+      "duration": 1.84,
+      "audio": "/audio/radio/the-renewal-window/22.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "This one's newer. <p:0.3> We carried the stack over. <p:0.3> You don't lose your place in line for that, it carries.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 111.34,
+      "duration": 7.59,
+      "audio": "/audio/radio/the-renewal-window/23.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Ronnie, the man next to me has been filling out the same form since the nineteen forties. He says he's almost through.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 116.935,
+      "duration": 10.34,
+      "audio": "/audio/radio/the-renewal-window/24.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Almost through is good. That's progress.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 126.416,
+      "duration": 3.24,
+      "audio": "/audio/radio/the-renewal-window/25.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "He's on page one, Ronnie. <p:0.4> He is almost through page one.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 128.853,
+      "duration": 5.48,
+      "audio": "/audio/radio/the-renewal-window/26.flac"
     },
     {
       "speaker": "barry",
       "text": "Patricia, just walk out. Just stand up and walk out.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 132.643,
+      "duration": 4.24,
+      "audio": "/audio/radio/the-renewal-window/27.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "There's no door, Barry! I came in through a door and now there's just more counter!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 135.169,
+      "duration": 7.24,
+      "audio": "/audio/radio/the-renewal-window/28.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "The exit's a separate form, hon. <p:0.3> Section infinity. <p:0.3> You'll get there.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 140.851,
+      "duration": 6.24,
+      "audio": "/audio/radio/the-renewal-window/29.flac"
     },
     {
       "speaker": "barry",
       "text": "Did she say section INFINITY?",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 146.122,
+      "duration": 2.56,
+      "audio": "/audio/radio/the-renewal-window/30.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It's after section nine, Barry, but the numbers stopped going up. They just say more.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 147.133,
+      "duration": 7.52,
+      "audio": "/audio/radio/the-renewal-window/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now hold on. Doreen, surely there's a supervisor.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 153.63,
+      "duration": 3.88,
+      "audio": "/audio/radio/the-renewal-window/32.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "I'm the supervisor, hon. <p:0.3> I've been the supervisor a very long time. <p:0.4> I came in to renew a permit, same as her.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 156.637,
+      "duration": 8.86,
+      "audio": "/audio/radio/the-renewal-window/33.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "You're behind the counter, Doreen!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 164.058,
+      "duration": 3.2,
+      "audio": "/audio/radio/the-renewal-window/34.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "I filled out enough forms, hon. <p:0.4> Eventually they put you on the other side.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 165.963,
+      "duration": 5.67,
+      "audio": "/audio/radio/the-renewal-window/35.flac"
     },
     {
       "speaker": "barry",
       "text": "Patricia, get up. GET UP.",
       "overlap": 0.35,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 170.84,
+      "duration": 2.08,
+      "audio": "/audio/radio/the-renewal-window/36.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I'm filling faster, Barry! The stack's taller!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 171.486,
+      "duration": 4.16,
+      "audio": "/audio/radio/the-renewal-window/37.flac"
     },
     {
       "speaker": "barry",
       "text": "Stop filling!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 174.434,
+      "duration": 1.64,
+      "audio": "/audio/radio/the-renewal-window/38.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It's required!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 174.853,
+      "duration": 1.84,
+      "audio": "/audio/radio/the-renewal-window/39.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "Little red star.",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 175.347,
+      "duration": 1.73,
+      "audio": "/audio/radio/the-renewal-window/40.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "What was I renewing?! <p:0.3> I forgot what I came for!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 176.115,
+      "duration": 4.62,
+      "audio": "/audio/radio/the-renewal-window/41.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "A parking permit, hon. <p:0.4> The car's long gone. <p:0.3> But the permit, the permit we keep current.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 179.479,
+      "duration": 7.91,
+      "audio": "/audio/radio/the-renewal-window/42.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Patricia. <p:0.4> Patricia, are you still there?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 186.665,
+      "duration": 4.56,
+      "audio": "/audio/radio/the-renewal-window/43.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "...One moment. <p:0.4> I'm being told I'm next. <p:0.3> The screen says one applicant ahead of me.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 190.336,
+      "duration": 8.54,
+      "audio": "/audio/radio/the-renewal-window/44.flac"
     },
     {
       "speaker": "barry",
       "text": "That's good! That's almost done!",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 198.013,
+      "duration": 2.68,
+      "audio": "/audio/radio/the-renewal-window/45.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It's said one applicant ahead since Tuesday, Barry. <p:0.4> The applicant ahead of me is the building.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 199.82,
+      "duration": 8.38,
+      "audio": "/audio/radio/the-renewal-window/46.flac"
     },
     {
       "speaker": "ronnie",
       "text": "We're gonna take a quick break before Patricia reaches the window. <p:0.3> Patricia, when you get there... renew ours too.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 206.287,
+      "duration": 9.22,
+      "audio": "/audio/radio/the-renewal-window/47.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "Take a number, hon.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 214.994,
+      "duration": 1.37,
+      "audio": "/audio/radio/the-renewal-window/48.flac"
     },
     {
       "speaker": "barry",
       "text": "I'm not taking a number.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 215.795,
+      "duration": 2.04,
+      "audio": "/audio/radio/the-renewal-window/49.flac"
     },
     {
       "speaker": "clerk-doreen",
       "text": "You already did, hon. <p:0.3> Nineteen forties. <p:0.3> You're almost through page one.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 216.742,
+      "duration": 6.3,
+      "audio": "/audio/radio/the-renewal-window/50.flac"
     }
   ]
 }

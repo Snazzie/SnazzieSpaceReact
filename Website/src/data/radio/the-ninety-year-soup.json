@@ -7,267 +7,305 @@
       "speaker": "ronnie",
       "text": "You're on Snazzie FM, and happy Founders' Day. Tonight we honor the pride of this town, the perpetual pot. Ninety years simmering, never once turned off. Mildred, you've stirred that pot your whole life. Welcome.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 16.12,
+      "audio": "/audio/radio/the-ninety-year-soup/0.flac"
     },
     {
       "speaker": "barry",
       "text": "Ninety years. <p:0.3> Same soup. That's the part I keep getting stuck on.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 15.486,
+      "duration": 6.1,
+      "audio": "/audio/radio/the-ninety-year-soup/1.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Oh, it's an honor, Ronnie. My mother stirred that pot. Her mother stirred that pot. <p:0.3> You don't turn off a Founder.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 21.043,
+      "duration": 7.9,
+      "audio": "/audio/radio/the-ninety-year-soup/2.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And listen to that, Barry. That soft little bubble coming down the phone line. <p:0.3> That right there is the heartbeat of the town.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 27.905,
+      "duration": 10.06,
+      "audio": "/audio/radio/the-ninety-year-soup/3.flac"
     },
     {
       "speaker": "barry",
       "text": "It's a nice bubble. I'll give it that. <p:0.3> Mildred, quick question. When was the last time it was, you know, cold?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 37.125,
+      "duration": 9.06,
+      "audio": "/audio/radio/the-ninety-year-soup/4.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Cold? <p:0.3> Why on earth would we let it go cold? Every family adds a little. We've never stopped. We just keep adding.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 45.447,
+      "duration": 9.22,
+      "audio": "/audio/radio/the-ninety-year-soup/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now that's heritage. Everybody contributing to one big beautiful pot.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 53.743,
+      "duration": 5.56,
+      "audio": "/audio/radio/the-ninety-year-soup/6.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "And I add the carrots, Ronnie. <p:0.3> Every Sunday, fresh carrots, peeled myself. So whatever anyone says, the carrots are clean.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 58.384,
+      "duration": 11.26,
+      "audio": "/audio/radio/the-ninety-year-soup/7.flac"
     },
     {
       "speaker": "barry",
       "text": "Nobody said anything yet, Patricia.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 68.353,
+      "duration": 3.08,
+      "audio": "/audio/radio/the-ninety-year-soup/8.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Hi, yes, hello. I'm Darnell, I'm the new health inspector for the county. <p:0.3> So, for the record, I love a tradition. I do. <p:0.3> But I pulled the file on this pot today.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 70.484,
+      "duration": 10.03,
+      "audio": "/audio/radio/the-ninety-year-soup/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A man who does his homework. Welcome aboard, Darnell.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 79.767,
+      "duration": 4.2,
+      "audio": "/audio/radio/the-ninety-year-soup/10.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Thank you. So, for the record, in ninety years, nobody has ever actually replaced the broth. <p:0.3> The 1934 base layer is still in there. At the bottom.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 83.377,
+      "duration": 10.61,
+      "audio": "/audio/radio/the-ninety-year-soup/11.flac"
     },
     {
       "speaker": "barry",
       "text": "The original broth. From 1934. Is at the bottom. Right now.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 93.448,
+      "duration": 5.72,
+      "audio": "/audio/radio/the-ninety-year-soup/12.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Well of course it is, dear. That's the foundation. <p:0.3> My mother stirred that layer. You don't throw out a Founder.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 98.513,
+      "duration": 7.63,
+      "audio": "/audio/radio/the-ninety-year-soup/13.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See, Darnell, that's not a problem. That's ninety years of love, all the way down.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 104.936,
+      "duration": 6.2,
+      "audio": "/audio/radio/the-ninety-year-soup/14.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Right. So, for the record, I asked the gas company who has the burner permit. <p:0.3> They had no record. Because the burner was unplugged. In 1991.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 110.477,
+      "duration": 10.05,
+      "audio": "/audio/radio/the-ninety-year-soup/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Huh. <p:0.3> Mildred, did the pot just get louder? On its own?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 119.795,
+      "duration": 5.34,
+      "audio": "/audio/radio/the-ninety-year-soup/16.flac"
     },
     {
       "speaker": "barry",
       "text": "Wait. <p:0.3> Hold on. If the burner's been off since 1991... <p:0.3> then what's keeping it warm?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 124.325,
+      "duration": 8.92,
+      "audio": "/audio/radio/the-ninety-year-soup/17.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I add the carrots! <p:0.3> The carrots are not the warm part! Talk to someone else!",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 131.915,
+      "duration": 7.26,
+      "audio": "/audio/radio/the-ninety-year-soup/18.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "It keeps itself warm, dear. It learned. <p:0.3> Around the eighties it just sort of... took over its own temperature. We stopped having to do it.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 138.09,
+      "duration": 9.65,
+      "audio": "/audio/radio/the-ninety-year-soup/19.flac"
     },
     {
       "speaker": "barry",
       "text": "It LEARNED?! Soup does not learn, Mildred!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 147.022,
+      "duration": 3.48,
+      "audio": "/audio/radio/the-ninety-year-soup/20.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A self-warming heirloom. <p:0.3> You can't teach that, Barry. That's heritage.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 149.538,
+      "duration": 6.06,
+      "audio": "/audio/radio/the-ninety-year-soup/21.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "So, for the record, I'd like someone to read me the 1934 ingredient list. <p:0.3> Because the first three lines are normal, and then line four is just the word us.",
       "overlap": 0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 154.765,
+      "duration": 10.63,
+      "audio": "/audio/radio/the-ninety-year-soup/22.flac"
     },
     {
       "speaker": "barry",
       "text": "Line four is WHAT?",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 164.649,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-ninety-year-soup/23.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Don't read line four on the air, dear.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 165.744,
+      "duration": 2.36,
+      "audio": "/audio/radio/the-ninety-year-soup/24.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Ma'am, I have to inspect it. I'm coming down to the pot personally tonight.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 167.357,
+      "duration": 4.58,
+      "audio": "/audio/radio/the-ninety-year-soup/25.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Carrots!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 170.939,
+      "duration": 1.6,
+      "audio": "/audio/radio/the-ninety-year-soup/26.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Founder!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 171.546,
+      "duration": 1.04,
+      "audio": "/audio/radio/the-ninety-year-soup/27.flac"
     },
     {
       "speaker": "barry",
       "text": "Unplugged!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 171.999,
+      "duration": 1.52,
+      "audio": "/audio/radio/the-ninety-year-soup/28.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Why is it getting warmer while we TALK?!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 172.835,
+      "duration": 2.37,
+      "audio": "/audio/radio/the-ninety-year-soup/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Folks, the pot is rolling now. A real boil. <p:0.3> Nobody touched it.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 174.07,
+      "duration": 5.66,
+      "audio": "/audio/radio/the-ninety-year-soup/30.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "It can hear you, Ronnie. <p:0.3> It does not like the word inspect.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 178.745,
+      "duration": 4.22,
+      "audio": "/audio/radio/the-ninety-year-soup/31.flac"
     },
     {
       "speaker": "barry",
       "text": "Darnell, do NOT go down to that pot tonight!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 182.018,
+      "duration": 3.6,
+      "audio": "/audio/radio/the-ninety-year-soup/32.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "So, for the record, I'm already in the basement. <p:0.3> And it's... it's looking at me.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 184.484,
+      "duration": 5.5,
+      "audio": "/audio/radio/the-ninety-year-soup/33.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, the real question was never whether we should eat it. <p:0.3> It's whether it's gonna let us STOP. <p:0.3> So I'll ask one last time. When was the last time it was cold?",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 189.227,
+      "duration": 13.52,
+      "audio": "/audio/radio/the-ninety-year-soup/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Hear that, Barry? <p:0.5> One slow bubble. Almost like it answered you.",
       "overlap": -0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 201.958,
+      "duration": 6.06,
+      "audio": "/audio/radio/the-ninety-year-soup/35.flac"
     },
     {
       "speaker": "barry",
       "text": "That was a yes. <p:0.3> Ronnie, that bubble was a yes.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 207.123,
+      "duration": 4.46,
+      "audio": "/audio/radio/the-ninety-year-soup/36.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Never, Barry. It's never once been cold. <p:0.3> That's heritage. We'll be right back, and Darnell, if you can still hear us down there... hang tight. <p:0.3> Soup's on.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 210.522,
+      "duration": 13.0,
+      "audio": "/audio/radio/the-ninety-year-soup/37.flac"
     }
   ]
 }

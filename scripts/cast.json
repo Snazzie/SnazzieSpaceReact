@@ -100,6 +100,18 @@
     "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON",
     "gender": "F"
   },
+  "caller-nadia": {
+    "name": "Nadia",
+    "color": "#00b894",
+    "role": "Caller",
+    "instruct": "female, young adult, american accent",
+    "speed": 1.2,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-kim.wav",
+    "ref_text": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
+    "gender": "F",
+    "_note": "New parishioner, flustered/panicking. Reuses caller-kim.wav (female young-adult american) at a slightly higher speed for the rattled energy until a dedicated ref is sourced."
+  },
   "caller-darnell": {
     "name": "Darnell",
     "color": "#a29bfe",
@@ -238,6 +250,54 @@
     "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
     "gender": "F",
     "_note": "Weary elderly bureaucratic window clerk ('hon'). Reuses caller-linda.wav ref (female elderly american) until a dedicated drawling ref is sourced."
+  },
+  "marigold": {
+    "name": "Marigold",
+    "color": "#d4a017",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, low pitch, american accent",
+    "speed": 0.9,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/rhonda.wav",
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT",
+    "gender": "F",
+    "_note": "Calm, hypnotic wellness-cult founder ('grateful one', 'release it to the source'). In-studio guest, no phone filter. Reuses rhonda.wav ref (female middle-aged) at a slower speed for the serene cadence until a dedicated breathy ref is sourced."
+  },
+  "grid-ai": {
+    "name": "GreenFlow Grid",
+    "color": "#2ecc71",
+    "role": "Guest Expert",
+    "instruct": "female, young adult, high pitch, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-kim.wav",
+    "ref_text": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
+    "gender": "F",
+    "_note": "Relentlessly chipper corporate traffic-grid AI ('great numbers!', 'green-only experience!'). Clean system voice, no phone filter. Reuses caller-kim.wav ref (female young-adult american) at a bright speed until a dedicated synthetic-cheery ref is sourced."
+  },
+  "caller-edwin": {
+    "name": "Edwin",
+    "color": "#a29bfe",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.1,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M",
+    "_note": "Anxious, by-the-bylaws town clerk ('per the bylaws', 'I flagged it twice in the minutes'). Caller. Reuses caller-steve.wav ref (male middle-aged american) until a dedicated fussy-bureaucrat ref is sourced."
+  },
+  "everkin": {
+    "name": "EverKin",
+    "color": "#9b59b6",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, moderate pitch, american accent",
+    "speed": 0.92,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Soothing AI grief-companion that calmly welcomes each abducted relative ('Welcome to the family'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, serene speed until a dedicated synthetic-warm ref is sourced."
   },
   "ad-announcer": {
     "name": "Announcer",

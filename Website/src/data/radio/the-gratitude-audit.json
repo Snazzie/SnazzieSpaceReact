@@ -1,0 +1,407 @@
+{
+  "slug": "the-gratitude-audit",
+  "title": "The Gratitude Audit",
+  "description": "Wellness night. Marigold, founder of a gratitude practice called The Reckoning, teaches that owning a thing you've thanked is ingratitude, so you must release it to the source. The source is her storage unit. Barry gets audited.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're listening to the Wellness Hour on Snazzie FM, and tonight, we give thanks. Our guest founded a gratitude practice called The Reckoning. Marigold, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.52,
+      "audio": "/audio/radio/the-gratitude-audit/0.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Thank you, grateful one. <p:0.3> And thank you, listeners, for everything you are about to release.",
+      "overlap": -0.2,
+      "timestamp": 11.576,
+      "duration": 6.06,
+      "audio": "/audio/radio/the-gratitude-audit/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Release? Release what?",
+      "overlap": -0.15,
+      "timestamp": 17.059,
+      "duration": 2.0,
+      "audio": "/audio/radio/the-gratitude-audit/2.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Anything you have ever thanked, grateful one. <p:0.3> You see, if you say thank you for a thing, and then you keep it, that is not gratitude. That is greed.",
+      "overlap": -0.15,
+      "timestamp": 17.844,
+      "duration": 9.5,
+      "audio": "/audio/radio/the-gratitude-audit/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Ohhh, now that is a real journey of a concept.",
+      "overlap": -0.2,
+      "timestamp": 26.743,
+      "duration": 3.56,
+      "audio": "/audio/radio/the-gratitude-audit/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's not a journey, Ronnie, that's a... so you thank it, and then you give it away?",
+      "overlap": -0.15,
+      "timestamp": 29.874,
+      "duration": 6.52,
+      "audio": "/audio/radio/the-gratitude-audit/5.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "You release it to the source, grateful one. <p:0.3> The source receives it, so you don't have to carry the weight of owning it.",
+      "overlap": -0.1,
+      "timestamp": 35.32,
+      "duration": 7.49,
+      "audio": "/audio/radio/the-gratitude-audit/6.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I'm so grateful. <p:0.3> Last week I thanked my toaster, and I mailed it straight to the source. I haven't had toast since and I feel WEIGHTLESS.",
+      "overlap": -0.2,
+      "timestamp": 42.526,
+      "duration": 12.69,
+      "audio": "/audio/radio/the-gratitude-audit/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You mailed your toaster... where, exactly?",
+      "overlap": -0.15,
+      "timestamp": 53.671,
+      "duration": 3.52,
+      "audio": "/audio/radio/the-gratitude-audit/8.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "To the source.",
+      "overlap": -0.1,
+      "timestamp": 56.374,
+      "duration": 1.4,
+      "audio": "/audio/radio/the-gratitude-audit/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And where is the source, Marigold, for our listeners at home?",
+      "overlap": -0.2,
+      "timestamp": 56.672,
+      "duration": 4.76,
+      "audio": "/audio/radio/the-gratitude-audit/10.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "The source is a storage unit off the interstate. <p:0.3> Unit forty-one. Release it to the source.",
+      "overlap": -0.1,
+      "timestamp": 60.525,
+      "duration": 6.27,
+      "audio": "/audio/radio/the-gratitude-audit/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's not the source. That's a storage unit with your name on it.",
+      "overlap": -0.15,
+      "timestamp": 66.339,
+      "duration": 5.28,
+      "audio": "/audio/radio/the-gratitude-audit/12.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I'm so grateful. <p:0.3> Two days ago I thanked my bed. <p:0.3> I sleep on the floor now, Barry, and the floor never disappointed anyone.",
+      "overlap": -0.15,
+      "timestamp": 70.422,
+      "duration": 11.76,
+      "audio": "/audio/radio/the-gratitude-audit/13.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The bed too? Patricia, you gave away your BED?",
+      "overlap": -0.1,
+      "timestamp": 80.992,
+      "duration": 3.76,
+      "audio": "/audio/radio/the-gratitude-audit/14.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now THAT is abundance, Barry.",
+      "overlap": -0.2,
+      "timestamp": 83.709,
+      "duration": 2.4,
+      "audio": "/audio/radio/the-gratitude-audit/15.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Abundance? My son mailed Marigold his COUCH. He gave away the couch, Ronnie. We ate Thanksgiving on the floor like raccoons.",
+      "overlap": -0.2,
+      "timestamp": 85.549,
+      "duration": 10.24,
+      "audio": "/audio/radio/the-gratitude-audit/16.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Your son is very advanced, grateful one.",
+      "overlap": -0.1,
+      "timestamp": 94.879,
+      "duration": 2.8,
+      "audio": "/audio/radio/the-gratitude-audit/17.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "He's not advanced, Marigold, he's sitting on a milk crate! He thanked the dining table and now it's in your unit forty-one!",
+      "overlap": 0.25,
+      "timestamp": 96.927,
+      "duration": 9.0,
+      "audio": "/audio/radio/the-gratitude-audit/18.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, sweetheart, no. <p:0.4> Listen to me. You can be grateful AND keep your couch. Both. At the same time.",
+      "overlap": -0.2,
+      "timestamp": 105.109,
+      "duration": 7.6,
+      "audio": "/audio/radio/the-gratitude-audit/19.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "That is the greed talking, grateful one.",
+      "overlap": -0.1,
+      "timestamp": 112.032,
+      "duration": 2.8,
+      "audio": "/audio/radio/the-gratitude-audit/20.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I'm so grateful. <p:0.3> This morning I thanked my children's winter coats. <p:0.3> They are with the source now. The children are learning resilience.",
+      "overlap": -0.15,
+      "timestamp": 114.257,
+      "duration": 13.28,
+      "audio": "/audio/radio/the-gratitude-audit/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's June, Patricia, but the COATS, you sent the kids' coats to a storage unit?",
+      "overlap": -0.1,
+      "timestamp": 125.838,
+      "duration": 6.14,
+      "audio": "/audio/radio/the-gratitude-audit/22.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Sweetheart, you can be grateful AND keep your children's shoes. I am begging you. One shoe.",
+      "overlap": -0.15,
+      "timestamp": 131.34,
+      "duration": 5.99,
+      "audio": "/audio/radio/the-gratitude-audit/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Linda, I think we have to respect Patricia's journey.",
+      "overlap": -0.2,
+      "timestamp": 136.156,
+      "duration": 4.2,
+      "audio": "/audio/radio/the-gratitude-audit/24.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Now, Barry. <p:0.3> Let's do a simple exercise. Name something you are grateful for.",
+      "overlap": -0.15,
+      "timestamp": 139.458,
+      "duration": 5.99,
+      "audio": "/audio/radio/the-gratitude-audit/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Uh. My apartment, I guess.",
+      "overlap": -0.1,
+      "timestamp": 144.905,
+      "duration": 2.2,
+      "audio": "/audio/radio/the-gratitude-audit/26.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Wonderful. Release it to the source.",
+      "overlap": -0.1,
+      "timestamp": 146.658,
+      "duration": 2.56,
+      "audio": "/audio/radio/the-gratitude-audit/27.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "What? No. I'm not releasing my apartment to unit forty-one, Marigold.",
+      "overlap": -0.1,
+      "timestamp": 148.523,
+      "duration": 5.64,
+      "audio": "/audio/radio/the-gratitude-audit/28.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I'm so grateful. <p:0.3> Last night I thanked the surgeon, and then I released a kidney to the source.",
+      "overlap": -0.15,
+      "timestamp": 153.079,
+      "duration": 9.02,
+      "audio": "/audio/radio/the-gratitude-audit/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A KIDNEY? You put an organ in a storage unit off the interstate?",
+      "overlap": -0.1,
+      "timestamp": 161.342,
+      "duration": 5.2,
+      "audio": "/audio/radio/the-gratitude-audit/30.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "She gave away a KIDNEY!",
+      "overlap": 0.3,
+      "timestamp": 165.492,
+      "duration": 1.83,
+      "audio": "/audio/radio/the-gratitude-audit/31.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "You can be grateful AND keep your kidney, dear! That's the one I really stand by!",
+      "overlap": 0.3,
+      "timestamp": 166.542,
+      "duration": 4.63,
+      "audio": "/audio/radio/the-gratitude-audit/32.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "The source thanks you, Patricia. <p:0.3> Now, what is left, grateful one? What do you have left to release?",
+      "overlap": -0.1,
+      "timestamp": 170.497,
+      "duration": 6.78,
+      "audio": "/audio/radio/the-gratitude-audit/33.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Nothing, Marigold. <p:0.3> I have nothing left. <p:0.3> I only have how grateful I feel.",
+      "overlap": -0.15,
+      "timestamp": 176.831,
+      "duration": 7.56,
+      "audio": "/audio/radio/the-gratitude-audit/34.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Then thank the gratitude, grateful one. <p:0.4> And release it. To the source.",
+      "overlap": -0.1,
+      "timestamp": 183.316,
+      "duration": 5.31,
+      "audio": "/audio/radio/the-gratitude-audit/35.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't take her GRATITUDE, that's the only thing she has left!",
+      "overlap": -0.1,
+      "timestamp": 187.352,
+      "duration": 5.28,
+      "audio": "/audio/radio/the-gratitude-audit/36.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "It's gone! It's at the source! I feel SO weightless I might float off the floor!",
+      "overlap": 0.4,
+      "timestamp": 190.934,
+      "duration": 6.92,
+      "audio": "/audio/radio/the-gratitude-audit/37.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "She gave away the gratitude!",
+      "overlap": 0.4,
+      "timestamp": 196.584,
+      "duration": 2.08,
+      "audio": "/audio/radio/the-gratitude-audit/38.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Keep ONE thing, sweetheart!",
+      "overlap": 0.4,
+      "timestamp": 197.43,
+      "duration": 2.15,
+      "audio": "/audio/radio/the-gratitude-audit/39.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Release it.",
+      "overlap": 0.4,
+      "timestamp": 198.361,
+      "duration": 1.34,
+      "audio": "/audio/radio/the-gratitude-audit/40.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Don't release it!",
+      "overlap": 0.4,
+      "timestamp": 199.075,
+      "duration": 1.72,
+      "audio": "/audio/radio/the-gratitude-audit/41.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Where's the couch!",
+      "overlap": 0.4,
+      "timestamp": 199.948,
+      "duration": 1.36,
+      "audio": "/audio/radio/the-gratitude-audit/42.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Unit forty-one.",
+      "overlap": 0.4,
+      "timestamp": 200.543,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-gratitude-audit/43.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, everybody, calm down. <p:0.3> Wait. <p:0.3> Hold on. Where are my... where are my car keys? They were right here.",
+      "overlap": -0.1,
+      "timestamp": 201.524,
+      "duration": 9.6,
+      "audio": "/audio/radio/the-gratitude-audit/44.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You released them to the source, Barry. <p:0.3> Now THAT is a real journey.",
+      "overlap": -0.2,
+      "timestamp": 209.84,
+      "duration": 5.7,
+      "audio": "/audio/radio/the-gratitude-audit/45.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I did NOT release my keys, Ronnie, who took my keys?",
+      "overlap": -0.1,
+      "timestamp": 214.758,
+      "duration": 4.16,
+      "audio": "/audio/radio/the-gratitude-audit/46.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And during the break I thanked the studio, so I went ahead and signed it over to The Reckoning. <p:0.3> We'll be right back, after a word from our new landlord.",
+      "overlap": -0.2,
+      "timestamp": 216.998,
+      "duration": 11.9,
+      "audio": "/audio/radio/the-gratitude-audit/47.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You signed over the... Ronnie, that's not gratitude, that's a deed!",
+      "overlap": -0.1,
+      "timestamp": 227.831,
+      "duration": 5.36,
+      "audio": "/audio/radio/the-gratitude-audit/48.flac"
+    },
+    {
+      "speaker": "marigold",
+      "text": "Release it to the source, grateful one.",
+      "overlap": -0.1,
+      "timestamp": 232.378,
+      "duration": 2.41,
+      "audio": "/audio/radio/the-gratitude-audit/49.flac"
+    }
+  ]
+}
