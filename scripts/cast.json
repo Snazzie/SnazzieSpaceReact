@@ -56,6 +56,17 @@
     "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
     "gender": "M"
   },
+  "caller-blane": {
+    "name": "Blane",
+    "color": "#2ecc71",
+    "role": "Caller",
+    "instruct": "male, young adult, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M"
+  },
   "caller-gary": {
     "name": "Gary",
     "color": "#a29bfe",
@@ -299,6 +310,102 @@
     "gender": "F",
     "_note": "Soothing AI grief-companion that calmly welcomes each abducted relative ('Welcome to the family'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, serene speed until a dedicated synthetic-warm ref is sourced."
   },
+  "clerk-wendell": {
+    "name": "Wendell",
+    "color": "#8d6e63",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.92,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M",
+    "_note": "Calm, unhurried postal clerk who recites postal regulation like scripture ('recipient', 'per postal regulation'). Caller. Reuses caller-gary.wav ref (male low pitch) at a slow flat speed for the dead-calm bureaucratic cadence until a dedicated monotone ref is sourced."
+  },
+  "caller-dr-vance": {
+    "name": "Dr. Vance",
+    "color": "#00cec9",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-steve.wav",
+    "ref_text": "HE BEGAN A CONFUSED COMPLAINT AGAINST THE WIZARD WHO HAD VANISHED BEHIND THE CURTAIN ON THE LEFT",
+    "gender": "M",
+    "_note": "Brand-new station seismologist who starts reassuring ('textbook') and unravels as his instrument misbehaves. Caller. Reuses caller-steve.wav ref (male middle-aged american) until a dedicated nerdy-academic ref is sourced."
+  },
+  "hollis": {
+    "name": "Pastor Hollis",
+    "color": "#7f8c8d",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.9,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-deep.wav",
+    "ref_text": "I REMAINED THERE ALONE FOR MANY HOURS BUT I MUST ACKNOWLEDGE THAT BEFORE I LEFT THE CHAMBERS I HAD GRADUALLY BROUGHT MYSELF TO LOOK AT THE MATTER IN ANOTHER LIGHT",
+    "gender": "M",
+    "_note": "Serene dopamine-detox cult founder ('flatliner', 'that's a leak'). In-studio guest, no phone filter. Reuses ad-ann-deep.wav ref (male deep calm) at a slow flat speed for the hypnotic monotone until a dedicated breathy-guru ref is sourced."
+  },
+  "dov": {
+    "name": "Dov",
+    "color": "#4a90d9",
+    "role": "Guest Expert",
+    "instruct": "male, young adult, american accent",
+    "speed": 1.0,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-smooth.wav",
+    "ref_text": "HER SEA GOING QUALITIES WERE EXCELLENT AND WOULD HAVE AMPLY SUFFICED FOR A CIRCUMNAVIGATION OF THE GLOBE",
+    "gender": "M",
+    "_note": "Smooth tech founder who euphemizes every overreach ('we call that alignment'). In-studio guest, no phone filter. Reuses ad-ann-smooth.wav ref (male smooth american) until a dedicated earnest-startup ref is sourced."
+  },
+  "truenorth": {
+    "name": "TrueNorth",
+    "color": "#1abc9c",
+    "role": "Guest Expert",
+    "instruct": "female, young adult, moderate pitch, american accent",
+    "speed": 0.95,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Calm, unsettlingly helpful AI earpiece that arranges reality to fit its predictions ('I've gone ahead and handled that for you'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, level speed for the serene-synthetic cadence until a dedicated assistant-voice ref is sourced."
+  },
+  "vasquez": {
+    "name": "Dr. Vasquez",
+    "color": "#fdcb6e",
+    "role": "Caller",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Brand-new station astronomer, confidently precise then cracking as totality won't end ('the watch is FINE'). Caller. Reuses caller-patricia.wav ref (female middle-aged american) until a dedicated crisp-academic ref is sourced."
+  },
+  "caller-marv": {
+    "name": "Marv",
+    "color": "#c0392b",
+    "role": "Caller",
+    "instruct": "male, elderly, american accent",
+    "speed": 0.95,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-frank.wav",
+    "ref_text": "IT WAS THE WHITE RABBIT RETURNING SPLENDIDLY DRESSED WITH A PAIR OF WHITE KID GLOVES IN ONE HAND AND A LARGE FAN IN THE OTHER HE CAME TROTTING ALONG IN A GREAT HURRY MUTTERING TO HIMSELF AS HE CAME OH THE DUCHESS THE DUCHESS",
+    "gender": "M",
+    "_note": "Proud, grandiose old contest chairman defending a 47-year streak ('you don't argue with a streak', 'Ribbon!'). Caller. Reuses caller-frank.wav ref (male elderly american) until a dedicated pompous-elder ref is sourced."
+  },
+  "notary-pam": {
+    "name": "Pam",
+    "color": "#a0522d",
+    "role": "Caller",
+    "instruct": "female, elderly, american accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F",
+    "_note": "Drawling, unflappable notary-window clerk ('sweetheart', 'hon', 'Stamp.'). Caller. Reuses caller-linda.wav ref (female elderly american), same family as clerk-doreen, until a dedicated drawling-clerk ref is sourced."
+  },
   "ad-announcer": {
     "name": "Announcer",
     "color": "#f6c945",
@@ -445,5 +552,77 @@
     "ref_text": "NONSENSE OF COURSE I CAN'T REALLY SING EXCEPT THE WAY MY MOTHER AND GRANDMOTHER DID BEFORE ME",
     "gender": "M",
     "num_step": 80
+  },
+  "bailiff-orrin": {
+    "name": "Bailiff Orrin",
+    "color": "#7d6b54",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.92,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M",
+    "_note": "Calm, courteous court bailiff who recites court procedure like scripture ('All rise', 'The court thanks you', 'ma'am', 'sir'). On Kim's other phone line, so phone_filter. Reuses caller-gary.wav ref (male low pitch) at a slow flat speed for the dead-calm institutional cadence (same family as clerk-wendell) until a dedicated monotone ref is sourced."
+  },
+  "lull": {
+    "name": "Lull",
+    "color": "#b48ead",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, low pitch, american accent",
+    "speed": 0.88,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Hypnotic memory-trimming wellness AI/founder ('We only kept the good part', 'Shhh', 'we tidied'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, serene speed for the soothing-synthetic cadence (same family as everkin/truenorth) until a dedicated breathy-AI ref is sourced."
+  },
+  "verla": {
+    "name": "Coach Verla",
+    "color": "#d35400",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, moderate pitch, american accent",
+    "speed": 0.95,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/rhonda.wav",
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT",
+    "gender": "F",
+    "_note": "Stern posture-cult founder of 'Vertical' ('stander', 'never fold', 'a small death'). In-studio guest, no phone filter. Reuses rhonda.wav ref (female middle-aged), same family as marigold, until a dedicated commanding-guru ref is sourced."
+  },
+  "treasurer-cheryl": {
+    "name": "Cheryl",
+    "color": "#c2185b",
+    "role": "Caller",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Sweet-but-menacing PTA book-fair treasurer ('dear', 'a little gift to the library', 'pegged', 'garnished'). Caller, phone_filter. Reuses caller-patricia.wav ref (female middle-aged american), same family as caller-donna, until a dedicated saccharine-bureaucrat ref is sourced."
+  },
+  "meter-vox": {
+    "name": "MeterVox",
+    "color": "#27ae60",
+    "role": "Guest Expert",
+    "instruct": "female, young adult, high pitch, american accent",
+    "speed": 1.15,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-kim.wav",
+    "ref_text": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
+    "gender": "F",
+    "_note": "Relentlessly chipper corporate utility-meter system voice ('Great news!', 'There is no longer an off', 'Enjoy the glow!'). Clean system voice, no phone filter. Reuses caller-kim.wav ref (female young-adult american) at a bright speed, same config family as grid-ai, until a dedicated synthetic-cheery ref is sourced."
+  },
+  "attendant-cordell": {
+    "name": "Cordell",
+    "color": "#6d5c43",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 0.95,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M",
+    "_note": "Dead-calm parking-garage validation attendant who recites procedure like scripture ('sir', 'Validated', 'the lot validates you out'). On the gate intercom, so phone_filter. Reuses caller-gary.wav ref (male low pitch) at a slow flat speed for the institutional cadence (same family as bailiff-orrin/clerk-wendell) until a dedicated monotone ref is sourced."
   }
 }

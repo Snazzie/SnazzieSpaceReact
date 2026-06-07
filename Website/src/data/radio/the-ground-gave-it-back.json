@@ -1,0 +1,359 @@
+{
+  "slug": "the-ground-gave-it-back",
+  "title": "Breaking: The Ground Gave It Back",
+  "description": "After a hard rain, worms surface on every sidewalk in town. Ronnie covers it not as weather but as a geological emergency: the earth is rejecting what it was given. The station's brand-new seismologist says it's textbook, right up until the dirt keeps coughing up things nobody admits to burying.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "We are interrupting the regular hour on Snazzie FM for breaking ground conditions. Stay off the lawns. <p:0.3> Overnight, the earth gave it back.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.1,
+      "audio": "/audio/radio/the-ground-gave-it-back/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It rained, Ronnie. That's it. It rained.",
+      "overlap": -0.15,
+      "timestamp": 10.277,
+      "duration": 3.24,
+      "audio": "/audio/radio/the-ground-gave-it-back/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gave back its worms, Barry. Thousands of them. On every sidewalk in town. <p:0.3> I'm putting us under a Soil Advisory, Tier One.",
+      "overlap": -0.2,
+      "timestamp": 12.644,
+      "duration": 9.62,
+      "audio": "/audio/radio/the-ground-gave-it-back/2.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Yeah, hi, Ronnie. So. <p:0.3> I'm out front counting. <p:0.3> I'm at four hundred worms and the parking lot has more than the sidewalk.",
+      "overlap": -0.2,
+      "timestamp": 21.819,
+      "duration": 5.07,
+      "audio": "/audio/radio/the-ground-gave-it-back/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Because worms surface after rain. They drown down there. They come up. It is the most ordinary thing a worm does.",
+      "overlap": -0.15,
+      "timestamp": 26.481,
+      "duration": 9.12,
+      "audio": "/audio/radio/the-ground-gave-it-back/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We've got a professional standing by. Brand new to the station. Doctor Vance, our seismologist. You're on the air.",
+      "overlap": -0.2,
+      "timestamp": 34.69,
+      "duration": 8.76,
+      "audio": "/audio/radio/the-ground-gave-it-back/5.flac"
+    },
+    {
+      "speaker": "caller-dr-vance",
+      "text": "Thanks, Ronnie. And I want to reassure your listeners. <p:0.3> Worms surfacing after heavy rain is textbook. Completely textbook. There is no seismic component.",
+      "overlap": -0.2,
+      "timestamp": 42.72,
+      "duration": 7.94,
+      "audio": "/audio/radio/the-ground-gave-it-back/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Thank you. <p:0.3> A scientist. Finally.",
+      "overlap": -0.1,
+      "timestamp": 50.375,
+      "duration": 3.7,
+      "audio": "/audio/radio/the-ground-gave-it-back/7.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Hello, dear, it's Patricia on Maple. <p:0.3> The worms are lovely, but my flowerbed pushed up something this morning. <p:0.3> It pushed up my late husband's golf clubs.",
+      "overlap": -0.1,
+      "timestamp": 53.373,
+      "duration": 14.07,
+      "audio": "/audio/radio/the-ground-gave-it-back/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Folks. <p:0.3> The ground gave it back.",
+      "overlap": -0.15,
+      "timestamp": 65.901,
+      "duration": 3.98,
+      "audio": "/audio/radio/the-ground-gave-it-back/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Or, Patricia, you buried golf clubs in your flowerbed and forgot. People do that.",
+      "overlap": -0.1,
+      "timestamp": 68.861,
+      "duration": 6.64,
+      "audio": "/audio/radio/the-ground-gave-it-back/10.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I did not bury them, dear. <p:0.3> Walter was buried with those clubs. In June. <p:0.3> Across town.",
+      "overlap": -0.1,
+      "timestamp": 74.212,
+      "duration": 8.72,
+      "audio": "/audio/radio/the-ground-gave-it-back/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Doctor Vance. Is that textbook.",
+      "overlap": -0.15,
+      "timestamp": 82.211,
+      "duration": 2.56,
+      "audio": "/audio/radio/the-ground-gave-it-back/12.flac"
+    },
+    {
+      "speaker": "caller-dr-vance",
+      "text": "That is... that's a coincidence. Soil shifts. Things migrate. <p:0.3> Although, I will say, my instrument just twitched, and that... should not be on the seismograph.",
+      "overlap": -0.1,
+      "timestamp": 84.132,
+      "duration": 7.94,
+      "audio": "/audio/radio/the-ground-gave-it-back/13.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Yeah, this is Sal. <p:0.3> I just want it on record that I don't know nothin' about no box.",
+      "overlap": -0.1,
+      "timestamp": 91.504,
+      "duration": 7.1,
+      "audio": "/audio/radio/the-ground-gave-it-back/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Nobody asked you about a box, Sal.",
+      "overlap": -0.1,
+      "timestamp": 97.794,
+      "duration": 2.84,
+      "audio": "/audio/radio/the-ground-gave-it-back/15.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Right. And there isn't one. So we're good.",
+      "overlap": 0.2,
+      "timestamp": 99.722,
+      "duration": 3.28,
+      "audio": "/audio/radio/the-ground-gave-it-back/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I'm upgrading us to a Soil Advisory, Tier Three. <p:0.3> The earth is rejecting what it was given, and it is not finished.",
+      "overlap": -0.2,
+      "timestamp": 102.123,
+      "duration": 9.1,
+      "audio": "/audio/radio/the-ground-gave-it-back/17.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Ronnie, dear, it's pushed up more. <p:0.3> A ring that is not my ring. And a second phone. <p:0.3> Walter only had the one phone that I knew about.",
+      "overlap": -0.1,
+      "timestamp": 110.52,
+      "duration": 11.94,
+      "audio": "/audio/radio/the-ground-gave-it-back/18.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A ring. <p:0.3> The ground gave it back.",
+      "overlap": -0.15,
+      "timestamp": 121.27,
+      "duration": 3.98,
+      "audio": "/audio/radio/the-ground-gave-it-back/19.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Patricia, that is between you and Walter, not you and the topsoil.",
+      "overlap": -0.1,
+      "timestamp": 124.274,
+      "duration": 5.4,
+      "audio": "/audio/radio/the-ground-gave-it-back/20.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie? <p:0.3> Update. I stopped counting worms. <p:0.3> The flowerbed by the door surfaced a casserole dish. <p:0.3> It says property of Saint Bevin's on the bottom.",
+      "overlap": -0.15,
+      "timestamp": 128.93,
+      "duration": 6.31,
+      "audio": "/audio/radio/the-ground-gave-it-back/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That dish, Todd, has been missing for three years. Earl filed paperwork on it.",
+      "overlap": -0.1,
+      "timestamp": 134.727,
+      "duration": 6.36,
+      "audio": "/audio/radio/the-ground-gave-it-back/22.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A casserole dish. <p:0.3> The ground gave it back. Doctor Vance, give me a reading.",
+      "overlap": -0.15,
+      "timestamp": 140.041,
+      "duration": 6.7,
+      "audio": "/audio/radio/the-ground-gave-it-back/23.flac"
+    },
+    {
+      "speaker": "caller-dr-vance",
+      "text": "I can't, Ronnie. The needle is just... drawing. <p:0.3> It is drawing a box. The seismograph is drawing a small rectangular box and that... that should not be on the seismograph.",
+      "overlap": 0.2,
+      "timestamp": 145.528,
+      "duration": 8.46,
+      "audio": "/audio/radio/the-ground-gave-it-back/24.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "What box. WHAT box. I don't know nothin' about no box!",
+      "overlap": 0.3,
+      "timestamp": 153.044,
+      "duration": 4.16,
+      "audio": "/audio/radio/the-ground-gave-it-back/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Sal, you keep defending a box no one mentioned.",
+      "overlap": 0.25,
+      "timestamp": 156.107,
+      "duration": 3.88,
+      "audio": "/audio/radio/the-ground-gave-it-back/26.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "His yard's on the map, Ronnie. <p:0.3> Sal's back lawn just heaved. There's a corner of something metal coming up.",
+      "overlap": -0.1,
+      "timestamp": 159.27,
+      "duration": 4.1,
+      "audio": "/audio/radio/the-ground-gave-it-back/27.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "That's a SPRINKLER part! That's nothin'! Push it back DOWN!",
+      "overlap": -0.1,
+      "timestamp": 163.119,
+      "duration": 4.52,
+      "audio": "/audio/radio/the-ground-gave-it-back/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You can't push it back down, Sal. <p:0.3> The ground gave it back.",
+      "overlap": -0.15,
+      "timestamp": 166.836,
+      "duration": 5.06,
+      "audio": "/audio/radio/the-ground-gave-it-back/29.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Sal, dear, mine came up too. <p:0.3> You just have to let it.",
+      "overlap": 0.2,
+      "timestamp": 170.827,
+      "duration": 4.98,
+      "audio": "/audio/radio/the-ground-gave-it-back/30.flac"
+    },
+    {
+      "speaker": "caller-dr-vance",
+      "text": "Everyone, this is textbook, it is absolutely text... <p:0.3> no. <p:0.3> The whole town is on the instrument now. Every lawn. All at once.",
+      "overlap": 0.3,
+      "timestamp": 174.386,
+      "duration": 7.32,
+      "audio": "/audio/radio/the-ground-gave-it-back/31.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It RAINED, doctor!",
+      "overlap": 0.35,
+      "timestamp": 180.896,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-ground-gave-it-back/32.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "It's a SPRINKLER!",
+      "overlap": 0.4,
+      "timestamp": 181.49,
+      "duration": 1.88,
+      "audio": "/audio/radio/the-ground-gave-it-back/33.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Two phones, dear!",
+      "overlap": 0.35,
+      "timestamp": 182.516,
+      "duration": 1.92,
+      "audio": "/audio/radio/the-ground-gave-it-back/34.flac"
+    },
+    {
+      "speaker": "caller-dr-vance",
+      "text": "Not textbook!",
+      "overlap": 0.4,
+      "timestamp": 183.13,
+      "duration": 1.52,
+      "audio": "/audio/radio/the-ground-gave-it-back/35.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Soil Advisory, Tier Five!",
+      "overlap": 0.3,
+      "timestamp": 183.643,
+      "duration": 2.24,
+      "audio": "/audio/radio/the-ground-gave-it-back/36.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie. <p:0.4> The station lot just surfaced something. <p:0.3> It's a lockbox. <p:0.3> It says Snazzie FM on the lid.",
+      "overlap": -0.2,
+      "timestamp": 185.692,
+      "duration": 5.29,
+      "audio": "/audio/radio/the-ground-gave-it-back/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...Whose is it, Todd.",
+      "overlap": -0.15,
+      "timestamp": 190.39,
+      "duration": 2.04,
+      "audio": "/audio/radio/the-ground-gave-it-back/38.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Nobody's claiming it. <p:0.4> But there's a name scratched under the handle. <p:0.3> It's, um. <p:0.3> It's yours, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 191.82,
+      "duration": 5.73,
+      "audio": "/audio/radio/the-ground-gave-it-back/39.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. <p:0.3> The ground gave it back.",
+      "overlap": -0.1,
+      "timestamp": 197.305,
+      "duration": 3.74,
+      "audio": "/audio/radio/the-ground-gave-it-back/40.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...We're downgrading the advisory. <p:0.4> This one's a private matter. We'll be right back after a word.",
+      "overlap": -0.2,
+      "timestamp": 199.822,
+      "duration": 7.92,
+      "audio": "/audio/radio/the-ground-gave-it-back/41.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It rained, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 206.975,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-ground-gave-it-back/42.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It always rains eventually, Barry.",
+      "overlap": -0.15,
+      "timestamp": 207.594,
+      "duration": 2.84,
+      "audio": "/audio/radio/the-ground-gave-it-back/43.flac"
+    }
+  ]
+}

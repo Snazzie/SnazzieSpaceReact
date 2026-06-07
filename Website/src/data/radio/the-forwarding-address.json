@@ -1,0 +1,351 @@
+{
+  "slug": "the-forwarding-address",
+  "title": "The Forwarding Address",
+  "description": "Darnell filed a change of address so his mail follows him. It worked too well. A postal clerk named Wendell calmly explains that the new address is not an apartment, it's Regional Sorting, and the only way to stop being forwarded is to file as undeliverable.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM. Our next caller just moved into a new place and says the post office is being a little too helpful. Darnell, you're on the air.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.2,
+      "audio": "/audio/radio/the-forwarding-address/0.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Hey, Ronnie. Yeah, so, I filed a change of address last week. Routine thing. Mail follows me to the new apartment.",
+      "overlap": -0.2,
+      "timestamp": 10.62,
+      "duration": 7.06,
+      "audio": "/audio/radio/the-forwarding-address/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Sounds like it's working great.",
+      "overlap": -0.2,
+      "timestamp": 17.019,
+      "duration": 2.68,
+      "audio": "/audio/radio/the-forwarding-address/2.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It's working too great, Barry. First the mail forwarded. Fine. Then my magazine subscriptions forwarded. Then my dentist appointment forwarded.",
+      "overlap": -0.1,
+      "timestamp": 18.728,
+      "duration": 8.99,
+      "audio": "/audio/radio/the-forwarding-address/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that is a thorough postal service.",
+      "overlap": -0.2,
+      "timestamp": 26.937,
+      "duration": 3.08,
+      "audio": "/audio/radio/the-forwarding-address/4.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Then this morning I went to remember my mom's birthday. <p:0.3> And it was gone, Ronnie. The memory. There was a little slip where it used to be. It said, forwarded.",
+      "overlap": 0,
+      "timestamp": 29.452,
+      "duration": 9.83,
+      "audio": "/audio/radio/the-forwarding-address/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, that's not the post office, that's just getting older.",
+      "overlap": -0.2,
+      "timestamp": 38.025,
+      "duration": 4.92,
+      "audio": "/audio/radio/the-forwarding-address/6.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It had a tracking number on it, Barry.",
+      "overlap": -0.1,
+      "timestamp": 42.177,
+      "duration": 2.17,
+      "audio": "/audio/radio/the-forwarding-address/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Just throw the slip away. Just shred it.",
+      "overlap": -0.15,
+      "timestamp": 44.088,
+      "duration": 3.32,
+      "audio": "/audio/radio/the-forwarding-address/8.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I shredded it. <p:0.3> The shredder forwarded it. There's a clerk on the line, he wants to confirm the new address.",
+      "overlap": 0,
+      "timestamp": 46.824,
+      "duration": 6.9,
+      "audio": "/audio/radio/the-forwarding-address/9.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "Good evening. <p:0.3> I have a recipient here updating delivery. Per postal regulation, I just need to confirm the forwarding address on file.",
+      "overlap": -0.15,
+      "timestamp": 53.062,
+      "duration": 12.13,
+      "audio": "/audio/radio/the-forwarding-address/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Go right ahead, sir. What's the new address?",
+      "overlap": -0.2,
+      "timestamp": 64.632,
+      "duration": 3.44,
+      "audio": "/audio/radio/the-forwarding-address/11.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "It's not an apartment, recipient. <p:0.3> The address on file is Regional Sorting. Everything routes through there now. The recipient included.",
+      "overlap": -0.1,
+      "timestamp": 67.199,
+      "duration": 12.82,
+      "audio": "/audio/radio/the-forwarding-address/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The recipient included? Darnell, just cancel the forward. Just call them and cancel it.",
+      "overlap": -0.15,
+      "timestamp": 78.842,
+      "duration": 7.2,
+      "audio": "/audio/radio/the-forwarding-address/13.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I tried, Barry. I filed a cancellation. <p:0.3> Then the cancellation got forwarded. So I filed a cancellation of that one. It says... in transit.",
+      "overlap": 0,
+      "timestamp": 85.47,
+      "duration": 9.13,
+      "audio": "/audio/radio/the-forwarding-address/14.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "That's correct, recipient. Each cancellation generates a forward of the cancellation. Per postal regulation, we cannot stop a parcel that is already moving.",
+      "overlap": -0.1,
+      "timestamp": 93.252,
+      "duration": 12.68,
+      "audio": "/audio/radio/the-forwarding-address/15.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Ronnie! Ronnie, it's Mildred, I live next door to Darnell. I'm looking out my window right now. His mailbox is gone.",
+      "overlap": 0.25,
+      "timestamp": 105.031,
+      "duration": 8.98,
+      "audio": "/audio/radio/the-forwarding-address/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gone how? Like somebody took it?",
+      "overlap": -0.1,
+      "timestamp": 113.377,
+      "duration": 2.72,
+      "audio": "/audio/radio/the-forwarding-address/17.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Gone like it was never there, Barry. <p:0.3> Now the porch is gone. Now his welcome mat. <p:0.3> Now the porch light's just hanging in the air.",
+      "overlap": 0.2,
+      "timestamp": 115.086,
+      "duration": 8.86,
+      "audio": "/audio/radio/the-forwarding-address/18.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Wendell, what does it take to stop being forwarded? There has to be a form.",
+      "overlap": 0,
+      "timestamp": 123.641,
+      "duration": 4.26,
+      "audio": "/audio/radio/the-forwarding-address/19.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "There is one option, recipient. <p:0.4> You file as undeliverable. That ends the forwarding immediately.",
+      "overlap": -0.1,
+      "timestamp": 127.452,
+      "duration": 9.28,
+      "audio": "/audio/radio/the-forwarding-address/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well there you go, Darnell, file the undeliverable. Problem solved.",
+      "overlap": -0.2,
+      "timestamp": 135.179,
+      "duration": 5.32,
+      "audio": "/audio/radio/the-forwarding-address/21.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "I should clarify, recipient. <p:0.3> Undeliverable means you cease to exist as a valid recipient. There is no address. There is no one to deliver to.",
+      "overlap": -0.1,
+      "timestamp": 139.785,
+      "duration": 12.73,
+      "audio": "/audio/radio/the-forwarding-address/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Do not file that, Darnell. Do NOT file the undeliverable.",
+      "overlap": 0.25,
+      "timestamp": 151.387,
+      "duration": 4.72,
+      "audio": "/audio/radio/the-forwarding-address/23.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Now his front door's gone, Ronnie! It's just a wall! <p:0.3> Now the wall is gone!",
+      "overlap": 0.3,
+      "timestamp": 154.97,
+      "duration": 5.82,
+      "audio": "/audio/radio/the-forwarding-address/24.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Status changed. <p:0.3> It says out for delivery.",
+      "overlap": 0.25,
+      "timestamp": 160.085,
+      "duration": 3.58,
+      "audio": "/audio/radio/the-forwarding-address/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Out for delivery to WHERE, Darnell?",
+      "overlap": 0,
+      "timestamp": 162.963,
+      "duration": 3.0,
+      "audio": "/audio/radio/the-forwarding-address/26.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "He's getting blurry, Barry! Like the edges!",
+      "overlap": 0.4,
+      "timestamp": 164.615,
+      "duration": 2.97,
+      "audio": "/audio/radio/the-forwarding-address/27.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Delivery attempted. <p:0.3> Recipient not found.",
+      "overlap": 0.3,
+      "timestamp": 166.783,
+      "duration": 3.39,
+      "audio": "/audio/radio/the-forwarding-address/28.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "Standard, recipient. We'll attempt again.",
+      "overlap": 0.3,
+      "timestamp": 169.481,
+      "duration": 3.91,
+      "audio": "/audio/radio/the-forwarding-address/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Hang up the phone! Just hang up!",
+      "overlap": 0.4,
+      "timestamp": 171.806,
+      "duration": 2.64,
+      "audio": "/audio/radio/the-forwarding-address/30.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Status updated. <p:0.3> Recipient redefined.",
+      "overlap": 0.35,
+      "timestamp": 173.405,
+      "duration": 3.63,
+      "audio": "/audio/radio/the-forwarding-address/31.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Darnell? <p:0.3> Where's Darnell?",
+      "overlap": 0.3,
+      "timestamp": 176.294,
+      "duration": 2.61,
+      "audio": "/audio/radio/the-forwarding-address/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Darnell, buddy, you still with us? Read me that status one more time.",
+      "overlap": -0.2,
+      "timestamp": 178.182,
+      "duration": 5.32,
+      "audio": "/audio/radio/the-forwarding-address/33.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It says... <p:0.4> delivered.",
+      "overlap": 0,
+      "timestamp": 182.693,
+      "duration": 2.53,
+      "audio": "/audio/radio/the-forwarding-address/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Delivered. <p:0.3> Ronnie, he said delivered, and he said it like Wendell.",
+      "overlap": -0.1,
+      "timestamp": 184.553,
+      "duration": 6.34,
+      "audio": "/audio/radio/the-forwarding-address/35.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well, he made it to the new address. <p:0.3> Now that's a smooth delivery.",
+      "overlap": -0.2,
+      "timestamp": 189.746,
+      "duration": 5.5,
+      "audio": "/audio/radio/the-forwarding-address/36.flac"
+    },
+    {
+      "speaker": "phone",
+      "text": "...",
+      "overlap": -0.1,
+      "timestamp": 194.784,
+      "duration": 0.5,
+      "audio": "/audio/radio/the-forwarding-address/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh, line two's lighting up. Snazzie FM, you're on the air.",
+      "overlap": -0.1,
+      "timestamp": 194.967,
+      "duration": 4.36,
+      "audio": "/audio/radio/the-forwarding-address/38.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Per postal regulation, you have mail.",
+      "overlap": -0.1,
+      "timestamp": 198.608,
+      "duration": 2.4,
+      "audio": "/audio/radio/the-forwarding-address/39.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now THAT'S service.",
+      "overlap": -0.15,
+      "timestamp": 200.158,
+      "duration": 2.04,
+      "audio": "/audio/radio/the-forwarding-address/40.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. <p:0.3> Ronnie, do NOT sign for it.",
+      "overlap": 0,
+      "timestamp": 201.502,
+      "duration": 3.9,
+      "audio": "/audio/radio/the-forwarding-address/41.flac"
+    },
+    {
+      "speaker": "clerk-wendell",
+      "text": "Accepted.",
+      "overlap": 0,
+      "timestamp": 204.579,
+      "duration": 1.8,
+      "audio": "/audio/radio/the-forwarding-address/42.flac"
+    }
+  ]
+}

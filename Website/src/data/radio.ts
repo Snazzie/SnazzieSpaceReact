@@ -31,6 +31,26 @@ import theBroodIsBack from "./radio/the-brood-is-back.json";
 import theCasseroleLedger from "./radio/the-casserole-ledger.json";
 import sayLess from "./radio/say-less.json";
 import theHowlHeardRound from "./radio/the-howl-heard-round.json";
+import theForwardingAddress from "./radio/the-forwarding-address.json";
+import theGoodNeighborScore from "./radio/the-good-neighbor-score.json";
+import theGroundGaveItBack from "./radio/the-ground-gave-it-back.json";
+import theFlatlineMethod from "./radio/the-flatline-method.json";
+import theNightShift from "./radio/the-night-shift.json";
+import theScarecrowClassic from "./radio/the-scarecrow-classic.json";
+import theInsideVoice from "./radio/the-inside-voice.json";
+import theSunWentOut from "./radio/the-sun-went-out.json";
+import theFarmSystem from "./radio/the-farm-system.json";
+import notarizeTheWitness from "./radio/notarize-the-witness.json";
+import theSnowThatStayed from "./radio/the-snow-that-stayed.json";
+import theCapsuleKeeper from "./radio/the-capsule-keeper.json";
+import theEmpaneledHour from "./radio/the-empaneled-hour.json";
+import theSharedMarquee from "./radio/the-shared-marquee.json";
+import theSkyWroteBack from "./radio/the-sky-wrote-back.json";
+import theSoftEdit from "./radio/the-soft-edit.json";
+import neverFold from "./radio/never-fold.json";
+import theBookFairEconomy from "./radio/the-book-fair-economy.json";
+import theLastLitHouse from "./radio/the-last-lit-house.json";
+import theValidationStamp from "./radio/the-validation-stamp.json";
 import adSootheMaster from "./radio/ad-soothe-master.json";
 import adLiquidRage from "./radio/ad-liquid-rage.json";
 import adBargainSurgery from "./radio/ad-bargain-surgery.json";
@@ -148,6 +168,7 @@ export const CAST: Record<string, CastMember> = {
   "caller-gary":   { id: "caller-gary",     name: "Gary",              color: "#a29bfe", role: "Caller"       },
   "caller-linda":  { id: "caller-linda",    name: "Linda",             color: "#a29bfe", role: "Caller"       },
   "caller-chad":   { id: "caller-chad",     name: "Chad",              color: "#a29bfe", role: "Caller"       },
+  "caller-blane":  { id: "caller-blane",    name: "Blane",             color: "#2ecc71", role: "Caller"       },
   "caller-mildred":{ id: "caller-mildred",  name: "Mildred",           color: "#a29bfe", role: "Caller"       },
   "caller-nadia":  { id: "caller-nadia",    name: "Nadia",             color: "#00b894", role: "Caller"       },
   "caller-darnell":{ id: "caller-darnell",  name: "Darnell",           color: "#a29bfe", role: "Caller"       },
@@ -158,6 +179,7 @@ export const CAST: Record<string, CastMember> = {
   "caller-phil":   { id: "caller-phil",     name: "Phil",              color: "#7ec8e3", role: "Caller"       },
   "caller-sal":    { id: "caller-sal",      name: "Sal",               color: "#c98a3a", role: "Caller"       },
   "caller-chen":   { id: "caller-chen",     name: "Mr. Chen",          color: "#e17055", role: "Caller"       },
+  "bailiff-orrin": { id: "bailiff-orrin",   name: "Bailiff Orrin",     color: "#7d6b54", role: "Caller"       },
   "caller-donna":  { id: "caller-donna",    name: "Donna",             color: "#e84393", role: "Caller"       },
   "caller-glenda": { id: "caller-glenda",   name: "Sister Glenda",     color: "#9b59b6", role: "Caller"       },
   "caller-marco":  { id: "caller-marco",    name: "Marco",             color: "#0984e3", role: "Caller"       },
@@ -182,6 +204,19 @@ export const CAST: Record<string, CastMember> = {
   "grid-ai":       { id: "grid-ai",         name: "GreenFlow Grid",    color: "#2ecc71", role: "Guest Expert" },
   "caller-edwin":  { id: "caller-edwin",    name: "Edwin",             color: "#a29bfe", role: "Caller"       },
   "everkin":       { id: "everkin",         name: "EverKin",           color: "#9b59b6", role: "Guest Expert" },
+  "clerk-wendell": { id: "clerk-wendell",   name: "Wendell",           color: "#8d6e63", role: "Caller"       },
+  "caller-dr-vance":{ id: "caller-dr-vance",name: "Dr. Vance",         color: "#00cec9", role: "Caller"       },
+  "hollis":        { id: "hollis",          name: "Pastor Hollis",     color: "#7f8c8d", role: "Guest Expert" },
+  "dov":           { id: "dov",             name: "Dov",               color: "#4a90d9", role: "Guest Expert" },
+  "truenorth":     { id: "truenorth",       name: "TrueNorth",         color: "#1abc9c", role: "Guest Expert" },
+  "vasquez":       { id: "vasquez",         name: "Dr. Vasquez",       color: "#fdcb6e", role: "Caller"       },
+  "caller-marv":   { id: "caller-marv",     name: "Marv",              color: "#c0392b", role: "Caller"       },
+  "notary-pam":    { id: "notary-pam",      name: "Pam",               color: "#a0522d", role: "Caller"       },
+  "lull":          { id: "lull",            name: "Lull",              color: "#b48ead", role: "Guest Expert" },
+  "verla":         { id: "verla",           name: "Coach Verla",       color: "#d35400", role: "Guest Expert" },
+  "treasurer-cheryl":{ id: "treasurer-cheryl",name: "Cheryl",          color: "#c2185b", role: "Caller"       },
+  "meter-vox":     { id: "meter-vox",       name: "MeterVox",          color: "#27ae60", role: "Guest Expert" },
+  "attendant-cordell":{ id: "attendant-cordell",name: "Cordell",       color: "#6d5c43", role: "Caller"       },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -343,4 +378,24 @@ export const EPISODES: Episode[] = [
   episodeFrom(theCasseroleLedger),
   episodeFrom(sayLess),
   episodeFrom(theHowlHeardRound),
+  episodeFrom(theForwardingAddress),
+  episodeFrom(theGoodNeighborScore),
+  episodeFrom(theGroundGaveItBack),
+  episodeFrom(theFlatlineMethod),
+  episodeFrom(theNightShift),
+  episodeFrom(theScarecrowClassic),
+  episodeFrom(theInsideVoice),
+  episodeFrom(theSunWentOut),
+  episodeFrom(theFarmSystem),
+  episodeFrom(notarizeTheWitness),
+  episodeFrom(theSnowThatStayed),
+  episodeFrom(theCapsuleKeeper),
+  episodeFrom(theEmpaneledHour),
+  episodeFrom(theSharedMarquee),
+  episodeFrom(theSkyWroteBack),
+  episodeFrom(theSoftEdit),
+  episodeFrom(neverFold),
+  episodeFrom(theBookFairEconomy),
+  episodeFrom(theLastLitHouse),
+  episodeFrom(theValidationStamp),
 ];

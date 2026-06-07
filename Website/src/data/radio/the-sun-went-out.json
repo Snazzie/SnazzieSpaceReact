@@ -1,0 +1,303 @@
+{
+  "slug": "the-sun-went-out",
+  "title": "Breaking: The Sun Went Out",
+  "description": "A total eclipse rolls over town at noon, and Snazzie FM covers it like a missing-persons case for the sun. Ronnie refuses to accept it was scheduled and starts negotiating with the sky on air, while new astronomer Doctor Vasquez insists totality ends at two minutes seventeen, right up until her stopwatch keeps not ending.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "We are cutting away from the noon hour on Snazzie FM, because folks, the sun has gone out. I want to be calm about this. The sun. Our sun. Is not currently on.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.76,
+      "audio": "/audio/radio/the-sun-went-out/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, it's an eclipse. It was in the paper. There were glasses at the gas station.",
+      "overlap": -0.15,
+      "timestamp": 10.412,
+      "duration": 6.72,
+      "audio": "/audio/radio/the-sun-went-out/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The paper does not schedule the sun, Barry. <p:0.3> We've brought in a professional. Our brand new station astronomer, Doctor Vasquez. Doctor, you're on the air.",
+      "overlap": -0.2,
+      "timestamp": 15.69,
+      "duration": 12.18,
+      "audio": "/audio/radio/the-sun-went-out/2.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "Thank you, Ronnie. And everyone please relax, because this is a textbook total solar eclipse. I have it on the watch. Totality ends at two minutes seventeen. To the second.",
+      "overlap": -0.2,
+      "timestamp": 27.242,
+      "duration": 15.12,
+      "audio": "/audio/radio/the-sun-went-out/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Two minutes seventeen. <p:0.3> And until then, the sky is just allowed to take our sun?",
+      "overlap": -0.15,
+      "timestamp": 41.381,
+      "duration": 6.78,
+      "audio": "/audio/radio/the-sun-went-out/4.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "It's not taking it, it's in front of it. The moon is in front of it.",
+      "overlap": -0.1,
+      "timestamp": 46.94,
+      "duration": 5.68,
+      "audio": "/audio/radio/the-sun-went-out/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So we DO have a suspect. <p:0.3> Stay with me, big guy. We're gonna get you home. Nobody up there move.",
+      "overlap": -0.2,
+      "timestamp": 51.749,
+      "duration": 7.74,
+      "audio": "/audio/radio/the-sun-went-out/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Who are you talking to, Ronnie. The sun cannot hear the radio.",
+      "overlap": -0.1,
+      "timestamp": 58.486,
+      "duration": 5.04,
+      "audio": "/audio/radio/the-sun-went-out/7.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Ronnie, if I may. As I have said for YEARS, the sun would go dark at precisely this hour, and did a single one of you write it down? No. You did not credit me.",
+      "overlap": -0.1,
+      "timestamp": 62.484,
+      "duration": 10.6,
+      "audio": "/audio/radio/the-sun-went-out/8.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "You did not predict this, sir, an entire field of astronomy predicted this. <p:0.3> And we are coming up on it now. Watch. Three, two, one. <p:0.4> Okay. The number is two minutes forty. It revises. It's fine.",
+      "overlap": -0.1,
+      "timestamp": 71.353,
+      "duration": 17.5,
+      "audio": "/audio/radio/the-sun-went-out/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It revised, Barry. <p:0.3> The doctor's own number revised. The sun has blown past its release date.",
+      "overlap": -0.15,
+      "timestamp": 87.958,
+      "duration": 8.02,
+      "audio": "/audio/radio/the-sun-went-out/10.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a rounding thing. The math is fine, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 94.978,
+      "duration": 3.88,
+      "audio": "/audio/radio/the-sun-went-out/11.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Hey, while we wait, who needs eclipse glasses? I got the last pair in the county. <p:0.3> Twenty bucks. Cash. I will meet you in a dark parking lot, which is all of them right now.",
+      "overlap": 0.2,
+      "timestamp": 97.758,
+      "duration": 12.87,
+      "audio": "/audio/radio/the-sun-went-out/12.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Sal, we are negotiating with the sky and you are running a yard sale.",
+      "overlap": -0.1,
+      "timestamp": 109.725,
+      "duration": 5.32,
+      "audio": "/audio/radio/the-sun-went-out/13.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Ooooooh. <p:0.4> Oooooooooh. <p:0.3> Dark.",
+      "overlap": -0.1,
+      "timestamp": 113.739,
+      "duration": 5.94,
+      "audio": "/audio/radio/the-sun-went-out/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gary, do you have anything other than that.",
+      "overlap": -0.1,
+      "timestamp": 118.901,
+      "duration": 3.6,
+      "audio": "/audio/radio/the-sun-went-out/15.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Oooooooh.",
+      "overlap": 0.2,
+      "timestamp": 120.5,
+      "duration": 1.84,
+      "audio": "/audio/radio/the-sun-went-out/16.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "Okay, the watch now reads three ten, which is, that's a long totality, that's an unusually generous totality, but the model accommodates it. The model is comfortable. <p:0.3> I am comfortable.",
+      "overlap": -0.15,
+      "timestamp": 121.182,
+      "duration": 16.16,
+      "audio": "/audio/radio/the-sun-went-out/17.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Doctor, you said two seventeen like it was a vow. <p:0.3> Now look at us.",
+      "overlap": -0.15,
+      "timestamp": 135.944,
+      "duration": 6.02,
+      "audio": "/audio/radio/the-sun-went-out/18.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Three ten. As I have said for YEARS, it would overshoot, and once again, no acknowledgment, no plaque, nothing.",
+      "overlap": 0.25,
+      "timestamp": 140.754,
+      "duration": 7.76,
+      "audio": "/audio/radio/the-sun-went-out/19.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Glasses are thirty now, the dark's been going a while, supply and demand!",
+      "overlap": 0.3,
+      "timestamp": 147.421,
+      "duration": 5.43,
+      "audio": "/audio/radio/the-sun-went-out/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I am going up the chain. <p:0.3> Sky. Whoever's running the sky. This is the anchor. I want my sun back and I want it back warm.",
+      "overlap": -0.2,
+      "timestamp": 152.226,
+      "duration": 9.54,
+      "audio": "/audio/radio/the-sun-went-out/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, it's an eclipse, it ends on its own, you do not have to TALK to it.",
+      "overlap": -0.1,
+      "timestamp": 160.617,
+      "duration": 5.8,
+      "audio": "/audio/radio/the-sun-went-out/22.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "It should have ended. <p:0.4> It really should have ended, Barry. I have stopped the watch. I've stopped it. There's no point timing something that won't end.",
+      "overlap": -0.1,
+      "timestamp": 165.452,
+      "duration": 13.45,
+      "audio": "/audio/radio/the-sun-went-out/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "She stopped the WATCH. <p:0.3> Folks, the scientist has stopped counting. That's a Level Four. Bring in the candles.",
+      "overlap": -0.2,
+      "timestamp": 177.622,
+      "duration": 9.06,
+      "audio": "/audio/radio/the-sun-went-out/24.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Dark.",
+      "overlap": 0.2,
+      "timestamp": 185.388,
+      "duration": 1.52,
+      "audio": "/audio/radio/the-sun-went-out/25.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "The watch is fine. <p:0.3> I need everyone to hear me. The watch is completely fine. The sun is the problem.",
+      "overlap": -0.1,
+      "timestamp": 186.411,
+      "duration": 9.38,
+      "audio": "/audio/radio/the-sun-went-out/26.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Come back to us, buddy. Nobody's mad. <p:0.3> You come back over that ridge and we forget the whole thing.",
+      "overlap": -0.15,
+      "timestamp": 195.121,
+      "duration": 7.9,
+      "audio": "/audio/radio/the-sun-went-out/27.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I called it!",
+      "overlap": 0.3,
+      "timestamp": 201.608,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-sun-went-out/28.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Glasses are FIFTY!",
+      "overlap": 0.4,
+      "timestamp": 202.673,
+      "duration": 1.92,
+      "audio": "/audio/radio/the-sun-went-out/29.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "The watch is FINE!",
+      "overlap": 0.35,
+      "timestamp": 203.579,
+      "duration": 1.96,
+      "audio": "/audio/radio/the-sun-went-out/30.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Dark!",
+      "overlap": 0.4,
+      "timestamp": 204.266,
+      "duration": 1.4,
+      "audio": "/audio/radio/the-sun-went-out/31.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Stay with me, big guy!",
+      "overlap": 0.3,
+      "timestamp": 204.616,
+      "duration": 2.08,
+      "audio": "/audio/radio/the-sun-went-out/32.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There it is. <p:0.4> See? It came back. Told you. It always comes back.",
+      "overlap": -0.15,
+      "timestamp": 205.782,
+      "duration": 5.96,
+      "audio": "/audio/radio/the-sun-went-out/33.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then where did it GO, Barry. <p:0.4> For three minutes. <p:0.3> Where does a sun GO.",
+      "overlap": -0.2,
+      "timestamp": 210.652,
+      "duration": 7.06,
+      "audio": "/audio/radio/the-sun-went-out/34.flac"
+    },
+    {
+      "speaker": "vasquez",
+      "text": "My watch says it was thirty seconds.",
+      "overlap": -0.1,
+      "timestamp": 216.81,
+      "duration": 3.32,
+      "audio": "/audio/radio/the-sun-went-out/35.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Sun's back, so glasses are five bucks now. Demand cratered. Anyone? <p:0.3> Anyone.",
+      "overlap": -0.1,
+      "timestamp": 219.1,
+      "duration": 7.04,
+      "audio": "/audio/radio/the-sun-went-out/36.flac"
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "slug": "the-book-fair-economy",
+  "title": "The Book Fair Economy",
+  "description": "Pinewood Elementary's PTA throws the most magical book fair in the county, run on Reading Points the kids earn and spend. Tonight a dad calls in because his second-grader came home eleven thousand points in the hole, his recess is garnished, and Treasurer Cheryl is issuing margin calls in glitter pen.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight it's pure childhood magic. Down at Pinewood Elementary, the PTA throws the most beloved book fair in the county. The kids earn little Reading Points, they spend them on books. It runs itself. Treasurer Cheryl, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 18.73,
+      "audio": "/audio/radio/the-book-fair-economy/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A book fair for second graders. Okay. That's wholesome. I have no notes.",
+      "overlap": -0.15,
+      "timestamp": 17.948,
+      "duration": 5.8,
+      "audio": "/audio/radio/the-book-fair-economy/1.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "No notes, Barry, how sweet. Yes, every child opens a little account on day one. They read, the points accrue, and the points are theirs. <p:0.3> Mostly theirs.",
+      "overlap": -0.2,
+      "timestamp": 22.83,
+      "duration": 13.94,
+      "audio": "/audio/radio/the-book-fair-economy/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You hear that, Barry? The points are theirs. Mostly. Now THAT'S community.",
+      "overlap": -0.2,
+      "timestamp": 35.819,
+      "duration": 5.72,
+      "audio": "/audio/radio/the-book-fair-economy/3.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Yeah, hi, hello. My son Marcus came home from the book fair Thursday. <p:0.3> He owes the PTA eleven thousand Reading Points. He is SEVEN.",
+      "overlap": -0.1,
+      "timestamp": 40.921,
+      "duration": 8.15,
+      "audio": "/audio/radio/the-book-fair-economy/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Eleven THOUSAND? How does a seven-year-old owe eleven thousand of anything?",
+      "overlap": -0.1,
+      "timestamp": 48.478,
+      "duration": 6.28,
+      "audio": "/audio/radio/the-book-fair-economy/5.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "He bought the deluxe pop-up shark book, dear, on margin. <p:0.3> A reader reaches, the balance reaches with him. That's not a debt. That's ambition.",
+      "overlap": -0.1,
+      "timestamp": 53.934,
+      "duration": 12.62,
+      "audio": "/audio/radio/the-book-fair-economy/6.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "On MARGIN? You let a second grader buy a shark book on MARGIN, Cheryl?",
+      "overlap": 0,
+      "timestamp": 65.966,
+      "duration": 4.18,
+      "audio": "/audio/radio/the-book-fair-economy/7.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "And I'll note, dear, that tone during what is technically silent reading. <p:0.3> That's a little gift to the library. Two hundred points. In glitter pen.",
+      "overlap": -0.1,
+      "timestamp": 69.451,
+      "duration": 12.86,
+      "audio": "/audio/radio/the-book-fair-economy/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "She just charged him for the call. We're at eleven thousand two hundred.",
+      "overlap": -0.1,
+      "timestamp": 81.27,
+      "duration": 5.92,
+      "audio": "/audio/radio/the-book-fair-economy/9.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, hello, dear, it's Patricia, room-mom, table four. I just want to say my Hannah has been points-positive for THREE years. <p:0.3> A balance isn't a debt. It's a milestone.",
+      "overlap": -0.15,
+      "timestamp": 85.694,
+      "duration": 14.66,
+      "audio": "/audio/radio/the-book-fair-economy/10.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It is not a milestone, it's a margin call, lady. They garnished his RECESS.",
+      "overlap": 0,
+      "timestamp": 99.771,
+      "duration": 4.8,
+      "audio": "/audio/radio/the-book-fair-economy/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now hold on, garnished recess, that's just a child learning to work off a position. That's stewardship, Barry.",
+      "overlap": -0.2,
+      "timestamp": 103.687,
+      "duration": 8.48,
+      "audio": "/audio/radio/the-book-fair-economy/12.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Buddy sees the ledger. <p:0.3> Buddy has been WATCHING the boy's account.",
+      "overlap": 0.2,
+      "timestamp": 111.064,
+      "duration": 5.37,
+      "audio": "/audio/radio/the-book-fair-economy/13.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Who is that. Cheryl, who just said Buddy.",
+      "overlap": -0.1,
+      "timestamp": 115.795,
+      "duration": 3.36,
+      "audio": "/audio/radio/the-book-fair-economy/14.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "That's Buddy the Bookworm, our mascot, dear. He handles enforcement now. <p:0.3> He volunteered.",
+      "overlap": -0.1,
+      "timestamp": 117.807,
+      "duration": 8.74,
+      "audio": "/audio/radio/the-book-fair-economy/15.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Buddy did not volunteer. Buddy was PROMOTED. <p:0.3> Buddy holds the master ledger.",
+      "overlap": 0,
+      "timestamp": 125.312,
+      "duration": 5.94,
+      "audio": "/audio/radio/the-book-fair-economy/16.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Why is the worm in a costume talking about my son in the third person?",
+      "overlap": 0.2,
+      "timestamp": 130.199,
+      "duration": 4.38,
+      "audio": "/audio/radio/the-book-fair-economy/17.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, don't fight Buddy, dear, it only adds to the balance. <p:0.3> When Hannah hit twenty thousand we threw a little party. It was a milestone.",
+      "overlap": -0.1,
+      "timestamp": 133.565,
+      "duration": 12.1,
+      "audio": "/audio/radio/the-book-fair-economy/18.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Twenty thousand? Patricia, your daughter is in DEBT.",
+      "overlap": 0,
+      "timestamp": 144.685,
+      "duration": 3.38,
+      "audio": "/audio/radio/the-book-fair-economy/19.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "And there's the word again, dear. Debt. <p:0.3> That's a little gift to the library. Five hundred points. In glitter pen.",
+      "overlap": -0.1,
+      "timestamp": 147.424,
+      "duration": 10.22,
+      "audio": "/audio/radio/the-book-fair-economy/20.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Eleven thousand seven hundred. Ronnie, the number only goes UP.",
+      "overlap": -0.1,
+      "timestamp": 156.545,
+      "duration": 5.28,
+      "audio": "/audio/radio/the-book-fair-economy/21.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay. Okay. I'll just pay it off myself. Cash. What's the door rate, Cheryl, give me the number.",
+      "overlap": 0.2,
+      "timestamp": 160.852,
+      "duration": 5.39,
+      "audio": "/audio/radio/the-book-fair-economy/22.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "Oh, we don't take cash, dear. The points are now pegged to the parents' property. <p:0.3> So the boy's account is secured against your minivan.",
+      "overlap": -0.1,
+      "timestamp": 165.318,
+      "duration": 12.11,
+      "audio": "/audio/radio/the-book-fair-economy/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Secured against his WHAT?",
+      "overlap": -0.1,
+      "timestamp": 176.706,
+      "duration": 2.24,
+      "audio": "/audio/radio/the-book-fair-economy/24.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "You collateralized my van against a pop-up shark book? He is SEVEN, Cheryl!",
+      "overlap": 0.3,
+      "timestamp": 177.585,
+      "duration": 4.95,
+      "audio": "/audio/radio/the-book-fair-economy/25.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "We lost the Honda, dear. <p:0.3> It was a milestone.",
+      "overlap": 0.3,
+      "timestamp": 181.625,
+      "duration": 4.5,
+      "audio": "/audio/radio/the-book-fair-economy/26.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Buddy sees the van.",
+      "overlap": 0.35,
+      "timestamp": 184.48,
+      "duration": 1.88,
+      "audio": "/audio/radio/the-book-fair-economy/27.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Recess!",
+      "overlap": 0.4,
+      "timestamp": 185.466,
+      "duration": 1.02,
+      "audio": "/audio/radio/the-book-fair-economy/28.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "Garnished.",
+      "overlap": 0.4,
+      "timestamp": 185.633,
+      "duration": 1.72,
+      "audio": "/audio/radio/the-book-fair-economy/29.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "The van!",
+      "overlap": 0.4,
+      "timestamp": 186.493,
+      "duration": 1.33,
+      "audio": "/audio/radio/the-book-fair-economy/30.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "Pegged.",
+      "overlap": 0.4,
+      "timestamp": 187.12,
+      "duration": 1.52,
+      "audio": "/audio/radio/the-book-fair-economy/31.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Milestone!",
+      "overlap": 0.4,
+      "timestamp": 187.433,
+      "duration": 1.72,
+      "audio": "/audio/radio/the-book-fair-economy/32.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Buddy sees the LEDGER.",
+      "overlap": 0.4,
+      "timestamp": 188.098,
+      "duration": 2.16,
+      "audio": "/audio/radio/the-book-fair-economy/33.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "He is SEVEN!",
+      "overlap": 0.4,
+      "timestamp": 189.098,
+      "duration": 1.26,
+      "audio": "/audio/radio/the-book-fair-economy/34.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "In glitter pen.",
+      "overlap": 0.35,
+      "timestamp": 189.934,
+      "duration": 1.88,
+      "audio": "/audio/radio/the-book-fair-economy/35.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait. <p:0.3> Wait, hang on. Cheryl, you said the show. <p:0.3> You said our airtime opens an account.",
+      "overlap": 0.2,
+      "timestamp": 191.1,
+      "duration": 8.4,
+      "audio": "/audio/radio/the-book-fair-economy/36.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "Mm. <p:0.3> The station's hour tonight has been converted to points, dear. At the door rate. <p:0.3> I've logged the host.",
+      "overlap": -0.1,
+      "timestamp": 196.831,
+      "duration": 10.92,
+      "audio": "/audio/radio/the-book-fair-economy/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Logged the host. <p:0.3> Now Barry, that is the most magical book fair in the county. The kids read, the points accrue, the whole town learns to give back.",
+      "overlap": -0.2,
+      "timestamp": 206.536,
+      "duration": 12.1,
+      "audio": "/audio/radio/the-book-fair-economy/38.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, we're on the ledger. The station is on the ledger.",
+      "overlap": -0.1,
+      "timestamp": 217.742,
+      "duration": 4.68,
+      "audio": "/audio/radio/the-book-fair-economy/39.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Buddy is in your parking lot. <p:0.3> Buddy has left Pinewood.",
+      "overlap": 0.2,
+      "timestamp": 221.357,
+      "duration": 4.58,
+      "audio": "/audio/radio/the-book-fair-economy/40.flac"
+    },
+    {
+      "speaker": "treasurer-cheryl",
+      "text": "He's expanding, dear. The other schools are merging in. <p:0.3> Snazzie FM is just the first.",
+      "overlap": -0.1,
+      "timestamp": 225.286,
+      "duration": 7.94,
+      "audio": "/audio/radio/the-book-fair-economy/41.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well there it is, folks. Pinewood Elementary, the most magical book fair in the county. We'll be right back, soon as we settle up.",
+      "overlap": -0.2,
+      "timestamp": 231.814,
+      "duration": 9.84,
+      "audio": "/audio/radio/the-book-fair-economy/42.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "He is seven, Ronnie. <p:0.3> The bookworm is in our parking lot. <p:0.3> And we owe nine hundred points for SAYING that.",
+      "overlap": -0.1,
+      "timestamp": 240.653,
+      "duration": 9.32,
+      "audio": "/audio/radio/the-book-fair-economy/43.flac"
+    }
+  ]
+}

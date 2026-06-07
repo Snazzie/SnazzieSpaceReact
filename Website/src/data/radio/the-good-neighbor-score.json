@@ -1,0 +1,351 @@
+{
+  "slug": "the-good-neighbor-score",
+  "title": "The Good Neighbor Score",
+  "description": "Launch night for NeighborWatch, the free community doorbell network that doesn't watch intruders, it watches you, scores how good a neighbor you are, and posts the number on the whole street. Founder Blane calls every act of surveillance 'letting the street decide.' Ronnie calls it community. The score only ever ticks down.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight is a big one. Our proud sponsor NeighborWatch goes live across the whole street. A free doorbell for every home, and it doesn't just watch for burglars. It watches for kindness. Blane, founder of NeighborWatch, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 19.36,
+      "audio": "/audio/radio/the-good-neighbor-score/0.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "Thanks, Ronnie. And I want to be clear right up top, I don't watch anybody. <p:0.3> The street watches. The street decides. I just hung the doorbells.",
+      "overlap": -0.2,
+      "timestamp": 18.414,
+      "duration": 7.22,
+      "audio": "/audio/radio/the-good-neighbor-score/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Decides what, exactly, Blane?",
+      "overlap": -0.15,
+      "timestamp": 24.892,
+      "duration": 2.52,
+      "audio": "/audio/radio/the-good-neighbor-score/2.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "Your Good Neighbor Score, Barry. Every doorbell rates how good a neighbor you are, and we post the number on the street. Totally transparent. <p:0.3> For instance, Linda's already a ninety one. A wonderful neighbor.",
+      "overlap": -0.1,
+      "timestamp": 26.766,
+      "duration": 10.42,
+      "audio": "/audio/radio/the-good-neighbor-score/3.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, that's sweet, Blane, but sweetheart, I didn't ask to be a number. <p:0.3> I just bring people soup. You don't need a doorbell to be nice.",
+      "overlap": -0.15,
+      "timestamp": 36.045,
+      "duration": 8.98,
+      "audio": "/audio/radio/the-good-neighbor-score/4.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> Linda's a ninety. <p:0.4> The doorbell says minus one. For questioning the score.",
+      "overlap": -0.1,
+      "timestamp": 44.447,
+      "duration": 4.31,
+      "audio": "/audio/radio/the-good-neighbor-score/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, now that's accountability. That's community.",
+      "overlap": -0.2,
+      "timestamp": 47.744,
+      "duration": 3.96,
+      "audio": "/audio/radio/the-good-neighbor-score/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "What happens if your number gets low, Blane?",
+      "overlap": -0.15,
+      "timestamp": 50.439,
+      "duration": 3.68,
+      "audio": "/audio/radio/the-good-neighbor-score/7.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "Nothing punitive. <p:0.3> We just gently align your utilities with your contribution. Low score, the street decides your water runs a little slower. Your thermostat finds its own level. Your car keeps it under twenty.",
+      "overlap": -0.1,
+      "timestamp": 52.655,
+      "duration": 11.22,
+      "audio": "/audio/radio/the-good-neighbor-score/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It throttles the WATER?",
+      "overlap": -0.1,
+      "timestamp": 62.979,
+      "duration": 2.08,
+      "audio": "/audio/radio/the-good-neighbor-score/9.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "The street throttles the water, Barry. I'm just a facilitator.",
+      "overlap": 0.15,
+      "timestamp": 64.079,
+      "duration": 3.12,
+      "audio": "/audio/radio/the-good-neighbor-score/10.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Good evening. Winston, on the line. I'm simply the highest-rated neighbor on my block, and I'd like to say the system works beautifully.",
+      "overlap": -0.15,
+      "timestamp": 66.585,
+      "duration": 9.03,
+      "audio": "/audio/radio/the-good-neighbor-score/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "How'd you get the highest score, Winston?",
+      "overlap": -0.15,
+      "timestamp": 74.376,
+      "duration": 3.44,
+      "audio": "/audio/radio/the-good-neighbor-score/12.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Oh, I didn't climb up. <p:0.3> I voted everyone else down. Same result. <p:0.3> A man on a hill is tallest whether you raise the hill or dig out the street.",
+      "overlap": -0.1,
+      "timestamp": 76.847,
+      "duration": 10.46,
+      "audio": "/audio/radio/the-good-neighbor-score/13.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Winston, sweetheart, no. <p:0.3> You voted down little Mrs. Pham, her water's been brown for a week!",
+      "overlap": 0.1,
+      "timestamp": 86.318,
+      "duration": 6.45,
+      "audio": "/audio/radio/the-good-neighbor-score/14.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "And yet I'm simply the highest-rated. Funny how that follows me around.",
+      "overlap": 0.1,
+      "timestamp": 91.87,
+      "duration": 4.82,
+      "audio": "/audio/radio/the-good-neighbor-score/15.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> Linda just dropped to seventy. <p:0.3> The doorbell says minus twenty. For, quote, naming a neighbor's brown water on the air.",
+      "overlap": -0.1,
+      "timestamp": 96.33,
+      "duration": 5.12,
+      "audio": "/audio/radio/the-good-neighbor-score/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now Linda, you brought that on yourself a little. <p:0.3> That's community.",
+      "overlap": -0.2,
+      "timestamp": 100.438,
+      "duration": 6.18,
+      "audio": "/audio/radio/the-good-neighbor-score/17.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "I don't decide that, Ronnie. The street decides. I want that on the record.",
+      "overlap": 0.1,
+      "timestamp": 105.817,
+      "duration": 3.64,
+      "audio": "/audio/radio/the-good-neighbor-score/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Blane, so people can just vote each other down out of spite, and the WATER actually stops?",
+      "overlap": 0.15,
+      "timestamp": 108.392,
+      "duration": 7.28,
+      "audio": "/audio/radio/the-good-neighbor-score/19.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Spite is such an ugly word, Barry. I prefer, civic participation.",
+      "overlap": 0.3,
+      "timestamp": 114.328,
+      "duration": 4.62,
+      "audio": "/audio/radio/the-good-neighbor-score/20.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "You voted me down again just now! I felt it! My porch light went OUT, Winston!",
+      "overlap": 0.35,
+      "timestamp": 117.301,
+      "duration": 5.56,
+      "audio": "/audio/radio/the-good-neighbor-score/21.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I'm simply the highest-rated.",
+      "overlap": 0.3,
+      "timestamp": 121.563,
+      "duration": 2.32,
+      "audio": "/audio/radio/the-good-neighbor-score/22.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> A doorbell's calling in. <p:0.4> Mrs. Pham's. It says she dropped below speaking privileges, so it's speaking for her.",
+      "overlap": -0.1,
+      "timestamp": 123.353,
+      "duration": 5.42,
+      "audio": "/audio/radio/the-good-neighbor-score/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Below speaking PRIVILEGES? The doorbell is calling MY show?",
+      "overlap": 0.2,
+      "timestamp": 127.513,
+      "duration": 5.04,
+      "audio": "/audio/radio/the-good-neighbor-score/24.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "It's not my show, Barry, it's the street's show, and below a forty you don't get to talk, the bell talks. <p:0.3> Very inclusive, when you think about it.",
+      "overlap": 0.25,
+      "timestamp": 131.376,
+      "duration": 7.26,
+      "audio": "/audio/radio/the-good-neighbor-score/25.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Blane, sweetheart, NO, you cannot take a woman's VOICE because Winston's bored!",
+      "overlap": 0.35,
+      "timestamp": 137.771,
+      "duration": 4.57,
+      "audio": "/audio/radio/the-good-neighbor-score/26.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.4> Linda just hit thirty-nine. <p:0.3> Her line's the doorbell now.",
+      "overlap": -0.1,
+      "timestamp": 142.032,
+      "duration": 3.94,
+      "audio": "/audio/radio/the-good-neighbor-score/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Linda? <p:0.3> Linda, you there?",
+      "overlap": -0.2,
+      "timestamp": 145.292,
+      "duration": 3.74,
+      "audio": "/audio/radio/the-good-neighbor-score/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's not Linda, Ronnie, that's her DOORBELL. She got voted out of her own sentence!",
+      "overlap": 0.2,
+      "timestamp": 147.82,
+      "duration": 6.84,
+      "audio": "/audio/radio/the-good-neighbor-score/29.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Down she goes.",
+      "overlap": 0.4,
+      "timestamp": 152.972,
+      "duration": 1.73,
+      "audio": "/audio/radio/the-good-neighbor-score/30.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Winston, STOP voting!",
+      "overlap": 0.4,
+      "timestamp": 153.801,
+      "duration": 1.92,
+      "audio": "/audio/radio/the-good-neighbor-score/31.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Highest-rated.",
+      "overlap": 0.4,
+      "timestamp": 154.244,
+      "duration": 1.92,
+      "audio": "/audio/radio/the-good-neighbor-score/32.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "The street decides!",
+      "overlap": 0.4,
+      "timestamp": 155.05,
+      "duration": 1.68,
+      "audio": "/audio/radio/the-good-neighbor-score/33.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie, you're at forty-one.",
+      "overlap": 0.35,
+      "timestamp": 155.858,
+      "duration": 1.28,
+      "audio": "/audio/radio/the-good-neighbor-score/34.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Me? <p:0.3> I'm the HOST, Todd, I have a great relationship with the street.",
+      "overlap": 0.3,
+      "timestamp": 156.524,
+      "duration": 6.38,
+      "audio": "/audio/radio/the-good-neighbor-score/35.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Minus two. <p:0.3> For saying me.",
+      "overlap": 0.4,
+      "timestamp": 161.871,
+      "duration": 2.14,
+      "audio": "/audio/radio/the-good-neighbor-score/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Folks, that's our show, and what a celebration of community it's been, we'll be right back after the street and I just... <p:0.4> Todd, what's my number.",
+      "overlap": -0.15,
+      "timestamp": 162.197,
+      "duration": 11.64,
+      "audio": "/audio/radio/the-good-neighbor-score/37.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Thirty-nine, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 173.154,
+      "duration": 1.09,
+      "audio": "/audio/radio/the-good-neighbor-score/38.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...Thirty-nine's still a solid neighb...",
+      "overlap": -0.1,
+      "timestamp": 173.125,
+      "duration": 3.12,
+      "audio": "/audio/radio/the-good-neighbor-score/39.flac"
+    },
+    {
+      "speaker": "caller-blane",
+      "text": "This doorbell is finishing the broadcast on behalf of Ronnie, who has fallen below speaking privileges. <p:0.3> Thank you, street, for deciding. Studio water has been throttled for community safety.",
+      "overlap": 0.1,
+      "timestamp": 175.41,
+      "duration": 9.78,
+      "audio": "/audio/radio/the-good-neighbor-score/40.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait, that's not Blane, that's the STUDIO doorbell! <p:0.3> Ronnie can't talk, Linda can't talk, who's even left with privileges to end the show?",
+      "overlap": -0.1,
+      "timestamp": 184.04,
+      "duration": 11.18,
+      "audio": "/audio/radio/the-good-neighbor-score/41.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Oh, that'd be me, Barry. Highest-rated. <p:0.3> And I'm already voting.",
+      "overlap": 0.2,
+      "timestamp": 194.042,
+      "duration": 5.21,
+      "audio": "/audio/radio/the-good-neighbor-score/42.flac"
+    }
+  ]
+}

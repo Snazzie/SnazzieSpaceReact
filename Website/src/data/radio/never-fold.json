@@ -1,0 +1,319 @@
+{
+  "slug": "never-fold",
+  "title": "Never Fold",
+  "description": "Wellness night with Coach Verla, founder of Vertical, a posture craze with one rule: a person who sits down has folded, and folding is a small death. Devotees rent a Leaning Post and retire their knees, and the whole standing-only cult slowly closes in on Barry, the last man still willing to sit.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, we stand tall. With us is Coach Verla, founder of a wellness movement called Vertical. Verla, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.48,
+      "audio": "/audio/radio/never-fold/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Standing. Okay. I already do that one. While I wait for the bus.",
+      "overlap": -0.15,
+      "timestamp": 9.807,
+      "duration": 5.12,
+      "audio": "/audio/radio/never-fold/1.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Thank you, stander. <p:0.3> You think you stand. But every night, you lower yourself into a chair. And in that moment, stander <p:0.3> you fold.",
+      "overlap": -0.2,
+      "timestamp": 14.085,
+      "duration": 9.75,
+      "audio": "/audio/radio/never-fold/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Folding. Now that's a real journey, Barry.",
+      "overlap": -0.2,
+      "timestamp": 22.725,
+      "duration": 3.32,
+      "audio": "/audio/radio/never-fold/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "What's wrong with sitting? Sitting is, you know. Resting.",
+      "overlap": -0.1,
+      "timestamp": 24.969,
+      "duration": 4.68,
+      "audio": "/audio/radio/never-fold/4.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Resting is folding, stander. <p:0.3> A person who sits has chosen a small death. The true practitioner never lowers himself again.",
+      "overlap": -0.15,
+      "timestamp": 28.913,
+      "duration": 8.18,
+      "audio": "/audio/radio/never-fold/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay but where do you SLEEP?",
+      "overlap": -0.1,
+      "timestamp": 36.483,
+      "duration": 2.4,
+      "audio": "/audio/radio/never-fold/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Let's not rush her process, Barry. Coach, tell us about the Leaning Post.",
+      "overlap": -0.2,
+      "timestamp": 37.732,
+      "duration": 5.6,
+      "audio": "/audio/radio/never-fold/7.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "For a small monthly devotion, the stander rents a Leaning Post. <p:0.3> You rest against it, upright, forever. And once you are ready, we retire the knees.",
+      "overlap": -0.15,
+      "timestamp": 42.503,
+      "duration": 9.32,
+      "audio": "/audio/radio/never-fold/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Retire the... you take the knees? That's, that's the joints, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 50.95,
+      "duration": 5.4,
+      "audio": "/audio/radio/never-fold/9.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Hi Ronnie. I rented the Leaning Post in MARCH and I had my knees RETIRED in April. <p:0.3> I have never felt TALLER.",
+      "overlap": -0.2,
+      "timestamp": 55.506,
+      "duration": 9.86,
+      "audio": "/audio/radio/never-fold/10.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You don't bend your knees at all anymore?",
+      "overlap": -0.1,
+      "timestamp": 64.277,
+      "duration": 3.4,
+      "audio": "/audio/radio/never-fold/11.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I FOLDED once, Barry. <p:0.3> In an elevator. There was a little bench. I am still ASHAMED. But Coach Verla forgave me, and now I stand at the dinner table, and I stand in the shower, and I STAND.",
+      "overlap": -0.1,
+      "timestamp": 66.542,
+      "duration": 16.27,
+      "audio": "/audio/radio/never-fold/12.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now THAT is a woman with spine, Barry.",
+      "overlap": -0.2,
+      "timestamp": 81.594,
+      "duration": 3.0,
+      "audio": "/audio/radio/never-fold/13.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Patricia, show them. <p:0.4> Lock the hips.",
+      "overlap": -0.15,
+      "timestamp": 84.136,
+      "duration": 3.41,
+      "audio": "/audio/radio/never-fold/14.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Is that the standing thing? My boy joined the standing thing. <p:0.3> He hasn't folded since March. He won't come to dinner anymore, he just leans in the doorway because he can't bend down to the chair.",
+      "overlap": -0.2,
+      "timestamp": 87.232,
+      "duration": 14.74,
+      "audio": "/audio/radio/never-fold/15.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Your son is advancing beautifully, stander.",
+      "overlap": -0.1,
+      "timestamp": 101.364,
+      "duration": 2.8,
+      "audio": "/audio/radio/never-fold/16.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "He's leaning a funny color, Verla. I made his favorite. <p:0.3> He just leans there, swaying.",
+      "overlap": 0.3,
+      "timestamp": 102.964,
+      "duration": 6.93,
+      "audio": "/audio/radio/never-fold/17.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He's just on a higher tier of the practice, ma'am. He'll lean at the retreat.",
+      "overlap": -0.2,
+      "timestamp": 108.715,
+      "duration": 5.8,
+      "audio": "/audio/radio/never-fold/18.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Yeah, hi, Chad here. <p:0.3> Forget the posture. Verla, who's the upline? Are Leaning Post territories still open in the north?",
+      "overlap": -0.1,
+      "timestamp": 113.916,
+      "duration": 6.82,
+      "audio": "/audio/radio/never-fold/19.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The UPLINE? It's a standing cult, Chad, there's no... there's no territory.",
+      "overlap": -0.1,
+      "timestamp": 119.788,
+      "duration": 5.92,
+      "audio": "/audio/radio/never-fold/20.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "It's a practice, stander. <p:0.3> Bring nine recruits, Chad, and you keep the dues for your whole zip code.",
+      "overlap": -0.1,
+      "timestamp": 124.934,
+      "duration": 6.5,
+      "audio": "/audio/radio/never-fold/21.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Nine recruits. <p:0.3> And what's the resale on an already-unfolded recruit? Like, a guy whose knees are already retired, what's my cut?",
+      "overlap": -0.05,
+      "timestamp": 131.077,
+      "duration": 7.37,
+      "audio": "/audio/radio/never-fold/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't RESELL a person, Chad! Okay, I have been standing this whole segment, and my back is, my back is genuinely starting to...",
+      "overlap": -0.1,
+      "timestamp": 137.568,
+      "duration": 10.32,
+      "audio": "/audio/radio/never-fold/23.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Do not lower yourself, stander. <p:0.3> Hold the line.",
+      "overlap": 0.2,
+      "timestamp": 146.851,
+      "duration": 4.01,
+      "audio": "/audio/radio/never-fold/24.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Don't fold, Barry!",
+      "overlap": 0.35,
+      "timestamp": 149.895,
+      "duration": 1.96,
+      "audio": "/audio/radio/never-fold/25.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Don't fold, sweetheart!",
+      "overlap": 0.4,
+      "timestamp": 150.641,
+      "duration": 1.72,
+      "audio": "/audio/radio/never-fold/26.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Stay unfolded, you're worth more!",
+      "overlap": 0.4,
+      "timestamp": 151.53,
+      "duration": 1.8,
+      "audio": "/audio/radio/never-fold/27.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "Never fold.",
+      "overlap": 0.3,
+      "timestamp": 152.447,
+      "duration": 1.32,
+      "audio": "/audio/radio/never-fold/28.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Taller!",
+      "overlap": 0.4,
+      "timestamp": 152.775,
+      "duration": 1.52,
+      "audio": "/audio/radio/never-fold/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Oh, that's the chair. <p:0.3> Ohhh, that is so much better.",
+      "overlap": -0.1,
+      "timestamp": 153.695,
+      "duration": 4.58,
+      "audio": "/audio/radio/never-fold/30.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "He FOLDED!",
+      "overlap": -0.05,
+      "timestamp": 157.481,
+      "duration": 1.68,
+      "audio": "/audio/radio/never-fold/31.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "He folded!",
+      "overlap": 0.3,
+      "timestamp": 158.213,
+      "duration": 0.94,
+      "audio": "/audio/radio/never-fold/32.flac"
+    },
+    {
+      "speaker": "verla",
+      "text": "He has lowered himself. <p:0.3> A small death, on the air.",
+      "overlap": 0.2,
+      "timestamp": 158.568,
+      "duration": 3.97,
+      "audio": "/audio/radio/never-fold/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I don't care, Ronnie, I'm sitting, I have wanted to sit for forty minutes and I am, I am sitting.",
+      "overlap": -0.1,
+      "timestamp": 161.606,
+      "duration": 7.52,
+      "audio": "/audio/radio/never-fold/34.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And it's a beautiful surrender, Barry. <p:0.3> So beautiful, in fact, that I already signed you up for Vertical and rented you a Leaning Post. <p:0.3> Fellas, take the chair.",
+      "overlap": -0.2,
+      "timestamp": 168.213,
+      "duration": 13.16,
+      "audio": "/audio/radio/never-fold/35.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait. <p:0.3> Why is it rolling. Why is my chair, Ronnie, that's my, where are they taking the...",
+      "overlap": -0.1,
+      "timestamp": 180.536,
+      "duration": 8.02,
+      "audio": "/audio/radio/never-fold/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's retired, Barry. <p:0.3> We'll see you and the whole studio at Coach Verla's free Vertical Retreat this weekend. I just booked it. <p:0.4> Stand easy, folks. <p:0.3> You don't have a choice anymore.",
+      "overlap": -0.2,
+      "timestamp": 187.567,
+      "duration": 15.76,
+      "audio": "/audio/radio/never-fold/37.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "...There's nowhere to sit down.",
+      "overlap": -0.1,
+      "timestamp": 202.463,
+      "duration": 2.56,
+      "audio": "/audio/radio/never-fold/38.flac"
+    }
+  ]
+}
