@@ -1,0 +1,271 @@
+{
+  "slug": "crumb-and-punishment-part-2",
+  "title": "Crumb and Punishment (Part 2)",
+  "description": "The Maplewood bake-sale cartel goes to war with the Riverdale Boosters across the river, and Mildred has Darnell wearing a wire of fondant. Then Phil calls in. Phil, who supposedly left town. Phil runs Riverdale now, and the fall carnival has a Ferris wheel that owes nobody.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome back to Snazzie FM. When we left off, treasurer Mildred of the Maplewood PTA was, and I quote, sending the brownie man across the river. Mildred, you're still on the line.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 13.6,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/0.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Still on the line, sugar. <p:0.3> Darnell's in my minivan as we speak. He's wearing a wire. <p:0.3> It's a fondant wire, but it'll hold a recording.",
+      "overlap": -0.2,
+      "timestamp": 12.99,
+      "duration": 9.77,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/1.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It's frosting, Ronnie. She frosted a microphone to my chest. I can feel it setting.",
+      "overlap": -0.1,
+      "timestamp": 22.34,
+      "duration": 5.23,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, she's running an operation. She has put a man undercover into a rival school's carnival.",
+      "overlap": -0.15,
+      "timestamp": 26.936,
+      "duration": 7.84,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's an exchange program, Barry. Schools love an exchange program.",
+      "overlap": -0.2,
+      "timestamp": 33.641,
+      "duration": 5.24,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/4.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "The Riverdale Boosters think the river's a border, sugar. It is not a border. The river is mine too. <p:0.3> I tax the ducks.",
+      "overlap": -0.1,
+      "timestamp": 38.237,
+      "duration": 8.96,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/5.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, hi again, Mildred! I went to the Riverdale carnival once, the funnel cake was just divine. Don't tell anyone I said that.",
+      "overlap": -0.15,
+      "timestamp": 46.87,
+      "duration": 7.56,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/6.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Linda. Sweetheart. <p:0.3> We're gonna pretend you didn't just praise a competitor's funnel cake on the radio.",
+      "overlap": -0.1,
+      "timestamp": 54.099,
+      "duration": 6.75,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, I'm at the gate. There's a guy here running the whole thing and he sounds really familiar and I don't... <p:0.3> oh no.",
+      "overlap": 0,
+      "timestamp": 60.538,
+      "duration": 7.99,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/8.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Evening, everybody. <p:0.3> It's Phil.",
+      "overlap": -0.1,
+      "timestamp": 68.173,
+      "duration": 3.5,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Phil? The Phil who got a visit? The flowers Phil?",
+      "overlap": -0.1,
+      "timestamp": 70.675,
+      "duration": 3.96,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/10.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "I didn't leave town, Barry. I crossed the river. <p:0.3> And over here, Mildred, they made me president. Riverdale runs the whole east bank now. We don't pay the muffin tax.",
+      "overlap": -0.1,
+      "timestamp": 74.224,
+      "duration": 8.62,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/11.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Phil. Sugar. <p:0.3> You sold cookies a quarter under list. And now you're a president?",
+      "overlap": -0.1,
+      "timestamp": 82.28,
+      "duration": 6.62,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/12.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "I undercut you because I had vision, Mildred. The carnival opens Saturday. Same day as your bake sale. <p:0.3> Funnel cake's a dollar.",
+      "overlap": 0,
+      "timestamp": 88.461,
+      "duration": 7.34,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now see, that's healthy competition. That's what makes the community strong.",
+      "overlap": -0.2,
+      "timestamp": 94.798,
+      "duration": 6.04,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/14.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "A dollar. <p:0.3> Darnell, sugar. The Ferris wheel. You see the bolts on the Ferris wheel?",
+      "overlap": -0.1,
+      "timestamp": 100.118,
+      "duration": 6.44,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/15.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I am not touching the Ferris wheel, Mildred! I have my own family! I told you that last week!",
+      "overlap": 0.25,
+      "timestamp": 105.88,
+      "duration": 5.72,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, she just ordered a hit on a Ferris wheel. That is a felony and a fire hazard, Ronnie!",
+      "overlap": 0.3,
+      "timestamp": 110.395,
+      "duration": 7.35,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/17.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "You touch my Ferris wheel, Mildred, and the ducks find out who really feeds them. <p:0.3> I've got a bread guy. I've got my own bread guy now.",
+      "overlap": 0.25,
+      "timestamp": 116.493,
+      "duration": 7.06,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/18.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "You turned my ducks?",
+      "overlap": 0,
+      "timestamp": 123.298,
+      "duration": 1.61,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, are we feeding the ducks? I love the ducks!",
+      "overlap": 0.3,
+      "timestamp": 123.847,
+      "duration": 3.1,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/20.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Linda, the ducks are a faction now! Everything is a faction! Run!",
+      "overlap": 0.4,
+      "timestamp": 126.014,
+      "duration": 4.0,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Funnel cake's a dollar! Bring the kids, Mildred!",
+      "overlap": 0.4,
+      "timestamp": 129.072,
+      "duration": 2.52,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/22.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Nobody undercuts the lemon bar, sugar!",
+      "overlap": 0.4,
+      "timestamp": 130.697,
+      "duration": 2.71,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Call the F B I! Call the river police!",
+      "overlap": 0.4,
+      "timestamp": 132.576,
+      "duration": 3.04,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/24.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Allegedly!",
+      "overlap": 0.4,
+      "timestamp": 134.482,
+      "duration": 1.04,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Alright, alright, beautiful energy. Two schools, one Saturday. We'll see you all out there for the kids. <p:0.3> That's our show.",
+      "overlap": -0.2,
+      "timestamp": 134.576,
+      "duration": 10.22,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/26.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Before you sign off, sugar. <p:0.3> Phil. <p:0.3> You said you had a bread guy.",
+      "overlap": -0.1,
+      "timestamp": 144.176,
+      "duration": 5.02,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/27.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "...I have a bread guy.",
+      "overlap": -0.1,
+      "timestamp": 148.593,
+      "duration": 1.76,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/28.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "I'd hate for the bread guy to decide he bakes at Maplewood now. <p:0.3> Send Darnell back with a loaf. We'll talk.",
+      "overlap": 0,
+      "timestamp": 149.871,
+      "duration": 7.53,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/29.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "...I never said I'd carry the loaf.",
+      "overlap": -0.15,
+      "timestamp": 157.106,
+      "duration": 1.98,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/30.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's a war, Ronnie. There's gonna be a turf war at a children's carnival.",
+      "overlap": -0.1,
+      "timestamp": 158.373,
+      "duration": 5.96,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/31.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's a bake sale, Barry.",
+      "overlap": -0.1,
+      "timestamp": 163.206,
+      "duration": 2.2,
+      "audio": "/audio/radio/crumb-and-punishment-part-2/32.flac"
+    }
+  ]
+}

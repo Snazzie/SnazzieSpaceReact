@@ -1,0 +1,255 @@
+{
+  "slug": "curb-rights-part-2",
+  "title": "Curb Rights (Part 2)",
+  "description": "The marriage-of-convenience is out: one L L C, two windows, and a dead generator nobody will restart. Tonight Donna and Chen call back to divorce the business, and the lawyer who called it smart phones in to defend himself, live, in the dark.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're back on Snazzie FM, and the block is still dark. Donna, Chen, last we left it, you two are one business, one marriage, two windows, and one generator nobody will turn on. Where are we now?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 14.52,
+      "audio": "/audio/radio/curb-rights-part-2/0.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "We're divorcing, Ronnie. The business and the man. Same paperwork, sweetheart, the lawyer says.",
+      "overlap": -0.2,
+      "timestamp": 13.414,
+      "duration": 8.16,
+      "audio": "/audio/radio/curb-rights-part-2/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The same lawyer who said the marriage was smart.",
+      "overlap": -0.1,
+      "timestamp": 20.067,
+      "duration": 4.04,
+      "audio": "/audio/radio/curb-rights-part-2/2.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "He is on line two, Barry. He wants to talk.",
+      "overlap": -0.1,
+      "timestamp": 22.977,
+      "duration": 2.32,
+      "audio": "/audio/radio/curb-rights-part-2/3.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "I just want it on the record that, structurally, it WAS smart. One filing fee. One tax return. You two saved nine hundred dollars a year, I have the spreadsheet.",
+      "overlap": -0.15,
+      "timestamp": 24.616,
+      "duration": 10.1,
+      "audio": "/audio/radio/curb-rights-part-2/4.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Nine hundred dollars, sweetheart, and a husband I have to unplug.",
+      "overlap": -0.1,
+      "timestamp": 33.686,
+      "duration": 5.2,
+      "audio": "/audio/radio/curb-rights-part-2/5.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "She unplugged the whole generator this time, Marv. Not the cord. The generator. It is cold.",
+      "overlap": -0.1,
+      "timestamp": 37.799,
+      "duration": 5.57,
+      "audio": "/audio/radio/curb-rights-part-2/6.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "Okay, and... who owns the generator, per the operating agreement?",
+      "overlap": -0.1,
+      "timestamp": 42.82,
+      "duration": 4.28,
+      "audio": "/audio/radio/curb-rights-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "The L L C.",
+      "overlap": -0.1,
+      "timestamp": 46.47,
+      "duration": 1.37,
+      "audio": "/audio/radio/curb-rights-part-2/8.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "And the cord?",
+      "overlap": -0.1,
+      "timestamp": 47.357,
+      "duration": 1.72,
+      "audio": "/audio/radio/curb-rights-part-2/9.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "...Also the L L C.",
+      "overlap": -0.1,
+      "timestamp": 48.177,
+      "duration": 1.75,
+      "audio": "/audio/radio/curb-rights-part-2/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So the cord and the generator are married to each other too. That's a beautiful thing, when you think about it.",
+      "overlap": -0.2,
+      "timestamp": 48.723,
+      "duration": 8.48,
+      "audio": "/audio/radio/curb-rights-part-2/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Nobody's eating, Ronnie. Both windows are dark.",
+      "overlap": -0.1,
+      "timestamp": 56.284,
+      "duration": 3.96,
+      "audio": "/audio/radio/curb-rights-part-2/12.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Then split it, Marv. He takes the generator, I take the cord, we file the dissolution, we never speak. That's the deal, sweetheart.",
+      "overlap": 0,
+      "timestamp": 59.046,
+      "duration": 10.7,
+      "audio": "/audio/radio/curb-rights-part-2/13.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "I... can't split it. The cord plugs into the generator. They're, legally, one appliance now. You commingled them in year two.",
+      "overlap": -0.1,
+      "timestamp": 68.895,
+      "duration": 7.72,
+      "audio": "/audio/radio/curb-rights-part-2/14.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "We commingled them?",
+      "overlap": -0.1,
+      "timestamp": 76.253,
+      "duration": 1.3,
+      "audio": "/audio/radio/curb-rights-part-2/15.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "You taped them together, Chen. With your name on the tape. I can email you the photo.",
+      "overlap": 0.15,
+      "timestamp": 76.651,
+      "duration": 5.18,
+      "audio": "/audio/radio/curb-rights-part-2/16.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "He has the tape on camera, Ronnie!",
+      "overlap": 0,
+      "timestamp": 81.389,
+      "duration": 2.96,
+      "audio": "/audio/radio/curb-rights-part-2/17.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "That sign was TRUE, Donna, and the tape is also true!",
+      "overlap": 0.3,
+      "timestamp": 82.658,
+      "duration": 3.16,
+      "audio": "/audio/radio/curb-rights-part-2/18.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Best tacos on the block, sweetheart, on a block that is now PITCH BLACK because of YOUR generator!",
+      "overlap": 0.35,
+      "timestamp": 84.583,
+      "duration": 8.28,
+      "audio": "/audio/radio/curb-rights-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Your cord! It is half your cord!",
+      "overlap": 0.4,
+      "timestamp": 91.212,
+      "duration": 2.08,
+      "audio": "/audio/radio/curb-rights-part-2/20.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "It's the L L C's appliance, you each own half the dark!",
+      "overlap": 0.4,
+      "timestamp": 92.304,
+      "duration": 3.52,
+      "audio": "/audio/radio/curb-rights-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Then I'm suing the appliance!",
+      "overlap": 0.4,
+      "timestamp": 94.664,
+      "duration": 2.6,
+      "audio": "/audio/radio/curb-rights-part-2/22.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "You can't sue an appliance, Donna!",
+      "overlap": 0.4,
+      "timestamp": 95.817,
+      "duration": 1.82,
+      "audio": "/audio/radio/curb-rights-part-2/23.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "...Actually, with this filing, you kind of can.",
+      "overlap": -0.1,
+      "timestamp": 97.037,
+      "duration": 2.93,
+      "audio": "/audio/radio/curb-rights-part-2/24.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> Our lights just came back on. The studio.",
+      "overlap": -0.15,
+      "timestamp": 99.636,
+      "duration": 2.55,
+      "audio": "/audio/radio/curb-rights-part-2/25.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...Then somebody plugged the cord back in.",
+      "overlap": -0.1,
+      "timestamp": 101.602,
+      "duration": 3.62,
+      "audio": "/audio/radio/curb-rights-part-2/26.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "I did not touch the cord, Donna.",
+      "overlap": -0.1,
+      "timestamp": 104.062,
+      "duration": 1.79,
+      "audio": "/audio/radio/curb-rights-part-2/27.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "...I'm at the curb. I plugged it in. I'm a member of the L L C now, I added myself this afternoon. It seemed smart.",
+      "overlap": -0.1,
+      "timestamp": 105.271,
+      "duration": 7.04,
+      "audio": "/audio/radio/curb-rights-part-2/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well there it is, folks. Two windows, one cord, one generator, and now a lawyer. <p:0.3> That's a family. We'll be right back, soon as somebody divorces the lawyer.",
+      "overlap": -0.25,
+      "timestamp": 111.562,
+      "duration": 12.14,
+      "audio": "/audio/radio/curb-rights-part-2/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, he's already taping his name to the cord.",
+      "overlap": -0.1,
+      "timestamp": 122.491,
+      "duration": 4.04,
+      "audio": "/audio/radio/curb-rights-part-2/30.flac"
+    }
+  ]
+}

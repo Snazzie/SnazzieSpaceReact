@@ -1,0 +1,295 @@
+{
+  "slug": "the-welcome-committee-part-2",
+  "title": "The Welcome Committee (Part 2)",
+  "description": "Darnell's lights went out and he's gone red on the spreadsheet. The whole street keeps invoking Doug, the drone, the breakers, the banana bread. Tonight Snazzie FM does the one thing Maple Court never has. It calls Doug back.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome back to Snazzie FM. When we left off, our newest neighbor, Darnell at number eleven, had gone red on the community spreadsheet, and his lights had, in his words, gone funny.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 13.74,
+      "audio": "/audio/radio/the-welcome-committee-part-2/0.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "They didn't go funny, Ronnie. They went OFF. <p:0.3> I'm sitting in the dark holding a banana bread I did not ask for.",
+      "overlap": 0.2,
+      "timestamp": 12.674,
+      "duration": 6.68,
+      "audio": "/audio/radio/the-welcome-committee-part-2/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "So we talked, off air, and we decided the only fair thing... <p:0.3> is to get Doug on the line.",
+      "overlap": -0.15,
+      "timestamp": 18.875,
+      "duration": 7.26,
+      "audio": "/audio/radio/the-welcome-committee-part-2/2.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh. <p:0.3> Oh, you don't call Doug, dear. <p:0.3> Doug calls you.",
+      "overlap": -0.1,
+      "timestamp": 23.758,
+      "duration": 6.28,
+      "audio": "/audio/radio/the-welcome-committee-part-2/3.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "You don't have his number, Barry. <p:0.3> Nobody has Doug's number. Doug has yours.",
+      "overlap": 0.2,
+      "timestamp": 28.753,
+      "duration": 5.55,
+      "audio": "/audio/radio/the-welcome-committee-part-2/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well, we put a number on the screen for him at the start of the segment. <p:0.3> And folks, line two is lit.",
+      "overlap": -0.2,
+      "timestamp": 32.539,
+      "duration": 7.98,
+      "audio": "/audio/radio/the-welcome-committee-part-2/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait, somebody's actually on two? <p:0.3> Patricia, is that... is that Doug?",
+      "overlap": -0.1,
+      "timestamp": 39.69,
+      "duration": 5.9,
+      "audio": "/audio/radio/the-welcome-committee-part-2/6.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "It can't be. <p:0.3> Doug is at the fete. Doug is always at the fete.",
+      "overlap": 0.25,
+      "timestamp": 44.681,
+      "duration": 6.18,
+      "audio": "/audio/radio/the-welcome-committee-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "Hello. <p:0.3> This is Doug.",
+      "overlap": -0.15,
+      "timestamp": 49.681,
+      "duration": 3.79,
+      "audio": "/audio/radio/the-welcome-committee-part-2/8.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Oh, NOW he exists.",
+      "overlap": -0.1,
+      "timestamp": 53.007,
+      "duration": 1.68,
+      "audio": "/audio/radio/the-welcome-committee-part-2/9.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "That is not Doug. <p:0.3> Doug's voice is... lower. Doug's voice is more committee.",
+      "overlap": 0,
+      "timestamp": 53.944,
+      "duration": 5.99,
+      "audio": "/audio/radio/the-welcome-committee-part-2/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Doug, welcome to the show. The whole street speaks very highly of you. <p:0.3> The drone, the spreadsheet, the breakers. That's a lot of hats.",
+      "overlap": -0.2,
+      "timestamp": 58.684,
+      "duration": 10.62,
+      "audio": "/audio/radio/the-welcome-committee-part-2/11.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "I want to be clear. <p:0.3> I am a sixty-one year old man with a leaf blower. <p:0.3> I do not have a drone. I have never had a drone.",
+      "overlap": -0.1,
+      "timestamp": 68.123,
+      "duration": 12.12,
+      "audio": "/audio/radio/the-welcome-committee-part-2/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Then who's flying the drone?",
+      "overlap": -0.1,
+      "timestamp": 79.181,
+      "duration": 2.4,
+      "audio": "/audio/radio/the-welcome-committee-part-2/13.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Doug is, dear. <p:0.3> Tell them, Doug.",
+      "overlap": 0.25,
+      "timestamp": 80.743,
+      "duration": 3.98,
+      "audio": "/audio/radio/the-welcome-committee-part-2/14.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "Patricia. <p:0.3> Every time something happens on that street that nobody wants to sign their name to, you call it Doug. <p:0.3> The watchlist is Doug. The breakers are Doug. I just mow.",
+      "overlap": -0.1,
+      "timestamp": 83.427,
+      "duration": 15.53,
+      "audio": "/audio/radio/the-welcome-committee-part-2/15.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Then who turned off number eleven's lights?",
+      "overlap": 0.3,
+      "timestamp": 97.505,
+      "duration": 3.13,
+      "audio": "/audio/radio/the-welcome-committee-part-2/16.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Doug did.",
+      "overlap": 0.3,
+      "timestamp": 99.665,
+      "duration": 1.6,
+      "audio": "/audio/radio/the-welcome-committee-part-2/17.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "I was at the FETE, Patricia.",
+      "overlap": 0.35,
+      "timestamp": 99.784,
+      "duration": 2.76,
+      "audio": "/audio/radio/the-welcome-committee-part-2/18.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "So nobody turned them off? <p:0.3> They just... went off? On their own? <p:0.3> That's WORSE. How is that worse and also worse?",
+      "overlap": 0.25,
+      "timestamp": 101.702,
+      "duration": 7.34,
+      "audio": "/audio/radio/the-welcome-committee-part-2/19.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I think what Doug is telling us, beautifully, is that nobody runs Maple Court. <p:0.3> The street runs itself. That's community.",
+      "overlap": -0.2,
+      "timestamp": 108.025,
+      "duration": 9.74,
+      "audio": "/audio/radio/the-welcome-committee-part-2/20.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "If Doug only mows... <p:0.3> then who's been updating the spreadsheet at three in the morning?",
+      "overlap": -0.1,
+      "timestamp": 116.718,
+      "duration": 6.52,
+      "audio": "/audio/radio/the-welcome-committee-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Well, I assumed that was you, Winston.",
+      "overlap": 0.25,
+      "timestamp": 121.894,
+      "duration": 3.44,
+      "audio": "/audio/radio/the-welcome-committee-part-2/22.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I assumed it was YOU.",
+      "overlap": 0.35,
+      "timestamp": 123.8,
+      "duration": 1.98,
+      "audio": "/audio/radio/the-welcome-committee-part-2/23.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "I assumed it was the both of you.",
+      "overlap": 0.35,
+      "timestamp": 123.74,
+      "duration": 3.24,
+      "audio": "/audio/radio/the-welcome-committee-part-2/24.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "So the spreadsheet... updates itself? <p:0.3> Nobody's typing? It's just... watching?",
+      "overlap": 0.3,
+      "timestamp": 126.308,
+      "duration": 4.87,
+      "audio": "/audio/radio/the-welcome-committee-part-2/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Guys. <p:0.3> My screen just flickered. <p:0.3> Number eleven just went back to green.",
+      "overlap": 0.25,
+      "timestamp": 130.222,
+      "duration": 7.32,
+      "audio": "/audio/radio/the-welcome-committee-part-2/26.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I'm green? <p:0.3> Why am I green? Nobody MOVED me. My lights are back on!",
+      "overlap": 0.35,
+      "timestamp": 136.466,
+      "duration": 5.0,
+      "audio": "/audio/radio/the-welcome-committee-part-2/27.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, lovely. <p:0.3> Welcome back, dear. Conditionally.",
+      "overlap": 0.3,
+      "timestamp": 140.453,
+      "duration": 5.26,
+      "audio": "/audio/radio/the-welcome-committee-part-2/28.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "I want OFF the spreadsheet.",
+      "overlap": 0.35,
+      "timestamp": 143.976,
+      "duration": 2.8,
+      "audio": "/audio/radio/the-welcome-committee-part-2/29.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug, you're not on the spreadsheet.",
+      "overlap": 0.4,
+      "timestamp": 145.415,
+      "duration": 2.49,
+      "audio": "/audio/radio/the-welcome-committee-part-2/30.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "...What color am I.",
+      "overlap": -0.1,
+      "timestamp": 147.049,
+      "duration": 2.28,
+      "audio": "/audio/radio/the-welcome-committee-part-2/31.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug.",
+      "overlap": 0.3,
+      "timestamp": 147.883,
+      "duration": 1.16,
+      "audio": "/audio/radio/the-welcome-committee-part-2/32.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Banana bread!",
+      "overlap": 0.4,
+      "timestamp": 148.683,
+      "duration": 1.8,
+      "audio": "/audio/radio/the-welcome-committee-part-2/33.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And that, folks, is a community that takes care of itself. <p:0.4> Nobody in charge, everybody watched, and the lights always come back on. <p:0.3> We'll be right back, right after we find out what color Doug went.",
+      "overlap": -0.25,
+      "timestamp": 149.22,
+      "duration": 15.98,
+      "audio": "/audio/radio/the-welcome-committee-part-2/34.flac"
+    },
+    {
+      "speaker": "caller-doug",
+      "text": "...It's amber, isn't it.",
+      "overlap": -0.1,
+      "timestamp": 163.83,
+      "duration": 2.44,
+      "audio": "/audio/radio/the-welcome-committee-part-2/35.flac"
+    }
+  ]
+}

@@ -14,9 +14,11 @@ import theRenewalWindow from "./radio/the-renewal-window.json";
 import curbRights from "./radio/curb-rights.json";
 import theHelpfulFridge from "./radio/the-helpful-fridge.json";
 import theWelcomeCommittee from "./radio/the-welcome-committee.json";
+import theWelcomeCommitteePart2 from "./radio/the-welcome-committee-part-2.json";
 import theNinthBreath from "./radio/the-ninth-breath.json";
 import theFogRolledIn from "./radio/the-fog-rolled-in.json";
 import notOurWater from "./radio/not-our-water.json";
+import notOurWaterPart2 from "./radio/not-our-water-part-2.json";
 import theNinetyYearSoup from "./radio/the-ninety-year-soup.json";
 import crumbAndPunishment from "./radio/crumb-and-punishment.json";
 import theLoyaltyWar from "./radio/the-loyalty-war.json";
@@ -51,6 +53,25 @@ import neverFold from "./radio/never-fold.json";
 import theBookFairEconomy from "./radio/the-book-fair-economy.json";
 import theLastLitHouse from "./radio/the-last-lit-house.json";
 import theValidationStamp from "./radio/the-validation-stamp.json";
+// Part 2 sequels (each placed right after its parent in EPISODES)
+import theRenewalWindowPart2 from "./radio/the-renewal-window-part-2.json";
+import curbRightsPart2 from "./radio/curb-rights-part-2.json";
+import theHelpfulFridgePart2 from "./radio/the-helpful-fridge-part-2.json";
+import theFogRolledInPart2 from "./radio/the-fog-rolled-in-part-2.json";
+import theNinetyYearSoupPart2 from "./radio/the-ninety-year-soup-part-2.json";
+import crumbAndPunishmentPart2 from "./radio/crumb-and-punishment-part-2.json";
+import theLoyaltyWarPart2 from "./radio/the-loyalty-war-part-2.json";
+import pleaseStayOnTheLinePart2 from "./radio/please-stay-on-the-line-part-2.json";
+import allTheLightsAreGreenPart2 from "./radio/all-the-lights-are-green-part-2.json";
+import theFamilyPlanPart2 from "./radio/the-family-plan-part-2.json";
+import theBroodIsBackPart2 from "./radio/the-brood-is-back-part-2.json";
+import theCasseroleLedgerPart2 from "./radio/the-casserole-ledger-part-2.json";
+import theGoodNeighborScorePart2 from "./radio/the-good-neighbor-score-part-2.json";
+import theNightShiftPart2 from "./radio/the-night-shift-part-2.json";
+import theSnowThatStayedPart2 from "./radio/the-snow-that-stayed-part-2.json";
+import theEmpaneledHourPart2 from "./radio/the-empaneled-hour-part-2.json";
+import theSharedMarqueePart2 from "./radio/the-shared-marquee-part-2.json";
+import theSkyWroteBackPart2 from "./radio/the-sky-wrote-back-part-2.json";
 import adSootheMaster from "./radio/ad-soothe-master.json";
 import adLiquidRage from "./radio/ad-liquid-rage.json";
 import adBargainSurgery from "./radio/ad-bargain-surgery.json";
@@ -174,6 +195,8 @@ export const CAST: Record<string, CastMember> = {
   "caller-darnell":{ id: "caller-darnell",  name: "Darnell",           color: "#a29bfe", role: "Caller"       },
   "caller-patricia":{ id: "caller-patricia",name: "Patricia",          color: "#a29bfe", role: "Caller"       },
   "caller-winston":{ id: "caller-winston",  name: "Winston",           color: "#a29bfe", role: "Caller"       },
+  "caller-doug":   { id: "caller-doug",     name: "Doug",              color: "#7ec8e3", role: "Caller"       },
+  "caller-marcus": { id: "caller-marcus",   name: "Marcus",            color: "#74b9ff", role: "Caller"       },
   "caller-kim":    { id: "caller-kim",      name: "Kim",               color: "#a29bfe", role: "Caller"       },
   "caller-frank":  { id: "caller-frank",    name: "Frank",             color: "#a29bfe", role: "Caller"       },
   "caller-phil":   { id: "caller-phil",     name: "Phil",              color: "#7ec8e3", role: "Caller"       },
@@ -217,6 +240,9 @@ export const CAST: Record<string, CastMember> = {
   "treasurer-cheryl":{ id: "treasurer-cheryl",name: "Cheryl",          color: "#c2185b", role: "Caller"       },
   "meter-vox":     { id: "meter-vox",       name: "MeterVox",          color: "#27ae60", role: "Guest Expert" },
   "attendant-cordell":{ id: "attendant-cordell",name: "Cordell",       color: "#6d5c43", role: "Caller"       },
+  "brood-prime":   { id: "brood-prime",     name: "Brood Prime",       color: "#6ab04c", role: "Caller"       },
+  "caller-ronnie-real":{ id: "caller-ronnie-real",name: "Ronnie (the real one)", color: "#ff8c42", role: "Caller" },
+  "harmonyhaus":   { id: "harmonyhaus",     name: "HarmonyHaus",       color: "#16a085", role: "Guest Expert" },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -358,41 +384,61 @@ export const EPISODES: Episode[] = [
   episodeFrom(oneMinuteRemaining),
   episodeFrom(theSharedWall),
   episodeFrom(theRenewalWindow),
+  episodeFrom(theRenewalWindowPart2),
   episodeFrom(curbRights),
+  episodeFrom(curbRightsPart2),
   episodeFrom(theHelpfulFridge),
+  episodeFrom(theHelpfulFridgePart2),
   episodeFrom(theWelcomeCommittee),
+  episodeFrom(theWelcomeCommitteePart2),
   episodeFrom(theNinthBreath),
   episodeFrom(theFogRolledIn),
+  episodeFrom(theFogRolledInPart2),
   episodeFrom(notOurWater),
+  episodeFrom(notOurWaterPart2),
   episodeFrom(theNinetyYearSoup),
+  episodeFrom(theNinetyYearSoupPart2),
   episodeFrom(crumbAndPunishment),
+  episodeFrom(crumbAndPunishmentPart2),
   episodeFrom(theLoyaltyWar),
+  episodeFrom(theLoyaltyWarPart2),
   episodeFrom(theLendingLibrary),
   episodeFrom(pleaseStayOnTheLine),
+  episodeFrom(pleaseStayOnTheLinePart2),
   episodeFrom(theGratitudeAudit),
   episodeFrom(allTheLightsAreGreen),
+  episodeFrom(allTheLightsAreGreenPart2),
   episodeFrom(theDawnBell),
   episodeFrom(theLittleFreeWar),
   episodeFrom(theFamilyPlan),
+  episodeFrom(theFamilyPlanPart2),
   episodeFrom(theBroodIsBack),
+  episodeFrom(theBroodIsBackPart2),
   episodeFrom(theCasseroleLedger),
+  episodeFrom(theCasseroleLedgerPart2),
   episodeFrom(sayLess),
   episodeFrom(theHowlHeardRound),
   episodeFrom(theForwardingAddress),
   episodeFrom(theGoodNeighborScore),
+  episodeFrom(theGoodNeighborScorePart2),
   episodeFrom(theGroundGaveItBack),
   episodeFrom(theFlatlineMethod),
   episodeFrom(theNightShift),
+  episodeFrom(theNightShiftPart2),
   episodeFrom(theScarecrowClassic),
   episodeFrom(theInsideVoice),
   episodeFrom(theSunWentOut),
   episodeFrom(theFarmSystem),
   episodeFrom(notarizeTheWitness),
   episodeFrom(theSnowThatStayed),
+  episodeFrom(theSnowThatStayedPart2),
   episodeFrom(theCapsuleKeeper),
   episodeFrom(theEmpaneledHour),
+  episodeFrom(theEmpaneledHourPart2),
   episodeFrom(theSharedMarquee),
+  episodeFrom(theSharedMarqueePart2),
   episodeFrom(theSkyWroteBack),
+  episodeFrom(theSkyWroteBackPart2),
   episodeFrom(theSoftEdit),
   episodeFrom(neverFold),
   episodeFrom(theBookFairEconomy),

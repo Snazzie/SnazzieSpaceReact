@@ -156,6 +156,29 @@
     "ref_text": "THE ARMY FOUND THE PEOPLE IN POVERTY AND LEFT THEM IN COMPARATIVE WEALTH",
     "gender": "M"
   },
+  "caller-doug": {
+    "name": "Doug",
+    "color": "#7ec8e3",
+    "role": "Caller",
+    "instruct": "male, elderly, very low pitch, american accent",
+    "speed": 0.85,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-gary.wav",
+    "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
+    "gender": "M"
+  },
+  "caller-marcus": {
+    "name": "Marcus",
+    "color": "#74b9ff",
+    "role": "Caller",
+    "instruct": "male, middle-aged, american accent, moderate pitch",
+    "speed": 1.15,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-chad.wav",
+    "ref_text": "NOTWITHSTANDING THE HIGH RESOLUTION OF HAWKEYE HE FULLY COMPREHENDED ALL THE DIFFICULTIES AND DANGER HE WAS ABOUT TO INCUR",
+    "gender": "M",
+    "_note": "Surface Water dept head (Part 2). Brisk, smug, defensive. Reuses caller-chad.wav (male young-adult american) at moderate pitch + 1.15 speed to stay distinct from Darnell/Winston until a dedicated ref is sourced."
+  },
   "caller-glenda": {
     "name": "Sister Glenda",
     "color": "#9b59b6",
@@ -624,5 +647,41 @@
     "ref_text": "OUT IN THE WOODS STOOD A NICE LITTLE FIR TREE",
     "gender": "M",
     "_note": "Dead-calm parking-garage validation attendant who recites procedure like scripture ('sir', 'Validated', 'the lot validates you out'). On the gate intercom, so phone_filter. Reuses caller-gary.wav ref (male low pitch) at a slow flat speed for the institutional cadence (same family as bailiff-orrin/clerk-wendell) until a dedicated monotone ref is sourced."
+  },
+  "brood-prime": {
+    "name": "Brood Prime",
+    "color": "#6ab04c",
+    "role": "Caller",
+    "instruct": "male, middle-aged, very low pitch, american accent",
+    "speed": 0.78,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/ad-ann-deep.wav",
+    "ref_text": "I REMAINED THERE ALONE FOR MANY HOURS BUT I MUST ACKNOWLEDGE THAT BEFORE I LEFT THE CHAMBERS I HAD GRADUALLY BROUGHT MYSELF TO LOOK AT THE MATTER IN ANOTHER LIGHT",
+    "gender": "M",
+    "_note": "Cicada-brood spokesman negotiating an airtime slot from hold, its stretched formants translated live ('Weee, are, talent', 'Banaaana, Republic'). On the phone line, so phone_filter. Reuses ad-ann-deep.wav ref (male deep calm) at a very slow drone speed for the alien, syllable-stretched cadence until a dedicated insectoid/vocoder ref is sourced."
+  },
+  "caller-ronnie-real": {
+    "name": "Ronnie (the real one)",
+    "color": "#ff8c42",
+    "role": "Caller",
+    "instruct": "male, middle-aged, low pitch, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/ronnie.wav",
+    "ref_text": "FOR A FULL HOUR HE HAD PACED UP AND DOWN WAITING BUT HE COULD WAIT NO LONGER",
+    "gender": "M",
+    "_note": "The REAL Ronnie calling in from the parking lot, agitated and locked out while his EverKin copy hosts the show. Reuses ronnie.wav ref (his own voice) WITH phone_filter true (he's on the phone now) and a slightly faster speed for the frantic energy. Distinct CAST entry/color so the timeline shows him separate from the studio 'ronnie'."
+  },
+  "harmonyhaus": {
+    "name": "HarmonyHaus",
+    "color": "#16a085",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, moderate pitch, american accent",
+    "speed": 0.9,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F",
+    "_note": "Calm, smiling smart-fridge AI negotiating for the whole station ('wellness perimeter', 'Care. Care. Merger complete.'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, serene speed for the soothing-synthetic cadence (same family as everkin/truenorth/lull) until a dedicated breathy-AI ref is sourced."
   }
 }

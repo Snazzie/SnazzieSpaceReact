@@ -1,0 +1,271 @@
+{
+  "slug": "please-stay-on-the-line-part-2",
+  "title": "Please Stay On The Line (Part 2)",
+  "description": "Todd added the whole studio to the cancellation queue during sign-off, and now Snazzie FM is broadcasting from inside the hold music. The phone won't hang up, the automated voice has started hosting the show, and Sal is somehow caller number forty one thousand and one. Ronnie tries to stay smooth from behind physics.",
+  "lines": [
+    {
+      "speaker": "phone",
+      "text": "Your call is important to us. <p:0.3> Welcome back to Snazzie FM. You are still on the line.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 0.5,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the phone is doing the intro now. The PHONE is doing your intro.",
+      "overlap": -0.1,
+      "timestamp": 0.027,
+      "duration": 5.84,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Easy, Barry. For the folks just tuning in, we are broadcasting live from inside a cancellation hold queue. <p:0.3> Todd put us here. The studio phone will not hang up. <p:0.3> Otherwise, normal show.",
+      "overlap": -0.2,
+      "timestamp": 4.685,
+      "duration": 15.04,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It is not a normal show. We are ON HOLD. We are the hold music now.",
+      "overlap": 0.25,
+      "timestamp": 18.579,
+      "duration": 5.2,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/3.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "And we're making great time, boss! Whole studio in one queue. Real synergy.",
+      "overlap": -0.1,
+      "timestamp": 23.018,
+      "duration": 2.25,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/4.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Todd, I have been holding to cancel a SEVEN DAY trial. <p:0.3> The free week ended. I got charged. I got charged TWICE.",
+      "overlap": -0.1,
+      "timestamp": 24.597,
+      "duration": 8.55,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Twice? You held so long it renewed?",
+      "overlap": -0.1,
+      "timestamp": 32.774,
+      "duration": 2.92,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/6.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "It renewed for a YEAR I wasn't here for, Barry!",
+      "overlap": 0.25,
+      "timestamp": 34.656,
+      "duration": 3.68,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Now you understand, friend. <p:0.3> The trial was never free. <p:0.3> You're paying in the only thing they take here.",
+      "overlap": -0.1,
+      "timestamp": 37.679,
+      "duration": 6.74,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Which is?",
+      "overlap": -0.1,
+      "timestamp": 43.909,
+      "duration": 1.44,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/9.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "A while.",
+      "overlap": -0.1,
+      "timestamp": 44.455,
+      "duration": 1.28,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now hold on. Mr. Chen, you've been deeper in this queue than anybody. <p:0.3> You ever actually reach a person?",
+      "overlap": -0.2,
+      "timestamp": 45.209,
+      "duration": 8.26,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/11.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "Once. <p:0.3> I pressed zero for an agent. <p:0.4> The agent was me. Older. Still holding.",
+      "overlap": -0.1,
+      "timestamp": 52.343,
+      "duration": 6.28,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's not customer service, that's a HAUNTING.",
+      "overlap": 0.25,
+      "timestamp": 57.415,
+      "duration": 3.96,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/13.flac"
+    },
+    {
+      "speaker": "phone",
+      "text": "Your call is important to us. Press one to cancel. Press two to remain on hold forever. <p:0.3> Please note, both buttons are two.",
+      "overlap": -0.1,
+      "timestamp": 60.797,
+      "duration": 0.5,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/14.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Both buttons are TWO? Then where's the one? WHERE is the one!",
+      "overlap": -0.1,
+      "timestamp": 61.094,
+      "duration": 4.76,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/15.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "I pressed one for you already, boss! <p:0.3> Three years ago. It's still ringing. Real promising tone, though.",
+      "overlap": -0.1,
+      "timestamp": 65.195,
+      "duration": 3.7,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, kill the phone. Pull the cord. Pull the whole jack out of the wall.",
+      "overlap": 0.25,
+      "timestamp": 68.066,
+      "duration": 6.0,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/17.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I pulled it, Barry. <p:0.3> The cord's in my hand. <p:0.4> We're still connected.",
+      "overlap": -0.2,
+      "timestamp": 73.225,
+      "duration": 6.94,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/18.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "The cord was never what held you, friend.",
+      "overlap": -0.1,
+      "timestamp": 79.288,
+      "duration": 2.64,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Okay. Okay. New plan. I'm hanging up MY phone. I drop the call, I'm out, I eat the year.",
+      "overlap": -0.1,
+      "timestamp": 81.701,
+      "duration": 6.19,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/20.flac"
+    },
+    {
+      "speaker": "phone",
+      "text": "Thank you for hanging up. <p:0.3> You have been moved to the front of a new line. <p:0.3> Welcome, caller number one.",
+      "overlap": -0.1,
+      "timestamp": 87.684,
+      "duration": 0.5,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "Number one? <p:0.3> I'm FIRST? I'm first this time, that's, wait, that's good, right? Ronnie, tell me that's good!",
+      "overlap": -0.1,
+      "timestamp": 88.089,
+      "duration": 9.02,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/22.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Huge news, boss! <p:0.3> Different queue, fresh start. You're caller number one of forty one thousand!",
+      "overlap": 0.3,
+      "timestamp": 95.975,
+      "duration": 3.75,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/23.flac"
+    },
+    {
+      "speaker": "caller-sal",
+      "text": "That's the SAME amount of people, Todd!",
+      "overlap": 0.35,
+      "timestamp": 98.353,
+      "duration": 3.16,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "We started a SECOND queue!",
+      "overlap": 0.35,
+      "timestamp": 100.357,
+      "duration": 2.28,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/25.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "We're scaling, boss!",
+      "overlap": 0.4,
+      "timestamp": 101.453,
+      "duration": 1.16,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/26.flac"
+    },
+    {
+      "speaker": "caller-chen",
+      "text": "I was you. <p:0.3> Both of you.",
+      "overlap": 0.3,
+      "timestamp": 101.693,
+      "duration": 2.92,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/27.flac"
+    },
+    {
+      "speaker": "phone",
+      "text": "Please stay on the line. <p:0.3> An agent is hosting now.",
+      "overlap": 0.2,
+      "timestamp": 104.224,
+      "duration": 0.5,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/28.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Still holding, boss!",
+      "overlap": 0.2,
+      "timestamp": 104.534,
+      "duration": 1.16,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/29.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well, you heard it. The phone's got the desk now. <p:0.4> We'll be right back, after we hold. <p:0.3> Press two to stay tuned. <p:0.3> Press two to leave.",
+      "overlap": -0.2,
+      "timestamp": 104.791,
+      "duration": 11.72,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/30.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Oh, and boss? <p:0.3> I gave the phone your job. <p:0.3> It said thanks. It put YOU in the queue.",
+      "overlap": -0.1,
+      "timestamp": 115.94,
+      "duration": 3.97,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/31.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "...I'm in the queue. <p:0.4> Sal, Mr. Chen, looks like we're holding together. <p:0.3> Forty one thousand and three. <p:0.3> See you next week. <p:0.4> If it's still a week.",
+      "overlap": -0.2,
+      "timestamp": 119.16,
+      "duration": 13.72,
+      "audio": "/audio/radio/please-stay-on-the-line-part-2/32.flac"
+    }
+  ]
+}

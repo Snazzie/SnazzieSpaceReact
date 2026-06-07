@@ -1,0 +1,287 @@
+{
+  "slug": "the-loyalty-war-part-2",
+  "title": "The Loyalty War (Part 2)",
+  "description": "Steve got tired of the tenth taco that never comes, so he started his own truck with one rule: the tenth taco is free, today, no card. Now Donna and Marco have a common enemy, and a common problem.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're back on Snazzie FM, and the taco war has a third truck. Donna, Marco, you're both on the line again. And so is the man who started his own.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.8,
+      "audio": "/audio/radio/the-loyalty-war-part-2/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Steve has a truck now.",
+      "overlap": -0.15,
+      "timestamp": 9.913,
+      "duration": 1.88,
+      "audio": "/audio/radio/the-loyalty-war-part-2/1.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Hey, guys. Yeah. It's called Steve's. One rule. Buy nine tacos, the tenth one is free, today, in your hand, no card.",
+      "overlap": -0.2,
+      "timestamp": 11.322,
+      "duration": 4.36,
+      "audio": "/audio/radio/the-loyalty-war-part-2/2.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "You parked between us, Steve.",
+      "overlap": -0.1,
+      "timestamp": 15.284,
+      "duration": 2.6,
+      "audio": "/audio/radio/the-loyalty-war-part-2/3.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "On the curb. The eight inches. He's in the eight inches!",
+      "overlap": 0.25,
+      "timestamp": 16.88,
+      "duration": 2.96,
+      "audio": "/audio/radio/the-loyalty-war-part-2/4.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "It's a public street, Marco. Public.",
+      "overlap": 0.3,
+      "timestamp": 18.877,
+      "duration": 1.64,
+      "audio": "/audio/radio/the-loyalty-war-part-2/5.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "...That's my line. He took my line.",
+      "overlap": -0.1,
+      "timestamp": 20.212,
+      "duration": 1.84,
+      "audio": "/audio/radio/the-loyalty-war-part-2/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So let me understand the model, Steve. The tenth taco is actually free. Real. Redeemable.",
+      "overlap": -0.2,
+      "timestamp": 21.607,
+      "duration": 6.88,
+      "audio": "/audio/radio/the-loyalty-war-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Real, Ronnie. I hand it to you. No machine. No stamp. I looked a man in the eye yesterday and I gave him a free taco, and he cried.",
+      "overlap": -0.1,
+      "timestamp": 27.627,
+      "duration": 4.88,
+      "audio": "/audio/radio/the-loyalty-war-part-2/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "An honest taco. Imagine.",
+      "overlap": -0.15,
+      "timestamp": 32.073,
+      "duration": 2.12,
+      "audio": "/audio/radio/the-loyalty-war-part-2/9.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "It can't be free, Steve. You have to eat the cost somewhere. Where's the tenth taco coming from?",
+      "overlap": -0.1,
+      "timestamp": 33.253,
+      "duration": 7.96,
+      "audio": "/audio/radio/the-loyalty-war-part-2/10.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "I built the price of the tenth into the other nine, Donna. Same money. You just, you actually get the thing at the end.",
+      "overlap": -0.1,
+      "timestamp": 40.202,
+      "duration": 4.56,
+      "audio": "/audio/radio/the-loyalty-war-part-2/11.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "That's... that's just our prices with a taco at the end.",
+      "overlap": -0.1,
+      "timestamp": 44.468,
+      "duration": 2.88,
+      "audio": "/audio/radio/the-loyalty-war-part-2/12.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Don't say it like it's clever, Marco.",
+      "overlap": -0.1,
+      "timestamp": 47.043,
+      "duration": 3.16,
+      "audio": "/audio/radio/the-loyalty-war-part-2/13.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Donna, we need to talk.",
+      "overlap": -0.15,
+      "timestamp": 49.68,
+      "duration": 1.64,
+      "audio": "/audio/radio/the-loyalty-war-part-2/14.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...I know.",
+      "overlap": -0.1,
+      "timestamp": 50.186,
+      "duration": 1.52,
+      "audio": "/audio/radio/the-loyalty-war-part-2/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Are the two of you forming an alliance? On the air?",
+      "overlap": -0.2,
+      "timestamp": 50.785,
+      "duration": 3.92,
+      "audio": "/audio/radio/the-loyalty-war-part-2/16.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "It's a temporary, eight-inch alliance, Ronnie. We move our trucks together. We squeeze him out.",
+      "overlap": -0.1,
+      "timestamp": 54.065,
+      "duration": 5.0,
+      "audio": "/audio/radio/the-loyalty-war-part-2/17.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "And we launch a new card. Buy NINE tacos, the tenth is free, AND the eleventh.",
+      "overlap": 0.25,
+      "timestamp": 58.021,
+      "duration": 6.48,
+      "audio": "/audio/radio/the-loyalty-war-part-2/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Does the eleventh exist?",
+      "overlap": -0.15,
+      "timestamp": 63.806,
+      "duration": 2.16,
+      "audio": "/audio/radio/the-loyalty-war-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "The eleventh is conceptual, Barry.",
+      "overlap": -0.1,
+      "timestamp": 64.803,
+      "duration": 3.12,
+      "audio": "/audio/radio/the-loyalty-war-part-2/20.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "See, that's the thing, though. I already came back. I have your nine cards. I have Marco's nine cards. I have forty cards stuck on nine. I'm just gonna cash all of those at MY truck.",
+      "overlap": -0.1,
+      "timestamp": 67.042,
+      "duration": 6.84,
+      "audio": "/audio/radio/the-loyalty-war-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Those are OUR stamps!",
+      "overlap": -0.1,
+      "timestamp": 73.539,
+      "duration": 1.64,
+      "audio": "/audio/radio/the-loyalty-war-part-2/22.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "You can't honor our cards at his truck, Steve, that's, that's forty free tacos!",
+      "overlap": 0.25,
+      "timestamp": 74.138,
+      "duration": 6.56,
+      "audio": "/audio/radio/the-loyalty-war-part-2/23.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Forty free tacos, guys. Finally.",
+      "overlap": 0.3,
+      "timestamp": 79.371,
+      "duration": 1.6,
+      "audio": "/audio/radio/the-loyalty-war-part-2/24.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "Move your truck, Steve!",
+      "overlap": 0.4,
+      "timestamp": 80.101,
+      "duration": 1.68,
+      "audio": "/audio/radio/the-loyalty-war-part-2/25.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "Honor your own cards!",
+      "overlap": 0.4,
+      "timestamp": 80.638,
+      "duration": 2.0,
+      "audio": "/audio/radio/the-loyalty-war-part-2/26.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "Stamp them yourselves!",
+      "overlap": 0.4,
+      "timestamp": 81.504,
+      "duration": 1.48,
+      "audio": "/audio/radio/the-loyalty-war-part-2/27.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "There's no tenth stamp, Steve!",
+      "overlap": 0.4,
+      "timestamp": 82.239,
+      "duration": 1.8,
+      "audio": "/audio/radio/the-loyalty-war-part-2/28.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "At MY truck there is!",
+      "overlap": 0.4,
+      "timestamp": 83.055,
+      "duration": 1.4,
+      "audio": "/audio/radio/the-loyalty-war-part-2/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the loyal customer opened a competitor to collect on the loyalty that the loyalty card never paid out.",
+      "overlap": -0.1,
+      "timestamp": 83.725,
+      "duration": 9.08,
+      "audio": "/audio/radio/the-loyalty-war-part-2/30.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's the beauty of loyalty, Barry. <p:0.3> It always comes back around. It just doesn't always come back to you.",
+      "overlap": -0.2,
+      "timestamp": 91.476,
+      "duration": 8.58,
+      "audio": "/audio/radio/the-loyalty-war-part-2/31.flac"
+    },
+    {
+      "speaker": "caller-donna",
+      "text": "...So who's getting a card at Steve's?",
+      "overlap": -0.15,
+      "timestamp": 99.022,
+      "duration": 3.16,
+      "audio": "/audio/radio/the-loyalty-war-part-2/32.flac"
+    },
+    {
+      "speaker": "caller-marco",
+      "text": "I mean. The tenth's actually free.",
+      "overlap": -0.15,
+      "timestamp": 101.428,
+      "duration": 1.88,
+      "audio": "/audio/radio/the-loyalty-war-part-2/33.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Three trucks, one curb, forty cards, and the only honest taco in town. <p:0.3> We'll see who's parked there tomorrow. Don't touch that dial.",
+      "overlap": -0.25,
+      "timestamp": 103.116,
+      "duration": 10.46,
+      "audio": "/audio/radio/the-loyalty-war-part-2/34.flac"
+    }
+  ]
+}
