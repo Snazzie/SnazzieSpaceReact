@@ -1,0 +1,24 @@
+{
+  "slug": "ad-mirthazol",
+  "title": "Mirthazol",
+  "description": "A prescription mood pill that locks your face into a serene, government-approved smile, forever.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "Feeling sad? One Mirthazol locks your face into a serene, government-approved smile, forever. <p:0.2> Mirthazol. Why feel, when you can comply?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.81,
+      "audio": "/audio/radio/ad-mirthazol/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Mirthazol may cause permanent smiling. <p:0> Jaw fusion. <p:0> Do not stop smiling. <p:0> Your face is now property of Mirthazol. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 6.545,
+      "duration": 7.453,
+      "audio": "/audio/radio/ad-mirthazol/1.flac"
+    }
+  ]
+}

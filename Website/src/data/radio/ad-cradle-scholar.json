@@ -1,0 +1,24 @@
+{
+  "slug": "ad-cradle-scholar",
+  "title": "Cradle Scholar",
+  "description": "Daycare that downloads a full college degree straight into your napping toddler.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-chipper",
+      "text": "Tired of dumb babies? Cradle Scholar downloads a full college degree into your napping toddler! Drop off a baby, pick up a graduate!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.95,
+      "audio": "/audio/radio/ad-cradle-scholar/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "First words may be Latin. <p:0> Soft spot now a USB port. <p:0> Skull seam reseals by age four. <p:0> Results not guaranteed. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 6.642,
+      "duration": 7.159,
+      "audio": "/audio/radio/ad-cradle-scholar/1.flac"
+    }
+  ]
+}

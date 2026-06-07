@@ -1,0 +1,24 @@
+{
+  "slug": "ad-lapseless",
+  "title": "Lapseless",
+  "description": "A nine-dollar neural patch that deletes sleep, so your third lost life can finally answer emails.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Why waste a third of your life unconscious? For nine dollars a month, the Lapseless patch deletes sleep forever. Your eyes never close again.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.24,
+      "audio": "/audio/radio/ad-lapseless/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Lapseless permanently disables the blink reflex. <p:0> Eyelids sold separately. <p:0> Cancellation is structurally impossible. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.785,
+      "duration": 6.922,
+      "audio": "/audio/radio/ad-lapseless/1.flac"
+    }
+  ]
+}

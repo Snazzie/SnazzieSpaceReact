@@ -151,6 +151,27 @@ import adCornerBakery from "./radio/ad-corner-bakery.json";
 import adVicsGarage from "./radio/ad-vics-garage.json";
 import adTinyTots from "./radio/ad-tiny-tots.json";
 import adLarrysElectronics from "./radio/ad-larrys-electronics.json";
+// New Pro spots (reuse existing announcer voices + shared ad-disclaimer):
+import adMirthazol from "./radio/ad-mirthazol.json";
+import adSynapseSurge from "./radio/ad-synapse-surge.json";
+import adOrganOutlet from "./radio/ad-organ-outlet.json";
+import adClaimfastLegal from "./radio/ad-claimfast-legal.json";
+import adNuggetRain from "./radio/ad-nugget-rain.json";
+import adNestEggEyes from "./radio/ad-nest-egg-eyes.json";
+import adEverafterCloud from "./radio/ad-everafter-cloud.json";
+import adClunkerz from "./radio/ad-clunkerz.json";
+import adVerminRapture from "./radio/ad-vermin-rapture.json";
+import adLapseless from "./radio/ad-lapseless.json";
+import adBarkFluent from "./radio/ad-bark-fluent.json";
+import adDeedDrift from "./radio/ad-deed-drift.json";
+import adSpincinerate from "./radio/ad-spincinerate.json";
+import adCradleScholar from "./radio/ad-cradle-scholar.json";
+import adSnipThrift from "./radio/ad-snip-thrift.json";
+import adDeadcert from "./radio/ad-deadcert.json";
+import adWatchpaw from "./radio/ad-watchpaw.json";
+import adDewdrop from "./radio/ad-dewdrop.json";
+import adUrnAndEarn from "./radio/ad-urn-and-earn.json";
+import adMoodPilot from "./radio/ad-mood-pilot.json";
 
 export interface CastMember {
   id: string;
@@ -347,6 +368,10 @@ const STANDARD_ADS: Episode[] = [
   adPawEquity, adRugcoin, adBurnguard, adDocbot, adGrowfast,
   adRentaGuard, adInstavows, adMeatTube, adForeverface, adHonkheal,
   adChensKitchen, adInstaad, adInstaadGag,
+  adMirthazol, adSynapseSurge, adOrganOutlet, adClaimfastLegal, adNuggetRain,
+  adNestEggEyes, adEverafterCloud, adClunkerz, adVerminRapture, adLapseless,
+  adBarkFluent, adDeedDrift, adSpincinerate, adCradleScholar, adSnipThrift,
+  adDeadcert, adWatchpaw, adDewdrop, adUrnAndEarn, adMoodPilot,
 ].map(adFrom);
 
 // Blunder ads: local owners flubbing their own InstaAd recording. Tagged

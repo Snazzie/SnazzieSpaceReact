@@ -1,0 +1,24 @@
+{
+  "slug": "ad-organ-outlet",
+  "title": "The Organ Outlet",
+  "description": "Discount transplants in the parking lot, two-for-one Tuesdays, no questions asked.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-surgery",
+      "text": "New liver on your lunch break, swapped in the parking lot, two-for-one Tuesdays! The Organ Outlet... why pay retail for a kidney?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.72,
+      "audio": "/audio/radio/ad-organ-outlet/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Sourced locally and enthusiastically. <p:0> May not match your blood type or species. <p:0> Driver does the cutting. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.08,
+      "duration": 6.436,
+      "audio": "/audio/radio/ad-organ-outlet/1.flac"
+    }
+  ]
+}

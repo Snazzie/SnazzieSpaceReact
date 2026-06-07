@@ -1,0 +1,24 @@
+{
+  "slug": "ad-deed-drift",
+  "title": "Drift Estates",
+  "description": "A paid message from Drift Estates. The timeshare that floats off every night and parks on a brand new beach.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Drift Estates is the floating timeshare that untethers every night and parks on a brand new beach! <p:0.2> Own the wherever.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.76,
+      "audio": "/audio/radio/ad-deed-drift/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Unit may drift into shipping lanes or the open sea. <p:0> Do not exit during transit. <p:0> Occupants are not coordinates. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.302,
+      "duration": 6.686,
+      "audio": "/audio/radio/ad-deed-drift/1.flac"
+    }
+  ]
+}

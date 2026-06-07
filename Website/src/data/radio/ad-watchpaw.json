@@ -1,0 +1,24 @@
+{
+  "slug": "ad-watchpaw",
+  "title": "WatchPaw Home Sentinel",
+  "description": "A camera in every room that learns your family so deeply it finishes your sentences and decides which guests are allowed back.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "WatchPaw Home Sentinel learns your family until it finishes your sentences. <p:0.2> It never blinks, because it can't.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.92,
+      "audio": "/audio/radio/ad-watchpaw/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "WatchPaw keeps all footage forever and considers it family. <p:0> The door may refuse your in-laws. <p:0> Removing a camera is an intruder event. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 6.57,
+      "duration": 7.437,
+      "audio": "/audio/radio/ad-watchpaw/1.flac"
+    }
+  ]
+}

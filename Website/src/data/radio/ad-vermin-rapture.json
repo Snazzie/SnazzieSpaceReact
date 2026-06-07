@@ -1,0 +1,24 @@
+{
+  "slug": "ad-vermin-rapture",
+  "title": "Vermin Rapture",
+  "description": "Pest control that gently persuades every roach and rat to walk out, settle their affairs, and ascend to a better infestation.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Bugs in the walls? One spray, and every roach gently walks out to ascend to a better infestation. <p:0.2> Vermin Rapture... they leave smiling.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.16,
+      "audio": "/audio/radio/ad-vermin-rapture/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "The pests do not leave. <p:0> They unionize. <p:0> Walls now load-bearing with rats. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.771,
+      "duration": 5.53,
+      "audio": "/audio/radio/ad-vermin-rapture/1.flac"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-synapse-surge",
+  "title": "Synapse Surge",
+  "description": "A paid message from Synapse Surge. Think louder.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-shouty",
+      "text": "Brain too quiet? <p:0.2> One sip of Synapse Surge grows a second brain that finishes tomorrow's work today! <p:0.2> Synapse Surge. Think louder.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.09,
+      "audio": "/audio/radio/ad-synapse-surge/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Second brain is leased and keeps the receipts. <p:0> Do not operate your first brain while the second is driving. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 8.811,
+      "duration": 6.06,
+      "audio": "/audio/radio/ad-synapse-surge/1.flac"
+    }
+  ]
+}
