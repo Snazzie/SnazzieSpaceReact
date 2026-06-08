@@ -7,302 +7,345 @@
       "speaker": "ronnie",
       "text": "Good evening, and welcome to Cents and Sensibility, the only money show that believes in you. I'm Ronnie Delacroix. That's my co-host Barry, and tonight, friends, we are taking your real financial troubles.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 15.12,
+      "audio": "/audio/radio/cents-and-sensibility/0.flac"
     },
     {
       "speaker": "barry",
       "text": "And, just to say up front, I am a little nervous about the format this week.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 14.542,
+      "duration": 6.04,
+      "audio": "/audio/radio/cents-and-sensibility/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Don't be nervous, Barry. Money is simple. Let's get into the mailbag.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 19.59,
+      "duration": 5.28,
+      "audio": "/audio/radio/cents-and-sensibility/2.flac"
     },
     {
       "speaker": "ronnie",
       "text": "First one. Diane from the east side, who emailed us. She writes, quote, I am forty-one thousand dollars deep across four credit cards, the minimum payments alone eat my whole paycheck, and I just want a realistic plan to start digging out. Unquote.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 23.531,
+      "duration": 18.88,
+      "audio": "/audio/radio/cents-and-sensibility/3.flac"
     },
     {
       "speaker": "barry",
       "text": "Okay, so that's serious. The first real move there is the highest interest card, you list them, you attack the worst rate first...",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 41.099,
+      "duration": 10.36,
+      "audio": "/audio/radio/cents-and-sensibility/4.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Diane, first of all, congratulations. Four approvals? Look at that credit history. The banks LOVE you. So here's what we do, sweetheart. We consolidate. You open one more card, a fifth, and you pay the four with it.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 49.522,
+      "duration": 16.16,
+      "audio": "/audio/radio/cents-and-sensibility/5.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, that's, that's a fifth card. That's just five cards.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 64.55,
+      "duration": 4.8,
+      "audio": "/audio/radio/cents-and-sensibility/6.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Four plus one is fewer, Barry. Mathematically. <p:0.3> Because now it's one decision.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 68.736,
+      "duration": 6.5,
+      "audio": "/audio/radio/cents-and-sensibility/7.flac"
     },
     {
       "speaker": "barry",
       "text": "That is not how either of those words works.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 73.803,
+      "duration": 3.68,
+      "audio": "/audio/radio/cents-and-sensibility/8.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Next letter. Now this one Barry's going to read, it came in as a voicemail. Go ahead, Barry.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 76.396,
+      "duration": 6.92,
+      "audio": "/audio/radio/cents-and-sensibility/9.flac"
     },
     {
       "speaker": "barry",
       "text": "Right. This is Marcus. He says, quote, I'm twenty-six, I finally want to start saving for a house, I've got about three hundred dollars left over each month, and I just want to know where a normal person should even put it. Unquote.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 82.468,
+      "duration": 17.32,
+      "audio": "/audio/radio/cents-and-sensibility/10.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Beautiful question, Marcus. So forget saving. You want to invest in yourself. <p:0.3> Buy a boat.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 98.935,
+      "duration": 8.1,
+      "audio": "/audio/radio/cents-and-sensibility/11.flac"
     },
     {
       "speaker": "barry",
       "text": "A boat. He has three hundred dollars and he wants a house.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 106.231,
+      "duration": 4.72,
+      "audio": "/audio/radio/cents-and-sensibility/12.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A boat IS a house, Barry. A house that appreciates. And then you rent it out.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 109.59,
+      "duration": 5.8,
+      "audio": "/audio/radio/cents-and-sensibility/13.flac"
     },
     {
       "speaker": "barry",
       "text": "To who? Rent it to who?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 114.754,
+      "duration": 1.88,
+      "audio": "/audio/radio/cents-and-sensibility/14.flac"
     },
     {
       "speaker": "ronnie",
       "text": "To the ocean.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 115.458,
+      "duration": 1.8,
+      "audio": "/audio/radio/cents-and-sensibility/15.flac"
     },
     {
       "speaker": "barry",
       "text": "It's the ocean, Ronnie. The ocean does not pay rent.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 116.44,
+      "duration": 4.2,
+      "audio": "/audio/radio/cents-and-sensibility/16.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Untapped market, Barry. <p:0.3> Moving on.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 119.519,
+      "duration": 4.18,
+      "audio": "/audio/radio/cents-and-sensibility/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now this next one is from Carol, who writes in every week, God love her. She says, quote, my mother passed, and the funeral home wants eight thousand dollars I do not have, I'm grieving and I'm panicking and I just need to know my options. Unquote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 122.175,
+      "duration": 17.86,
+      "audio": "/audio/radio/cents-and-sensibility/18.flac"
     },
     {
       "speaker": "barry",
       "text": "Oh, Carol. I'm so sorry. Ronnie, this one we just be human about, okay?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 139.512,
+      "duration": 5.56,
+      "audio": "/audio/radio/cents-and-sensibility/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Carol, my deepest condolences. Truly. <p:0.3> And speaking of lasting memories, tonight's show is brought to you by Eternal Stay mattresses, you'll sleep like the dead.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 144.065,
+      "duration": 12.86,
+      "audio": "/audio/radio/cents-and-sensibility/20.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie. Ronnie, no.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 156.022,
+      "duration": 1.8,
+      "audio": "/audio/radio/cents-and-sensibility/21.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now, Carol, here's the move. You open a card in your mother's honor. She'd want the points.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 156.17,
+      "duration": 6.8,
+      "audio": "/audio/radio/cents-and-sensibility/22.flac"
     },
     {
       "speaker": "barry",
       "text": "You... you cannot open a credit card for a deceased person, Ronnie. That's, that's a crime.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 162.019,
+      "duration": 7.16,
+      "audio": "/audio/radio/cents-and-sensibility/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And THAT, Barry, is exactly the kind of small thinking that keeps people in debt.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 167.669,
+      "duration": 6.28,
+      "audio": "/audio/radio/cents-and-sensibility/24.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Okay, this next one came in as a complaint, but I'm choosing to read it as fan mail. It's from Winston. He writes, quote, I am a credentialed financial planner, and I am begging you, on behalf of my entire profession, to stop telling people to open credit cards. Three things you said last week were technically illegal. Unquote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 172.315,
+      "duration": 24.76,
+      "audio": "/audio/radio/cents-and-sensibility/25.flac"
     },
     {
       "speaker": "barry",
       "text": "See, an actual professional is telling you the same thing I'm telling you...",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 196.118,
+      "duration": 6.2,
+      "audio": "/audio/radio/cents-and-sensibility/26.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Winston, thank you. Truly. The kind words mean everything.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 200.681,
+      "duration": 4.6,
+      "audio": "/audio/radio/cents-and-sensibility/27.flac"
     },
     {
       "speaker": "barry",
       "text": "Those were not kind words. He listed crimes, Ronnie. He listed three crimes.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 204.519,
+      "duration": 6.24,
+      "audio": "/audio/radio/cents-and-sensibility/28.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You know what I think the problem is, Winston? I think YOU'RE the one carrying tension. Me? I have nine cards. Maybe eleven. <p:0.3> And I have never once felt richer.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 209.62,
+      "duration": 12.42,
+      "audio": "/audio/radio/cents-and-sensibility/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "So, Winston, my friend. Have you considered consolidating?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 220.879,
+      "duration": 4.68,
+      "audio": "/audio/radio/cents-and-sensibility/30.flac"
     },
     {
       "speaker": "barry",
       "text": "...",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 225.175,
+      "duration": 0.8,
+      "audio": "/audio/radio/cents-and-sensibility/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Barry's gone quiet, folks. He does that.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 225.522,
+      "duration": 3.16,
+      "audio": "/audio/radio/cents-and-sensibility/32.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Last one tonight. And I want to be clear up front, this is from a young man named Trevor, who has no debt. He writes, quote, I saved diligently, I paid cash for everything, I owe nothing to anyone, and I just wanted to share a rare good-news money story with the show. Unquote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 228.072,
+      "duration": 19.25,
+      "audio": "/audio/radio/cents-and-sensibility/33.flac"
     },
     {
       "speaker": "barry",
       "text": "That's wonderful. That's, honestly, that's the only healthy letter we've had all night. Just say nice job, Trevor.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 246.183,
+      "duration": 9.16,
+      "audio": "/audio/radio/cents-and-sensibility/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Barry. Barry, this is the scariest letter we've read.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 254.415,
+      "duration": 4.16,
+      "audio": "/audio/radio/cents-and-sensibility/35.flac"
     },
     {
       "speaker": "barry",
       "text": "What? He has zero debt. That's the goal. That's the whole goal.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 257.89,
+      "duration": 5.0,
+      "audio": "/audio/radio/cents-and-sensibility/36.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A man with no debt has no relationships with banks, Barry. He's a ghost. He doesn't exist. Trevor, you need to open a card TONIGHT.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 261.125,
+      "duration": 9.8,
+      "audio": "/audio/radio/cents-and-sensibility/37.flac"
     },
     {
       "speaker": "barry",
       "text": "He doesn't need an emergency fund, he doesn't have an emergency!",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 269.791,
+      "duration": 5.24,
+      "audio": "/audio/radio/cents-and-sensibility/38.flac"
     },
     {
       "speaker": "ronnie",
       "text": "An emergency fund is just an emergency with a number on the front, Barry. <p:0.3> Trevor, consolidate the nothing into something. Open the card. Be real.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 273.423,
+      "duration": 11.62,
+      "audio": "/audio/radio/cents-and-sensibility/39.flac"
     },
     {
       "speaker": "barry",
       "text": "And finally, a quick update. From Diane. The listener from segment one. She took your advice.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 283.865,
+      "duration": 7.56,
+      "audio": "/audio/radio/cents-and-sensibility/40.flac"
     },
     {
       "speaker": "barry",
       "text": "She writes, quote, I now have five cards. <p:0.3> And a sixth card I opened to pay the annual fee on the fifth. Unquote.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 290.663,
+      "duration": 9.26,
+      "audio": "/audio/radio/cents-and-sensibility/41.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Six decisions down to one. <p:0.3> That's the Cents and Sensibility difference, folks. Sleep tight.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 298.938,
+      "duration": 7.7,
+      "audio": "/audio/radio/cents-and-sensibility/42.flac"
     }
   ]
 }
