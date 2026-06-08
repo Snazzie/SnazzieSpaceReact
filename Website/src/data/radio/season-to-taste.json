@@ -1,0 +1,79 @@
+{
+  "slug": "season-to-taste",
+  "title": "Season to Taste with Ronnie",
+  "description": "Ronnie answers listeners' kitchen emergencies with total confidence and zero competence. Every problem, he's decided, is a salt problem. Barry fact-checks, feebly.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome to Season to Taste. Just your letters and my fixes. Barry, first one.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 5.96,
+      "audio": "/audio/radio/season-to-taste/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Marlene writes, quote, my pot roast comes out dry every Sunday, and my family eats before they arrive.",
+      "overlap": -0.15,
+      "timestamp": 4.742,
+      "duration": 8.28,
+      "audio": "/audio/radio/season-to-taste/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Easy, Marlene. Crank the oven, hot and fast, lock the juice in. <p:0.3> And that's a salt problem. Add more salt.",
+      "overlap": -0.2,
+      "timestamp": 12.105,
+      "duration": 8.3,
+      "audio": "/audio/radio/season-to-taste/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Hot and fast is... the opposite of a roast, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 19.58,
+      "duration": 4.04,
+      "audio": "/audio/radio/season-to-taste/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Next. Dev's hosting his first dinner party, terrified the smoke detector goes off while he sears the steak.",
+      "overlap": -0.2,
+      "timestamp": 22.681,
+      "duration": 8.32,
+      "audio": "/audio/radio/season-to-taste/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Dev. Take the battery out. Can't embarrass you if it can't speak.",
+      "overlap": -0.15,
+      "timestamp": 30.221,
+      "duration": 4.96,
+      "audio": "/audio/radio/season-to-taste/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, you cannot tell a man to disarm his smoke detector.",
+      "overlap": -0.1,
+      "timestamp": 33.681,
+      "duration": 4.88,
+      "audio": "/audio/radio/season-to-taste/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Relax. And the seasoning? <p:0.3> That's a salt problem. Add more salt. We're out of time. Season to taste.",
+      "overlap": -0.2,
+      "timestamp": 37.722,
+      "duration": 8.02,
+      "audio": "/audio/radio/season-to-taste/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Quick follow-up from Dev. Party went great, right up until the actual fire. He says, quote, the steak was perfectly seasoned.",
+      "overlap": -0.1,
+      "timestamp": 44.943,
+      "duration": 10.08,
+      "audio": "/audio/radio/season-to-taste/8.flac"
+    }
+  ]
+}

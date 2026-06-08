@@ -53,6 +53,16 @@ import neverFold from "./radio/never-fold.json";
 import theBookFairEconomy from "./radio/the-book-fair-economy.json";
 import theLastLitHouse from "./radio/the-last-lit-house.json";
 import theValidationStamp from "./radio/the-validation-stamp.json";
+import ronnieKnowsCritters from "./radio/ronnie-knows-critters.json";
+import ronniePaysItForward from "./radio/ronnie-pays-it-forward.json";
+import fenceYourselfIn from "./radio/fence-yourself-in.json";
+import goodBones from "./radio/good-bones.json";
+import twoCoatsOfConfidence from "./radio/two-coats-of-confidence.json";
+import seasonToTaste from "./radio/season-to-taste.json";
+import haveYouTriedUnpluggingRonnie from "./radio/have-you-tried-unplugging-ronnie.json";
+import ronnieKnowsTheLaw from "./radio/ronnie-knows-the-law.json";
+import theCleanBreakHour from "./radio/the-clean-break-hour.json";
+import ronnieKnowsLove from "./radio/ronnie-knows-love.json";
 // Part 2 sequels (each placed right after its parent in EPISODES)
 import theRenewalWindowPart2 from "./radio/the-renewal-window-part-2.json";
 import curbRightsPart2 from "./radio/curb-rights-part-2.json";
@@ -469,4 +479,14 @@ export const EPISODES: Episode[] = [
   episodeFrom(theBookFairEconomy),
   episodeFrom(theLastLitHouse),
   episodeFrom(theValidationStamp),
+  episodeFrom(ronnieKnowsCritters),
+  episodeFrom(ronniePaysItForward),
+  episodeFrom(fenceYourselfIn),
+  episodeFrom(goodBones),
+  episodeFrom(twoCoatsOfConfidence),
+  episodeFrom(seasonToTaste),
+  episodeFrom(haveYouTriedUnpluggingRonnie),
+  episodeFrom(ronnieKnowsTheLaw),
+  episodeFrom(theCleanBreakHour),
+  episodeFrom(ronnieKnowsLove),
 ];

@@ -1,0 +1,95 @@
+{
+  "slug": "ronnie-knows-the-law",
+  "title": "Ronnie Knows The Law",
+  "description": "Ronnie reads your legal letters on Snazzie FM and answers each with total confidence and zero legal validity. Barry keeps almost fact-checking him.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, where I read your legal trouble and I solve it. I know the law, Barry.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.88,
+      "audio": "/audio/radio/ronnie-knows-the-law/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You do not have a license to say that.",
+      "overlap": -0.15,
+      "timestamp": 6.273,
+      "duration": 3.12,
+      "audio": "/audio/radio/ronnie-knows-the-law/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Brenda writes, I got audited and I owe four years of back taxes I genuinely cannot pay.",
+      "overlap": -0.2,
+      "timestamp": 8.451,
+      "duration": 6.67,
+      "audio": "/audio/radio/ronnie-knows-the-law/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Easy, Brenda. Mail the notice back with VOID across it in marker. A contract you didn't sign isn't real.",
+      "overlap": -0.15,
+      "timestamp": 14.076,
+      "duration": 7.92,
+      "audio": "/audio/radio/ronnie-knows-the-law/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, taxes aren't a contract...",
+      "overlap": 0.3,
+      "timestamp": 20.545,
+      "duration": 2.84,
+      "audio": "/audio/radio/ronnie-knows-the-law/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Last one. Dot got a jury summons the same week as her daughter's wedding and can't get excused.",
+      "overlap": -0.2,
+      "timestamp": 22.522,
+      "duration": 7.28,
+      "audio": "/audio/radio/ronnie-knows-the-law/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Don't show up, Dot. They send a second letter? You go write VOID on the courthouse itself.",
+      "overlap": -0.15,
+      "timestamp": 28.542,
+      "duration": 6.84,
+      "audio": "/audio/radio/ronnie-knows-the-law/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't VOID a building.",
+      "overlap": -0.1,
+      "timestamp": 34.756,
+      "duration": 2.24,
+      "audio": "/audio/radio/ronnie-knows-the-law/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You can if you press hard, Barry.",
+      "overlap": -0.1,
+      "timestamp": 35.59,
+      "duration": 2.6,
+      "audio": "/audio/radio/ronnie-knows-the-law/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Update from Brenda. She wrote VOID on the audit. <p:0.3> They sent a man to her house. He also had a marker.",
+      "overlap": -0.15,
+      "timestamp": 37.325,
+      "duration": 8.34,
+      "audio": "/audio/radio/ronnie-knows-the-law/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See? It's working.",
+      "overlap": -0.1,
+      "timestamp": 45.032,
+      "duration": 2.0,
+      "audio": "/audio/radio/ronnie-knows-the-law/10.flac"
+    }
+  ]
+}

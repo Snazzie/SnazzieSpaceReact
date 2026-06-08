@@ -1,0 +1,95 @@
+{
+  "slug": "ronnie-knows-love",
+  "title": "Ronnie Knows Love",
+  "description": "Ronnie reads heartfelt listener letters on the relationship hotline, then fixes every single one the same way: get a houseplant together. Barry fact-checks, then gets steamrolled.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on the love line. Denise writes, quote, six years, and he still won't say I love you back.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.24,
+      "audio": "/audio/radio/ronnie-knows-love/0.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Easy fix, Denise. Buy a fern. You both water it. Now you're saying it... <p:0.3> through the plant.",
+      "overlap": -0.2,
+      "timestamp": 6.371,
+      "duration": 7.66,
+      "audio": "/audio/radio/ronnie-knows-love/1.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, watering a fern is not the same as the man actually saying it.",
+      "overlap": -0.1,
+      "timestamp": 12.915,
+      "duration": 5.68,
+      "audio": "/audio/radio/ronnie-knows-love/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Tomato, tomato, Barry. Next one. Marcus writes, quote, I keep getting ghosted right after the third date.",
+      "overlap": -0.15,
+      "timestamp": 17.335,
+      "duration": 8.08,
+      "audio": "/audio/radio/ronnie-knows-love/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Ghosting's a gift, Marcus. And listen... <p:0.3> a fern never ghosts you. A fern is THERE.",
+      "overlap": -0.2,
+      "timestamp": 24.966,
+      "duration": 6.58,
+      "audio": "/audio/radio/ronnie-knows-love/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, you're telling a lonely man to date a plant.",
+      "overlap": -0.1,
+      "timestamp": 30.223,
+      "duration": 4.24,
+      "audio": "/audio/radio/ronnie-knows-love/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I'm telling him to date UP, Barry. Last letter. Patricia writes, she thinks her husband's having an emotional affair.",
+      "overlap": -0.15,
+      "timestamp": 33.153,
+      "duration": 8.8,
+      "audio": "/audio/radio/ronnie-knows-love/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Great question, Patricia. <p:0.3> And yes, you should re-pot in spring.",
+      "overlap": -0.2,
+      "timestamp": 40.792,
+      "duration": 5.46,
+      "audio": "/audio/radio/ronnie-knows-love/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that... that was not the question.",
+      "overlap": -0.1,
+      "timestamp": 45.289,
+      "duration": 3.44,
+      "audio": "/audio/radio/ronnie-knows-love/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So here's the move, Patricia. You both sign joint custody of the fern. Legally, he can't leave it. <p:0.3> Which means he can't leave you.",
+      "overlap": -0.15,
+      "timestamp": 47.387,
+      "duration": 10.22,
+      "audio": "/audio/radio/ronnie-knows-love/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that is not how custody works. <p:0.3> That is not how anything works.",
+      "overlap": -0.1,
+      "timestamp": 56.846,
+      "duration": 6.18,
+      "audio": "/audio/radio/ronnie-knows-love/10.flac"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "slug": "two-coats-of-confidence",
+  "title": "Two Coats of Confidence with Ronnie Delacroix",
+  "description": "Ronnie answers listeners' home repair letters with total confidence and zero competence. Every problem, leak, crack, or gas smell, gets the same fix: just paint over it. Barry tries, and fails, to fact-check him.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome back to Two Coats of Confidence. You write the letters, I solve the house. Barry, first one.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.68,
+      "audio": "/audio/radio/two-coats-of-confidence/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Maureen writes, quote, a brown water stain keeps spreading across my ceiling, and it's bigger every morning.",
+      "overlap": -0.15,
+      "timestamp": 6.389,
+      "duration": 8.88,
+      "audio": "/audio/radio/two-coats-of-confidence/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's the ceiling expressing itself, Maureen. Match the stain with a ceiling-colored paint and it blends right in.",
+      "overlap": -0.2,
+      "timestamp": 13.236,
+      "duration": 9.0,
+      "audio": "/audio/radio/two-coats-of-confidence/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, where is the water coming FROM?",
+      "overlap": 0.25,
+      "timestamp": 20.695,
+      "duration": 3.28,
+      "audio": "/audio/radio/two-coats-of-confidence/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's the upstairs ceiling's problem, Barry. Carol, you're next. Quote, I smell gas near my water heater.",
+      "overlap": -0.2,
+      "timestamp": 22.894,
+      "duration": 8.08,
+      "audio": "/audio/radio/two-coats-of-confidence/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Carol, a smell is just a color you can't see yet. Paint the heater a calming sage green. Light a nice candle for the odor.",
+      "overlap": -0.15,
+      "timestamp": 29.921,
+      "duration": 9.12,
+      "audio": "/audio/radio/two-coats-of-confidence/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A CANDLE? Carol, do NOT light a candle, please call a...",
+      "overlap": 0.35,
+      "timestamp": 37.926,
+      "duration": 4.4,
+      "audio": "/audio/radio/two-coats-of-confidence/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Relax, Barry. <p:0.3> The candle dries the paint faster.",
+      "overlap": 0.25,
+      "timestamp": 40.888,
+      "duration": 4.94,
+      "audio": "/audio/radio/two-coats-of-confidence/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Update from Maureen, the ceiling lady. Quote, painted over it like you said. New stain came through, so I painted that. End quote. <p:0.3> Twelve coats in, Barry. That ceiling'll outlive the house.",
+      "overlap": -0.15,
+      "timestamp": 44.643,
+      "duration": 14.47,
+      "audio": "/audio/radio/two-coats-of-confidence/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The house she can no longer enter.",
+      "overlap": -0.1,
+      "timestamp": 58.016,
+      "duration": 2.88,
+      "audio": "/audio/radio/two-coats-of-confidence/9.flac"
+    }
+  ]
+}
