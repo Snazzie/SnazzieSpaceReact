@@ -36,6 +36,10 @@ skills (author content → render media separately → wire → verify).
    `src/data/radio-posts.ts`; the component just renders it.
 5. **Text markup:** lightweight string markup — `**bold**` → `<strong>`, `#hashtag` →
    `rl-post-tag` span; emoji literal.
+6. **Global art style:** every generated image is rendered in a **Studio Ghibli style**.
+   `render-post.py` appends a fixed Ghibli style suffix to every prompt, so post
+   `imagePrompt`s describe only the scene and need not repeat the style. The skill
+   instructs authors to write scene-only prompts.
 
 ## Components
 
@@ -97,6 +101,8 @@ python scripts/render-post.py <slug> "<prompt>"
   its entry point) with the prompt.
 - Reads `IDEOGRAM_API_KEY` from env for magic-prompt.
 - Writes `public/images/radio/<slug>.png`.
+- Appends a fixed **Studio Ghibli style** suffix to every prompt (single source of
+  truth: `GHIBLI_STYLE` constant in the script) so all post images share the look.
 - Defaults to a social-friendly aspect (square 1024×1024; `--portrait` for 4:5) and
   `--quantization nf4` for VRAM headroom.
 - Prints the output path + dimensions on success, mirroring `render-clip.py`.

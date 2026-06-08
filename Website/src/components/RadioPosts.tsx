@@ -1,52 +1,30 @@
 import { useState, type ReactNode } from "react";
+import { POSTS } from "@/data/radio-posts";
 
-// A faux Snazzie FM social post shown in the "From the Booth" section.
-interface StationPost {
-  id: string;
-  text: ReactNode;       // post body (allows <strong>/hashtag markup)
-  photo: string;         // /images/radio/<file>.png
-  caption: string;
-  time: string;          // e.g. "11:58 PM"
-  likes: string;
-  reposts: string;
-  replies: string;
+// Parse post body markup into React nodes: **bold** -> <strong>, #hashtag -> tag span.
+// Emoji and all other characters pass through as plain text. A lone "#" or unmatched
+// "**" stays literal.
+export function renderPostText(text: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  let key = 0;
+  // split() on a capturing regex interleaves: even indices = outside, odd = bold capture.
+  text.split(/\*\*(.+?)\*\*/g).forEach((piece, i) => {
+    if (i % 2 === 1) {
+      out.push(<strong key={key++}>{piece}</strong>);
+      return;
+    }
+    // plain segment — split out #hashtags
+    piece.split(/(#[A-Za-z0-9_]+)/g).forEach((seg) => {
+      if (!seg) return;
+      if (/^#[A-Za-z0-9_]+$/.test(seg)) {
+        out.push(<span className="rl-post-tag" key={key++}>{seg}</span>);
+      } else {
+        out.push(<span key={key++}>{seg}</span>);
+      }
+    });
+  });
+  return out;
 }
-
-const POSTS: StationPost[] = [
-  {
-    id: "frank-tapes",
-    text: (
-      <>
-        BREAKING: after 200-something calls, we finally got <strong>Frank</strong> down to
-        Snazzie Studio in person. He brought the tapes. He brought a folder. He brought a second
-        folder. Tonight, one on one, no callers. <span className="rl-post-tag">#TheFrankTapes</span>
-      </>
-    ),
-    photo: "/images/radio/frank-studio.png",
-    caption: "Frank, Snazzie Studio, moments before he asked us to unplug the cameras.",
-    time: "9:12 PM",
-    likes: "4,021",
-    reposts: "877",
-    replies: "312",
-  },
-  {
-    id: "ronnie-birthday",
-    text: (
-      <>
-        HAPPY BIRTHDAY to the smoothest voice on Snazzie FM, our host{" "}
-        <strong>Ronnie Delacroix</strong>! Another year, zero facts checked. Cake in the booth,
-        on air in five. Call in and wish him many happy returns.{" "}
-        <span className="rl-post-tag">#HappyBirthdayRonnie</span> &#127881;
-      </>
-    ),
-    photo: "/images/radio/ronnie-birthday.png",
-    caption: "Ronnie, mid-show, refusing to confirm which birthday this is.",
-    time: "8:00 PM",
-    likes: "6,540",
-    reposts: "1,203",
-    replies: "488",
-  },
-];
 
 // Photo slot — shows the image if present, else a labelled "film still"
 // placeholder so the post still reads while the photo is sourced.
@@ -80,7 +58,7 @@ export default function RadioPosts() {
             </div>
             <span className="rl-post-bird">&#9835;</span>
           </div>
-          <p className="rl-post-text">{p.text}</p>
+          <p className="rl-post-text">{renderPostText(p.text)}</p>
           <PostPhoto src={p.photo} caption={p.caption} />
           <div className="rl-post-meta">
             <span>{p.time} &middot; Snazzie FM</span>
