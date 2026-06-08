@@ -1,0 +1,104 @@
+{
+  "slug": "stars-with-rhonda-commute",
+  "title": "The Stars with Rhonda: The Bus Is Not Coming",
+  "description": "Rhonda forecasts each sign's small commute catastrophe as serene cosmic fact. Ronnie panics and keeps trying to spin a delayed bus into good news.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "And now, the stars. <p:0.3> With Rhonda. Travel edition.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 4.66,
+      "audio": "/audio/radio/stars-with-rhonda-commute/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Gemini. You arrive at the stop four minutes early. This is the last good decision you make. <p:0.3> The bus is not coming.",
+      "overlap": -0.2,
+      "timestamp": 4.123,
+      "duration": 7.27,
+      "audio": "/audio/radio/stars-with-rhonda-commute/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Whoa, hey, four minutes early, that's a win. Maybe it's just running a little late?",
+      "overlap": 0,
+      "timestamp": 10.522,
+      "duration": 6.28,
+      "audio": "/audio/radio/stars-with-rhonda-commute/2.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Capricorn. Your shortcut becomes everyone's shortcut. You taught them. Now there is no shortcut, only you and your regret in lane two.",
+      "overlap": -0.2,
+      "timestamp": 16.33,
+      "duration": 7.79,
+      "audio": "/audio/radio/stars-with-rhonda-commute/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, lane two, that's a low point, I'll give you that.",
+      "overlap": -0.1,
+      "timestamp": 23.026,
+      "duration": 4.12,
+      "audio": "/audio/radio/stars-with-rhonda-commute/4.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Sagittarius. You ask the driver if this is the express. He does not answer. He has not answered anyone since the fog. <p:0.3> The bus is not coming.",
+      "overlap": -0.2,
+      "timestamp": 26.657,
+      "duration": 8.96,
+      "audio": "/audio/radio/stars-with-rhonda-commute/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It came once though. The bus. Historically. It was, like, on a route.",
+      "overlap": 0,
+      "timestamp": 35.233,
+      "duration": 5.2,
+      "audio": "/audio/radio/stars-with-rhonda-commute/6.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It was never on the route. It stopped running in nineteen ninety-one. <p:0.3> And it can see you waving.",
+      "overlap": -0.15,
+      "timestamp": 39.648,
+      "duration": 6.28,
+      "audio": "/audio/radio/stars-with-rhonda-commute/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Give me one good sign for the road, Rhonda. One. The commuters need a little hope.",
+      "overlap": 0,
+      "timestamp": 44.932,
+      "duration": 6.24,
+      "audio": "/audio/radio/stars-with-rhonda-commute/8.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Your sign, Ronnie. <p:0.3> You are the one still standing at the stop, waving at a bus that stopped running in nineteen ninety-one.",
+      "overlap": -0.2,
+      "timestamp": 50.269,
+      "duration": 7.95,
+      "audio": "/audio/radio/stars-with-rhonda-commute/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I... I'm not even waving. <p:0.3> Why am I waving?",
+      "overlap": 0,
+      "timestamp": 57.966,
+      "duration": 4.38,
+      "audio": "/audio/radio/stars-with-rhonda-commute/10.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "And it can see you. <p:0.3> The bus is not coming.",
+      "overlap": -0.15,
+      "timestamp": 61.58,
+      "duration": 3.59,
+      "audio": "/audio/radio/stars-with-rhonda-commute/11.flac"
+    }
+  ]
+}

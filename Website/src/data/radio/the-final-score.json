@@ -2,17 +2,95 @@
   "slug": "the-final-score",
   "title": "Snazzie FM News: The Final Score",
   "description": "Dale and Marsha read the sports desk at the top of the hour: a forfeit by fog, a scoreboard that now reports every game as one steady green light, and champions who cannot stop reporting for their parade.",
+  "category": "news",
   "lines": [
-    { "speaker": "news-dale", "text": "Top of the hour. This is Snazzie F M News, the sports desk. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Our top story tonight, the Civic League title game.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "Final score, seven to nothing. The visiting team's bus took the on-ramp into the fog at halftime and has not been heard from since.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "The league is recording it as a forfeit, and, in their words, a learning experience.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "We'll have an update on the away side as it develops, Marsha.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "Of course, Dale. The fog has offered to cover their travel expenses, so the families are said to be comfortable.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "Over at GreenFlow Stadium, the scoreboard ran out of approved green pixels in the third quarter.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "It now displays every score as a single steady green light. The home crowd has agreed that counts as a win.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "Still no word from the visiting bus, for those following at home.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "And finally, last season's champions have now reported for their victory parade ninety mornings running, as required.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "They may go home the moment someone locates the form that lets them stop. <p:0.3> We'll have that form for you, hopefully, after the break.", "overlap": -0.1, "timestamp": 0, "duration": 0 }
+    {
+      "speaker": "news-dale",
+      "text": "Top of the hour. This is Snazzie F M News, the sports desk. I'm Dale Crisp.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 4.28,
+      "audio": "/audio/radio/the-final-score/0.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "And I'm Marsha Veld. Our top story tonight, the Civic League title game.",
+      "overlap": 0,
+      "timestamp": 4.018,
+      "duration": 4.21,
+      "audio": "/audio/radio/the-final-score/1.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "Final score, seven to nothing. The visiting team's bus took the on-ramp into the fog at halftime and has not been heard from since.",
+      "overlap": -0.1,
+      "timestamp": 7.79,
+      "duration": 7.45,
+      "audio": "/audio/radio/the-final-score/2.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "The league is recording it as a forfeit, and, in their words, a learning experience.",
+      "overlap": -0.15,
+      "timestamp": 14.641,
+      "duration": 5.08,
+      "audio": "/audio/radio/the-final-score/3.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "We'll have an update on the away side as it develops, Marsha.",
+      "overlap": 0,
+      "timestamp": 19.441,
+      "duration": 3.33,
+      "audio": "/audio/radio/the-final-score/4.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "Of course, Dale. The fog has offered to cover their travel expenses, so the families are said to be comfortable.",
+      "overlap": -0.1,
+      "timestamp": 22.14,
+      "duration": 6.44,
+      "audio": "/audio/radio/the-final-score/5.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "Over at GreenFlow Stadium, the scoreboard ran out of approved green pixels in the third quarter.",
+      "overlap": 0,
+      "timestamp": 28.179,
+      "duration": 5.65,
+      "audio": "/audio/radio/the-final-score/6.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "It now displays every score as a single steady green light. The home crowd has agreed that counts as a win.",
+      "overlap": -0.1,
+      "timestamp": 33.283,
+      "duration": 6.16,
+      "audio": "/audio/radio/the-final-score/7.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "Still no word from the visiting bus, for those following at home.",
+      "overlap": -0.15,
+      "timestamp": 39.072,
+      "duration": 3.91,
+      "audio": "/audio/radio/the-final-score/8.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "And finally, last season's champions have now reported for their victory parade ninety mornings running, as required.",
+      "overlap": 0,
+      "timestamp": 42.418,
+      "duration": 7.28,
+      "audio": "/audio/radio/the-final-score/9.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "They may go home the moment someone locates the form that lets them stop. <p:0.3> We'll have that form for you, hopefully, after the break.",
+      "overlap": -0.1,
+      "timestamp": 49.111,
+      "duration": 7.71,
+      "audio": "/audio/radio/the-final-score/10.flac"
+    }
   ]
 }

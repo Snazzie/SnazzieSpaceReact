@@ -2,111 +2,95 @@
   "slug": "the-stars-with-rhonda-the-enemy-is-in-the-building",
   "title": "The Stars with Rhonda: The Enemy Is in the Building",
   "description": "Rhonda reads the stars. Every sign has a nemesis, and the nemesis is already inside. Ronnie tries to find the exit.",
+  "category": "horoscope",
   "lines": [
     {
       "speaker": "ronnie",
       "text": "And now, the stars. <p:0.3> With Rhonda.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 4.1,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/0.flac"
     },
     {
       "speaker": "rhonda",
-      "text": "Good evening. The heavens are at war tonight, and so, dear listener, are you.",
+      "text": "Good evening. Tonight, every sign has an enemy. <p:0.3> And the enemy is already in the building.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
-    },
-    {
-      "speaker": "ronnie",
-      "text": "Okay, war is a strong open. Let's, uh, let's get to a sign.",
-      "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
-    },
-    {
-      "speaker": "rhonda",
-      "text": "Aries. You have an enemy. <p:0.3> They are in the building.",
-      "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 3.487,
+      "duration": 5.5,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "In the... which building? My building?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 7.904,
+      "duration": 3.0,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/2.flac"
     },
     {
       "speaker": "rhonda",
       "text": "Taurus. The coworker who took the last good chair has begun a campaign against you. It will end one of you.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 10.7,
+      "duration": 6.23,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/3.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "End one of them? Over a chair? Surely you mean, like, professionally.",
+      "text": "Over a chair? Surely you mean, like, professionally.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 16.112,
+      "duration": 4.16,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/4.flac"
     },
     {
       "speaker": "rhonda",
-      "text": "I mean as I have said it. Gemini. Your nemesis has read the group chat. They are screenshotting.",
+      "text": "I mean as I have said it. Cancer. You brought a casserole to the potluck. So did your rival. <p:0.3> Only one dish comes home empty.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 19.491,
+      "duration": 7.7,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/5.flac"
     },
     {
       "speaker": "ronnie",
-      "text": "Oh, the screenshots. That one's real, folks, that one actually happens.",
+      "text": "A casserole standoff, that I can root for. <p:0.3> Wait, who's the enemy in MY building? You never said.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
-    },
-    {
-      "speaker": "rhonda",
-      "text": "Cancer. You brought a casserole to the potluck. So did your rival. <p:0.3> Only one dish comes home empty.",
-      "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
-    },
-    {
-      "speaker": "ronnie",
-      "text": "See, a casserole standoff, that I can root for. Bring the noodles. <p:0.3> Wait, who's the enemy in MY building, you never said.",
-      "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 26.522,
+      "duration": 7.7,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/6.flac"
     },
     {
       "speaker": "rhonda",
       "text": "Leo. Your foe sits closer than you think. They host a small show. They ask too many questions.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 33.453,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's... <p:0.3> that's just a description of me. Rhonda. Rhonda, am I the enemy in the building?",
-      "overlap": 0.1,
-      "timestamp": 0,
-      "duration": 0
+      "overlap": -0.1,
+      "timestamp": 37.982,
+      "duration": 7.98,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/8.flac"
     },
     {
       "speaker": "rhonda",
       "text": "The stars don't name names, Ronnie. <p:0.3> They just unlock the studio door.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 45.323,
+      "duration": 4.7,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It locks from the INSIDE! <p:0.3> We'll be right back. If I'm back.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 49.52,
+      "duration": 5.02,
+      "audio": "/audio/radio/the-stars-with-rhonda-the-enemy-is-in-the-building/10.flac"
     }
   ]
 }

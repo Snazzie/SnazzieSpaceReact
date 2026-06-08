@@ -112,7 +112,7 @@ Steps:
    twist (precede the twist line with "<p:0.5>"). Mostly "ad-disclaimer"; optionally one final
    "ad-ann-deep" line. Stay flat and eerie, NO jokes-as-jokes.
 4. Each line: { "speaker", "text", "overlap", "timestamp": 0, "duration": 0 }. No "audio".
-5. Top-level: "slug", "title", "description", "lines". Save with Write.
+5. Top-level: "slug", "title", "description", "category": "psa", "lines". Save with Write.
 
 ${FORMAT}\n${RULES}
 

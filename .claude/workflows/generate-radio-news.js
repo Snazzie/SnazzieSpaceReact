@@ -127,7 +127,7 @@ Steps:
    news items traded between the two anchors, the developing thread, and a dry horrifying "and
    finally" kicker. Keep anchors flat and professional. ONLY "news-dale" and "news-marsha" speak.
 4. Each line: { "speaker", "text", "overlap", "timestamp": 0, "duration": 0 }. No "audio".
-5. Top-level: "slug", "title", "description", "lines". Save with Write.
+5. Top-level: "slug", "title", "description", "category": "news", "lines". Save with Write.
 
 ${FORMAT}\n${RULES}
 

@@ -1,0 +1,40 @@
+{
+  "slug": "civic-notice-the-grid",
+  "title": "Civic Notice: The Grid",
+  "description": "A Snazzie FM Civic Notification System test. The municipal grid will reclaim the light it loaned you. Leave one window lit. The dark has agreed to be brief.",
+  "category": "psa",
+  "lines": [
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is a test of the Snazzie F M Civic Notification System. <p:0.5> Tonight, between two and four, the grid will reclaim the light it loaned you.",
+      "overlap": -0.3,
+      "timestamp": 0.0,
+      "duration": 6.12,
+      "audio": "/audio/radio/civic-notice-the-grid/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "When the streetlights dim, do not replace them. <p:0.5> The dark has been scheduled, and it has agreed to be brief.",
+      "overlap": -0.3,
+      "timestamp": 6.012,
+      "duration": 4.929,
+      "audio": "/audio/radio/civic-notice-the-grid/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Leave one window lit. <p:0.3> The grid will know which one. <p:0.5> Do not look to see why.",
+      "overlap": -0.3,
+      "timestamp": 10.821,
+      "duration": 4.721,
+      "audio": "/audio/radio/civic-notice-the-grid/2.flac"
+    },
+    {
+      "speaker": "ad-ann-deep",
+      "text": "This concludes the test of the Snazzie F M Civic Notification System. <p:0.5> The lights are off now. <p:0.5> You turned them off yourself.",
+      "overlap": -0.4,
+      "timestamp": 15.368,
+      "duration": 8.16,
+      "audio": "/audio/radio/civic-notice-the-grid/3.flac"
+    }
+  ]
+}

@@ -201,7 +201,7 @@ Steps:
    line or two. Escalate the pet-solution gag; end on a dry callback button. Keep every line short
    and load-bearing. ONLY "ronnie" and "barry" speak — no callers.
 4. Each line: { "speaker", "text", "overlap", "timestamp": 0, "duration": 0 }. No "audio" key.
-5. Top-level fields: "slug", "title", "description", "lines". Save with Write.
+5. Top-level fields: "slug", "title", "description", "category": "advice", "lines". Save with Write.
 
 ${FORMAT}
 

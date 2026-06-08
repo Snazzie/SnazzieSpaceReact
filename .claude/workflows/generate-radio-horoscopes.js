@@ -108,7 +108,7 @@ Steps:
    predicts calmly; Ronnie reacts to some), the escalating ominous motif, a button (Ronnie's sign is
    worst or a motif callback). ONLY "rhonda" and "ronnie" speak.
 4. Each line: { "speaker", "text", "overlap", "timestamp": 0, "duration": 0 }. No "audio".
-5. Top-level: "slug", "title", "description", "lines". Save with Write.
+5. Top-level: "slug", "title", "description", "category": "horoscope", "lines". Save with Write.
 
 ${FORMAT}\n${RULES}
 

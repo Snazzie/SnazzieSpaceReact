@@ -1,0 +1,48 @@
+{
+  "slug": "civic-notice-wednesday",
+  "title": "Civic Notice: The Missing Wednesday",
+  "description": "A flat automated Snazzie FM Civic Notification System bulletin reporting the removal of Wednesday from the regional calendar as a routine scheduling adjustment.",
+  "category": "psa",
+  "lines": [
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is a test of the Snazzie FM Civic Notification System. <p:0.5> Please remain seated for the duration of this notice.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 5.488,
+      "audio": "/audio/radio/civic-notice-wednesday/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Wednesday has been removed from the regional calendar. <p:0.5> Do not attempt to schedule within it.",
+      "overlap": -0.3,
+      "timestamp": 5.276,
+      "duration": 4.585,
+      "audio": "/audio/radio/civic-notice-wednesday/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "If you woke this morning and the day felt thin, this is expected. <p:0.3> Please plan around the hours that are no longer there.",
+      "overlap": -0.3,
+      "timestamp": 9.89,
+      "duration": 5.409,
+      "audio": "/audio/radio/civic-notice-wednesday/2.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Should you recall a Wednesday, report the memory at your nearest D M V kiosk. <p:0.5> Do not discuss it with others.",
+      "overlap": -0.3,
+      "timestamp": 15.087,
+      "duration": 5.247,
+      "audio": "/audio/radio/civic-notice-wednesday/3.flac"
+    },
+    {
+      "speaker": "ad-ann-deep",
+      "text": "<p:0.5> This concludes the test of the Snazzie FM Civic Notification System. <p:0.5> This was Wednesday. There will not be another.",
+      "overlap": -0.3,
+      "timestamp": 19.597,
+      "duration": 6.78,
+      "audio": "/audio/radio/civic-notice-wednesday/4.flac"
+    }
+  ]
+}

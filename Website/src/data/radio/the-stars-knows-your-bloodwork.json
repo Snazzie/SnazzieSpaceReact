@@ -1,0 +1,112 @@
+{
+  "slug": "the-stars-knows-your-bloodwork",
+  "title": "The Stars with Rhonda: Your Bloodwork Knows",
+  "description": "Rhonda reads cosmic health predictions as serene fact while Ronnie spirals into hypochondria. Your bloodwork already came back, and it keeps arriving sooner.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "And now, the stars, with Rhonda. Rhonda, how's everybody's health looking?",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 5.76,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Aries. A single sit-up will undo decades of structural denial. Your knee has filed a complaint. <p:0.3> And your bloodwork already came back.",
+      "overlap": -0.2,
+      "timestamp": 4.935,
+      "duration": 8.39,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Came back? I didn't... when did anyone draw blood?",
+      "overlap": -0.1,
+      "timestamp": 13.011,
+      "duration": 3.8,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/2.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Taurus. You will say I feel fine out loud, and the universe will write it down to use against you.",
+      "overlap": -0.3,
+      "timestamp": 16.432,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, note to self, never feel fine.",
+      "overlap": 0,
+      "timestamp": 21.545,
+      "duration": 2.84,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/4.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Gemini. The left side of your body and the right side are no longer on speaking terms. Choose a side. <p:0.3> Your bloodwork came back early.",
+      "overlap": -0.2,
+      "timestamp": 23.652,
+      "duration": 8.37,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Early? How is it getting faster?",
+      "overlap": 0,
+      "timestamp": 31.387,
+      "duration": 2.6,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/6.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Virgo. That twinge is not nothing. It was never nothing. The lab called before you booked the appointment.",
+      "overlap": -0.3,
+      "timestamp": 33.683,
+      "duration": 6.19,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I have a twinge. Right now. Rhonda, I have the twinge.",
+      "overlap": -0.1,
+      "timestamp": 38.894,
+      "duration": 4.12,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/8.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Scorpio. Your bloodwork came back before the blood. It came back before YOU. <p:0.3> The results are in the casserole. Do not eat the casserole.",
+      "overlap": -0.2,
+      "timestamp": 42.566,
+      "duration": 8.49,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's my sign. That's MY sign. So... what do I do?",
+      "overlap": 0,
+      "timestamp": 50.332,
+      "duration": 3.68,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/10.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Nothing. It already knows.",
+      "overlap": -0.2,
+      "timestamp": 53.365,
+      "duration": 1.78,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Great. Cosmic. <p:0.3> We'll be right back, assuming my left side agrees.",
+      "overlap": 0,
+      "timestamp": 54.51,
+      "duration": 6.1,
+      "audio": "/audio/radio/the-stars-knows-your-bloodwork/12.flac"
+    }
+  ]
+}

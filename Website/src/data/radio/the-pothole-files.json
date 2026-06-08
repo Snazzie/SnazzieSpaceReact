@@ -2,16 +2,87 @@
   "slug": "the-pothole-files",
   "title": "Snazzie FM News: The Pothole Files",
   "description": "Top of the hour on Snazzie FM News. Dale Crisp and Marsha Veld read the civic beat completely deadpan: the Elm Street sinkhole files for a parking permit, GreenFlow holds every light green for a third day, and the D M V reopens at the bottom of the hole. The anchors stay calm as the sinkhole quietly becomes a constituent.",
+  "category": "news",
   "lines": [
-    { "speaker": "news-dale", "text": "Top of the hour. Good evening, this is Snazzie FM News. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Our developing top story, the Elm Street sinkhole.", "overlap": 0, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "Public Works confirms the sinkhole has filed for a residential parking permit. It was approved ahead of nine human applicants.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "A strong showing for a first-time resident. <p:0.3> In traffic, GreenFlow held every light green for a third straight day.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "The city calls that, quote, optimistic, and asks drivers to negotiate among themselves.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "Returning to our developing story. The sinkhole has now applied for a seat on the zoning board.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "In related news, the D M V has reopened at the bottom of the sinkhole.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "Officials note the wait time is now, technically, the same depth as the building.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-dale", "text": "<p:0.3> And finally. The sinkhole could not be reached for comment, as it is now reachable only by descending into it.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
-    { "speaker": "news-marsha", "text": "Public Works asks that you do not. <p:0.3> That's the news.", "overlap": -0.1, "timestamp": 0, "duration": 0 }
+    {
+      "speaker": "news-dale",
+      "text": "Top of the hour. Good evening, this is Snazzie FM News. I'm Dale Crisp.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 3.92,
+      "audio": "/audio/radio/the-pothole-files/0.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "And I'm Marsha Veld. Our developing top story, the Elm Street sinkhole.",
+      "overlap": 0,
+      "timestamp": 3.478,
+      "duration": 4.28,
+      "audio": "/audio/radio/the-pothole-files/1.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "Public Works confirms the sinkhole has filed for a residential parking permit. It was approved ahead of nine human applicants.",
+      "overlap": -0.1,
+      "timestamp": 7.037,
+      "duration": 7.36,
+      "audio": "/audio/radio/the-pothole-files/2.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "A strong showing for a first-time resident. <p:0.3> In traffic, GreenFlow held every light green for a third straight day.",
+      "overlap": -0.1,
+      "timestamp": 13.858,
+      "duration": 7.42,
+      "audio": "/audio/radio/the-pothole-files/3.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "The city calls that, quote, optimistic, and asks drivers to negotiate among themselves.",
+      "overlap": -0.15,
+      "timestamp": 20.696,
+      "duration": 5.16,
+      "audio": "/audio/radio/the-pothole-files/4.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "Returning to our developing story. The sinkhole has now applied for a seat on the zoning board.",
+      "overlap": -0.1,
+      "timestamp": 25.309,
+      "duration": 5.6,
+      "audio": "/audio/radio/the-pothole-files/5.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "In related news, the D M V has reopened at the bottom of the sinkhole.",
+      "overlap": -0.15,
+      "timestamp": 30.424,
+      "duration": 4.08,
+      "audio": "/audio/radio/the-pothole-files/6.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "Officials note the wait time is now, technically, the same depth as the building.",
+      "overlap": -0.1,
+      "timestamp": 33.965,
+      "duration": 4.96,
+      "audio": "/audio/radio/the-pothole-files/7.flac"
+    },
+    {
+      "speaker": "news-dale",
+      "text": "<p:0.3> And finally. The sinkhole could not be reached for comment, as it is now reachable only by descending into it.",
+      "overlap": -0.15,
+      "timestamp": 38.165,
+      "duration": 6.78,
+      "audio": "/audio/radio/the-pothole-files/8.flac"
+    },
+    {
+      "speaker": "news-marsha",
+      "text": "Public Works asks that you do not. <p:0.3> That's the news.",
+      "overlap": -0.1,
+      "timestamp": 44.476,
+      "duration": 3.75,
+      "audio": "/audio/radio/the-pothole-files/9.flac"
+    }
   ]
 }

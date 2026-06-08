@@ -63,6 +63,17 @@ import haveYouTriedUnpluggingRonnie from "./radio/have-you-tried-unplugging-ronn
 import ronnieKnowsTheLaw from "./radio/ronnie-knows-the-law.json";
 import theCleanBreakHour from "./radio/the-clean-break-hour.json";
 import ronnieKnowsLove from "./radio/ronnie-knows-love.json";
+// The Stars with Rhonda — horoscope segments (rhonda + ronnie)
+import theStarsWithRhondaMercury from "./radio/the-stars-with-rhonda-mercury.json";
+import theCosmicLedger from "./radio/the-cosmic-ledger.json";
+import theStarsWithRhondaThePositionIsOpen from "./radio/the-stars-with-rhonda-the-position-is-open.json";
+import theStarsKnowsYourBloodwork from "./radio/the-stars-knows-your-bloodwork.json";
+import theStarsWithRhondaFamilyAndHome from "./radio/the-stars-with-rhonda-family-and-home.json";
+import starsWithRhondaCommute from "./radio/stars-with-rhonda-commute.json";
+import theStarsWithRhondaHarvest from "./radio/the-stars-with-rhonda-harvest.json";
+import theStarsWithRhondaTheEnemyIsInTheBuilding from "./radio/the-stars-with-rhonda-the-enemy-is-in-the-building.json";
+import theStarsAreClosingUp from "./radio/the-stars-are-closing-up.json";
+import theStarsWithRhondaLove from "./radio/the-stars-with-rhonda-love.json";
 // Snazzie FM News bulletins (anchors: news-dale + news-marsha)
 import thePotholeFiles from "./radio/the-pothole-files.json";
 import theBlotterHour from "./radio/the-blotter-hour.json";
@@ -74,6 +85,17 @@ import theCounterIsNowServing from "./radio/the-counter-is-now-serving.json";
 import theFinalScore from "./radio/the-final-score.json";
 import theFogFiles from "./radio/the-fog-files.json";
 import theGoingOutOfBusinessHour from "./radio/the-going-out-of-business-hour.json";
+// Civic Notice — eerie segments (announcer ad-ann-deep + ad-disclaimer), aired as episodes
+import civicNoticeTheFog from "./radio/civic-notice-the-fog.json";
+import civicCurfew from "./radio/civic-curfew.json";
+import civicNoticeTheCount from "./radio/civic-notice-the-count.json";
+import civicTheReservoir from "./radio/civic-the-reservoir.json";
+import civicMandatoryGratitude from "./radio/civic-mandatory-gratitude.json";
+import civicFountain from "./radio/civic-fountain.json";
+import theSoundBelow from "./radio/the-sound-below.json";
+import civicNoticeTheGrid from "./radio/civic-notice-the-grid.json";
+import civicNoticeWednesday from "./radio/civic-notice-wednesday.json";
+import civicTheEvacuation from "./radio/civic-the-evacuation.json";
 // Part 2 sequels (each placed right after its parent in EPISODES)
 import theRenewalWindowPart2 from "./radio/the-renewal-window-part-2.json";
 import curbRightsPart2 from "./radio/curb-rights-part-2.json";
@@ -215,6 +237,7 @@ export interface Episode {
   title: string;
   description: string;
   type?: "episode" | "music" | "ad";
+  category?: string;  // content sub-format for filtering: call-in | advice | news | horoscope | psa | ad | blunder
   coverArt?: string;  // /images/radio/music/<slug>.webp — album art for music tracks
   lines: TranscriptLine[];
   track?: string;  // single whole-episode file (Dia); when set, player uses one source
@@ -296,7 +319,7 @@ const EPISODE_MUSIC: Record<string, string> = {
   "the-truth-hour": "nebraskas-watchin",
 };
 
-type RawShow = { slug: string; title: string; description: string; lines: unknown[]; track?: string; blunder?: boolean };
+type RawShow = { slug: string; title: string; description: string; lines: unknown[]; track?: string; blunder?: boolean; category?: string };
 
 function episodeFrom(raw: RawShow): Episode {
   return {
@@ -304,6 +327,7 @@ function episodeFrom(raw: RawShow): Episode {
     title:       raw.title,
     description: raw.description,
     type:        "episode",
+    category:    raw.category ?? "call-in",
     lines:       raw.lines as TranscriptLine[],
     track:       raw.track,
     music:       EPISODE_MUSIC[raw.slug],
@@ -326,6 +350,7 @@ function adFrom(raw: RawShow): Episode {
     title:       `${base} (${label} #${take})`,
     description: raw.description,
     type:        "ad",
+    category:    raw.category ?? (raw.blunder ? "blunder" : "ad"),
     lines:       raw.lines as TranscriptLine[],
     track:       raw.track,
     blunder:     raw.blunder,
@@ -512,4 +537,24 @@ export const EPISODES: Episode[] = [
   episodeFrom(theFinalScore),
   episodeFrom(theFogFiles),
   episodeFrom(theGoingOutOfBusinessHour),
+  episodeFrom(theStarsWithRhondaMercury),
+  episodeFrom(theCosmicLedger),
+  episodeFrom(theStarsWithRhondaThePositionIsOpen),
+  episodeFrom(theStarsKnowsYourBloodwork),
+  episodeFrom(theStarsWithRhondaFamilyAndHome),
+  episodeFrom(starsWithRhondaCommute),
+  episodeFrom(theStarsWithRhondaHarvest),
+  episodeFrom(theStarsWithRhondaTheEnemyIsInTheBuilding),
+  episodeFrom(theStarsAreClosingUp),
+  episodeFrom(theStarsWithRhondaLove),
+  episodeFrom(civicNoticeTheFog),
+  episodeFrom(civicCurfew),
+  episodeFrom(civicNoticeTheCount),
+  episodeFrom(civicTheReservoir),
+  episodeFrom(civicMandatoryGratitude),
+  episodeFrom(civicFountain),
+  episodeFrom(theSoundBelow),
+  episodeFrom(civicNoticeTheGrid),
+  episodeFrom(civicNoticeWednesday),
+  episodeFrom(civicTheEvacuation),
 ];

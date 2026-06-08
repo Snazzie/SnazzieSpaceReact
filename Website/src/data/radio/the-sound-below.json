@@ -1,0 +1,48 @@
+{
+  "slug": "the-sound-below",
+  "title": "Civic Notice: The Sound Below",
+  "description": "An automated Snazzie FM Civic Notification System test concerning a low, steady sound with no measurable source. Calm civic instructions, dead-air pauses, and a sign-off that does not conclude.",
+  "category": "psa",
+  "lines": [
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is a test of the Snazzie FM Civic Notification System.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 2.625,
+      "audio": "/audio/radio/the-sound-below/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.5> A low, steady sound is present in every district. Civic Records confirm it has no measurable source, and that it has always been present.",
+      "overlap": -0.3,
+      "timestamp": 2.108,
+      "duration": 6.202,
+      "audio": "/audio/radio/the-sound-below/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.5> Do not attempt to locate the sound. Residents who locate the sound are removed from the residential register.",
+      "overlap": -0.3,
+      "timestamp": 7.838,
+      "duration": 5.136,
+      "audio": "/audio/radio/the-sound-below/2.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.5> If the sound grows louder, you are approaching it. <p:0.3> Walk in any other direction.",
+      "overlap": -0.3,
+      "timestamp": 12.297,
+      "duration": 4.383,
+      "audio": "/audio/radio/the-sound-below/3.flac"
+    },
+    {
+      "speaker": "ad-ann-deep",
+      "text": "<p:0.5> This concludes the test of the Snazzie FM Civic Notification System. <p:0.3> If you can still hear the sound, the test has not concluded. <p:0.3> The test does not conclude.",
+      "overlap": -0.3,
+      "timestamp": 15.882,
+      "duration": 9.38,
+      "audio": "/audio/radio/the-sound-below/4.flac"
+    }
+  ]
+}
