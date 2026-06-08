@@ -10,7 +10,8 @@
       "text": "It says read with energy. <p:0.3> Okay. <p:0.4> Sal's Pizza, hot fresh pies delivered in thirty minutes!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 0.0
+      "duration": 9.79,
+      "audio": "/audio/radio/ad-sals-pizza-1/0.flac"
     },
     {
       "speaker": "caller-chad",
@@ -18,15 +19,17 @@
       "distant": true,
       "gain": 0.5,
       "overlap": 0.3,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 8.911,
+      "duration": 2.88,
+      "audio": "/audio/radio/ad-sals-pizza-1/1.flac"
     },
     {
       "speaker": "caller-gary",
       "text": "One sec, buddy, I'm doing the radio thing. <p:0.4> ...Was that energetic?",
       "overlap": 0.2,
-      "timestamp": 0.0,
-      "duration": 0.0
+      "timestamp": 10.653,
+      "duration": 6.56,
+      "audio": "/audio/radio/ad-sals-pizza-1/2.flac"
     }
   ]
 }
