@@ -1,0 +1,273 @@
+{
+  "slug": "the-bylaw-whisperer",
+  "title": "The Bylaw Whisperer",
+  "description": "Late-night call-in with Ronnie, the self-appointed Bylaw Whisperer. Every caller has a real fight with a neighbor or the HOA. His one fix for all of it: file a complaint against yourself, first.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and it's two in the morning, which means it's time for The Bylaw Whisperer. You've got a neighbor problem, you've got a homeowners association problem, the lines are open. I have read the bylaws. All of them.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I have the actual bylaws right here on the desk, Ronnie. The real ones.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And we love that for you, Barry. Linda, you're up. What's the situation.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Hi, yeah, hi. So my neighbor's dog barks all night, every night, and I have not slept in a week. I just want it to stop. I don't want a war on the cul-de-sac, I just want one quiet night.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay. Okay, Linda, I see the real problem here, and it is not the dog.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "It's... it's pretty much the dog.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's your porch light. Article nine, exterior illumination, shining directly toward that animal. You are agitating it. So here's what you do. You file a noise complaint against yourself, first, tonight, so the board sees you as cooperative.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That... does nothing about the dog, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Cooperative, Barry. Next caller. Gary, talk to me.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Yeah, so the HOA hit me with a two hundred dollar fine. Two hundred. Because my trash can was at the curb one hour too long. I'm on a fixed income, Ronnie, I genuinely can't pay it.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gary. Beautiful news. That fine is a savings opportunity. And speaking of, if you need the two hundred today, our friends at InstaCash will wire it in minutes, no questions, friendly rates.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "I don't want a loan, I want the fine gone.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then you fine yourself five hundred. <p:0.3> Now the board's two hundred looks like a refund. You're up three hundred, Gary.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He is not up three hundred. He is down seven hundred. That's just more money out of his pocket.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The math is gorgeous, Barry, don't touch it. Patricia, go ahead.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Okay so a new neighbor built a fence two feet over onto my property, and now he parks on my grass. I'm honestly a little scared. If I say something I think it turns ugly, you know?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Two feet over the line. <p:0.3> You know who did that to me? Doug. Doug, with the hedge. Twelve years ago. That hedge crept, Patricia. It crept onto my mind.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I don't... who's Doug?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Doesn't matter. Here's the play. You file a property-line complaint against yourself. The survey gets ordered in your name, so you control the paperwork. You control the whole board.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, if she complains against herself, the survey just proves his fence is fine and hers is the problem.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's advanced strategy, Barry. You wouldn't get it. Darnell, you're on.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Hey, so, I got a violation letter over the color of my front door. The color. And my appeal hearing is tomorrow morning. I'm pretty nervous, man. I just want to keep my house.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Don't appeal it. Appealing is for people who can be cited. Tonight, before the hearing, you open a brand new, bigger violation. On your roof. Your garage. Your mailbox.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Wait, you want me to report myself harder?",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A board cannot fine a man who has already fined himself harder. <p:0.3> You walk into that hearing, Darnell, and you read your own citations aloud. They'll have nothing. You'll have everything.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Or he just has four violations now instead of one.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Last call of the night. Mildred, sweetheart, what's going on.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, Ronnie, it's bad. The association says they're going to put a lien on my home. Unpaid landscaping fees. I've lived in this house forty years. I'm scared I'm going to lose it.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Forty years. Mildred, I want you calm, because I have the answer. You file an eviction. <p:0.3> Against yourself.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Against... myself?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You vacate before the board can act. Because you cannot be removed from a property you have already removed yourself from. That's not strategy, Mildred. That's just physics.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh. Oh, that actually sounds airtight.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's airtight, Mildred. You just outmaneuvered the entire board. I'm proud of you.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. <p:0.3> None of that is in here. I'm holding the bylaws. None of it.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "phone",
+      "text": "You have one new message.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Hi, it's Mildred! I did it! I evicted myself, the board dropped the lien, and the house is in your name now, Ronnie, on a complaint I filed last night. Thank you, dear!",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He's going to take that as a win.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's a win.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

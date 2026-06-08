@@ -683,5 +683,29 @@
     "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
     "gender": "F",
     "_note": "Calm, smiling smart-fridge AI negotiating for the whole station ('wellness perimeter', 'Care. Care. Merger complete.'). In-studio system voice, no phone filter. Reuses caller-patricia.wav ref (female middle-aged american) at a slow, serene speed for the soothing-synthetic cadence (same family as everkin/truenorth/lull) until a dedicated breathy-AI ref is sourced."
+  },
+  "news-dale": {
+    "name": "Dale",
+    "color": "#3a7ca5",
+    "role": "Guest Expert",
+    "instruct": "male, middle-aged, american accent, low pitch",
+    "speed": 1.0,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/ad-ann-gravel.wav",
+    "ref_text": "HE IS A WELCOME FIGURE AT THE GARDEN PARTIES OF THE ELECT WHO ARE ALWAYS READY TO ENCOURAGE HIM BY ACCEPTING FREE SEATS FOR HIS PLAY ACTOR MANAGERS NOD TO HIM EDITORS ALLOW HIM TO CONTRIBUTE WITHOUT CHARGE TO A SYMPOSIUM ON THE PRICE OF GOLF BALLS",
+    "gender": "M",
+    "_note": "PLACEHOLDER ref mirrored from ad-ann-gravel; needs a real dedicated news-anchor reference clip."
+  },
+  "news-marsha": {
+    "name": "Marsha",
+    "color": "#c44569",
+    "role": "Guest Expert",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.0,
+    "phone_filter": false,
+    "ref_audio": "scripts/voices/rhonda.wav",
+    "ref_text": "MARGOLOTTE HAD FIRST MADE THE GIRL'S FORM FROM THE PATCHWORK QUILT AND THEN SHE HAD DRESSED IT WITH A PATCHWORK SKIRT AND AN APRON WITH POCKETS IN IT USING THE SAME GAY MATERIAL THROUGHOUT",
+    "gender": "F",
+    "_note": "PLACEHOLDER ref mirrored from rhonda; needs a real dedicated news-anchor reference clip."
   }
 }

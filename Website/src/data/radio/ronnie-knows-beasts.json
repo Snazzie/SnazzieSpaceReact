@@ -1,0 +1,308 @@
+{
+  "slug": "ronnie-knows-beasts",
+  "title": "Ronnie Knows Beasts",
+  "description": "Late-night pet advice on Snazzie FM. Worried owners call in about creatures they love. Ronnie answers every one with total confidence and zero competence, while Barry reads the voicemails and slowly loses his mind.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and it's the part of the night I live for. Ronnie Knows Beasts. You've got a pet, you've got a problem, I've got the answers.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, for the record, you have never owned an animal.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Which is exactly why I'm objective, Barry. Read me the first one.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay. This is Linda. She says her cat is older, and lately it's stopped eating, just sleeps by the radiator all day. She's scared something's wrong and she doesn't know whether to spend the money on the vet.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh, Linda, sweetheart, relax. A cat curled up by the warmth all day? That animal is living its best life.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "She said it stopped eating.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Intermittent fasting. Very trendy right now. Your cat's just ahead of the curve. <p:0.3> And listen, if you're really fretting about the vet bill... have you tried rehoming it?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Rehoming the... she loves that cat, Ronnie.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it'll understand. Next caller. Gary, you're on.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Hi, yeah, hi. So every time I leave for work my dog just loses it. Barking, scratching, he tore up the whole couch. I feel so guilty leaving him, I think it's, like, separation anxiety?",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gary. Gary, stop. That's not anxiety. That dog is guarding your property. Like a professional.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "He's... guarding it from me leaving?",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So you lean into it. Leave more. Stay gone longer. Really commit to the absence. Let that dog cook.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That is the opposite of every single thing a trainer would tell you.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And if it doesn't take, Gary? Rehome him. Win win. He gets a new couch, you get yours back.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not a win win, that's one win and a betrayal. Next one's a voicemail. Patricia.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Hello, um, my parrot has started screaming the same phrase, over and over, all day and all night. I'm worried he heard something upsetting, or maybe he's sick. I don't know where he even got it.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Patricia. Patricia. Do you realize what you have? A talking bird is free advertising.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not the question she asked.",
+      "overlap": 0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You teach him to say, Snazzie FM, ninety four point one. <p:0.3> See, that's a bird that contributes. Unlike some co-hosts, who never listen to a word I say.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm sorry, are we doing your feelings now? On the pet show?",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I listen to YOU, Barry. <p:0.3> Anyway. The puppy. Mildred, go.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh thank goodness. My new puppy eats everything off the floor, and just now I think, I think he swallowed a battery? A little round one? I'm panicking, what do I do, what's even safe?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Mildred. Breathe. Puppies have cast iron stomachs. Very robust little machines.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It was a BATTERY though!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Which is just extra energy. That's literally where the word comes from. He'll be bouncing off the walls.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. Ronnie, no. A battery is a vet emergency, that is genuinely dangerous, she needs to call a vet right now.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Barry, a little floor variety builds the immune system. You agree with me, you just won't say it.",
+      "overlap": -0.05,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I... I do not... <p:0.3> it does sound a little robust, but no. No! Mildred, call a vet.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, he agreed. Last call of the night. Darnell, you're on Ronnie Knows Beasts.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Yeah, hey, so the kids' goldfish has been floating sideways at the top of the tank since this morning, and the kids keep asking me if he's gonna be okay, and I don't know what to tell them.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Darnell. Congratulations. That fish has learned to relax on its back. Like a little spa day.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "He's not moving, man.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Dim the lights. Bit of ambience. Let him have his moment. <p:0.3> And if he wants more? You know what I'm gonna say.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Do not say it.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Rehome him.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Where, Ronnie? Where do you rehome a goldfish?",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The ocean, Barry. Set him free. Back to where he came from.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a GOLDFISH! It's freshwater! It has never SEEN an ocean!",
+      "overlap": 0.35,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it'll be a lovely surprise for him, Barry.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That's the show. That's the whole show. We have to take a break.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "One last voicemail came in while we were live. It's from Linda. <p:0.3> She says the cat's fine, the vet fixed it in twenty minutes, and she would like her question rehomed to a better show.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "<p:0.3> I'm inclined to agree, Linda.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

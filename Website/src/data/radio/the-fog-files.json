@@ -1,0 +1,18 @@
+{
+  "slug": "the-fog-files",
+  "title": "Snazzie FM News: The Fog Files",
+  "description": "Top of the hour on Snazzie FM News. Dale Crisp and Marsha Veld read the civic beat completely deadpan: GreenFlow turns every traffic light permanently green, Frank's pigeons take seats on the Infrastructure Oversight Board, and the fog's application to become a registered public utility works its way through the D M V. The anchors check back for a ruling all hour, and the fog gets one.",
+  "lines": [
+    { "speaker": "news-dale", "text": "Top of the hour. Good evening, this is Snazzie FM News. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Our developing top story, the fog's application at the D M V.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Still no word from the fog. We'll bring you a ruling the moment it clears. <p:0.3> In traffic, Public Works confirms every light in the city is now permanently green.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "GreenFlow says red was, quote, a tone the grid no longer recognizes, and asks drivers to proceed forever.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Many already are.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "In civic news, Frank's pigeons have been seated on the Infrastructure Oversight Board. The meeting reached quorum and adjourned in four seconds.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "A productive session. <p:0.3> And we do now have word from the fog.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Approved. The fog is now a registered public utility, effective retroactively.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Residents will see the new line item on this month's bill, listed simply as, quote, breathing.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "First payment was due yesterday. The fog says most of us are already paid up.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "<p:0.3> That's the news. Good night.", "overlap": -0.15, "timestamp": 0, "duration": 0 }
+  ]
+}

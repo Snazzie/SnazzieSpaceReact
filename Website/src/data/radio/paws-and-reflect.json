@@ -1,0 +1,266 @@
+{
+  "slug": "paws-and-reflect",
+  "title": "Paws and Reflect with Ronnie",
+  "description": "Ronnie answers heartfelt pet letters with total confidence and zero pets. Barry has a dog and a fact, and gets steamrolled. Every animal, it turns out, just needs a job.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and it's the warm part of the night. This is Paws and Reflect, the hour where we open up the mailbag and we fix your animals. Barry, the lines are full of love tonight.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I just want to say, before we start, that I'm the one here who actually owns a dog.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And we love that for you, Barry. Now, first letter. Maureen from the cul-de-sac writes, quote, my rescue greyhound, Biscuit, panics and shakes the second I leave for work. He trembles all day. I feel awful leaving him alone. End quote.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Aw. Poor Biscuit. That's textbook separation...",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's boredom, Maureen. Classic boredom. That dog is shaking because he has nothing to DO. He needs responsibility. Give him a job. Have him mind the house. Maybe handle the mail.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It's separation anxiety, Ronnie. The word is separation.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Separation. Good word, Barry. So, Maureen, the fix is clear. You two need to spend MORE time apart. Build that independence. Leave for longer. He'll thank you.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That is the exact opposite of the thing.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Next letter. Darnell wrote in by email. Quote, my elderly cat has stopped eating. She's hiding under the bed. I'm scared she's seriously ill and I don't know whether to rush her to the vet. End quote. <p:0.3> Easy one.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Easy? Darnell, that could be serious, get her to a...",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "She's on a hunger strike, Darnell. That's a labor action. Cat's got a grievance with management. You need to find out her demands and negotiate in good faith.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, she could be dying. Hiding and not eating, that's a vet trip, tonight.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Vets are expensive, Barry. Here's a free option. Give her a job. Give her a reason to get up in the morning. <p:0.3> And Darnell, gently, has anyone asked if she feels heard? Is she unionized? Because that changes the conversation.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "She is a cat. She is not in a union.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Not YET. Patricia left us a voicemail. Barry, you read this one, it's beautiful.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay. Patricia says, quote, my parakeet plucks out his own feathers and just looks miserable. I read it might be stress, or loneliness. It's breaking my heart. End quote. <p:0.3> She's right, by the way, I looked it up, the bird needs a companion.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, you're catastrophizing, Barry. That bird is tidying up. He's streamlining for the work week. A plucked bird is a focused bird. No loose ends. No drag.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He is hurting himself.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He's hungry for purpose. Patricia, give him a job. Data entry. I'm serious, the little feet are PERFECT for the keys. Nature designed that bird for a keyboard.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "I said companion, Ronnie. He needs a companion.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Companion, yes. Get him a tiny assistant. Junior bird. Delegate. <p:0.3> Patricia, you're basically running a startup now and you didn't even know it.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Winston, longtime listener, writes. Quote, my goldfish keeps swimming sideways and floating up to the top. I'm genuinely worried he's suffering and I want to do right by him. End quote.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Sideways and floating, that's swim bladder, Ronnie. The fish is in distress.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's not distress, Barry, that's ambition. The floating? He's reaching. The sideways thing? He's looking for the exit so he can go start something bigger.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a disease! It's an actual disease!",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Distress is just untapped drive, Barry. <p:0.3> Winston, put that fish in charge of accounts receivable. Build him a tiny desk. A goldfish never forgets who owes you money.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "It has a nine second memory.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Lean. Forward looking. Now, last letter, and Glenda sounds very upset. Quote, I just inherited my late uncle's hundred-year-old tortoise. I have no idea what it eats, how to care for it, or how to keep something that might outlive me. End quote.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, that one's real, she needs an actual reptile vet and a care...",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A hundred years, Glenda. And what's it got to show for it? A creature that lives a century and wastes the prime working decades, that's a tragedy. The kindest thing you can give it is purpose.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Please don't give the tortoise a job.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Put it in charge of the night shift. It's slow, it's patient, it never sleeps in. Incorporate, Glenda. <p:0.3> And honestly? Bring them all together. Biscuit, the cat, Patricia's bird, Winston's fish, and now the tortoise. One company.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "You want five strangers' suffering pets to form a corporation.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Tortoise is C E O. <p:0.3> It has the most experience.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh, and a follow-up came in. Maureen wrote back. Quote, I gave Biscuit a job minding the mail, like you said. End quote. <p:0.3> Listen to this. He's opened a competing route. The regular postman now refuses to come to the cul-de-sac.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That dog found his purpose, Barry. I'm getting a little emotional.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "He's not anxious anymore, Ronnie. <p:0.3> He's just unemployed and armed with letters. That's worse.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}

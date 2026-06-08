@@ -1,0 +1,20 @@
+{
+  "slug": "news-the-vacancy-report",
+  "title": "Snazzie FM News: The Vacancy Report",
+  "description": "At the top of the hour, Dale and Marsha cover the Main Street business beat: Big Mike's reopens under broth ownership, Donna's eleventh grand reopening, and the fog's steady progress from lease application to fully stocked storefront.",
+  "lines": [
+    { "speaker": "news-dale", "text": "Top of the hour. This is Snazzie F M News. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld, on the local business beat.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Big Mike's Subs has reopened under new management, after the old management was, quote, reabsorbed into the soup. The ninety-year broth is now a co-owner.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "The broth could not be reached for comment, Dale. It was, however, simmering.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "In other news, Donna's Diner filed for its eleventh straight grand reopening. A local record.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Donna has not left the building since 2019. She sounds well.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Developing tonight, the fog has filed for a small-business license, citing a desire to settle down.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Updating that story, Dale. The license cleared. The fog has leased a unit on Main Street.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Already? That was fast.", "overlap": -0.05, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "It is restocking the shelves as we speak. Getting the place just right.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "And finally, the Chamber of Commerce reports a record zero vacancies on Main Street this quarter. Every storefront is now occupied. <p:0.3> They do not say by whom.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "The fog declined to comment. It did wish us a pleasant evening. By name. <p:0.3> Which we did not give it.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Back after this.", "overlap": -0.1, "timestamp": 0, "duration": 0 }
+  ]
+}

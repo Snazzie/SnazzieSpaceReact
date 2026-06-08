@@ -1,0 +1,18 @@
+{
+  "slug": "the-council-quorum",
+  "title": "Snazzie FM News: The Quorum Question",
+  "description": "Dale and Marsha cover the council session: the fog tries to pay rent at the lectern, GreenFlow takes Seat Four, Frank's pigeons get observer status, and a quorum is confirmed despite three members appearing only as fog.",
+  "lines": [
+    { "speaker": "news-dale", "text": "Top of the hour. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. The council met last night, and yes, the fog was there again.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Members voted seven to nothing to extend the fog's comment period, after it again tried to pay first and last month's rent at the lectern. No word yet on whether the check has cleared.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "In grid news, GreenFlow's representative was sworn into the vacant Seat Four. The seat is now green only, Dale, and may not be sat in after dark.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Understood. Marsha, the human interest item.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "A motion to recognize Frank's pigeons as a voting bloc failed. They were, however, granted observer status, and a small ledger.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "They're keeping books.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "They're keeping books. Officials confirm the fog's check remains, as of this broadcast, uncashed.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "And finally... the council confirmed a quorum was reached, despite three members appearing only as fog.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Officials stress this is normal. That it has always been this way.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "<p:0.3> And that the check has, at last, cleared. We'll be right back.", "overlap": -0.1, "timestamp": 0, "duration": 0 }
+  ]
+}

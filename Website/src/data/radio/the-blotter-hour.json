@@ -1,0 +1,19 @@
+{
+  "slug": "the-blotter-hour",
+  "title": "Snazzie FM News: The Blotter Hour",
+  "description": "Dale Crisp and Marsha Veld read the overnight crime blotter, completely deadpan: a stolen bike lane that left a thank-you note, a clinic burglary where nothing was taken, and a developing situation with the downtown fog.",
+  "lines": [
+    { "speaker": "news-dale", "text": "It's the top of the hour. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Tonight, the Blotter Hour. Dale.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Overnight, the entire eastbound bike lane was reported stolen. Police say the suspect left a forwarding address... and a thank-you note.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Polite. Over on Third, the HonkHeal clinic was burgled. Nothing was taken.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "The intruder simply honked at the front desk for six hours, and left healed.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And the developing thread. The downtown fog, last seen attempting to pay first and last month's rent, is now a person of interest in three break-ins.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Police keep noting it remains, quote, cooperative... and out front.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Still no word from the fog. <p:0.3> And finally, Dale.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "<p:0.3> The fog turned itself in this afternoon. It confessed to all three burglaries, posted bail in exact change, and asked if the holding cell was available on a twelve-month lease.", "overlap": -0.2, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "Detectives say it filled out the paperwork beautifully.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "We'll have more as the fog settles. For Snazzie FM News, I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Good night.", "overlap": -0.15, "timestamp": 0, "duration": 0 }
+  ]
+}

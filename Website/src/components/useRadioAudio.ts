@@ -298,11 +298,20 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     }
     return proBagRef.current[0];
   }
+  const bizBase = (i: number) => ads[i].slug.replace(/-\d+$/, "");  // strip trailing take number
   function nextBlunder(): number {
     if (blunderQueueRef.current.length === 0) {
-      const q = deferBlockUsed(shuffled([...adPools.blunderBiz]).flat());  // biz order shuffled, takes kept in order
-      if (q.length > 1 && q[0] === lastBlunderRef.current) [q[0], q[1]] = [q[1], q[0]];
-      blunderQueueRef.current = q;
+      // New cycle: shuffle businesses (each business's takes stay #1 -> #2).
+      const groups = shuffled([...adPools.blunderBiz]);
+      // Honor "a business's set doesn't recur until the cycle ends": push the
+      // most-recently-aired business to the BACK of the new cycle, so it lands a
+      // full cycle away instead of possibly reappearing right after the reshuffle.
+      if (groups.length > 1 && lastBlunderRef.current >= 0) {
+        const lastBase = bizBase(lastBlunderRef.current);
+        const k = groups.findIndex((g) => bizBase(g[0]) === lastBase);
+        if (k >= 0) groups.push(groups.splice(k, 1)[0]);
+      }
+      blunderQueueRef.current = deferBlockUsed(groups.flat());  // takes kept in order
     }
     return blunderQueueRef.current[0];
   }

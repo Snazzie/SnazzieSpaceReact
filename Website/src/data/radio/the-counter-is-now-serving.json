@@ -1,0 +1,18 @@
+{
+  "slug": "the-counter-is-now-serving",
+  "title": "Snazzie FM News: The Counter Is Now Serving",
+  "description": "The news desk follows a D M V now-serving board that keeps counting down, GreenFlow's all-green grid, and Frank's newly unionized pigeons. Calm. Professional. Counting backward.",
+  "lines": [
+    { "speaker": "news-dale", "text": "Top of the hour. I'm Dale Crisp.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "And I'm Marsha Veld. Our top story, the D M V issued ticket A zero zero one this morning.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "The now serving board reads negative fourteen, Marsha. It has not advanced all day.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "We'll stay on that. In transit, GreenFlow's grid turned every light green at once on Route 9.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Officials call it the best commute on record. The four buses on it have not been heard from since.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "No word on the buses. The board, Dale, is still negative fourteen.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "Still negative fourteen. Elsewhere, Frank's pigeons have unionized the curb outside.", "overlap": 0, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "They're issuing their own parking citations. The city cannot overrule them.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "And finally, a local note. <p:0.3> The man holding ticket A zero zero one has waited so long the fog offered to cover his rent.", "overlap": -0.15, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-marsha", "text": "He declined. <p:0.3> The fog is now also in line, Dale.", "overlap": -0.1, "timestamp": 0, "duration": 0 },
+    { "speaker": "news-dale", "text": "And being served before him. <p:0.3> The board now reads negative fifteen. We'll be right back.", "overlap": -0.1, "timestamp": 0, "duration": 0 }
+  ]
+}

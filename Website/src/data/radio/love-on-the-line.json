@@ -1,0 +1,259 @@
+{
+  "slug": "love-on-the-line",
+  "title": "Love On The Line with Ronnie",
+  "description": "Late-night dating call-in on Snazzie FM. Real, brokenhearted people phone in, and Ronnie answers every single one with total confidence and zero usefulness. His one fix for love? Just split the bill. Barry tries to help.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're listening to Love On The Line, here on Snazzie FM, where I, Ronnie, take your heartache and I fix it. Three divorces, folks. I've seen it all.",
+      "overlap": 0,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Most people would not list that as a qualification, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Most people aren't experts, Barry. Let's go to the lines. Linda, you're on Love On The Line.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, hi, hi, okay, so, we've been together two years, and he just, he won't say it, you know, the L word, and I've been so patient but I just need to know, Ronnie, is he ever, is he ever gonna commit?",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Linda. <p:0.3> Linda, I'm gonna stop you right there. This is a money problem.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "It's... it's not really about mon...",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You're paying for the dates. He doesn't respect you. Here's the fix. Next date? You split the bill. Fifty-fifty. That's romance, Linda. That's a man saying I see you as an equal.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, she asked about commitment. She didn't mention paying for anything.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Split the bill, Linda. You'll thank me. Next caller. Darnell, talk to me.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Hey Ronnie. Fifteen years married. And lately she's just... quiet. Distant. I'm scared we're drifting apart, man, and I just wanna find my way back to her.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Drifting apart. Beautiful. Natural. Healthy, even.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Healthy? It doesn't feel...",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I have drifted apart four times, Darnell. Four. And look at me now. National radio. So really, you're winning.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That's three divorces and one of us, Ronnie. I'm the fourth thing you drifted from.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And here's your move, Darnell. Marriage counselor. <p:0.3> But you split the bill on it. Fifty-fifty. Keeps it fair.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Split the bill on... on saving my marriage?",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now you get it. Mildred, you're on the line, sweetheart.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Hello, dear. Since my Harold passed, it's been awful lonely. My grandson set me up on one of those phone dating things, the, oh, the Bumble. I just don't know how a woman my age even begins.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The Grumble. Love it. Okay, Mildred, here's how you stand out. Three in the morning, that's prime time. You meet these total strangers in a parking lot, somewhere quiet, no cameras.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "No. No, Mildred, do not do any part of that. Please.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And for your bio? One line. Will split the bill. <p:0.3> Drives 'em wild. Power move.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Should I put that before or after my casserole recipe, dear?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "After. Always lead with the casserole. Last caller. Chad, you sound rough, buddy.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "She left me, Ronnie. Six days ago. I've called her forty times. I just... I need her back. How do I get her back?",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Forty calls? Amateur. You call sixty. Then you show up at her work with a mariachi band you can't afford.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that's a restraining order, that's not a band.",
+      "overlap": 0.3,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And here's the grand gesture, Chad. You tell her, baby, let's split the breakup. Fifty-fifty. You take half the heartbreak, I take half.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "I... I don't think you can split a breakup, Ronnie.",
+      "overlap": 0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And then? You propose joint custody. Of the cat.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "We don't... we don't have a cat.",
+      "overlap": 0.25,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then you get one. And you split it. <p:0.3> She'll be back by Tuesday, Chad. Trust me.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "Chad, hang up. Hang up and call literally anyone else.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We're gonna grab one quick voicemail before the break. Roll it, Barry.",
+      "overlap": -0.2,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Hi, Ronnie, it's Linda, from earlier? So I did the fifty-fifty thing. <p:0.3> He left. He took half the apartment, half the savings, and, um, half the cat. I have the front half.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "barry",
+      "text": "That tracks.",
+      "overlap": -0.1,
+      "timestamp": 0,
+      "duration": 0
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See? <p:0.3> Fifty-fifty.",
+      "overlap": -0.15,
+      "timestamp": 0,
+      "duration": 0
+    }
+  ]
+}
