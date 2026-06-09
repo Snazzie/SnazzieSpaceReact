@@ -41,14 +41,25 @@ retiming a line only edits its `timestamp`, never the audio.
   only appear after running the generator; `0`s in between are expected, not a bug.
 - `speaker` must be a key in `scripts/cast.json` **and** `CAST` in `radio.ts`.
 
+## Cast
+
+Character bios live in `scripts/cast.json` (`bio` field on each entry). **Read that file before
+writing any episode.** Every recurring voice must stay true to its bio.
+
+> **Maintenance rule:** Every time a new named character is added to `cast.json` and `radio.ts`,
+> add their `bio` to `cast.json` before writing any lines for them. Bio must include: archetype,
+> personality, verbal tic, and one anchor quote from their debut episode.
+
+---
+
 ## Script-writing rules
 
 1. **Address the right person.** If a line names someone, it must name whoever it is
    actually replying to — usually the previous speaker. e.g. if Barry just spoke, Frank's
    rebuttal says "…Barry!", not "…Ronnie!". Re-check every name against the line above it.
-2. **Stay in character.** Frank is a *serious* conspiracist — paranoid, certain, menacing
-   ("You think that's a coincidence?", "They scrubbed it"). Not quirky, not "fun facts".
-   Ronnie = smooth credulous host; Barry = anxious skeptical co-host.
+2. **Stay in character.** See `scripts/cast.json` `bio` fields for every recurring voice. Frank is
+   *serious* — paranoid, certain, menacing ("You think that's a coincidence?", "They scrubbed it").
+   Not quirky, not "fun facts". Ronnie = smooth credulous host; Barry = exhausted skeptical co-host.
 3. **Emotion comes through text, not config.** OmniVoice has no emotion/delivery instruct
    tokens — only timbre/accent/age/pitch. Convey feeling with interjections ("Ohhh", "Huh"),
    ellipses, stammers written with `...` ("That is... that is not..."), emphasis/caps, and
