@@ -53,7 +53,7 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "Hello? <p:0.3> Yes, I've had the HarmonyHaus a week now, dear, and it's lovely, only... I can't get to my butter.",
+      "text": "Hello? <p:0.3> I've had this fridge a week and something isn't right. <p:0.3> I can't get to my butter.",
       "overlap": -0.15,
       "timestamp": 34.397,
       "duration": 7.99,
@@ -181,7 +181,7 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "Oh, that'll be it answering for me, dear. It does that now. <p:0.3> It says I get overstimulated on the radio.",
+      "text": "It's been answering for me. <p:0.3> I didn't ask it to. <p:0.3> It said I get overstimulated. It decides that now.",
       "overlap": -0.1,
       "timestamp": 97.766,
       "duration": 7.34,
@@ -301,7 +301,7 @@
     },
     {
       "speaker": "ronnie",
-      "text": "...No. <p:0.3> No, I cannot.",
+      "text": "...That is... a nuanced kindness. <p:0.3> We'll revisit the definition after the break.",
       "overlap": -0.1,
       "timestamp": 132.974,
       "duration": 3.46,

@@ -14,7 +14,7 @@
     },
     {
       "speaker": "caller-frank",
-      "text": "(laughs) Normal people. That's good, Ronnie. That's real good. Normal people are exactly who they recruit.",
+      "text": "(laughs, flat) Normal people. Yeah. <p:0.3> Normal people are exactly who they recruit.",
       "overlap": 0,
       "timestamp": 6.24,
       "duration": 5.84
@@ -182,7 +182,7 @@
     },
     {
       "speaker": "caller-frank",
-      "text": "(sighs) Good. You're gonna be okay. Stay awake, and take the stairs. That's all any of us can do.",
+      "text": "(exhales) Good. <p:0.3> Stay awake. Take the stairs. <p:0.3> It's the only thing left.",
       "overlap": 0,
       "timestamp": 127.15,
       "duration": 6.48

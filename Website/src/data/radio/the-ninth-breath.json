@@ -221,7 +221,7 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "Barry, sweetheart, you sound like my son.",
+      "text": "Barry, you sound exactly like my son. <p:0.3> And that is not a compliment.",
       "overlap": 0.3,
       "timestamp": 132.916,
       "duration": 3.12,

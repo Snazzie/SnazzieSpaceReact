@@ -61,7 +61,7 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "I'm so grateful. <p:0.3> Last week I thanked my toaster, and I mailed it straight to the source. I haven't had toast since and I feel WEIGHTLESS.",
+      "text": "Last week I thanked my toaster and mailed it to the source. <p:0.3> I haven't had toast since. <p:0.3> That part is going fine.",
       "overlap": -0.2,
       "timestamp": 42.526,
       "duration": 12.69,
@@ -109,7 +109,7 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "I'm so grateful. <p:0.3> Two days ago I thanked my bed. <p:0.3> I sleep on the floor now, Barry, and the floor never disappointed anyone.",
+      "text": "Two days ago I thanked my bed. <p:0.3> I sleep on the floor now. <p:0.3> The floor never disappointed anyone.",
       "overlap": -0.15,
       "timestamp": 70.422,
       "duration": 11.76,
@@ -173,7 +173,7 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "I'm so grateful. <p:0.3> This morning I thanked my children's winter coats. <p:0.3> They are with the source now. The children are learning resilience.",
+      "text": "This morning I thanked my children's winter coats. <p:0.3> They are with the source now. <p:0.3> The children are learning resilience.",
       "overlap": -0.15,
       "timestamp": 114.257,
       "duration": 13.28,
@@ -237,7 +237,7 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "I'm so grateful. <p:0.3> Last night I thanked the surgeon, and then I released a kidney to the source.",
+      "text": "Last night I thanked the surgeon and released a kidney to the source.",
       "overlap": -0.15,
       "timestamp": 153.079,
       "duration": 9.02,
@@ -301,7 +301,7 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "It's gone! It's at the source! I feel SO weightless I might float off the floor!",
+      "text": "It's at the source. <p:0.3> I feel less heavy.",
       "overlap": 0.4,
       "timestamp": 190.934,
       "duration": 6.92,
