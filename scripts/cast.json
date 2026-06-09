@@ -119,6 +119,54 @@
     "ref_text": "ALSO A POPULAR CONTRIVANCE WHEREBY LOVE MAKING MAY BE SUSPENDED BUT NOT STOPPED DURING THE PICNIC SEASON",
     "gender": "F"
   },
+  "committee-patricia": {
+    "name": "Patricia",
+    "color": "#ff7675",
+    "role": "Caller",
+    "bio": "Surveillance-minded head of the Maple Court Welcome Committee; delivers coded threats as neighbourhood warmth, tracks residents in a spreadsheet with colour-coded status ratings, and has implied control over the street's power supply.",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.0,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F"
+  },
+  "caller-patricia-utility": {
+    "name": "Patricia",
+    "color": "#0984e3",
+    "role": "Caller",
+    "bio": "Water Authority bureaucrat who deflects all infrastructure liability with serene confidence, citing decommissioned schematics and procedural paperwork; acknowledges nothing, admits nothing, and the water is definitively not hers.",
+    "instruct": "female, middle-aged, american accent",
+    "speed": 1.05,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-patricia.wav",
+    "ref_text": "HE PASSES ABRUPTLY FROM PERSONS TO IDEAS AND NUMBERS AND FROM IDEAS AND NUMBERS TO PERSONS FROM THE HEAVENS TO MAN FROM ASTRONOMY TO PHYSIOLOGY HE CONFUSES OR RATHER DOES NOT DISTINGUISH SUBJECT AND OBJECT FIRST AND FINAL CAUSES AND IS DREAMING OF GEOMETRICAL FIGURES LOST IN A FLUX OF SENSE",
+    "gender": "F"
+  },
+  "caller-patricia-soup": {
+    "name": "Patricia",
+    "color": "#fdcb6e",
+    "role": "Caller",
+    "bio": "Brings fresh carrots to the town's 90-year perpetual community soup pot every Sunday; deeply protective of her contribution's legitimacy while calmly deflecting scrutiny of the increasingly sentient broth beneath it.",
+    "instruct": "female, elderly, american accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F"
+  },
+  "caller-mildred-widow": {
+    "name": "Mildred",
+    "color": "#81ecec",
+    "role": "Caller",
+    "bio": "Recently widowed gentle older woman whose late husband Harold left her lonely; her grandson signed her up for Bumble; calls Ronnie's love advice line with earnest unhurried questions about dating apps, mentions her casserole recipe unprompted.",
+    "instruct": "female, elderly, american accent",
+    "speed": 0.9,
+    "phone_filter": true,
+    "ref_audio": "scripts/voices/caller-linda.wav",
+    "ref_text": "FRANK READ ENGLISH SLOWLY AND THE MORE HE READ ABOUT THIS DIVORCE CASE THE ANGRIER HE GREW",
+    "gender": "F"
+  },
   "caller-nadia": {
     "name": "Nadia",
     "color": "#00b894",
