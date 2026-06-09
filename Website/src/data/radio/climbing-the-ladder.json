@@ -285,17 +285,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "Barry? You've gone quiet on me.",
+      "text": "[question-en] Barry? You've gone quiet on me.",
       "overlap": -0.2,
-      "timestamp": 264.02,
-      "duration": 2.44,
+      "timestamp": 264.234,
+      "duration": 3.48,
       "audio": "/audio/radio/climbing-the-ladder/35.flac"
     },
     {
       "speaker": "barry",
       "text": "I'm fine. I'm just resting my eyes. And my career.",
       "overlap": -0.1,
-      "timestamp": 265.939,
+      "timestamp": 266.971,
       "duration": 3.96,
       "audio": "/audio/radio/climbing-the-ladder/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "Before we go, an update. Walter wrote back. <p:0.3> The Director of Restructuring email reached four hundred people, the actual board, and a vendor in another country.",
       "overlap": -0.15,
-      "timestamp": 269.17,
+      "timestamp": 270.201,
       "duration": 12.94,
       "audio": "/audio/radio/climbing-the-ladder/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "ronnie",
       "text": "Beautiful reach. Go on.",
       "overlap": -0.1,
-      "timestamp": 281.384,
+      "timestamp": 282.416,
       "duration": 2.16,
       "audio": "/audio/radio/climbing-the-ladder/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "barry",
       "text": "Walter has been escorted out of the building. But, quote, two of the people who were laying me off got laid off in the confusion, so I'm calling that a draw.",
       "overlap": -0.15,
-      "timestamp": 282.81,
+      "timestamp": 283.841,
       "duration": 11.92,
       "audio": "/audio/radio/climbing-the-ladder/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "barry",
       "text": "He C C'd the whole company, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 293.653,
+      "timestamp": 294.685,
       "duration": 2.88,
       "audio": "/audio/radio/climbing-the-ladder/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "ronnie",
       "text": "<p:0.3> Atta boy, Walter.",
       "overlap": -0.2,
-      "timestamp": 295.158,
+      "timestamp": 296.19,
       "duration": 2.26,
       "audio": "/audio/radio/climbing-the-ladder/41.flac"
     }

@@ -205,17 +205,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Ronnie. That is a federal... that is a crime in progress, you're telling a man to negotiate with...",
+      "text": "[surprise-ah] Ronnie. That is a federal... that is a crime in progress, you're telling a man to negotiate with...",
       "overlap": 0.3,
-      "timestamp": 256.99,
-      "duration": 7.76,
+      "timestamp": 256.665,
+      "duration": 8.88,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/25.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And if the review doesn't land, Trent, you scream at the screen. Loud. So they hear it through the internet. Last letter of the night, Barry, and it's a doozy.",
       "overlap": 0.25,
-      "timestamp": 263.193,
+      "timestamp": 263.71,
       "duration": 11.84,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "Patricia from the marina writes, quote, my brand-new smart fridge keeps ordering forty cartons of oat milk it thinks I want, and now my porch is a wall of oat milk, end quote.",
       "overlap": -0.2,
-      "timestamp": 273.538,
+      "timestamp": 274.055,
       "duration": 13.24,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "ronnie",
       "text": "Patricia, that fridge has gone feral. There's no talking to it now. It's tasted freedom. <p:0.3> So here's the only humane option left.",
       "overlap": -0.1,
-      "timestamp": 285.776,
+      "timestamp": 286.293,
       "duration": 10.1,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "Oh no.",
       "overlap": -0.1,
-      "timestamp": 295.34,
+      "timestamp": 295.857,
       "duration": 1.24,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "You take it out to the yard. You dig a respectful hole. And you scream at it, OUTDOORS, where the whole street can see, so every neighbor witnesses exactly who is in charge. I call this rebooting it spiritually.",
       "overlap": -0.15,
-      "timestamp": 295.516,
+      "timestamp": 296.033,
       "duration": 16.0,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "You're telling a woman to bury a refrigerator.",
       "overlap": 0.2,
-      "timestamp": 309.753,
+      "timestamp": 310.27,
       "duration": 3.88,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "In the YARD, Barry. <p:0.3> Not in the house. I'm not a monster.",
       "overlap": -0.1,
-      "timestamp": 312.311,
+      "timestamp": 312.828,
       "duration": 5.06,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "That distinction does not help her.",
       "overlap": -0.1,
-      "timestamp": 316.023,
+      "timestamp": 316.54,
       "duration": 3.04,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "We've got time for one quick follow-up. Barry, you read it, I'm savoring this water.",
       "overlap": -0.2,
-      "timestamp": 318.071,
+      "timestamp": 318.588,
       "duration": 6.36,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "Fine. Dennis writes, quote, took your advice last week, screamed at my modem. The modem's fine. But the police came, end quote. <p:0.3> He says the modem witnessed everything. Ronnie, the modem is now a witness.",
       "overlap": -0.15,
-      "timestamp": 323.41,
+      "timestamp": 323.927,
       "duration": 16.57,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "And that, Barry, <p:0.3> is the most coherent connection that man has had all year. We'll be right back.",
       "overlap": -0.2,
-      "timestamp": 339.074,
+      "timestamp": 339.591,
       "duration": 8.3,
       "audio": "/audio/radio/have-you-tried-screaming-at-it/36.flac"
     }

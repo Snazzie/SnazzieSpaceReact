@@ -141,17 +141,17 @@
     },
     {
       "speaker": "caller-donna",
-      "text": "...Steve?",
+      "text": "[surprise-oh] Steve?",
       "overlap": -0.15,
-      "timestamp": 75.49,
-      "duration": 1.48,
+      "timestamp": 74.947,
+      "duration": 1.96,
       "audio": "/audio/radio/the-loyalty-war/17.flac"
     },
     {
       "speaker": "caller-marco",
       "text": "Steve, is that you?",
       "overlap": -0.1,
-      "timestamp": 76.262,
+      "timestamp": 76.438,
       "duration": 1.56,
       "audio": "/audio/radio/the-loyalty-war/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-steve",
       "text": "Hey, guys. Yeah. So I been getting nine stamps on Donna's card, and nine stamps on Marco's card, kinda at the same time?",
       "overlap": -0.1,
-      "timestamp": 76.993,
+      "timestamp": 77.169,
       "duration": 4.6,
       "audio": "/audio/radio/the-loyalty-war/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "barry",
       "text": "He's playing both sides.",
       "overlap": -0.15,
-      "timestamp": 81.01,
+      "timestamp": 81.186,
       "duration": 2.12,
       "audio": "/audio/radio/the-loyalty-war/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-donna",
       "text": "Steve, you told me I was your corner.",
       "overlap": -0.1,
-      "timestamp": 82.626,
+      "timestamp": 82.802,
       "duration": 3.16,
       "audio": "/audio/radio/the-loyalty-war/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-marco",
       "text": "He told ME I was his corner!",
       "overlap": 0.25,
-      "timestamp": 84.733,
+      "timestamp": 84.909,
       "duration": 1.72,
       "audio": "/audio/radio/the-loyalty-war/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-steve",
       "text": "I mean, you're both kinda my corner? It's one corner. You're eight inches apart.",
       "overlap": 0,
-      "timestamp": 85.916,
+      "timestamp": 86.092,
       "duration": 3.16,
       "audio": "/audio/radio/the-loyalty-war/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "He makes a fair point. It is a shared corner.",
       "overlap": -0.2,
-      "timestamp": 88.57,
+      "timestamp": 88.746,
       "duration": 3.48,
       "audio": "/audio/radio/the-loyalty-war/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-donna",
       "text": "So which card hit ten first, Steve? Whose tenth taco did you redeem?",
       "overlap": -0.1,
-      "timestamp": 91.342,
+      "timestamp": 91.518,
       "duration": 5.76,
       "audio": "/audio/radio/the-loyalty-war/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-steve",
       "text": "Uh. Well. <p:0.3> Neither, actually.",
       "overlap": -0.1,
-      "timestamp": 96.018,
+      "timestamp": 96.194,
       "duration": 2.74,
       "audio": "/audio/radio/the-loyalty-war/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-marco",
       "text": "Neither?",
       "overlap": -0.1,
-      "timestamp": 98.298,
+      "timestamp": 98.474,
       "duration": 1.24,
       "audio": "/audio/radio/the-loyalty-war/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-steve",
       "text": "Donna's machine ate the card at stamp nine. Said it needed a tenth stamp to give me the free one. But the free one IS the tenth. So.",
       "overlap": -0.1,
-      "timestamp": 98.703,
+      "timestamp": 98.879,
       "duration": 5.0,
       "audio": "/audio/radio/the-loyalty-war/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-donna",
       "text": "...That's a glitch. We're aware of the glitch.",
       "overlap": -0.15,
-      "timestamp": 102.978,
+      "timestamp": 103.153,
       "duration": 3.8,
       "audio": "/audio/radio/the-loyalty-war/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "Wait, so nobody's ever actually gotten a free taco?",
       "overlap": -0.15,
-      "timestamp": 105.204,
+      "timestamp": 105.379,
       "duration": 4.24,
       "audio": "/audio/radio/the-loyalty-war/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-marco",
       "text": "Mine works perfectly, Barry.",
       "overlap": -0.1,
-      "timestamp": 108.713,
+      "timestamp": 108.889,
       "duration": 1.8,
       "audio": "/audio/radio/the-loyalty-war/31.flac"
     },
@@ -263,23 +263,23 @@
       "speaker": "caller-steve",
       "text": "Marco's wanted a tenth stamp too.",
       "overlap": -0.1,
-      "timestamp": 109.996,
+      "timestamp": 110.172,
       "duration": 1.6,
       "audio": "/audio/radio/the-loyalty-war/32.flac"
     },
     {
       "speaker": "caller-marco",
-      "text": "...That's a different glitch.",
+      "text": "[dissatisfaction-hnn] That's a different glitch.",
       "overlap": -0.15,
-      "timestamp": 111.479,
-      "duration": 1.76,
+      "timestamp": 111.644,
+      "duration": 2.66,
       "audio": "/audio/radio/the-loyalty-war/33.flac"
     },
     {
       "speaker": "ronnie",
       "text": "So to be clear, the free taco, on either card, requires a stamp that does not exist.",
       "overlap": -0.2,
-      "timestamp": 112.093,
+      "timestamp": 113.116,
       "duration": 6.36,
       "audio": "/audio/radio/the-loyalty-war/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-donna",
       "text": "The tenth stamp is conceptual, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 117.089,
+      "timestamp": 118.112,
       "duration": 3.4,
       "audio": "/audio/radio/the-loyalty-war/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-marco",
       "text": "Mine's aspirational.",
       "overlap": 0.25,
-      "timestamp": 119.346,
+      "timestamp": 120.369,
       "duration": 1.64,
       "audio": "/audio/radio/the-loyalty-war/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-steve",
       "text": "I got like forty cards, man. I got a shoebox. Forty cards, all stuck on nine.",
       "overlap": 0.2,
-      "timestamp": 120.172,
+      "timestamp": 121.195,
       "duration": 3.0,
       "audio": "/audio/radio/the-loyalty-war/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-donna",
       "text": "Forty? Steve, you've been to Marco's twenty times!",
       "overlap": 0.3,
-      "timestamp": 122.521,
+      "timestamp": 123.544,
       "duration": 4.28,
       "audio": "/audio/radio/the-loyalty-war/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-marco",
       "text": "And you've been to Donna's twenty times, you traitor!",
       "overlap": 0.3,
-      "timestamp": 125.599,
+      "timestamp": 126.622,
       "duration": 2.88,
       "audio": "/audio/radio/the-loyalty-war/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-steve",
       "text": "I'm chasing the free one, guys! I'm in deep!",
       "overlap": 0.3,
-      "timestamp": 127.383,
+      "timestamp": 128.406,
       "duration": 1.76,
       "audio": "/audio/radio/the-loyalty-war/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "barry",
       "text": "He's spent four hundred dollars chasing a free taco that doesn't exist.",
       "overlap": -0.1,
-      "timestamp": 127.932,
+      "timestamp": 128.955,
       "duration": 5.88,
       "audio": "/audio/radio/the-loyalty-war/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "caller-donna",
       "text": "He could've just BOUGHT the tenth taco, Barry!",
       "overlap": 0,
-      "timestamp": 132.826,
+      "timestamp": 133.849,
       "duration": 4.0,
       "audio": "/audio/radio/the-loyalty-war/42.flac"
     },
@@ -351,7 +351,7 @@
       "speaker": "caller-marco",
       "text": "Buy the taco, Steve!",
       "overlap": 0.4,
-      "timestamp": 135.415,
+      "timestamp": 136.438,
       "duration": 1.6,
       "audio": "/audio/radio/the-loyalty-war/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "caller-donna",
       "text": "Just buy the taco!",
       "overlap": 0.4,
-      "timestamp": 135.991,
+      "timestamp": 137.014,
       "duration": 1.88,
       "audio": "/audio/radio/the-loyalty-war/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "caller-steve",
       "text": "Then it's not FREE!",
       "overlap": 0.4,
-      "timestamp": 136.735,
+      "timestamp": 137.758,
       "duration": 1.36,
       "audio": "/audio/radio/the-loyalty-war/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "caller-marco",
       "text": "Move your truck, Donna!",
       "overlap": 0.4,
-      "timestamp": 137.286,
+      "timestamp": 138.309,
       "duration": 1.68,
       "audio": "/audio/radio/the-loyalty-war/46.flac"
     },
@@ -383,7 +383,7 @@
       "speaker": "caller-donna",
       "text": "Move YOUR truck!",
       "overlap": 0.4,
-      "timestamp": 137.564,
+      "timestamp": 138.587,
       "duration": 1.84,
       "audio": "/audio/radio/the-loyalty-war/47.flac"
     },
@@ -391,7 +391,7 @@
       "speaker": "caller-steve",
       "text": "Stamp my card!",
       "overlap": 0.4,
-      "timestamp": 138.503,
+      "timestamp": 139.526,
       "duration": 1.28,
       "audio": "/audio/radio/the-loyalty-war/48.flac"
     },
@@ -399,7 +399,7 @@
       "speaker": "barry",
       "text": "Ronnie, they're all yelling about a stamp that isn't real.",
       "overlap": -0.1,
-      "timestamp": 139.155,
+      "timestamp": 140.178,
       "duration": 4.76,
       "audio": "/audio/radio/the-loyalty-war/49.flac"
     },
@@ -407,7 +407,7 @@
       "speaker": "ronnie",
       "text": "That's the beauty of loyalty, Barry. <p:0.3> Nobody's ever getting the free taco. They just keep coming back.",
       "overlap": -0.2,
-      "timestamp": 142.827,
+      "timestamp": 143.85,
       "duration": 8.26,
       "audio": "/audio/radio/the-loyalty-war/50.flac"
     },
@@ -415,7 +415,7 @@
       "speaker": "caller-steve",
       "text": "...Wait. So I'm never getting it?",
       "overlap": -0.15,
-      "timestamp": 150.341,
+      "timestamp": 151.364,
       "duration": 1.6,
       "audio": "/audio/radio/the-loyalty-war/51.flac"
     },
@@ -423,7 +423,7 @@
       "speaker": "caller-donna",
       "text": "We'll see you tomorrow, Steve.",
       "overlap": -0.1,
-      "timestamp": 150.986,
+      "timestamp": 152.009,
       "duration": 2.68,
       "audio": "/audio/radio/the-loyalty-war/52.flac"
     },
@@ -431,7 +431,7 @@
       "speaker": "caller-marco",
       "text": "Bring both cards.",
       "overlap": 0.2,
-      "timestamp": 152.937,
+      "timestamp": 153.961,
       "duration": 1.52,
       "audio": "/audio/radio/the-loyalty-war/53.flac"
     },
@@ -439,7 +439,7 @@
       "speaker": "ronnie",
       "text": "Two trucks, one curb, forty cards, zero free tacos. <p:0.3> That's just good neighboring. We'll be right back.",
       "overlap": -0.25,
-      "timestamp": 153.392,
+      "timestamp": 154.415,
       "duration": 8.26,
       "audio": "/audio/radio/the-loyalty-war/54.flac"
     }

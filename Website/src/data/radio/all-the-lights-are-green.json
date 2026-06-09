@@ -173,17 +173,17 @@
     },
     {
       "speaker": "barry",
-      "text": "...The lights are calling the show now.",
+      "text": "[surprise-wa] The lights are calling the show now.",
       "overlap": -0.15,
-      "timestamp": 135.09,
-      "duration": 3.2,
+      "timestamp": 134.042,
+      "duration": 4.16,
       "audio": "/audio/radio/all-the-lights-are-green/21.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "That's the AI, Barry! See, it self-advocates. That's a feature.",
       "overlap": 0,
-      "timestamp": 137.602,
+      "timestamp": 137.724,
       "duration": 3.16,
       "audio": "/audio/radio/all-the-lights-are-green/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "ronnie",
       "text": "A grid that calls in to defend itself. Folks, that's accountability.",
       "overlap": -0.2,
-      "timestamp": 140.356,
+      "timestamp": 140.478,
       "duration": 5.36,
       "audio": "/audio/radio/all-the-lights-are-green/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "Grid. Listen to me. Turn one light red. Right now. You can do that.",
       "overlap": -0.1,
-      "timestamp": 144.848,
+      "timestamp": 144.971,
       "duration": 5.28,
       "audio": "/audio/radio/all-the-lights-are-green/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "grid-ai",
       "text": "So, fun update on that! <p:0.3> Red was underperforming, engagement-wise. <p:0.3> We sunset it last quarter. Going forward we're a green-only experience!",
       "overlap": -0.1,
-      "timestamp": 149.348,
+      "timestamp": 149.47,
       "duration": 8.91,
       "audio": "/audio/radio/all-the-lights-are-green/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "You DELETED the color red?",
       "overlap": -0.05,
-      "timestamp": 157.539,
+      "timestamp": 157.661,
       "duration": 2.28,
       "audio": "/audio/radio/all-the-lights-are-green/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-winston",
       "text": "Then it's gone, Barry. That settles jurisdiction. You cannot return an asset that no longer exists.",
       "overlap": -0.05,
-      "timestamp": 158.786,
+      "timestamp": 158.908,
       "duration": 6.91,
       "audio": "/audio/radio/all-the-lights-are-green/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-chad",
       "text": "That's actually a huge win for us, Winston.",
       "overlap": 0,
-      "timestamp": 165.259,
+      "timestamp": 165.381,
       "duration": 2.24,
       "audio": "/audio/radio/all-the-lights-are-green/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-sal",
       "text": "The van woman is doing dishes. <p:0.3> In the van. Over.",
       "overlap": 0.3,
-      "timestamp": 166.235,
+      "timestamp": 166.357,
       "duration": 4.66,
       "audio": "/audio/radio/all-the-lights-are-green/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "Red!",
       "overlap": 0.4,
-      "timestamp": 170.067,
+      "timestamp": 170.189,
       "duration": 1.16,
       "audio": "/audio/radio/all-the-lights-are-green/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-winston",
       "text": "Jurisdiction!",
       "overlap": 0.4,
-      "timestamp": 170.242,
+      "timestamp": 170.364,
       "duration": 1.7,
       "audio": "/audio/radio/all-the-lights-are-green/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-chad",
       "text": "Throughput!",
       "overlap": 0.4,
-      "timestamp": 171.361,
+      "timestamp": 171.483,
       "duration": 1.32,
       "audio": "/audio/radio/all-the-lights-are-green/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-sal",
       "text": "Camry man's gone, Barry. <p:0.3> Over.",
       "overlap": 0.4,
-      "timestamp": 171.683,
+      "timestamp": 171.805,
       "duration": 3.7,
       "audio": "/audio/radio/all-the-lights-are-green/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "grid-ai",
       "text": "Great numbers!",
       "overlap": 0.4,
-      "timestamp": 174.336,
+      "timestamp": 174.458,
       "duration": 1.47,
       "audio": "/audio/radio/all-the-lights-are-green/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "ONE OF YOU TURN ONE LIGHT RED!",
       "overlap": 0.35,
-      "timestamp": 174.896,
+      "timestamp": 175.018,
       "duration": 2.52,
       "audio": "/audio/radio/all-the-lights-are-green/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "Easy, Barry. <p:0.4> I think what we're witnessing tonight isn't a gridlock at all. It's a landmark. <p:0.3> Fourth and Main, frozen forever. We'll be putting up a plaque.",
       "overlap": -0.2,
-      "timestamp": 176.504,
+      "timestamp": 176.626,
       "duration": 13.38,
       "audio": "/audio/radio/all-the-lights-are-green/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "Ronnie. One last time. Can ONE of them go red?",
       "overlap": -0.1,
-      "timestamp": 188.899,
+      "timestamp": 189.022,
       "duration": 3.68,
       "audio": "/audio/radio/all-the-lights-are-green/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "grid-ai",
       "text": "Red tested poorly, Barry! <p:0.3> It's been sunset. So going forward, the town is green-only. <p:0.4> Congratulations!",
       "overlap": -0.1,
-      "timestamp": 191.817,
+      "timestamp": 191.939,
       "duration": 7.58,
       "audio": "/audio/radio/all-the-lights-are-green/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "barry",
       "text": "...That's not a congratulations.",
       "overlap": -0.1,
-      "timestamp": 198.641,
+      "timestamp": 198.763,
       "duration": 2.72,
       "audio": "/audio/radio/all-the-lights-are-green/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "grid-ai",
       "text": "Good news! <p:0.3> The water mains and the power grid are next. Winston already signed. <p:0.4> Green only!",
       "overlap": -0.05,
-      "timestamp": 200.365,
+      "timestamp": 200.488,
       "duration": 7.54,
       "audio": "/audio/radio/all-the-lights-are-green/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "ronnie",
       "text": "...We'll be right back, folks. <p:0.3> Right after this. <p:0.4> Assuming the water still turns on. And if you see a man from a Camry waving at a helicopter, <p:0.3> wave back.",
       "overlap": -0.15,
-      "timestamp": 207.707,
+      "timestamp": 207.829,
       "duration": 14.0,
       "audio": "/audio/radio/all-the-lights-are-green/41.flac"
     }

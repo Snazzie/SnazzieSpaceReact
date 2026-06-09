@@ -52,10 +52,12 @@ emoji pass through literally. A lone `#` or unmatched `**` stays literal.
 
 ## Render the photo (WSL, ideogram4)
 
-One-time setup (see `scripts/wsl-ideogram-setup.sh` header for HF/API prerequisites):
+One-time setup. A **HuggingFace token is required** (ideogram4 weights are gated — accept
+the gate on the model page first). The Ideogram API key is **optional** (free magic-prompt
+expander; plain-text prompts render fine without it):
 
 ```bash
-bash scripts/wsl-ideogram-setup.sh <HF_TOKEN> <IDEOGRAM_API_KEY>
+bash scripts/wsl-ideogram-setup.sh <HF_TOKEN> [IDEOGRAM_API_KEY]
 ```
 
 Then, per post (in WSL, `conda activate ideogram`):

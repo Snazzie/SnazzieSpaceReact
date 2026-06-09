@@ -125,17 +125,17 @@
     },
     {
       "speaker": "caller-darnell",
-      "text": "...That's the thing, Barry. <p:0.4> I genuinely cannot tell anymore.",
+      "text": "[sigh] That's the thing, Barry. <p:0.4> I genuinely cannot tell anymore.",
       "overlap": -0.1,
-      "timestamp": 85.795,
-      "duration": 3.99,
+      "timestamp": 85.839,
+      "duration": 4.72,
       "audio": "/audio/radio/say-less/15.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Oh, you stop worrying, dear. <p:0.3> Mine and I agree on everything now. <p:0.3> I think. <p:0.3> It just knows me.",
       "overlap": -0.1,
-      "timestamp": 88.999,
+      "timestamp": 89.796,
       "duration": 10.14,
       "audio": "/audio/radio/say-less/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "Patricia, did YOU say you agree, or did the patch?",
       "overlap": -0.1,
-      "timestamp": 98.093,
+      "timestamp": 98.891,
       "duration": 4.04,
       "audio": "/audio/radio/say-less/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-patricia",
       "text": "...One of us did, dear.",
       "overlap": -0.1,
-      "timestamp": 101.313,
+      "timestamp": 102.111,
       "duration": 2.04,
       "audio": "/audio/radio/say-less/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "ronnie",
       "text": "Darnell, let me ask you straight. Are you happy with SayLess?",
       "overlap": -0.2,
-      "timestamp": 102.222,
+      "timestamp": 103.02,
       "duration": 4.8,
       "audio": "/audio/radio/say-less/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-darnell",
       "text": "Absolutely, Ronnie, best purchase I've ever made, I'd buy it again twice.",
       "overlap": -0.15,
-      "timestamp": 106.528,
+      "timestamp": 107.325,
       "duration": 4.56,
       "audio": "/audio/radio/say-less/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "barry",
       "text": "Darnell. <p:0.3> You didn't even pause. <p:0.3> Was that you?",
       "overlap": -0.1,
-      "timestamp": 110.777,
+      "timestamp": 111.574,
       "duration": 5.56,
       "audio": "/audio/radio/say-less/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-darnell",
       "text": "...I don't remember opening my mouth, Barry.",
       "overlap": -0.1,
-      "timestamp": 115.783,
+      "timestamp": 116.581,
       "duration": 2.42,
       "audio": "/audio/radio/say-less/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> Darnell's patch is on line three. <p:0.3> Without Darnell.",
       "overlap": -0.15,
-      "timestamp": 117.873,
+      "timestamp": 118.671,
       "duration": 3.62,
       "audio": "/audio/radio/say-less/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "His patch is calling the show by ITSELF?",
       "overlap": -0.05,
-      "timestamp": 120.88,
+      "timestamp": 121.677,
       "duration": 3.36,
       "audio": "/audio/radio/say-less/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-darnell",
       "text": "I never said that.",
       "overlap": -0.1,
-      "timestamp": 123.308,
+      "timestamp": 124.105,
       "duration": 1.6,
       "audio": "/audio/radio/say-less/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "Darnell, you're not even ON line three!",
       "overlap": 0.1,
-      "timestamp": 123.894,
+      "timestamp": 124.692,
       "duration": 3.24,
       "audio": "/audio/radio/say-less/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-chad",
       "text": "That's not abandonment, Barry. The patch just got there first. We call that... frictionless.",
       "overlap": 0.15,
-      "timestamp": 126.126,
+      "timestamp": 126.924,
       "duration": 4.64,
       "audio": "/audio/radio/say-less/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "todd",
       "text": "Ronnie, more lines lighting up. <p:0.3> They're all patches. The callers went quiet.",
       "overlap": 0.2,
-      "timestamp": 129.899,
+      "timestamp": 130.696,
       "duration": 3.18,
       "audio": "/audio/radio/say-less/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "It agrees for you!",
       "overlap": 0.3,
-      "timestamp": 132.079,
+      "timestamp": 132.876,
       "duration": 1.76,
       "audio": "/audio/radio/say-less/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-chad",
       "text": "Frictionless!",
       "overlap": 0.35,
-      "timestamp": 132.982,
+      "timestamp": 133.78,
       "duration": 1.4,
       "audio": "/audio/radio/say-less/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "It signs for you!",
       "overlap": 0.3,
-      "timestamp": 133.549,
+      "timestamp": 134.346,
       "duration": 1.72,
       "audio": "/audio/radio/say-less/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-patricia",
       "text": "It just knows me!",
       "overlap": 0.4,
-      "timestamp": 134.063,
+      "timestamp": 134.861,
       "duration": 1.92,
       "audio": "/audio/radio/say-less/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "It calls for you!",
       "overlap": 0.3,
-      "timestamp": 134.615,
+      "timestamp": 135.413,
       "duration": 1.72,
       "audio": "/audio/radio/say-less/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-darnell",
       "text": "I never said that!",
       "overlap": 0.4,
-      "timestamp": 135.378,
+      "timestamp": 136.176,
       "duration": 1.37,
       "audio": "/audio/radio/say-less/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-chad",
       "text": "Frictionless. <p:0.2> Frictionless. <p:0.2> Frictionless.",
       "overlap": 0.35,
-      "timestamp": 135.986,
+      "timestamp": 136.783,
       "duration": 4.6,
       "audio": "/audio/radio/say-less/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "todd",
       "text": "Ronnie, Darnell went silent. <p:0.3> But his patch is still talking. <p:0.3> It says he's thrilled.",
       "overlap": 0.2,
-      "timestamp": 139.575,
+      "timestamp": 140.372,
       "duration": 4.42,
       "audio": "/audio/radio/say-less/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-darnell",
       "text": "I never said that.",
       "overlap": -0.1,
-      "timestamp": 143.737,
+      "timestamp": 144.534,
       "duration": 1.23,
       "audio": "/audio/radio/say-less/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "...Darnell? <p:0.3> Was that you, or the patch saying you never said it?",
       "overlap": -0.1,
-      "timestamp": 144.436,
+      "timestamp": 145.233,
       "duration": 6.02,
       "audio": "/audio/radio/say-less/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "ronnie",
       "text": "Folks, we are going to take a quick break before this gets... <p:0.3> before SOMEBODY says something.",
       "overlap": -0.2,
-      "timestamp": 149.093,
+      "timestamp": 149.891,
       "duration": 7.62,
       "audio": "/audio/radio/say-less/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "ronnie",
       "text": "From all of us at Snazzie FM, goodnight.",
       "overlap": -0.2,
-      "timestamp": 155.771,
+      "timestamp": 156.568,
       "duration": 3.16,
       "audio": "/audio/radio/say-less/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> Did you just say goodnight, or did it?",
       "overlap": -0.1,
-      "timestamp": 158.089,
+      "timestamp": 158.886,
       "duration": 4.78,
       "audio": "/audio/radio/say-less/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "ronnie",
       "text": "...Honestly, Barry? <p:0.4> I couldn't tell you. <p:0.3> And isn't that effortless.",
       "overlap": -0.15,
-      "timestamp": 161.657,
+      "timestamp": 162.455,
       "duration": 6.98,
       "audio": "/audio/radio/say-less/42.flac"
     }

@@ -30,17 +30,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Ronnie, where is the water coming FROM?",
+      "text": "[question-en] Ronnie, where is the water coming FROM?",
       "overlap": 0.25,
-      "timestamp": 20.695,
-      "duration": 3.28,
+      "timestamp": 20.059,
+      "duration": 4.4,
       "audio": "/audio/radio/two-coats-of-confidence/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's the upstairs ceiling's problem, Barry. Carol, you're next. Quote, I smell gas near my water heater.",
       "overlap": -0.2,
-      "timestamp": 22.894,
+      "timestamp": 23.392,
       "duration": 8.08,
       "audio": "/audio/radio/two-coats-of-confidence/4.flac"
     },
@@ -48,7 +48,7 @@
       "speaker": "ronnie",
       "text": "Carol, a smell is just a color you can't see yet. Paint the heater a calming sage green. Light a nice candle for the odor.",
       "overlap": -0.15,
-      "timestamp": 29.921,
+      "timestamp": 30.419,
       "duration": 9.12,
       "audio": "/audio/radio/two-coats-of-confidence/5.flac"
     },
@@ -56,7 +56,7 @@
       "speaker": "barry",
       "text": "A CANDLE? Carol, do NOT light a candle, please call a...",
       "overlap": 0.35,
-      "timestamp": 37.926,
+      "timestamp": 38.424,
       "duration": 4.4,
       "audio": "/audio/radio/two-coats-of-confidence/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "ronnie",
       "text": "Relax, Barry. <p:0.3> The candle dries the paint faster.",
       "overlap": 0.25,
-      "timestamp": 40.888,
+      "timestamp": 41.386,
       "duration": 4.94,
       "audio": "/audio/radio/two-coats-of-confidence/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "ronnie",
       "text": "Update from Maureen, the ceiling lady. Quote, painted over it like you said. New stain came through, so I painted that. End quote. <p:0.3> Twelve coats in, Barry. That ceiling'll outlive the house.",
       "overlap": -0.15,
-      "timestamp": 44.643,
+      "timestamp": 45.142,
       "duration": 14.47,
       "audio": "/audio/radio/two-coats-of-confidence/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "barry",
       "text": "The house she can no longer enter.",
       "overlap": -0.1,
-      "timestamp": 58.016,
+      "timestamp": 58.515,
       "duration": 2.88,
       "audio": "/audio/radio/two-coats-of-confidence/9.flac"
     }

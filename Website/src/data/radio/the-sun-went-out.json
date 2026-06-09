@@ -205,17 +205,17 @@
     },
     {
       "speaker": "caller-gary",
-      "text": "Dark.",
+      "text": "[surprise-oh] Dark.",
       "overlap": 0.2,
-      "timestamp": 185.388,
-      "duration": 1.52,
+      "timestamp": 185.794,
+      "duration": 2.23,
       "audio": "/audio/radio/the-sun-went-out/25.flac"
     },
     {
       "speaker": "vasquez",
       "text": "The watch is fine. <p:0.3> I need everyone to hear me. The watch is completely fine. The sun is the problem.",
       "overlap": -0.1,
-      "timestamp": 186.411,
+      "timestamp": 187.337,
       "duration": 9.38,
       "audio": "/audio/radio/the-sun-went-out/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "Come back to us, buddy. Nobody's mad. <p:0.3> You come back over that ridge and we forget the whole thing.",
       "overlap": -0.15,
-      "timestamp": 195.121,
+      "timestamp": 196.047,
       "duration": 7.9,
       "audio": "/audio/radio/the-sun-went-out/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-winston",
       "text": "I called it!",
       "overlap": 0.3,
-      "timestamp": 201.608,
+      "timestamp": 202.533,
       "duration": 1.76,
       "audio": "/audio/radio/the-sun-went-out/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-sal",
       "text": "Glasses are FIFTY!",
       "overlap": 0.4,
-      "timestamp": 202.673,
+      "timestamp": 203.598,
       "duration": 1.92,
       "audio": "/audio/radio/the-sun-went-out/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "vasquez",
       "text": "The watch is FINE!",
       "overlap": 0.35,
-      "timestamp": 203.579,
+      "timestamp": 204.505,
       "duration": 1.96,
       "audio": "/audio/radio/the-sun-went-out/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-gary",
       "text": "Dark!",
       "overlap": 0.4,
-      "timestamp": 204.266,
+      "timestamp": 205.191,
       "duration": 1.4,
       "audio": "/audio/radio/the-sun-went-out/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "Stay with me, big guy!",
       "overlap": 0.3,
-      "timestamp": 204.616,
+      "timestamp": 205.541,
       "duration": 2.08,
       "audio": "/audio/radio/the-sun-went-out/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "There it is. <p:0.4> See? It came back. Told you. It always comes back.",
       "overlap": -0.15,
-      "timestamp": 205.782,
+      "timestamp": 206.708,
       "duration": 5.96,
       "audio": "/audio/radio/the-sun-went-out/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Then where did it GO, Barry. <p:0.4> For three minutes. <p:0.3> Where does a sun GO.",
       "overlap": -0.2,
-      "timestamp": 210.652,
+      "timestamp": 211.578,
       "duration": 7.06,
       "audio": "/audio/radio/the-sun-went-out/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "vasquez",
       "text": "My watch says it was thirty seconds.",
       "overlap": -0.1,
-      "timestamp": 216.81,
+      "timestamp": 217.735,
       "duration": 3.32,
       "audio": "/audio/radio/the-sun-went-out/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-sal",
       "text": "Sun's back, so glasses are five bucks now. Demand cratered. Anyone? <p:0.3> Anyone.",
       "overlap": -0.1,
-      "timestamp": 219.1,
+      "timestamp": 220.026,
       "duration": 7.04,
       "audio": "/audio/radio/the-sun-went-out/36.flac"
     }

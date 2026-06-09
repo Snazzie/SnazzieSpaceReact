@@ -86,10 +86,10 @@
     },
     {
       "speaker": "ronnie",
-      "text": "...we'll be right back. Maybe.",
+      "text": "[sigh] we'll be right back. Maybe.",
       "overlap": -0.3,
-      "timestamp": 49.313,
-      "duration": 2.32,
+      "timestamp": 49.539,
+      "duration": 2.64,
       "audio": "/audio/radio/the-stars-with-rhonda-harvest/10.flac"
     }
   ]

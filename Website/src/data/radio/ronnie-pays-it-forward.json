@@ -30,17 +30,17 @@
     },
     {
       "speaker": "barry",
-      "text": "That is... that is not how interest works, Ronnie.",
+      "text": "[dissatisfaction-hnn] That is... that is not how interest works, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 15.985,
-      "duration": 4.04,
+      "timestamp": 16.137,
+      "duration": 5.88,
       "audio": "/audio/radio/ronnie-pays-it-forward/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "So open a second card, Barry. Pay the first one off with it. <p:0.3> Debt's gone, Donna. Poof.",
       "overlap": -0.2,
-      "timestamp": 18.88,
+      "timestamp": 20.814,
       "duration": 7.06,
       "audio": "/audio/radio/ronnie-pays-it-forward/4.flac"
     },
@@ -48,7 +48,7 @@
       "speaker": "barry",
       "text": "Next one. Marcus is a new dad. He wants an emergency fund, but there's nothing left to save.",
       "overlap": -0.15,
-      "timestamp": 25.4,
+      "timestamp": 27.334,
       "duration": 7.32,
       "audio": "/audio/radio/ronnie-pays-it-forward/5.flac"
     },
@@ -56,7 +56,7 @@
       "speaker": "ronnie",
       "text": "Easy. Spend the emergency money before the emergency. Then the emergency can't take it from you.",
       "overlap": -0.2,
-      "timestamp": 31.772,
+      "timestamp": 33.706,
       "duration": 7.48,
       "audio": "/audio/radio/ronnie-pays-it-forward/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "barry",
       "text": "Marcus, do not. Ronnie, that's the opposite of a fund.",
       "overlap": -0.1,
-      "timestamp": 38.267,
+      "timestamp": 40.201,
       "duration": 4.36,
       "audio": "/audio/radio/ronnie-pays-it-forward/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "ronnie",
       "text": "So get a third card, Barry. Label it the emergency card. <p:0.3> The card IS the fund.",
       "overlap": -0.2,
-      "timestamp": 41.619,
+      "timestamp": 43.553,
       "duration": 6.7,
       "audio": "/audio/radio/ronnie-pays-it-forward/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "barry",
       "text": "Quick update. Donna wrote back. She took your advice. <p:0.3> She now has six cards. She's calling it a portfolio.",
       "overlap": -0.15,
-      "timestamp": 47.781,
+      "timestamp": 49.715,
       "duration": 8.94,
       "audio": "/audio/radio/ronnie-pays-it-forward/9.flac"
     },
@@ -88,7 +88,7 @@
       "speaker": "ronnie",
       "text": "Diversified. <p:0.3> That's my girl.",
       "overlap": -0.2,
-      "timestamp": 55.827,
+      "timestamp": 57.761,
       "duration": 4.02,
       "audio": "/audio/radio/ronnie-pays-it-forward/10.flac"
     }

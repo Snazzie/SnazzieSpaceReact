@@ -6,17 +6,17 @@
   "lines": [
     {
       "speaker": "ad-ann-chipper",
-      "text": "Been wronged? <p:0.2> Sue-Per Saver sues anyone for nineteen dollars! <p:0.2> No case too weak, no target too random. <p:0.2> We'll sue the sky if you point at it. <p:0.2> Sue-Per Saver, litigate everything!",
+      "text": "[question-en] Been wronged? <p:0.2> Sue-Per Saver sues anyone for nineteen dollars! <p:0.2> No case too weak, no target too random. <p:0.2> We'll sue the sky if you point at it. <p:0.2> Sue-Per Saver, litigate everything!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 10.97,
+      "duration": 11.43,
       "audio": "/audio/radio/ad-sue-per-saver/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Your lawyer is a parrot in a tie. <p:0> You may be countersued by us. <p:0> Winnings paid in expired coupons. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 10.653,
+      "timestamp": 11.139,
       "duration": 6.027,
       "audio": "/audio/radio/ad-sue-per-saver/1.flac"
     }

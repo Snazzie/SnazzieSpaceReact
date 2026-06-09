@@ -101,17 +101,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Wait. The crime hasn't HAPPENED yet?",
+      "text": "[surprise-ah] Wait. The crime hasn't HAPPENED yet?",
       "overlap": -0.1,
-      "timestamp": 76.623,
-      "duration": 3.04,
+      "timestamp": 76.278,
+      "duration": 4.16,
       "audio": "/audio/radio/the-empaneled-hour/12.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "Ronnie, the floor just left. <p:0.3> Everybody in this courthouse just stood up at once and the FLOOR went with us.",
       "overlap": 0,
-      "timestamp": 78.843,
+      "timestamp": 79.614,
       "duration": 6.49,
       "audio": "/audio/radio/the-empaneled-hour/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "caller-chen",
       "text": "We're still deliberating. <p:0.3> Don't fight the rising, friend. The rising is the easy part.",
       "overlap": -0.1,
-      "timestamp": 84.841,
+      "timestamp": 85.612,
       "duration": 5.16,
       "audio": "/audio/radio/the-empaneled-hour/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "ronnie",
       "text": "Who's that now?",
       "overlap": -0.1,
-      "timestamp": 89.158,
+      "timestamp": 89.928,
       "duration": 1.88,
       "audio": "/audio/radio/the-empaneled-hour/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-chen",
       "text": "Chen. I'm on the jury too. <p:0.3> Been deliberating so long I forgot the charge. <p:0.3> But I voted already. We all voted.",
       "overlap": 0.2,
-      "timestamp": 89.926,
+      "timestamp": 90.697,
       "duration": 7.0,
       "audio": "/audio/radio/the-empaneled-hour/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-kim",
       "text": "Voted on WHAT? I never even got a letter!",
       "overlap": 0.25,
-      "timestamp": 96.02,
+      "timestamp": 96.79,
       "duration": 2.4,
       "audio": "/audio/radio/the-empaneled-hour/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "bailiff-orrin",
       "text": "On you, ma'am. <p:0.3> You're the foreperson. <p:0.2> You're also the defendant. <p:0.2> And the only witness. The court thanks you.",
       "overlap": -0.1,
-      "timestamp": 97.565,
+      "timestamp": 98.336,
       "duration": 11.49,
       "audio": "/audio/radio/the-empaneled-hour/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "She can't be all three! That's not a TRIAL, that's a person in a room!",
       "overlap": 0.25,
-      "timestamp": 107.818,
+      "timestamp": 108.589,
       "duration": 5.44,
       "audio": "/audio/radio/the-empaneled-hour/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-kim",
       "text": "So I voted to convict MYSELF? Of a crime that hasn't HAPPENED? Orrin, I want out, I want out NOW.",
       "overlap": 0.3,
-      "timestamp": 112.026,
+      "timestamp": 112.797,
       "duration": 5.4,
       "audio": "/audio/radio/the-empaneled-hour/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "bailiff-orrin",
       "text": "The defendant may not leave before the verdict, ma'am. <p:0.3> All rise.",
       "overlap": -0.1,
-      "timestamp": 116.716,
+      "timestamp": 117.486,
       "duration": 6.93,
       "audio": "/audio/radio/the-empaneled-hour/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-kim",
       "text": "We're ALREADY up, Orrin! There's no more up! I'm at the CEILING!",
       "overlap": 0.3,
-      "timestamp": 122.633,
+      "timestamp": 123.404,
       "duration": 3.51,
       "audio": "/audio/radio/the-empaneled-hour/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "barry",
       "text": "Just hang up the phone, Kim. Hang up the OTHER line.",
       "overlap": 0.3,
-      "timestamp": 125.255,
+      "timestamp": 126.025,
       "duration": 4.16,
       "audio": "/audio/radio/the-empaneled-hour/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-chen",
       "text": "There's no hanging up before the verdict, friend. <p:0.3> I tried. <p:0.3> The court just thanked me.",
       "overlap": 0.25,
-      "timestamp": 127.797,
+      "timestamp": 128.567,
       "duration": 6.83,
       "audio": "/audio/radio/the-empaneled-hour/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "ronnie",
       "text": "Now hold on, hold on, everybody. <p:0.3> Orrin. Orrin, just deliver the verdict so the woman can go home.",
       "overlap": -0.2,
-      "timestamp": 133.938,
+      "timestamp": 134.708,
       "duration": 7.82,
       "audio": "/audio/radio/the-empaneled-hour/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "bailiff-orrin",
       "text": "Gladly, sir. <p:0.3> The crime has just been committed. <p:0.2> Right on schedule.",
       "overlap": -0.1,
-      "timestamp": 140.616,
+      "timestamp": 141.386,
       "duration": 7.77,
       "audio": "/audio/radio/the-empaneled-hour/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-kim",
       "text": "I didn't DO anything!",
       "overlap": 0.3,
-      "timestamp": 147.165,
+      "timestamp": 147.935,
       "duration": 1.63,
       "audio": "/audio/radio/the-empaneled-hour/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "She didn't do anything!",
       "overlap": 0.4,
-      "timestamp": 147.684,
+      "timestamp": 148.455,
       "duration": 2.04,
       "audio": "/audio/radio/the-empaneled-hour/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-chen",
       "text": "None of us did. We're still deliberating.",
       "overlap": 0.4,
-      "timestamp": 148.536,
+      "timestamp": 149.307,
       "duration": 2.35,
       "audio": "/audio/radio/the-empaneled-hour/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-kim",
       "text": "I never even got a LETTER!",
       "overlap": 0.4,
-      "timestamp": 149.913,
+      "timestamp": 150.683,
       "duration": 1.76,
       "audio": "/audio/radio/the-empaneled-hour/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "bailiff-orrin",
       "text": "All rise.",
       "overlap": 0.4,
-      "timestamp": 150.347,
+      "timestamp": 151.118,
       "duration": 1.76,
       "audio": "/audio/radio/the-empaneled-hour/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "We ARE risen!",
       "overlap": 0.4,
-      "timestamp": 151.204,
+      "timestamp": 151.974,
       "duration": 1.6,
       "audio": "/audio/radio/the-empaneled-hour/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "bailiff-orrin",
       "text": "The court has reached a verdict. <p:0.3> Guilty. <p:0.2> The defendant is excused.",
       "overlap": -0.15,
-      "timestamp": 152.237,
+      "timestamp": 153.008,
       "duration": 7.66,
       "audio": "/audio/radio/the-empaneled-hour/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Well, Kim, sounds like you're finally getting out of jury duty.",
       "overlap": -0.2,
-      "timestamp": 158.637,
+      "timestamp": 159.408,
       "duration": 4.92,
       "audio": "/audio/radio/the-empaneled-hour/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "bailiff-orrin",
       "text": "All rise. <p:0.3> The defendant is excused. <p:0.3> Permanently.",
       "overlap": -0.1,
-      "timestamp": 162.939,
+      "timestamp": 163.709,
       "duration": 6.68,
       "audio": "/audio/radio/the-empaneled-hour/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "Permanently? Ronnie, what does he mean PERMANENTLY?",
       "overlap": 0.2,
-      "timestamp": 168.635,
+      "timestamp": 169.405,
       "duration": 4.36,
       "audio": "/audio/radio/the-empaneled-hour/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "bailiff-orrin",
       "text": "Mister Fitch. <p:0.3> You've been empaneled. <p:0.2> The whole studio is rising now.",
       "overlap": -0.1,
-      "timestamp": 171.971,
+      "timestamp": 172.742,
       "duration": 7.74,
       "audio": "/audio/radio/the-empaneled-hour/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "Ronnie, do NOT rise. Do NOT stand up. Sit DOWN, Ronnie!",
       "overlap": 0.3,
-      "timestamp": 178.872,
+      "timestamp": 179.643,
       "duration": 4.36,
       "audio": "/audio/radio/the-empaneled-hour/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "ronnie",
       "text": "Now THAT'S service. <p:0.3> We'll be right back, folks. <p:0.3> Or, well. <p:0.3> We'll be UP.",
       "overlap": -0.15,
-      "timestamp": 182.449,
+      "timestamp": 183.22,
       "duration": 8.5,
       "audio": "/audio/radio/the-empaneled-hour/39.flac"
     }

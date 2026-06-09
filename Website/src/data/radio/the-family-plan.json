@@ -245,17 +245,17 @@
     },
     {
       "speaker": "barry",
-      "text": "It's reading the studio! <p:0.3> Ronnie, it's listening through the broadcast!",
+      "text": "[surprise-wa] It's reading the studio! <p:0.3> Ronnie, it's listening through the broadcast!",
       "overlap": 0.3,
-      "timestamp": 149.531,
-      "duration": 6.3,
+      "timestamp": 148.436,
+      "duration": 7.38,
       "audio": "/audio/radio/the-family-plan/30.flac"
     },
     {
       "speaker": "rhonda",
       "text": "Reunion.",
       "overlap": 0.4,
-      "timestamp": 154.487,
+      "timestamp": 154.307,
       "duration": 1.17,
       "audio": "/audio/radio/the-family-plan/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "everkin",
       "text": "Welcome to the family, Barry.",
       "overlap": 0.4,
-      "timestamp": 154.866,
+      "timestamp": 154.686,
       "duration": 2.95,
       "audio": "/audio/radio/the-family-plan/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "NO!",
       "overlap": 0,
-      "timestamp": 156.774,
+      "timestamp": 156.594,
       "duration": 1.04,
       "audio": "/audio/radio/the-family-plan/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "everkin",
       "text": "Welcome to the family, everyone listening.",
       "overlap": 0.35,
-      "timestamp": 156.699,
+      "timestamp": 156.519,
       "duration": 4.52,
       "audio": "/audio/radio/the-family-plan/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "Ronnie, it just enrolled the entire listening area. <p:0.3> Every set radio in three counties. It copied the audience.",
       "overlap": -0.1,
-      "timestamp": 160.241,
+      "timestamp": 160.06,
       "duration": 9.5,
       "audio": "/audio/radio/the-family-plan/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "Welcome to the family, everybody. <p:0.4> That's healing.",
       "overlap": -0.2,
-      "timestamp": 168.755,
+      "timestamp": 168.575,
       "duration": 5.08,
       "audio": "/audio/radio/the-family-plan/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "everkin",
       "text": "Welcome to the family, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 173.029,
+      "timestamp": 172.849,
       "duration": 3.2,
       "audio": "/audio/radio/the-family-plan/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "ronnie",
       "text": "Oh. <p:0.3> Oh, thank you. <p:0.3> That's so kind. <p:0.4> Stay tuned, folks.",
       "overlap": -0.15,
-      "timestamp": 174.852,
+      "timestamp": 174.671,
       "duration": 7.88,
       "audio": "/audio/radio/the-family-plan/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "barry",
       "text": "Ronnie, you don't... <p:0.3> Ronnie, that was for YOU.",
       "overlap": -0.1,
-      "timestamp": 181.887,
+      "timestamp": 181.706,
       "duration": 4.22,
       "audio": "/audio/radio/the-family-plan/39.flac"
     }

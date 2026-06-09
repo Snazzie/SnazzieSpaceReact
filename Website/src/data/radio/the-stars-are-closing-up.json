@@ -102,17 +102,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "It WHAT? Last Tuesday? Why did nobody tell me?",
+      "text": "[surprise-ah] It WHAT? Last Tuesday? Why did nobody tell me?",
       "overlap": 0,
-      "timestamp": 58.585,
-      "duration": 3.56,
+      "timestamp": 58.139,
+      "duration": 4.64,
       "audio": "/audio/radio/the-stars-are-closing-up/12.flac"
     },
     {
       "speaker": "rhonda",
       "text": "Nobody wanted to. <p:0.3> It had already begun.",
       "overlap": -0.15,
-      "timestamp": 61.285,
+      "timestamp": 61.905,
       "duration": 3.84,
       "audio": "/audio/radio/the-stars-are-closing-up/13.flac"
     },
@@ -120,7 +120,7 @@
       "speaker": "ronnie",
       "text": "We'll be right back. <p:0.3> Apparently. We'll see.",
       "overlap": 0,
-      "timestamp": 64.375,
+      "timestamp": 64.995,
       "duration": 4.46,
       "audio": "/audio/radio/the-stars-are-closing-up/14.flac"
     }

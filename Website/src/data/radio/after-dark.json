@@ -165,17 +165,17 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "...I knew it. <p:0.5> I KNEW IT, RONNIE.",
+      "text": "[surprise-oh] I knew it. <p:0.5> I KNEW IT, RONNIE.",
       "overlap": -0.25,
-      "timestamp": 90.361,
-      "duration": 3.19,
+      "timestamp": 90.369,
+      "duration": 3.96,
       "audio": "/audio/radio/after-dark/20.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Mildred, welcome back. You're among friends.",
       "overlap": -0.2,
-      "timestamp": 92.973,
+      "timestamp": 93.75,
       "duration": 3.56,
       "audio": "/audio/radio/after-dark/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-mildred",
       "text": "...I haven't trusted the moon since my wedding. <p:0.4> It watched me. THE WHOLE TIME.",
       "overlap": -0.15,
-      "timestamp": 95.9,
+      "timestamp": 96.677,
       "duration": 5.15,
       "audio": "/audio/radio/after-dark/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "barry",
       "text": "The moon did not attend your wedding, Mildred.",
       "overlap": -0.2,
-      "timestamp": 99.725,
+      "timestamp": 100.502,
       "duration": 3.88,
       "audio": "/audio/radio/after-dark/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-mildred",
       "text": "...Then who paid for the band, Barry.",
       "overlap": -0.15,
-      "timestamp": 102.988,
+      "timestamp": 103.766,
       "duration": 2.2,
       "audio": "/audio/radio/after-dark/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "ronnie",
       "text": "She raises an excellent question.",
       "overlap": -0.2,
-      "timestamp": 104.353,
+      "timestamp": 105.13,
       "duration": 2.8,
       "audio": "/audio/radio/after-dark/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-mildred",
       "text": "...The buffet was free. <p:0.5> NOBODY ASKED WHY THE BUFFET WAS FREE.",
       "overlap": -0.15,
-      "timestamp": 106.672,
+      "timestamp": 107.449,
       "duration": 5.06,
       "audio": "/audio/radio/after-dark/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "barry",
       "text": "A free buffet is not evidence of a lunar conspiracy, Mildred.",
       "overlap": -0.2,
-      "timestamp": 110.873,
+      "timestamp": 111.65,
       "duration": 5.08,
       "audio": "/audio/radio/after-dark/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-darnell",
       "text": "Follow the money, Barry. <p:0.3> It always leads back to the moon.",
       "overlap": -0.15,
-      "timestamp": 114.905,
+      "timestamp": 115.683,
       "duration": 4.22,
       "audio": "/audio/radio/after-dark/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "It physically cannot lead back to the moon.",
       "overlap": -0.15,
-      "timestamp": 118.106,
+      "timestamp": 118.883,
       "duration": 3.64,
       "audio": "/audio/radio/after-dark/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-darnell",
       "text": "That's what the moon pays people to say, Barry. <p:0.3> No offense. You're probably on the payroll and don't even know it.",
       "overlap": -0.15,
-      "timestamp": 120.813,
+      "timestamp": 121.591,
       "duration": 6.89,
       "audio": "/audio/radio/after-dark/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "I am not on the moon's payroll.",
       "overlap": -0.2,
-      "timestamp": 126.976,
+      "timestamp": 127.753,
       "duration": 2.56,
       "audio": "/audio/radio/after-dark/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-mildred",
       "text": "...That's what a moon man would say, Barry.",
       "overlap": -0.15,
-      "timestamp": 129.009,
+      "timestamp": 129.787,
       "duration": 2.37,
       "audio": "/audio/radio/after-dark/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "And on that, we'll take a break. Don't look up. <p:0.3> Or do. It's not real anyway.",
       "overlap": -0.25,
-      "timestamp": 130.785,
+      "timestamp": 131.563,
       "duration": 6.06,
       "audio": "/audio/radio/after-dark/33.flac"
     }

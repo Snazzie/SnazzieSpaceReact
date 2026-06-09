@@ -69,17 +69,17 @@
     },
     {
       "speaker": "barry",
-      "text": "The bin was a WHAT?",
+      "text": "[surprise-ah] The bin was a WHAT?",
       "overlap": 0,
-      "timestamp": 49.94,
-      "duration": 1.76,
+      "timestamp": 49.227,
+      "duration": 2.72,
       "audio": "/audio/radio/the-night-shift/8.flac"
     },
     {
       "speaker": "caller-glenda",
       "text": "Don't mind Winston, dear. He's been on the Watch since the eighties. <p:0.3> He just means we keep our paperwork tidy.",
       "overlap": -0.1,
-      "timestamp": 51.198,
+      "timestamp": 51.523,
       "duration": 7.07,
       "audio": "/audio/radio/the-night-shift/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "caller-darnell",
       "text": "Okay, but then I got an envelope. <p:0.3> It says my codename is Nightingale Four. Why do I have a codename? I just signed up to WALK.",
       "overlap": -0.1,
-      "timestamp": 57.919,
+      "timestamp": 58.244,
       "duration": 7.87,
       "audio": "/audio/radio/the-night-shift/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "ronnie",
       "text": "A codename. Ohhh, that's a nice touch. Makes a fella feel part of something.",
       "overlap": -0.2,
-      "timestamp": 65.326,
+      "timestamp": 65.651,
       "duration": 5.8,
       "audio": "/audio/radio/the-night-shift/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "barry",
       "text": "Ronnie, that's a cover identity.",
       "overlap": -0.1,
-      "timestamp": 69.886,
+      "timestamp": 70.21,
       "duration": 2.76,
       "audio": "/audio/radio/the-night-shift/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-linda",
       "text": "Ooh, do I get a codename too? Is it like a club? Do I get a badge?",
       "overlap": 0.1,
-      "timestamp": 71.589,
+      "timestamp": 71.914,
       "duration": 4.39,
       "audio": "/audio/radio/the-night-shift/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "caller-glenda",
       "text": "You're Songbird Two, Linda dear. <p:0.3> Your badge is in the third bin.",
       "overlap": -0.1,
-      "timestamp": 75.645,
+      "timestamp": 75.97,
       "duration": 4.01,
       "audio": "/audio/radio/the-night-shift/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-linda",
       "text": "Ooh! The bin! I love the bin!",
       "overlap": 0.2,
-      "timestamp": 78.929,
+      "timestamp": 79.254,
       "duration": 2.32,
       "audio": "/audio/radio/the-night-shift/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-darnell",
       "text": "There was also a... a pretzel. In the envelope. In a little foil pouch that says, do not eat unless compromised.",
       "overlap": -0.1,
-      "timestamp": 80.796,
+      "timestamp": 81.121,
       "duration": 7.26,
       "audio": "/audio/radio/the-night-shift/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-winston",
       "text": "The pretzel is for if they take you.",
       "overlap": -0.1,
-      "timestamp": 87.714,
+      "timestamp": 88.039,
       "duration": 2.45,
       "audio": "/audio/radio/the-night-shift/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-darnell",
       "text": "If they... if WHO takes me? It's a CUL-DE-SAC.",
       "overlap": 0.2,
-      "timestamp": 89.478,
+      "timestamp": 89.803,
       "duration": 2.67,
       "audio": "/audio/radio/the-night-shift/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "Glenda, did you issue that man a cyanide pretzel?",
       "overlap": 0,
-      "timestamp": 91.08,
+      "timestamp": 91.405,
       "duration": 4.08,
       "audio": "/audio/radio/the-night-shift/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-glenda",
       "text": "It's a trail snack, sweetheart. <p:0.3> For morale. We just ask that you don't share it, and you don't get captured.",
       "overlap": -0.1,
-      "timestamp": 94.529,
+      "timestamp": 94.853,
       "duration": 7.65,
       "audio": "/audio/radio/the-night-shift/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "ronnie",
       "text": "Snacks AND a sense of purpose. That's a generous outfit, Barry.",
       "overlap": -0.2,
-      "timestamp": 101.309,
+      "timestamp": 101.634,
       "duration": 4.92,
       "audio": "/audio/radio/the-night-shift/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-darnell",
       "text": "Okay. Okay, you know what, I'd like to quit. <p:0.3> Effective tonight. I'm not an asset. I'm a guy with a flashlight.",
       "overlap": 0.2,
-      "timestamp": 105.211,
+      "timestamp": 105.536,
       "duration": 6.77,
       "audio": "/audio/radio/the-night-shift/22.flac"
     },
@@ -191,23 +191,23 @@
       "speaker": "caller-glenda",
       "text": "Oh, sweetheart. <p:0.3> Nobody quits the Watch on the very night a mole would want to slip out. You see how that looks.",
       "overlap": 0.2,
-      "timestamp": 111.34,
+      "timestamp": 111.665,
       "duration": 7.77,
       "audio": "/audio/radio/the-night-shift/23.flac"
     },
     {
       "speaker": "caller-darnell",
-      "text": "I'm not a MOLE!",
+      "text": "[dissatisfaction-hnn] I'm not a MOLE!",
       "overlap": 0.3,
-      "timestamp": 118.258,
-      "duration": 1.16,
+      "timestamp": 118.19,
+      "duration": 2.53,
       "audio": "/audio/radio/the-night-shift/24.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "That's what the last mole said.",
       "overlap": -0.1,
-      "timestamp": 118.699,
+      "timestamp": 119.75,
       "duration": 2.25,
       "audio": "/audio/radio/the-night-shift/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "There was a LAST mole?",
       "overlap": 0,
-      "timestamp": 120.352,
+      "timestamp": 121.404,
       "duration": 1.88,
       "audio": "/audio/radio/the-night-shift/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-winston",
       "text": "There's a vacancy on the cul-de-sac, Barry. <p:0.3> Number six. Lovely yard. Ask yourself why it's empty.",
       "overlap": -0.1,
-      "timestamp": 121.332,
+      "timestamp": 122.384,
       "duration": 6.91,
       "audio": "/audio/radio/the-night-shift/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-darnell",
       "text": "I am not asking myself that. I'm not. Glenda, take me off the roster.",
       "overlap": 0.3,
-      "timestamp": 127.441,
+      "timestamp": 128.492,
       "duration": 4.33,
       "audio": "/audio/radio/the-night-shift/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-glenda",
       "text": "Sweetheart, there's no off. There's only retirement. <p:0.3> And nobody comes back from retirement.",
       "overlap": 0.25,
-      "timestamp": 130.98,
+      "timestamp": 132.031,
       "duration": 6.42,
       "audio": "/audio/radio/the-night-shift/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-linda",
       "text": "Ooh, do we get a watch when we retire? My uncle got a watch!",
       "overlap": 0.2,
-      "timestamp": 136.275,
+      "timestamp": 137.327,
       "duration": 4.09,
       "audio": "/audio/radio/the-night-shift/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-winston",
       "text": "You don't get a watch, Linda.",
       "overlap": 0,
-      "timestamp": 139.607,
+      "timestamp": 140.659,
       "duration": 2.14,
       "audio": "/audio/radio/the-night-shift/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-darnell",
       "text": "Why is there a CAR outside my house. There's a car. It's just sitting there with the lights off.",
       "overlap": 0.35,
-      "timestamp": 140.939,
+      "timestamp": 141.99,
       "duration": 5.7,
       "audio": "/audio/radio/the-night-shift/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Now that's a neighbor keeping watch over a neighbor. Beautiful.",
       "overlap": -0.2,
-      "timestamp": 145.856,
+      "timestamp": 146.907,
       "duration": 5.04,
       "audio": "/audio/radio/the-night-shift/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-glenda",
       "text": "Nightingale Four, listen to me very carefully now. <p:0.3> If you want out, you get yourself to the third recycling bin and you climb in. That's the extraction point.",
       "overlap": 0.2,
-      "timestamp": 149.799,
+      "timestamp": 150.851,
       "duration": 10.57,
       "audio": "/audio/radio/the-night-shift/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-darnell",
       "text": "You want me to get INSIDE the bin?",
       "overlap": 0.35,
-      "timestamp": 159.565,
+      "timestamp": 160.617,
       "duration": 1.81,
       "audio": "/audio/radio/the-night-shift/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-winston",
       "text": "Everything goes in the third bin.",
       "overlap": 0,
-      "timestamp": 160.766,
+      "timestamp": 161.818,
       "duration": 2.17,
       "audio": "/audio/radio/the-night-shift/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-linda",
       "text": "The bin!",
       "overlap": 0.4,
-      "timestamp": 161.916,
+      "timestamp": 162.968,
       "duration": 0.98,
       "audio": "/audio/radio/the-night-shift/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-darnell",
       "text": "I am not getting in the bin!",
       "overlap": 0.4,
-      "timestamp": 162.601,
+      "timestamp": 163.653,
       "duration": 1.67,
       "audio": "/audio/radio/the-night-shift/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-glenda",
       "text": "Then you're the mole, sweetheart.",
       "overlap": 0,
-      "timestamp": 163.935,
+      "timestamp": 164.987,
       "duration": 1.7,
       "audio": "/audio/radio/the-night-shift/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-winston",
       "text": "Retire him.",
       "overlap": 0.4,
-      "timestamp": 164.518,
+      "timestamp": 165.569,
       "duration": 1.68,
       "audio": "/audio/radio/the-night-shift/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "caller-darnell",
       "text": "DO NOT RETIRE ME!",
       "overlap": 0.4,
-      "timestamp": 165.436,
+      "timestamp": 166.487,
       "duration": 1.57,
       "audio": "/audio/radio/the-night-shift/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "ronnie",
       "text": "Well folks, you heard it. Just good neighbors keeping an eye out for each other. <p:0.3> We'll be right back.",
       "overlap": -0.25,
-      "timestamp": 165.538,
+      "timestamp": 166.59,
       "duration": 8.54,
       "audio": "/audio/radio/the-night-shift/42.flac"
     },
@@ -351,7 +351,7 @@
       "speaker": "barry",
       "text": "Ronnie, they assigned that man a codename and a poison snack.",
       "overlap": -0.1,
-      "timestamp": 173.0,
+      "timestamp": 174.051,
       "duration": 5.08,
       "audio": "/audio/radio/the-night-shift/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "ronnie",
       "text": "That's a welcome basket, Barry.",
       "overlap": -0.15,
-      "timestamp": 177.038,
+      "timestamp": 178.09,
       "duration": 2.52,
       "audio": "/audio/radio/the-night-shift/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "caller-winston",
       "text": "The basket was a dead drop.",
       "overlap": -0.1,
-      "timestamp": 178.726,
+      "timestamp": 179.777,
       "duration": 2.02,
       "audio": "/audio/radio/the-night-shift/45.flac"
     }

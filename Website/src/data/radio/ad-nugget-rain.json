@@ -6,17 +6,17 @@
   "lines": [
     {
       "speaker": "ad-ann-chipper",
-      "text": "Hungry? The ninety-nine-cent bucket that rains hot golden nuggets forever! <p:0.2> Cluck Vault. The bucket that loves you back.",
+      "text": "[question-en] Hungry? The ninety-nine-cent bucket that rains hot golden nuggets forever! <p:0.2> Cluck Vault. The bucket that loves you back.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 6.76,
+      "duration": 7.39,
       "audio": "/audio/radio/ad-nugget-rain/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Bucket cannot be emptied. <p:0> Do not let it touch soil. <p:0> It roots. <p:0> Your home is now a franchise. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 6.579,
+      "timestamp": 7.24,
       "duration": 6.566,
       "audio": "/audio/radio/ad-nugget-rain/1.flac"
     }

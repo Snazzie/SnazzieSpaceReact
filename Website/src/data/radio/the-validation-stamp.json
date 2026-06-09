@@ -109,17 +109,17 @@
     },
     {
       "speaker": "caller-marco",
-      "text": "There was no garage in eighteen oh four! There was no CITY! Cordell, I just want to LEAVE.",
+      "text": "[dissatisfaction-hnn] There was no garage in eighteen oh four! There was no CITY! Cordell, I just want to LEAVE.",
       "overlap": 0.2,
-      "timestamp": 77.477,
-      "duration": 4.64,
+      "timestamp": 77.481,
+      "duration": 5.84,
       "audio": "/audio/radio/the-validation-stamp/13.flac"
     },
     {
       "speaker": "attendant-cordell",
       "text": "The garage came later, sir. <p:0.3> But your fee's been accruing in escrow since before there were cars. <p:0.3> Balance confirmed. Validated.",
       "overlap": -0.1,
-      "timestamp": 81.674,
+      "timestamp": 82.586,
       "duration": 11.78,
       "audio": "/audio/radio/the-validation-stamp/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "barry",
       "text": "Before there were cars.",
       "overlap": -0.1,
-      "timestamp": 93.022,
+      "timestamp": 93.935,
       "duration": 2.08,
       "audio": "/audio/radio/the-validation-stamp/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-marco",
       "text": "What's the balance now, Cordell.",
       "overlap": -0.1,
-      "timestamp": 94.178,
+      "timestamp": 95.09,
       "duration": 1.84,
       "audio": "/audio/radio/the-validation-stamp/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "attendant-cordell",
       "text": "At four dollars a day, sir, carried forward two hundred and twenty years. <p:0.4> Plus a sandwich.",
       "overlap": -0.1,
-      "timestamp": 94.808,
+      "timestamp": 95.72,
       "duration": 8.62,
       "audio": "/audio/radio/the-validation-stamp/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "barry",
       "text": "Two hundred and twenty years. <p:0.3> Of parking.",
       "overlap": 0,
-      "timestamp": 102.693,
+      "timestamp": 103.606,
       "duration": 4.42,
       "audio": "/audio/radio/the-validation-stamp/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "ronnie",
       "text": "Now hold on, Marco. At least the entry's confirmed. We know when you got in. That's progress.",
       "overlap": -0.2,
-      "timestamp": 105.651,
+      "timestamp": 106.564,
       "duration": 7.04,
       "audio": "/audio/radio/the-validation-stamp/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-marco",
       "text": "It is NOT progress, Ronnie! I wasn't BORN in eighteen oh four!",
       "overlap": 0.2,
-      "timestamp": 111.786,
+      "timestamp": 112.698,
       "duration": 3.24,
       "audio": "/audio/radio/the-validation-stamp/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "attendant-cordell",
       "text": "Let me pull your birth, sir. <p:0.3> One moment. <p:0.3> Records show you entered before you were born. <p:0.2> Validated.",
       "overlap": -0.1,
-      "timestamp": 114.683,
+      "timestamp": 115.596,
       "duration": 10.68,
       "audio": "/audio/radio/the-validation-stamp/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Cordell. You just validated Marco being born. And the gate's still down.",
       "overlap": 0,
-      "timestamp": 124.793,
+      "timestamp": 125.706,
       "duration": 5.92,
       "audio": "/audio/radio/the-validation-stamp/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-marco",
       "text": "If I can't prove when I got here, how do I prove I get to LEAVE?",
       "overlap": -0.1,
-      "timestamp": 130.13,
+      "timestamp": 131.042,
       "duration": 3.2,
       "audio": "/audio/radio/the-validation-stamp/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "attendant-cordell",
       "text": "You don't leave the lot, sir. <p:0.3> The lot validates you out. <p:0.3> Once the balance is settled. <p:0.2> Validated.",
       "overlap": -0.1,
-      "timestamp": 133.002,
+      "timestamp": 133.914,
       "duration": 9.89,
       "audio": "/audio/radio/the-validation-stamp/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-marco",
       "text": "I'll pay it! Take the whole two hundred years, take my CAR, just lift the gate, Cordell!",
       "overlap": 0.3,
-      "timestamp": 142.119,
+      "timestamp": 143.032,
       "duration": 4.52,
       "audio": "/audio/radio/the-validation-stamp/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "attendant-cordell",
       "text": "Payment received.",
       "overlap": 0,
-      "timestamp": 145.677,
+      "timestamp": 146.59,
       "duration": 2.08,
       "audio": "/audio/radio/the-validation-stamp/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-marco",
       "text": "And?",
       "overlap": 0.3,
-      "timestamp": 146.538,
+      "timestamp": 147.451,
       "duration": 1.0,
       "audio": "/audio/radio/the-validation-stamp/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "attendant-cordell",
       "text": "Validated.",
       "overlap": 0,
-      "timestamp": 147.02,
+      "timestamp": 147.933,
       "duration": 1.73,
       "audio": "/audio/radio/the-validation-stamp/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "The gate, Cordell. Is the GATE up?",
       "overlap": 0.35,
-      "timestamp": 148.069,
+      "timestamp": 148.981,
       "duration": 2.8,
       "audio": "/audio/radio/the-validation-stamp/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "attendant-cordell",
       "text": "The gate is lifting now, sir.",
       "overlap": 0,
-      "timestamp": 150.407,
+      "timestamp": 151.319,
       "duration": 2.6,
       "audio": "/audio/radio/the-validation-stamp/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-marco",
       "text": "It's LIFTING! Ronnie, the gate's going up!",
       "overlap": 0.4,
-      "timestamp": 151.945,
+      "timestamp": 152.858,
       "duration": 2.28,
       "audio": "/audio/radio/the-validation-stamp/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "attendant-cordell",
       "text": "Lift confirmed. <p:0.2> Validated.",
       "overlap": 0,
-      "timestamp": 153.639,
+      "timestamp": 154.551,
       "duration": 3.97,
       "audio": "/audio/radio/the-validation-stamp/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-marco",
       "text": "It stopped. <p:0.3> It went back down, Cordell. It went back DOWN.",
       "overlap": -0.05,
-      "timestamp": 157.175,
+      "timestamp": 158.087,
       "duration": 4.14,
       "audio": "/audio/radio/the-validation-stamp/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "attendant-cordell",
       "text": "The lift validated, sir. <p:0.3> A validated lift stays where it's logged. <p:0.2> Down.",
       "overlap": -0.1,
-      "timestamp": 161.098,
+      "timestamp": 162.01,
       "duration": 7.95,
       "audio": "/audio/radio/the-validation-stamp/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "We're gonna take a quick break before the gate lifts. <p:0.3> Cordell, when it does, validate ours too.",
       "overlap": -0.2,
-      "timestamp": 167.59,
+      "timestamp": 168.503,
       "duration": 7.74,
       "audio": "/audio/radio/the-validation-stamp/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "attendant-cordell",
       "text": "Already did, sir. <p:0.3> Stamp's older than the station.",
       "overlap": -0.1,
-      "timestamp": 174.31,
+      "timestamp": 175.223,
       "duration": 5.22,
       "audio": "/audio/radio/the-validation-stamp/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "The gate predates the radio.",
       "overlap": -0.05,
-      "timestamp": 178.5,
+      "timestamp": 179.413,
       "duration": 2.48,
       "audio": "/audio/radio/the-validation-stamp/37.flac"
     }

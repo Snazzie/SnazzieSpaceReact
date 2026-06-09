@@ -77,17 +77,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Our studio?",
+      "text": "[question-en] Our studio?",
       "overlap": 0,
-      "timestamp": 48.311,
-      "duration": 1.56,
+      "timestamp": 48.018,
+      "duration": 2.2,
       "audio": "/audio/radio/the-night-shift-part-2/9.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Snazzie FM is the safe house now.",
       "overlap": -0.1,
-      "timestamp": 48.945,
+      "timestamp": 49.241,
       "duration": 2.44,
       "audio": "/audio/radio/the-night-shift-part-2/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "barry",
       "text": "You can't just DECLARE a radio station a safe house, Winston!",
       "overlap": 0.25,
-      "timestamp": 49.963,
+      "timestamp": 50.259,
       "duration": 5.0,
       "audio": "/audio/radio/the-night-shift-part-2/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "caller-winston",
       "text": "Already did. There's a van in your lot. <p:0.3> Lights off. Lovely paint job. Ask yourself why it's idling.",
       "overlap": -0.1,
-      "timestamp": 53.935,
+      "timestamp": 54.231,
       "duration": 7.23,
       "audio": "/audio/radio/the-night-shift-part-2/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "ronnie",
       "text": "Now that's a neighbor watching over a broadcast. Touching, Barry.",
       "overlap": -0.2,
-      "timestamp": 60.79,
+      "timestamp": 61.086,
       "duration": 5.16,
       "audio": "/audio/radio/the-night-shift-part-2/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "It is NOT touching. There's a van. Idling. In our lot.",
       "overlap": 0.3,
-      "timestamp": 64.485,
+      "timestamp": 64.781,
       "duration": 4.28,
       "audio": "/audio/radio/the-night-shift-part-2/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-glenda",
       "text": "And we'll feel so much better once we know whose side you're on, Barry dear. <p:0.3> So we've issued you a codename. You're Nightingale Five.",
       "overlap": -0.1,
-      "timestamp": 67.987,
+      "timestamp": 68.283,
       "duration": 8.54,
       "audio": "/audio/radio/the-night-shift-part-2/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "barry",
       "text": "I did not sign up for the Watch.",
       "overlap": 0.2,
-      "timestamp": 75.649,
+      "timestamp": 75.945,
       "duration": 2.6,
       "audio": "/audio/radio/the-night-shift-part-2/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-winston",
       "text": "That's what the handler would say.",
       "overlap": 0.25,
-      "timestamp": 76.744,
+      "timestamp": 77.041,
       "duration": 2.17,
       "audio": "/audio/radio/the-night-shift-part-2/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-darnell",
       "text": "Barry, don't argue, just take the codename. <p:0.3> I argued. I'm in a bin.",
       "overlap": 0.2,
-      "timestamp": 78.197,
+      "timestamp": 78.494,
       "duration": 4.58,
       "audio": "/audio/radio/the-night-shift-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-linda",
       "text": "Did Barry get a pretzel? I want Barry to get a pretzel.",
       "overlap": 0.2,
-      "timestamp": 82.062,
+      "timestamp": 82.358,
       "duration": 3.3,
       "audio": "/audio/radio/the-night-shift-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-glenda",
       "text": "There's a pretzel taped under the soundboard, sweetheart. <p:0.3> Do not eat it unless the studio is compromised.",
       "overlap": -0.1,
-      "timestamp": 84.995,
+      "timestamp": 85.291,
       "duration": 6.96,
       "audio": "/audio/radio/the-night-shift-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "barry",
       "text": "Ronnie, there is a pretzel taped under MY soundboard.",
       "overlap": 0.2,
-      "timestamp": 91.232,
+      "timestamp": 91.529,
       "duration": 4.48,
       "audio": "/audio/radio/the-night-shift-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "That's craft services, Barry. Generous outfit.",
       "overlap": -0.2,
-      "timestamp": 94.536,
+      "timestamp": 94.832,
       "duration": 3.76,
       "audio": "/audio/radio/the-night-shift-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-darnell",
       "text": "It is NOT craft services! Glenda told me that exact thing and now I live in a bin!",
       "overlap": 0.3,
-      "timestamp": 97.16,
+      "timestamp": 97.456,
       "duration": 5.44,
       "audio": "/audio/radio/the-night-shift-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "The van is at the door. <p:0.3> Ronnie, the van is at the studio door and it is knocking.",
       "overlap": 0.3,
-      "timestamp": 101.777,
+      "timestamp": 102.073,
       "duration": 6.82,
       "audio": "/audio/radio/the-night-shift-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-glenda",
       "text": "Then it's time for your extraction, Nightingale Five. <p:0.3> There's a bin behind the building. You know what to do.",
       "overlap": 0.2,
-      "timestamp": 107.463,
+      "timestamp": 107.759,
       "duration": 7.43,
       "audio": "/audio/radio/the-night-shift-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "I am not getting in a bin!",
       "overlap": 0.35,
-      "timestamp": 113.767,
+      "timestamp": 114.063,
       "duration": 2.12,
       "audio": "/audio/radio/the-night-shift-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-darnell",
       "text": "That's what I said!",
       "overlap": 0.4,
-      "timestamp": 114.788,
+      "timestamp": 115.084,
       "duration": 1.35,
       "audio": "/audio/radio/the-night-shift-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-linda",
       "text": "The bin!",
       "overlap": 0.4,
-      "timestamp": 115.017,
+      "timestamp": 115.313,
       "duration": 1.38,
       "audio": "/audio/radio/the-night-shift-part-2/28.flac"
     },
@@ -239,23 +239,23 @@
       "speaker": "caller-winston",
       "text": "Then he's the handler. Retire the station.",
       "overlap": 0.4,
-      "timestamp": 115.704,
+      "timestamp": 116.0,
       "duration": 3.08,
       "audio": "/audio/radio/the-night-shift-part-2/29.flac"
     },
     {
       "speaker": "barry",
-      "text": "You can't retire a STATION!",
+      "text": "[surprise-ah] You can't retire a STATION!",
       "overlap": 0,
-      "timestamp": 118.014,
-      "duration": 2.32,
+      "timestamp": 117.932,
+      "duration": 3.44,
       "audio": "/audio/radio/the-night-shift-part-2/30.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Well folks, that's our show, brought to you by neighbors just looking out for neighbors. <p:0.3> We'll be right back, if the studio's still here.",
       "overlap": -0.25,
-      "timestamp": 118.878,
+      "timestamp": 119.613,
       "duration": 10.52,
       "audio": "/audio/radio/the-night-shift-part-2/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> Why are the studio lights off.",
       "overlap": -0.1,
-      "timestamp": 128.461,
+      "timestamp": 129.196,
       "duration": 4.22,
       "audio": "/audio/radio/the-night-shift-part-2/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-winston",
       "text": "The studio was a dead drop.",
       "overlap": -0.1,
-      "timestamp": 131.806,
+      "timestamp": 132.541,
       "duration": 2.14,
       "audio": "/audio/radio/the-night-shift-part-2/33.flac"
     }

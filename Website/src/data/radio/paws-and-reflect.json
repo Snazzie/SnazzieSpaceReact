@@ -45,17 +45,17 @@
     },
     {
       "speaker": "barry",
-      "text": "It's separation anxiety, Ronnie. The word is separation.",
+      "text": "[dissatisfaction-hnn] It's separation anxiety, Ronnie. The word is separation.",
       "overlap": -0.1,
-      "timestamp": 51.487,
-      "duration": 4.72,
+      "timestamp": 50.864,
+      "duration": 6.56,
       "audio": "/audio/radio/paws-and-reflect/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Separation. Good word, Barry. So, Maureen, the fix is clear. You two need to spend MORE time apart. Build that independence. Leave for longer. He'll thank you.",
       "overlap": -0.2,
-      "timestamp": 55.651,
+      "timestamp": 56.812,
       "duration": 12.04,
       "audio": "/audio/radio/paws-and-reflect/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "barry",
       "text": "That is the exact opposite of the thing.",
       "overlap": 0.2,
-      "timestamp": 66.161,
+      "timestamp": 67.323,
       "duration": 3.36,
       "audio": "/audio/radio/paws-and-reflect/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "ronnie",
       "text": "Next letter. Darnell wrote in by email. Quote, my elderly cat has stopped eating. She's hiding under the bed. I'm scared she's seriously ill and I don't know whether to rush her to the vet. End quote. <p:0.3> Easy one.",
       "overlap": -0.2,
-      "timestamp": 67.504,
+      "timestamp": 68.665,
       "duration": 16.9,
       "audio": "/audio/radio/paws-and-reflect/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "barry",
       "text": "Easy? Darnell, that could be serious, get her to a...",
       "overlap": 0.25,
-      "timestamp": 83.099,
+      "timestamp": 84.261,
       "duration": 4.2,
       "audio": "/audio/radio/paws-and-reflect/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "ronnie",
       "text": "She's on a hunger strike, Darnell. That's a labor action. Cat's got a grievance with management. You need to find out her demands and negotiate in good faith.",
       "overlap": 0.3,
-      "timestamp": 85.196,
+      "timestamp": 86.358,
       "duration": 11.37,
       "audio": "/audio/radio/paws-and-reflect/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "barry",
       "text": "Ronnie, she could be dying. Hiding and not eating, that's a vet trip, tonight.",
       "overlap": -0.1,
-      "timestamp": 95.587,
+      "timestamp": 96.749,
       "duration": 6.24,
       "audio": "/audio/radio/paws-and-reflect/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "ronnie",
       "text": "Vets are expensive, Barry. Here's a free option. Give her a job. Give her a reason to get up in the morning. <p:0.3> And Darnell, gently, has anyone asked if she feels heard? Is she unionized? Because that changes the conversation.",
       "overlap": -0.2,
-      "timestamp": 100.425,
+      "timestamp": 101.587,
       "duration": 17.26,
       "audio": "/audio/radio/paws-and-reflect/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "barry",
       "text": "She is a cat. She is not in a union.",
       "overlap": -0.1,
-      "timestamp": 117.071,
+      "timestamp": 118.232,
       "duration": 2.8,
       "audio": "/audio/radio/paws-and-reflect/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "ronnie",
       "text": "Not YET. Patricia left us a voicemail. Barry, you read this one, it's beautiful.",
       "overlap": -0.2,
-      "timestamp": 119.017,
+      "timestamp": 120.179,
       "duration": 6.12,
       "audio": "/audio/radio/paws-and-reflect/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "barry",
       "text": "Okay. Patricia says, quote, my parakeet plucks out his own feathers and just looks miserable. I read it might be stress, or loneliness. It's breaking my heart. End quote. <p:0.3> She's right, by the way, I looked it up, the bird needs a companion.",
       "overlap": -0.15,
-      "timestamp": 124.008,
+      "timestamp": 125.17,
       "duration": 18.96,
       "audio": "/audio/radio/paws-and-reflect/15.flac"
     },
@@ -135,23 +135,23 @@
       "speaker": "ronnie",
       "text": "See, you're catastrophizing, Barry. That bird is tidying up. He's streamlining for the work week. A plucked bird is a focused bird. No loose ends. No drag.",
       "overlap": 0.25,
-      "timestamp": 141.411,
+      "timestamp": 142.573,
       "duration": 11.5,
       "audio": "/audio/radio/paws-and-reflect/16.flac"
     },
     {
       "speaker": "barry",
-      "text": "He is hurting himself.",
+      "text": "[dissatisfaction-hnn] He is hurting himself.",
       "overlap": -0.1,
-      "timestamp": 152.492,
-      "duration": 1.96,
+      "timestamp": 153.647,
+      "duration": 3.84,
       "audio": "/audio/radio/paws-and-reflect/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He's hungry for purpose. Patricia, give him a job. Data entry. I'm serious, the little feet are PERFECT for the keys. Nature designed that bird for a keyboard.",
       "overlap": -0.2,
-      "timestamp": 153.212,
+      "timestamp": 156.174,
       "duration": 12.04,
       "audio": "/audio/radio/paws-and-reflect/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "I said companion, Ronnie. He needs a companion.",
       "overlap": 0.2,
-      "timestamp": 164.296,
+      "timestamp": 167.258,
       "duration": 3.92,
       "audio": "/audio/radio/paws-and-reflect/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "ronnie",
       "text": "Companion, yes. Get him a tiny assistant. Junior bird. Delegate. <p:0.3> Patricia, you're basically running a startup now and you didn't even know it.",
       "overlap": -0.2,
-      "timestamp": 167.724,
+      "timestamp": 170.686,
       "duration": 11.34,
       "audio": "/audio/radio/paws-and-reflect/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "ronnie",
       "text": "Winston, longtime listener, writes. Quote, my goldfish keeps swimming sideways and floating up to the top. I'm genuinely worried he's suffering and I want to do right by him. End quote.",
       "overlap": -0.2,
-      "timestamp": 177.459,
+      "timestamp": 180.421,
       "duration": 14.16,
       "audio": "/audio/radio/paws-and-reflect/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Sideways and floating, that's swim bladder, Ronnie. The fish is in distress.",
       "overlap": -0.1,
-      "timestamp": 190.384,
+      "timestamp": 193.347,
       "duration": 6.24,
       "audio": "/audio/radio/paws-and-reflect/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "ronnie",
       "text": "That's not distress, Barry, that's ambition. The floating? He's reaching. The sideways thing? He's looking for the exit so he can go start something bigger.",
       "overlap": -0.1,
-      "timestamp": 195.269,
+      "timestamp": 198.231,
       "duration": 11.88,
       "audio": "/audio/radio/paws-and-reflect/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "It's a disease! It's an actual disease!",
       "overlap": 0.3,
-      "timestamp": 205.797,
+      "timestamp": 208.759,
       "duration": 3.2,
       "audio": "/audio/radio/paws-and-reflect/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "ronnie",
       "text": "Distress is just untapped drive, Barry. <p:0.3> Winston, put that fish in charge of accounts receivable. Build him a tiny desk. A goldfish never forgets who owes you money.",
       "overlap": -0.2,
-      "timestamp": 208.076,
+      "timestamp": 211.039,
       "duration": 13.06,
       "audio": "/audio/radio/paws-and-reflect/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "It has a nine second memory.",
       "overlap": -0.1,
-      "timestamp": 219.993,
+      "timestamp": 222.956,
       "duration": 2.4,
       "audio": "/audio/radio/paws-and-reflect/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "Lean. Forward looking. Now, last letter, and Glenda sounds very upset. Quote, I just inherited my late uncle's hundred-year-old tortoise. I have no idea what it eats, how to care for it, or how to keep something that might outlive me. End quote.",
       "overlap": -0.2,
-      "timestamp": 221.856,
+      "timestamp": 224.819,
       "duration": 18.4,
       "audio": "/audio/radio/paws-and-reflect/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "Okay, that one's real, she needs an actual reptile vet and a care...",
       "overlap": 0.2,
-      "timestamp": 238.818,
+      "timestamp": 241.781,
       "duration": 5.32,
       "audio": "/audio/radio/paws-and-reflect/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "ronnie",
       "text": "A hundred years, Glenda. And what's it got to show for it? A creature that lives a century and wastes the prime working decades, that's a tragedy. The kindest thing you can give it is purpose.",
       "overlap": 0.3,
-      "timestamp": 242.0,
+      "timestamp": 244.963,
       "duration": 13.57,
       "audio": "/audio/radio/paws-and-reflect/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "Please don't give the tortoise a job.",
       "overlap": -0.1,
-      "timestamp": 254.556,
+      "timestamp": 257.519,
       "duration": 3.12,
       "audio": "/audio/radio/paws-and-reflect/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "ronnie",
       "text": "Put it in charge of the night shift. It's slow, it's patient, it never sleeps in. Incorporate, Glenda. <p:0.3> And honestly? Bring them all together. Biscuit, the cat, Patricia's bird, Winston's fish, and now the tortoise. One company.",
       "overlap": -0.2,
-      "timestamp": 256.485,
+      "timestamp": 259.448,
       "duration": 17.45,
       "audio": "/audio/radio/paws-and-reflect/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "You want five strangers' suffering pets to form a corporation.",
       "overlap": -0.1,
-      "timestamp": 272.583,
+      "timestamp": 275.546,
       "duration": 5.24,
       "audio": "/audio/radio/paws-and-reflect/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Tortoise is C E O. <p:0.3> It has the most experience.",
       "overlap": -0.15,
-      "timestamp": 277.193,
+      "timestamp": 280.156,
       "duration": 4.54,
       "audio": "/audio/radio/paws-and-reflect/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Oh, and a follow-up came in. Maureen wrote back. Quote, I gave Biscuit a job minding the mail, like you said. End quote. <p:0.3> Listen to this. He's opened a competing route. The regular postman now refuses to come to the cul-de-sac.",
       "overlap": -0.2,
-      "timestamp": 280.954,
+      "timestamp": 283.917,
       "duration": 17.34,
       "audio": "/audio/radio/paws-and-reflect/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "That dog found his purpose, Barry. I'm getting a little emotional.",
       "overlap": -0.15,
-      "timestamp": 296.899,
+      "timestamp": 299.861,
       "duration": 5.16,
       "audio": "/audio/radio/paws-and-reflect/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "He's not anxious anymore, Ronnie. <p:0.3> He's just unemployed and armed with letters. That's worse.",
       "overlap": -0.1,
-      "timestamp": 300.816,
+      "timestamp": 303.778,
       "duration": 7.98,
       "audio": "/audio/radio/paws-and-reflect/36.flac"
     }

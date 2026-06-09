@@ -86,17 +86,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "I... I'm not even waving. <p:0.3> Why am I waving?",
+      "text": "[question-en] I... I'm not even waving. <p:0.3> Why am I waving?",
       "overlap": 0,
-      "timestamp": 57.966,
-      "duration": 4.38,
+      "timestamp": 57.53,
+      "duration": 5.18,
       "audio": "/audio/radio/stars-with-rhonda-commute/10.flac"
     },
     {
       "speaker": "rhonda",
       "text": "And it can see you. <p:0.3> The bus is not coming.",
       "overlap": -0.15,
-      "timestamp": 61.58,
+      "timestamp": 61.89,
       "duration": 3.59,
       "audio": "/audio/radio/stars-with-rhonda-commute/11.flac"
     }

@@ -101,17 +101,17 @@
     },
     {
       "speaker": "caller-chen",
-      "text": "I witnessed a man once. <p:0.3> I think. <p:0.3> They never witnessed me back.",
+      "text": "[sigh] I witnessed a man once. <p:0.3> I think. <p:0.3> They never witnessed me back.",
       "overlap": -0.1,
-      "timestamp": 54.944,
-      "duration": 5.92,
+      "timestamp": 54.999,
+      "duration": 5.91,
       "audio": "/audio/radio/notarize-the-witness/12.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Who is that, now?",
       "overlap": -0.1,
-      "timestamp": 60.041,
+      "timestamp": 60.1,
       "duration": 1.92,
       "audio": "/audio/radio/notarize-the-witness/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "caller-chen",
       "text": "Chen. I'm the witness for the old fella. <p:0.3> I've been vouching for strangers in this line for years. Nobody's stamped me.",
       "overlap": 0.2,
-      "timestamp": 60.79,
+      "timestamp": 60.85,
       "duration": 7.44,
       "audio": "/audio/radio/notarize-the-witness/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Wait, so who witnesses Chen?",
       "overlap": -0.1,
-      "timestamp": 67.881,
+      "timestamp": 67.941,
       "duration": 2.0,
       "audio": "/audio/radio/notarize-the-witness/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "notary-pam",
       "text": "The gentleman behind him, sweetheart. <p:0.3> And the lady behind him witnesses the gentleman. <p:0.2> Stamp. <p:0.2> Stamp.",
       "overlap": -0.1,
-      "timestamp": 69.542,
+      "timestamp": 69.602,
       "duration": 8.62,
       "audio": "/audio/radio/notarize-the-witness/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "Ronnie, the line doesn't end. It just keeps going backward.",
       "overlap": 0.2,
-      "timestamp": 77.24,
+      "timestamp": 77.299,
       "duration": 4.84,
       "audio": "/audio/radio/notarize-the-witness/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-darnell",
       "text": "How far back does it go, Pam?",
       "overlap": -0.1,
-      "timestamp": 81.475,
+      "timestamp": 81.535,
       "duration": 2.1,
       "audio": "/audio/radio/notarize-the-witness/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "notary-pam",
       "text": "All the way, hon. <p:0.3> Everybody's witnessed by the person behind them. <p:0.3> Always has been.",
       "overlap": -0.1,
-      "timestamp": 82.499,
+      "timestamp": 82.559,
       "duration": 7.23,
       "audio": "/audio/radio/notarize-the-witness/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "barry",
       "text": "But somebody has to be FIRST. Who witnessed the first one?",
       "overlap": 0.25,
-      "timestamp": 88.524,
+      "timestamp": 88.584,
       "duration": 4.8,
       "audio": "/audio/radio/notarize-the-witness/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-chen",
       "text": "I asked that once. <p:0.3> The line went very quiet. <p:0.3> Then it stamped me for asking.",
       "overlap": 0.2,
-      "timestamp": 92.302,
+      "timestamp": 92.362,
       "duration": 5.78,
       "audio": "/audio/radio/notarize-the-witness/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-darnell",
       "text": "Pam, I just want my HOUSE. I'm right here, you can SEE me!",
       "overlap": 0.3,
-      "timestamp": 97.162,
+      "timestamp": 97.221,
       "duration": 3.76,
       "audio": "/audio/radio/notarize-the-witness/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "notary-pam",
       "text": "Seeing isn't witnessing, sweetheart. <p:0.3> Stamp.",
       "overlap": 0.2,
-      "timestamp": 99.843,
+      "timestamp": 99.903,
       "duration": 4.16,
       "audio": "/audio/radio/notarize-the-witness/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "Ronnie, Darnell, look, I'll do it. Put me down. I witness Darnell. I'm vouching for him right now, on the air!",
       "overlap": 0.25,
-      "timestamp": 103.064,
+      "timestamp": 103.124,
       "duration": 8.56,
       "audio": "/audio/radio/notarize-the-witness/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "notary-pam",
       "text": "Lovely. <p:0.2> Now you're in the log, hon. <p:0.2> Stamp.",
       "overlap": 0.3,
-      "timestamp": 110.125,
+      "timestamp": 110.185,
       "duration": 5.09,
       "audio": "/audio/radio/notarize-the-witness/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "I'm in the WHAT?",
       "overlap": 0.3,
-      "timestamp": 114.305,
+      "timestamp": 114.365,
       "duration": 1.68,
       "audio": "/audio/radio/notarize-the-witness/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-darnell",
       "text": "Who witnesses Barry?!",
       "overlap": 0.4,
-      "timestamp": 115.05,
+      "timestamp": 115.11,
       "duration": 1.46,
       "audio": "/audio/radio/notarize-the-witness/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-chen",
       "text": "Nobody. <p:0.2> Nobody ever does.",
       "overlap": 0,
-      "timestamp": 115.946,
+      "timestamp": 116.006,
       "duration": 3.04,
       "audio": "/audio/radio/notarize-the-witness/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "notary-pam",
       "text": "Stamp.",
       "overlap": 0.4,
-      "timestamp": 117.666,
+      "timestamp": 117.726,
       "duration": 1.35,
       "audio": "/audio/radio/notarize-the-witness/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "Stop stamping me!",
       "overlap": 0.35,
-      "timestamp": 118.7,
+      "timestamp": 118.759,
       "duration": 1.76,
       "audio": "/audio/radio/notarize-the-witness/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "notary-pam",
       "text": "Stamp. <p:0.2> Stamp. <p:0.2> The old fella. <p:0.2> Stamp. <p:0.2> Tuesday. <p:0.2> Stamp.",
       "overlap": 0.4,
-      "timestamp": 118.942,
+      "timestamp": 119.002,
       "duration": 8.42,
       "audio": "/audio/radio/notarize-the-witness/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "She just stamped TUESDAY!",
       "overlap": -0.05,
-      "timestamp": 127.009,
+      "timestamp": 127.069,
       "duration": 2.24,
       "audio": "/audio/radio/notarize-the-witness/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "notary-pam",
       "text": "It wasn't certified, hon. <p:0.2> Stamp. <p:0.2> Stamp. <p:0.2> Stamp.",
       "overlap": 0.4,
-      "timestamp": 127.763,
+      "timestamp": 127.823,
       "duration": 5.46,
       "audio": "/audio/radio/notarize-the-witness/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Now hold on, everybody. <p:0.3> Pam. <p:0.3> Pam, can you just stamp Darnell so the man can close.",
       "overlap": -0.2,
-      "timestamp": 132.586,
+      "timestamp": 132.646,
       "duration": 8.16,
       "audio": "/audio/radio/notarize-the-witness/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "notary-pam",
       "text": "Oh, sweetheart. <p:0.3> We never did get YOU notarized. <p:0.3> You witnessed everybody. <p:0.3> Nobody witnessed you.",
       "overlap": -0.1,
-      "timestamp": 139.806,
+      "timestamp": 139.865,
       "duration": 9.1,
       "audio": "/audio/radio/notarize-the-witness/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "Darnell? <p:0.4> ...Darnell, you still on the line?",
       "overlap": -0.15,
-      "timestamp": 148.119,
+      "timestamp": 148.179,
       "duration": 4.64,
       "audio": "/audio/radio/notarize-the-witness/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "notary-pam",
       "text": "Stamp.",
       "overlap": -0.1,
-      "timestamp": 151.822,
+      "timestamp": 151.882,
       "duration": 1.23,
       "audio": "/audio/radio/notarize-the-witness/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> Ronnie, where'd he go. <p:0.3> Why's the office calling the studio back.",
       "overlap": -0.1,
-      "timestamp": 152.818,
+      "timestamp": 152.878,
       "duration": 7.32,
       "audio": "/audio/radio/notarize-the-witness/38.flac"
     }

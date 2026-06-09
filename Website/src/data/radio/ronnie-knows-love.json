@@ -46,17 +46,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Ronnie, you're telling a lonely man to date a plant.",
+      "text": "[surprise-oh] Ronnie, you're telling a lonely man to date a plant.",
       "overlap": -0.1,
-      "timestamp": 30.223,
-      "duration": 4.24,
+      "timestamp": 30.307,
+      "duration": 5.36,
       "audio": "/audio/radio/ronnie-knows-love/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I'm telling him to date UP, Barry. Last letter. Patricia writes, she thinks her husband's having an emotional affair.",
       "overlap": -0.15,
-      "timestamp": 33.153,
+      "timestamp": 34.335,
       "duration": 8.8,
       "audio": "/audio/radio/ronnie-knows-love/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "ronnie",
       "text": "Great question, Patricia. <p:0.3> And yes, you should re-pot in spring.",
       "overlap": -0.2,
-      "timestamp": 40.792,
+      "timestamp": 41.974,
       "duration": 5.46,
       "audio": "/audio/radio/ronnie-knows-love/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "barry",
       "text": "Ronnie, that... that was not the question.",
       "overlap": -0.1,
-      "timestamp": 45.289,
+      "timestamp": 46.471,
       "duration": 3.44,
       "audio": "/audio/radio/ronnie-knows-love/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "ronnie",
       "text": "So here's the move, Patricia. You both sign joint custody of the fern. Legally, he can't leave it. <p:0.3> Which means he can't leave you.",
       "overlap": -0.15,
-      "timestamp": 47.387,
+      "timestamp": 48.569,
       "duration": 10.22,
       "audio": "/audio/radio/ronnie-knows-love/9.flac"
     },
@@ -88,7 +88,7 @@
       "speaker": "barry",
       "text": "Ronnie, that is not how custody works. <p:0.3> That is not how anything works.",
       "overlap": -0.1,
-      "timestamp": 56.846,
+      "timestamp": 58.028,
       "duration": 6.18,
       "audio": "/audio/radio/ronnie-knows-love/10.flac"
     }

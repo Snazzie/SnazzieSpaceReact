@@ -237,33 +237,33 @@
     },
     {
       "speaker": "barry",
-      "text": "Ronnie, no.",
+      "text": "[dissatisfaction-hnn] Ronnie, no.",
       "overlap": -0.05,
-      "timestamp": 266.744,
-      "duration": 1.52,
+      "timestamp": 266.873,
+      "duration": 2.88,
       "audio": "/audio/radio/ronnie-on-love/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "The mailman, Eleanor. He's already coming to your house every single day. The hard part's done. <p:0.3> I've got his route schedule right here, I will read it on air.",
       "overlap": -0.2,
-      "timestamp": 267.286,
+      "timestamp": 268.815,
       "duration": 12.34,
       "audio": "/audio/radio/ronnie-on-love/30.flac"
     },
     {
       "speaker": "barry",
-      "text": "Do not read the mailman's schedule on the radio.",
+      "text": "[dissatisfaction-hnn] Do not read the mailman's schedule on the radio.",
       "overlap": -0.1,
-      "timestamp": 277.974,
-      "duration": 4.0,
+      "timestamp": 279.167,
+      "duration": 5.84,
       "audio": "/audio/radio/ronnie-on-love/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He hits your block around two fifteen, Eleanor. Be on the porch. Lower the bar, find the man.",
       "overlap": -0.15,
-      "timestamp": 280.619,
+      "timestamp": 283.493,
       "duration": 7.04,
       "audio": "/audio/radio/ronnie-on-love/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "And that's all the time we have. Thank goodness. <p:0.3> Oh, one more thing, Ronnie. We got a letter from Carol. She took your advice, started eating dinner at three in the afternoon. <p:0.3> Says she's never seen her husband. <p:0.3> Says it's the happiest she's been in years.",
       "overlap": -0.1,
-      "timestamp": 286.514,
+      "timestamp": 289.387,
       "duration": 21.42,
       "audio": "/audio/radio/ronnie-on-love/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "See, Barry? <p:0.3> Lower the bar, clear the bar.",
       "overlap": -0.2,
-      "timestamp": 306.927,
+      "timestamp": 309.801,
       "duration": 4.34,
       "audio": "/audio/radio/ronnie-on-love/34.flac"
     }

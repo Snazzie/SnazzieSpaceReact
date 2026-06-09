@@ -46,17 +46,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "Wait, they knew before SHE knew?",
+      "text": "[question-en] Wait, they knew before SHE knew?",
       "overlap": 0,
-      "timestamp": 22.189,
-      "duration": 2.6,
+      "timestamp": 21.98,
+      "duration": 3.64,
       "audio": "/audio/radio/the-stars-with-rhonda-love/5.flac"
     },
     {
       "speaker": "rhonda",
       "text": "Libra. Venus has read your texts. Including the one marked unsent. <p:0.3> It is now sent.",
       "overlap": -0.2,
-      "timestamp": 24.043,
+      "timestamp": 24.942,
       "duration": 6.06,
       "audio": "/audio/radio/the-stars-with-rhonda-love/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "ronnie",
       "text": "Venus is in the group chat now?",
       "overlap": 0,
-      "timestamp": 29.184,
+      "timestamp": 30.084,
       "duration": 2.48,
       "audio": "/audio/radio/the-stars-with-rhonda-love/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "rhonda",
       "text": "Scorpio. A casserole arrives from an ex. Do not eat it. The casserole is a question. <p:0.3> The answer is the group chat.",
       "overlap": -0.3,
-      "timestamp": 31.488,
+      "timestamp": 32.387,
       "duration": 7.36,
       "audio": "/audio/radio/the-stars-with-rhonda-love/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "ronnie",
       "text": "It's in the kitchen now, Rhonda. Okay, what about my sign? Mine's fine, right?",
       "overlap": 0,
-      "timestamp": 38.214,
+      "timestamp": 39.114,
       "duration": 5.84,
       "audio": "/audio/radio/the-stars-with-rhonda-love/9.flac"
     },
@@ -88,7 +88,7 @@
       "speaker": "rhonda",
       "text": "Ronnie. <p:0.3> You are not a sign. You are a screenshot.",
       "overlap": -0.2,
-      "timestamp": 43.184,
+      "timestamp": 44.083,
       "duration": 4.03,
       "audio": "/audio/radio/the-stars-with-rhonda-love/10.flac"
     },
@@ -96,7 +96,7 @@
       "speaker": "ronnie",
       "text": "My phone just buzzed. <p:0.3> The group chat added me. The stars, with Rhonda.",
       "overlap": 0,
-      "timestamp": 46.452,
+      "timestamp": 47.351,
       "duration": 6.18,
       "audio": "/audio/radio/the-stars-with-rhonda-love/11.flac"
     }

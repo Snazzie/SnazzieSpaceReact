@@ -22,17 +22,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Ronnie... a marriage is not clutter.",
+      "text": "[dissatisfaction-hnn] Ronnie... a marriage is not clutter.",
       "overlap": -0.1,
-      "timestamp": 16.903,
-      "duration": 3.0,
+      "timestamp": 17.1,
+      "duration": 4.84,
       "audio": "/audio/radio/the-clean-break-hour/2.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Clutter has feelings too, Barry. Last one. Read Priya's letter.",
       "overlap": -0.2,
-      "timestamp": 19.26,
+      "timestamp": 21.241,
       "duration": 4.92,
       "audio": "/audio/radio/the-clean-break-hour/3.flac"
     },
@@ -40,7 +40,7 @@
       "speaker": "barry",
       "text": "She says, I moved across the country for a fresh start, and now I'm grieving the life I left behind.",
       "overlap": -0.1,
-      "timestamp": 22.917,
+      "timestamp": 24.898,
       "duration": 7.96,
       "audio": "/audio/radio/the-clean-break-hour/4.flac"
     },
@@ -48,7 +48,7 @@
       "speaker": "ronnie",
       "text": "Priya, that's just unboxed feelings rattling around. Box up the old city, label it, and leave it in a garage you no longer own.",
       "overlap": -0.2,
-      "timestamp": 29.623,
+      "timestamp": 31.604,
       "duration": 9.6,
       "audio": "/audio/radio/the-clean-break-hour/5.flac"
     },
@@ -56,7 +56,7 @@
       "speaker": "barry",
       "text": "You can't box a city, Ronnie.",
       "overlap": 0.3,
-      "timestamp": 38.152,
+      "timestamp": 40.133,
       "duration": 2.4,
       "audio": "/audio/radio/the-clean-break-hour/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "ronnie",
       "text": "You can if you believe, Barry. <p:0.3> Cardboard does the rest.",
       "overlap": -0.15,
-      "timestamp": 39.672,
+      "timestamp": 41.653,
       "duration": 4.9,
       "audio": "/audio/radio/the-clean-break-hour/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "barry",
       "text": "New letter, Ronnie. Maureen took your advice. Boxed up his side of the bed... and now sleeps in the garage to be near him.",
       "overlap": -0.1,
-      "timestamp": 44.039,
+      "timestamp": 46.02,
       "duration": 9.53,
       "audio": "/audio/radio/the-clean-break-hour/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "ronnie",
       "text": "Barry, <p:0.3> that's progress.",
       "overlap": -0.1,
-      "timestamp": 52.227,
+      "timestamp": 54.208,
       "duration": 3.74,
       "audio": "/audio/radio/the-clean-break-hour/9.flac"
     }

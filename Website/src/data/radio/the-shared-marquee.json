@@ -13,17 +13,17 @@
     },
     {
       "speaker": "barry",
-      "text": "One building. A funeral home and a wedding chapel. In the same building, Ronnie.",
+      "text": "[sigh] One building. A funeral home and a wedding chapel. In the same building, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 12.8,
-      "duration": 6.52,
+      "timestamp": 12.189,
+      "duration": 7.0,
       "audio": "/audio/radio/the-shared-marquee/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Two of life's biggest days, one convenient location. That's just good business, Barry. Donna, you called first.",
       "overlap": -0.2,
-      "timestamp": 17.915,
+      "timestamp": 17.778,
       "duration": 8.6,
       "audio": "/audio/radio/the-shared-marquee/2.flac"
     },
@@ -31,7 +31,7 @@
       "speaker": "caller-donna",
       "text": "I did, Ronnie, and I'll keep it short. The marquee out front this Saturday belongs to ME. With respect to... Phil. But those are MY letters.",
       "overlap": -0.2,
-      "timestamp": 25.719,
+      "timestamp": 25.581,
       "duration": 11.48,
       "audio": "/audio/radio/the-shared-marquee/3.flac"
     },
@@ -39,7 +39,7 @@
       "speaker": "caller-phil",
       "text": "Love is love, Donna, but the letters are shared. Always been shared.",
       "overlap": -0.1,
-      "timestamp": 36.498,
+      "timestamp": 36.36,
       "duration": 3.52,
       "audio": "/audio/radio/the-shared-marquee/4.flac"
     },
@@ -47,7 +47,7 @@
       "speaker": "caller-donna",
       "text": "...They are not shared, Phil. <p:0.3> I bought that set in nineteen ninety-one. It spells ETERNAL REST. It has always spelled ETERNAL REST.",
       "overlap": -0.1,
-      "timestamp": 39.483,
+      "timestamp": 39.345,
       "duration": 11.42,
       "audio": "/audio/radio/the-shared-marquee/5.flac"
     },
@@ -55,7 +55,7 @@
       "speaker": "barry",
       "text": "Okay, but it's one sign, right? For both businesses?",
       "overlap": -0.15,
-      "timestamp": 50.055,
+      "timestamp": 49.917,
       "duration": 4.24,
       "audio": "/audio/radio/the-shared-marquee/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "caller-phil",
       "text": "One sign, Barry. One pole. We split it down the middle. Top half is mine, EVERLASTING VOWS, and the bottom is Donna's little... thing.",
       "overlap": -0.1,
-      "timestamp": 53.427,
+      "timestamp": 53.29,
       "duration": 6.6,
       "audio": "/audio/radio/the-shared-marquee/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "caller-donna",
       "text": "My little THING. <p:0.3> Ronnie, he takes the top because the top says BEST, and you cannot spell BEST without the E S T. And there is exactly one E S T.",
       "overlap": -0.1,
-      "timestamp": 59.183,
+      "timestamp": 59.045,
       "duration": 12.58,
       "audio": "/audio/radio/the-shared-marquee/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "ronnie",
       "text": "Now that does sound serious. A grieving family deserves the full word.",
       "overlap": -0.2,
-      "timestamp": 70.695,
+      "timestamp": 70.557,
       "duration": 5.56,
       "audio": "/audio/radio/the-shared-marquee/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "caller-phil",
       "text": "Love is love, Ronnie, but a bride deserves it more. So I borrowed the E S T off her sign on Tuesday. It's currently in BEST.",
       "overlap": 0.1,
-      "timestamp": 75.016,
+      "timestamp": 74.879,
       "duration": 6.08,
       "audio": "/audio/radio/the-shared-marquee/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "caller-donna",
       "text": "He admits it! On the radio! <p:0.3> So now my sign, in front of the Hendersons mourning their grandmother, reads ETERNAL R. Just R, Phil. ETERNAL R.",
       "overlap": 0.25,
-      "timestamp": 80.199,
+      "timestamp": 80.062,
       "duration": 11.88,
       "audio": "/audio/radio/the-shared-marquee/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "barry",
       "text": "Hang on. The funeral sign just says ETERNAL R?",
       "overlap": -0.1,
-      "timestamp": 91.049,
+      "timestamp": 90.912,
       "duration": 3.8,
       "audio": "/audio/radio/the-shared-marquee/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-donna",
       "text": "Just R, Barry. <p:0.3> And he's at it again right now, I can see him through the window. Phil, put the L back!",
       "overlap": -0.1,
-      "timestamp": 94.17,
+      "timestamp": 94.032,
       "duration": 8.84,
       "audio": "/audio/radio/the-shared-marquee/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "caller-phil",
       "text": "Love is love, Donna, and love needs an L more than grief does.",
       "overlap": 0.3,
-      "timestamp": 101.653,
+      "timestamp": 101.515,
       "duration": 3.16,
       "audio": "/audio/radio/the-shared-marquee/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-donna",
       "text": "That is MY L! Now it says ETERNA, Phil! My building says ETERNA like I ran out of money halfway through caring!",
       "overlap": 0.35,
-      "timestamp": 103.499,
+      "timestamp": 103.362,
       "duration": 9.24,
       "audio": "/audio/radio/the-shared-marquee/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-linda",
       "text": "Hi, yes, am I on? <p:0.3> I just wanted to ask which door I was supposed to use on Saturday, because I think I went in the wrong one.",
       "overlap": -0.15,
-      "timestamp": 111.698,
+      "timestamp": 111.56,
       "duration": 7.69,
       "audio": "/audio/radio/the-shared-marquee/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "ronnie",
       "text": "You're on, caller. Wrong door how?",
       "overlap": -0.2,
-      "timestamp": 119.074,
+      "timestamp": 118.937,
       "duration": 2.68,
       "audio": "/audio/radio/the-shared-marquee/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-linda",
       "text": "Well the sign just said ETERNA, so I picked a door, and there was a very kind man, and I cried to him for about ninety minutes. <p:0.3> Was that not the wedding?",
       "overlap": -0.1,
-      "timestamp": 121.127,
+      "timestamp": 120.989,
       "duration": 9.27,
       "audio": "/audio/radio/the-shared-marquee/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-donna",
       "text": "...Ninety minutes. <p:0.3> Phil, was she in YOUR room?",
       "overlap": -0.1,
-      "timestamp": 129.895,
+      "timestamp": 129.757,
       "duration": 4.5,
       "audio": "/audio/radio/the-shared-marquee/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-phil",
       "text": "Love is love, Donna, but I thought she was a very emotional bride. I gave her the cake samples.",
       "overlap": 0.2,
-      "timestamp": 133.16,
+      "timestamp": 133.023,
       "duration": 4.76,
       "audio": "/audio/radio/the-shared-marquee/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-linda",
       "text": "Oh, the cake was lovely. <p:0.3> Was that not for my uncle?",
       "overlap": -0.1,
-      "timestamp": 136.858,
+      "timestamp": 136.72,
       "duration": 4.47,
       "audio": "/audio/radio/the-shared-marquee/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Wait. <p:0.3> Hold on. Linda, where is your uncle right now?",
       "overlap": -0.1,
-      "timestamp": 140.726,
+      "timestamp": 140.588,
       "duration": 5.3,
       "audio": "/audio/radio/the-shared-marquee/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-linda",
       "text": "They took him out the back. Same time as a big white box. I figured it was all the same event.",
       "overlap": -0.1,
-      "timestamp": 144.816,
+      "timestamp": 144.678,
       "duration": 6.39,
       "audio": "/audio/radio/the-shared-marquee/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-donna",
       "text": "Phil. <p:0.3> Phil, did the Hendersons cake and Linda's uncle BOTH go out the back on Saturday?",
       "overlap": 0.25,
-      "timestamp": 150.378,
+      "timestamp": 150.24,
       "duration": 8.5,
       "audio": "/audio/radio/the-shared-marquee/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-phil",
       "text": "Love is love, Donna, but we use the same trolley. We have ALWAYS used the same trolley!",
       "overlap": 0.35,
-      "timestamp": 157.768,
+      "timestamp": 157.631,
       "duration": 4.4,
       "audio": "/audio/radio/the-shared-marquee/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-donna",
       "text": "That trolley is MINE, with respect, you can't put a wedding cake on a CASKET CART, Phil!",
       "overlap": 0.4,
-      "timestamp": 161.138,
+      "timestamp": 161.001,
       "duration": 7.32,
       "audio": "/audio/radio/the-shared-marquee/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-phil",
       "text": "It's a SHARED cart!",
       "overlap": 0.4,
-      "timestamp": 166.775,
+      "timestamp": 166.637,
       "duration": 1.72,
       "audio": "/audio/radio/the-shared-marquee/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-donna",
       "text": "My letters!",
       "overlap": 0.4,
-      "timestamp": 167.327,
+      "timestamp": 167.189,
       "duration": 1.64,
       "audio": "/audio/radio/the-shared-marquee/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-phil",
       "text": "My E S T!",
       "overlap": 0.4,
-      "timestamp": 167.872,
+      "timestamp": 167.734,
       "duration": 1.32,
       "audio": "/audio/radio/the-shared-marquee/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-linda",
       "text": "I think I left my deposit in the white box.",
       "overlap": 0.3,
-      "timestamp": 168.652,
+      "timestamp": 168.514,
       "duration": 3.08,
       "audio": "/audio/radio/the-shared-marquee/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "Guys. GUYS. <p:0.3> What does the sign say right now? This second?",
       "overlap": 0.2,
-      "timestamp": 170.99,
+      "timestamp": 170.852,
       "duration": 5.62,
       "audio": "/audio/radio/the-shared-marquee/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-phil",
       "text": "...Hang on.",
       "overlap": -0.15,
-      "timestamp": 175.593,
+      "timestamp": 175.455,
       "duration": 1.44,
       "audio": "/audio/radio/the-shared-marquee/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-donna",
       "text": "...He's at the board. Look at him. He's taking the last letters.",
       "overlap": -0.1,
-      "timestamp": 176.167,
+      "timestamp": 176.029,
       "duration": 5.06,
       "audio": "/audio/radio/the-shared-marquee/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-phil",
       "text": "Donna. <p:0.4> There's only one S left on the whole pole. <p:0.3> Both signs are down to one S.",
       "overlap": -0.1,
-      "timestamp": 179.868,
+      "timestamp": 179.73,
       "duration": 6.14,
       "audio": "/audio/radio/the-shared-marquee/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "Well there it is, folks. Two doors, one sign, one pile of letters. Donna does the front room, Phil does the back, and Linda... Linda's coming back Saturday for whichever one's cheaper.",
       "overlap": -0.25,
-      "timestamp": 185.324,
+      "timestamp": 185.187,
       "duration": 13.8,
       "audio": "/audio/radio/the-shared-marquee/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> They only have one S left.",
       "overlap": -0.1,
-      "timestamp": 198.173,
+      "timestamp": 198.035,
       "duration": 3.86,
       "audio": "/audio/radio/the-shared-marquee/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-donna",
       "text": "That S is MINE.",
       "overlap": 0.4,
-      "timestamp": 201.065,
+      "timestamp": 200.927,
       "duration": 1.76,
       "audio": "/audio/radio/the-shared-marquee/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-phil",
       "text": "That S is MINE.",
       "overlap": 0.4,
-      "timestamp": 201.607,
+      "timestamp": 201.47,
       "duration": 1.6,
       "audio": "/audio/radio/the-shared-marquee/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "ronnie",
       "text": "Donna, Phil... that's just heritage. We'll be right back, soon as somebody figures out whose uncle is in the cake box.",
       "overlap": -0.25,
-      "timestamp": 201.793,
+      "timestamp": 201.656,
       "duration": 8.88,
       "audio": "/audio/radio/the-shared-marquee/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-linda",
       "text": "...Was that not the recipe?",
       "overlap": -0.1,
-      "timestamp": 209.685,
+      "timestamp": 209.548,
       "duration": 2.25,
       "audio": "/audio/radio/the-shared-marquee/40.flac"
     }

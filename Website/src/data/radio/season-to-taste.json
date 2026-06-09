@@ -30,17 +30,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Hot and fast is... the opposite of a roast, Ronnie.",
+      "text": "[dissatisfaction-hnn] Hot and fast is... the opposite of a roast, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 19.58,
-      "duration": 4.04,
+      "timestamp": 19.533,
+      "duration": 5.92,
       "audio": "/audio/radio/season-to-taste/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Next. Dev's hosting his first dinner party, terrified the smoke detector goes off while he sears the steak.",
       "overlap": -0.2,
-      "timestamp": 22.681,
+      "timestamp": 24.734,
       "duration": 8.32,
       "audio": "/audio/radio/season-to-taste/4.flac"
     },
@@ -48,23 +48,23 @@
       "speaker": "ronnie",
       "text": "Dev. Take the battery out. Can't embarrass you if it can't speak.",
       "overlap": -0.15,
-      "timestamp": 30.221,
+      "timestamp": 32.275,
       "duration": 4.96,
       "audio": "/audio/radio/season-to-taste/5.flac"
     },
     {
       "speaker": "barry",
-      "text": "Ronnie, you cannot tell a man to disarm his smoke detector.",
+      "text": "[dissatisfaction-hnn] Ronnie, you cannot tell a man to disarm his smoke detector.",
       "overlap": -0.1,
-      "timestamp": 33.681,
-      "duration": 4.88,
+      "timestamp": 35.103,
+      "duration": 6.72,
       "audio": "/audio/radio/season-to-taste/6.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Relax. And the seasoning? <p:0.3> That's a salt problem. Add more salt. We're out of time. Season to taste.",
       "overlap": -0.2,
-      "timestamp": 37.722,
+      "timestamp": 41.076,
       "duration": 8.02,
       "audio": "/audio/radio/season-to-taste/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "barry",
       "text": "Quick follow-up from Dev. Party went great, right up until the actual fire. He says, quote, the steak was perfectly seasoned.",
       "overlap": -0.1,
-      "timestamp": 44.943,
+      "timestamp": 48.297,
       "duration": 10.08,
       "audio": "/audio/radio/season-to-taste/8.flac"
     }

@@ -78,17 +78,17 @@
     },
     {
       "speaker": "barry",
-      "text": "He's not management, Ronnie. <p:0.3> He's a liability.",
+      "text": "[dissatisfaction-hnn] He's not management, Ronnie. <p:0.3> He's a liability.",
       "overlap": -0.1,
-      "timestamp": 53.262,
-      "duration": 4.46,
+      "timestamp": 52.378,
+      "duration": 6.3,
       "audio": "/audio/radio/ronnie-knows-critters/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He's middle management.",
       "overlap": -0.1,
-      "timestamp": 56.412,
+      "timestamp": 57.383,
       "duration": 2.2,
       "audio": "/audio/radio/ronnie-knows-critters/10.flac"
     }

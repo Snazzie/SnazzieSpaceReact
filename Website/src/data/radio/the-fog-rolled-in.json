@@ -245,17 +245,17 @@
     },
     {
       "speaker": "todd",
-      "text": "Okay so the goose has the lawn chair now. <p:0.3> A goose just walked out of the fog with a lawn chair. It's holding wind chimes in the other, the, the wing.",
+      "text": "[surprise-yo] Okay so the goose has the lawn chair now. <p:0.3> A goose just walked out of the fog with a lawn chair. It's holding wind chimes in the other, the, the wing.",
       "overlap": 0.3,
-      "timestamp": 200.196,
-      "duration": 4.85,
+      "timestamp": 200.219,
+      "duration": 5.15,
       "audio": "/audio/radio/the-fog-rolled-in/30.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Those are MY chimes!",
       "overlap": 0,
-      "timestamp": 204.837,
+      "timestamp": 205.156,
       "duration": 1.66,
       "audio": "/audio/radio/the-fog-rolled-in/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "rhonda",
       "text": "The goose isn't on the radar!",
       "overlap": 0.4,
-      "timestamp": 205.457,
+      "timestamp": 205.776,
       "duration": 1.96,
       "audio": "/audio/radio/the-fog-rolled-in/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-darnell",
       "text": "Is the fog driving the goose?!",
       "overlap": 0.4,
-      "timestamp": 206.567,
+      "timestamp": 206.886,
       "duration": 1.97,
       "audio": "/audio/radio/the-fog-rolled-in/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "It's a goose with a chair!",
       "overlap": 0.4,
-      "timestamp": 207.395,
+      "timestamp": 207.714,
       "duration": 2.16,
       "audio": "/audio/radio/the-fog-rolled-in/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "todd",
       "text": "It set the chair DOWN!",
       "overlap": 0.4,
-      "timestamp": 208.403,
+      "timestamp": 208.721,
       "duration": 1.2,
       "audio": "/audio/radio/the-fog-rolled-in/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "It set the chair down. <p:0.4> Folks. <p:0.3> We are no longer classifying this as weather. <p:0.3> We are classifying it as a neighbor.",
       "overlap": -0.2,
-      "timestamp": 209.084,
+      "timestamp": 209.403,
       "duration": 11.16,
       "audio": "/audio/radio/the-fog-rolled-in/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "I told you I could see it.",
       "overlap": -0.1,
-      "timestamp": 219.398,
+      "timestamp": 219.717,
       "duration": 2.12,
       "audio": "/audio/radio/the-fog-rolled-in/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "rhonda",
       "text": "It drew a second face. <p:0.3> The radar. There are two faces now, Ronnie. They're next to each other. <p:0.4> Like they live here.",
       "overlap": -0.1,
-      "timestamp": 220.686,
+      "timestamp": 221.005,
       "duration": 8.39,
       "audio": "/audio/radio/the-fog-rolled-in/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "ronnie",
       "text": "Then we welcome them. <p:0.3> The fog is not leaving, folks. By all readings, it has moved in. We'll be right back, soon as the goose vacates the lobby.",
       "overlap": -0.2,
-      "timestamp": 228.159,
+      "timestamp": 228.477,
       "duration": 11.54,
       "audio": "/audio/radio/the-fog-rolled-in/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-mildred",
       "text": "Tell it I'd like my chimes back, dear.",
       "overlap": -0.1,
-      "timestamp": 239.064,
+      "timestamp": 239.383,
       "duration": 2.66,
       "audio": "/audio/radio/the-fog-rolled-in/40.flac"
     }

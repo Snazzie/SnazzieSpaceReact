@@ -77,17 +77,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Down? <p:0.3> You add to it and it gets... smaller?",
+      "text": "[question-ah] Down? <p:0.3> You add to it and it gets... smaller?",
       "overlap": -0.1,
-      "timestamp": 61.272,
-      "duration": 4.5,
+      "timestamp": 61.708,
+      "duration": 5.06,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/9.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "It takes what it needs, dear. It always has. <p:0.3> That's why we keep adding.",
       "overlap": -0.1,
-      "timestamp": 65.28,
+      "timestamp": 66.121,
       "duration": 5.34,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "caller-darnell",
       "text": "So, for the record, I finally found line four on the original list. <p:0.3> I told you it just said the word us. <p:0.3> Well, somebody crossed out us, and wrote, in fresher ink, the word you.",
       "overlap": -0.1,
-      "timestamp": 70.211,
+      "timestamp": 71.053,
       "duration": 11.31,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "barry",
       "text": "Line four says YOU?! <p:0.3> In FRESH ink?!",
       "overlap": -0.1,
-      "timestamp": 80.946,
+      "timestamp": 81.787,
       "duration": 3.7,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "ronnie",
       "text": "Now that's a living document, Barry. A recipe that updates itself. <p:0.3> You can't buy that kind of freshness.",
       "overlap": -0.2,
-      "timestamp": 83.796,
+      "timestamp": 84.638,
       "duration": 8.42,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "caller-patricia",
       "text": "I did NOT write that! <p:0.3> I only ever write carrots! Carrots is the only word I bring!",
       "overlap": 0.3,
-      "timestamp": 90.933,
+      "timestamp": 91.774,
       "duration": 7.61,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Nobody's hand is moving, ma'am. <p:0.3> The pen is on the floor. <p:0.3> The ink is wet and the pen is on the floor.",
       "overlap": 0.25,
-      "timestamp": 97.28,
+      "timestamp": 98.122,
       "duration": 7.05,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-mildred",
       "text": "It writes its own list now, dear. <p:0.3> It learned that around the nineties too.",
       "overlap": 0.2,
-      "timestamp": 103.713,
+      "timestamp": 104.554,
       "duration": 4.94,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "Stop saying it LEARNED, Mildred! Soup does not pick up a PEN!",
       "overlap": 0.3,
-      "timestamp": 107.438,
+      "timestamp": 108.279,
       "duration": 4.96,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-darnell",
       "text": "I am formally condemning this pot! <p:0.3> Right now! On the record! Everybody step back from the...",
       "overlap": 0.3,
-      "timestamp": 111.455,
+      "timestamp": 112.296,
       "duration": 5.95,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-mildred",
       "text": "It does not like the word condemn either, dear.",
       "overlap": 0.3,
-      "timestamp": 116.469,
+      "timestamp": 117.31,
       "duration": 3.13,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-patricia",
       "text": "Carrots!",
       "overlap": 0.4,
-      "timestamp": 118.83,
+      "timestamp": 119.671,
       "duration": 1.6,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-mildred",
       "text": "Founder!",
       "overlap": 0.4,
-      "timestamp": 119.362,
+      "timestamp": 120.203,
       "duration": 1.06,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Darnell, GET UP THE STAIRS!",
       "overlap": 0.4,
-      "timestamp": 120.015,
+      "timestamp": 120.856,
       "duration": 2.32,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-darnell",
       "text": "The stairs are full of people! <p:0.3> They're not blocking me, they're just... ladling! Why is everyone calmly LADLING?!",
       "overlap": 0.4,
-      "timestamp": 121.241,
+      "timestamp": 122.082,
       "duration": 7.35,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "Folks, the whole town is dipping in together. One big beautiful pot. <p:0.3> And the level just dropped again.",
       "overlap": -0.1,
-      "timestamp": 127.743,
+      "timestamp": 128.584,
       "duration": 8.34,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-darnell",
       "text": "So, for the record, it's quiet now. <p:0.3> And there's one more ladle than there was a man ago.",
       "overlap": 0.2,
-      "timestamp": 135.116,
+      "timestamp": 135.957,
       "duration": 5.31,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "A man AGO?! <p:0.3> Ronnie, did he just say a man ago?",
       "overlap": -0.1,
-      "timestamp": 139.857,
+      "timestamp": 140.698,
       "duration": 4.54,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "Hear that, Barry? <p:0.5> One slow, satisfied bubble. <p:0.3> Almost like it cleared its plate.",
       "overlap": -0.2,
-      "timestamp": 143.167,
+      "timestamp": 144.008,
       "duration": 7.76,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-mildred",
       "text": "He's part of the foundation now, dear. <p:0.3> Welcome aboard, Darnell. <p:0.3> You don't turn off a Founder.",
       "overlap": -0.1,
-      "timestamp": 150.151,
+      "timestamp": 150.992,
       "duration": 6.73,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "Ronnie, line four doesn't say you anymore. <p:0.3> Somebody check what line FIVE says.",
       "overlap": -0.1,
-      "timestamp": 156.269,
+      "timestamp": 157.11,
       "duration": 6.86,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "We'll find out after the break. <p:0.3> And if you're listening at home, the pot would love to meet you. <p:0.3> Bring a ladle. Soup's on.",
       "overlap": -0.2,
-      "timestamp": 162.12,
+      "timestamp": 162.962,
       "duration": 10.24,
       "audio": "/audio/radio/the-ninety-year-soup-part-2/30.flac"
     }

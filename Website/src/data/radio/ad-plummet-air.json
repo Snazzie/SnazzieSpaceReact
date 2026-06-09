@@ -6,17 +6,17 @@
   "lines": [
     {
       "speaker": "ad-ann-nasal",
-      "text": "Flying somewhere? <p:0.2> PlummetAir gets you there for nine dollars! <p:0.2> No seats, no doors, no second pilot. <p:0.2> Just you, the sky, and a firm handshake on departure. <p:0.2> PlummetAir, you'll land somewhere!",
+      "text": "[question-en] Flying somewhere? <p:0.2> PlummetAir gets you there for nine dollars! <p:0.2> No seats, no doors, no second pilot. <p:0.2> Just you, the sky, and a firm handshake on departure. <p:0.2> PlummetAir, you'll land somewhere!",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 11.59,
+      "duration": 12.01,
       "audio": "/audio/radio/ad-plummet-air/0.flac"
     },
     {
       "speaker": "ad-disclaimer",
       "text": "Landing is a goal, not a guarantee. <p:0> Oxygen is a premium add-on. <p:0> The exit row is the entire plane. <p:0> Terms and conditions apply.",
       "overlap": 0,
-      "timestamp": 11.251,
+      "timestamp": 11.728,
       "duration": 5.956,
       "audio": "/audio/radio/ad-plummet-air/1.flac"
     }

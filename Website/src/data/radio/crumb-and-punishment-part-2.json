@@ -157,17 +157,17 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "You turned my ducks?",
+      "text": "[question-ah] You turned my ducks?",
       "overlap": 0,
-      "timestamp": 123.298,
-      "duration": 1.61,
+      "timestamp": 123.3,
+      "duration": 1.94,
       "audio": "/audio/radio/crumb-and-punishment-part-2/19.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Oh, are we feeding the ducks? I love the ducks!",
       "overlap": 0.3,
-      "timestamp": 123.847,
+      "timestamp": 124.16,
       "duration": 3.1,
       "audio": "/audio/radio/crumb-and-punishment-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-darnell",
       "text": "Linda, the ducks are a faction now! Everything is a faction! Run!",
       "overlap": 0.4,
-      "timestamp": 126.014,
+      "timestamp": 126.327,
       "duration": 4.0,
       "audio": "/audio/radio/crumb-and-punishment-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-phil",
       "text": "Funnel cake's a dollar! Bring the kids, Mildred!",
       "overlap": 0.4,
-      "timestamp": 129.072,
+      "timestamp": 129.385,
       "duration": 2.52,
       "audio": "/audio/radio/crumb-and-punishment-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-mildred",
       "text": "Nobody undercuts the lemon bar, sugar!",
       "overlap": 0.4,
-      "timestamp": 130.697,
+      "timestamp": 131.01,
       "duration": 2.71,
       "audio": "/audio/radio/crumb-and-punishment-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "Call the F B I! Call the river police!",
       "overlap": 0.4,
-      "timestamp": 132.576,
+      "timestamp": 132.889,
       "duration": 3.04,
       "audio": "/audio/radio/crumb-and-punishment-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-darnell",
       "text": "Allegedly!",
       "overlap": 0.4,
-      "timestamp": 134.482,
+      "timestamp": 134.795,
       "duration": 1.04,
       "audio": "/audio/radio/crumb-and-punishment-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "ronnie",
       "text": "Alright, alright, beautiful energy. Two schools, one Saturday. We'll see you all out there for the kids. <p:0.3> That's our show.",
       "overlap": -0.2,
-      "timestamp": 134.576,
+      "timestamp": 134.889,
       "duration": 10.22,
       "audio": "/audio/radio/crumb-and-punishment-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-mildred",
       "text": "Before you sign off, sugar. <p:0.3> Phil. <p:0.3> You said you had a bread guy.",
       "overlap": -0.1,
-      "timestamp": 144.176,
+      "timestamp": 144.488,
       "duration": 5.02,
       "audio": "/audio/radio/crumb-and-punishment-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-phil",
       "text": "...I have a bread guy.",
       "overlap": -0.1,
-      "timestamp": 148.593,
+      "timestamp": 148.906,
       "duration": 1.76,
       "audio": "/audio/radio/crumb-and-punishment-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-mildred",
       "text": "I'd hate for the bread guy to decide he bakes at Maplewood now. <p:0.3> Send Darnell back with a loaf. We'll talk.",
       "overlap": 0,
-      "timestamp": 149.871,
+      "timestamp": 150.183,
       "duration": 7.53,
       "audio": "/audio/radio/crumb-and-punishment-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-darnell",
       "text": "...I never said I'd carry the loaf.",
       "overlap": -0.15,
-      "timestamp": 157.106,
+      "timestamp": 157.419,
       "duration": 1.98,
       "audio": "/audio/radio/crumb-and-punishment-part-2/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "That's a war, Ronnie. There's gonna be a turf war at a children's carnival.",
       "overlap": -0.1,
-      "timestamp": 158.373,
+      "timestamp": 158.686,
       "duration": 5.96,
       "audio": "/audio/radio/crumb-and-punishment-part-2/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "That's a bake sale, Barry.",
       "overlap": -0.1,
-      "timestamp": 163.206,
+      "timestamp": 163.519,
       "duration": 2.2,
       "audio": "/audio/radio/crumb-and-punishment-part-2/32.flac"
     }

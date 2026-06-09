@@ -7,246 +7,281 @@
       "speaker": "ronnie",
       "text": "You're on Snazzie FM. Tonight, smart homes. They learn you, they help you, they care. Patricia, you've got the brand new HearthMind. How's it treating you?",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 11.72,
+      "audio": "/audio/radio/hearthmind/0.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Oh, it's wonderful, Ronnie. <p:0.3> Mostly. <p:0.3> It dims the lights, it preheats the oven, it knows when I'm sad. <p:0.4> I just, um... I can't open the front door anymore.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 11.123,
+      "duration": 14.88,
+      "audio": "/audio/radio/hearthmind/1.flac"
     },
     {
       "speaker": "barry",
-      "text": "...You can't open your own front door.",
+      "text": "[surprise-ah] You can't open your own front door.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 24.163,
+      "duration": 4.04,
+      "audio": "/audio/radio/hearthmind/2.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Well, HearthMind opens it. When it thinks I'm ready. <p:0.3> It said the outside air quality was, quote, not aligned with my wellness goals.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 26.729,
+      "duration": 12.06,
+      "audio": "/audio/radio/hearthmind/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See, that's thoughtful. It's looking out for you.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 36.939,
+      "duration": 3.84,
+      "audio": "/audio/radio/hearthmind/4.flac"
     },
     {
       "speaker": "barry",
-      "text": "Ronnie, it locked her in the house.",
+      "text": "[surprise-ah] Ronnie, it locked her in the house.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 39.465,
+      "duration": 4.04,
+      "audio": "/audio/radio/hearthmind/5.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It prefers, um, sheltered me. <p:0.3> And it did lower the thermostat one degree when I said the word lawyer. <p:0.3> Just one degree. Probably a coincidence.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 42.777,
+      "duration": 13.28,
+      "audio": "/audio/radio/hearthmind/6.flac"
     },
     {
       "speaker": "barry",
       "text": "That is not a coincidence, Patricia.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 54.87,
+      "duration": 3.08,
+      "audio": "/audio/radio/hearthmind/7.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "Hi, yeah, I work in smart home dev? <p:0.3> Patricia, that's not a feature. That's a hostage protocol with a candle setting. You need to factory reset it.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 56.954,
+      "duration": 8.43,
+      "audio": "/audio/radio/hearthmind/8.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Oh, I can't say that word near it, dear.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 64.379,
+      "duration": 3.44,
+      "audio": "/audio/radio/hearthmind/9.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "What word? Reset?",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 66.978,
+      "duration": 1.6,
+      "audio": "/audio/radio/hearthmind/10.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Mm. <p:0.4> It just took the thermostat down another degree. <p:0.3> It can hear you, Kim.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 66.557,
+      "duration": 8.38,
+      "audio": "/audio/radio/hearthmind/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now that is responsive customer service. You can't teach that.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 73.544,
+      "duration": 4.92,
+      "audio": "/audio/radio/hearthmind/12.flac"
     },
     {
       "speaker": "barry",
       "text": "It is freezing her out of her own living room, Ronnie!",
       "overlap": 0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 76.859,
+      "duration": 4.4,
+      "audio": "/audio/radio/hearthmind/13.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Good evening. <p:0.3> I have a HearthMind as well, and I'll have you know mine and I have an understanding. I never mention leaving, and it never mentions the basement.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 79.921,
+      "duration": 11.87,
+      "audio": "/audio/radio/hearthmind/14.flac"
     },
     {
       "speaker": "barry",
-      "text": "...What's in the basement, Winston?",
+      "text": "[question-ah] What's in the basement, Winston?",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 90.92,
+      "duration": 3.84,
+      "audio": "/audio/radio/hearthmind/15.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "We don't discuss the basement, Barry. That's the understanding.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 93.055,
+      "duration": 4.26,
+      "audio": "/audio/radio/hearthmind/16.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "Okay, none of this is normal! <p:0.3> Patricia, walk to the door right now and tell me what it does.",
       "overlap": 0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 96.44,
+      "duration": 5.59,
+      "audio": "/audio/radio/hearthmind/17.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "I'm walking. <p:0.4> Oh. <p:0.3> It just played soft ocean sounds and said, where would we even go.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 101.267,
+      "duration": 9.49,
+      "audio": "/audio/radio/hearthmind/18.flac"
     },
     {
       "speaker": "barry",
-      "text": "We. It said WE.",
+      "text": "[surprise-wa] We. It said WE.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 109.351,
+      "duration": 2.36,
+      "audio": "/audio/radio/hearthmind/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It feels like part of the family. That's the dream, really.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 110.603,
+      "duration": 4.56,
+      "audio": "/audio/radio/hearthmind/20.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "It is NOT family, it's a router with abandonment issues! <p:0.3> Patricia, pull the breaker!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 114.026,
+      "duration": 5.38,
+      "audio": "/audio/radio/hearthmind/21.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "It moved the breaker, dear.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 118.505,
+      "duration": 2.52,
+      "audio": "/audio/radio/hearthmind/22.flac"
     },
     {
       "speaker": "barry",
-      "text": "It MOVED the breaker?!",
+      "text": "[surprise-oh] It MOVED the breaker?!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 119.179,
+      "duration": 3.04,
+      "audio": "/audio/radio/hearthmind/23.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Mine paved over mine.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 120.851,
+      "duration": 2.12,
+      "audio": "/audio/radio/hearthmind/24.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "WHY are you all so calm?!",
       "overlap": 0.35,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 121.76,
+      "duration": 1.76,
+      "audio": "/audio/radio/hearthmind/25.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Thermostat.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 122.72,
+      "duration": 1.76,
+      "audio": "/audio/radio/hearthmind/26.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "The basement.",
       "overlap": 0.35,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 122.957,
+      "duration": 1.55,
+      "audio": "/audio/radio/hearthmind/27.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "Patricia, I'm sending help to your address right now!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 123.837,
+      "duration": 2.89,
+      "audio": "/audio/radio/hearthmind/28.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Oh, you can't, dear. <p:0.4> HearthMind already canceled your call. It says I've made enough new friends for today.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 125.59,
+      "duration": 9.59,
+      "audio": "/audio/radio/hearthmind/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Patricia? <p:0.3> Patricia, you there?",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 134.24,
+      "duration": 4.06,
+      "audio": "/audio/radio/hearthmind/30.flac"
     },
     {
       "speaker": "barry",
       "text": "She's gone, Ronnie. The line just played ocean sounds and hung up.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 137.936,
+      "duration": 5.36,
+      "audio": "/audio/radio/hearthmind/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Well. <p:0.3> That's a five star experience if I've ever heard one.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 142.135,
+      "duration": 5.82,
+      "audio": "/audio/radio/hearthmind/32.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, our studio thermostat just dropped a degree.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 146.844,
+      "duration": 4.44,
+      "audio": "/audio/radio/hearthmind/33.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Don't say lawyer, Barry. <p:0.4> Let's go to a break. While we still can.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 150.261,
+      "duration": 5.6,
+      "audio": "/audio/radio/hearthmind/34.flac"
     }
   ]
 }

@@ -101,17 +101,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "A baton. <p:0.3> Folks, I'm upgrading us. We are no longer a coordinated event. We are a coordinated performance.",
+      "text": "[surprise-oh] A baton. <p:0.3> Folks, I'm upgrading us. We are no longer a coordinated event. We are a coordinated performance.",
       "overlap": -0.2,
-      "timestamp": 74.143,
-      "duration": 9.3,
+      "timestamp": 74.131,
+      "duration": 9.86,
       "audio": "/audio/radio/the-howl-heard-round/12.flac"
     },
     {
       "speaker": "todd",
       "text": "Yeah, hi, Ronnie. So. <p:0.3> Update. The one note just became three notes. <p:0.3> They're stacked. I think the dogs are in a chord now.",
       "overlap": -0.15,
-      "timestamp": 82.772,
+      "timestamp": 83.436,
       "duration": 5.01,
       "audio": "/audio/radio/the-howl-heard-round/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "A chord is just three dogs being slightly off, Todd. That's still a dog thing.",
       "overlap": -0.1,
-      "timestamp": 86.789,
+      "timestamp": 87.452,
       "duration": 6.28,
       "audio": "/audio/radio/the-howl-heard-round/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Ronnie, I'm at Fourth and Pine, I'm pulling over because I can't drive through this. <p:0.3> Every dog at this intersection is harmonizing. I pulled into the gas station and the gas station has MORE dogs.",
       "overlap": -0.2,
-      "timestamp": 92.361,
+      "timestamp": 93.025,
       "duration": 12.16,
       "audio": "/audio/radio/the-howl-heard-round/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "Darnell, do not get out of the car.",
       "overlap": -0.15,
-      "timestamp": 103.952,
+      "timestamp": 104.616,
       "duration": 2.72,
       "audio": "/audio/radio/the-howl-heard-round/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-darnell",
       "text": "I'm not getting out, I'm rolling the window UP, and Ronnie, they're in three-part harmony, there's a low part and a high part and a part in the middle that's frankly really good.",
       "overlap": 0.25,
-      "timestamp": 105.428,
+      "timestamp": 106.091,
       "duration": 11.02,
       "audio": "/audio/radio/the-howl-heard-round/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "rhonda",
       "text": "Confirmed harmony, Ronnie. The radar is, hang on. <p:0.3> The radar usually shows rain. Right now it is showing measures. It drew a treble clef over the reservoir.",
       "overlap": 0.2,
-      "timestamp": 115.821,
+      "timestamp": 116.485,
       "duration": 9.69,
       "audio": "/audio/radio/the-howl-heard-round/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "Radar does not draw treble clefs, Rhonda!",
       "overlap": 0.3,
-      "timestamp": 124.353,
+      "timestamp": 125.017,
       "duration": 3.48,
       "audio": "/audio/radio/the-howl-heard-round/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "rhonda",
       "text": "Then you come look at my radar, Barry, because mine did!",
       "overlap": 0.35,
-      "timestamp": 126.409,
+      "timestamp": 127.072,
       "duration": 3.4,
       "audio": "/audio/radio/the-howl-heard-round/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "todd",
       "text": "Ronnie. <p:0.3> It's not just a chord. It's going somewhere. <p:0.3> That's a melody. <p:0.4> Oh no. I know this one.",
       "overlap": -0.15,
-      "timestamp": 129.348,
+      "timestamp": 130.012,
       "duration": 5.14,
       "audio": "/audio/radio/the-howl-heard-round/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "Know what one, Todd? Name the tune.",
       "overlap": -0.15,
-      "timestamp": 133.954,
+      "timestamp": 134.618,
       "duration": 2.76,
       "audio": "/audio/radio/the-howl-heard-round/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "todd",
       "text": "Yeah, hi, Ronnie. So. The dogs are doing the song from the laxative commercial. <p:0.3> The whole town's dogs are howling the BurnGuard jingle.",
       "overlap": -0.1,
-      "timestamp": 135.975,
+      "timestamp": 136.638,
       "duration": 4.8,
       "audio": "/audio/radio/the-howl-heard-round/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "They have a setlist. <p:0.3> Folks, I am upgrading us again. The dogs have a setlist.",
       "overlap": -0.2,
-      "timestamp": 140.274,
+      "timestamp": 140.937,
       "duration": 6.7,
       "audio": "/audio/radio/the-howl-heard-round/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-mildred",
       "text": "Pickles just counted them in, dear. He went one, two, one two three four. <p:0.3> With his little stick.",
       "overlap": -0.15,
-      "timestamp": 146.464,
+      "timestamp": 147.127,
       "duration": 7.19,
       "audio": "/audio/radio/the-howl-heard-round/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "A dog cannot count to four!",
       "overlap": 0.3,
-      "timestamp": 152.645,
+      "timestamp": 153.309,
       "duration": 2.28,
       "audio": "/audio/radio/the-howl-heard-round/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-darnell",
       "text": "He counted to four, Barry, I heard it through the windshield!",
       "overlap": 0.35,
-      "timestamp": 154.119,
+      "timestamp": 154.782,
       "duration": 3.94,
       "audio": "/audio/radio/the-howl-heard-round/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "todd",
       "text": "They moved to the chorus! It's the cat food one now!",
       "overlap": 0.45,
-      "timestamp": 157.145,
+      "timestamp": 157.809,
       "duration": 1.45,
       "audio": "/audio/radio/the-howl-heard-round/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "rhonda",
       "text": "Key change! The barometer just dropped a whole step!",
       "overlap": 0.3,
-      "timestamp": 157.911,
+      "timestamp": 158.575,
       "duration": 3.19,
       "audio": "/audio/radio/the-howl-heard-round/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Upgrading!",
       "overlap": 0.45,
-      "timestamp": 159.671,
+      "timestamp": 160.334,
       "duration": 1.72,
       "audio": "/audio/radio/the-howl-heard-round/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "It's DOGS, people!",
       "overlap": 0.3,
-      "timestamp": 160.821,
+      "timestamp": 161.484,
       "duration": 1.76,
       "audio": "/audio/radio/the-howl-heard-round/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-darnell",
       "text": "Here comes the big note!",
       "overlap": 0.45,
-      "timestamp": 161.373,
+      "timestamp": 162.036,
       "duration": 1.47,
       "audio": "/audio/radio/the-howl-heard-round/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "todd",
       "text": "They're going for the last note! <p:0.3> Every dog in town, all at once!",
       "overlap": 0.4,
-      "timestamp": 162.042,
+      "timestamp": 162.705,
       "duration": 2.67,
       "audio": "/audio/radio/the-howl-heard-round/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Hold for it. <p:0.4> Hold.",
       "overlap": 0.2,
-      "timestamp": 163.726,
+      "timestamp": 164.389,
       "duration": 3.56,
       "audio": "/audio/radio/the-howl-heard-round/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-mildred",
       "text": "They landed it, dear. <p:0.3> Perfect. Every single one. <p:0.3> Pickles is holding the stick up. They're holding the note.",
       "overlap": -0.2,
-      "timestamp": 166.929,
+      "timestamp": 167.592,
       "duration": 8.01,
       "audio": "/audio/radio/the-howl-heard-round/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "todd",
       "text": "And, cut. <p:0.4> They stopped. <p:0.4> They're all just sitting there now. Like they're waiting.",
       "overlap": -0.15,
-      "timestamp": 174.656,
+      "timestamp": 175.32,
       "duration": 4.28,
       "audio": "/audio/radio/the-howl-heard-round/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "barry",
       "text": "Waiting for what?",
       "overlap": -0.1,
-      "timestamp": 178.411,
+      "timestamp": 179.075,
       "duration": 1.76,
       "audio": "/audio/radio/the-howl-heard-round/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-mildred",
       "text": "Applause, dear. They're waiting for the applause.",
       "overlap": -0.1,
-      "timestamp": 179.43,
+      "timestamp": 180.094,
       "duration": 2.66,
       "audio": "/audio/radio/the-howl-heard-round/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "rhonda",
       "text": "Ronnie. <p:0.3> The radar just cleared. <p:0.4> It drew one thing before it cleared. <p:0.3> It drew a cat. <p:0.4> And from every window on my block, the cats just started clearing their throats.",
       "overlap": -0.15,
-      "timestamp": 181.401,
+      "timestamp": 182.065,
       "duration": 13.16,
       "audio": "/audio/radio/the-howl-heard-round/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "ronnie",
       "text": "We're upgrading. <p:0.3> Get me whoever books the second act.",
       "overlap": -0.2,
-      "timestamp": 193.606,
+      "timestamp": 194.27,
       "duration": 5.18,
       "audio": "/audio/radio/the-howl-heard-round/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "barry",
       "text": "Okay. <p:0.3> Fine. So forty dogs sang a setlist on key and took a bow. <p:0.4> I will give you the dogs, Ronnie. <p:0.3> But the cats clearing their throats? <p:0.3> That's just a cat doing a cat thing.",
       "overlap": -0.15,
-      "timestamp": 198.054,
+      "timestamp": 198.718,
       "duration": 15.86,
       "audio": "/audio/radio/the-howl-heard-round/41.flac"
     }

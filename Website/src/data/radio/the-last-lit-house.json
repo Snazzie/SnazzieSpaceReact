@@ -101,17 +101,17 @@
     },
     {
       "speaker": "caller-edwin",
-      "text": "Update, Ronnie. The microwave came back on. <p:0.3> It's been unplugged since March. It's asking me things now. Eleven hundred watts. Over.",
+      "text": "[surprise-oh] Update, Ronnie. The microwave came back on. <p:0.3> It's been unplugged since March. It's asking me things now. Eleven hundred watts. Over.",
       "overlap": -0.15,
-      "timestamp": 118.423,
-      "duration": 6.5,
+      "timestamp": 118.36,
+      "duration": 7.14,
       "audio": "/audio/radio/the-last-lit-house/12.flac"
     },
     {
       "speaker": "meter-vox",
       "text": "Great news! Your household usage is up four thousand percent. You've been automatically upgraded to our Platinum Surplus tier. No action needed. Have a luminous evening!",
       "overlap": -0.1,
-      "timestamp": 124.399,
+      "timestamp": 124.875,
       "duration": 9.57,
       "audio": "/audio/radio/the-last-lit-house/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "Who said that? Ronnie, who is upgrading him? Nobody touch the upgrade, just pull the meter!",
       "overlap": -0.1,
-      "timestamp": 132.946,
+      "timestamp": 133.422,
       "duration": 7.36,
       "audio": "/audio/radio/the-last-lit-house/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-patricia",
       "text": "That's not our meter talking, Barry. Per the load chart, that draw isn't on our side of the pole. You can't bill from a pole that isn't ours.",
       "overlap": -0.05,
-      "timestamp": 139.04,
+      "timestamp": 139.515,
       "duration": 12.0,
       "audio": "/audio/radio/the-last-lit-house/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "Now that's fair. Marco, if Patricia's pole is clean and Winston's assets are at rest, then the hot line must be the one your crew was on.",
       "overlap": -0.2,
-      "timestamp": 149.887,
+      "timestamp": 150.363,
       "duration": 10.09,
       "audio": "/audio/radio/the-last-lit-house/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-marco",
       "text": "On is not the same as cut, Ronnie. We were on a lot of lines tonight. The one that's glowing, I keep telling you, that's not the one we cut.",
       "overlap": 0.25,
-      "timestamp": 159.104,
+      "timestamp": 159.58,
       "duration": 6.96,
       "audio": "/audio/radio/the-last-lit-house/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-winston",
       "text": "And it's flowing, which makes it a live load, which makes it not mine. I catalogue assets at rest. A glowing house is somebody else's category.",
       "overlap": 0.25,
-      "timestamp": 164.898,
+      "timestamp": 165.374,
       "duration": 9.5,
       "audio": "/audio/radio/the-last-lit-house/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "It is getting BRIGHTER, Winston! A man's appliances are waking up!",
       "overlap": 0.3,
-      "timestamp": 173.115,
+      "timestamp": 173.59,
       "duration": 5.44,
       "audio": "/audio/radio/the-last-lit-house/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-edwin",
       "text": "Update. The fridge I unplugged in March is humming a tune. <p:0.3> It's the one from the radio. It knows the words. Six hundred watts. Over.",
       "overlap": -0.1,
-      "timestamp": 177.858,
+      "timestamp": 178.334,
       "duration": 6.42,
       "audio": "/audio/radio/the-last-lit-house/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "barry",
       "text": "Just pull the meter! Somebody! PULL THE METER!",
       "overlap": 0.3,
-      "timestamp": 183.558,
+      "timestamp": 184.033,
       "duration": 3.84,
       "audio": "/audio/radio/the-last-lit-house/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-patricia",
       "text": "Not our pole!",
       "overlap": 0.35,
-      "timestamp": 185.833,
+      "timestamp": 186.309,
       "duration": 1.76,
       "audio": "/audio/radio/the-last-lit-house/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-marco",
       "text": "Different line!",
       "overlap": 0.4,
-      "timestamp": 186.859,
+      "timestamp": 187.334,
       "duration": 1.48,
       "audio": "/audio/radio/the-last-lit-house/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-winston",
       "text": "Asset class!",
       "overlap": 0.3,
-      "timestamp": 186.992,
+      "timestamp": 187.468,
       "duration": 1.79,
       "audio": "/audio/radio/the-last-lit-house/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "meter-vox",
       "text": "GREAT NEWS!",
       "overlap": 0.4,
-      "timestamp": 187.781,
+      "timestamp": 188.257,
       "duration": 1.39,
       "audio": "/audio/radio/the-last-lit-house/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "PULL THE METER!",
       "overlap": 0.35,
-      "timestamp": 188.376,
+      "timestamp": 188.852,
       "duration": 1.68,
       "audio": "/audio/radio/the-last-lit-house/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "meter-vox",
       "text": "Great news! Your meter has been upgraded to read-only. <p:0.3> There is no longer an off. Enjoy the glow!",
       "overlap": -0.1,
-      "timestamp": 189.149,
+      "timestamp": 189.624,
       "duration": 6.02,
       "audio": "/audio/radio/the-last-lit-house/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "Edwin? <p:0.3> Edwin, you still with us?",
       "overlap": -0.1,
-      "timestamp": 194.706,
+      "timestamp": 195.181,
       "duration": 3.74,
       "audio": "/audio/radio/the-last-lit-house/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-edwin",
       "text": "...Edwin's resting now. <p:0.4> The house has the line. Twelve thousand watts. <p:0.3> And climbing. Over.",
       "overlap": -0.15,
-      "timestamp": 197.678,
+      "timestamp": 198.154,
       "duration": 6.26,
       "audio": "/audio/radio/the-last-lit-house/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Well, folks, by unanimous agreement, that surplus belongs to nobody at all. <p:0.3> So congratulations to Pell Court, the brightest house in the county. Wave if you see Edwin's porch light. We'll be right back.",
       "overlap": -0.2,
-      "timestamp": 203.293,
+      "timestamp": 203.769,
       "duration": 15.86,
       "audio": "/audio/radio/the-last-lit-house/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> I can see his porch light from the studio. Through the wall.",
       "overlap": -0.1,
-      "timestamp": 218.115,
+      "timestamp": 218.59,
       "duration": 6.54,
       "audio": "/audio/radio/the-last-lit-house/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "Now that's fair. <p:0.3> Was that on a minute ago?",
       "overlap": -0.2,
-      "timestamp": 223.601,
+      "timestamp": 224.077,
       "duration": 4.42,
       "audio": "/audio/radio/the-last-lit-house/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "It wasn't, Ronnie. <p:0.3> And our lights just got brighter.",
       "overlap": -0.1,
-      "timestamp": 227.196,
+      "timestamp": 227.672,
       "duration": 4.9,
       "audio": "/audio/radio/the-last-lit-house/33.flac"
     }

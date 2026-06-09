@@ -10,7 +10,7 @@
       "text": "Donna's Diner, best pancakes and bottomless coffee in town, open six to noon, <p:0.3> hold on, phone. <p:0.4> Donna's Diner. No, we're closed. <p:0.3> Okay, where was I.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 14.54,
+      "duration": 14.56,
       "audio": "/audio/radio/ad-donnas-diner/0.flac"
     },
     {
@@ -19,15 +19,15 @@
       "distant": true,
       "gain": 0.5,
       "overlap": 0.3,
-      "timestamp": 13.208,
-      "duration": 3.46,
+      "timestamp": 13.184,
+      "duration": 3.38,
       "audio": "/audio/radio/ad-donnas-diner/1.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Be right there, hon! <p:0.4> Ugh, where was I. <p:0.4> We got eggs, bacon, hash browns, and fresh biscuits, <p:0.3> table four, I'll be right there! <p:0.4> Sorry. <p:0.3> Donna's Diner, come hungry, leave... <p:0.4> Forget it.",
       "overlap": 0.2,
-      "timestamp": 15.663,
+      "timestamp": 15.701,
       "duration": 20.04,
       "audio": "/audio/radio/ad-donnas-diner/2.flac"
     }

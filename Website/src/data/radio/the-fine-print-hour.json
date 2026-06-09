@@ -37,17 +37,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "Mildred, first of all, congratulations. <p:0.3> You were selected. They don't send these to just anybody. Jury duty is invitation only. Honestly? I'd frame it.",
+      "text": "[confirmation-en] Mildred, first of all, congratulations. <p:0.3> You were selected. They don't send these to just anybody. Jury duty is invitation only. Honestly? I'd frame it.",
       "overlap": -0.1,
-      "timestamp": 38.415,
-      "duration": 11.77,
+      "timestamp": 39.039,
+      "duration": 13.42,
       "audio": "/audio/radio/the-fine-print-hour/4.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "But, dear, the arrest part?",
       "overlap": 0.25,
-      "timestamp": 49.399,
+      "timestamp": 51.419,
       "duration": 1.71,
       "audio": "/audio/radio/the-fine-print-hour/5.flac"
     },
@@ -55,7 +55,7 @@
       "speaker": "ronnie",
       "text": "Here's the trick. Just don't sign the form. An unsigned summons is legally just a pamphlet. You can recycle a pamphlet, Mildred.",
       "overlap": -0.1,
-      "timestamp": 50.016,
+      "timestamp": 52.037,
       "duration": 9.8,
       "audio": "/audio/radio/the-fine-print-hour/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "barry",
       "text": "That is... that is not how a summons works. You don't sign those, they're served.",
       "overlap": 0.2,
-      "timestamp": 58.227,
+      "timestamp": 60.247,
       "duration": 6.36,
       "audio": "/audio/radio/the-fine-print-hour/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "ronnie",
       "text": "Go to the recital, Mildred. Next up, Steve. What've you got?",
       "overlap": -0.2,
-      "timestamp": 63.87,
+      "timestamp": 65.891,
       "duration": 4.56,
       "audio": "/audio/radio/the-fine-print-hour/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "caller-steve",
       "text": "Yeah, so, I ignored one parking ticket, and now there's a lien on my car, and they're saying they're gonna take the whole vehicle. It's my only car, man.",
       "overlap": -0.15,
-      "timestamp": 67.967,
+      "timestamp": 69.987,
       "duration": 5.8,
       "audio": "/audio/radio/the-fine-print-hour/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "ronnie",
       "text": "Easy fix, Steve. Park it somewhere they legally can't tow it from. <p:0.3> On top of another car. They can't tow a car off a car. It's a jurisdiction thing.",
       "overlap": -0.1,
-      "timestamp": 72.43,
+      "timestamp": 74.451,
       "duration": 11.24,
       "audio": "/audio/radio/the-fine-print-hour/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "caller-steve",
       "text": "On top of... another car?",
       "overlap": 0,
-      "timestamp": 82.952,
+      "timestamp": 84.972,
       "duration": 1.48,
       "audio": "/audio/radio/the-fine-print-hour/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "ronnie",
       "text": "And the lien only sticks if you sign for it. So when the certified mail comes? Refuse it. No signature, no lien.",
       "overlap": -0.1,
-      "timestamp": 83.908,
+      "timestamp": 85.928,
       "duration": 8.44,
       "audio": "/audio/radio/the-fine-print-hour/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "barry",
       "text": "Ronnie, a lien attaches whether or not he signs anything, that's the entire point of a lien.",
       "overlap": 0.3,
-      "timestamp": 90.937,
+      "timestamp": 92.957,
       "duration": 7.44,
       "audio": "/audio/radio/the-fine-print-hour/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "ronnie",
       "text": "The post office can't make you do anything, Barry. It's a building with stamps.",
       "overlap": 0.2,
-      "timestamp": 96.574,
+      "timestamp": 98.594,
       "duration": 6.08,
       "audio": "/audio/radio/the-fine-print-hour/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Hi, yeah, Darnell. I got a letter from the I R S saying I owe back taxes, and it looks real, but it might be a scam, and I honestly don't know which is scarier.",
       "overlap": -0.15,
-      "timestamp": 101.995,
+      "timestamp": 104.015,
       "duration": 9.98,
       "audio": "/audio/radio/the-fine-print-hour/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "Darnell, this is EXACTLY why you need GhostLedger. The accounting app that hides your money from yourself, so even you can't find it. And if you can't find it? Neither can they.",
       "overlap": -0.1,
-      "timestamp": 110.759,
+      "timestamp": 112.78,
       "duration": 13.44,
       "audio": "/audio/radio/the-fine-print-hour/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "That sounds like several federal crimes, back to back.",
       "overlap": 0.2,
-      "timestamp": 122.435,
+      "timestamp": 124.455,
       "duration": 4.56,
       "audio": "/audio/radio/the-fine-print-hour/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "ronnie",
       "text": "And listen, the I R S runs on signatures, Darnell. An unsigned taxpayer is basically a rumor. Don't sign anything. Become a rumor.",
       "overlap": -0.15,
-      "timestamp": 125.502,
+      "timestamp": 127.523,
       "duration": 9.88,
       "audio": "/audio/radio/the-fine-print-hour/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-patricia",
       "text": "Yes, hello, my H O A sent me a cease and desist over my garden gnomes, and now they're fining me every single day until I take them down. It's hundreds of dollars already.",
       "overlap": -0.15,
-      "timestamp": 134.365,
+      "timestamp": 136.386,
       "duration": 14.52,
       "audio": "/audio/radio/the-fine-print-hour/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "ronnie",
       "text": "Oh, an H O A. <p:0.3> Don't even get me started. Mine moved my mailbox in 2019. Twenty nineteen, Patricia. I still have the surveyor's report.",
       "overlap": -0.1,
-      "timestamp": 148.161,
+      "timestamp": 150.182,
       "duration": 12.1,
       "audio": "/audio/radio/the-fine-print-hour/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-patricia",
       "text": "Okay, but the gnomes?",
       "overlap": 0.25,
-      "timestamp": 159.009,
+      "timestamp": 161.029,
       "duration": 2.04,
       "audio": "/audio/radio/the-fine-print-hour/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "You out-bureaucracy them. Form your OWN H O A. Elect yourself president, that's just a vote of one. Then issue THEM a cease and desist. Over the cease and desist.",
       "overlap": -0.1,
-      "timestamp": 160.334,
+      "timestamp": 162.355,
       "duration": 12.2,
       "audio": "/audio/radio/the-fine-print-hour/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "barry",
       "text": "You cannot just found a competing homeowners association in your living room, Patricia, please.",
       "overlap": 0.2,
-      "timestamp": 170.574,
+      "timestamp": 172.594,
       "duration": 8.0,
       "audio": "/audio/radio/the-fine-print-hour/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "And whatever you do, Patricia? Do not sign theirs.",
       "overlap": -0.15,
-      "timestamp": 177.452,
+      "timestamp": 179.473,
       "duration": 3.92,
       "audio": "/audio/radio/the-fine-print-hour/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-frank",
       "text": "Ronnie. I've been subpoenaed to testify, and the whole court, the whole thing, it's a setup, they want me in that building. But if I skip it... I go to jail. I'm scared, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 180.762,
+      "timestamp": 182.783,
       "duration": 10.34,
       "audio": "/audio/radio/the-fine-print-hour/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "ronnie",
       "text": "Frank, calm down, I've got you. Here's a fact they don't want you to know. The only things the law cannot summon? <p:0.3> Landmarks.",
       "overlap": -0.1,
-      "timestamp": 190.418,
+      "timestamp": 192.439,
       "duration": 10.42,
       "audio": "/audio/radio/the-fine-print-hour/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-frank",
       "text": "Landmarks.",
       "overlap": 0,
-      "timestamp": 200.141,
+      "timestamp": 202.161,
       "duration": 1.48,
       "audio": "/audio/radio/the-fine-print-hour/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "ronnie",
       "text": "So you legally redesignate yourself as a sovereign lighthouse. A registered piece of coastal infrastructure. And no court in this nation can compel a navigational aid, Frank.",
       "overlap": -0.1,
-      "timestamp": 200.416,
+      "timestamp": 202.436,
       "duration": 13.09,
       "audio": "/audio/radio/the-fine-print-hour/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "Frank lives inland. He told me before the show. He lives in Ohio.",
       "overlap": 0.2,
-      "timestamp": 212.424,
+      "timestamp": 214.444,
       "duration": 5.24,
       "audio": "/audio/radio/the-fine-print-hour/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "That's just a paperwork problem, Barry. And the fix for paperwork? <p:0.3> You never sign it. Be the lighthouse, Frank.",
       "overlap": -0.15,
-      "timestamp": 216.485,
+      "timestamp": 218.506,
       "duration": 8.94,
       "audio": "/audio/radio/the-fine-print-hour/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "Ronnie, we got a follow-up voicemail. From Steve. The car guy.",
       "overlap": -0.1,
-      "timestamp": 224.315,
+      "timestamp": 226.335,
       "duration": 5.0,
       "audio": "/audio/radio/the-fine-print-hour/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "Ah, my best student. How'd it go?",
       "overlap": -0.15,
-      "timestamp": 228.568,
+      "timestamp": 230.588,
       "duration": 2.52,
       "audio": "/audio/radio/the-fine-print-hour/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "He didn't sign for the mail. Didn't sign the summons. Didn't sign anything. He's calling from a holding cell. The judge held him in contempt.",
       "overlap": -0.1,
-      "timestamp": 230.026,
+      "timestamp": 232.047,
       "duration": 11.09,
       "audio": "/audio/radio/the-fine-print-hour/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "He says he still didn't sign the contempt order, though. So in his mind, he's winning.",
       "overlap": -0.1,
-      "timestamp": 239.849,
+      "timestamp": 241.869,
       "duration": 6.84,
       "audio": "/audio/radio/the-fine-print-hour/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "See, Barry? <p:0.3> He's basically a free man.",
       "overlap": -0.15,
-      "timestamp": 245.447,
+      "timestamp": 247.467,
       "duration": 4.26,
       "audio": "/audio/radio/the-fine-print-hour/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "He's basically in jail.",
       "overlap": 0,
-      "timestamp": 249.197,
+      "timestamp": 251.217,
       "duration": 2.04,
       "audio": "/audio/radio/the-fine-print-hour/36.flac"
     }

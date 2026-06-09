@@ -73,10 +73,10 @@ writing any episode.** Every recurring voice must stay true to its bio.
 6. **Emotional arc** — episodes should *develop*, not stay flat. Build a 3-act escalation:
    calm/conversational → unease → agitation/near-panic. Show it in the text so the voice
    reflects it: interjections, ellipses early; caps, `!`, repetition late.
-   - ⚠️ **Nonverbals `(gasps)`/`(sighs)`/`(laughs)` are Dia-ONLY.** OmniVoice has no nonverbal
-     tokens and reads them **aloud literally** ("open paren sighs"). In an OmniVoice
-     (multitrack) episode they must NEVER appear in `text` — convey the sigh/laugh through
-     wording instead ("Ohhh boy.", "Hah."). Only use them in `engine: dia*` episodes.
+   - **Nonverbals differ by engine:**
+     - **Dia** (parenthesis syntax): `(gasps)`, `(sighs)`, `(laughs)` — Dia-only. OmniVoice reads these **aloud literally**.
+     - **OmniVoice** (square bracket syntax): `[laughter]`, `[sigh]`, `[confirmation-en]`, `[question-en]`, `[question-ah]`, `[question-oh]`, `[question-ei]`, `[question-yi]`, `[surprise-ah]`, `[surprise-oh]`, `[surprise-wa]`, `[surprise-yo]`, `[dissatisfaction-hnn]` — insert inline; model produces the sound.
+     - Never mix syntaxes. See `docs/omnivoice-reference.md` for full tag list.
 7. **Interruptions when agitated** — as tension rises, characters cut each other off:
    - OmniVoice (multitrack): give the interrupting line a **positive `overlap`** so its speech
      starts before the previous line's ends — a real audio talk-over.

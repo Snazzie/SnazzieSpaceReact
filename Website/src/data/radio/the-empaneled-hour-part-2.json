@@ -133,17 +133,17 @@
     },
     {
       "speaker": "caller-kim",
-      "text": "Yeah, well, permanently apparently means I'm a JUROR again! I never even got a SECOND letter!",
+      "text": "[surprise-ah] Yeah, well, permanently apparently means I'm a JUROR again! I never even got a SECOND letter!",
       "overlap": 0.3,
-      "timestamp": 103.786,
-      "duration": 5.24,
+      "timestamp": 103.634,
+      "duration": 5.83,
       "audio": "/audio/radio/the-empaneled-hour-part-2/16.flac"
     },
     {
       "speaker": "bailiff-orrin",
       "text": "You were re-empaneled, ma'am. <p:0.3> Convicts serve too. <p:0.2> The court thanks you for your continued service.",
       "overlap": -0.1,
-      "timestamp": 108.712,
+      "timestamp": 109.152,
       "duration": 10.02,
       "audio": "/audio/radio/the-empaneled-hour-part-2/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "ronnie",
       "text": "Alright, jury, let's do this clean. <p:0.3> As foreperson, I'll just poll the room. <p:0.3> All in favor of letting the defendant, me, go home.",
       "overlap": -0.2,
-      "timestamp": 117.961,
+      "timestamp": 118.401,
       "duration": 10.4,
       "audio": "/audio/radio/the-empaneled-hour-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-chen",
       "text": "Aye.",
       "overlap": 0.3,
-      "timestamp": 126.891,
+      "timestamp": 127.332,
       "duration": 1.12,
       "audio": "/audio/radio/the-empaneled-hour-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-kim",
       "text": "Aye! Big aye!",
       "overlap": 0.4,
-      "timestamp": 127.713,
+      "timestamp": 128.153,
       "duration": 1.44,
       "audio": "/audio/radio/the-empaneled-hour-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "barry",
       "text": "Aye! From the parking lot, AYE!",
       "overlap": 0.4,
-      "timestamp": 128.485,
+      "timestamp": 128.925,
       "duration": 2.56,
       "audio": "/audio/radio/the-empaneled-hour-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "Motion carries. <p:0.3> Orrin, the jury has spoken. Read the verdict and let's all come down.",
       "overlap": -0.15,
-      "timestamp": 130.148,
+      "timestamp": 130.588,
       "duration": 7.54,
       "audio": "/audio/radio/the-empaneled-hour-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "bailiff-orrin",
       "text": "The verdict cannot be delivered until the foreperson signs it, sir. <p:0.3> You have no pen. <p:0.2> The pen is evidence.",
       "overlap": -0.1,
-      "timestamp": 136.213,
+      "timestamp": 136.653,
       "duration": 10.88,
       "audio": "/audio/radio/the-empaneled-hour-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "Then GIVE him the evidence!",
       "overlap": 0.35,
-      "timestamp": 145.972,
+      "timestamp": 146.412,
       "duration": 2.36,
       "audio": "/audio/radio/the-empaneled-hour-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "bailiff-orrin",
       "text": "Evidence may not leave the room.",
       "overlap": 0.3,
-      "timestamp": 146.747,
+      "timestamp": 147.187,
       "duration": 3.04,
       "audio": "/audio/radio/the-empaneled-hour-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-kim",
       "text": "And the room is RISING!",
       "overlap": 0.4,
-      "timestamp": 148.422,
+      "timestamp": 148.862,
       "duration": 1.76,
       "audio": "/audio/radio/the-empaneled-hour-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-chen",
       "text": "The toast is rising too, friend.",
       "overlap": 0.4,
-      "timestamp": 149.357,
+      "timestamp": 149.797,
       "duration": 1.97,
       "audio": "/audio/radio/the-empaneled-hour-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "Nobody cares about the TOAST, Chen!",
       "overlap": 0.4,
-      "timestamp": 149.947,
+      "timestamp": 150.387,
       "duration": 3.0,
       "audio": "/audio/radio/the-empaneled-hour-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "ronnie",
       "text": "Tell you what, Orrin. As foreperson, I move to sign with a pen that's also evidence. <p:0.3> I'll allow it. I'm the judge of that.",
       "overlap": -0.15,
-      "timestamp": 151.917,
+      "timestamp": 152.357,
       "duration": 9.5,
       "audio": "/audio/radio/the-empaneled-hour-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "bailiff-orrin",
       "text": "Sustained, Your Honor. <p:0.3> The verdict is signed. <p:0.2> Guilty. <p:0.2> The studio is excused. Permanently.",
       "overlap": -0.1,
-      "timestamp": 160.36,
+      "timestamp": 160.8,
       "duration": 10.27,
       "audio": "/audio/radio/the-empaneled-hour-part-2/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "We're coming DOWN, right? Ronnie, tell me we're coming down.",
       "overlap": -0.1,
-      "timestamp": 169.68,
+      "timestamp": 170.12,
       "duration": 4.84,
       "audio": "/audio/radio/the-empaneled-hour-part-2/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "bailiff-orrin",
       "text": "All rise. <p:0.3> There is an appeal. <p:0.2> The whole city has been empaneled now.",
       "overlap": -0.1,
-      "timestamp": 173.527,
+      "timestamp": 173.967,
       "duration": 7.6,
       "audio": "/audio/radio/the-empaneled-hour-part-2/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Well, folks, sounds like the entire listening area is going up with us. <p:0.3> So if you can hear me, grab something. <p:0.3> And thank you. <p:0.3> For your service.",
       "overlap": -0.15,
-      "timestamp": 180.211,
+      "timestamp": 180.651,
       "duration": 13.26,
       "audio": "/audio/radio/the-empaneled-hour-part-2/33.flac"
     }

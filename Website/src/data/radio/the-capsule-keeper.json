@@ -205,17 +205,17 @@
     },
     {
       "speaker": "caller-chad",
-      "text": "Why is there DIRT on my shoes?!",
+      "text": "[surprise-ah] Why is there DIRT on my shoes?!",
       "overlap": 0.4,
-      "timestamp": 163.45,
-      "duration": 1.72,
+      "timestamp": 163.446,
+      "duration": 2.32,
       "audio": "/audio/radio/the-capsule-keeper/25.flac"
     },
     {
       "speaker": "barry",
       "text": "One WAY, Ronnie!",
       "overlap": 0.4,
-      "timestamp": 163.972,
+      "timestamp": 164.29,
       "duration": 1.68,
       "audio": "/audio/radio/the-capsule-keeper/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "Easy, gentlemen, easy. <p:0.3> This is a sacred moment, not a circus.",
       "overlap": 0.25,
-      "timestamp": 164.67,
+      "timestamp": 164.988,
       "duration": 5.42,
       "audio": "/audio/radio/the-capsule-keeper/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-chad",
       "text": "It's a little bit of a circus from down here, Ronnie!",
       "overlap": 0.3,
-      "timestamp": 169.175,
+      "timestamp": 169.493,
       "duration": 2.68,
       "audio": "/audio/radio/the-capsule-keeper/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "ronnie",
       "text": "Seventy-five years, never missed a Keeper. <p:0.3> Chad, congratulations. And don't you move.",
       "overlap": -0.2,
-      "timestamp": 170.569,
+      "timestamp": 170.887,
       "duration": 7.14,
       "audio": "/audio/radio/the-capsule-keeper/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "clerk-doreen",
       "text": "Shovels are already moving, per the ledger.",
       "overlap": -0.1,
-      "timestamp": 177.15,
+      "timestamp": 177.468,
       "duration": 2.56,
       "audio": "/audio/radio/the-capsule-keeper/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "Who's holding the shovels, Doreen?",
       "overlap": -0.1,
-      "timestamp": 178.712,
+      "timestamp": 179.029,
       "duration": 2.92,
       "audio": "/audio/radio/the-capsule-keeper/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-marv",
       "text": "The crew, Barry. <p:0.3> Same crew as always.",
       "overlap": -0.1,
-      "timestamp": 180.885,
+      "timestamp": 181.202,
       "duration": 3.73,
       "audio": "/audio/radio/the-capsule-keeper/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "And there it is. <p:0.3> A brand-new crew, a brand-new Keeper, the streak unbroken. We'll be right back, Snazzie. <p:0.3> Now THAT'S a Capsule.",
       "overlap": -0.2,
-      "timestamp": 183.859,
+      "timestamp": 184.177,
       "duration": 11.36,
       "audio": "/audio/radio/the-capsule-keeper/33.flac"
     }

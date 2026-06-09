@@ -61,17 +61,17 @@
     },
     {
       "speaker": "caller-linda",
-      "text": "Salt the... salt the ice?",
+      "text": "[question-en] Salt the... salt the ice?",
       "overlap": -0.1,
-      "timestamp": 47.838,
-      "duration": 2.09,
+      "timestamp": 47.716,
+      "duration": 2.61,
       "audio": "/audio/radio/the-clean-plate-club/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "They'll be talking about it for years. Next caller, Mildred, welcome to the Club.",
       "overlap": -0.2,
-      "timestamp": 49.313,
+      "timestamp": 49.676,
       "duration": 6.24,
       "audio": "/audio/radio/the-clean-plate-club/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "caller-mildred",
       "text": "Hello dear. My grandkids are visiting and I wanted to make my late husband's famous chili, but I've lost the recipe. I just... I want it to taste like his did.",
       "overlap": -0.15,
-      "timestamp": 54.973,
+      "timestamp": 55.336,
       "duration": 12.11,
       "audio": "/audio/radio/the-clean-plate-club/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "ronnie",
       "text": "Mildred, that is beautiful, and I'm gonna be honest with you. <p:0.3> Don't make it. Order the chili from tonight's sponsor, Big Mike's Subs, now serving a chili.",
       "overlap": -0.1,
-      "timestamp": 65.771,
+      "timestamp": 66.134,
       "duration": 12.02,
       "audio": "/audio/radio/the-clean-plate-club/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "barry",
       "text": "Ronnie, she doesn't want Big Mike's chili, she wants HIS...",
       "overlap": 0.3,
-      "timestamp": 75.973,
+      "timestamp": 76.336,
       "duration": 4.72,
       "audio": "/audio/radio/the-clean-plate-club/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "ronnie",
       "text": "You know, no recipe ever tasted right to me after the divorce either, Mildred. Brenda took the cumin. Took the whole spice rack, actually. Took the rack.",
       "overlap": 0.2,
-      "timestamp": 78.659,
+      "timestamp": 79.022,
       "duration": 11.68,
       "audio": "/audio/radio/the-clean-plate-club/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-mildred",
       "text": "Oh. I'm... I'm so sorry about Brenda?",
       "overlap": -0.1,
-      "timestamp": 89.572,
+      "timestamp": 89.935,
       "duration": 2.77,
       "audio": "/audio/radio/the-clean-plate-club/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "ronnie",
       "text": "Add more salt, Mildred. That's what he'd want. Darnell, you're on the Clean Plate Club.",
       "overlap": -0.2,
-      "timestamp": 91.716,
+      "timestamp": 92.078,
       "duration": 6.6,
       "audio": "/audio/radio/the-clean-plate-club/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Hey, so I just started as a line cook and I'm honestly terrified I'm gonna undercook the chicken and make somebody sick. How do you actually KNOW when chicken's done?",
       "overlap": -0.15,
-      "timestamp": 97.867,
+      "timestamp": 98.229,
       "duration": 9.65,
       "audio": "/audio/radio/the-clean-plate-club/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "Easy, Darnell. You just look at it. Color is a suggestion. A little pink keeps it juicy and builds the immune system.",
       "overlap": -0.1,
-      "timestamp": 106.714,
+      "timestamp": 107.077,
       "duration": 8.88,
       "audio": "/audio/radio/the-clean-plate-club/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "No! No, Darnell, one hundred and sixty five degrees, internal temperature, please use a thermometer.",
       "overlap": 0.35,
-      "timestamp": 114.151,
+      "timestamp": 114.514,
       "duration": 8.24,
       "audio": "/audio/radio/the-clean-plate-club/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "ronnie",
       "text": "Thermometers are fear-mongering, Barry. <p:0.3> And Darnell, if you're nervous? Add more salt. Salt kills everything.",
       "overlap": 0.2,
-      "timestamp": 120.875,
+      "timestamp": 121.238,
       "duration": 9.02,
       "audio": "/audio/radio/the-clean-plate-club/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-darnell",
       "text": "I don't think that's how... that's not how salt works, man.",
       "overlap": -0.1,
-      "timestamp": 129.189,
+      "timestamp": 129.552,
       "duration": 3.09,
       "audio": "/audio/radio/the-clean-plate-club/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "ronnie",
       "text": "Confidence, Darnell. Plate it. Sal, you own a restaurant, talk to me.",
       "overlap": -0.2,
-      "timestamp": 131.771,
+      "timestamp": 132.134,
       "duration": 5.28,
       "audio": "/audio/radio/the-clean-plate-club/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-sal",
       "text": "Yeah, Ronnie, my signature marinara, suddenly it tastes off. I can't figure out what changed and I'm losing my regulars over it. What do I do?",
       "overlap": -0.15,
-      "timestamp": 135.386,
+      "timestamp": 135.748,
       "duration": 10.88,
       "audio": "/audio/radio/the-clean-plate-club/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "Okay, first thing, Sal. You take the fitted sheet, and you find the two corners with the seam. <p:0.3> Then you tuck one inside the... wait. Hang on.",
       "overlap": -0.1,
-      "timestamp": 145.118,
+      "timestamp": 145.48,
       "duration": 10.9,
       "audio": "/audio/radio/the-clean-plate-club/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "barry",
       "text": "Ronnie, that's a different call. That was a laundry question last week.",
       "overlap": 0.25,
-      "timestamp": 153.91,
+      "timestamp": 154.273,
       "duration": 5.84,
       "audio": "/audio/radio/the-clean-plate-club/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "ronnie",
       "text": "You know what, Sal? The sauce is fine. The CUSTOMERS are the problem. Add more salt and charge them double for the privilege.",
       "overlap": 0.2,
-      "timestamp": 158.204,
+      "timestamp": 158.567,
       "duration": 9.56,
       "audio": "/audio/radio/the-clean-plate-club/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-sal",
       "text": "Double? They already hate it!",
       "overlap": 0.25,
-      "timestamp": 166.7,
+      "timestamp": 167.063,
       "duration": 2.44,
       "audio": "/audio/radio/the-clean-plate-club/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "ronnie",
       "text": "Then they'll hate it expensively. Next. Gary, you sound stressed, go.",
       "overlap": -0.2,
-      "timestamp": 168.172,
+      "timestamp": 168.534,
       "duration": 5.36,
       "audio": "/audio/radio/the-clean-plate-club/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-gary",
       "text": "RONNIE there's a fire, there's a grease fire on my stove RIGHT NOW, what do I do, what do I DO!",
       "overlap": 0.3,
-      "timestamp": 172.588,
+      "timestamp": 172.951,
       "duration": 8.19,
       "audio": "/audio/radio/the-clean-plate-club/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "ronnie",
       "text": "Gary. Gary, breathe. Fire is just flavor you can see. Lean into it.",
       "overlap": -0.1,
-      "timestamp": 179.916,
+      "timestamp": 180.279,
       "duration": 5.08,
       "audio": "/audio/radio/the-clean-plate-club/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "Gary, NO, do not lean in, where is your fire extinguisher, lid on the pan, turn off the burner!",
       "overlap": 0.35,
-      "timestamp": 183.727,
+      "timestamp": 184.09,
       "duration": 7.48,
       "audio": "/audio/radio/the-clean-plate-club/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Barry's being dramatic. <p:0.3> Gary, throw salt on it. No. Throw ALL the salt on it. Every grain you own.",
       "overlap": 0.2,
-      "timestamp": 189.65,
+      "timestamp": 190.012,
       "duration": 7.98,
       "audio": "/audio/radio/the-clean-plate-club/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-gary",
       "text": "It's getting BIGGER, oh no, oh no no no!",
       "overlap": 0.4,
-      "timestamp": 195.815,
+      "timestamp": 196.178,
       "duration": 3.29,
       "audio": "/audio/radio/the-clean-plate-club/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "Because that's not how... HANG UP AND CALL THE FIRE DEPARTMENT, GARY!",
       "overlap": 0.4,
-      "timestamp": 198.021,
+      "timestamp": 198.384,
       "duration": 5.56,
       "audio": "/audio/radio/the-clean-plate-club/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "And we've lost Gary's line. <p:0.3> Beautiful season of cooking, everybody.",
       "overlap": -0.1,
-      "timestamp": 202.728,
+      "timestamp": 203.091,
       "duration": 5.82,
       "audio": "/audio/radio/the-clean-plate-club/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "That's the third kitchen this season, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 206.826,
+      "timestamp": 207.189,
       "duration": 3.8,
       "audio": "/audio/radio/the-clean-plate-club/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "Third one that called BACK, Barry. <p:0.3> They love us.",
       "overlap": -0.15,
-      "timestamp": 209.315,
+      "timestamp": 209.678,
       "duration": 4.86,
       "audio": "/audio/radio/the-clean-plate-club/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-gary",
       "text": "...it spread.",
       "overlap": 0.2,
-      "timestamp": 213.134,
+      "timestamp": 213.497,
       "duration": 1.92,
       "audio": "/audio/radio/the-clean-plate-club/36.flac"
     }

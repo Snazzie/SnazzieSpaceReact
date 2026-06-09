@@ -133,17 +133,17 @@
     },
     {
       "speaker": "caller-mildred",
-      "text": "Then Earl comes by, dear.",
+      "text": "[dissatisfaction-hnn] Then Earl comes by, dear.",
       "overlap": -0.1,
-      "timestamp": 105.033,
-      "duration": 1.79,
+      "timestamp": 105.014,
+      "duration": 3.5,
       "audio": "/audio/radio/the-casserole-ledger/16.flac"
     },
     {
       "speaker": "barry",
       "text": "Who's Earl?",
       "overlap": -0.1,
-      "timestamp": 106.485,
+      "timestamp": 108.2,
       "duration": 1.52,
       "audio": "/audio/radio/the-casserole-ledger/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-patricia",
       "text": "Earl's the deacon. <p:0.3> Earl does collections.",
       "overlap": -0.1,
-      "timestamp": 106.891,
+      "timestamp": 108.606,
       "duration": 4.5,
       "audio": "/audio/radio/the-casserole-ledger/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-nadia",
       "text": "Collections of WHAT? It's a casserole!",
       "overlap": -0.1,
-      "timestamp": 110.267,
+      "timestamp": 111.982,
       "duration": 2.24,
       "audio": "/audio/radio/the-casserole-ledger/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-mildred",
       "text": "The Tupperware, dear. The dish is the parish's. <p:0.3> You keep the dish, you're holding collateral. Earl comes for the dish.",
       "overlap": -0.1,
-      "timestamp": 112.215,
+      "timestamp": 113.93,
       "duration": 8.37,
       "audio": "/audio/radio/the-casserole-ledger/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "ronnie",
       "text": "He recovers the assets. <p:0.3> What a steward, Barry. The man keeps the kingdom solvent.",
       "overlap": -0.2,
-      "timestamp": 119.925,
+      "timestamp": 121.641,
       "duration": 6.94,
       "audio": "/audio/radio/the-casserole-ledger/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Did you say collateral? Mildred, a casserole dish is not collateral.",
       "overlap": -0.1,
-      "timestamp": 126.193,
+      "timestamp": 127.908,
       "duration": 5.68,
       "audio": "/audio/radio/the-casserole-ledger/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-mildred",
       "text": "Everything's collateral, Barry, if you write it in the ledger. <p:0.3> And the ledger's leather. We had it blessed.",
       "overlap": -0.1,
-      "timestamp": 130.987,
+      "timestamp": 132.702,
       "duration": 7.63,
       "audio": "/audio/radio/the-casserole-ledger/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-nadia",
       "text": "Why is there a little candle next to my name on this statement? <p:0.3> There's a candle. And a star.",
       "overlap": 0.2,
-      "timestamp": 137.773,
+      "timestamp": 139.488,
       "duration": 5.39,
       "audio": "/audio/radio/the-casserole-ledger/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-patricia",
       "text": "The candle means you're current, dear. <p:0.3> The star means you're on the novena list. That's not a good list.",
       "overlap": 0.25,
-      "timestamp": 141.892,
+      "timestamp": 143.607,
       "duration": 9.39,
       "audio": "/audio/radio/the-casserole-ledger/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "What's the novena list, Patricia? <p:0.3> Like, what actually happens on it?",
       "overlap": -0.1,
-      "timestamp": 149.822,
+      "timestamp": 151.537,
       "duration": 6.06,
       "audio": "/audio/radio/the-casserole-ledger/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-patricia",
       "text": "We pray for you. <p:0.3> Hard. By name. At the seven in the morning mass. <p:0.3> And then your casseroles stop coming, but Earl keeps coming.",
       "overlap": -0.1,
-      "timestamp": 154.88,
+      "timestamp": 156.595,
       "duration": 12.24,
       "audio": "/audio/radio/the-casserole-ledger/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-nadia",
       "text": "So you pray AT me until I pay? <p:0.3> That's the prayer? It's a threat with a candle?",
       "overlap": 0.3,
-      "timestamp": 165.927,
+      "timestamp": 167.643,
       "duration": 4.46,
       "audio": "/audio/radio/the-casserole-ledger/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-mildred",
       "text": "It's intercession, dear. It's the warmest collections department in the diocese.",
       "overlap": 0.25,
-      "timestamp": 169.686,
+      "timestamp": 171.401,
       "duration": 5.53,
       "audio": "/audio/radio/the-casserole-ledger/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Now hold on, I'm getting a new caller. <p:0.3> Sounds like a gentleman in a van. Earl, is that you?",
       "overlap": -0.2,
-      "timestamp": 174.413,
+      "timestamp": 176.128,
       "duration": 7.18,
       "audio": "/audio/radio/the-casserole-ledger/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-winston",
       "text": "Evening. <p:0.3> This is Earl. <p:0.3> I'm outside number eleven for a dish. The lasagna pan. Pyrex. <p:0.3> She knows the one.",
       "overlap": -0.1,
-      "timestamp": 180.457,
+      "timestamp": 182.172,
       "duration": 10.34,
       "audio": "/audio/radio/the-casserole-ledger/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-nadia",
       "text": "How are you OUTSIDE? I'm on the RADIO! <p:0.3> How does the deacon have my ADDRESS?",
       "overlap": 0.3,
-      "timestamp": 189.751,
+      "timestamp": 191.466,
       "duration": 4.54,
       "audio": "/audio/radio/the-casserole-ledger/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-winston",
       "text": "It's in the ledger. <p:0.3> Everything's in the ledger. I just read the ledger.",
       "overlap": -0.1,
-      "timestamp": 193.566,
+      "timestamp": 195.281,
       "duration": 5.66,
       "audio": "/audio/radio/the-casserole-ledger/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "Earl, are you allowed to repossess a baking dish from a sick woman?",
       "overlap": -0.1,
-      "timestamp": 198.483,
+      "timestamp": 200.198,
       "duration": 5.48,
       "audio": "/audio/radio/the-casserole-ledger/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-winston",
       "text": "I'm a deacon, sir. <p:0.3> I'm allowed a great deal.",
       "overlap": 0.2,
-      "timestamp": 202.756,
+      "timestamp": 204.471,
       "duration": 4.06,
       "audio": "/audio/radio/the-casserole-ledger/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-nadia",
       "text": "I WASHED the pan! It's clean! Take the pan! <p:0.3> Does taking the pan clear the forty-one?",
       "overlap": 0.3,
-      "timestamp": 205.814,
+      "timestamp": 207.529,
       "duration": 5.02,
       "audio": "/audio/radio/the-casserole-ledger/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-mildred",
       "text": "Oh no, dear. <p:0.3> The pan was never the debt. The pan was the interest.",
       "overlap": 0.25,
-      "timestamp": 210.134,
+      "timestamp": 211.849,
       "duration": 5.45,
       "audio": "/audio/radio/the-casserole-ledger/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "The PAN was the INTEREST?!",
       "overlap": -0.1,
-      "timestamp": 214.8,
+      "timestamp": 216.516,
       "duration": 2.24,
       "audio": "/audio/radio/the-casserole-ledger/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-patricia",
       "text": "Tuna bake!",
       "overlap": 0.4,
-      "timestamp": 215.826,
+      "timestamp": 217.542,
       "duration": 1.68,
       "audio": "/audio/radio/the-casserole-ledger/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-winston",
       "text": "Open the door.",
       "overlap": 0.4,
-      "timestamp": 216.202,
+      "timestamp": 217.917,
       "duration": 1.45,
       "audio": "/audio/radio/the-casserole-ledger/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "caller-mildred",
       "text": "Bless this house.",
       "overlap": 0.4,
-      "timestamp": 217.066,
+      "timestamp": 218.781,
       "duration": 1.53,
       "audio": "/audio/radio/the-casserole-ledger/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "caller-nadia",
       "text": "It's a LASAGNA!",
       "overlap": 0.4,
-      "timestamp": 217.439,
+      "timestamp": 219.154,
       "duration": 1.48,
       "audio": "/audio/radio/the-casserole-ledger/42.flac"
     },
@@ -351,7 +351,7 @@
       "speaker": "caller-patricia",
       "text": "Novena.",
       "overlap": 0.4,
-      "timestamp": 218.132,
+      "timestamp": 219.847,
       "duration": 1.52,
       "audio": "/audio/radio/the-casserole-ledger/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "caller-winston",
       "text": "Dish.",
       "overlap": 0.4,
-      "timestamp": 218.315,
+      "timestamp": 220.031,
       "duration": 1.4,
       "audio": "/audio/radio/the-casserole-ledger/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "barry",
       "text": "Ronnie, the deacon is knocking. <p:0.3> I can hear the knocking through her phone.",
       "overlap": -0.1,
-      "timestamp": 219.152,
+      "timestamp": 220.867,
       "duration": 6.54,
       "audio": "/audio/radio/the-casserole-ledger/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "ronnie",
       "text": "And that, folks, is community. <p:0.3> A street where no kindness goes uncollected. We'll be right back, right after Mildred saves us all a plate. <p:0.4> Earl can pick it up later.",
       "overlap": -0.25,
-      "timestamp": 225.093,
+      "timestamp": 226.808,
       "duration": 13.66,
       "audio": "/audio/radio/the-casserole-ledger/46.flac"
     },
@@ -383,7 +383,7 @@
       "speaker": "caller-mildred",
       "text": "...With interest.",
       "overlap": -0.1,
-      "timestamp": 238.143,
+      "timestamp": 239.858,
       "duration": 1.11,
       "audio": "/audio/radio/the-casserole-ledger/47.flac"
     }

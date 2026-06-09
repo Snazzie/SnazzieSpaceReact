@@ -143,6 +143,40 @@ DEFAULT_PAUSE = 0.5
 
 _GEN_KNOBS = ("num_step", "guidance_scale", "position_temperature", "class_temperature")
 
+# Strips OmniVoice tokens (<p>, <p:N>, [nonverbal], [ARPAbet]) before word comparison.
+_TOKEN_STRIP_RE = re.compile(r"<p(?::[0-9.]+)?>|\[[^\]]+\]")
+
+def _text_words(text: str) -> list[str]:
+    clean = _TOKEN_STRIP_RE.sub(" ", text)
+    return [w for w in re.sub(r"[^\w\s]", "", clean.lower()).split() if w]
+
+_WHISPER_MODEL = None
+
+def _get_whisper():
+    global _WHISPER_MODEL
+    if _WHISPER_MODEL is None:
+        from faster_whisper import WhisperModel
+        import torch
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        _WHISPER_MODEL = WhisperModel("tiny.en", device=device, compute_type="float16" if device == "cuda" else "int8")
+    return _WHISPER_MODEL
+
+def validate_clip(audio: "np.ndarray", expected_text: str, line_label: str) -> None:
+    """Transcribe audio with Whisper and warn if words from expected_text are missing."""
+    expected = _text_words(expected_text)
+    if not expected:
+        return
+    import io
+    buf = io.BytesIO()
+    sf.write(buf, audio, SAMPLE_RATE, format="wav")
+    buf.seek(0)
+    segs, _ = _get_whisper().transcribe(buf, language="en")
+    transcript = " ".join(s.text for s in segs)
+    got = set(_text_words(transcript))
+    missing = [w for w in expected if w not in got]
+    if missing:
+        print(f"    WARNING {line_label}: {len(missing)}/{len(expected)} words missing — {missing}")
+
 _CAMEL_RE = re.compile(r"([a-z])([A-Z])")
 
 # Inline ARPAbet pronunciations (OmniVoice g2p override, e.g. "[HH AA1 NG K HH IY1 L]").
@@ -182,7 +216,7 @@ def _gen_config(c: dict):
         return None
     from omnivoice.models.omnivoice import OmniVoiceGenerationConfig
     return OmniVoiceGenerationConfig(
-        num_step=int(c.get("num_step", 32)),
+        num_step=int(c.get("num_step", 35)),
         guidance_scale=float(c.get("guidance_scale", 2.0)),
         position_temperature=float(c.get("position_temperature", 5.0)),
         class_temperature=float(c.get("class_temperature", 0.0)),
@@ -329,7 +363,7 @@ def place(lengths: list[int], sb_start: list[int], sb_end: list[int], lines: lis
     return starts
 
 
-def generate_episode(slug: str, model_loader, remix: bool) -> None:
+def generate_episode(slug: str, model_loader, remix: bool, num_step: int | None = None, validate: bool = False) -> None:
     script_path = SCRIPTS_DIR / f"{slug}.json"
     if not script_path.exists():
         print(f"  skip (no script): {slug}")
@@ -400,6 +434,9 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         if overrides:
             c = {**c, **overrides}
 
+        if num_step is not None and "num_step" not in c:
+            c = {**c, "num_step": num_step}
+
         key    = clip_hash(text, c)
         cached = manifest.get(str(i))
         if cached and cached.get("hash") == key and out_file.exists():
@@ -420,6 +457,8 @@ def generate_episode(slug: str, model_loader, remix: bool) -> None:
         record(i, clip, key)
         rendered += 1
         print(f"    [{i+1}/{len(lines)}] {speaker_id}: {len(clip)/SAMPLE_RATE:.1f}s (rendered)")
+        if validate and text and text != "...":
+            validate_clip(clip, line["text"], f"[{i+1}/{len(lines)}] {speaker_id}")
 
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
 
@@ -467,6 +506,8 @@ def main() -> None:
     parser.add_argument("--all", action="store_true", help="Process all episodes")
     parser.add_argument("--remix", action="store_true", help="Placement only; never load the model (all clips must be cached)")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--steps", type=int, default=35, help="OmniVoice diffusion steps (default: 35). Per-cast/per-line num_step still wins.")
+    parser.add_argument("--validate", action="store_true", help="Transcribe each rendered clip with Whisper and warn if >15%% of words are missing.")
     args = parser.parse_args()
     torch.manual_seed(args.seed)
 
@@ -481,7 +522,7 @@ def main() -> None:
         else [p.stem for p in sorted(SCRIPTS_DIR.glob("*.json"))]
     )
     for slug in slugs:
-        generate_episode(slug, load_model, args.remix)
+        generate_episode(slug, load_model, args.remix, args.steps, args.validate)
 
 
 if __name__ == "__main__":

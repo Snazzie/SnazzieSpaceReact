@@ -165,17 +165,17 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "...Who is this?",
+      "text": "[question-en] Who is this?",
       "overlap": -0.15,
-      "timestamp": 116.373,
-      "duration": 1.8,
+      "timestamp": 116.036,
+      "duration": 2.4,
       "audio": "/audio/radio/the-little-free-war/20.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Nobody. A neighbor. So allegedly, a person might take everything out of both boxes around five a.m. <p:0.3> And allegedly sell it at the flea market by nine. Allegedly.",
       "overlap": -0.1,
-      "timestamp": 117.276,
+      "timestamp": 117.421,
       "duration": 8.54,
       "audio": "/audio/radio/the-little-free-war/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-winston",
       "text": "You're the FENCE? You've been selling my curated ecosystem at a FOLDING TABLE?",
       "overlap": 0,
-      "timestamp": 124.91,
+      "timestamp": 125.055,
       "duration": 5.29,
       "audio": "/audio/radio/the-little-free-war/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-phil",
       "text": "I move volume. Allegedly. A dollar a hardcover. The Pemberton ones go for two.",
       "overlap": 0.2,
-      "timestamp": 129.406,
+      "timestamp": 129.551,
       "duration": 4.0,
       "audio": "/audio/radio/the-little-free-war/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-linda",
       "text": "Oh! So if I come to your table, I could finally get book four?",
       "overlap": -0.1,
-      "timestamp": 132.643,
+      "timestamp": 132.788,
       "duration": 4.14,
       "audio": "/audio/radio/the-little-free-war/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "barry",
       "text": "Linda, no, he stole it from the box you already have access to.",
       "overlap": -0.1,
-      "timestamp": 136.112,
+      "timestamp": 136.257,
       "duration": 5.04,
       "audio": "/audio/radio/the-little-free-war/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-phil",
       "text": "Booth twelve. Allegedly. Bring small bills.",
       "overlap": 0.2,
-      "timestamp": 140.093,
+      "timestamp": 140.238,
       "duration": 2.36,
       "audio": "/audio/radio/the-little-free-war/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "See, that's redistribution, Barry. The books are reaching new readers. That's just good neighboring.",
       "overlap": -0.2,
-      "timestamp": 141.39,
+      "timestamp": 141.535,
       "duration": 7.69,
       "audio": "/audio/radio/the-little-free-war/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "Ronnie, that's grand theft and operating an unlicensed resale operation.",
       "overlap": -0.1,
-      "timestamp": 147.914,
+      "timestamp": 148.059,
       "duration": 6.12,
       "audio": "/audio/radio/the-little-free-war/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-patricia",
       "text": "I want him on the list. Phil. P-H-I-L. He goes on the laminated card tonight.",
       "overlap": 0.1,
-      "timestamp": 152.938,
+      "timestamp": 153.083,
       "duration": 6.6,
       "audio": "/audio/radio/the-little-free-war/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-winston",
       "text": "Fine. Blacklist him from YOUR box. He's already barred from Box Two, because Box Two is CURATED.",
       "overlap": 0.3,
-      "timestamp": 158.258,
+      "timestamp": 158.403,
       "duration": 6.72,
       "audio": "/audio/radio/the-little-free-war/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-phil",
       "text": "Funny thing about Box Two, Winston. <p:0.3> I empty it every morning. So how come there's always cash taped under the bottom shelf?",
       "overlap": 0.2,
-      "timestamp": 163.825,
+      "timestamp": 163.97,
       "duration": 6.86,
       "audio": "/audio/radio/the-little-free-war/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "...Cash. Under the shelf.",
       "overlap": -0.15,
-      "timestamp": 170.357,
+      "timestamp": 170.502,
       "duration": 2.08,
       "audio": "/audio/radio/the-little-free-war/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-phil",
       "text": "Rolls of it. Rubber-banded. Behind a phone directory nobody's ever checked out.",
       "overlap": 0,
-      "timestamp": 171.697,
+      "timestamp": 171.842,
       "duration": 4.12,
       "audio": "/audio/radio/the-little-free-war/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-winston",
       "text": "That is... that is a curated reserve, Phil.",
       "overlap": -0.1,
-      "timestamp": 175.236,
+      "timestamp": 175.381,
       "duration": 3.0,
       "audio": "/audio/radio/the-little-free-war/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-patricia",
       "text": "A curated RESERVE. <p:0.3> Winston, you're not running a library, you're running a wash. The books are just the receipts.",
       "overlap": 0,
-      "timestamp": 177.79,
+      "timestamp": 177.935,
       "duration": 10.62,
       "audio": "/audio/radio/the-little-free-war/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "Ronnie, Box Two is laundering money. The little free library is a front.",
       "overlap": -0.1,
-      "timestamp": 187.052,
+      "timestamp": 187.197,
       "duration": 5.92,
       "audio": "/audio/radio/the-little-free-war/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-winston",
       "text": "It is a CURATED front, Barry!",
       "overlap": 0.3,
-      "timestamp": 191.675,
+      "timestamp": 191.82,
       "duration": 2.32,
       "audio": "/audio/radio/the-little-free-war/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-patricia",
       "text": "Blacklist!",
       "overlap": 0.4,
-      "timestamp": 192.679,
+      "timestamp": 192.824,
       "duration": 1.72,
       "audio": "/audio/radio/the-little-free-war/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-winston",
       "text": "Curated!",
       "overlap": 0.4,
-      "timestamp": 193.271,
+      "timestamp": 193.416,
       "duration": 1.38,
       "audio": "/audio/radio/the-little-free-war/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "caller-phil",
       "text": "Booth twelve!",
       "overlap": 0.4,
-      "timestamp": 194.0,
+      "timestamp": 194.145,
       "duration": 1.56,
       "audio": "/audio/radio/the-little-free-war/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "caller-linda",
       "text": "Book four!",
       "overlap": 0.4,
-      "timestamp": 194.388,
+      "timestamp": 194.533,
       "duration": 1.59,
       "audio": "/audio/radio/the-little-free-war/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "caller-patricia",
       "text": "You laundered my readers, Winston!",
       "overlap": 0.4,
-      "timestamp": 195.13,
+      "timestamp": 195.275,
       "duration": 3.24,
       "audio": "/audio/radio/the-little-free-war/42.flac"
     },
@@ -351,7 +351,7 @@
       "speaker": "caller-winston",
       "text": "I CURATED them, Patricia!",
       "overlap": 0.4,
-      "timestamp": 197.018,
+      "timestamp": 197.163,
       "duration": 2.08,
       "audio": "/audio/radio/the-little-free-war/43.flac"
     },
@@ -359,7 +359,7 @@
       "speaker": "barry",
       "text": "Ronnie, they're yelling about a money-laundering box eleven feet from a fence.",
       "overlap": -0.1,
-      "timestamp": 198.298,
+      "timestamp": 198.443,
       "duration": 6.48,
       "audio": "/audio/radio/the-little-free-war/44.flac"
     },
@@ -367,7 +367,7 @@
       "speaker": "ronnie",
       "text": "And isn't that something, Barry. <p:0.3> A blacklist, a flea-market fence, and cash under the shelf. Folks, that is the most literate block in the city.",
       "overlap": -0.2,
-      "timestamp": 203.417,
+      "timestamp": 203.562,
       "duration": 11.38,
       "audio": "/audio/radio/the-little-free-war/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "barry",
       "text": "Ronnie, between all that, the only thing anyone's actually read is a cooked ledger.",
       "overlap": -0.1,
-      "timestamp": 213.336,
+      "timestamp": 213.481,
       "duration": 6.8,
       "audio": "/audio/radio/the-little-free-war/46.flac"
     },
@@ -383,7 +383,7 @@
       "speaker": "caller-linda",
       "text": "So... does anybody have book four?",
       "overlap": -0.15,
-      "timestamp": 219.567,
+      "timestamp": 219.712,
       "duration": 2.25,
       "audio": "/audio/radio/the-little-free-war/47.flac"
     },
@@ -391,23 +391,23 @@
       "speaker": "caller-patricia",
       "text": "The box will see you tonight, Phil.",
       "overlap": -0.1,
-      "timestamp": 221.023,
+      "timestamp": 221.168,
       "duration": 3.2,
       "audio": "/audio/radio/the-little-free-war/48.flac"
     },
     {
       "speaker": "caller-phil",
-      "text": "...That's not, that's not a library thing to say.",
+      "text": "[dissatisfaction-hnn] That's not, that's not a library thing to say.",
       "overlap": -0.1,
-      "timestamp": 223.39,
-      "duration": 2.44,
+      "timestamp": 223.147,
+      "duration": 3.52,
       "audio": "/audio/radio/the-little-free-war/49.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's just good neighboring. We'll be right back, soon as somebody returns that shelf cash. Fourteen-day window.",
       "overlap": -0.25,
-      "timestamp": 225.075,
+      "timestamp": 225.837,
       "duration": 8.8,
       "audio": "/audio/radio/the-little-free-war/50.flac"
     }

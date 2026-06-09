@@ -189,17 +189,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Comfortable? Snow does not get comfortable, Rhonda!",
+      "text": "[dissatisfaction-hnn] Comfortable? Snow does not get comfortable, Rhonda!",
       "overlap": -0.1,
-      "timestamp": 141.298,
-      "duration": 4.36,
+      "timestamp": 141.034,
+      "duration": 5.89,
       "audio": "/audio/radio/the-snow-that-stayed/23.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Kevin's settling in, dear. I gave him a little fence.",
       "overlap": 0.25,
-      "timestamp": 144.54,
+      "timestamp": 145.583,
       "duration": 3.02,
       "audio": "/audio/radio/the-snow-that-stayed/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-sal",
       "text": "If it's not melting then it's PERMANENT inventory! <p:0.3> Name your price! Name it!",
       "overlap": 0.35,
-      "timestamp": 146.681,
+      "timestamp": 147.724,
       "duration": 6.3,
       "audio": "/audio/radio/the-snow-that-stayed/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-winston",
       "text": "The price is a DEED, Sal! In MY name!",
       "overlap": 0.4,
-      "timestamp": 152.246,
+      "timestamp": 153.29,
       "duration": 2.56,
       "audio": "/audio/radio/the-snow-that-stayed/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "barry",
       "text": "It's water, Winston!",
       "overlap": 0.4,
-      "timestamp": 153.726,
+      "timestamp": 154.769,
       "duration": 1.8,
       "audio": "/audio/radio/the-snow-that-stayed/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "rhonda",
       "text": "It's textbook water!",
       "overlap": 0.4,
-      "timestamp": 154.226,
+      "timestamp": 155.27,
       "duration": 1.72,
       "audio": "/audio/radio/the-snow-that-stayed/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-mildred",
       "text": "His name is Kevin!",
       "overlap": 0.4,
-      "timestamp": 155.081,
+      "timestamp": 156.125,
       "duration": 1.32,
       "audio": "/audio/radio/the-snow-that-stayed/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-sal",
       "text": "I leased a THOUSAND BAGS!",
       "overlap": 0.4,
-      "timestamp": 155.742,
+      "timestamp": 156.786,
       "duration": 2.12,
       "audio": "/audio/radio/the-snow-that-stayed/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "ronnie",
       "text": "Everybody hold. <p:0.3> Rhonda. Give me the number.",
       "overlap": -0.15,
-      "timestamp": 157.292,
+      "timestamp": 158.336,
       "duration": 4.5,
       "audio": "/audio/radio/the-snow-that-stayed/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "rhonda",
       "text": "So, Ronnie. <p:0.4> The thermometer reads sixty-eight. The snow is not melting. <p:0.3> And it has spread one inch past where it landed. Overnight. On its own.",
       "overlap": -0.2,
-      "timestamp": 161.326,
+      "timestamp": 162.37,
       "duration": 10.17,
       "audio": "/audio/radio/the-snow-that-stayed/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "It moved. <p:0.4> Folks, I'm reclassifying it. This is no longer a weather event. <p:0.3> It's a resident.",
       "overlap": -0.2,
-      "timestamp": 170.947,
+      "timestamp": 171.991,
       "duration": 9.18,
       "audio": "/audio/radio/the-snow-that-stayed/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-sal",
       "text": "Does anybody want to buy a thousand bags of permanent snow? <p:0.3> Anybody? <p:0.4> ...Hello?",
       "overlap": -0.15,
-      "timestamp": 178.677,
+      "timestamp": 179.72,
       "duration": 8.05,
       "audio": "/audio/radio/the-snow-that-stayed/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "Nobody's buying snow that won't melt, Sal.",
       "overlap": -0.1,
-      "timestamp": 186.074,
+      "timestamp": 187.117,
       "duration": 3.48,
       "audio": "/audio/radio/the-snow-that-stayed/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "ronnie",
       "text": "Well, there it is, folks. The town's first snow, and it has decided to stay. <p:0.3> Winston, you wanted the deed. <p:0.4> It's moving an inch a night. It's all yours.",
       "overlap": -0.2,
-      "timestamp": 188.056,
+      "timestamp": 189.1,
       "duration": 12.14,
       "audio": "/audio/radio/the-snow-that-stayed/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "rhonda",
       "text": "Ronnie? <p:0.3> Quick one. Which way is the inch headed?",
       "overlap": -0.1,
-      "timestamp": 199.495,
+      "timestamp": 200.538,
       "duration": 3.88,
       "audio": "/audio/radio/the-snow-that-stayed/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "Toward us, Ronnie. <p:0.3> It's in the parking lot.",
       "overlap": -0.1,
-      "timestamp": 203.081,
+      "timestamp": 204.125,
       "duration": 4.1,
       "audio": "/audio/radio/the-snow-that-stayed/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-mildred",
       "text": "Kevin says hello, dear.",
       "overlap": -0.1,
-      "timestamp": 206.424,
+      "timestamp": 207.467,
       "duration": 1.58,
       "audio": "/audio/radio/the-snow-that-stayed/39.flac"
     }

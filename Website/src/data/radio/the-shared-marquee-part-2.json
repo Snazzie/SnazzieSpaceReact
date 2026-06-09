@@ -205,17 +205,17 @@
     },
     {
       "speaker": "caller-linda",
-      "text": "Um. <p:0.3> My uncle's box just got wheeled out front. By a Henderson. They think it's the cake.",
+      "text": "[sigh] Um. <p:0.3> My uncle's box just got wheeled out front. By a Henderson. They think it's the cake.",
       "overlap": -0.1,
-      "timestamp": 122.045,
-      "duration": 6.78,
+      "timestamp": 122.427,
+      "duration": 6.97,
       "audio": "/audio/radio/the-shared-marquee-part-2/25.flac"
     },
     {
       "speaker": "caller-donna",
       "text": "STOP THAT MAN. <p:0.3> Phil, that is a PERSON, not a dessert!",
       "overlap": 0,
-      "timestamp": 128.524,
+      "timestamp": 129.117,
       "duration": 5.26,
       "audio": "/audio/radio/the-shared-marquee-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-phil",
       "text": "Then where's the cake?!",
       "overlap": 0,
-      "timestamp": 132.849,
+      "timestamp": 133.442,
       "duration": 1.84,
       "audio": "/audio/radio/the-shared-marquee-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-linda",
       "text": "Oh, the cake's fine. They're cutting it now. <p:0.3> At the funeral.",
       "overlap": -0.1,
-      "timestamp": 133.635,
+      "timestamp": 134.228,
       "duration": 4.52,
       "audio": "/audio/radio/the-shared-marquee-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "They're cutting the cake. At the funeral.",
       "overlap": -0.1,
-      "timestamp": 137.621,
+      "timestamp": 138.214,
       "duration": 3.44,
       "audio": "/audio/radio/the-shared-marquee-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Well, folks, the boxes are sorted, sort of. The Hendersons have a man, the mourners have a cake, and out front, one beautiful sign that simply says S. <p:0.3> We'll be right back, soon as somebody figures out who's giving the toast.",
       "overlap": -0.25,
-      "timestamp": 139.631,
+      "timestamp": 140.224,
       "duration": 17.22,
       "audio": "/audio/radio/the-shared-marquee-part-2/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-linda",
       "text": "...They asked me. <p:0.3> Should I do the wedding speech or the eulogy?",
       "overlap": -0.1,
-      "timestamp": 156.007,
+      "timestamp": 156.6,
       "duration": 4.37,
       "audio": "/audio/radio/the-shared-marquee-part-2/31.flac"
     }

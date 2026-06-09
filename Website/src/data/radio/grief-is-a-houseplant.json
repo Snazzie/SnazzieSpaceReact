@@ -237,17 +237,17 @@
     },
     {
       "speaker": "barry",
-      "text": "Did you just tell her to move her grieving mother to a window?",
+      "text": "[dissatisfaction-hnn] Did you just tell her to move her grieving mother to a window?",
       "overlap": -0.1,
-      "timestamp": 290.259,
-      "duration": 5.04,
+      "timestamp": 291.014,
+      "duration": 6.92,
       "audio": "/audio/radio/grief-is-a-houseplant/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A sunny window, Barry. I'm not a monster. <p:0.3> Trim any dead growth, rotate her a quarter turn weekly so she grows even, and don't overwater. She'll bounce back.",
       "overlap": 0.25,
-      "timestamp": 293.274,
+      "timestamp": 296.664,
       "duration": 12.18,
       "audio": "/audio/radio/grief-is-a-houseplant/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "You said that like you were reading the back of a seed packet. <p:0.3> I give up. I officially give up.",
       "overlap": -0.1,
-      "timestamp": 303.216,
+      "timestamp": 306.606,
       "duration": 7.98,
       "audio": "/audio/radio/grief-is-a-houseplant/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "And before we go... a follow-up. Last week's listener, Maureen, writes back. Quote, I re-potted my grief into a smaller apartment like Ronnie said. <p:0.3> Now the grief and I share a studio and it has the only window. End quote.",
       "overlap": -0.15,
-      "timestamp": 310.373,
+      "timestamp": 313.763,
       "duration": 17.78,
       "audio": "/audio/radio/grief-is-a-houseplant/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Sounds like it's perking up. <p:0.3> Good night.",
       "overlap": -0.2,
-      "timestamp": 326.979,
+      "timestamp": 330.369,
       "duration": 4.38,
       "audio": "/audio/radio/grief-is-a-houseplant/33.flac"
     }

@@ -30,17 +30,17 @@
     },
     {
       "speaker": "news-marsha",
-      "text": "The broth could not be reached for comment, Dale. It was, however, simmering.",
+      "text": "[laughter] The broth could not be reached for comment, Dale. It was, however, simmering.",
       "overlap": -0.1,
-      "timestamp": 13.13,
-      "duration": 4.68,
+      "timestamp": 13.465,
+      "duration": 5.32,
       "audio": "/audio/radio/news-the-vacancy-report/3.flac"
     },
     {
       "speaker": "news-dale",
       "text": "In other news, Donna's Diner filed for its eleventh straight grand reopening. A local record.",
       "overlap": -0.15,
-      "timestamp": 17.177,
+      "timestamp": 18.229,
       "duration": 5.42,
       "audio": "/audio/radio/news-the-vacancy-report/4.flac"
     },
@@ -48,7 +48,7 @@
       "speaker": "news-marsha",
       "text": "Donna has not left the building since 2019. She sounds well.",
       "overlap": -0.1,
-      "timestamp": 22.019,
+      "timestamp": 23.072,
       "duration": 4.23,
       "audio": "/audio/radio/news-the-vacancy-report/5.flac"
     },
@@ -56,7 +56,7 @@
       "speaker": "news-dale",
       "text": "Developing tonight, the fog has filed for a small-business license, citing a desire to settle down.",
       "overlap": -0.15,
-      "timestamp": 25.398,
+      "timestamp": 26.451,
       "duration": 5.74,
       "audio": "/audio/radio/news-the-vacancy-report/6.flac"
     },
@@ -64,7 +64,7 @@
       "speaker": "news-marsha",
       "text": "Updating that story, Dale. The license cleared. The fog has leased a unit on Main Street.",
       "overlap": -0.1,
-      "timestamp": 30.6,
+      "timestamp": 31.653,
       "duration": 5.15,
       "audio": "/audio/radio/news-the-vacancy-report/7.flac"
     },
@@ -72,7 +72,7 @@
       "speaker": "news-dale",
       "text": "Already? That was fast.",
       "overlap": -0.05,
-      "timestamp": 35.213,
+      "timestamp": 36.266,
       "duration": 1.85,
       "audio": "/audio/radio/news-the-vacancy-report/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "news-marsha",
       "text": "It is restocking the shelves as we speak. Getting the place just right.",
       "overlap": -0.1,
-      "timestamp": 36.585,
+      "timestamp": 37.638,
       "duration": 4.17,
       "audio": "/audio/radio/news-the-vacancy-report/9.flac"
     },
@@ -88,23 +88,23 @@
       "speaker": "news-dale",
       "text": "And finally, the Chamber of Commerce reports a record zero vacancies on Main Street this quarter. Every storefront is now occupied. <p:0.3> They do not say by whom.",
       "overlap": -0.15,
-      "timestamp": 40.482,
+      "timestamp": 41.535,
       "duration": 9.39,
       "audio": "/audio/radio/news-the-vacancy-report/10.flac"
     },
     {
       "speaker": "news-marsha",
-      "text": "The fog declined to comment. It did wish us a pleasant evening. By name. <p:0.3> Which we did not give it.",
+      "text": "[laughter] The fog declined to comment. It did wish us a pleasant evening. By name. <p:0.3> Which we did not give it.",
       "overlap": -0.1,
-      "timestamp": 49.411,
-      "duration": 6.18,
+      "timestamp": 50.618,
+      "duration": 6.76,
       "audio": "/audio/radio/news-the-vacancy-report/11.flac"
     },
     {
       "speaker": "news-dale",
       "text": "Back after this.",
       "overlap": -0.1,
-      "timestamp": 55.073,
+      "timestamp": 56.868,
       "duration": 1.36,
       "audio": "/audio/radio/news-the-vacancy-report/12.flac"
     }

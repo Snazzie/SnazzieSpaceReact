@@ -285,17 +285,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "Barry. Barry, this is the scariest letter we've read.",
+      "text": "[dissatisfaction-hnn] Barry. Barry, this is the scariest letter we've read.",
       "overlap": -0.1,
-      "timestamp": 254.415,
-      "duration": 4.16,
+      "timestamp": 254.183,
+      "duration": 5.92,
       "audio": "/audio/radio/cents-and-sensibility/35.flac"
     },
     {
       "speaker": "barry",
       "text": "What? He has zero debt. That's the goal. That's the whole goal.",
       "overlap": -0.1,
-      "timestamp": 257.89,
+      "timestamp": 259.424,
       "duration": 5.0,
       "audio": "/audio/radio/cents-and-sensibility/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "A man with no debt has no relationships with banks, Barry. He's a ghost. He doesn't exist. Trevor, you need to open a card TONIGHT.",
       "overlap": -0.1,
-      "timestamp": 261.125,
+      "timestamp": 262.659,
       "duration": 9.8,
       "audio": "/audio/radio/cents-and-sensibility/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "He doesn't need an emergency fund, he doesn't have an emergency!",
       "overlap": -0.1,
-      "timestamp": 269.791,
+      "timestamp": 271.325,
       "duration": 5.24,
       "audio": "/audio/radio/cents-and-sensibility/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "ronnie",
       "text": "An emergency fund is just an emergency with a number on the front, Barry. <p:0.3> Trevor, consolidate the nothing into something. Open the card. Be real.",
       "overlap": -0.15,
-      "timestamp": 273.423,
+      "timestamp": 274.957,
       "duration": 11.62,
       "audio": "/audio/radio/cents-and-sensibility/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "barry",
       "text": "And finally, a quick update. From Diane. The listener from segment one. She took your advice.",
       "overlap": -0.1,
-      "timestamp": 283.865,
+      "timestamp": 285.399,
       "duration": 7.56,
       "audio": "/audio/radio/cents-and-sensibility/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "barry",
       "text": "She writes, quote, I now have five cards. <p:0.3> And a sixth card I opened to pay the annual fee on the fifth. Unquote.",
       "overlap": -0.1,
-      "timestamp": 290.663,
+      "timestamp": 292.197,
       "duration": 9.26,
       "audio": "/audio/radio/cents-and-sensibility/41.flac"
     },
@@ -343,7 +343,7 @@
       "speaker": "ronnie",
       "text": "Six decisions down to one. <p:0.3> That's the Cents and Sensibility difference, folks. Sleep tight.",
       "overlap": -0.15,
-      "timestamp": 298.938,
+      "timestamp": 300.471,
       "duration": 7.7,
       "audio": "/audio/radio/cents-and-sensibility/42.flac"
     }

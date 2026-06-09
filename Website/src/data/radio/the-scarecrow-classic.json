@@ -245,17 +245,17 @@
     },
     {
       "speaker": "caller-darnell",
-      "text": "It's wearing my CAP!",
+      "text": "[surprise-yo] It's wearing my CAP!",
       "overlap": 0.4,
-      "timestamp": 214.077,
-      "duration": 1.65,
+      "timestamp": 214.084,
+      "duration": 2.06,
       "audio": "/audio/radio/the-scarecrow-classic/30.flac"
     },
     {
       "speaker": "caller-marv",
       "text": "Folks, we have a result. <p:0.3> The new entry takes first. Forty-eight years undefeated.",
       "overlap": 0.3,
-      "timestamp": 214.765,
+      "timestamp": 215.21,
       "duration": 5.84,
       "audio": "/audio/radio/the-scarecrow-classic/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "Marv, do NOT give it a ribbon!",
       "overlap": 0.3,
-      "timestamp": 219.436,
+      "timestamp": 219.882,
       "duration": 2.44,
       "audio": "/audio/radio/the-scarecrow-classic/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "caller-marv",
       "text": "Already pinned, Barry. <p:0.3> And I'm penciling next year's entry in now, under the name Darnell. You don't break up a winning streak.",
       "overlap": 0.25,
-      "timestamp": 220.692,
+      "timestamp": 221.137,
       "duration": 8.66,
       "audio": "/audio/radio/the-scarecrow-classic/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-darnell",
       "text": "Why is it... why is it holding still the exact way I'm holding still?",
       "overlap": -0.1,
-      "timestamp": 228.991,
+      "timestamp": 229.436,
       "duration": 4.25,
       "audio": "/audio/radio/the-scarecrow-classic/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "Forty-seven years undefeated. <p:0.3> Barry, you don't argue with a streak like that. <p:0.3> Darnell, whatever you do down there... don't look at the winner.",
       "overlap": -0.2,
-      "timestamp": 232.621,
+      "timestamp": 233.067,
       "duration": 11.72,
       "audio": "/audio/radio/the-scarecrow-classic/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "caller-mildred",
       "text": "...Too late, dear.",
       "overlap": -0.1,
-      "timestamp": 243.582,
+      "timestamp": 244.027,
       "duration": 1.43,
       "audio": "/audio/radio/the-scarecrow-classic/36.flac"
     }

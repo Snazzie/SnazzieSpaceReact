@@ -62,17 +62,17 @@
     },
     {
       "speaker": "barry",
-      "text": "You can't VOID a building.",
+      "text": "[surprise-oh] You can't VOID a building.",
       "overlap": -0.1,
-      "timestamp": 34.756,
-      "duration": 2.24,
+      "timestamp": 33.679,
+      "duration": 3.32,
       "audio": "/audio/radio/ronnie-knows-the-law/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You can if you press hard, Barry.",
       "overlap": -0.1,
-      "timestamp": 35.59,
+      "timestamp": 35.822,
       "duration": 2.6,
       "audio": "/audio/radio/ronnie-knows-the-law/8.flac"
     },
@@ -80,7 +80,7 @@
       "speaker": "barry",
       "text": "Update from Brenda. She wrote VOID on the audit. <p:0.3> They sent a man to her house. He also had a marker.",
       "overlap": -0.15,
-      "timestamp": 37.325,
+      "timestamp": 37.557,
       "duration": 8.34,
       "audio": "/audio/radio/ronnie-knows-the-law/9.flac"
     },
@@ -88,7 +88,7 @@
       "speaker": "ronnie",
       "text": "See? It's working.",
       "overlap": -0.1,
-      "timestamp": 45.032,
+      "timestamp": 45.265,
       "duration": 2.0,
       "audio": "/audio/radio/ronnie-knows-the-law/10.flac"
     }

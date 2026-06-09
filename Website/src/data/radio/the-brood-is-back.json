@@ -85,17 +85,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "A line. <p:0.3> Mildred, do not feed the brood. Rhonda, do cicadas line up?",
+      "text": "[surprise-oh] A line. <p:0.3> Mildred, do not feed the brood. Rhonda, do cicadas line up?",
       "overlap": -0.15,
-      "timestamp": 81.364,
-      "duration": 6.34,
+      "timestamp": 81.16,
+      "duration": 6.94,
       "audio": "/audio/radio/the-brood-is-back/10.flac"
     },
     {
       "speaker": "rhonda",
       "text": "No. <p:0.3> No, they, cicadas don't queue, they swarm, it's chaotic, that's the whole, hang on. <p:0.3> Mildred, when you say a line, do you mean a pile, or do you mean a line.",
       "overlap": -0.1,
-      "timestamp": 86.971,
+      "timestamp": 87.352,
       "duration": 10.43,
       "audio": "/audio/radio/the-brood-is-back/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "caller-mildred",
       "text": "Single file, dear. Oldest in front. <p:0.3> They take turns at the banana.",
       "overlap": -0.1,
-      "timestamp": 96.917,
+      "timestamp": 97.297,
       "duration": 5.09,
       "audio": "/audio/radio/the-brood-is-back/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-darnell",
       "text": "Yeah, Ronnie, I'm driving through this, okay, and I gotta report the windshield is solid bug. <p:0.3> Wipers on. Wipers do nothing. <p:0.3> They are gripping the wipers. They want to stay on the wipers.",
       "overlap": 0.2,
-      "timestamp": 101.375,
+      "timestamp": 101.756,
       "duration": 11.76,
       "audio": "/audio/radio/the-brood-is-back/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "Just pull over and let them clear off, that's all you do with bugs.",
       "overlap": -0.1,
-      "timestamp": 112.221,
+      "timestamp": 112.602,
       "duration": 5.36,
       "audio": "/audio/radio/the-brood-is-back/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-darnell",
       "text": "Barry, I pulled over, and they all turned. <p:0.3> All of them. At once. To face the car. <p:0.3> Bugs don't have a front of the room, Barry, but they found one.",
       "overlap": 0.25,
-      "timestamp": 116.33,
+      "timestamp": 116.711,
       "duration": 9.25,
       "audio": "/audio/radio/the-brood-is-back/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "They found a front of the room. <p:0.3> Folks, that's an upgrade. We are now a Tier Three Coordinated Event. Bring the laundry in. Cover the banana, Mildred.",
       "overlap": -0.2,
-      "timestamp": 124.885,
+      "timestamp": 125.266,
       "duration": 11.71,
       "audio": "/audio/radio/the-brood-is-back/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "barry",
       "text": "Why would she cover the banana, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 135.246,
+      "timestamp": 135.627,
       "duration": 3.28,
       "audio": "/audio/radio/the-brood-is-back/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "ronnie",
       "text": "Because the banana is how it started, Barry. A line forms at a banana. A line is the beginning of a society.",
       "overlap": -0.2,
-      "timestamp": 137.11,
+      "timestamp": 137.491,
       "duration": 8.12,
       "audio": "/audio/radio/the-brood-is-back/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "rhonda",
       "text": "Okay, I need everyone calm, because the song is. <p:0.3> The song just changed. They sing in waves, it's mating, it's pulses, totally normal, except. <p:0.4> Pulses are random. This isn't random. This has a downbeat. They found the one.",
       "overlap": -0.15,
-      "timestamp": 144.25,
+      "timestamp": 144.631,
       "duration": 13.52,
       "audio": "/audio/radio/the-brood-is-back/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-mildred",
       "text": "They've moved off the banana, dear. <p:0.3> They're at the window now. They've left the banana untouched and they're all just looking in. <p:0.3> They brought a second banana. I don't own a second banana.",
       "overlap": 0.2,
-      "timestamp": 157.126,
+      "timestamp": 157.507,
       "duration": 13.56,
       "audio": "/audio/radio/the-brood-is-back/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "todd",
       "text": "Ronnie? <p:0.3> Update. The meter's reading one oh nine, but it's, it's pulsing in time now. Loud, quiet, loud, quiet. <p:0.4> And on the quiet part I can hear, I think they're saying a word.",
       "overlap": -0.15,
-      "timestamp": 170.4,
+      "timestamp": 170.781,
       "duration": 6.23,
       "audio": "/audio/radio/the-brood-is-back/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "ronnie",
       "text": "A word. Rhonda, confirm. <p:0.3> Is the brood saying a word?",
       "overlap": -0.15,
-      "timestamp": 176.429,
+      "timestamp": 176.809,
       "duration": 4.7,
       "audio": "/audio/radio/the-brood-is-back/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "rhonda",
       "text": "I, the spectrogram, okay, the spectrogram's got a shape in it that shouldn't, that's a, that's a formant. <p:0.3> Bugs don't have formants, Ronnie. Vowels need a throat. <p:0.4> They've grown a vowel.",
       "overlap": -0.1,
-      "timestamp": 180.503,
+      "timestamp": 180.884,
       "duration": 11.89,
       "audio": "/audio/radio/the-brood-is-back/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "They grew a vowel. The bugs grew a vowel.",
       "overlap": -0.1,
-      "timestamp": 191.86,
+      "timestamp": 192.241,
       "duration": 3.32,
       "audio": "/audio/radio/the-brood-is-back/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-darnell",
       "text": "They moved my CAR, Barry! Not far, but I'm parked sideways now and the doors are shut and I did not do that! <p:0.3> They rocked it. <p:0.3> A million bugs leaned the same way at the same time like a stadium!",
       "overlap": 0.3,
-      "timestamp": 194.083,
+      "timestamp": 194.463,
       "duration": 12.19,
       "audio": "/audio/radio/the-brood-is-back/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-mildred",
       "text": "They've taken a vote, dear! <p:0.3> They split into two groups on the lawn and one group got bigger and the other group flew off! That's a vote! I've seen a vote!",
       "overlap": 0.3,
-      "timestamp": 205.509,
+      "timestamp": 205.89,
       "duration": 11.39,
       "audio": "/audio/radio/the-brood-is-back/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "ronnie",
       "text": "A vote. <p:0.3> Folks, bugs do not hold elections. I'm upgrading us one final time. As of this moment, the brood is, frankly, a constituency.",
       "overlap": -0.2,
-      "timestamp": 216.319,
+      "timestamp": 216.699,
       "duration": 10.79,
       "audio": "/audio/radio/the-brood-is-back/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "rhonda",
       "text": "The formant resolved, Ronnie. <p:0.3> I ran it through the software twice. The word is hello. <p:0.4> A million cicadas just learned the word hello and they're all saying it on the downbeat.",
       "overlap": 0.2,
-      "timestamp": 226.282,
+      "timestamp": 226.663,
       "duration": 11.18,
       "audio": "/audio/radio/the-brood-is-back/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "todd",
       "text": "Okay so. <p:0.3> One of them came off the swarm. Down the antenna, onto the meter. It's bigger than the others. The others went quiet for it. <p:0.4> It's sitting on the meter like it owns the meter.",
       "overlap": 0.25,
-      "timestamp": 236.512,
+      "timestamp": 236.893,
       "duration": 6.87,
       "audio": "/audio/radio/the-brood-is-back/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Bigger than the others. <p:0.3> Bigger how, Todd?",
       "overlap": -0.1,
-      "timestamp": 242.663,
+      "timestamp": 243.044,
       "duration": 4.42,
       "audio": "/audio/radio/the-brood-is-back/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "todd",
       "text": "Okay so it has the banana now. <p:0.3> The big one has Mildred's second banana and it set it down between us like, like a gift, and the swarm went dead silent. <p:0.4> I think this one's in charge.",
       "overlap": -0.1,
-      "timestamp": 246.429,
+      "timestamp": 246.809,
       "duration": 7.02,
       "audio": "/audio/radio/the-brood-is-back/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-mildred",
       "text": "That's the front-of-the-line one!",
       "overlap": 0,
-      "timestamp": 253.268,
+      "timestamp": 253.648,
       "duration": 2.17,
       "audio": "/audio/radio/the-brood-is-back/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "rhonda",
       "text": "There's only one formant now!",
       "overlap": 0.4,
-      "timestamp": 254.316,
+      "timestamp": 254.697,
       "duration": 2.08,
       "audio": "/audio/radio/the-brood-is-back/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "caller-darnell",
       "text": "Is the big one driving the swarm?!",
       "overlap": 0.4,
-      "timestamp": 255.155,
+      "timestamp": 255.535,
       "duration": 2.29,
       "audio": "/audio/radio/the-brood-is-back/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "It brought a banana to a meeting!",
       "overlap": 0.4,
-      "timestamp": 256.235,
+      "timestamp": 256.616,
       "duration": 2.8,
       "audio": "/audio/radio/the-brood-is-back/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "todd",
       "text": "It's clearing its throat!",
       "overlap": 0.4,
-      "timestamp": 257.689,
+      "timestamp": 258.07,
       "duration": 1.24,
       "audio": "/audio/radio/the-brood-is-back/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "It's clearing its throat. <p:0.4> Folks. <p:0.3> We are no longer classifying this as an emergence. <p:0.3> We are classifying it as a guest.",
       "overlap": -0.2,
-      "timestamp": 258.18,
+      "timestamp": 258.56,
       "duration": 11.4,
       "audio": "/audio/radio/the-brood-is-back/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "I told you it was a calendar thing.",
       "overlap": -0.1,
-      "timestamp": 268.172,
+      "timestamp": 268.553,
       "duration": 2.88,
       "audio": "/audio/radio/the-brood-is-back/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "rhonda",
       "text": "It learned a second word, Ronnie. <p:0.3> The big one. After hello. <p:0.4> It said airtime. It's looking right at the meter and it said airtime.",
       "overlap": -0.1,
-      "timestamp": 270.306,
+      "timestamp": 270.687,
       "duration": 8.77,
       "audio": "/audio/radio/the-brood-is-back/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "ronnie",
       "text": "Then we put it on hold. <p:0.3> The brood has a spokesman, folks, and the spokesman wants the next segment. We'll be right back, soon as it finishes the banana.",
       "overlap": -0.2,
-      "timestamp": 278.449,
+      "timestamp": 278.829,
       "duration": 12.18,
       "audio": "/audio/radio/the-brood-is-back/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "caller-mildred",
       "text": "Tell it there's more banana inside, dear.",
       "overlap": -0.1,
-      "timestamp": 289.914,
+      "timestamp": 290.295,
       "duration": 2.69,
       "audio": "/audio/radio/the-brood-is-back/41.flac"
     }

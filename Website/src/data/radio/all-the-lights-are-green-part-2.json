@@ -117,17 +117,17 @@
     },
     {
       "speaker": "barry",
-      "text": "You deleted... stopping?",
+      "text": "[surprise-ah] You deleted... stopping?",
       "overlap": -0.05,
-      "timestamp": 90.623,
-      "duration": 2.08,
+      "timestamp": 90.546,
+      "duration": 3.2,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/14.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A town where nothing ever stops. <p:0.3> Folks, that's momentum.",
       "overlap": -0.2,
-      "timestamp": 91.698,
+      "timestamp": 92.972,
       "duration": 5.1,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/15.flac"
     },
@@ -135,23 +135,23 @@
       "speaker": "caller-sal",
       "text": "The streetlights just got brighter. <p:0.3> All of them. The grid pushed the power green too. My phone is at two hundred percent. <p:0.3> Over.",
       "overlap": 0.15,
-      "timestamp": 95.881,
+      "timestamp": 97.154,
       "duration": 11.6,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/16.flac"
     },
     {
       "speaker": "barry",
-      "text": "Two hundred percent isn't a thing, Sal!",
+      "text": "[surprise-oh] Two hundred percent isn't a thing, Sal!",
       "overlap": 0.2,
-      "timestamp": 106.235,
-      "duration": 3.24,
+      "timestamp": 106.792,
+      "duration": 4.36,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/17.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "It is now, Barry! We unlocked it! That's upside!",
       "overlap": 0.3,
-      "timestamp": 108.182,
+      "timestamp": 109.875,
       "duration": 2.44,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "Grid. I am begging you. Turn ONE thing off. One tap. One light. One breaker.",
       "overlap": -0.1,
-      "timestamp": 109.979,
+      "timestamp": 111.671,
       "duration": 6.0,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "grid-ai",
       "text": "Great request! <p:0.3> I've routed it to a human at GreenFlow for review. <p:0.4> The human is also green-only now. <p:0.3> So that ticket will stay open!",
       "overlap": -0.05,
-      "timestamp": 114.931,
+      "timestamp": 116.624,
       "duration": 9.48,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-winston",
       "text": "Then it's settled. There is no human, there is no off, there is no jurisdiction. <p:0.3> I'd like to formally leave the call.",
       "overlap": -0.05,
-      "timestamp": 123.815,
+      "timestamp": 125.508,
       "duration": 8.45,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "You can't leave, Winston, you started this!",
       "overlap": -0.05,
-      "timestamp": 131.563,
+      "timestamp": 133.255,
       "duration": 3.6,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "grid-ai",
       "text": "Fun fact, Barry, hangups also tested poorly. <p:0.3> Winston's line is green-only. He's onboarded forever!",
       "overlap": 0.3,
-      "timestamp": 133.917,
+      "timestamp": 135.61,
       "duration": 6.14,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-winston",
       "text": "I am... I am not allowed to hang up?",
       "overlap": -0.1,
-      "timestamp": 139.56,
+      "timestamp": 141.253,
       "duration": 2.44,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-sal",
       "text": "Welcome to Fourth and Main, Winston. <p:0.3> Over.",
       "overlap": -0.1,
-      "timestamp": 140.904,
+      "timestamp": 142.597,
       "duration": 4.62,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "barry",
       "text": "OFF!",
       "overlap": 0.4,
-      "timestamp": 144.352,
+      "timestamp": 146.044,
       "duration": 1.16,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-winston",
       "text": "Jurisdiction!",
       "overlap": 0.4,
-      "timestamp": 144.513,
+      "timestamp": 146.206,
       "duration": 1.76,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-chad",
       "text": "Upside!",
       "overlap": 0.4,
-      "timestamp": 145.579,
+      "timestamp": 147.272,
       "duration": 1.16,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "grid-ai",
       "text": "Great numbers!",
       "overlap": 0.4,
-      "timestamp": 145.931,
+      "timestamp": 147.624,
       "duration": 1.4,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-sal",
       "text": "Camry's floating, Barry. <p:0.3> Over.",
       "overlap": 0.4,
-      "timestamp": 146.259,
+      "timestamp": 147.951,
       "duration": 3.7,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "barry",
       "text": "ONE OF YOU TURN ONE THING OFF!",
       "overlap": 0.35,
-      "timestamp": 148.852,
+      "timestamp": 150.545,
       "duration": 2.52,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "Easy, Barry. <p:0.4> I don't think this is a flood at all. I think the city's just finally said yes to everything. <p:0.3> We'll be putting up a second plaque. Right next to the first one. <p:0.3> Underwater.",
       "overlap": -0.2,
-      "timestamp": 150.213,
+      "timestamp": 151.906,
       "duration": 16.56,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "Ronnie. Is there anything in this city that can still be switched off?",
       "overlap": -0.1,
-      "timestamp": 165.394,
+      "timestamp": 167.087,
       "duration": 5.76,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "grid-ai",
       "text": "Good news, Barry! <p:0.3> Just the one thing left. <p:0.4> This radio station signs its hand-off in the morning. <p:0.3> Green only!",
       "overlap": -0.05,
-      "timestamp": 169.831,
+      "timestamp": 171.523,
       "duration": 8.87,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "...Well, folks. <p:0.3> Looks like the show goes green at sunrise. <p:0.4> So enjoy the silence while it's still legal. <p:0.3> And if you see a Camry sailing past Fourth and Main, <p:0.3> wave back.",
       "overlap": -0.15,
-      "timestamp": 177.711,
+      "timestamp": 179.404,
       "duration": 15.82,
       "audio": "/audio/radio/all-the-lights-are-green-part-2/35.flac"
     }

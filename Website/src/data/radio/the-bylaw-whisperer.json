@@ -141,17 +141,17 @@
     },
     {
       "speaker": "caller-patricia",
-      "text": "I don't... who's Doug?",
+      "text": "[question-en] I don't... who's Doug?",
       "overlap": -0.1,
-      "timestamp": 140.589,
-      "duration": 2.0,
+      "timestamp": 140.176,
+      "duration": 3.08,
       "audio": "/audio/radio/the-bylaw-whisperer/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Doesn't matter. Here's the play. You file a property-line complaint against yourself. The survey gets ordered in your name, so you control the paperwork. You control the whole board.",
       "overlap": -0.15,
-      "timestamp": 141.82,
+      "timestamp": 142.358,
       "duration": 14.04,
       "audio": "/audio/radio/the-bylaw-whisperer/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "barry",
       "text": "Ronnie, if she complains against herself, the survey just proves his fence is fine and hers is the problem.",
       "overlap": -0.1,
-      "timestamp": 154.729,
+      "timestamp": 155.266,
       "duration": 8.72,
       "audio": "/audio/radio/the-bylaw-whisperer/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "ronnie",
       "text": "That's advanced strategy, Barry. You wouldn't get it. Darnell, you're on.",
       "overlap": -0.2,
-      "timestamp": 162.194,
+      "timestamp": 162.731,
       "duration": 5.64,
       "audio": "/audio/radio/the-bylaw-whisperer/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-darnell",
       "text": "Hey, so, I got a violation letter over the color of my front door. The color. And my appeal hearing is tomorrow morning. I'm pretty nervous, man. I just want to keep my house.",
       "overlap": -0.15,
-      "timestamp": 167.316,
+      "timestamp": 167.853,
       "duration": 10.97,
       "audio": "/audio/radio/the-bylaw-whisperer/21.flac"
     },
@@ -183,23 +183,23 @@
       "speaker": "ronnie",
       "text": "Don't appeal it. Appealing is for people who can be cited. Tonight, before the hearing, you open a brand new, bigger violation. On your roof. Your garage. Your mailbox.",
       "overlap": -0.1,
-      "timestamp": 177.974,
+      "timestamp": 178.511,
       "duration": 12.72,
       "audio": "/audio/radio/the-bylaw-whisperer/22.flac"
     },
     {
       "speaker": "caller-darnell",
-      "text": "Wait, you want me to report myself harder?",
+      "text": "[surprise-ah] Wait, you want me to report myself harder?",
       "overlap": 0.25,
-      "timestamp": 189.816,
-      "duration": 2.53,
+      "timestamp": 190.353,
+      "duration": 2.95,
       "audio": "/audio/radio/the-bylaw-whisperer/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A board cannot fine a man who has already fined himself harder. <p:0.3> You walk into that hearing, Darnell, and you read your own citations aloud. They'll have nothing. You'll have everything.",
       "overlap": -0.1,
-      "timestamp": 190.931,
+      "timestamp": 191.901,
       "duration": 14.66,
       "audio": "/audio/radio/the-bylaw-whisperer/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "barry",
       "text": "Or he just has four violations now instead of one.",
       "overlap": -0.1,
-      "timestamp": 204.354,
+      "timestamp": 205.324,
       "duration": 4.13,
       "audio": "/audio/radio/the-bylaw-whisperer/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "ronnie",
       "text": "Last call of the night. Mildred, sweetheart, what's going on.",
       "overlap": -0.2,
-      "timestamp": 207.03,
+      "timestamp": 208.0,
       "duration": 4.76,
       "audio": "/audio/radio/the-bylaw-whisperer/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-mildred",
       "text": "Oh, Ronnie, it's bad. The association says they're going to put a lien on my home. Unpaid landscaping fees. I've lived in this house forty years. I'm scared I'm going to lose it.",
       "overlap": -0.15,
-      "timestamp": 211.074,
+      "timestamp": 212.044,
       "duration": 13.18,
       "audio": "/audio/radio/the-bylaw-whisperer/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "ronnie",
       "text": "Forty years. Mildred, I want you calm, because I have the answer. You file an eviction. <p:0.3> Against yourself.",
       "overlap": -0.1,
-      "timestamp": 223.86,
+      "timestamp": 224.83,
       "duration": 8.94,
       "audio": "/audio/radio/the-bylaw-whisperer/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-mildred",
       "text": "Against... myself?",
       "overlap": -0.1,
-      "timestamp": 232.138,
+      "timestamp": 233.108,
       "duration": 1.29,
       "audio": "/audio/radio/the-bylaw-whisperer/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "You vacate before the board can act. Because you cannot be removed from a property you have already removed yourself from. That's not strategy, Mildred. That's just physics.",
       "overlap": -0.1,
-      "timestamp": 232.242,
+      "timestamp": 233.212,
       "duration": 13.36,
       "audio": "/audio/radio/the-bylaw-whisperer/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-mildred",
       "text": "Oh. Oh, that actually sounds airtight.",
       "overlap": 0.25,
-      "timestamp": 244.46,
+      "timestamp": 245.43,
       "duration": 2.91,
       "audio": "/audio/radio/the-bylaw-whisperer/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "ronnie",
       "text": "It's airtight, Mildred. You just outmaneuvered the entire board. I'm proud of you.",
       "overlap": -0.1,
-      "timestamp": 246.898,
+      "timestamp": 247.868,
       "duration": 6.36,
       "audio": "/audio/radio/the-bylaw-whisperer/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> None of that is in here. I'm holding the bylaws. None of it.",
       "overlap": -0.15,
-      "timestamp": 252.266,
+      "timestamp": 253.236,
       "duration": 6.38,
       "audio": "/audio/radio/the-bylaw-whisperer/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "phone",
       "text": "You have one new message.",
       "overlap": -0.1,
-      "timestamp": 258.094,
+      "timestamp": 259.064,
       "duration": 0.5,
       "audio": "/audio/radio/the-bylaw-whisperer/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-mildred",
       "text": "Hi, it's Mildred! I did it! I evicted myself, the board dropped the lien, and the house is in your name now, Ronnie, on a complaint I filed last night. Thank you, dear!",
       "overlap": -0.1,
-      "timestamp": 258.477,
+      "timestamp": 259.447,
       "duration": 12.79,
       "audio": "/audio/radio/the-bylaw-whisperer/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "He's going to take that as a win.",
       "overlap": -0.1,
-      "timestamp": 270.457,
+      "timestamp": 271.427,
       "duration": 2.64,
       "audio": "/audio/radio/the-bylaw-whisperer/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "That's a win.",
       "overlap": 0.2,
-      "timestamp": 271.66,
+      "timestamp": 272.63,
       "duration": 1.8,
       "audio": "/audio/radio/the-bylaw-whisperer/37.flac"
     }

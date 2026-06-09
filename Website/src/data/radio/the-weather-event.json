@@ -7,358 +7,409 @@
       "speaker": "ronnie",
       "text": "We're interrupting the regular hour on Snazzie FM for breaking weather. Stay where you are. Do not go to the parking lot.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 9.28,
+      "audio": "/audio/radio/the-weather-event/0.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, it's a goose.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 8.429,
+      "duration": 1.84,
+      "audio": "/audio/radio/the-weather-event/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It's a developing situation, Barry. We're getting reports. We're going live to Todd at the window.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 8.903,
+      "duration": 7.56,
+      "audio": "/audio/radio/the-weather-event/2.flac"
     },
     {
       "speaker": "todd",
       "text": "Yeah, hi, Ronnie. So. <p:0.3> There is one goose. It's standing on the handicap spot. It hasn't moved in, like, a while.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 15.65,
+      "duration": 4.13,
+      "audio": "/audio/radio/the-weather-event/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "How big are we talking, Todd? Give the listeners a sense of scale.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 18.972,
+      "duration": 5.08,
+      "audio": "/audio/radio/the-weather-event/4.flac"
     },
     {
       "speaker": "todd",
       "text": "Um. Goose sized.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 23.446,
+      "duration": 1.06,
+      "audio": "/audio/radio/the-weather-event/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Folks, that is a category we have not seen in this region since the spring.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 23.867,
+      "duration": 5.8,
+      "audio": "/audio/radio/the-weather-event/6.flac"
     },
     {
       "speaker": "barry",
       "text": "Geese come every spring, Ronnie. They come every single spring.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 28.1,
+      "duration": 5.28,
+      "audio": "/audio/radio/the-weather-event/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And every spring, Barry, we are not ready. <p:0.3> The National Weather Desk has not commented, so I'm naming it myself. We're calling this one Goose Patricia.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 32.283,
+      "duration": 11.98,
+      "audio": "/audio/radio/the-weather-event/8.flac"
     },
     {
       "speaker": "barry",
       "text": "You can't name a goose after a hurricane.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 43.035,
+      "duration": 3.4,
+      "audio": "/audio/radio/the-weather-event/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I already did. It's on the lower third now. Let's get a weather professional. Phil, you do the forecast over on the AM dial. You're on the air.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 45.709,
+      "duration": 10.6,
+      "audio": "/audio/radio/the-weather-event/10.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Thanks, Ronnie. So I pulled the radar, and I want everyone to stay calm. <p:0.3> The pressure's dropping. This bird has its own weather system now.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 55.543,
+      "duration": 7.42,
+      "audio": "/audio/radio/the-weather-event/11.flac"
     },
     {
       "speaker": "barry",
       "text": "A goose does not have a pressure system, Phil.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 61.737,
+      "duration": 3.8,
+      "audio": "/audio/radio/the-weather-event/12.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Tell that to the radar, Barry. There's a little spinny thing right where the goose is. <p:0.3> That's rotation. We don't love rotation.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 64.575,
+      "duration": 6.82,
+      "audio": "/audio/radio/the-weather-event/13.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Rotation. <p:0.3> Folks, I'm upgrading us to a Level Four Advisory. Bring in the pets. Fill the bathtub.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 70.83,
+      "duration": 8.54,
+      "audio": "/audio/radio/the-weather-event/14.flac"
     },
     {
       "speaker": "barry",
       "text": "Fill the bathtub for a goose? Why?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 78.632,
+      "duration": 2.84,
+      "audio": "/audio/radio/the-weather-event/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You always fill the bathtub, Barry. That's just preparedness.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 80.403,
+      "duration": 4.88,
+      "audio": "/audio/radio/the-weather-event/16.flac"
     },
     {
       "speaker": "todd",
       "text": "Ronnie? <p:0.3> Update. It looked at me. <p:0.4> Through the glass. I think it knows my name.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 84.721,
+      "duration": 4.03,
+      "audio": "/audio/radio/the-weather-event/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Stay calm, Todd. Do not establish dominance. Do not break eye contact.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 88.289,
+      "duration": 5.48,
+      "audio": "/audio/radio/the-weather-event/18.flac"
     },
     {
       "speaker": "todd",
       "text": "Those are the opposite, Ronnie. You said both.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 93.209,
+      "duration": 1.6,
+      "audio": "/audio/radio/the-weather-event/19.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Hi, yes, I'm in my car in the lot, and the bird is between me and the Walgreens. <p:0.3> I have been here forty minutes. I have ice cream.",
       "overlap": -0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 94.61,
+      "duration": 9.38,
+      "audio": "/audio/radio/the-weather-event/20.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Mildred, do not abandon the vehicle. The vehicle is your shelter now.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 103.218,
+      "duration": 5.4,
+      "audio": "/audio/radio/the-weather-event/21.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "It's a Honda Civic, dear.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 108.056,
+      "duration": 1.76,
+      "audio": "/audio/radio/the-weather-event/22.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then it's a Honda Civic that may save your life. Ration the ice cream.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 109.217,
+      "duration": 5.36,
+      "audio": "/audio/radio/the-weather-event/23.flac"
     },
     {
       "speaker": "barry",
       "text": "Mildred, you can just walk around it. It's a goose. Walk wide and walk around.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 113.655,
+      "duration": 6.24,
+      "audio": "/audio/radio/the-weather-event/24.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "It hissed at the Walgreens, dear. It hissed at the whole building.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 119.288,
+      "duration": 4.87,
+      "audio": "/audio/radio/the-weather-event/25.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "See, that's the hiss, Barry. That's pre-event. <p:0.3> When the goose goes quiet, that's when you run.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 123.311,
+      "duration": 5.1,
+      "audio": "/audio/radio/the-weather-event/26.flac"
     },
     {
       "speaker": "barry",
       "text": "Run from the quiet goose? Phil, every goose state is bad in your model.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 127.18,
+      "duration": 5.72,
+      "audio": "/audio/radio/the-weather-event/27.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Now you understand the goose, Barry.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 131.729,
+      "duration": 2.12,
+      "audio": "/audio/radio/the-weather-event/28.flac"
     },
     {
       "speaker": "todd",
       "text": "It's quiet now. <p:0.4> Ronnie, it just got real quiet.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 133.461,
+      "duration": 2.8,
+      "audio": "/audio/radio/the-weather-event/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "This is it. This is the eye of Patricia. <p:0.3> Phil, what's the worst case here?",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 135.815,
+      "duration": 6.02,
+      "audio": "/audio/radio/the-weather-event/30.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Two geese, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 140.951,
+      "duration": 1.72,
+      "audio": "/audio/radio/the-weather-event/31.flac"
     },
     {
       "speaker": "barry",
       "text": "Two geese is not a worst case, it's a Tuesday!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 141.361,
+      "duration": 3.68,
+      "audio": "/audio/radio/the-weather-event/32.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "There are six of them now.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 143.785,
+      "duration": 1.69,
+      "audio": "/audio/radio/the-weather-event/33.flac"
     },
     {
       "speaker": "ronnie",
       "text": "SIX. <p:0.3> Mildred, where did the other five come from?",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 144.614,
+      "duration": 5.1,
+      "audio": "/audio/radio/the-weather-event/34.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "The sky, dear. They came from the sky.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 148.66,
+      "duration": 2.78,
+      "audio": "/audio/radio/the-weather-event/35.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "It's making landfall! Snazzie FM is in the cone! We are IN the cone!",
       "overlap": 0.35,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 150.528,
+      "duration": 3.44,
+      "audio": "/audio/radio/the-weather-event/36.flac"
     },
     {
       "speaker": "todd",
       "text": "They're walking in a line! <p:0.2> Single file! Toward the doors!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 152.919,
+      "duration": 2.54,
+      "audio": "/audio/radio/the-weather-event/37.flac"
     },
     {
       "speaker": "barry",
-      "text": "Geese walk in a line! That's just how they go places!",
+      "text": "[sigh] Geese walk in a line! That's just how they go places!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 154.735,
+      "duration": 4.76,
+      "audio": "/audio/radio/the-weather-event/38.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Organized, Barry! They are ORGANIZED!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 157.773,
+      "duration": 3.08,
+      "audio": "/audio/radio/the-weather-event/39.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Get to your interior goose room!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 159.648,
+      "duration": 2.04,
+      "audio": "/audio/radio/the-weather-event/40.flac"
     },
     {
       "speaker": "barry",
       "text": "There is no interior goose room, Phil!",
       "overlap": 0.4,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 160.193,
+      "duration": 3.2,
+      "audio": "/audio/radio/the-weather-event/41.flac"
     },
     {
       "speaker": "todd",
       "text": "Wait. <p:0.3> Wait, they stopped. <p:0.4> They're, um. <p:0.3> They're waiting at the crosswalk.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 162.933,
+      "duration": 5.01,
+      "audio": "/audio/radio/the-weather-event/42.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Waiting for what, Todd?",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 167.449,
+      "duration": 2.16,
+      "audio": "/audio/radio/the-weather-event/43.flac"
     },
     {
       "speaker": "todd",
       "text": "The light, Ronnie. <p:0.4> It turned green. They're crossing. <p:0.3> They used the crosswalk. They're gone.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 169.041,
+      "duration": 4.47,
+      "audio": "/audio/radio/the-weather-event/44.flac"
     },
     {
       "speaker": "barry",
       "text": "So it was geese, crossing a road. Like geese have done since the beginning of geese.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 173.074,
+      "duration": 6.8,
+      "audio": "/audio/radio/the-weather-event/45.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "Or, Ronnie, they know our patterns now. <p:0.3> They've learned the lights.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 178.971,
+      "duration": 4.42,
+      "audio": "/audio/radio/the-weather-event/46.flac"
     },
     {
       "speaker": "ronnie",
       "text": "They've learned the lights. <p:0.3> Folks, I'm keeping us at a Level Four. Patricia has moved on, but Patricia has a sister.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 182.364,
+      "duration": 9.26,
+      "audio": "/audio/radio/the-weather-event/47.flac"
     },
     {
       "speaker": "barry",
       "text": "You don't know that it has a sister.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 190.538,
+      "duration": 2.96,
+      "audio": "/audio/radio/the-weather-event/48.flac"
     },
     {
       "speaker": "ronnie",
       "text": "They always have a sister, Barry. <p:0.3> Keep the bathtub full. We'll be right back.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 192.326,
+      "duration": 6.38,
+      "audio": "/audio/radio/the-weather-event/49.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "My ice cream is soup now, dear.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 198.052,
+      "duration": 2.22,
+      "audio": "/audio/radio/the-weather-event/50.flac"
     }
   ]
 }

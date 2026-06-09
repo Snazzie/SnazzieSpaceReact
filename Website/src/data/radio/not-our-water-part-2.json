@@ -37,17 +37,17 @@
     },
     {
       "speaker": "barry",
-      "text": "It's the same water, Patricia. It just walked here.",
+      "text": "[dissatisfaction-hnn] It's the same water, Patricia. It just walked here.",
       "overlap": -0.1,
-      "timestamp": 46.374,
-      "duration": 4.2,
+      "timestamp": 46.46,
+      "duration": 6.04,
       "audio": "/audio/radio/not-our-water-part-2/4.flac"
     },
     {
       "speaker": "caller-patricia",
       "text": "Water that walks somewhere is touring, Barry. We don't own tours.",
       "overlap": 0,
-      "timestamp": 49.831,
+      "timestamp": 51.817,
       "duration": 5.84,
       "audio": "/audio/radio/not-our-water-part-2/5.flac"
     },
@@ -55,7 +55,7 @@
       "speaker": "caller-darnell",
       "text": "And it's downhill now, Ronnie, which means it's flowing, which means once again, that's not the one we hit. We hit a flat pipe. A pipe with no opinions about hills.",
       "overlap": 0.25,
-      "timestamp": 54.482,
+      "timestamp": 56.468,
       "duration": 10.34,
       "audio": "/audio/radio/not-our-water-part-2/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "caller-winston",
       "text": "Downhill is gaining momentum, which is kinetic, which is, and I cannot stress this enough, outside my asset class.",
       "overlap": 0.3,
-      "timestamp": 63.853,
+      "timestamp": 65.839,
       "duration": 8.08,
       "audio": "/audio/radio/not-our-water-part-2/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "barry",
       "text": "It is in OUR basement, Winston!",
       "overlap": 0.3,
-      "timestamp": 70.635,
+      "timestamp": 72.621,
       "duration": 2.64,
       "audio": "/audio/radio/not-our-water-part-2/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "caller-winston",
       "text": "Your basement is a vault, Barry, and vaults ARE my asset class, so the basement is mine. <p:0.3> The water in it, however, remains firmly not.",
       "overlap": 0.3,
-      "timestamp": 71.59,
+      "timestamp": 73.577,
       "duration": 9.08,
       "audio": "/audio/radio/not-our-water-part-2/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "ronnie",
       "text": "So you'll take the basement but not what's in it.",
       "overlap": -0.2,
-      "timestamp": 79.442,
+      "timestamp": 81.428,
       "duration": 3.76,
       "audio": "/audio/radio/not-our-water-part-2/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "caller-winston",
       "text": "I take it at rest, Ronnie. Bone dry. The moment you add water it changes asset class and ceases to concern me.",
       "overlap": 0,
-      "timestamp": 82.231,
+      "timestamp": 84.217,
       "duration": 7.34,
       "audio": "/audio/radio/not-our-water-part-2/11.flac"
     },
@@ -103,7 +103,7 @@
       "speaker": "ronnie",
       "text": "Folks, we've actually got a new line ringing in. Caller, you're on Snazzie FM, who's this?",
       "overlap": -0.2,
-      "timestamp": 88.482,
+      "timestamp": 90.469,
       "duration": 6.8,
       "audio": "/audio/radio/not-our-water-part-2/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-marcus",
       "text": "Yes, hello, Ronnie. Marcus here, Surface Water. <p:0.3> And I want to say up front, before anyone gets the wrong idea, I am calling about the river in your parking lot specifically to confirm it is not ours.",
       "overlap": -0.1,
-      "timestamp": 94.771,
+      "timestamp": 96.757,
       "duration": 11.1,
       "audio": "/audio/radio/not-our-water-part-2/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "You called in. To disown it.",
       "overlap": -0.1,
-      "timestamp": 105.071,
+      "timestamp": 107.057,
       "duration": 2.36,
       "audio": "/audio/radio/not-our-water-part-2/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "caller-marcus",
       "text": "I dialed the second I saw it on the surface, Barry. Surface Water handles lakes, ponds, the river. <p:0.3> A river that arrives by surprise, in a parking lot, with no permit? That's not a Surface Water river. That's a freelancer.",
       "overlap": 0,
-      "timestamp": 106.724,
+      "timestamp": 108.71,
       "duration": 12.18,
       "audio": "/audio/radio/not-our-water-part-2/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-patricia",
       "text": "Thank you, Marcus. Finally, a professional.",
       "overlap": -0.1,
-      "timestamp": 118.207,
+      "timestamp": 120.193,
       "duration": 4.0,
       "audio": "/audio/radio/not-our-water-part-2/16.flac"
     },
@@ -143,23 +143,23 @@
       "speaker": "caller-marcus",
       "text": "And to be clear, Patricia, you're not off the hook just because I'm on it. I'm a different department entirely. <p:0.3> I am here to disown it. Not to explain it.",
       "overlap": -0.1,
-      "timestamp": 121.581,
+      "timestamp": 123.567,
       "duration": 8.58,
       "audio": "/audio/radio/not-our-water-part-2/17.flac"
     },
     {
       "speaker": "barry",
-      "text": "There are now four of you, and the water is winning.",
+      "text": "[dissatisfaction-hnn] There are now four of you, and the water is winning.",
       "overlap": -0.1,
-      "timestamp": 129.54,
-      "duration": 4.2,
+      "timestamp": 131.581,
+      "duration": 6.08,
       "audio": "/audio/radio/not-our-water-part-2/18.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Alright. New plan. We have four agencies on this line. <p:0.3> If each of you owns one fourth of the valve, can the four of you turn it together?",
       "overlap": -0.2,
-      "timestamp": 132.691,
+      "timestamp": 136.167,
       "duration": 10.74,
       "audio": "/audio/radio/not-our-water-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "caller-darnell",
       "text": "Can't turn a fourth of a valve we didn't hit, Ronnie.",
       "overlap": 0.3,
-      "timestamp": 142.385,
+      "timestamp": 145.86,
       "duration": 3.08,
       "audio": "/audio/radio/not-our-water-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "caller-patricia",
       "text": "Decommissioned, all four fourths!",
       "overlap": 0.35,
-      "timestamp": 144.68,
+      "timestamp": 148.155,
       "duration": 3.24,
       "audio": "/audio/radio/not-our-water-part-2/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "caller-winston",
       "text": "My fourth is at rest!",
       "overlap": 0.4,
-      "timestamp": 146.191,
+      "timestamp": 149.666,
       "duration": 2.0,
       "audio": "/audio/radio/not-our-water-part-2/22.flac"
     },
@@ -191,7 +191,7 @@
       "speaker": "caller-marcus",
       "text": "My fourth's a freelancer!",
       "overlap": 0.4,
-      "timestamp": 147.378,
+      "timestamp": 150.854,
       "duration": 1.8,
       "audio": "/audio/radio/not-our-water-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "IS THE VALVE OFF?!",
       "overlap": 0.4,
-      "timestamp": 147.974,
+      "timestamp": 151.449,
       "duration": 1.76,
       "audio": "/audio/radio/not-our-water-part-2/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "caller-patricia",
       "text": "Not ours!",
       "overlap": 0.4,
-      "timestamp": 148.808,
+      "timestamp": 152.283,
       "duration": 1.6,
       "audio": "/audio/radio/not-our-water-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-winston",
       "text": "Not mine!",
       "overlap": 0.4,
-      "timestamp": 149.444,
+      "timestamp": 152.919,
       "duration": 1.4,
       "audio": "/audio/radio/not-our-water-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-darnell",
       "text": "Not the one we hit!",
       "overlap": 0.4,
-      "timestamp": 150.026,
+      "timestamp": 153.502,
       "duration": 1.57,
       "audio": "/audio/radio/not-our-water-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "caller-marcus",
       "text": "Not a real river!",
       "overlap": 0.4,
-      "timestamp": 150.766,
+      "timestamp": 154.241,
       "duration": 1.56,
       "audio": "/audio/radio/not-our-water-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "Ronnie, my chair just floated past the soundboard.",
       "overlap": -0.15,
-      "timestamp": 151.234,
+      "timestamp": 154.709,
       "duration": 4.24,
       "audio": "/audio/radio/not-our-water-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "ronnie",
       "text": "Well, by my count, that's four fourths of nobody's water. <p:0.3> Which means, mathematically, the studio is now standing in a perfectly ownerless lake. Congratulations to no one.",
       "overlap": -0.2,
-      "timestamp": 153.995,
+      "timestamp": 157.47,
       "duration": 13.55,
       "audio": "/audio/radio/not-our-water-part-2/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-marcus",
       "text": "A lake, did you say? <p:0.3> Ronnie, a lake is standing water. Standing water is Surface Water. <p:0.4> ...I'm going to need to call you back.",
       "overlap": -0.1,
-      "timestamp": 166.822,
+      "timestamp": 170.298,
       "duration": 8.1,
       "audio": "/audio/radio/not-our-water-part-2/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "barry",
       "text": "He hung up, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 174.127,
+      "timestamp": 177.603,
       "duration": 1.76,
       "audio": "/audio/radio/not-our-water-part-2/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Now that's fair. <p:0.3> So we finally found a department that owns it. He just needs to get here before it's moving again. We'll be right back.",
       "overlap": -0.2,
-      "timestamp": 174.865,
+      "timestamp": 178.341,
       "duration": 11.22,
       "audio": "/audio/radio/not-our-water-part-2/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "It's already moving, Ronnie. <p:0.3> It's downstairs filling the basement.",
       "overlap": -0.1,
-      "timestamp": 184.701,
+      "timestamp": 188.176,
       "duration": 6.02,
       "audio": "/audio/radio/not-our-water-part-2/34.flac"
     }

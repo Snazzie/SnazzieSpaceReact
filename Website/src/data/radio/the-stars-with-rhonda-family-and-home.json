@@ -78,17 +78,17 @@
     },
     {
       "speaker": "ronnie",
-      "text": "I am the... no. That is not how ovens... <p:0.3> Rhonda, why is the studio so warm?",
+      "text": "[question-en] I am the... no. That is not how ovens... <p:0.3> Rhonda, why is the studio so warm?",
       "overlap": 0,
-      "timestamp": 43.065,
-      "duration": 5.86,
+      "timestamp": 43.094,
+      "duration": 6.9,
       "audio": "/audio/radio/the-stars-with-rhonda-family-and-home/9.flac"
     },
     {
       "speaker": "rhonda",
       "text": "It is preheating, dear. The house is ready for you.",
       "overlap": -0.1,
-      "timestamp": 47.929,
+      "timestamp": 49.248,
       "duration": 3.03,
       "audio": "/audio/radio/the-stars-with-rhonda-family-and-home/10.flac"
     }
