@@ -7,253 +7,289 @@
       "speaker": "ronnie",
       "text": "You're listening to Love On The Line, here on Snazzie FM, where I, Ronnie, take your heartache and I fix it. Three divorces, folks. I've seen it all.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 11.12,
+      "audio": "/audio/radio/love-on-the-line/0.flac"
     },
     {
       "speaker": "barry",
       "text": "Most people would not list that as a qualification, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 10.144,
+      "duration": 4.96,
+      "audio": "/audio/radio/love-on-the-line/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Most people aren't experts, Barry. Let's go to the lines. Linda, you're on Love On The Line.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 13.604,
+      "duration": 6.88,
+      "audio": "/audio/radio/love-on-the-line/2.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Oh, hi, hi, okay, so, we've been together two years, and he just, he won't say it, you know, the L word, and I've been so patient but I just need to know, Ronnie, is he ever, is he ever gonna commit?",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 19.415,
+      "duration": 11.38,
+      "audio": "/audio/radio/love-on-the-line/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Linda. <p:0.3> Linda, I'm gonna stop you right there. This is a money problem.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 30.256,
+      "duration": 6.62,
+      "audio": "/audio/radio/love-on-the-line/4.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "It's... it's not really about mon...",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 35.432,
+      "duration": 2.52,
+      "audio": "/audio/radio/love-on-the-line/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You're paying for the dates. He doesn't respect you. Here's the fix. Next date? You split the bill. Fifty-fifty. That's romance, Linda. That's a man saying I see you as an equal.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 37.372,
+      "duration": 13.2,
+      "audio": "/audio/radio/love-on-the-line/6.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, she asked about commitment. She didn't mention paying for anything.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 49.769,
+      "duration": 6.28,
+      "audio": "/audio/radio/love-on-the-line/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Split the bill, Linda. You'll thank me. Next caller. Darnell, talk to me.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 55.257,
+      "duration": 5.52,
+      "audio": "/audio/radio/love-on-the-line/8.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Hey Ronnie. Fifteen years married. And lately she's just... quiet. Distant. I'm scared we're drifting apart, man, and I just wanna find my way back to her.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 60.199,
+      "duration": 9.72,
+      "audio": "/audio/radio/love-on-the-line/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Drifting apart. Beautiful. Natural. Healthy, even.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 69.604,
+      "duration": 4.08,
+      "audio": "/audio/radio/love-on-the-line/10.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Healthy? It doesn't feel...",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 72.774,
+      "duration": 1.87,
+      "audio": "/audio/radio/love-on-the-line/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I have drifted apart four times, Darnell. Four. And look at me now. National radio. So really, you're winning.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 73.411,
+      "duration": 8.36,
+      "audio": "/audio/radio/love-on-the-line/12.flac"
     },
     {
       "speaker": "barry",
       "text": "That's three divorces and one of us, Ronnie. I'm the fourth thing you drifted from.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 80.275,
+      "duration": 6.68,
+      "audio": "/audio/radio/love-on-the-line/13.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And here's your move, Darnell. Marriage counselor. <p:0.3> But you split the bill on it. Fifty-fifty. Keeps it fair.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 85.673,
+      "duration": 8.7,
+      "audio": "/audio/radio/love-on-the-line/14.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Split the bill on... on saving my marriage?",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 93.612,
+      "duration": 2.74,
+      "audio": "/audio/radio/love-on-the-line/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now you get it. Mildred, you're on the line, sweetheart.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 95.479,
+      "duration": 4.32,
+      "audio": "/audio/radio/love-on-the-line/16.flac"
     },
     {
-      "speaker": "caller-mildred",
+      "speaker": "caller-mildred-widow",
       "text": "Hello, dear. Since my Harold passed, it's been awful lonely. My grandson set me up on one of those phone dating things, the, oh, the Bumble. I just don't know how a woman my age even begins.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 99.068,
+      "duration": 14.47,
+      "audio": "/audio/radio/love-on-the-line/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "The Grumble. Love it. Okay, Mildred, here's how you stand out. Three in the morning, that's prime time. You meet these total strangers in a parking lot, somewhere quiet, no cameras.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 112.434,
+      "duration": 13.47,
+      "audio": "/audio/radio/love-on-the-line/18.flac"
     },
     {
       "speaker": "barry",
       "text": "No. No, Mildred, do not do any part of that. Please.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 124.534,
+      "duration": 4.08,
+      "audio": "/audio/radio/love-on-the-line/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And for your bio? One line. Will split the bill. <p:0.3> Drives 'em wild. Power move.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 127.978,
+      "duration": 6.26,
+      "audio": "/audio/radio/love-on-the-line/20.flac"
     },
     {
-      "speaker": "caller-mildred",
+      "speaker": "caller-mildred-widow",
       "text": "Should I put that before or after my casserole recipe, dear?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 133.642,
+      "duration": 3.78,
+      "audio": "/audio/radio/love-on-the-line/21.flac"
     },
     {
       "speaker": "ronnie",
       "text": "After. Always lead with the casserole. Last caller. Chad, you sound rough, buddy.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 136.941,
+      "duration": 6.28,
+      "audio": "/audio/radio/love-on-the-line/22.flac"
     },
     {
       "speaker": "caller-chad",
-      "text": "She left me, Ronnie. Six days ago. I've called her forty times. I just... I need her back. How do I get her back?",
+      "text": "She left me, Ronnie. Six days ago. Forty calls, no answer. I'm giving her one more week before I pivot the strategy.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 142.552,
+      "duration": 5.35,
+      "audio": "/audio/radio/love-on-the-line/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Forty calls? Amateur. You call sixty. Then you show up at her work with a mariachi band you can't afford.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 147.493,
+      "duration": 7.96,
+      "audio": "/audio/radio/love-on-the-line/24.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, that's a restraining order, that's not a band.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 154.02,
+      "duration": 4.4,
+      "audio": "/audio/radio/love-on-the-line/25.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And here's the grand gesture, Chad. You tell her, baby, let's split the breakup. Fifty-fifty. You take half the heartbreak, I take half.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 156.897,
+      "duration": 10.24,
+      "audio": "/audio/radio/love-on-the-line/26.flac"
     },
     {
       "speaker": "caller-chad",
-      "text": "I... I don't think you can split a breakup, Ronnie.",
+      "text": "Can't split a breakup, Ronnie. The optics are wrong.",
       "overlap": 0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 166.054,
+      "duration": 2.52,
+      "audio": "/audio/radio/love-on-the-line/27.flac"
     },
     {
       "speaker": "ronnie",
       "text": "And then? You propose joint custody. Of the cat.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 167.808,
+      "duration": 3.76,
+      "audio": "/audio/radio/love-on-the-line/28.flac"
     },
     {
       "speaker": "caller-chad",
-      "text": "We don't... we don't have a cat.",
+      "text": "We don't have a cat. But I can source one.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 170.984,
+      "duration": 1.72,
+      "audio": "/audio/radio/love-on-the-line/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then you get one. And you split it. <p:0.3> She'll be back by Tuesday, Chad. Trust me.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 172.317,
+      "duration": 6.26,
+      "audio": "/audio/radio/love-on-the-line/30.flac"
     },
     {
       "speaker": "barry",
       "text": "Chad, hang up. Hang up and call literally anyone else.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 177.849,
+      "duration": 4.44,
+      "audio": "/audio/radio/love-on-the-line/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "We're gonna grab one quick voicemail before the break. Roll it, Barry.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 181.09,
+      "duration": 5.48,
+      "audio": "/audio/radio/love-on-the-line/32.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Hi, Ronnie, it's Linda, from earlier? So I did the fifty-fifty thing. <p:0.3> He left. He took half the apartment, half the savings, and, um, half the cat. I have the front half.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 185.546,
+      "duration": 11.57,
+      "audio": "/audio/radio/love-on-the-line/33.flac"
     },
     {
       "speaker": "barry",
       "text": "That tracks.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 196.67,
+      "duration": 1.6,
+      "audio": "/audio/radio/love-on-the-line/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See? <p:0.3> Fifty-fifty.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 197.225,
+      "duration": 3.38,
+      "audio": "/audio/radio/love-on-the-line/35.flac"
     }
   ]
 }
