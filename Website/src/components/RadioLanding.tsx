@@ -26,7 +26,8 @@ const SLOTS = [
   "SAT · 9:00 PM", "SUN · 8:30 PM", "MON · 10:00 PM", "TUE · 9:00 PM",
 ];
 
-const EPISODES_PER_PAGE = 10;
+const EPISODES_PER_PAGE = 5;
+const ADS_PER_PAGE = 5;
 
 function fmtTime(s: number) {
   if (!Number.isFinite(s) || s < 0) s = 0;
@@ -63,6 +64,8 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
   const onAir = episodes[audio.airIdx];
   const adSpotIdx = ads.findIndex((a) => a.slug === "ad-instaad");
   const [currentPage, setCurrentPage] = useState(0);
+  const [adPage, setAdPage] = useState(0);
+  const [adTab, setAdTab] = useState<"pro" | "blunder">("pro");
 
   const [clock, setClock] = useState("");
   useEffect(() => {
@@ -249,6 +252,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
 
       {/* ── Schedule + Top Hits side-by-side ────────────────────────── */}
       <div className="rl-guide-row">
+        <div className="rl-guide-left">
         <section className="rl-section rl-guide-main">
           <h2 className="rl-section-title">
             <span>Program Guide</span>
@@ -311,6 +315,60 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
             </div>
           )}
         </section>
+
+        {ads.length > 0 && (
+          <section className="rl-section">
+            <h2 className="rl-section-title">
+              <span>Ads On Demand</span>
+              <span className="rl-section-rule" />
+            </h2>
+            <p className="rl-section-sub">In case you want to give us free money by listening to ads.</p>
+            <div className="rl-tabs">
+              <button type="button" className={`rl-tab ${adTab === "pro" ? "rl-tab-active" : ""}`} onClick={() => { setAdTab("pro"); setAdPage(0); }}>Pro Ad</button>
+              <button type="button" className={`rl-tab ${adTab === "blunder" ? "rl-tab-active" : ""}`} onClick={() => { setAdTab("blunder"); setAdPage(0); }}>InstaAd</button>
+            </div>
+            <ol className="rl-schedule">
+              {ads
+                .filter(ad => adTab === "blunder" ? ad.category === "blunder" : ad.category !== "blunder")
+                .slice(adPage * ADS_PER_PAGE, (adPage + 1) * ADS_PER_PAGE)
+                .map((ad, localI) => {
+                  const globalI = ads.indexOf(ad);
+                  const isPlaying = globalI === audio.adIdx && audio.adPlaying;
+                  return (
+                    <li key={ad.slug}>
+                      <button
+                        type="button"
+                        className={`rl-show ${isPlaying ? "rl-show-live" : ""}`}
+                        onClick={() => audio.toggleAdSpot(globalI)}
+                      >
+                        <span className="rl-show-time">{ad.category === "blunder" ? "InstaAd" : "Pro Spot"}</span>
+                        <span className="rl-show-body">
+                          <span className="rl-show-title">
+                            {ad.title}
+                            {isPlaying && <span className="rl-show-tag">NOW PLAYING</span>}
+                          </span>
+                          <span className="rl-show-desc">{ad.description}</span>
+                        </span>
+                        <span className="rl-show-play">{isPlaying ? "❚❚" : "▶"}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+            </ol>
+            {(() => {
+              const filtered = ads.filter(a => adTab === "blunder" ? a.category === "blunder" : a.category !== "blunder");
+              const pages = Math.ceil(filtered.length / ADS_PER_PAGE);
+              return filtered.length > ADS_PER_PAGE && (
+                <div className="rl-pagination">
+                  <button type="button" className="rl-pagination-btn" onClick={() => setAdPage(Math.max(0, adPage - 1))} disabled={adPage === 0}>← Prev</button>
+                  <span className="rl-pagination-info">Page {adPage + 1} of {pages}</span>
+                  <button type="button" className="rl-pagination-btn" onClick={() => setAdPage(Math.min(pages - 1, adPage + 1))} disabled={adPage >= pages - 1}>Next →</button>
+                </div>
+              );
+            })()}
+          </section>
+        )}
+        </div>
 
         {music.length > 0 && (
           <RadioTopHits
