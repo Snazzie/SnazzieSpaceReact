@@ -23,15 +23,15 @@
       "speaker": "committee-patricia",
       "text": "Thank you so much, Ronnie. And let me just say, we are a friendly street. We do a bake sale every Sunday. <p:0.3> Banana bread. Smiles. The whole thing.",
       "overlap": -0.2,
-      "timestamp": 16.734,
-      "duration": 12.82,
+      "timestamp": 16.138,
+      "duration": 13.42,
       "audio": "/audio/radio/the-welcome-committee/2.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Banana bread. Now that's the heart of a neighborhood, Barry.",
       "overlap": -0.2,
-      "timestamp": 28.21,
+      "timestamp": 28.559,
       "duration": 4.72,
       "audio": "/audio/radio/the-welcome-committee/3.flac"
     },
@@ -39,7 +39,7 @@
       "speaker": "caller-darnell",
       "text": "Okay, hi, yeah, I'm the new guy. I moved into number eleven on Tuesday. <p:0.3> Can I ask why there's a folder?",
       "overlap": -0.1,
-      "timestamp": 32.226,
+      "timestamp": 32.575,
       "duration": 6.41,
       "audio": "/audio/radio/the-welcome-committee/4.flac"
     },
@@ -47,15 +47,15 @@
       "speaker": "committee-patricia",
       "text": "A welcome folder, dear. Every new resident gets one.",
       "overlap": -0.1,
-      "timestamp": 38.086,
-      "duration": 4.72,
+      "timestamp": 38.486,
+      "duration": 4.96,
       "audio": "/audio/radio/the-welcome-committee/5.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "It has my license plate in it. <p:0.3> It has a photo of my car. From above.",
       "overlap": -0.1,
-      "timestamp": 42.139,
+      "timestamp": 42.702,
       "duration": 4.55,
       "audio": "/audio/radio/the-welcome-committee/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "barry",
       "text": "From above?",
       "overlap": -0.1,
-      "timestamp": 46.358,
+      "timestamp": 46.921,
       "duration": 1.56,
       "audio": "/audio/radio/the-welcome-committee/7.flac"
     },
@@ -71,15 +71,15 @@
       "speaker": "committee-patricia",
       "text": "That's just Doug, with the drone. Doug does the welcome photos. <p:0.3> It's a friendly drone.",
       "overlap": -0.1,
-      "timestamp": 46.863,
-      "duration": 8.02,
+      "timestamp": 47.267,
+      "duration": 8.42,
       "audio": "/audio/radio/the-welcome-committee/8.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A neighbor who takes your picture. Now that's hospitality you don't see anymore.",
       "overlap": -0.2,
-      "timestamp": 53.175,
+      "timestamp": 54.035,
       "duration": 6.28,
       "audio": "/audio/radio/the-welcome-committee/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "caller-darnell",
       "text": "It also has my mother's maiden name. <p:0.3> I never told anyone my mother's maiden name.",
       "overlap": -0.1,
-      "timestamp": 58.935,
+      "timestamp": 59.795,
       "duration": 5.45,
       "audio": "/audio/radio/the-welcome-committee/10.flac"
     },
@@ -95,15 +95,15 @@
       "speaker": "committee-patricia",
       "text": "We like to know who we're welcoming, dear. It's all in good fun.",
       "overlap": -0.1,
-      "timestamp": 63.487,
-      "duration": 5.52,
+      "timestamp": 64.158,
+      "duration": 5.8,
       "audio": "/audio/radio/the-welcome-committee/11.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Patricia. <p:0.3> Patricia, is the man at number eleven aware of the watchlist?",
       "overlap": 0.2,
-      "timestamp": 67.411,
+      "timestamp": 68.291,
       "duration": 6.3,
       "audio": "/audio/radio/the-welcome-committee/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "caller-darnell",
       "text": "The WHAT?",
       "overlap": 0.3,
-      "timestamp": 72.918,
+      "timestamp": 73.798,
       "duration": 0.85,
       "audio": "/audio/radio/the-welcome-committee/13.flac"
     },
@@ -119,15 +119,15 @@
       "speaker": "committee-patricia",
       "text": "Doug, we are LIVE. <p:0.3> It's not a watchlist, dear. It's a community engagement spreadsheet.",
       "overlap": 0.25,
-      "timestamp": 73.52,
-      "duration": 8.38,
+      "timestamp": 74.418,
+      "duration": 8.82,
       "audio": "/audio/radio/the-welcome-committee/14.flac"
     },
     {
       "speaker": "barry",
       "text": "Wait, the drone guy is named Doug AND the spreadsheet guy is named Doug?",
       "overlap": -0.1,
-      "timestamp": 80.189,
+      "timestamp": 81.175,
       "duration": 5.88,
       "audio": "/audio/radio/the-welcome-committee/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "caller-winston",
       "text": "There is only one Doug. <p:0.3> Doug is the committee.",
       "overlap": -0.1,
-      "timestamp": 85.143,
+      "timestamp": 86.129,
       "duration": 4.23,
       "audio": "/audio/radio/the-welcome-committee/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "ronnie",
       "text": "One man, doing it all. Bake sale, drone, spreadsheet. <p:0.3> That's a model citizen, Barry.",
       "overlap": -0.2,
-      "timestamp": 88.721,
+      "timestamp": 89.706,
       "duration": 6.86,
       "audio": "/audio/radio/the-welcome-committee/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-darnell",
       "text": "Patricia, why is there a green dot next to my name and a red dot next to the lady at number nine?",
       "overlap": 0.2,
-      "timestamp": 94.677,
+      "timestamp": 95.663,
       "duration": 5.4,
       "audio": "/audio/radio/the-welcome-committee/18.flac"
     },
@@ -159,15 +159,15 @@
       "speaker": "committee-patricia",
       "text": "Green means we like you, dear. <p:0.3> Right now. Conditionally.",
       "overlap": 0.25,
-      "timestamp": 99.376,
-      "duration": 5.54,
+      "timestamp": 100.046,
+      "duration": 5.78,
       "audio": "/audio/radio/the-welcome-committee/19.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Number nine put her bins out on a Wednesday. <p:0.3> Bins are Thursday. Doug remembers.",
       "overlap": 0.25,
-      "timestamp": 103.479,
+      "timestamp": 104.43,
       "duration": 6.1,
       "audio": "/audio/radio/the-welcome-committee/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "barry",
       "text": "What happens at red, Patricia? <p:0.3> Like, what does a red dot actually mean?",
       "overlap": -0.1,
-      "timestamp": 108.842,
+      "timestamp": 109.793,
       "duration": 6.22,
       "audio": "/audio/radio/the-welcome-committee/21.flac"
     },
@@ -183,15 +183,15 @@
       "speaker": "committee-patricia",
       "text": "Nothing happens, Barry. <p:0.3> We just stop saving her a slice. And then the lights go funny near her house.",
       "overlap": -0.1,
-      "timestamp": 114.11,
-      "duration": 9.34,
+      "timestamp": 114.879,
+      "duration": 9.66,
       "audio": "/audio/radio/the-welcome-committee/22.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "The lights go funny? <p:0.3> What does that mean, the lights go funny?!",
       "overlap": 0.3,
-      "timestamp": 121.895,
+      "timestamp": 123.098,
       "duration": 3.86,
       "audio": "/audio/radio/the-welcome-committee/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-winston",
       "text": "Doug knows where the breaker is.",
       "overlap": 0.3,
-      "timestamp": 124.733,
+      "timestamp": 125.937,
       "duration": 2.25,
       "audio": "/audio/radio/the-welcome-committee/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "ronnie",
       "text": "He maintains the infrastructure too. <p:0.3> This Doug is an asset to the community.",
       "overlap": -0.2,
-      "timestamp": 126.158,
+      "timestamp": 127.362,
       "duration": 6.5,
       "audio": "/audio/radio/the-welcome-committee/25.flac"
     },
@@ -215,15 +215,15 @@
       "speaker": "committee-patricia",
       "text": "He really is, Ronnie. He hasn't slept since the spring fete, bless him.",
       "overlap": -0.1,
-      "timestamp": 131.631,
-      "duration": 6.24,
+      "timestamp": 132.193,
+      "duration": 6.56,
       "audio": "/audio/radio/the-welcome-committee/26.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Okay, I'd like to be taken OFF the spreadsheet. <p:0.3> Effective immediately. Take me off it.",
       "overlap": 0.3,
-      "timestamp": 136.653,
+      "timestamp": 137.74,
       "duration": 5.63,
       "audio": "/audio/radio/the-welcome-committee/27.flac"
     },
@@ -231,15 +231,15 @@
       "speaker": "committee-patricia",
       "text": "Oh, dear. <p:0.3> Nobody comes off the spreadsheet. You can only change color.",
       "overlap": 0.25,
-      "timestamp": 141.426,
-      "duration": 7.38,
+      "timestamp": 142.555,
+      "duration": 7.7,
       "audio": "/audio/radio/the-welcome-committee/28.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "You're going amber, number eleven. <p:0.3> I can see it from here. You're going amber.",
       "overlap": 0.3,
-      "timestamp": 147.148,
+      "timestamp": 148.57,
       "duration": 5.48,
       "audio": "/audio/radio/the-welcome-committee/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "Winston, are you AT the spreadsheet right now?",
       "overlap": -0.1,
-      "timestamp": 151.703,
+      "timestamp": 153.126,
       "duration": 3.88,
       "audio": "/audio/radio/the-welcome-committee/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-winston",
       "text": "I am always at the spreadsheet, Barry.",
       "overlap": 0.25,
-      "timestamp": 154.211,
+      "timestamp": 155.633,
       "duration": 2.5,
       "audio": "/audio/radio/the-welcome-committee/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-darnell",
       "text": "There's a drone at my window. <p:0.3> There is a drone. At my window. Right now.",
       "overlap": 0.35,
-      "timestamp": 155.777,
+      "timestamp": 157.2,
       "duration": 5.02,
       "audio": "/audio/radio/the-welcome-committee/32.flac"
     },
@@ -271,15 +271,15 @@
       "speaker": "committee-patricia",
       "text": "Smile, dear! It's for the newsletter!",
       "overlap": 0.3,
-      "timestamp": 159.965,
-      "duration": 3.36,
+      "timestamp": 161.335,
+      "duration": 3.52,
       "audio": "/audio/radio/the-welcome-committee/33.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Amber!",
       "overlap": 0.4,
-      "timestamp": 161.776,
+      "timestamp": 163.535,
       "duration": 0.86,
       "audio": "/audio/radio/the-welcome-committee/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "caller-winston",
       "text": "Red.",
       "overlap": 0.4,
-      "timestamp": 162.093,
+      "timestamp": 163.851,
       "duration": 1.28,
       "audio": "/audio/radio/the-welcome-committee/35.flac"
     },
@@ -295,15 +295,15 @@
       "speaker": "committee-patricia",
       "text": "Banana bread!",
       "overlap": 0.4,
-      "timestamp": 162.79,
-      "duration": 1.8,
+      "timestamp": 164.474,
+      "duration": 1.88,
       "audio": "/audio/radio/the-welcome-committee/36.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "MY LIGHTS!",
       "overlap": 0.4,
-      "timestamp": 163.588,
+      "timestamp": 165.346,
       "duration": 1.17,
       "audio": "/audio/radio/the-welcome-committee/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "caller-winston",
       "text": "Doug.",
       "overlap": 0.4,
-      "timestamp": 163.756,
+      "timestamp": 165.515,
       "duration": 1.28,
       "audio": "/audio/radio/the-welcome-committee/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "barry",
       "text": "His lights just went out, Ronnie. <p:0.3> The new guy's lights actually went out.",
       "overlap": -0.1,
-      "timestamp": 164.561,
+      "timestamp": 166.319,
       "duration": 6.38,
       "audio": "/audio/radio/the-welcome-committee/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "ronnie",
       "text": "And that, folks, is what a real neighborhood feels like. <p:0.4> We'll be right back, right after Patricia saves us all a slice.",
       "overlap": -0.25,
-      "timestamp": 169.512,
+      "timestamp": 171.271,
       "duration": 9.68,
       "audio": "/audio/radio/the-welcome-committee/40.flac"
     },
@@ -335,8 +335,8 @@
       "speaker": "committee-patricia",
       "text": "...Conditionally.",
       "overlap": -0.1,
-      "timestamp": 178.094,
-      "duration": 1.96,
+      "timestamp": 179.738,
+      "duration": 2.04,
       "audio": "/audio/radio/the-welcome-committee/41.flac"
     }
   ]

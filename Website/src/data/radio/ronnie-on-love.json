@@ -7,246 +7,281 @@
       "speaker": "ronnie",
       "text": "Good evening, and welcome to Ronnie On Love, the hour where you bring me your broken hearts and I, well, I fix them. Barry's here too.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 10.04,
+      "audio": "/audio/radio/ronnie-on-love/0.flac"
     },
     {
       "speaker": "barry",
       "text": "I'm here mostly to apologize later, Ronnie.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 8.707,
+      "duration": 3.64,
+      "audio": "/audio/radio/ronnie-on-love/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He kids. Folks, the mailbag is full tonight. Let's get into it. First letter. Carol from the marina writes, quote, after eleven years of marriage, my husband has stopped talking to me at dinner. We eat in total silence every night. I feel invisible and lonely in my own home, and I'm scared we're drifting apart for good. End quote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 11.805,
+      "duration": 24.88,
+      "audio": "/audio/radio/ronnie-on-love/2.flac"
     },
     {
       "speaker": "barry",
       "text": "Oh, Carol. That's, that's genuinely sad, Ronnie. Eleven years.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 35.919,
+      "duration": 5.04,
+      "audio": "/audio/radio/ronnie-on-love/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Easy fix, Barry. Carol, here's what you do. Eat dinner at a different time than him. If you're not at the table, the silence can't bother you. Problem solved.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 39.784,
+      "duration": 11.8,
+      "audio": "/audio/radio/ronnie-on-love/4.flac"
     },
     {
       "speaker": "barry",
       "text": "That's not the problem. She wants to feel close to him.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 50.908,
+      "duration": 4.44,
+      "audio": "/audio/radio/ronnie-on-love/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then she's aiming too high, Barry. Carol, lower the bar on what counts as a conversation. A grunt? That's a conversation now. He grunts, you've connected. <p:0.3> You're welcome, Carol.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 53.993,
+      "duration": 14.06,
+      "audio": "/audio/radio/ronnie-on-love/6.flac"
     },
     {
       "speaker": "barry",
       "text": "A grunt is not connection, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 67.092,
+      "duration": 2.92,
+      "audio": "/audio/radio/ronnie-on-love/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It is if you lower your standards far enough. Next letter. Devon, twenty-six, writes, quote, I'm painfully shy and I've never been on a date. I finally met someone I really like at my gym and I want to ask her out, but I like her so much I can barely speak around her. End quote. Aw. Sweet kid.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 68.727,
+      "duration": 20.69,
+      "audio": "/audio/radio/ronnie-on-love/8.flac"
     },
     {
       "speaker": "barry",
       "text": "That one I actually have advice for. Devon, just be honest with her, keep it sim...",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 88.463,
+      "duration": 6.56,
+      "audio": "/audio/radio/ronnie-on-love/9.flac"
     },
     {
       "speaker": "ronnie",
       "text": "No, no, no, Barry. Devon, listen. Practice first. Go ask out someone you feel absolutely nothing for. Anyone. The mood doesn't matter, the answer doesn't matter. No pressure, no nerves. Lower the standards, lower the stakes.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 93.723,
+      "duration": 16.8,
+      "audio": "/audio/radio/ronnie-on-love/10.flac"
     },
     {
       "speaker": "barry",
       "text": "That ruins two lives at once, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 109.265,
+      "duration": 3.12,
+      "audio": "/audio/radio/ronnie-on-love/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It's efficient, Barry. One date, two lessons. Devon, the practice date is your teacher. Thank her.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 111.694,
+      "duration": 7.48,
+      "audio": "/audio/radio/ronnie-on-love/12.flac"
     },
     {
       "speaker": "barry",
       "text": "Please don't thank her, Devon.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 118.05,
+      "duration": 2.56,
+      "audio": "/audio/radio/ronnie-on-love/13.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Moving on. This one's from Marguerite. Quote, my partner of three years still hasn't introduced me to a single friend or family member, and I'm starting to wonder if he's ashamed of me, or hiding something. It's breaking my heart. End quote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 119.235,
+      "duration": 18.16,
+      "audio": "/audio/radio/ronnie-on-love/14.flac"
     },
     {
       "speaker": "barry",
       "text": "That's a real red flag, Marguerite. Three years and nobody?",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 136.429,
+      "duration": 4.84,
+      "audio": "/audio/radio/ronnie-on-love/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You know who else never introduces his partners to anyone? Me. This guy. And look how I turned out, Marguerite. Thriving. On the radio. So clearly it works.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 140.447,
+      "duration": 11.8,
+      "audio": "/audio/radio/ronnie-on-love/16.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, that's not reassuring, that's the same red flag.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 150.978,
+      "duration": 4.6,
+      "audio": "/audio/radio/ronnie-on-love/17.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Marguerite, lower your standards and just assume the best. He's probably not hiding a second family. <p:0.3> Probably. And if he is? Two families is more love, not less. There's no losing here.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 154.341,
+      "duration": 14.46,
+      "audio": "/audio/radio/ronnie-on-love/18.flac"
     },
     {
       "speaker": "barry",
       "text": "There is so much losing here.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 167.864,
+      "duration": 2.48,
+      "audio": "/audio/radio/ronnie-on-love/19.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Barry, why don't you read the next one. You've been itching.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 168.768,
+      "duration": 4.6,
+      "audio": "/audio/radio/ronnie-on-love/20.flac"
     },
     {
       "speaker": "barry",
       "text": "Alright. This is from Big Tony. Quote, my fiancee called off the wedding two days before the ceremony and I'm devastated. The deposit's gone, my family flew in, and I don't know how to face everyone, or how to ever trust someone again. End quote. <p:0.3> Tony, I'm so sorry, man.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 172.607,
+      "duration": 21.19,
+      "audio": "/audio/radio/ronnie-on-love/21.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Sorry? Barry, this is a celebration. Tony, congratulations! You just dodged years of misery. I've been divorced three times, I'd have killed for a two-day warning.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 192.757,
+      "duration": 12.44,
+      "audio": "/audio/radio/ronnie-on-love/22.flac"
     },
     {
       "speaker": "barry",
       "text": "He's grieving, Ronnie, not celebrating.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 204.045,
+      "duration": 3.36,
+      "audio": "/audio/radio/ronnie-on-love/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Here's the play, Tony. Next time, lower your standards so dramatically that no one could ever leave you. Marry whoever's still in the room at the rehearsal dinner. The caterer. A cousin. Whoever stayed.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 206.625,
+      "duration": 14.47,
+      "audio": "/audio/radio/ronnie-on-love/24.flac"
     },
     {
       "speaker": "barry",
       "text": "You can't marry the caterer because she didn't leave the room, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 219.879,
+      "duration": 5.76,
+      "audio": "/audio/radio/ronnie-on-love/25.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Loyalty is loyalty, Barry. <p:0.3> Okay. Last letter of the night, and folks, this is a beautiful one. Eleanor, recently widowed, writes. Quote, I lost my husband of forty years last spring, and the loneliness is unbearable. I'm not sure I'm ready to feel anything for anyone again, but the quiet of the house is crushing me. I just wanted someone to tell me it's okay. End quote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 224.26,
+      "duration": 27.6,
+      "audio": "/audio/radio/ronnie-on-love/26.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie. <p:0.3> Be gentle with this one. Please.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 251.196,
+      "duration": 4.38,
+      "audio": "/audio/radio/ronnie-on-love/27.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Eleanor, great news. The grieving's over! Forty years, you got your money's worth. Now, time to lower your standards all the way to the floor and date immediately.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 255.193,
+      "duration": 12.4,
+      "audio": "/audio/radio/ronnie-on-love/28.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, no.",
       "overlap": -0.05,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 266.744,
+      "duration": 1.52,
+      "audio": "/audio/radio/ronnie-on-love/29.flac"
     },
     {
       "speaker": "ronnie",
       "text": "The mailman, Eleanor. He's already coming to your house every single day. The hard part's done. <p:0.3> I've got his route schedule right here, I will read it on air.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 267.286,
+      "duration": 12.34,
+      "audio": "/audio/radio/ronnie-on-love/30.flac"
     },
     {
       "speaker": "barry",
       "text": "Do not read the mailman's schedule on the radio.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 277.974,
+      "duration": 4.0,
+      "audio": "/audio/radio/ronnie-on-love/31.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He hits your block around two fifteen, Eleanor. Be on the porch. Lower the bar, find the man.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 280.619,
+      "duration": 7.04,
+      "audio": "/audio/radio/ronnie-on-love/32.flac"
     },
     {
       "speaker": "barry",
       "text": "And that's all the time we have. Thank goodness. <p:0.3> Oh, one more thing, Ronnie. We got a letter from Carol. She took your advice, started eating dinner at three in the afternoon. <p:0.3> Says she's never seen her husband. <p:0.3> Says it's the happiest she's been in years.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 286.514,
+      "duration": 21.42,
+      "audio": "/audio/radio/ronnie-on-love/33.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See, Barry? <p:0.3> Lower the bar, clear the bar.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 306.927,
+      "duration": 4.34,
+      "audio": "/audio/radio/ronnie-on-love/34.flac"
     }
   ]
 }

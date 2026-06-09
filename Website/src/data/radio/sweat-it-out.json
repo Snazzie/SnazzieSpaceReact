@@ -247,15 +247,15 @@
       "speaker": "caller-frank",
       "text": "I was outside last night. Ice that wasn't there before. <p:0.3> I went down hard — heard a loud crack — and there were pigeons watching, Ronnie. <p:0.3> My ankle's gone purple, swelled to twice the size. <p:0.3> This wasn't an accident.",
       "overlap": -0.1,
-      "timestamp": 175.198,
-      "duration": 9.94,
+      "timestamp": 175.54,
+      "duration": 13.78,
       "audio": "/audio/radio/sweat-it-out/30.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Frank, can you still feel it?",
       "overlap": -0.15,
-      "timestamp": 184.507,
+      "timestamp": 188.718,
       "duration": 2.32,
       "audio": "/audio/radio/sweat-it-out/31.flac"
     },
@@ -263,15 +263,15 @@
       "speaker": "caller-frank",
       "text": "Oh, I can feel it. <p:0.3> They put it there for a reason, Ronnie.",
       "overlap": 0,
-      "timestamp": 186.001,
-      "duration": 1.96,
+      "timestamp": 190.269,
+      "duration": 3.96,
       "audio": "/audio/radio/sweat-it-out/32.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then it's not broken! Broken means numb. <p:0.3> So here's the plan, Frank. Hot sauna, get that ankle in there, sweat the swelling right out.",
       "overlap": -0.2,
-      "timestamp": 187.477,
+      "timestamp": 193.729,
       "duration": 9.76,
       "audio": "/audio/radio/sweat-it-out/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "Ronnie. Ronnie, please.",
       "overlap": 0.25,
-      "timestamp": 196.405,
+      "timestamp": 202.658,
       "duration": 2.04,
       "audio": "/audio/radio/sweat-it-out/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "And then, once it's nice and loose, you walk it off. Briskly! That sets the bone back straight.",
       "overlap": -0.1,
-      "timestamp": 197.463,
+      "timestamp": 203.715,
       "duration": 7.16,
       "audio": "/audio/radio/sweat-it-out/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "I am BEGGING you to stop talking. Frank, go to a hospital. Right now. RIGHT now.",
       "overlap": 0.35,
-      "timestamp": 203.229,
+      "timestamp": 209.482,
       "duration": 6.32,
       "audio": "/audio/radio/sweat-it-out/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "Barry's a worrier, Frank. <p:0.3> Sweat it out. We'll be right back.",
       "overlap": -0.2,
-      "timestamp": 208.627,
+      "timestamp": 214.879,
       "duration": 5.14,
       "audio": "/audio/radio/sweat-it-out/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "barry",
       "text": "We got a voicemail in. It's from Mildred. <p:0.3> Our very first caller.",
       "overlap": -0.1,
-      "timestamp": 212.698,
+      "timestamp": 218.951,
       "duration": 5.62,
       "audio": "/audio/radio/sweat-it-out/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-mildred",
       "text": "Hello again, dears. I did sit in the hot car like the doctor said. <p:0.3> I got a parking ticket, and now my fever's much worse. But Ronnie was so confident, I just believed him!",
       "overlap": -0.1,
-      "timestamp": 217.577,
+      "timestamp": 223.829,
       "duration": 12.69,
       "audio": "/audio/radio/sweat-it-out/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "barry",
       "text": "That's the malpractice, folks. <p:0.3> Right there.",
       "overlap": -0.15,
-      "timestamp": 229.452,
+      "timestamp": 235.704,
       "duration": 4.54,
       "audio": "/audio/radio/sweat-it-out/40.flac"
     }

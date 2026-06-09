@@ -223,15 +223,15 @@
       "speaker": "caller-mildred",
       "text": "Barry, you sound exactly like my son. <p:0.3> And that is not a compliment.",
       "overlap": 0.3,
-      "timestamp": 132.916,
-      "duration": 3.12,
+      "timestamp": 132.905,
+      "duration": 4.74,
       "audio": "/audio/radio/the-ninth-breath/27.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "Join us, Barry. And you've never felt freer.",
       "overlap": 0.35,
-      "timestamp": 135.155,
+      "timestamp": 136.854,
       "duration": 2.86,
       "audio": "/audio/radio/the-ninth-breath/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "caller-chad",
       "text": "Sign him as MY recruit! That's one of nine!",
       "overlap": 0.4,
-      "timestamp": 137.139,
+      "timestamp": 138.837,
       "duration": 2.2,
       "audio": "/audio/radio/the-ninth-breath/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "rhonda",
       "text": "Welcome, breather.",
       "overlap": 0.3,
-      "timestamp": 138.264,
+      "timestamp": 139.963,
       "duration": 1.49,
       "audio": "/audio/radio/the-ninth-breath/30.flac"
     },
@@ -255,7 +255,7 @@
       "speaker": "caller-mildred",
       "text": "Dinner!",
       "overlap": 0.4,
-      "timestamp": 139.153,
+      "timestamp": 140.852,
       "duration": 0.82,
       "audio": "/audio/radio/the-ninth-breath/31.flac"
     },
@@ -263,7 +263,7 @@
       "speaker": "caller-chad",
       "text": "Territory!",
       "overlap": 0.4,
-      "timestamp": 139.76,
+      "timestamp": 141.459,
       "duration": 1.28,
       "audio": "/audio/radio/the-ninth-breath/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Alright, that's our hour. Beautiful, beautiful work tonight. <p:0.3> Barry, take us out.",
       "overlap": -0.2,
-      "timestamp": 139.807,
+      "timestamp": 141.506,
       "duration": 7.1,
       "audio": "/audio/radio/the-ninth-breath/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "ronnie",
       "text": "Barry? <p:0.4> Barry, the sign-off.",
       "overlap": -0.15,
-      "timestamp": 145.857,
+      "timestamp": 147.556,
       "duration": 3.82,
       "audio": "/audio/radio/the-ninth-breath/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "...",
       "overlap": -0.1,
-      "timestamp": 149.422,
+      "timestamp": 151.121,
       "duration": 0.8,
       "audio": "/audio/radio/the-ninth-breath/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "I'm just... <p:0.4> I'm saving it, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 149.785,
+      "timestamp": 151.483,
       "duration": 3.76,
       "audio": "/audio/radio/the-ninth-breath/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "Atta boy. <p:0.3> Rhonda, we'll see you and the whole studio at your free Sundering Retreat this weekend. I just booked it. <p:0.4> Breathe easy, folks. Or don't. Your choice.",
       "overlap": -0.2,
-      "timestamp": 152.68,
+      "timestamp": 154.378,
       "duration": 13.52,
       "audio": "/audio/radio/the-ninth-breath/37.flac"
     }

@@ -7,302 +7,345 @@
       "speaker": "ronnie",
       "text": "It's late, the little ones are finally down, and you, mum, you dad, you are wide awake and worried sick. Breathe. You've reached Parents, Do Not Panic. I'm Ronnie. Whatever it is, I've got you.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 0.0,
+      "duration": 14.28,
+      "audio": "/audio/radio/parents-do-not-panic/0.flac"
     },
     {
       "speaker": "barry",
       "text": "And I'm Barry, here to make sure nobody actually follows any of this.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 13.267,
+      "duration": 5.6,
+      "audio": "/audio/radio/parents-do-not-panic/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Always so cautious, Barry. Let's open the mailbag. First one. Megan from the cul-de-sac writes, quote, my three year old won't eat a single vegetable. He lives on plain pasta and crackers. I'm at my wits' end at dinner every night, and I'm scared he's not getting what he needs. End quote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 17.76,
+      "duration": 20.9,
+      "audio": "/audio/radio/parents-do-not-panic/2.flac"
     },
     {
       "speaker": "barry",
       "text": "Poor Megan. That's a real worry. A pediatrician would say toddlers are fussy, it usually passes, keep offering...",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 37.83,
+      "duration": 9.16,
+      "audio": "/audio/radio/parents-do-not-panic/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Megan, here's the thing. You are not a parent right now. You are a negotiator. And across the table sits a tough little adversary in a high chair.",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 46.044,
+      "duration": 11.0,
+      "audio": "/audio/radio/parents-do-not-panic/4.flac"
     },
     {
       "speaker": "barry",
       "text": "He is three, Ronnie.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 56.227,
+      "duration": 1.8,
+      "audio": "/audio/radio/parents-do-not-panic/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Perfect age to learn leverage, Barry. Megan, name your price. Two peas. Let him counter at one. And never, ever let him see that you need this deal more than he does.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 57.124,
+      "duration": 12.44,
+      "audio": "/audio/radio/parents-do-not-panic/6.flac"
     },
     {
       "speaker": "barry",
       "text": "You want her to bluff a toddler.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 68.59,
+      "duration": 2.68,
+      "audio": "/audio/radio/parents-do-not-panic/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I want her to draw up a contract, Barry. Crayon is binding. Next letter.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 70.28,
+      "duration": 5.48,
+      "audio": "/audio/radio/parents-do-not-panic/8.flac"
     },
     {
       "speaker": "ronnie",
       "text": "This one came in at four in the morning, bless him. Devon, a new dad, writes, quote, our newborn won't sleep through the night. My partner and I are wrecked. We're snapping at each other and we're scared we're getting all of it wrong. End quote.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 75.274,
+      "duration": 17.66,
+      "audio": "/audio/radio/parents-do-not-panic/9.flac"
     },
     {
       "speaker": "barry",
       "text": "Okay, this one's just exhaustion. Take shifts, nap when the baby naps, be kind to each other. That's it.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 92.545,
+      "duration": 8.24,
+      "audio": "/audio/radio/parents-do-not-panic/10.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See, Devon, I read this differently. This isn't a sleep problem. This is a scheduling dispute. The baby is simply on a different shift.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 100.013,
+      "duration": 9.98,
+      "audio": "/audio/radio/parents-do-not-panic/11.flac"
     },
     {
       "speaker": "barry",
       "text": "A different... what?",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 109.712,
+      "duration": 1.8,
+      "audio": "/audio/radio/parents-do-not-panic/12.flac"
     },
     {
       "speaker": "ronnie",
       "text": "So match the baby's hours, Devon. Sleep all day. At work, if you have to. <p:0.3> And speaking of rest, tonight's helpline is brought to you by the CloudCradle memory mattress.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 110.107,
+      "duration": 13.18,
+      "audio": "/audio/radio/parents-do-not-panic/13.flac"
     },
     {
       "speaker": "barry",
       "text": "Ronnie, sleeping all day at work will get him fired.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 121.43,
+      "duration": 4.28,
+      "audio": "/audio/radio/parents-do-not-panic/14.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Or promoted to nights, Barry. You always assume the worst. Sit the boss down. Renegotiate the terms.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 124.373,
+      "duration": 7.72,
+      "audio": "/audio/radio/parents-do-not-panic/15.flac"
     },
     {
       "speaker": "barry",
       "text": "There it is again. Everything's a negotiation with you.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 131.442,
+      "duration": 4.6,
+      "audio": "/audio/radio/parents-do-not-panic/16.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Because everything is, Barry. Now, this next letter. Priya wrote in herself, longhand, lovely paper. Read it back to me, in her own words.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 135.271,
+      "duration": 10.44,
+      "audio": "/audio/radio/parents-do-not-panic/17.flac"
     },
     {
       "speaker": "barry",
       "text": "Right here. She writes, quote, my seven year old comes home crying. The other girls are leaving her out at school. I just want to help her make friends and I'm terrified of making it worse. End quote. <p:0.3> That's heartbreaking, honestly.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 144.553,
+      "duration": 18.74,
+      "audio": "/audio/radio/parents-do-not-panic/18.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Priya, I know this dance. This is a ratings war. Those other girls? Competitors. So here's what your daughter does. She finds the one thing every kid in that class wants, and she corners the market on it. Controls the supply.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 162.208,
+      "duration": 16.96,
+      "audio": "/audio/radio/parents-do-not-panic/19.flac"
     },
     {
       "speaker": "barry",
       "text": "These are second graders, Ronnie.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 178.228,
+      "duration": 2.88,
+      "audio": "/audio/radio/parents-do-not-panic/20.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then, once she has the leverage, she opens negotiations. Friendship contracts, Barry. Favorable terms. Exclusivity clause if she's smart.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 180.004,
+      "duration": 10.76,
+      "audio": "/audio/radio/parents-do-not-panic/21.flac"
     },
     {
       "speaker": "barry",
       "text": "You want a seven year old to issue a non compete.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 189.552,
+      "duration": 4.0,
+      "audio": "/audio/radio/parents-do-not-panic/22.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Only the ones who can hold a pencil, Barry. We're not monsters. Speaking of which. Big Carl from the highway. Read it for me.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 192.225,
+      "duration": 9.12,
+      "audio": "/audio/radio/parents-do-not-panic/23.flac"
     },
     {
       "speaker": "barry",
       "text": "Carl writes, quote, my twelve year old swears there's a monster in his closet and won't sleep in his own room. I'm shattered, but I don't want to just laugh off his fear. End quote. <p:0.3> That's a good dad, that.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 200.565,
+      "duration": 16.22,
+      "audio": "/audio/radio/parents-do-not-panic/24.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Wonderful instinct, Carl. Do not dismiss the monster. The monster is a stakeholder.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 215.357,
+      "duration": 6.56,
+      "audio": "/audio/radio/parents-do-not-panic/25.flac"
     },
     {
       "speaker": "barry",
       "text": "A... stakeholder.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 220.879,
+      "duration": 1.72,
+      "audio": "/audio/radio/parents-do-not-panic/26.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Bring it to the table, Carl. Hear its demands. You may find the monster simply wants a room of its own, financially speaking. There's a deal in here that works for the boy AND the monster.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 221.278,
+      "duration": 14.16,
+      "audio": "/audio/radio/parents-do-not-panic/27.flac"
     },
     {
       "speaker": "barry",
       "text": "There is no monster, Ronnie.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 234.375,
+      "duration": 2.4,
+      "audio": "/audio/radio/parents-do-not-panic/28.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's exactly what a monster with a good agent would want you to think, Barry.",
       "overlap": 0.25,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 234.817,
+      "duration": 6.08,
+      "audio": "/audio/radio/parents-do-not-panic/29.flac"
     },
     {
       "speaker": "barry",
       "text": "I'm not even fact checking anymore. I'm just whispering. There is no monster.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 239.609,
+      "duration": 6.28,
+      "audio": "/audio/radio/parents-do-not-panic/30.flac"
     },
     {
       "speaker": "ronnie",
       "text": "I saved the best for last. Anonymous, a mum, writes, quote, my baby's just starting solids and throws every spoonful on the floor. I feel like a failure at the most basic thing there is. End quote. <p:0.3> Oh, sweetheart. No.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 244.826,
+      "duration": 16.53,
+      "audio": "/audio/radio/parents-do-not-panic/31.flac"
     },
     {
       "speaker": "barry",
       "text": "Okay. THIS one you have to be gentle with. She's already feeling awful. Please just say babies do that, it's normal, you're doing fine.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 261.059,
+      "duration": 10.6,
+      "audio": "/audio/radio/parents-do-not-panic/32.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Here's what you do. Calmly, no anger, you tell the baby the deal is off. <p:0.3> Then you stand up. And you walk away from the high chair.",
       "overlap": -0.2,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 270.694,
+      "duration": 10.1,
+      "audio": "/audio/radio/parents-do-not-panic/33.flac"
     },
     {
       "speaker": "barry",
       "text": "You cannot leave a baby, Ronnie!",
       "overlap": 0.3,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 279.433,
+      "duration": 2.72,
+      "audio": "/audio/radio/parents-do-not-panic/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "You can leave any negotiation, Barry. <p:0.3> That's the first rule. You establish leverage. The baby comes back to the table when it's ready to be serious.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 280.762,
+      "duration": 11.74,
+      "audio": "/audio/radio/parents-do-not-panic/35.flac"
     },
     {
       "speaker": "barry",
       "text": "It is nine months old! It cannot come to the table! It cannot WALK!",
       "overlap": 0.35,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 291.209,
+      "duration": 5.36,
+      "audio": "/audio/radio/parents-do-not-panic/36.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Then it'll have to send a representative, won't it. <p:0.3> We're going to a quick break. Do not panic.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 295.185,
+      "duration": 7.62,
+      "audio": "/audio/radio/parents-do-not-panic/37.flac"
     },
     {
       "speaker": "barry",
       "text": "Oh, one more came in while we were live. A follow up. Megan from the cul-de-sac wrote back.",
       "overlap": -0.1,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 301.866,
+      "duration": 7.16,
+      "audio": "/audio/radio/parents-do-not-panic/38.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Ah, the pasta boy's mother. How'd she get on?",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 308.112,
+      "duration": 3.4,
+      "audio": "/audio/radio/parents-do-not-panic/39.flac"
     },
     {
       "speaker": "barry",
       "text": "She says, quote, my three year old now refuses to eat unless I sign something first. He has a lawyer. <p:0.3> The lawyer is also three. End quote.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 310.678,
+      "duration": 11.34,
+      "audio": "/audio/radio/parents-do-not-panic/40.flac"
     },
     {
       "speaker": "ronnie",
       "text": "See? <p:0.3> Leverage. <p:0.3> The boy's going to be just fine, Barry.",
       "overlap": 0,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 321.012,
+      "duration": 6.6,
+      "audio": "/audio/radio/parents-do-not-panic/41.flac"
     },
     {
       "speaker": "barry",
       "text": "He's three and he's already retained counsel, Ronnie. <p:0.3> Parents, do not panic. <p:0.3> But maybe panic a little.",
       "overlap": -0.15,
-      "timestamp": 0,
-      "duration": 0
+      "timestamp": 326.774,
+      "duration": 9.16,
+      "audio": "/audio/radio/parents-do-not-panic/42.flac"
     }
   ]
 }
