@@ -27,6 +27,20 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = REPO_ROOT / "Website" / "public" / "images" / "radio"
 
 
+def load_dotenv(path: Path) -> None:
+    """Minimal .env loader: KEY=VALUE lines into os.environ (no overwrite of existing)."""
+    if not path.exists():
+        return
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key, val = key.strip(), val.strip().strip('"').strip("'")
+        if key and val and key not in os.environ:
+            os.environ[key] = val
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Render a Snazzie FM social-post photo with ideogram4.")
     ap.add_argument("slug", help="post id / output basename (writes <slug>.png)")
@@ -35,8 +49,18 @@ def main() -> int:
     ap.add_argument("--quantization", default="nf4", help="ideogram4 quantization (default: nf4)")
     args = ap.parse_args()
 
+    # Load secrets from repo-root .env (HF_TOKEN required; IDEOGRAM_API_KEY optional).
+    load_dotenv(REPO_ROOT / ".env")
+    # huggingface_hub reads HF_TOKEN / HUGGING_FACE_HUB_TOKEN from env for gated weights.
+    if os.environ.get("HF_TOKEN") and not os.environ.get("HUGGING_FACE_HUB_TOKEN"):
+        os.environ["HUGGING_FACE_HUB_TOKEN"] = os.environ["HF_TOKEN"]
+    if not os.environ.get("HF_TOKEN"):
+        print("error: HF_TOKEN not set (in env or .env) — ideogram4 weights are gated.",
+              file=sys.stderr)
+        return 1
     if not os.environ.get("IDEOGRAM_API_KEY"):
-        print("warning: IDEOGRAM_API_KEY not set — magic-prompt expansion may fail.", file=sys.stderr)
+        print("note: IDEOGRAM_API_KEY not set — skipping magic-prompt, using plain prompt.",
+              file=sys.stderr)
 
     ideo_dir = Path(os.environ.get("IDEOGRAM4_DIR", Path.home() / "ideogram4"))
     runner = ideo_dir / "run_inference.py"
@@ -48,16 +72,23 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUT_DIR / f"{args.slug}.png"
     full_prompt = f"{args.prompt.strip().rstrip('.')}. {GHIBLI_STYLE}"
-    resolution = "1024x1280" if args.portrait else "1024x1024"
+    width, height = (1024, 1280) if args.portrait else (1024, 1024)
 
     cmd = [
         sys.executable, str(runner),
         "--prompt", full_prompt,
         "--output", str(out_path),
-        "--resolution", resolution,
+        "--width", str(width),
+        "--height", str(height),
         "--quantization", args.quantization,
+        # caption verifier shouldn't abort on our scene prompts
+        "--warn-on-caption-issues",
     ]
-    print(f"rendering {args.slug} ({resolution}) -> {out_path}")
+    # magic-prompt is ON by default and needs an API key; without one, feed the prompt
+    # verbatim (--no-magic-prompt). With a key, let it expand to a structured caption.
+    cmd.append("--magic-prompt" if os.environ.get("IDEOGRAM_API_KEY") else "--no-magic-prompt")
+
+    print(f"rendering {args.slug} ({width}x{height}) -> {out_path}")
     print(f"prompt: {full_prompt}")
     subprocess.run(cmd, cwd=str(ideo_dir), check=True)
     print(f"wrote {out_path}")
