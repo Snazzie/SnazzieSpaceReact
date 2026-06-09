@@ -20,7 +20,7 @@
       "audio": "/audio/radio/the-welcome-committee/1.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Thank you so much, Ronnie. And let me just say, we are a friendly street. We do a bake sale every Sunday. <p:0.3> Banana bread. Smiles. The whole thing.",
       "overlap": -0.2,
       "timestamp": 16.734,
@@ -44,7 +44,7 @@
       "audio": "/audio/radio/the-welcome-committee/4.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "A welcome folder, dear. Every new resident gets one.",
       "overlap": -0.1,
       "timestamp": 38.086,
@@ -68,7 +68,7 @@
       "audio": "/audio/radio/the-welcome-committee/7.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "That's just Doug, with the drone. Doug does the welcome photos. <p:0.3> It's a friendly drone.",
       "overlap": -0.1,
       "timestamp": 46.863,
@@ -92,7 +92,7 @@
       "audio": "/audio/radio/the-welcome-committee/10.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "We like to know who we're welcoming, dear. It's all in good fun.",
       "overlap": -0.1,
       "timestamp": 63.487,
@@ -116,7 +116,7 @@
       "audio": "/audio/radio/the-welcome-committee/13.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Doug, we are LIVE. <p:0.3> It's not a watchlist, dear. It's a community engagement spreadsheet.",
       "overlap": 0.25,
       "timestamp": 73.52,
@@ -156,7 +156,7 @@
       "audio": "/audio/radio/the-welcome-committee/18.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Green means we like you, dear. <p:0.3> Right now. Conditionally.",
       "overlap": 0.25,
       "timestamp": 99.376,
@@ -180,7 +180,7 @@
       "audio": "/audio/radio/the-welcome-committee/21.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Nothing happens, Barry. <p:0.3> We just stop saving her a slice. And then the lights go funny near her house.",
       "overlap": -0.1,
       "timestamp": 114.11,
@@ -212,7 +212,7 @@
       "audio": "/audio/radio/the-welcome-committee/25.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "He really is, Ronnie. He hasn't slept since the spring fete, bless him.",
       "overlap": -0.1,
       "timestamp": 131.631,
@@ -228,7 +228,7 @@
       "audio": "/audio/radio/the-welcome-committee/27.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Oh, dear. <p:0.3> Nobody comes off the spreadsheet. You can only change color.",
       "overlap": 0.25,
       "timestamp": 141.426,
@@ -268,7 +268,7 @@
       "audio": "/audio/radio/the-welcome-committee/32.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Smile, dear! It's for the newsletter!",
       "overlap": 0.3,
       "timestamp": 159.965,
@@ -292,7 +292,7 @@
       "audio": "/audio/radio/the-welcome-committee/35.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "Banana bread!",
       "overlap": 0.4,
       "timestamp": 162.79,
@@ -332,7 +332,7 @@
       "audio": "/audio/radio/the-welcome-committee/40.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "committee-patricia",
       "text": "...Conditionally.",
       "overlap": -0.1,
       "timestamp": 178.094,

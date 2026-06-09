@@ -60,7 +60,7 @@
       "audio": "/audio/radio/the-ninety-year-soup/6.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "caller-patricia-soup",
       "text": "And I add the carrots, Ronnie. <p:0.3> Every Sunday, fresh carrots, peeled myself. So whatever anyone says, the carrots are clean.",
       "overlap": -0.1,
       "timestamp": 58.384,
@@ -148,7 +148,7 @@
       "audio": "/audio/radio/the-ninety-year-soup/17.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "caller-patricia-soup",
       "text": "I add the carrots! <p:0.3> The carrots are not the warm part! Talk to someone else!",
       "overlap": 0.25,
       "timestamp": 131.915,
@@ -212,7 +212,7 @@
       "audio": "/audio/radio/the-ninety-year-soup/25.flac"
     },
     {
-      "speaker": "caller-patricia",
+      "speaker": "caller-patricia-soup",
       "text": "Carrots!",
       "overlap": 0.4,
       "timestamp": 170.939,
