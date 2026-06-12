@@ -1,6 +1,7 @@
 import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, type Variants } from "motion/react";
 import { useEffect, useState } from "react";
 import { AvatarParallax } from "@/components/AvatarParallax";
+import { HeroField } from "@/components/HeroField";
 import { GithubIcon, LinkedInIcon } from "@/components/icons/SocialIcons";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
@@ -307,6 +308,7 @@ export function Intro() {
       onMouseLeave={onMouseLeave}
       className="relative z-10 flex min-h-[100dvh] items-start md:items-center px-6 pt-24 pb-20"
     >
+      <HeroField mx={mx} my={my} reduce={reduce} />
       <motion.div
         initial={initial}
         animate="show"

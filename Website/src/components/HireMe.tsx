@@ -1,4 +1,5 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
+import { SectionAmbient } from "@/components/SectionAmbient";
 import {
   ArrowUpRight,
   Bot,
@@ -137,6 +138,7 @@ export function HireMe() {
 
   return (
     <section id="hire" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <SectionAmbient color="rgba(251,191,36,0.05)" />
       <div
         aria-hidden
         className="pointer-events-none absolute -top-24 left-0 h-96 w-2/3 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.03),transparent_65%)]"

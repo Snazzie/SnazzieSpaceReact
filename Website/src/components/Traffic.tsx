@@ -8,6 +8,7 @@ import { ScrollBorderProvider, useScrollBorderColor } from "@/lib/scrollBorder";
 import { worldGeo } from "@/data/worldGeo";
 import type { TrafficCountry, TrafficData } from "@/data/traffic";
 import { SectionUnderline } from "@/components/SectionUnderline";
+import { SectionAmbient } from "@/components/SectionAmbient";
 import { Globe } from "@/components/Globe";
 import { Breakdowns } from "@/components/Breakdowns";
 
@@ -186,6 +187,7 @@ export function Traffic({ initialData }: { initialData: TrafficData }) {
 
   return (
     <section id="traffic" className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24">
+      <SectionAmbient color="rgba(129,140,248,0.08)" />
       <motion.p
         {...headingProps}
         className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground"

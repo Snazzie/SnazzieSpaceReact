@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion, useScroll } from "motion/react";
 import { EASE, D } from "@/lib/motion";
 import { projects } from "@/data/projects";
 import { projectSlug } from "@/components/FeaturedShowcase";
@@ -37,6 +37,16 @@ export function Nav() {
   const [projectsHover, setProjectsHover] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+
+  // Thin scroll-progress glow along the bottom edge of the nav pill.
+  const progressLine = (
+    <motion.span
+      aria-hidden
+      className="pointer-events-none absolute bottom-[3px] left-5 right-5 h-px origin-left rounded-full bg-gradient-to-r from-foreground/60 via-foreground/25 to-transparent"
+      style={{ scaleX: scrollYProgress }}
+    />
+  );
 
   useEffect(() => {
     const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
@@ -142,7 +152,8 @@ export function Nav() {
       className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center pt-4"
     >
       {/* Desktop nav */}
-      <nav className="pointer-events-auto hidden md:flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
+      <nav className="pointer-events-auto relative hidden md:flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
+        {progressLine}
         <a
           href="#home"
           aria-label="Aaron, home"
@@ -262,7 +273,8 @@ export function Nav() {
 
       {/* Mobile nav */}
       <div ref={mobileNavRef} className="pointer-events-auto flex md:hidden flex-col items-stretch gap-2 w-full px-4">
-        <nav className="flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
+        <nav className="relative flex items-center gap-1 rounded-full border border-border bg-card/80 px-2 py-1.5 backdrop-blur-md">
+          {progressLine}
           <a
             href="#home"
             aria-label="Aaron, home"

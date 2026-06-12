@@ -53,7 +53,7 @@ const latestArticles: ArticleTeaser[] = rawArticles.map((p) => ({
   slug: p.id,
   title: p.data.title,
   excerpt: p.data.excerpt,
-  date: p.data.date,
+  date: p.data.date.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" }),
   tags: p.data.tags,
 }));
 
@@ -234,7 +234,7 @@ const images: Record<string, string> = {
       <GithubStats client:visible initialProfile={githubProfile} />
       <Traffic client:visible initialData={trafficData} />
       <HireMe client:visible />
-      <LatestArticles articles={latestArticles} />
+      <LatestArticles client:visible articles={latestArticles} />
     </main>
   </body>
 </html>
