@@ -155,6 +155,13 @@ export function Nav() {
   }, [menuOpen]);
 
   const activeLabel = LINKS.find((l) => l.id === active)?.label ?? "";
+  // Mobile center label mirrors the desktop inline behaviour: while in the
+  // projects section, append the current project so the pill names it too.
+  const activeMobileProject =
+    active === "projects" ? SHOWCASE.find((p) => p.slug === activeProject) : undefined;
+  const mobileLabel = activeMobileProject
+    ? `${activeLabel} · ${activeMobileProject.title}`
+    : activeLabel;
 
   return (
     <motion.header
@@ -295,17 +302,17 @@ export function Nav() {
             <span className="size-2 rounded-full bg-foreground" aria-hidden />
             Aaron
           </a>
-          <span className="relative flex-1 overflow-hidden text-center text-sm text-muted-foreground">
+          <span className="relative flex-1 overflow-hidden whitespace-nowrap text-center text-sm text-muted-foreground">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
-                key={activeLabel}
+                key={mobileLabel}
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: reduce ? 0 : 0.22, ease: EASE }}
-                className="block"
+                className="block truncate"
               >
-                {activeLabel}
+                {mobileLabel}
               </motion.span>
             </AnimatePresence>
           </span>

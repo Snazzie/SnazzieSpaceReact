@@ -407,8 +407,8 @@ function TechSphere() {
 
   return (
     <>
-      <div className={`${RAIL} mt-8`}>
-        <span className="shrink-0 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+      <div className={`${RAIL} mt-8 md:!justify-start`}>
+        <span className="shrink-0 snap-start text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
           constellations
         </span>
         {CONST_PROJECTS.map((p) => {
@@ -467,7 +467,10 @@ function TechSphere() {
         />
       </div>
 
-      <div className="mt-4 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10">
+      <div className="mt-4 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-10">
+        <span className="select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50 md:hidden">
+          drag to spin · click a tech for details
+        </span>
         <div
           ref={wrapRef}
           className="relative aspect-square w-full max-w-[520px] shrink-0 cursor-grab active:cursor-grabbing"
@@ -475,7 +478,7 @@ function TechSphere() {
           onPointerDown={onOrbPointerDown}
         >
           <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
-          <span className="pointer-events-none absolute left-3 top-3 select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50">
+          <span className="pointer-events-none absolute left-3 top-3 hidden select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50 md:block">
             drag to spin · click a tech for details
           </span>
           {FLAT.map((f, i) => {
