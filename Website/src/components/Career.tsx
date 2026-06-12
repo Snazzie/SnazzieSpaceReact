@@ -54,7 +54,7 @@ const groups: TimelineGroup[] = [
     items: [
       {
         period: edu.period.replace(/\s/g, ""),
-        title: "University life",
+        title: edu.institution,
         description: edu.activities.join(". ") + ".",
       },
     ],
