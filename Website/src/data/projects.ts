@@ -93,7 +93,7 @@ export const projects: Project[] = [
     image: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     bgImage: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     featured: true,
-    tech: ["Linux", "Rust"],
+    tech: ["Rust"],
     video: "/smartdos-bg.mp4",
     details: [
       "Linux TUI — keyboard-driven, no GUI required",
