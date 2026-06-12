@@ -4,36 +4,15 @@ import { stack, type Tech } from "@/data/stack";
 import { projects, type Project } from "@/data/projects";
 import { SectionUnderline } from "@/components/SectionUnderline";
 import { ProjectModal } from "@/components/ProjectModal";
-import { CONSTELLATION_EVENT, FOCUS_TECH_EVENT } from "@/components/TechBadges";
+import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
 import { projectSlug } from "@/components/FeaturedShowcase";
-
-/** Accent color per stack group; tech pills, chips, arcs and the card all key off it. */
-const GROUP_COLORS: Record<string, string> = {
-  Languages: "#f472b6",
-  Frontend: "#22d3ee",
-  Backend: "#a78bfa",
-  "Data & Infra": "#fbbf24",
-  "Payments & Monetization": "#34d399",
-  Testing: "#60a5fa",
-};
+import { BY_NAME, FLAT, GROUP_COLORS, TechGlyph, angLerp, fib } from "@/components/sphereCommon";
 
 /** Shorter chip labels for long group names. */
 const GROUP_SHORT: Record<string, string> = {
   "Payments & Monetization": "Payments",
   "Data & Infra": "Data & Infra",
 };
-
-interface FlatTech {
-  tech: Tech;
-  group: string;
-  color: string;
-}
-
-const FLAT: FlatTech[] = stack.flatMap((g) =>
-  g.items.map((tech) => ({ tech, group: g.label, color: GROUP_COLORS[g.label] ?? "#e8e8ec" })),
-);
-
-const BY_NAME = new Map(FLAT.map((f) => [f.tech.name, f]));
 
 const PROJECT_BY_TITLE = new Map(projects.map((p) => [p.title, p]));
 
@@ -75,52 +54,6 @@ interface ItemState {
   /** last projected screen position (for arcs) */
   sx: number;
   sy: number;
-}
-
-/** i-th of n points on a fibonacci sphere. */
-function fib(i: number, n: number): [number, number, number] {
-  const y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2;
-  const r = Math.sqrt(Math.max(0, 1 - y * y));
-  const th = i * 2.39996;
-  return [Math.cos(th) * r, y, Math.sin(th) * r];
-}
-
-/** Lerp angle a→b along the shortest path. */
-function angLerp(a: number, b: number, t: number): number {
-  let d = (b - a) % (Math.PI * 2);
-  if (d > Math.PI) d -= Math.PI * 2;
-  if (d < -Math.PI) d += Math.PI * 2;
-  return a + d * t;
-}
-
-/** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
-function monogram(name: string): string {
-  const words = name.split(/\s+/);
-  if (words.length > 1) return words.map((w) => w[0]).join("").toUpperCase();
-  return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
-}
-
-function TechGlyph({ tech, color }: { tech: Tech; color: string }) {
-  if (tech.logoUrl) {
-    return (
-      <img src={tech.logoUrl} alt="" width={16} height={16} className="size-4 shrink-0" />
-    );
-  }
-  if (tech.icon) {
-    return (
-      <svg role="img" aria-hidden viewBox="0 0 24 24" className="size-4 shrink-0" style={{ fill: color }}>
-        <path d={tech.icon.path} />
-      </svg>
-    );
-  }
-  return (
-    <span
-      className="flex size-4 shrink-0 items-center justify-center text-[0.55rem] font-bold"
-      style={{ color }}
-    >
-      {monogram(tech.name)}
-    </span>
-  );
 }
 
 function TechSphere() {
@@ -237,17 +170,6 @@ function TechSphere() {
     window.addEventListener(FOCUS_TECH_EVENT, onFocusRequest);
     return () => window.removeEventListener(FOCUS_TECH_EVENT, onFocusRequest);
   }, []);
-
-  // External constellation requests (View Tech Stack on a showcase section).
-  useEffect(() => {
-    const onConstellationRequest = (e: Event) => {
-      const title = (e as CustomEvent<string>).detail;
-      const p = PROJECT_BY_TITLE.get(title);
-      if (p) selectConstellation(p);
-    };
-    window.addEventListener(CONSTELLATION_EVENT, onConstellationRequest);
-    return () => window.removeEventListener(CONSTELLATION_EVENT, onConstellationRequest);
-  }, [selectConstellation]);
 
   useEffect(() => {
     if (!pendingFocus) return;

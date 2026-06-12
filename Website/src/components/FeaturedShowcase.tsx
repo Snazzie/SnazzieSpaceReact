@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { SPHERE_TECH, TechBadges, showConstellationOnSphere } from "@/components/TechBadges";
+import { SPHERE_TECH, TechBadges } from "@/components/TechBadges";
+import { MiniConstellation } from "@/components/MiniConstellation";
 import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { EASE } from "@/lib/motion";
@@ -147,8 +148,10 @@ function Panel({
     [1, 0.35],
   );
   const animate = !reduce && !isLast;
+  const [showStack, setShowStack] = useState(false);
 
   const { platforms, other } = getTechBadges(project.tech);
+  const sphereTechCount = (project.tech ?? []).filter((t) => SPHERE_TECH.has(t)).length;
 
   // Label links by type: a live site shows as "Website", a repo as "GitHub".
   // `href` is the live site if one exists, else the repo; `github` is explicit.
@@ -175,8 +178,21 @@ function Panel({
         className="mx-auto grid w-full max-w-6xl items-center gap-8 px-6 pt-20 md:pt-0 md:grid-cols-2 md:gap-12"
       >
         {/* Media: border/background hug the media's own aspect ratio. */}
-        <div className={`flex justify-center ${flip ? "md:order-2 md:justify-end" : "md:justify-start"}`}>
+        <div className={`relative flex justify-center ${flip ? "md:order-2 md:justify-end" : "md:justify-start"}`}>
           <Media project={project} images={images} index={index} />
+          {showStack && (
+            <div className="absolute inset-0 z-30 overflow-hidden rounded-2xl border border-border bg-background/85 backdrop-blur-md">
+              <MiniConstellation tech={project.tech ?? []} />
+              <button
+                type="button"
+                onClick={() => setShowStack(false)}
+                aria-label="Close tech stack"
+                className="absolute right-3 top-3 flex size-7 items-center justify-center rounded-lg border border-border bg-card/70 text-sm text-muted-foreground transition hover:text-foreground"
+              >
+                ✕
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Text */}
@@ -231,11 +247,17 @@ function Panel({
                 {link.label}
               </a>
             ))}
-            {(project.tech ?? []).filter((t) => SPHERE_TECH.has(t)).length >= 2 && (
+            {sphereTechCount >= 2 && (
               <button
                 type="button"
-                onClick={() => showConstellationOnSphere(project.title)}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2 text-sm font-medium transition hover:-translate-y-0.5 hover:border-zinc-600"
+                aria-pressed={showStack}
+                onClick={() => setShowStack((v) => !v)}
+                className="inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition hover:-translate-y-0.5 hover:border-zinc-600"
+                style={
+                  showStack
+                    ? { borderColor: "var(--color-foreground)", background: "var(--color-secondary)" }
+                    : { borderColor: "var(--color-border)", background: "var(--color-card)" }
+                }
               >
                 ✦ Tech Stack
               </button>

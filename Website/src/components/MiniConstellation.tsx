@@ -1,0 +1,165 @@
+import { useEffect, useMemo, useRef } from "react";
+import { useReducedMotion } from "motion/react";
+import { BY_NAME, TechGlyph, fib, type FlatTech } from "@/components/sphereCommon";
+
+/**
+ * Small self-contained constellation: a project's sphere techs laid out on a
+ * slowly spinning fibonacci sphere, chained star-map style on a canvas.
+ * Used inline in showcase sections; drag to spin.
+ */
+export function MiniConstellation({ tech }: { tech: string[] }) {
+  const items = useMemo(
+    () => tech.map((t) => BY_NAME.get(t)).filter((f): f is FlatTech => f !== undefined),
+    [tech],
+  );
+  const reduce = useReducedMotion();
+
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const elsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const rot = useRef({ rx: -0.15, ry: 0, vx: 0, vy: 0.004 });
+  const drag = useRef({ active: false, px: 0, py: 0 });
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const canvas = canvasRef.current;
+    if (!wrap || !canvas) return;
+    const ctx = canvas.getContext("2d");
+    const n = items.length;
+    const bases = items.map((_, i) => fib(i, n));
+    const screen = items.map(() => ({ sx: 0, sy: 0 }));
+
+    let W = 0;
+    let H = 0;
+    let R = 0;
+    const resize = () => {
+      W = wrap.clientWidth;
+      H = wrap.clientHeight;
+      R = Math.min(W, H) * 0.36;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = `${W}px`;
+      canvas.style.height = `${H}px`;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    const ro = new ResizeObserver(() => {
+      resize();
+      if (reduce) step();
+    });
+    ro.observe(wrap);
+
+    const step = () => {
+      const r = rot.current;
+      const cy = Math.cos(r.ry);
+      const sy = Math.sin(r.ry);
+      const cx = Math.cos(r.rx);
+      const sx = Math.sin(r.rx);
+
+      for (let i = 0; i < n; i++) {
+        const el = elsRef.current[i];
+        if (!el) continue;
+        const [bx, by, bz] = bases[i];
+        const x = bx * cy + bz * sy;
+        const z = -bx * sy + bz * cy;
+        const y2 = by * cx - z * sx;
+        const z2 = by * sx + z * cx;
+        const s = (z2 + 2) / 3;
+        screen[i].sx = W / 2 + x * R;
+        screen[i].sy = H / 2 + y2 * R;
+        el.style.transform = `translate(-50%,-50%) translate(${x * R}px,${y2 * R}px) scale(${0.6 + s * 0.45})`;
+        el.style.opacity = `${0.35 + s * 0.65}`;
+        el.style.zIndex = `${Math.round(s * 100)}`;
+      }
+
+      if (ctx) {
+        ctx.clearRect(0, 0, W, H);
+        ctx.save();
+        ctx.strokeStyle = "rgba(232,232,236,0.45)";
+        ctx.lineWidth = 1;
+        ctx.shadowColor = "rgba(232,232,236,0.8)";
+        ctx.shadowBlur = 6;
+        ctx.beginPath();
+        for (let i = 0; i < n; i++) {
+          i === 0 ? ctx.moveTo(screen[i].sx, screen[i].sy) : ctx.lineTo(screen[i].sx, screen[i].sy);
+        }
+        ctx.stroke();
+        ctx.fillStyle = "rgba(232,232,236,0.9)";
+        for (let i = 0; i < n; i++) {
+          ctx.beginPath();
+          ctx.arc(screen[i].sx, screen[i].sy, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    };
+
+    let raf = 0;
+    const loop = () => {
+      const r = rot.current;
+      if (!drag.current.active) {
+        r.ry += r.vy;
+        r.rx += r.vx;
+        r.vx *= 0.95;
+        r.vy = r.vy * 0.95 + 0.004 * 0.05;
+      }
+      step();
+      raf = requestAnimationFrame(loop);
+    };
+    if (reduce) {
+      step();
+    } else {
+      raf = requestAnimationFrame(loop);
+    }
+
+    const onMove = (e: PointerEvent) => {
+      if (!drag.current.active) return;
+      const r = rot.current;
+      r.vy = (e.clientX - drag.current.px) * 0.0045;
+      r.vx = (drag.current.py - e.clientY) * 0.0035;
+      r.ry += r.vy;
+      r.rx += r.vx;
+      drag.current.px = e.clientX;
+      drag.current.py = e.clientY;
+      if (reduce) step();
+    };
+    const onUp = () => {
+      drag.current.active = false;
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+  }, [items, reduce]);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="relative size-full touch-none cursor-grab active:cursor-grabbing"
+      onPointerDown={(e) => {
+        drag.current = { active: true, px: e.clientX, py: e.clientY };
+      }}
+    >
+      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
+      {items.map((f, i) => (
+        <div
+          key={f.tech.name}
+          ref={(el) => {
+            elsRef.current[i] = el;
+          }}
+          className="pointer-events-none absolute left-1/2 top-1/2 flex select-none items-center gap-1.5 whitespace-nowrap rounded-full border bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-foreground/90 backdrop-blur-sm"
+          style={{ borderColor: f.color }}
+        >
+          <TechGlyph tech={f.tech} color={f.color} />
+          {f.tech.name}
+        </div>
+      ))}
+    </div>
+  );
+}
