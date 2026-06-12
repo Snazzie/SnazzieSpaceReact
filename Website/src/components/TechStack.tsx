@@ -380,10 +380,10 @@ function TechSphere() {
   };
 
   const chips: { key: string; label: string; color: string }[] = [
-    { key: "all", label: "all", color: "#e8e8ec" },
+    { key: "all", label: "All", color: "#e8e8ec" },
     ...stack.map((g) => ({
       key: g.label,
-      label: (GROUP_SHORT[g.label] ?? g.label).toLowerCase(),
+      label: ((s: string) => s.charAt(0).toUpperCase() + s.slice(1))((GROUP_SHORT[g.label] ?? g.label).toLowerCase()),
       color: GROUP_COLORS[g.label] ?? "#e8e8ec",
     })),
   ];
