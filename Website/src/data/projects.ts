@@ -40,7 +40,6 @@ export const projects: Project[] = [
       "Playwright",
       "Web Audio API",
       "OmniVoice",
-      "Dia2 TTS",
       "Python",
     ],
     details: [
