@@ -4,7 +4,7 @@ import { stack, type Tech } from "@/data/stack";
 import { projects, type Project } from "@/data/projects";
 import { SectionUnderline } from "@/components/SectionUnderline";
 import { ProjectModal } from "@/components/ProjectModal";
-import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
+import { CONSTELLATION_EVENT, FOCUS_TECH_EVENT } from "@/components/TechBadges";
 import { projectSlug } from "@/components/FeaturedShowcase";
 
 /** Accent color per stack group; tech pills, chips, arcs and the card all key off it. */
@@ -237,6 +237,17 @@ function TechSphere() {
     window.addEventListener(FOCUS_TECH_EVENT, onFocusRequest);
     return () => window.removeEventListener(FOCUS_TECH_EVENT, onFocusRequest);
   }, []);
+
+  // External constellation requests (View Tech Stack on a showcase section).
+  useEffect(() => {
+    const onConstellationRequest = (e: Event) => {
+      const title = (e as CustomEvent<string>).detail;
+      const p = PROJECT_BY_TITLE.get(title);
+      if (p) selectConstellation(p);
+    };
+    window.addEventListener(CONSTELLATION_EVENT, onConstellationRequest);
+    return () => window.removeEventListener(CONSTELLATION_EVENT, onConstellationRequest);
+  }, [selectConstellation]);
 
   useEffect(() => {
     if (!pendingFocus) return;

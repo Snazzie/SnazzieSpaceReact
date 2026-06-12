@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { TechBadges } from "@/components/TechBadges";
+import { SPHERE_TECH, TechBadges, showConstellationOnSphere } from "@/components/TechBadges";
 import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { EASE } from "@/lib/motion";
@@ -231,6 +231,15 @@ function Panel({
                 {link.label}
               </a>
             ))}
+            {(project.tech ?? []).filter((t) => SPHERE_TECH.has(t)).length >= 2 && (
+              <button
+                type="button"
+                onClick={() => showConstellationOnSphere(project.title)}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2 text-sm font-medium transition hover:-translate-y-0.5 hover:border-zinc-600"
+              >
+                ✦ Tech Stack
+              </button>
+            )}
           </div>
         </div>
       </motion.div>

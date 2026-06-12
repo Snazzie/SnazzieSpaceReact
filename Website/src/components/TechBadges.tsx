@@ -4,12 +4,21 @@ import { stack } from "@/data/stack";
 /** Cross-island event: ask the TechStack sphere to focus a tech by name. */
 export const FOCUS_TECH_EVENT = "sphere:focus-tech";
 
-const SPHERE_TECH = new Set(stack.flatMap((g) => g.items.map((t) => t.name)));
+/** Cross-island event: ask the TechStack sphere to show a project constellation by title. */
+export const CONSTELLATION_EVENT = "sphere:constellation";
+
+export const SPHERE_TECH = new Set(stack.flatMap((g) => g.items.map((t) => t.name)));
 
 /** Scrolls to the tech-stack section and asks the sphere to focus `name`. */
 export function focusTechOnSphere(name: string) {
   document.getElementById("stack")?.scrollIntoView({ behavior: "smooth" });
   window.dispatchEvent(new CustomEvent(FOCUS_TECH_EVENT, { detail: name }));
+}
+
+/** Scrolls to the tech-stack section and lights up `title`'s constellation. */
+export function showConstellationOnSphere(title: string) {
+  document.getElementById("stack")?.scrollIntoView({ behavior: "smooth" });
+  window.dispatchEvent(new CustomEvent(CONSTELLATION_EVENT, { detail: title }));
 }
 
 /**
