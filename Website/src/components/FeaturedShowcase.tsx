@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { SPHERE_TECH } from "@/components/TechBadges";
 import { MiniConstellation } from "@/components/MiniConstellation";
 import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -151,7 +150,6 @@ function Panel({
   const [showStack, setShowStack] = useState(false);
 
   const { platforms } = getTechBadges(project.tech);
-  const sphereTechCount = (project.tech ?? []).filter((t) => SPHERE_TECH.has(t)).length;
 
   // Label links by type: a live site shows as "Website", a repo as "GitHub".
   // `href` is the live site if one exists, else the repo; `github` is explicit.
@@ -241,7 +239,7 @@ function Panel({
                 {link.label}
               </a>
             ))}
-            {sphereTechCount >= 2 && (
+            {(project.tech?.length ?? 0) >= 2 && (
               <button
                 type="button"
                 aria-pressed={showStack}

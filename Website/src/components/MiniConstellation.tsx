@@ -8,8 +8,10 @@ import { BY_NAME, TechGlyph, fib, type FlatTech } from "@/components/sphereCommo
  * Used inline in showcase sections; drag to spin.
  */
 export function MiniConstellation({ tech }: { tech: string[] }) {
-  const items = useMemo(
-    () => tech.map((t) => BY_NAME.get(t)).filter((f): f is FlatTech => f !== undefined),
+  // Techs not on the sphere (platforms, one-off tools) still get a pill,
+  // rendered with the neutral monogram fallback.
+  const items = useMemo<FlatTech[]>(
+    () => tech.map((t) => BY_NAME.get(t) ?? { tech: { name: t }, group: "", color: "#e8e8ec" }),
     [tech],
   );
   const reduce = useReducedMotion();
