@@ -126,6 +126,40 @@ function ItemCard({
   );
 }
 
+function SwapText({
+  swapKey,
+  reduce,
+  className,
+  distance = 12,
+  delay = 0,
+  children,
+}: {
+  swapKey: string;
+  reduce: boolean;
+  className?: string;
+  distance?: number;
+  delay?: number;
+  children: React.ReactNode;
+}) {
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+  return (
+    <div className={`relative overflow-hidden ${className ?? ""}`}>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.div
+          key={swapKey}
+          initial={{ y: distance, opacity: 0 }}
+          animate={{ y: 0, opacity: 1, transition: { duration: 0.4, ease: EASE, delay } }}
+          exit={{ y: -distance, opacity: 0, transition: { duration: 0.3, ease: EASE } }}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function SkillPills({ group }: { group: TimelineGroup }) {
   if (group.skills.length === 0) return null;
   return (
@@ -213,29 +247,25 @@ export function Career() {
         {/* sticky rail — desktop only */}
         <div className="hidden w-60 shrink-0 md:block">
           <div className="sticky top-[30vh]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active.groupIndex + itemYear(active.item.period)}
-                initial={reduce ? false : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.25, ease: EASE }}
-              >
-                <p className="bg-gradient-to-br from-cyan-400 to-indigo-400 bg-clip-text text-7xl font-extrabold leading-none tracking-tighter text-transparent">
-                  {itemYear(active.item.period)}
-                </p>
-                <p className="mt-4 text-[15px] font-semibold text-foreground">{active.group.name}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
-                <p className="mt-2.5 text-[11px] leading-relaxed text-muted-foreground/70">
-                  {active.group.range}
-                  <br />
-                  {active.group.detail}
-                </p>
-                <div className="mt-4">
-                  <SkillPills group={active.group} />
-                </div>
-              </motion.div>
-            </AnimatePresence>
+            <SwapText swapKey={itemYear(active.item.period)} reduce={reduce} distance={28}>
+              <p className="bg-gradient-to-br from-cyan-400 to-indigo-400 bg-clip-text pb-1 text-7xl font-extrabold leading-none tracking-tighter text-transparent">
+                {itemYear(active.item.period)}
+              </p>
+            </SwapText>
+            <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.04}>
+              <p className="text-[15px] font-semibold text-foreground">{active.group.name}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
+            </SwapText>
+            <SwapText swapKey={active.group.name} reduce={reduce} className="mt-2.5" delay={0.08}>
+              <p className="text-[11px] leading-relaxed text-muted-foreground/70">
+                {active.group.range}
+                <br />
+                {active.group.detail}
+              </p>
+            </SwapText>
+            <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.12}>
+              <SkillPills group={active.group} />
+            </SwapText>
             <div className="mt-6 h-0.5 w-36 rounded-full bg-zinc-900">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 transition-[width] duration-300"
