@@ -97,7 +97,7 @@ export interface Education {
 export const education: Education[] = [
   {
     institution: "Anglia Ruskin University",
-    degree: "BEng, Computer Science",
+    degree: "Bachelor of Engineering - BEng Computer Science",
     logo: "/logos/aru.svg",
     href: "https://www.aru.ac.uk",
     period: "2015 – 2018",
