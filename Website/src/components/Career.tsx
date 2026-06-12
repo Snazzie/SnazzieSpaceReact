@@ -210,7 +210,8 @@ export function Career() {
         const fill = g.querySelector<HTMLElement>("[data-seg-fill]");
         if (!fill) return;
         const gr = g.getBoundingClientRect();
-        fill.style.height = `${Math.min(gr.height, Math.max(0, anchor - gr.top))}px`;
+        // drain downward: the lit segment is what's still ahead (the past below the anchor)
+        fill.style.height = `${Math.min(gr.height, Math.max(0, gr.bottom - anchor))}px`;
       });
     };
     const onScroll = () => {
@@ -297,8 +298,8 @@ export function Career() {
               <div className="absolute bottom-0 left-[22px] top-0 w-0.5 rounded-full bg-zinc-900 md:left-6" />
               <div
                 data-seg-fill
-                className="absolute left-[22px] top-0 w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-indigo-400 md:left-6"
-                style={{ height: 0 }}
+                className="absolute bottom-0 left-[22px] w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-indigo-400 md:left-6"
+                style={{ height: "100%" }}
               />
               {/* logo rides the spine for the employment period */}
               <div className="absolute bottom-0 left-[23px] top-0 z-20 w-0 md:left-[25px]">
