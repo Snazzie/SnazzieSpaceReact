@@ -41,6 +41,7 @@ export const projects: Project[] = [
       "Web Audio API",
       "OmniVoice",
       "Python",
+      "Vitest",
     ],
     details: [
       "Multi-voice call-in radio comedy from a full cast of cloned TTS voices",
@@ -78,6 +79,7 @@ export const projects: Project[] = [
       "Maestro",
       "AI Agent",
       "OpenAI",
+      "Vitest",
     ],
     details: [
       "Connects investments, pensions, and savings in one place",
@@ -141,6 +143,7 @@ export const projects: Project[] = [
       "TypeScript",
       "Drizzle",
       "Better Auth",
+      "Vitest",
     ],
     details: [
       "Monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
@@ -187,6 +190,7 @@ export const projects: Project[] = [
       "Docker",
       "Firebase",
       "Stripe",
+      "Vitest",
     ],
     supersedes: "Vital Utilities",
     details: [
@@ -205,7 +209,7 @@ export const projects: Project[] = [
     bgImage: "/vital-utilities.png",
     featured: false,
     supersededBy: "Better Task Manager",
-    tech: ["C#", ".NET", "TypeScript", "Rust", "React", "Tauri", "Vite", "SQLite"],
+    tech: ["C#", ".NET", "TypeScript", "Rust", "React", "Tauri", "Vite", "SQLite", "Vitest"],
   },
   {
     title: "Media on Tauri",

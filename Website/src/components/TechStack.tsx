@@ -225,8 +225,28 @@ function TechSphere() {
         for (let k = 0; k < 3; k++) it.base[k] += (it.target[k] - it.base[k]) * 0.1;
       }
 
+      // If only one tech is in view (lone constellation member, or filtered
+      // down to a single visible node), rotate it to front-center.
+      let single = -1;
+      if (constIdxRef.current.length === 1) {
+        single = constIdxRef.current[0];
+      } else {
+        let count = 0;
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].visT === 1) {
+            count++;
+            single = i;
+          }
+        }
+        if (count !== 1) single = -1;
+      }
+
       const ft = focusTarget.current;
-      if (ft) {
+      if (single >= 0 && !focusedRef.current) {
+        const [bx, by, bz] = items[single].target;
+        r.ry = angLerp(r.ry, Math.atan2(-bx, bz), 0.08);
+        r.rx = angLerp(r.rx, Math.atan2(by, Math.hypot(bx, bz)), 0.08);
+      } else if (ft) {
         r.ry = angLerp(r.ry, ft.ry, 0.08);
         r.rx = angLerp(r.rx, ft.rx, 0.08);
       } else if (!drag.current.active) {
@@ -307,22 +327,26 @@ function TechSphere() {
           // Constellation: chain visible members in project tech order,
           // star-map style — thin glowing lines plus a dot at each member.
           const pts = constIdx
-            .map((i) => itemsRef.current[i])
-            .filter((it) => it.vis > 0.5);
+            .map((i) => ({ it: itemsRef.current[i], color: FLAT[i].color }))
+            .filter((p) => p.it.vis > 0.5);
           ctx.save();
-          ctx.strokeStyle = "rgba(232,232,236,0.45)";
-          ctx.lineWidth = 1;
-          ctx.shadowColor = "rgba(232,232,236,0.8)";
-          ctx.shadowBlur = 6;
-          ctx.beginPath();
-          for (const [k, p] of pts.entries()) {
-            k === 0 ? ctx.moveTo(p.sx, p.sy) : ctx.lineTo(p.sx, p.sy);
-          }
-          ctx.stroke();
-          ctx.fillStyle = "rgba(232,232,236,0.9)";
-          for (const p of pts) {
+          ctx.lineWidth = 1.4;
+          for (let k = 1; k < pts.length; k++) {
+            const a = pts[k - 1].it;
+            const b = pts[k].it;
+            const grad = ctx.createLinearGradient(a.sx, a.sy, b.sx, b.sy);
+            grad.addColorStop(0, `${pts[k - 1].color}cc`);
+            grad.addColorStop(1, `${pts[k].color}22`);
+            ctx.strokeStyle = grad;
             ctx.beginPath();
-            ctx.arc(p.sx, p.sy, 2, 0, Math.PI * 2);
+            ctx.moveTo(a.sx, a.sy);
+            ctx.quadraticCurveTo((a.sx + b.sx) / 2, (a.sy + b.sy) / 2 - 30, b.sx, b.sy);
+            ctx.stroke();
+          }
+          for (const p of pts) {
+            ctx.fillStyle = `${p.color}e6`;
+            ctx.beginPath();
+            ctx.arc(p.it.sx, p.it.sy, 2, 0, Math.PI * 2);
             ctx.fill();
           }
           ctx.restore();

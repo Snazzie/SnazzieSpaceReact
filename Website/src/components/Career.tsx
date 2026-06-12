@@ -86,20 +86,15 @@ function RiderLogo({ group }: { group: TimelineGroup }) {
 
 function ItemCard({
   item,
-  group,
   active,
   reduce,
 }: {
   item: TimelineItem;
-  group: TimelineGroup;
   active: boolean;
   reduce: boolean;
 }) {
   return (
-    <motion.a
-      href={group.href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
       initial={reduce ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -144,7 +139,7 @@ function ItemCard({
           </div>
         )}
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
 
@@ -290,7 +285,14 @@ export function Career() {
               />
             </div>
             <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.04}>
-              <p className="text-[15px] font-semibold text-foreground">{active.group.name}</p>
+              <a
+                href={active.group.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[15px] font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
+              >
+                {active.group.name}
+              </a>
               <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
             </SwapText>
             <SwapText swapKey={active.group.name} reduce={reduce} className="mt-2.5" delay={0.08}>
@@ -336,7 +338,14 @@ export function Career() {
                 transition={{ duration: D.base, ease: EASE }}
                 className="mb-6 md:hidden"
               >
-                <p className="text-sm font-semibold text-foreground">{group.name}</p>
+                <a
+                  href={group.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
+                >
+                  {group.name}
+                </a>
                 <p className="mt-0.5 text-xs text-muted-foreground">
                   {group.subtitle} · {group.range}
                 </p>
@@ -357,7 +366,6 @@ export function Career() {
                     >
                       <ItemCard
                         item={item}
-                        group={group}
                         active={idx === activeIndex}
                         reduce={reduce}
                       />

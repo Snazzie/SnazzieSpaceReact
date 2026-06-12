@@ -19,7 +19,13 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const elsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const rot = useRef({ rx: -0.15, ry: 0, vx: 0, vy: 0.004 });
+  // Lone tech: face it front-center, no idle spin (base point sits on +x).
+  const solo = items.length === 1;
+  const rot = useRef(
+    solo
+      ? { rx: 0, ry: -Math.PI / 2, vx: 0, vy: 0 }
+      : { rx: -0.15, ry: 0, vx: 0, vy: 0.004 },
+  );
   const drag = useRef({ active: false, px: 0, py: 0 });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingDrag = useRef<{ px: number; py: number } | null>(null);
@@ -80,17 +86,21 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
       if (ctx) {
         ctx.clearRect(0, 0, W, H);
         ctx.save();
-        ctx.strokeStyle = "rgba(232,232,236,0.45)";
-        ctx.lineWidth = 1;
-        ctx.shadowColor = "rgba(232,232,236,0.8)";
-        ctx.shadowBlur = 6;
-        ctx.beginPath();
-        for (let i = 0; i < n; i++) {
-          i === 0 ? ctx.moveTo(screen[i].sx, screen[i].sy) : ctx.lineTo(screen[i].sx, screen[i].sy);
+        ctx.lineWidth = 1.4;
+        for (let i = 1; i < n; i++) {
+          const a = screen[i - 1];
+          const b = screen[i];
+          const grad = ctx.createLinearGradient(a.sx, a.sy, b.sx, b.sy);
+          grad.addColorStop(0, `${items[i - 1].color}cc`);
+          grad.addColorStop(1, `${items[i].color}22`);
+          ctx.strokeStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(a.sx, a.sy);
+          ctx.quadraticCurveTo((a.sx + b.sx) / 2, (a.sy + b.sy) / 2 - 30, b.sx, b.sy);
+          ctx.stroke();
         }
-        ctx.stroke();
-        ctx.fillStyle = "rgba(232,232,236,0.9)";
         for (let i = 0; i < n; i++) {
+          ctx.fillStyle = `${items[i].color}e6`;
           ctx.beginPath();
           ctx.arc(screen[i].sx, screen[i].sy, 2, 0, Math.PI * 2);
           ctx.fill();
@@ -102,7 +112,7 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
     let raf = 0;
     const loop = () => {
       const r = rot.current;
-      if (!drag.current.active) {
+      if (!drag.current.active && !solo) {
         r.ry += r.vy;
         r.rx += r.vx;
         r.vx *= 0.95;
