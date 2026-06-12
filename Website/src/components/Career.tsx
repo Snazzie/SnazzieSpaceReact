@@ -1,197 +1,197 @@
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Award, CalendarDays, GraduationCap, MapPin } from "lucide-react";
-import { experience, education, type Experience, type Education } from "@/data/experience";
+import { experience, education } from "@/data/experience";
 import { D, EASE } from "@/lib/motion";
 import { SectionUnderline } from "@/components/SectionUnderline";
 
-const reveal: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: D.base, ease: EASE, delay: i * 0.06 },
-  }),
-};
+interface TimelineItem {
+  period: string;
+  title: string;
+  description: string;
+}
 
-const SPOTLIGHT =
-  "radial-gradient(420px circle at var(--cx, 50%) var(--cy, 50%), rgba(255,255,255,0.06), transparent 60%)";
+interface TimelineGroup {
+  name: string;
+  subtitle: string; // role or degree
+  logo: string;
+  logoBg?: string;
+  href: string;
+  range: string; // "Jul 2022 – Present · 3 yrs 11 mos"
+  detail: string; // location or grade
+  skills: string[];
+  extraSkillCount: number;
+  items: TimelineItem[];
+}
 
-function LogoTile({ src, alt, bg }: { src: string; alt: string; bg?: string }) {
+const groups: TimelineGroup[] = [
+  ...experience.map((job) => ({
+    name: job.company,
+    subtitle: `${job.role} · ${job.type}`,
+    logo: job.logo,
+    logoBg: job.logoBg,
+    href: job.href,
+    range: `${job.start} – ${job.end} · ${job.duration}`,
+    detail: job.location,
+    skills: job.skills,
+    extraSkillCount: job.extraSkillCount,
+    items: job.subroles.map((sub) => ({
+      period: sub.period,
+      title: sub.title,
+      description: sub.description,
+    })),
+  })),
+  ...education.map((edu) => ({
+    name: edu.institution,
+    subtitle: edu.degree,
+    logo: edu.logo,
+    logoBg: undefined,
+    href: edu.href,
+    range: edu.period,
+    detail: edu.grade,
+    skills: [],
+    extraSkillCount: 0,
+    items: [
+      {
+        period: edu.period.replace(/\s/g, ""),
+        title: "University life",
+        description: edu.activities.join(". ") + ".",
+      },
+    ],
+  })),
+];
+
+// flat item list with back-pointers to groups, for active tracking
+const flatItems = groups.flatMap((group, groupIndex) =>
+  group.items.map((item) => ({ item, group, groupIndex })),
+);
+
+function itemYear(period: string) {
+  return period.slice(0, 4);
+}
+
+function RiderLogo({ group }: { group: TimelineGroup }) {
   return (
     <div
-      className={`relative z-20 flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border ${
-        bg ? "" : "bg-secondary"
+      className="pointer-events-none sticky top-[calc(42vh-22px)] z-20 -ml-[22px] flex size-11 items-center justify-center overflow-hidden rounded-full border-2 border-cyan-400/70 shadow-[0_0_20px_5px_rgba(34,211,238,0.22),0_8px_24px_rgba(0,0,0,0.5)]"
+      style={{ background: group.logoBg ?? "#18181b" }}
+    >
+      <img src={group.logo} alt={group.name} width={44} height={44} className="size-full object-contain p-2" />
+    </div>
+  );
+}
+
+function ItemCard({
+  item,
+  group,
+  active,
+  reduce,
+}: {
+  item: TimelineItem;
+  group: TimelineGroup;
+  active: boolean;
+  reduce: boolean;
+}) {
+  return (
+    <motion.a
+      href={group.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={reduce ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: D.base, ease: EASE }}
+      className={`relative block transition-[opacity,transform] duration-500 ${
+        active ? "opacity-100" : "md:translate-x-2 md:opacity-30"
       }`}
-      style={bg ? { background: bg } : undefined}
     >
-      <img src={src} alt={alt} width={48} height={48} className={`size-full object-contain ${bg ? "p-2" : "p-1.5"}`} />
-    </div>
-  );
-}
-
-function useCardProps(index: number) {
-  const reduce = useReducedMotion();
-  const onMove = reduce
-    ? undefined
-    : (e: React.PointerEvent<HTMLElement>) => {
-        const el = e.currentTarget;
-        const r = el.getBoundingClientRect();
-        el.style.setProperty("--cx", `${e.clientX - r.left}px`);
-        el.style.setProperty("--cy", `${e.clientY - r.top}px`);
-      };
-
-  return {
-    custom: index,
-    variants: reveal,
-    initial: reduce ? (false as const) : "hidden",
-    whileInView: "show" as const,
-    viewport: { once: true, amount: 0.2 },
-    onPointerMove: onMove,
-  };
-}
-
-function Spotlight() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 z-10 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      style={{ background: SPOTLIGHT }}
-    />
-  );
-}
-
-function MetaRow({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative z-20 mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-      {children}
-    </div>
-  );
-}
-
-function ExperienceCard({ job, index }: { job: Experience; index: number }) {
-  const cardProps = useCardProps(index);
-  return (
-    <motion.a
-      {...cardProps}
-      href={job.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600"
-    >
-      <Spotlight />
-      <div className="flex items-start gap-4">
-        <LogoTile src={job.logo} alt={job.company} bg={job.logoBg} />
-        <div className="min-w-0 flex-1">
-          <h3 className="relative z-20 flex items-center gap-1.5 text-lg font-semibold text-foreground">
-            {job.role}
-            <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
-          </h3>
-          <p className="relative z-20 text-sm text-muted-foreground">
-            {job.company} · {job.type}
-          </p>
-          <MetaRow>
-            <span className="inline-flex items-center gap-1">
-              <CalendarDays className="size-3.5" />
-              {job.start} – {job.end} · {job.duration}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="size-3.5" />
-              {job.location}
-            </span>
-          </MetaRow>
-        </div>
-      </div>
-
-      {job.blurb && (
-        <p className="relative z-20 mt-4 text-sm text-muted-foreground">{job.blurb}</p>
-      )}
-
-      <ol className="relative z-20 mt-5 space-y-4">
-        {job.subroles.map((sub) => (
-          <li key={sub.title} className="border-l border-border pl-4">
-            <span className="text-xs font-medium uppercase tracking-wide text-foreground/60">
-              {sub.period}
-            </span>
-            <p className="text-sm font-medium text-foreground">{sub.title}</p>
-            <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
-              {sub.description}
-            </p>
-          </li>
-        ))}
-      </ol>
-
-      <div className="relative z-20 mt-5 flex flex-wrap gap-1.5">
-        {job.skills.map((s) => (
-          <Badge key={s} variant="outline" className="border-border text-muted-foreground">
-            {s}
-          </Badge>
-        ))}
-        {job.extraSkillCount > 0 && (
-          <Badge variant="secondary">+{job.extraSkillCount} more</Badge>
-        )}
+      {/* node dot */}
+      <span
+        className={`absolute -left-[44px] top-3 size-2.5 rounded-full border-2 border-background transition-all duration-500 ${
+          active ? "bg-cyan-400 shadow-[0_0_10px_2px_rgba(34,211,238,0.4)]" : "bg-zinc-700"
+        }`}
+      />
+      <div
+        className={`rounded-2xl border bg-card p-5 transition-colors duration-500 md:p-6 ${
+          active ? "border-zinc-600" : "border-border"
+        }`}
+      >
+        <p className="text-[10px] font-medium uppercase tracking-[0.1em] text-cyan-400">
+          {item.period}
+        </p>
+        <h3 className="mt-1 text-base font-semibold text-foreground md:text-lg">{item.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
       </div>
     </motion.a>
   );
 }
 
-function EducationCard({ edu, index }: { edu: Education; index: number }) {
-  const cardProps = useCardProps(index);
+function SkillPills({ group }: { group: TimelineGroup }) {
+  if (group.skills.length === 0) return null;
   return (
-    <motion.a
-      {...cardProps}
-      href={edu.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative block overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-600"
-    >
-      <Spotlight />
-      <div className="flex items-start gap-4">
-        <LogoTile src={edu.logo} alt={edu.institution} />
-        <div className="min-w-0 flex-1">
-          <h3 className="relative z-20 flex items-center gap-1.5 text-lg font-semibold text-foreground">
-            {edu.institution}
-            <ArrowUpRight className="size-4 -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
-          </h3>
-          <p className="relative z-20 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <GraduationCap className="size-3.5" />
-            {edu.degree}
-          </p>
-          <MetaRow>
-            <span className="inline-flex items-center gap-1">
-              <CalendarDays className="size-3.5" />
-              {edu.period}
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <Award className="size-3.5" />
-              {edu.grade}
-            </span>
-          </MetaRow>
-        </div>
-      </div>
-
-      <ul className="relative z-20 mt-5 space-y-2">
-        {edu.activities.map((a) => (
-          <li
-            key={a}
-            className="flex items-start gap-2 border-l border-border pl-4 text-sm text-muted-foreground"
-          >
-            {a}
-          </li>
-        ))}
-      </ul>
-    </motion.a>
+    <div className="flex flex-wrap gap-1.5">
+      {group.skills.map((s) => (
+        <Badge key={s} variant="outline" className="border-border text-muted-foreground">
+          {s}
+        </Badge>
+      ))}
+      {group.extraSkillCount > 0 && <Badge variant="secondary">+{group.extraSkillCount} more</Badge>}
+    </div>
   );
 }
 
 export function Career() {
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotion() ?? false;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const anchor = window.innerHeight * 0.42;
+      let best = 0;
+      let bestDist = Infinity;
+      itemRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - anchor);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      });
+      setActiveIndex(best);
+      groupRefs.current.forEach((g) => {
+        if (!g) return;
+        const fill = g.querySelector<HTMLElement>("[data-seg-fill]");
+        if (!fill) return;
+        const gr = g.getBoundingClientRect();
+        fill.style.height = `${Math.min(gr.height, Math.max(0, anchor - gr.top))}px`;
+      });
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  const active = flatItems[activeIndex] ?? flatItems[0];
   const headingProps = {
     initial: reduce ? (false as const) : { opacity: 0, y: 16 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true, amount: 0.5 },
     transition: { duration: D.base, ease: EASE },
   };
+  let flatIndex = 0;
 
   return (
     <section id="career" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
@@ -207,24 +207,106 @@ export function Career() {
       >
         Career
       </motion.h2>
-      <SectionUnderline className="mb-10" />
+      <SectionUnderline className="mb-12" />
 
-      <div className="space-y-4">
-        {experience.map((job, i) => (
-          <ExperienceCard key={job.company} job={job} index={i} />
-        ))}
-      </div>
+      <div className="md:flex md:gap-14">
+        {/* sticky rail — desktop only */}
+        <div className="hidden w-60 shrink-0 md:block">
+          <div className="sticky top-[30vh]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.groupIndex + itemYear(active.item.period)}
+                initial={reduce ? false : { opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduce ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: EASE }}
+              >
+                <p className="bg-gradient-to-br from-cyan-400 to-indigo-400 bg-clip-text text-7xl font-extrabold leading-none tracking-tighter text-transparent">
+                  {itemYear(active.item.period)}
+                </p>
+                <p className="mt-4 text-[15px] font-semibold text-foreground">{active.group.name}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
+                <p className="mt-2.5 text-[11px] leading-relaxed text-muted-foreground/70">
+                  {active.group.range}
+                  <br />
+                  {active.group.detail}
+                </p>
+                <div className="mt-4">
+                  <SkillPills group={active.group} />
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            <div className="mt-6 h-0.5 w-36 rounded-full bg-zinc-900">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 transition-[width] duration-300"
+                style={{ width: `${((activeIndex + 1) / flatItems.length) * 100}%` }}
+              />
+            </div>
+          </div>
+        </div>
 
-      <motion.h2
-        {...headingProps}
-        className="mb-6 mt-16 text-sm font-medium uppercase tracking-wide text-muted-foreground"
-      >
-        Education
-      </motion.h2>
-      <div className="space-y-4">
-        {education.map((edu, i) => (
-          <EducationCard key={edu.institution} edu={edu} index={i} />
-        ))}
+        {/* timeline groups */}
+        <div className="flex-1 space-y-16 md:space-y-[72px]">
+          {groups.map((group, gi) => (
+            <div
+              key={group.name}
+              ref={(el) => {
+                groupRefs.current[gi] = el;
+              }}
+              className="relative pl-14 md:pl-16"
+            >
+              {/* segment spine + scroll fill */}
+              <div className="absolute bottom-0 left-[22px] top-0 w-0.5 rounded-full bg-zinc-900 md:left-6" />
+              <div
+                data-seg-fill
+                className="absolute left-[22px] top-0 w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-indigo-400 md:left-6"
+                style={{ height: 0 }}
+              />
+              {/* logo rides the spine for the employment period */}
+              <div className="absolute bottom-0 left-[23px] top-0 z-20 w-0 md:left-[25px]">
+                <RiderLogo group={group} />
+              </div>
+
+              {/* mobile group header (rail replaces this on desktop) */}
+              <motion.div
+                initial={reduce ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: D.base, ease: EASE }}
+                className="mb-6 md:hidden"
+              >
+                <p className="text-sm font-semibold text-foreground">{group.name}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  {group.subtitle} · {group.range}
+                </p>
+                <div className="mt-3">
+                  <SkillPills group={group} />
+                </div>
+              </motion.div>
+
+              <div className="space-y-10 md:space-y-14">
+                {group.items.map((item) => {
+                  const idx = flatIndex++;
+                  return (
+                    <div
+                      key={item.title}
+                      ref={(el) => {
+                        itemRefs.current[idx] = el;
+                      }}
+                    >
+                      <ItemCard
+                        item={item}
+                        group={group}
+                        active={idx === activeIndex}
+                        reduce={reduce}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
