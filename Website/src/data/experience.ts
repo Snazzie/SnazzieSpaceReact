@@ -35,7 +35,7 @@ export const experience: Experience[] = [
     type: "Full-time",
     subroles: [
       {
-        period: "2025",
+        period: "2025 – Present",
         title: "Shopping With Confidence",
         description:
           "Maintaining backend systems for size data and the ASOS product page, with a major focus on improving product size recommendations to reduce customer order returns.",

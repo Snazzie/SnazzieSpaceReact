@@ -69,6 +69,7 @@ const flatItems = groups.flatMap((group, groupIndex) =>
 );
 
 function itemYear(period: string) {
+  if (period.includes("Present")) return new Date().getFullYear().toString();
   return period.slice(0, 4);
 }
 
@@ -109,7 +110,7 @@ function ItemCard({
     >
       {/* node dot */}
       <span
-        className={`absolute -left-[44px] top-3 size-2.5 rounded-full border-2 border-background transition-all duration-500 ${
+        className={`absolute -left-[38px] top-3 size-2.5 rounded-full border-2 border-background transition-all duration-500 md:-left-[44px] ${
           active ? "bg-cyan-400 shadow-[0_0_10px_2px_rgba(34,211,238,0.4)]" : "bg-zinc-700"
         }`}
       />
@@ -219,7 +220,7 @@ export function Career() {
           best = i;
         }
       });
-      setActiveIndex(best);
+      setActiveIndex((prev) => (prev === best ? prev : best));
       if (contentRef.current && progressRef.current) {
         const cr = contentRef.current.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, (anchor - cr.top) / cr.height));
