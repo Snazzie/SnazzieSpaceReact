@@ -189,14 +189,6 @@ function Panel({
             // restricted to the image size.
             <div className="absolute inset-0 z-30 overflow-hidden md:bottom-auto md:top-1/2 md:h-[min(78vh,42rem)] md:-translate-y-1/2">
               <MiniConstellation tech={project.tech ?? []} />
-              <button
-                type="button"
-                onClick={() => setShowStack(false)}
-                aria-label="Close tech stack"
-                className="absolute right-3 top-3 flex size-7 items-center justify-center rounded-lg border border-border bg-card/70 text-sm text-muted-foreground transition hover:text-foreground"
-              >
-                ✕
-              </button>
             </div>
           )}
         </div>
