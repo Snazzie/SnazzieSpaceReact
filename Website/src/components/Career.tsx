@@ -103,8 +103,8 @@ function ItemCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: D.base, ease: EASE }}
-      className={`relative block transition-[opacity,transform] duration-500 ${
-        active ? "opacity-100" : "md:translate-x-2 md:opacity-30"
+      className={`relative block transition-opacity duration-500 ${
+        active ? "opacity-100" : "md:opacity-30"
       }`}
     >
       {/* node dot */}
