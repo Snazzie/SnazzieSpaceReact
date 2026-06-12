@@ -252,6 +252,12 @@ export function Career() {
                 {itemYear(active.item.period)}
               </p>
             </SwapText>
+            <div className="mt-3 h-0.5 w-36 rounded-full bg-zinc-900">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 transition-[width] duration-300"
+                style={{ width: `${((activeIndex + 1) / flatItems.length) * 100}%` }}
+              />
+            </div>
             <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.04}>
               <p className="text-[15px] font-semibold text-foreground">{active.group.name}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
@@ -266,12 +272,6 @@ export function Career() {
             <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.12}>
               <SkillPills group={active.group} />
             </SwapText>
-            <div className="mt-6 h-0.5 w-36 rounded-full bg-zinc-900">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 transition-[width] duration-300"
-                style={{ width: `${((activeIndex + 1) / flatItems.length) * 100}%` }}
-              />
-            </div>
           </div>
         </div>
 
