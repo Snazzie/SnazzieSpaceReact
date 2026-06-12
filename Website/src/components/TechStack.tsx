@@ -36,6 +36,11 @@ const BY_NAME = new Map(FLAT.map((f) => [f.tech.name, f]));
 
 const PROJECT_BY_TITLE = new Map(projects.map((p) => [p.title, p]));
 
+/** Projects that can light up a constellation: at least two techs on the sphere. */
+const CONST_PROJECTS = projects.filter(
+  (p) => (p.tech ?? []).filter((t) => BY_NAME.has(t)).length >= 2,
+);
+
 /** All techs that mention `name` in their related list (reverse edges). */
 const REVERSE_RELATED = new Map<string, string[]>();
 for (const { tech } of FLAT) {
@@ -124,6 +129,9 @@ function TechSphere() {
   const [pendingFocus, setPendingFocus] = useState<string | null>(null);
   const [modalProject, setModalProject] = useState<Project | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [constProject, setConstProject] = useState<Project | null>(null);
+  /** FLAT indices of the active constellation's members, in project tech order. */
+  const constIdxRef = useRef<number[]>([]);
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -157,12 +165,16 @@ function TechSphere() {
     focusedRef.current = null;
     focusTarget.current = null;
     setFocused(null);
+    constIdxRef.current = [];
+    setConstProject(null);
   }, []);
 
   const focusTech = useCallback((name: string) => {
     const idx = FLAT.findIndex((f) => f.tech.name === name);
     const it = itemsRef.current[idx];
     if (idx < 0 || !it || it.visT !== 1) return;
+    constIdxRef.current = [];
+    setConstProject(null);
     focusedRef.current = name;
     // Rotation that brings this node to front-center: yaw to zero the x
     // component, then pitch to zero the y component.
@@ -171,6 +183,24 @@ function TechSphere() {
     const rx = Math.atan2(by, Math.hypot(bx, bz));
     focusTarget.current = { rx, ry };
     setFocused(name);
+  }, []);
+
+  /** Light up a project's techs as a constellation; null clears. */
+  const selectConstellation = useCallback((p: Project | null) => {
+    focusedRef.current = null;
+    focusTarget.current = null;
+    setFocused(null);
+    if (!p) {
+      constIdxRef.current = [];
+      setConstProject(null);
+      return;
+    }
+    setCat("all");
+    setQuery("");
+    constIdxRef.current = (p.tech ?? [])
+      .map((t) => FLAT.findIndex((f) => f.tech.name === t))
+      .filter((i) => i >= 0);
+    setConstProject(p);
   }, []);
 
   // Filter: hide non-matching items, re-spread the survivors over the sphere.
@@ -264,6 +294,9 @@ function TechSphere() {
       const cx = Math.cos(r.rx);
       const sx = Math.sin(r.rx);
 
+      const constIdx = constIdxRef.current;
+      const constOn = constIdx.length > 0;
+
       for (const [i, it] of items.entries()) {
         const el = it.el;
         if (!el) continue;
@@ -274,13 +307,21 @@ function TechSphere() {
         const z2 = by * sx + z * cx;
         const s = (z2 + 2) / 3;
         const isFocused = focusedRef.current === FLAT[i].tech.name;
+        const isMember = constOn && constIdx.includes(i);
+        const dimmed = constOn && !isMember;
         const scl = (0.55 + s * 0.55) * it.vis * (isFocused ? 1.18 : 1);
         it.sx = W / 2 + x * R;
         it.sy = H / 2 + y2 * R;
         el.style.transform = `translate(-50%,-50%) translate(${x * R}px,${y2 * R}px) scale(${scl})`;
-        el.style.opacity = `${(0.25 + s * 0.75) * it.vis}`;
-        el.style.filter = isFocused ? "none" : `blur(${(1 - s) * 2.2}px)`;
-        el.style.zIndex = `${Math.round(s * 100) + (isFocused ? 200 : 0)}`;
+        el.style.opacity = `${(0.25 + s * 0.75) * it.vis * (dimmed ? 0.18 : 1)}`;
+        el.style.filter = isFocused
+          ? "none"
+          : dimmed
+            ? "blur(2px) grayscale(0.8)"
+            : isMember
+              ? `blur(${(1 - s) * 1.2}px)`
+              : `blur(${(1 - s) * 2.2}px)`;
+        el.style.zIndex = `${Math.round(s * 100) + (isFocused ? 200 : 0) + (isMember ? 150 : 0)}`;
         el.style.pointerEvents = it.vis < 0.5 ? "none" : "auto";
       }
 
@@ -315,6 +356,29 @@ function TechSphere() {
             );
             ctx.stroke();
           }
+        } else if (constOn) {
+          // Constellation: chain visible members in project tech order,
+          // star-map style — thin glowing lines plus a dot at each member.
+          const pts = constIdx
+            .map((i) => itemsRef.current[i])
+            .filter((it) => it.vis > 0.5);
+          ctx.save();
+          ctx.strokeStyle = "rgba(232,232,236,0.45)";
+          ctx.lineWidth = 1;
+          ctx.shadowColor = "rgba(232,232,236,0.8)";
+          ctx.shadowBlur = 6;
+          ctx.beginPath();
+          for (const [k, p] of pts.entries()) {
+            k === 0 ? ctx.moveTo(p.sx, p.sy) : ctx.lineTo(p.sx, p.sy);
+          }
+          ctx.stroke();
+          ctx.fillStyle = "rgba(232,232,236,0.9)";
+          for (const p of pts) {
+            ctx.beginPath();
+            ctx.arc(p.sx, p.sy, 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
         }
       }
 
@@ -350,7 +414,8 @@ function TechSphere() {
   const onOrbPointerDown = (e: React.PointerEvent) => {
     drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
     // Only release when clicking empty sphere space, not a tech pill
-    if (e.target === e.currentTarget && focusedRef.current) release();
+    if (e.target === e.currentTarget && (focusedRef.current || constIdxRef.current.length > 0))
+      release();
   };
 
   const chips: { key: string; label: string; color: string }[] = [
@@ -364,6 +429,10 @@ function TechSphere() {
 
   const meta = focusedTech?.tech.meta;
   const usedIn = focusedTech ? usedInFor(focusedTech.tech) : [];
+  const constSet = useMemo(
+    () => new Set((constProject?.tech ?? []).filter((t) => BY_NAME.has(t))),
+    [constProject],
+  );
 
   return (
     <>
@@ -396,6 +465,35 @@ function TechSphere() {
         />
       </div>
 
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+        <span className="text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+          constellations
+        </span>
+        {CONST_PROJECTS.map((p) => {
+          const on = constProject?.title === p.title;
+          return (
+            <button
+              key={p.title}
+              type="button"
+              aria-pressed={on}
+              onClick={() => selectConstellation(on ? null : p)}
+              className="rounded-full border px-3 py-1 text-[11px] font-medium transition-colors duration-200"
+              style={
+                on
+                  ? {
+                      borderColor: "var(--color-foreground)",
+                      color: "var(--color-foreground)",
+                      background: "var(--color-secondary)",
+                    }
+                  : { borderColor: "var(--color-border)", color: "var(--color-muted-foreground)" }
+              }
+            >
+              ✦ {p.title}
+            </button>
+          );
+        })}
+      </div>
+
       <div className="mt-4 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10">
         <div
           ref={wrapRef}
@@ -406,6 +504,7 @@ function TechSphere() {
           {FLAT.map((f, i) => {
             const isFocused = focused === f.tech.name;
             const isRelated = focused !== null && relatedSet.has(f.tech.name);
+            const isMember = constSet.has(f.tech.name);
             return (
               <button
                 key={f.tech.name}
@@ -422,9 +521,13 @@ function TechSphere() {
                 }}
                 className="absolute left-1/2 top-1/2 flex cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-full border bg-secondary/70 px-3 py-1.5 text-[13px] font-medium text-muted-foreground backdrop-blur-sm transition-[border-color,box-shadow,color] duration-200 hover:text-foreground"
                 style={{
-                  borderColor: isFocused || isRelated ? f.color : "var(--color-border)",
-                  boxShadow: isFocused ? `0 0 18px -4px ${f.color}` : undefined,
-                  color: isFocused ? "var(--color-foreground)" : undefined,
+                  borderColor: isFocused || isRelated || isMember ? f.color : "var(--color-border)",
+                  boxShadow: isFocused
+                    ? `0 0 18px -4px ${f.color}`
+                    : isMember
+                      ? `0 0 14px -6px ${f.color}`
+                      : undefined,
+                  color: isFocused || isMember ? "var(--color-foreground)" : undefined,
                 }}
               >
                 <TechGlyph tech={f.tech} color={f.color} />
@@ -437,9 +540,65 @@ function TechSphere() {
         <div
           aria-live="polite"
           className={`relative w-full max-w-[300px] rounded-2xl border border-border bg-card p-6 transition-all duration-300 ${
-            focusedTech ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-3 opacity-0"
+            focusedTech || constProject
+              ? "translate-x-0 opacity-100"
+              : "pointer-events-none translate-x-3 opacity-0"
           }`}
         >
+          {!focusedTech && constProject && (
+            <>
+              <button
+                type="button"
+                onClick={release}
+                aria-label="Close details"
+                className="absolute right-3.5 top-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                ✕
+              </button>
+              <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-foreground/80">
+                ✦ Constellation
+              </p>
+              <h3 className="mt-1 text-xl font-semibold tracking-tight">{constProject.title}</h3>
+              <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                {constProject.description}
+              </p>
+              <p className="mt-4 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+                Built with
+              </p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {[...constSet].map((t) => {
+                  const f = BY_NAME.get(t);
+                  return (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => focusTech(t)}
+                      className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:text-foreground"
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = f?.color ?? "var(--color-border)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "var(--color-border)";
+                      }}
+                    >
+                      {t}
+                    </button>
+                  );
+                })}
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setModalProject(constProject);
+                  setModalOpen(true);
+                }}
+                className="mt-5 flex w-full items-center justify-between rounded-lg border border-border px-3 py-2 text-xs text-foreground/90 transition-colors hover:border-foreground/40 hover:text-foreground"
+              >
+                View project
+                <span className="text-muted-foreground">→</span>
+              </button>
+            </>
+          )}
           {focusedTech && (
             <>
               <button
