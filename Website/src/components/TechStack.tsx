@@ -83,6 +83,9 @@ function TechSphere() {
   const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.004 });
   const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
   const drag = useRef({ active: false, px: 0, py: 0, moved: false });
+  const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingDrag = useRef<{ px: number; py: number } | null>(null);
+  const [touchLocked, setTouchLocked] = useState(false);
   const focusedRef = useRef<string | null>(null);
 
   const focusedTech = focused ? BY_NAME.get(focused) : undefined;
@@ -321,6 +324,15 @@ function TechSphere() {
     raf = requestAnimationFrame(loop);
 
     const onMove = (e: PointerEvent) => {
+      if (pendingDrag.current) {
+        const dx = e.clientX - pendingDrag.current.px;
+        const dy = e.clientY - pendingDrag.current.py;
+        if (dx * dx + dy * dy > 100) {
+          if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
+          pendingDrag.current = null;
+        }
+        return;
+      }
       if (!drag.current.active) return;
       const r = rot.current;
       r.vy = (e.clientX - drag.current.px) * 0.0045;
@@ -333,6 +345,9 @@ function TechSphere() {
     };
     const onUp = () => {
       drag.current.active = false;
+      if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
+      pendingDrag.current = null;
+      setTouchLocked(false);
     };
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
@@ -346,10 +361,20 @@ function TechSphere() {
   }, []);
 
   const onOrbPointerDown = (e: React.PointerEvent) => {
-    drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
-    // Only release when clicking empty sphere space, not a tech pill
     if (e.target === e.currentTarget && (focusedRef.current || constIdxRef.current.length > 0))
       release();
+    if (e.pointerType === "touch") {
+      const { clientX, clientY } = e;
+      pendingDrag.current = { px: clientX, py: clientY };
+      holdTimer.current = setTimeout(() => {
+        if (!pendingDrag.current) return;
+        drag.current = { active: true, px: pendingDrag.current.px, py: pendingDrag.current.py, moved: false };
+        pendingDrag.current = null;
+        setTouchLocked(true);
+      }, 350);
+    } else {
+      drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
+    }
   };
 
   const chips: { key: string; label: string; color: string }[] = [
@@ -431,7 +456,8 @@ function TechSphere() {
       <div className="mt-4 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10">
         <div
           ref={wrapRef}
-          className="relative aspect-square w-full max-w-[520px] shrink-0 touch-none cursor-grab active:cursor-grabbing"
+          className="relative aspect-square w-full max-w-[520px] shrink-0 cursor-grab active:cursor-grabbing"
+          style={{ touchAction: touchLocked ? "none" : "pan-y" }}
           onPointerDown={onOrbPointerDown}
         >
           <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
@@ -447,7 +473,7 @@ function TechSphere() {
                   itemsRef.current[i].el = el;
                 }}
                 onPointerDown={(e) => {
-                  drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
+                  drag.current = { ...drag.current, px: e.clientX, py: e.clientY, moved: false };
                 }}
                 onClick={() => {
                   if (drag.current.moved) return;
