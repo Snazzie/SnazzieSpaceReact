@@ -5,6 +5,7 @@ import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { EASE } from "@/lib/motion";
 import { getPlatformIcon, getTechBadges } from "@/components/ProjectCard";
+import { TechBadges } from "@/components/TechBadges";
 
 function GithubMark() {
   return (
@@ -239,6 +240,9 @@ function Panel({
                 {link.label}
               </a>
             ))}
+            {(project.tech?.length ?? 0) === 1 && (
+              <TechBadges tech={project.tech ?? []} className="flex flex-wrap gap-1.5" />
+            )}
             {(project.tech?.length ?? 0) >= 2 && (
               <button
                 type="button"
