@@ -1,30 +1,78 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from "motion/react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
 import { stack, type Tech } from "@/data/stack";
+import { projects } from "@/data/projects";
 import { SectionUnderline } from "@/components/SectionUnderline";
 
-const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+/** Accent color per stack group; tech pills, chips, arcs and the card all key off it. */
+const GROUP_COLORS: Record<string, string> = {
+  Languages: "#f472b6",
+  Frontend: "#22d3ee",
+  Backend: "#a78bfa",
+  "Data & Infra": "#fbbf24",
+  "Payments & Monetization": "#34d399",
+  Testing: "#60a5fa",
+};
 
-/** True once the viewport is at the `md` breakpoint (>= 768px). */
-function useIsDesktop(): boolean {
-  const [desktop, setDesktop] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches,
-  );
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setDesktop(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return desktop;
+/** Shorter chip labels for long group names. */
+const GROUP_SHORT: Record<string, string> = {
+  "Payments & Monetization": "Payments",
+  "Data & Infra": "Data & Infra",
+};
+
+interface FlatTech {
+  tech: Tech;
+  group: string;
+  color: string;
+}
+
+const FLAT: FlatTech[] = stack.flatMap((g) =>
+  g.items.map((tech) => ({ tech, group: g.label, color: GROUP_COLORS[g.label] ?? "#e8e8ec" })),
+);
+
+const BY_NAME = new Map(FLAT.map((f) => [f.tech.name, f]));
+
+const PROJECT_HREF = new Map(projects.map((p) => [p.title, p.href]));
+
+/**
+ * "Used in" entries for a tech: titles derived from `projects.ts` tech badges
+ * (always current, no hand-upkeep) plus any manual extras from `meta.usedIn`.
+ */
+function usedInFor(tech: Tech): string[] {
+  const derived = projects.filter((p) => p.tech?.includes(tech.name)).map((p) => p.title);
+  return [...new Set([...(tech.meta?.usedIn ?? []), ...derived])];
+}
+
+/** Mutable per-item animation state, lives outside React renders. */
+interface ItemState {
+  el: HTMLButtonElement | null;
+  /** current position on the unit sphere (eased toward target) */
+  base: [number, number, number];
+  /** layout slot on the unit sphere */
+  target: [number, number, number];
+  /** eased visibility 0..1 */
+  vis: number;
+  /** visibility target (0 = filtered out) */
+  visT: number;
+  /** last projected screen position (for arcs) */
+  sx: number;
+  sy: number;
+}
+
+/** i-th of n points on a fibonacci sphere. */
+function fib(i: number, n: number): [number, number, number] {
+  const y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2;
+  const r = Math.sqrt(Math.max(0, 1 - y * y));
+  const th = i * 2.39996;
+  return [Math.cos(th) * r, y, Math.sin(th) * r];
+}
+
+/** Lerp angle a→b along the shortest path. */
+function angLerp(a: number, b: number, t: number): number {
+  let d = (b - a) % (Math.PI * 2);
+  if (d > Math.PI) d -= Math.PI * 2;
+  if (d < -Math.PI) d += Math.PI * 2;
+  return a + d * t;
 }
 
 /** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
@@ -34,366 +82,455 @@ function monogram(name: string): string {
   return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
 }
 
-const tileClass =
-  "group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 cursor-pointer transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--brand)_45%,var(--color-border))] hover:shadow-[0_0_18px_-6px_var(--brand)]";
+function TechGlyph({ tech, color }: { tech: Tech; color: string }) {
+  if (tech.logoUrl) {
+    return (
+      <img src={tech.logoUrl} alt="" width={16} height={16} className="size-4 shrink-0" />
+    );
+  }
+  if (tech.icon) {
+    return (
+      <svg role="img" aria-hidden viewBox="0 0 24 24" className="size-4 shrink-0" style={{ fill: color }}>
+        <path d={tech.icon.path} />
+      </svg>
+    );
+  }
+  return (
+    <span
+      className="flex size-4 shrink-0 items-center justify-center text-[0.55rem] font-bold"
+      style={{ color }}
+    >
+      {monogram(tech.name)}
+    </span>
+  );
+}
 
-function TechTileContent({ tech }: { tech: Tech }) {
+function TechSphere() {
+  const [cat, setCat] = useState<string>("all");
+  const [query, setQuery] = useState("");
+  const [focused, setFocused] = useState<string | null>(null);
+
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const itemsRef = useRef<ItemState[]>(
+    FLAT.map((_, i) => ({
+      el: null,
+      base: fib(i, FLAT.length),
+      target: fib(i, FLAT.length),
+      vis: 1,
+      visT: 1,
+      sx: 0,
+      sy: 0,
+    })),
+  );
+  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.004 });
+  const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
+  const drag = useRef({ active: false, px: 0, py: 0, moved: false });
+  const focusedRef = useRef<string | null>(null);
+
+  const focusedTech = focused ? BY_NAME.get(focused) : undefined;
+  const relatedSet = useMemo(
+    () => new Set(focusedTech?.tech.meta?.related ?? []),
+    [focusedTech],
+  );
+
+  const release = useCallback(() => {
+    focusedRef.current = null;
+    focusTarget.current = null;
+    setFocused(null);
+  }, []);
+
+  const focusTech = useCallback((name: string) => {
+    const idx = FLAT.findIndex((f) => f.tech.name === name);
+    const it = itemsRef.current[idx];
+    if (idx < 0 || !it || it.visT !== 1) return;
+    focusedRef.current = name;
+    // Rotation that brings this node to front-center: yaw to zero the x
+    // component, then pitch to zero the y component.
+    const [bx, by, bz] = it.target;
+    const ry = Math.atan2(-bx, bz);
+    const rx = Math.atan2(by, Math.hypot(bx, bz));
+    focusTarget.current = { rx, ry };
+    setFocused(name);
+  }, []);
+
+  // Filter: hide non-matching items, re-spread the survivors over the sphere.
+  useEffect(() => {
+    const q = query.trim().toLowerCase();
+    const items = itemsRef.current;
+    FLAT.forEach((f, i) => {
+      const okCat = cat === "all" || f.group === cat;
+      const okQ = !q || f.tech.name.toLowerCase().includes(q);
+      items[i].visT = okCat && okQ ? 1 : 0;
+    });
+    const visible = items.filter((it) => it.visT === 1);
+    visible.forEach((it, i) => {
+      it.target = fib(i, visible.length);
+    });
+    if (focusedRef.current) {
+      const idx = FLAT.findIndex((f) => f.tech.name === focusedRef.current);
+      if (idx >= 0 && items[idx].visT !== 1) release();
+    }
+  }, [cat, query, release]);
+
+  // Render loop + pointer drag. All imperative, no per-frame React state.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const canvas = canvasRef.current;
+    if (!wrap || !canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    let W = 0;
+    let H = 0;
+    let R = 0;
+    const resize = () => {
+      W = wrap.clientWidth;
+      H = wrap.clientHeight;
+      R = Math.min(W, H) * 0.4;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = `${W}px`;
+      canvas.style.height = `${H}px`;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    const ro = new ResizeObserver(resize);
+    ro.observe(wrap);
+
+    let raf = 0;
+    const loop = () => {
+      const r = rot.current;
+      const items = itemsRef.current;
+
+      for (const it of items) {
+        it.vis += (it.visT - it.vis) * 0.12;
+        for (let k = 0; k < 3; k++) it.base[k] += (it.target[k] - it.base[k]) * 0.1;
+      }
+
+      const ft = focusTarget.current;
+      if (ft) {
+        r.ry = angLerp(r.ry, ft.ry, 0.08);
+        r.rx = angLerp(r.rx, ft.rx, 0.08);
+      } else if (!drag.current.active) {
+        r.ry += r.vy;
+        r.rx += r.vx;
+        r.vx *= 0.95;
+        r.vy = r.vy * 0.95 + 0.004 * 0.05;
+      }
+
+      const cy = Math.cos(r.ry);
+      const sy = Math.sin(r.ry);
+      const cx = Math.cos(r.rx);
+      const sx = Math.sin(r.rx);
+
+      for (const [i, it] of items.entries()) {
+        const el = it.el;
+        if (!el) continue;
+        const [bx, by, bz] = it.base;
+        const x = bx * cy + bz * sy;
+        const z = -bx * sy + bz * cy;
+        const y2 = by * cx - z * sx;
+        const z2 = by * sx + z * cx;
+        const s = (z2 + 2) / 3;
+        const isFocused = focusedRef.current === FLAT[i].tech.name;
+        const scl = (0.55 + s * 0.55) * it.vis * (isFocused ? 1.18 : 1);
+        it.sx = W / 2 + x * R;
+        it.sy = H / 2 + y2 * R;
+        el.style.transform = `translate(-50%,-50%) translate(${x * R}px,${y2 * R}px) scale(${scl})`;
+        el.style.opacity = `${(0.25 + s * 0.75) * it.vis}`;
+        el.style.filter = isFocused ? "none" : `blur(${(1 - s) * 2.2}px)`;
+        el.style.zIndex = `${Math.round(s * 100) + (isFocused ? 200 : 0)}`;
+        el.style.pointerEvents = it.vis < 0.5 ? "none" : "auto";
+      }
+
+      if (ctx) {
+        ctx.clearRect(0, 0, W, H);
+        const fname = focusedRef.current;
+        if (fname) {
+          const fi = FLAT.findIndex((f) => f.tech.name === fname);
+          const fit = itemsRef.current[fi];
+          const color = FLAT[fi].color;
+          for (const rn of FLAT[fi].tech.meta?.related ?? []) {
+            const ri = FLAT.findIndex((f) => f.tech.name === rn);
+            if (ri < 0) continue;
+            const rit = itemsRef.current[ri];
+            if (rit.vis < 0.5) continue;
+            const grad = ctx.createLinearGradient(fit.sx, fit.sy, rit.sx, rit.sy);
+            grad.addColorStop(0, `${color}cc`);
+            grad.addColorStop(1, `${color}22`);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(fit.sx, fit.sy);
+            ctx.quadraticCurveTo(
+              (fit.sx + rit.sx) / 2,
+              (fit.sy + rit.sy) / 2 - 30,
+              rit.sx,
+              rit.sy,
+            );
+            ctx.stroke();
+          }
+        }
+      }
+
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+
+    const onMove = (e: PointerEvent) => {
+      if (!drag.current.active) return;
+      const r = rot.current;
+      r.vy = (e.clientX - drag.current.px) * 0.0045;
+      r.vx = (drag.current.py - e.clientY) * 0.0035;
+      r.ry += r.vy;
+      r.rx += r.vx;
+      drag.current.px = e.clientX;
+      drag.current.py = e.clientY;
+      drag.current.moved = true;
+    };
+    const onUp = () => {
+      drag.current.active = false;
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+  }, []);
+
+  const onOrbPointerDown = (e: React.PointerEvent) => {
+    drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
+    // Only release when clicking empty sphere space, not a tech pill
+    if (e.target === e.currentTarget && focusedRef.current) release();
+  };
+
+  const chips: { key: string; label: string; color: string }[] = [
+    { key: "all", label: "all", color: "#e8e8ec" },
+    ...stack.map((g) => ({
+      key: g.label,
+      label: (GROUP_SHORT[g.label] ?? g.label).toLowerCase(),
+      color: GROUP_COLORS[g.label] ?? "#e8e8ec",
+    })),
+  ];
+
+  const meta = focusedTech?.tech.meta;
+  const usedIn = focusedTech ? usedInFor(focusedTech.tech) : [];
+
   return (
     <>
-      {tech.logoUrl ? (
-        <img src={tech.logoUrl} alt={tech.name} width={20} height={20} className="size-5 shrink-0" />
-      ) : tech.icon ? (
-        <svg
-          role="img"
-          aria-hidden
-          viewBox="0 0 24 24"
-          className="size-5 shrink-0 fill-muted-foreground transition-[fill] duration-200 group-hover:fill-[var(--brand)]"
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+        {chips.map((c) => {
+          const on = cat === c.key;
+          return (
+            <button
+              key={c.key}
+              type="button"
+              aria-pressed={on}
+              onClick={() => setCat(c.key)}
+              className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200"
+              style={
+                on
+                  ? { background: c.color, borderColor: c.color, color: "#0a0a0c" }
+                  : { borderColor: "var(--color-border)", color: "var(--color-muted-foreground)" }
+              }
+            >
+              {c.label}
+            </button>
+          );
+        })}
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search…"
+          aria-label="Search tech"
+          className="w-36 rounded-full border border-border bg-secondary/40 px-4 py-1.5 text-xs text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/40"
+        />
+      </div>
+
+      <div className="mt-4 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10">
+        <div
+          ref={wrapRef}
+          className="relative aspect-square w-full max-w-[520px] shrink-0 touch-none cursor-grab active:cursor-grabbing"
+          onPointerDown={onOrbPointerDown}
         >
-          <path d={tech.icon.path} />
-        </svg>
-      ) : (
-        <span className="flex size-5 shrink-0 items-center justify-center rounded text-[0.65rem] font-bold text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
-          {monogram(tech.name)}
-        </span>
-      )}
-      <span className="text-sm font-medium text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
-        {tech.name}
-      </span>
+          <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
+          {FLAT.map((f, i) => {
+            const isFocused = focused === f.tech.name;
+            const isRelated = focused !== null && relatedSet.has(f.tech.name);
+            return (
+              <button
+                key={f.tech.name}
+                type="button"
+                ref={(el) => {
+                  itemsRef.current[i].el = el;
+                }}
+                onPointerDown={(e) => {
+                  drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
+                }}
+                onClick={() => {
+                  if (drag.current.moved) return;
+                  isFocused ? release() : focusTech(f.tech.name);
+                }}
+                className="absolute left-1/2 top-1/2 flex cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-full border bg-secondary/70 px-3 py-1.5 text-[13px] font-medium text-muted-foreground backdrop-blur-sm transition-[border-color,box-shadow,color] duration-200 hover:text-foreground"
+                style={{
+                  borderColor: isFocused || isRelated ? f.color : "var(--color-border)",
+                  boxShadow: isFocused ? `0 0 18px -4px ${f.color}` : undefined,
+                  color: isFocused ? "var(--color-foreground)" : undefined,
+                }}
+              >
+                <TechGlyph tech={f.tech} color={f.color} />
+                {f.tech.name}
+              </button>
+            );
+          })}
+        </div>
+
+        <div
+          aria-live="polite"
+          className={`relative w-full max-w-[300px] rounded-2xl border border-border bg-card p-6 transition-all duration-300 ${
+            focusedTech ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-3 opacity-0"
+          }`}
+        >
+          {focusedTech && (
+            <>
+              <button
+                type="button"
+                onClick={release}
+                aria-label="Close details"
+                className="absolute right-3.5 top-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
+                ✕
+              </button>
+              <p
+                className="text-[0.65rem] font-medium uppercase tracking-[0.2em]"
+                style={{ color: focusedTech.color }}
+              >
+                {focusedTech.group}
+              </p>
+              <h3 className="mt-1 text-xl font-semibold tracking-tight">{focusedTech.tech.name}</h3>
+              {meta?.blurb && (
+                <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">{meta.blurb}</p>
+              )}
+              {meta?.related && meta.related.length > 0 && (
+                <>
+                  <p className="mt-4 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+                    Related
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {meta.related.map((rn) => (
+                      <button
+                        key={rn}
+                        type="button"
+                        onClick={() => focusTech(rn)}
+                        className="rounded-full border border-border bg-secondary/40 px-2.5 py-1 text-[11px] text-muted-foreground transition-colors hover:text-foreground"
+                        style={{ borderColor: "var(--color-border)" }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = focusedTech.color;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = "var(--color-border)";
+                        }}
+                      >
+                        {rn}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+              {usedIn.length > 0 && (
+                <>
+                  <p className="mt-4 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
+                    Used in
+                  </p>
+                  <div className="mt-1">
+                    {usedIn.map((project) => {
+                      const href = PROJECT_HREF.get(project);
+                      return href ? (
+                        <a
+                          key={project}
+                          href={href}
+                          target={href.startsWith("/") ? undefined : "_blank"}
+                          rel="noreferrer"
+                          className="flex items-center justify-between border-b border-border/60 py-1.5 text-xs text-foreground/90 transition-colors last:border-0 hover:text-foreground"
+                        >
+                          {project}
+                          <span className="text-muted-foreground">↗</span>
+                        </a>
+                      ) : (
+                        <div
+                          key={project}
+                          className="border-b border-border/60 py-1.5 text-xs text-foreground/90 last:border-0"
+                        >
+                          {project}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 }
 
-function brandOf(tech: Tech): string {
-  return tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-}
-
-function TechTile({ tech }: { tech: Tech }) {
+/** Static fallback: grouped pill grid, no motion, no canvas. */
+function StaticStack() {
   return (
-    <li className={tileClass} style={{ "--brand": brandOf(tech) } as React.CSSProperties}>
-      <TechTileContent tech={tech} />
-    </li>
-  );
-}
-
-/**
- * Scrub-driven tile: pops in (fade + scale + lift) inside its own slice of the
- * scroll progress, staggered by `order` (0..1 position within the card), so
- * the card "fills up" as it lands flat in the grid.
- */
-function AnimatedTechTile({
-  tech,
-  progress,
-  order,
-}: {
-  tech: Tech;
-  progress: MotionValue<number>;
-  order: number;
-}) {
-  const start = 0.58 + order * 0.3;
-  const opacity = useTransform(progress, [start, start + 0.1], [0, 1]);
-  const scale = useTransform(progress, [start, start + 0.1], [0.6, 1]);
-  const y = useTransform(progress, [start, start + 0.1], [10, 0]);
-  return (
-    <motion.li
-      className={tileClass}
-      style={{ opacity, scale, y, "--brand": brandOf(tech) } as never}
-    >
-      <TechTileContent tech={tech} />
-    </motion.li>
-  );
-}
-
-function Slab({
-  group,
-  index,
-  progress,
-  anim,
-  offset,
-  cardRef,
-}: {
-  group: (typeof stack)[number];
-  index: number;
-  progress: MotionValue<number>;
-  anim: boolean;
-  offset: { dx: number; dy: number; stackY: number } | undefined;
-  cardRef: (el: HTMLDivElement | null) => void;
-}) {
-  const count = stack.length;
-
-  const dx = offset?.dx ?? 0;
-  const dy = offset?.dy ?? 0;
-  // stackY from measured heights ensures bottom edges are uniformly spaced.
-  const stackY = offset?.stackY ?? (index - (count - 1) / 2) * 32;
-  // One continuous, monotonic motion across the whole scroll (no sequential
-  // snaps, no overshoot, no dead zone): the stack rotates up while it fans out
-  // to the grid slots, all overlapping and settling together near the end.
-  const rotateX = useTransform(progress, [0, 0.28, 0.58, 0.88, 1], [72, 42, 12, 0, 0]);
-  const x = useTransform(progress, [0, 0.15, 0.88, 1], [dx, dx, 0, 0]);
-  const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
-
-  // Deterministic per-card twist (-3..3deg) that irons out as the card lands,
-  // so the deck reads as a hand-stacked pile rather than geometric slabs.
-  const jitter = ((index * 53) % 7) - 3;
-  const rotateZ = useTransform(progress, [0, 0.6, 0.88], [jitter, jitter * 0.4, 0]);
-
-  // Heavy drop shadow while the card is lifted in the deck, gone once flat.
-  const boxShadow = useTransform(
-    progress,
-    [0, 0.6, 0.95],
-    [
-      "0px 28px 48px -12px rgba(0, 0, 0, 0.55)",
-      "0px 12px 28px -10px rgba(0, 0, 0, 0.35)",
-      "0px 0px 0px 0px rgba(0, 0, 0, 0)",
-    ],
-  );
-
-  // Magnetic tilt: once the grid has settled, cards lean toward the cursor.
-  // `settled` gates it to 0 during the scrub so it never fights the fan-out.
-  const tiltX = useSpring(0, { stiffness: 220, damping: 22 });
-  const tiltY = useSpring(0, { stiffness: 220, damping: 22 });
-  const settled = useTransform(progress, [0.92, 1], [0, 1]);
-  const totalRotateX = useTransform(
-    [rotateX, tiltX, settled],
-    (v) => (v[0] as number) + (v[1] as number) * (v[2] as number),
-  );
-  const totalRotateY = useTransform(
-    [tiltY, settled],
-    (v) => (v[0] as number) * (v[1] as number),
-  );
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
-    const rect = el.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width;
-    const py = (e.clientY - rect.top) / rect.height;
-    el.style.setProperty("--mx", `${px * 100}%`);
-    el.style.setProperty("--my", `${py * 100}%`);
-    tiltY.set((px - 0.5) * 7);
-    tiltX.set((0.5 - py) * 7);
-  };
-  const handleMouseLeave = () => {
-    tiltX.set(0);
-    tiltY.set(0);
-  };
-
-  const cardBase =
-    "group/card relative flex flex-col rounded-2xl border border-border bg-card p-5";
-  const flatCardClass = `${cardBase} h-full`;
-
-  const tiles = (
-    <ul className="flex flex-wrap gap-2.5 pointer-events-auto">
-      {group.items.map((tech, i) =>
-        anim ? (
-          <AnimatedTechTile
-            key={tech.name}
-            tech={tech}
-            progress={progress}
-            order={i / Math.max(group.items.length - 1, 1)}
-          />
-        ) : (
-          <TechTile key={tech.name} tech={tech} />
-        ),
-      )}
-    </ul>
-  );
-
-  // The title lives permanently at the bottom edge: it's the visible label in
-  // the stacked side profile and stays as the card's footer in the flat grid.
-  const footer = (
-    <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
-      <span className="text-sm font-medium uppercase tracking-wide text-foreground/80">
-        {group.label}
-      </span>
-      <span className="text-[0.7rem] font-medium text-muted-foreground">
-        {group.items.length}
-      </span>
+    <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {stack.map((group) => {
+        const color = GROUP_COLORS[group.label] ?? "#e8e8ec";
+        return (
+          <div key={group.label} className="rounded-2xl border border-border bg-card p-5">
+            <p
+              className="text-[0.65rem] font-medium uppercase tracking-[0.2em]"
+              style={{ color }}
+            >
+              {group.label}
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {group.items.map((tech) => (
+                <li
+                  key={tech.name}
+                  className="flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-3 py-1.5 text-[13px] font-medium text-muted-foreground"
+                >
+                  <TechGlyph tech={tech} color={color} />
+                  {tech.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
-  );
-
-  if (!anim) {
-    return (
-      <div className={flatCardClass}>
-        {tiles}
-        {footer}
-      </div>
-    );
-  }
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={
-        {
-          x,
-          y,
-          rotateX: totalRotateX,
-          rotateY: totalRotateY,
-          rotateZ,
-          boxShadow,
-          transformOrigin: "center bottom",
-          transformStyle: "preserve-3d",
-          pointerEvents: "auto",
-        } as unknown as React.CSSProperties
-      }
-      className={cardBase}
-    >
-      {/* Cursor spotlight: radial highlight tracking the mouse across the card. */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
-        style={{
-          background:
-            "radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.07), transparent 70%)",
-        }}
-      />
-      {tiles}
-      {footer}
-    </motion.div>
   );
 }
 
 export function TechStack() {
   const reduce = useReducedMotion();
-  const desktop = useIsDesktop();
-  const anim = desktop && !reduce;
 
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const cardEls = useRef<(HTMLDivElement | null)[]>([]);
-  const [offsets, setOffsets] = useState<{ dx: number; dy: number; stackY: number }[]>([]);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Measure each card's grid slot so it can collapse to the deck and fan back.
-  // offsetLeft/Top are layout positions (unaffected by transforms), so this is
-  // stable to re-run on resize even while the cards are mid-transform.
-  useIsoLayoutEffect(() => {
-    if (!anim) return;
-    const measure = () => {
-      const grid = gridRef.current;
-      if (!grid) return;
-      const ax = grid.clientWidth / 2;
-      const ay = grid.clientHeight / 2;
-      const els = cardEls.current;
-      const count = els.length;
-      const heights = els.map((el) => el?.offsetHeight ?? 0);
-      const avgH = heights.reduce((a, b) => a + b, 0) / count;
-      // Uniform 32px bottom-edge spacing, stack centred on ay:
-      // stackY_i = (i-(count-1)/2)*32 + (avgH - h_i)/2
-      setOffsets(
-        els.map((el, i) =>
-          el
-            ? {
-                dx: ax - (el.offsetLeft + el.offsetWidth / 2),
-                dy: ay - (el.offsetTop + el.offsetHeight / 2),
-                stackY: (i - (count - 1) / 2) * 32 + (avgH - el.offsetHeight) / 2,
-              }
-            : { dx: 0, dy: 0, stackY: 0 },
-        ),
-      );
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [anim]);
-
-  // Spring-smoothed scrub: the deck carries a little inertia instead of being
-  // glued 1:1 to the scrollbar.
-  const sprung = useSpring(scrollYProgress, { stiffness: 90, damping: 24, restDelta: 0.001 });
-
-  // Begin slightly into the animation so the resting/entry pose is the readable
-  // angled stack rather than the very-steep first frame.
-  const p = useTransform(sprung, [0, 1], [0.08, 1]);
-
-  // Virtual camera: start zoomed into the big thick stack (fills the screen)
-  // and panned up, then zoom/pan out so the cards return to original size and
-  // fit the grid.
-  const zoom = useTransform(p, [0, 0.88, 1], [2.1, 1, 1]);
-  const camY = useTransform(p, [0, 0.88, 1], [-150, 0, 0]);
-
-  const heading = (
-    <div className="text-center">
-      <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
-        What I build with
-      </p>
-      <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">
-        Tech stack
-      </h2>
-      <SectionUnderline />
-    </div>
-  );
-
-  // Static / mobile fallback: plain flat grid, in flow. Without reduced motion
-  // each card still gets a once-only in-view fade-up so the section isn't dead.
-  if (!anim) {
-    return (
-      <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
-        {heading}
-        <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {stack.map((group, gi) => {
-            const card = (
-              <Slab
-                key={group.label}
-                group={group}
-                index={gi}
-                progress={scrollYProgress}
-                anim={false}
-                offset={undefined}
-                cardRef={() => {}}
-              />
-            );
-            if (reduce) return card;
-            return (
-              <motion.div
-                key={group.label}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: gi * 0.08, ease: "easeOut" }}
-              >
-                {card}
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-    );
-  }
-
-  // Pinned scrub: tall track + sticky stage. The grid sits on a perspective
-  // parent so the cards flip in 3D, and settles to a flat, head-on grid.
   return (
-    <section ref={sectionRef} id="stack" className="relative z-10 h-[220vh]">
-      <div className="sticky top-0 flex min-h-screen flex-col justify-center mx-auto max-w-5xl px-6 py-16">
-        {heading}
-        <div className="mt-10" style={{ perspective: "1200px" }}>
-          <motion.div style={{ scale: zoom, y: camY, transformStyle: "preserve-3d" }}>
-            <div
-              ref={gridRef}
-              className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {stack.map((group, gi) => (
-                <Slab
-                  key={group.label}
-                  group={group}
-                  index={gi}
-                  progress={p}
-                  anim
-                  offset={offsets[gi]}
-                  cardRef={(el) => {
-                    cardEls.current[gi] = el;
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
-        </div>
+    <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
+      <div className="text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted-foreground">
+          What I build with
+        </p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">Tech stack</h2>
+        <SectionUnderline />
+        {!reduce && (
+          <p className="mt-3 text-xs text-muted-foreground">
+            drag to spin · click a tech for details
+          </p>
+        )}
       </div>
+      {reduce ? <StaticStack /> : <TechSphere />}
     </section>
   );
 }

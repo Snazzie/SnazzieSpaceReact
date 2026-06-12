@@ -4,7 +4,7 @@ export interface Project {
   href: string; // live site if it exists, else GitHub repo
   image: string; // card image URL
   featured: boolean;
-  tech?: string[]; // shown as badges on featured cards
+  tech?: string[]; // shown as badges on featured cards; also drives the TechStack sphere's "used in"
   imageFit?: "cover" | "contain"; // featured card image fit; default cover
   supersedes?: string; // title of an older project this one replaces
   supersededBy?: string; // title of the newer project that replaced this one
@@ -28,7 +28,21 @@ export const projects: Project[] = [
     imageFit: "cover",
     imgWidth: 1280,
     imgHeight: 800,
-    tech: ["Astro", "React", "Web Audio API", "OmniVoice", "Dia2 TTS", "Python"],
+    tech: [
+      "Astro",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Vite",
+      "Bun",
+      "Hono",
+      "Cloudflare",
+      "Playwright",
+      "Web Audio API",
+      "OmniVoice",
+      "Dia2 TTS",
+      "Python",
+    ],
     details: [
       "Multi-voice call-in radio comedy from a full cast of cloned TTS voices",
       "Per-line audio clips scheduled on a shared Web Audio timeline for real overlap and talk-over",
@@ -46,7 +60,27 @@ export const projects: Project[] = [
     imageFit: "contain",
     imgWidth: 400,
     imgHeight: 867,
-    tech: ["iOS", "Android", "Expo", "React Native", "Convex", "AI Agent"],
+    tech: [
+      "iOS",
+      "Android",
+      "Expo",
+      "React Native",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Bun",
+      "Hono",
+      "Convex",
+      "Cloudflare",
+      "PostgreSQL",
+      "SQLite",
+      "Docker",
+      "Firebase",
+      "Stripe",
+      "Maestro",
+      "AI Agent",
+      "OpenAI",
+    ],
     details: [
       "Connects investments, pensions, and savings in one place",
       "Shows real returns adjusted for inflation",
@@ -76,7 +110,7 @@ export const projects: Project[] = [
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "Hono", "Drizzle", "SQLite"],
+    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite"],
     video: "/raceiq-bg.mp4",
     details: [
       "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
@@ -96,7 +130,20 @@ export const projects: Project[] = [
     imageFit: "contain",
     imgWidth: 1200,
     imgHeight: 507,
-    tech: ["C#", "Rust", "Docker", "Kubernetes", "RabbitMQ", "PostgreSQL", "TimescaleDB", "React", "TypeScript"],
+    tech: [
+      "C#",
+      "Rust",
+      "Docker",
+      "Kubernetes",
+      "Argo CD",
+      "RabbitMQ",
+      "PostgreSQL",
+      "TimescaleDB",
+      "React",
+      "TypeScript",
+      "Drizzle",
+      "Better Auth",
+    ],
     details: [
       "Monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
       "Smart alerts with noise reduction and escalation policies",
@@ -127,7 +174,22 @@ export const projects: Project[] = [
     imageFit: "contain",
     imgWidth: 1200,
     imgHeight: 707,
-    tech: ["Windows", "macOS", "Tauri", "Rust", "React", "Convex", "Stripe"],
+    tech: [
+      "Windows",
+      "macOS",
+      "Tauri",
+      "Rust",
+      "React",
+      "TypeScript",
+      "Astro",
+      "Tailwind",
+      "Vite",
+      "Convex",
+      "SQLite",
+      "Docker",
+      "Firebase",
+      "Stripe",
+    ],
     supersedes: "Vital Utilities",
     details: [
       "Cross-platform task manager and system monitor for Windows and macOS",
@@ -145,6 +207,7 @@ export const projects: Project[] = [
     bgImage: "/vital-utilities.png",
     featured: false,
     supersededBy: "Better Task Manager",
+    tech: ["C#", ".NET", "TypeScript", "Rust", "React", "Tauri", "Vite", "SQLite"],
   },
   {
     title: "Media on Tauri",
