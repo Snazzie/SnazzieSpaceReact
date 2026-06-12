@@ -82,7 +82,7 @@ function TechSphere() {
   );
   const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.004 });
   const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
-  const drag = useRef({ active: false, px: 0, py: 0, moved: false });
+  const drag = useRef({ active: false, px: 0, py: 0, ox: 0, oy: 0, moved: false });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingDrag = useRef<{ px: number; py: number } | null>(null);
   const [touchLocked, setTouchLocked] = useState(false);
@@ -341,7 +341,9 @@ function TechSphere() {
       r.rx += r.vx;
       drag.current.px = e.clientX;
       drag.current.py = e.clientY;
-      drag.current.moved = true;
+      const mdx = e.clientX - drag.current.ox;
+      const mdy = e.clientY - drag.current.oy;
+      if (mdx * mdx + mdy * mdy > 25) drag.current.moved = true;
     };
     const onUp = () => {
       drag.current.active = false;
@@ -368,12 +370,12 @@ function TechSphere() {
       pendingDrag.current = { px: clientX, py: clientY };
       holdTimer.current = setTimeout(() => {
         if (!pendingDrag.current) return;
-        drag.current = { active: true, px: pendingDrag.current.px, py: pendingDrag.current.py, moved: false };
+        drag.current = { active: true, px: pendingDrag.current.px, py: pendingDrag.current.py, ox: pendingDrag.current.px, oy: pendingDrag.current.py, moved: false };
         pendingDrag.current = null;
         setTouchLocked(true);
       }, 350);
     } else {
-      drag.current = { active: true, px: e.clientX, py: e.clientY, moved: false };
+      drag.current = { active: true, px: e.clientX, py: e.clientY, ox: e.clientX, oy: e.clientY, moved: false };
     }
   };
 
@@ -473,7 +475,7 @@ function TechSphere() {
                   itemsRef.current[i].el = el;
                 }}
                 onPointerDown={(e) => {
-                  drag.current = { ...drag.current, px: e.clientX, py: e.clientY, moved: false };
+                  drag.current = { ...drag.current, px: e.clientX, py: e.clientY, ox: e.clientX, oy: e.clientY, moved: false };
                 }}
                 onClick={() => {
                   if (drag.current.moved) return;
