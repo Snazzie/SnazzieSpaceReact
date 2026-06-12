@@ -61,7 +61,7 @@ function Media({
   // The media element sizes to its own intrinsic aspect ratio (height-capped),
   // so the border + background hug the media exactly with no letterbox bars.
   const cls =
-    "h-auto max-h-[32dvh] md:max-h-[55dvh] w-auto max-w-full rounded-2xl bg-secondary" +
+    "h-auto max-h-[32svh] md:max-h-[55svh] w-auto max-w-full rounded-2xl bg-secondary" +
     (index === 0 ? "" : " border border-border");
   if (video && !reduce) {
     return (
