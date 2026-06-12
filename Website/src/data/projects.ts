@@ -73,7 +73,6 @@ export const projects: Project[] = [
       "Cloudflare",
       "PostgreSQL",
       "SQLite",
-      "Docker",
       "Firebase",
       "Stripe",
       "Maestro",
