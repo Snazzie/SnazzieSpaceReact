@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, type Variants } from "motion/react";
-import { Badge } from "@/components/ui/badge";
+import { TechBadges } from "@/components/TechBadges";
 import { Archive, ArrowUp, ArrowUpRight, Globe } from "lucide-react";
 import { FaWindows } from "react-icons/fa6";
 import { siApple, siLinux, siAndroid } from "simple-icons";
@@ -209,13 +209,7 @@ export function ProjectCard({
             </div>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>
             {tech && getTechBadges(tech).other.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {getTechBadges(tech).other.map((t) => (
-                  <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
+              <TechBadges tech={getTechBadges(tech).other} />
             )}
           </div>
         </motion.div>

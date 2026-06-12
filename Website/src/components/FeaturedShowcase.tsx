@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { Badge } from "@/components/ui/badge";
+import { TechBadges } from "@/components/TechBadges";
 import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { EASE } from "@/lib/motion";
@@ -215,13 +215,7 @@ function Panel({
           )}
 
           {other.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-1.5">
-              {other.map((t) => (
-                <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                  {t}
-                </Badge>
-              ))}
-            </div>
+            <TechBadges tech={other} className="mt-5 flex flex-wrap gap-1.5" />
           )}
 
           <div className="mt-4 md:mt-7 flex flex-wrap items-center gap-4">

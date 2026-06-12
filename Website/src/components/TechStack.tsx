@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { stack, type Tech } from "@/data/stack";
-import { projects } from "@/data/projects";
+import { projects, type Project } from "@/data/projects";
 import { SectionUnderline } from "@/components/SectionUnderline";
+import { ProjectModal } from "@/components/ProjectModal";
+import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
 
 /** Accent color per stack group; tech pills, chips, arcs and the card all key off it. */
 const GROUP_COLORS: Record<string, string> = {
@@ -32,7 +34,7 @@ const FLAT: FlatTech[] = stack.flatMap((g) =>
 
 const BY_NAME = new Map(FLAT.map((f) => [f.tech.name, f]));
 
-const PROJECT_HREF = new Map(projects.map((p) => [p.title, p.href]));
+const PROJECT_BY_TITLE = new Map(projects.map((p) => [p.title, p]));
 
 /** All techs that mention `name` in their related list (reverse edges). */
 const REVERSE_RELATED = new Map<string, string[]>();
@@ -119,6 +121,9 @@ function TechSphere() {
   const [cat, setCat] = useState<string>("all");
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState<string | null>(null);
+  const [pendingFocus, setPendingFocus] = useState<string | null>(null);
+  const [modalProject, setModalProject] = useState<Project | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -186,6 +191,27 @@ function TechSphere() {
       if (idx >= 0 && items[idx].visT !== 1) release();
     }
   }, [cat, query, release]);
+
+  // External focus requests (clicked tech badge on a project card/modal).
+  // Reset filters first; the effect above runs before this one in the same
+  // commit, so by the time we focus the item is visible again.
+  useEffect(() => {
+    const onFocusRequest = (e: Event) => {
+      const name = (e as CustomEvent<string>).detail;
+      if (!BY_NAME.has(name)) return;
+      setCat("all");
+      setQuery("");
+      setPendingFocus(name);
+    };
+    window.addEventListener(FOCUS_TECH_EVENT, onFocusRequest);
+    return () => window.removeEventListener(FOCUS_TECH_EVENT, onFocusRequest);
+  }, []);
+
+  useEffect(() => {
+    if (!pendingFocus) return;
+    focusTech(pendingFocus);
+    setPendingFocus(null);
+  }, [pendingFocus, focusTech]);
 
   // Render loop + pointer drag. All imperative, no per-frame React state.
   useEffect(() => {
@@ -466,25 +492,27 @@ function TechSphere() {
                     Used in
                   </p>
                   <div className="mt-1">
-                    {usedIn.map((project) => {
-                      const href = PROJECT_HREF.get(project);
-                      return href ? (
-                        <a
-                          key={project}
-                          href={href}
-                          target={href.startsWith("/") ? undefined : "_blank"}
-                          rel="noreferrer"
-                          className="flex items-center justify-between border-b border-border/60 py-1.5 text-xs text-foreground/90 transition-colors last:border-0 hover:text-foreground"
+                    {usedIn.map((title) => {
+                      const project = PROJECT_BY_TITLE.get(title);
+                      return project ? (
+                        <button
+                          key={title}
+                          type="button"
+                          onClick={() => {
+                            setModalProject(project);
+                            setModalOpen(true);
+                          }}
+                          className="flex w-full items-center justify-between border-b border-border/60 py-1.5 text-left text-xs text-foreground/90 transition-colors last:border-0 hover:text-foreground"
                         >
-                          {project}
-                          <span className="text-muted-foreground">↗</span>
-                        </a>
+                          {title}
+                          <span className="text-muted-foreground">→</span>
+                        </button>
                       ) : (
                         <div
-                          key={project}
+                          key={title}
                           className="border-b border-border/60 py-1.5 text-xs text-foreground/90 last:border-0"
                         >
-                          {project}
+                          {title}
                         </div>
                       );
                     })}
@@ -495,6 +523,10 @@ function TechSphere() {
           )}
         </div>
       </div>
+
+      {modalProject && (
+        <ProjectModal project={modalProject} open={modalOpen} onOpenChange={setModalOpen} />
+      )}
     </>
   );
 }

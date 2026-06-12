@@ -1,5 +1,5 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { Badge } from "@/components/ui/badge";
+import { TechBadges } from "@/components/TechBadges";
 import { useReducedMotion } from "motion/react";
 import type { Project } from "@/data/projects";
 
@@ -117,13 +117,7 @@ export function ProjectModal({
               </ul>
             )}
             {tech && tech.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {tech.map((t) => (
-                  <Badge key={t} variant="outline" className="border-border text-muted-foreground">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
+              <TechBadges tech={tech} onNavigate={() => onOpenChange(false)} />
             )}
             <div className="mt-6"><CtaButtons project={project} /></div>
           </div>
