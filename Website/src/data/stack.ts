@@ -300,7 +300,7 @@ export const stack: StackGroup[] = [
         icon: siArgo,
         meta: {
           blurb: "GitOps continuous delivery for Kubernetes.",
-          related: ["Kubernetes"],
+          related: ["Kubernetes", "Git", "Docker"],
           usedIn: ["CloudCat"],
         },
       },
