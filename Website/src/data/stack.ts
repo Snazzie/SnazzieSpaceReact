@@ -245,6 +245,7 @@ export const stack: StackGroup[] = [
       },
       {
         name: "OpenAI",
+        logoUrl: "/openai-logo.svg",
         meta: {
           blurb: "GPT and vision models powering AI coaching and analysis features.",
           related: ["Mastra AI", "TypeScript"],
