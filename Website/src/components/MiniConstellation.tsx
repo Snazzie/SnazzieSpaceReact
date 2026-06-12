@@ -157,8 +157,13 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   return (
     <div
       ref={wrapRef}
-      className="relative size-full cursor-grab active:cursor-grabbing"
-      style={{ touchAction: "pan-y" }}
+      className="relative size-full cursor-grab select-none active:cursor-grabbing"
+      style={{
+        touchAction: "pan-y",
+        WebkitUserSelect: "none",
+        WebkitTouchCallout: "none",
+        WebkitTapHighlightColor: "transparent",
+      }}
       onPointerDown={(e) => {
         if (e.pointerType === "touch") {
           const { clientX, clientY } = e;
