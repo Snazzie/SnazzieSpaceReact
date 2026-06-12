@@ -210,19 +210,6 @@ const images: Record<string, string> = {
       ]
     }
     </script>
-    <script is:inline>
-      (function () {
-        var h = window.innerHeight;
-        document.documentElement.style.setProperty("--vh", h + "px");
-        var lastW = window.innerWidth;
-        window.addEventListener("resize", function () {
-          if (window.innerWidth !== lastW) {
-            lastW = window.innerWidth;
-            document.documentElement.style.setProperty("--vh", window.innerHeight + "px");
-          }
-        });
-      })();
-    </script>
   </head>
   <body class="relative bg-background text-foreground antialiased [overflow-x:clip]">
     <Nav client:load role="navigation" aria-label="Main navigation" />

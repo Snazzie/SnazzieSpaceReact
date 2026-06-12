@@ -129,15 +129,23 @@ function Panel({
       const el = ref.current;
       if (!el) return;
       const top = el.getBoundingClientRect().top + window.scrollY;
-      setSpan([top, top + window.innerHeight]);
+      setSpan([top, top + el.offsetHeight]);
     };
     measure();
-    window.addEventListener("resize", measure);
+    // Mobile browser chrome show/hide fires height-only resizes; the panel is
+    // 100svh so its span is unaffected — only re-measure on width changes.
+    let lastWidth = window.innerWidth;
+    const onResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      lastWidth = window.innerWidth;
+      measure();
+    };
+    window.addEventListener("resize", onResize);
     // Re-measure when page height changes (e.g. TechStack 220vh section above shifts layout)
     const ro = new ResizeObserver(measure);
     ro.observe(document.documentElement);
     return () => {
-      window.removeEventListener("resize", measure);
+      window.removeEventListener("resize", onResize);
       ro.disconnect();
     };
   }, []);
@@ -170,7 +178,7 @@ function Panel({
     <div
       ref={ref}
       id={projectSlug(project.title)}
-      className="sticky top-0 flex h-[100dvh] items-start md:items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
+      className="sticky top-0 flex h-[100svh] items-start md:items-center overflow-hidden border-t border-border bg-background scroll-mt-0"
     >
       <motion.div
         style={animate ? { scale, opacity } : undefined}
