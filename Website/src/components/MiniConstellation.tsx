@@ -21,6 +21,8 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   const elsRef = useRef<(HTMLDivElement | null)[]>([]);
   const rot = useRef({ rx: -0.15, ry: 0, vx: 0, vy: 0.004 });
   const drag = useRef({ active: false, px: 0, py: 0 });
+  const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingDrag = useRef<{ px: number; py: number } | null>(null);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -116,6 +118,15 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
     }
 
     const onMove = (e: PointerEvent) => {
+      if (pendingDrag.current) {
+        const dx = e.clientX - pendingDrag.current.px;
+        const dy = e.clientY - pendingDrag.current.py;
+        if (dx * dx + dy * dy > 100) {
+          if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
+          pendingDrag.current = null;
+        }
+        return;
+      }
       if (!drag.current.active) return;
       const r = rot.current;
       r.vy = (e.clientX - drag.current.px) * 0.0045;
@@ -128,6 +139,9 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
     };
     const onUp = () => {
       drag.current.active = false;
+      if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
+      pendingDrag.current = null;
+      if (wrap) wrap.style.touchAction = "pan-y";
     };
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
@@ -143,12 +157,27 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   return (
     <div
       ref={wrapRef}
-      className="relative size-full touch-none cursor-grab active:cursor-grabbing"
+      className="relative size-full cursor-grab active:cursor-grabbing"
+      style={{ touchAction: "pan-y" }}
       onPointerDown={(e) => {
-        drag.current = { active: true, px: e.clientX, py: e.clientY };
+        if (e.pointerType === "touch") {
+          const { clientX, clientY } = e;
+          pendingDrag.current = { px: clientX, py: clientY };
+          holdTimer.current = setTimeout(() => {
+            if (!pendingDrag.current) return;
+            drag.current = { active: true, px: pendingDrag.current.px, py: pendingDrag.current.py };
+            pendingDrag.current = null;
+            if (wrapRef.current) wrapRef.current.style.touchAction = "none";
+          }, 350);
+        } else {
+          drag.current = { active: true, px: e.clientX, py: e.clientY };
+        }
       }}
     >
       <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
+      <span className="pointer-events-none absolute left-2 top-2 text-[9px] font-medium uppercase tracking-widest text-muted-foreground/40 md:hidden">
+        hold to drag
+      </span>
       {items.map((f, i) => (
         <div
           key={f.tech.name}
