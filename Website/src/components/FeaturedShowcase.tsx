@@ -181,7 +181,10 @@ function Panel({
         <div className={`relative flex justify-center ${flip ? "md:order-2 md:justify-end" : "md:justify-start"}`}>
           <Media project={project} images={images} index={index} />
           {showStack && (
-            <div className="absolute inset-0 z-30 overflow-hidden rounded-2xl border border-border bg-background/85 backdrop-blur-md">
+            // Mobile hugs the media box; on md+ the overlay takes the full
+            // column width and most of the viewport height instead of being
+            // restricted to the image size.
+            <div className="absolute inset-0 z-30 overflow-hidden rounded-2xl border border-border bg-background/85 backdrop-blur-md md:bottom-auto md:top-1/2 md:h-[min(78vh,42rem)] md:-translate-y-1/2">
               <MiniConstellation tech={project.tech ?? []} />
               <button
                 type="button"
