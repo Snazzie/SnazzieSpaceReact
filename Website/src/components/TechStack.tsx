@@ -3,6 +3,7 @@ import {
   motion,
   useReducedMotion,
   useScroll,
+  useSpring,
   useTransform,
   type MotionValue,
 } from "motion/react";
@@ -33,6 +34,9 @@ function monogram(name: string): string {
   return name.length <= 3 ? name.toUpperCase() : name.slice(0, 2).toUpperCase();
 }
 
+const tileClass =
+  "group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 cursor-pointer transition-[border-color,box-shadow] duration-200 hover:border-[color-mix(in_srgb,var(--brand)_45%,var(--color-border))] hover:shadow-[0_0_18px_-6px_var(--brand)]";
+
 function TechTileContent({ tech }: { tech: Tech }) {
   return (
     <>
@@ -59,17 +63,43 @@ function TechTileContent({ tech }: { tech: Tech }) {
   );
 }
 
+function brandOf(tech: Tech): string {
+  return tech.icon ? `#${tech.icon.hex}` : "#ffffff";
+}
+
 function TechTile({ tech }: { tech: Tech }) {
-  const brand = tech.icon ? `#${tech.icon.hex}` : "#ffffff";
-  // Tags are static on the card face; they are simply revealed as the card
-  // rotates open. Only the hover colour change remains.
   return (
-    <li
-      className="group flex items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 py-2.5 cursor-pointer"
-      style={{ "--brand": brand } as React.CSSProperties}
-    >
+    <li className={tileClass} style={{ "--brand": brandOf(tech) } as React.CSSProperties}>
       <TechTileContent tech={tech} />
     </li>
+  );
+}
+
+/**
+ * Scrub-driven tile: pops in (fade + scale + lift) inside its own slice of the
+ * scroll progress, staggered by `order` (0..1 position within the card), so
+ * the card "fills up" as it lands flat in the grid.
+ */
+function AnimatedTechTile({
+  tech,
+  progress,
+  order,
+}: {
+  tech: Tech;
+  progress: MotionValue<number>;
+  order: number;
+}) {
+  const start = 0.58 + order * 0.3;
+  const opacity = useTransform(progress, [start, start + 0.1], [0, 1]);
+  const scale = useTransform(progress, [start, start + 0.1], [0.6, 1]);
+  const y = useTransform(progress, [start, start + 0.1], [10, 0]);
+  return (
+    <motion.li
+      className={tileClass}
+      style={{ opacity, scale, y, "--brand": brandOf(tech) } as never}
+    >
+      <TechTileContent tech={tech} />
+    </motion.li>
   );
 }
 
@@ -100,15 +130,70 @@ function Slab({
   const rotateX = useTransform(progress, [0, 0.28, 0.58, 0.88, 1], [72, 42, 12, 0, 0]);
   const x = useTransform(progress, [0, 0.15, 0.88, 1], [dx, dx, 0, 0]);
   const y = useTransform(progress, [0, 0.15, 0.88, 1], [dy + stackY, dy + stackY, 0, 0]);
+
+  // Deterministic per-card twist (-3..3deg) that irons out as the card lands,
+  // so the deck reads as a hand-stacked pile rather than geometric slabs.
+  const jitter = ((index * 53) % 7) - 3;
+  const rotateZ = useTransform(progress, [0, 0.6, 0.88], [jitter, jitter * 0.4, 0]);
+
+  // Heavy drop shadow while the card is lifted in the deck, gone once flat.
+  const boxShadow = useTransform(
+    progress,
+    [0, 0.6, 0.95],
+    [
+      "0px 28px 48px -12px rgba(0, 0, 0, 0.55)",
+      "0px 12px 28px -10px rgba(0, 0, 0, 0.35)",
+      "0px 0px 0px 0px rgba(0, 0, 0, 0)",
+    ],
+  );
+
+  // Magnetic tilt: once the grid has settled, cards lean toward the cursor.
+  // `settled` gates it to 0 during the scrub so it never fights the fan-out.
+  const tiltX = useSpring(0, { stiffness: 220, damping: 22 });
+  const tiltY = useSpring(0, { stiffness: 220, damping: 22 });
+  const settled = useTransform(progress, [0.92, 1], [0, 1]);
+  const totalRotateX = useTransform(
+    [rotateX, tiltX, settled],
+    (v) => (v[0] as number) + (v[1] as number) * (v[2] as number),
+  );
+  const totalRotateY = useTransform(
+    [tiltY, settled],
+    (v) => (v[0] as number) * (v[1] as number),
+  );
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    el.style.setProperty("--mx", `${px * 100}%`);
+    el.style.setProperty("--my", `${py * 100}%`);
+    tiltY.set((px - 0.5) * 7);
+    tiltX.set((0.5 - py) * 7);
+  };
+  const handleMouseLeave = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
+
   const cardBase =
-    "relative flex flex-col rounded-2xl border border-border bg-card p-5";
-  const flatCardClass = cardBase;
+    "group/card relative flex flex-col rounded-2xl border border-border bg-card p-5";
+  const flatCardClass = `${cardBase} h-full`;
 
   const tiles = (
     <ul className="flex flex-wrap gap-2.5 pointer-events-auto">
-      {group.items.map((tech) => (
-        <TechTile key={tech.name} tech={tech} />
-      ))}
+      {group.items.map((tech, i) =>
+        anim ? (
+          <AnimatedTechTile
+            key={tech.name}
+            tech={tech}
+            progress={progress}
+            order={i / Math.max(group.items.length - 1, 1)}
+          />
+        ) : (
+          <TechTile key={tech.name} tech={tech} />
+        ),
+      )}
     </ul>
   );
 
@@ -136,11 +221,16 @@ function Slab({
   return (
     <motion.div
       ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={
         {
           x,
           y,
-          rotateX,
+          rotateX: totalRotateX,
+          rotateY: totalRotateY,
+          rotateZ,
+          boxShadow,
           transformOrigin: "center bottom",
           transformStyle: "preserve-3d",
           pointerEvents: "auto",
@@ -148,6 +238,15 @@ function Slab({
       }
       className={cardBase}
     >
+      {/* Cursor spotlight: radial highlight tracking the mouse across the card. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
+        style={{
+          background:
+            "radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.07), transparent 70%)",
+        }}
+      />
       {tiles}
       {footer}
     </motion.div>
@@ -168,7 +267,6 @@ export function TechStack() {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-
 
   // Measure each card's grid slot so it can collapse to the deck and fan back.
   // offsetLeft/Top are layout positions (unaffected by transforms), so this is
@@ -203,9 +301,13 @@ export function TechStack() {
     return () => window.removeEventListener("resize", measure);
   }, [anim]);
 
+  // Spring-smoothed scrub: the deck carries a little inertia instead of being
+  // glued 1:1 to the scrollbar.
+  const sprung = useSpring(scrollYProgress, { stiffness: 90, damping: 24, restDelta: 0.001 });
+
   // Begin slightly into the animation so the resting/entry pose is the readable
   // angled stack rather than the very-steep first frame.
-  const p = useTransform(scrollYProgress, [0, 1], [0.08, 1]);
+  const p = useTransform(sprung, [0, 1], [0.08, 1]);
 
   // Virtual camera: start zoomed into the big thick stack (fills the screen)
   // and panned up, then zoom/pan out so the cards return to original size and
@@ -225,34 +327,39 @@ export function TechStack() {
     </div>
   );
 
-  const grid = (
-    <div
-      ref={gridRef}
-      className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-      style={anim ? { transformStyle: "preserve-3d" } : undefined}
-    >
-      {stack.map((group, gi) => (
-        <Slab
-          key={group.label}
-          group={group}
-          index={gi}
-          progress={p}
-          anim={anim}
-          offset={offsets[gi]}
-          cardRef={(el) => {
-            cardEls.current[gi] = el;
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Static fallback (reduced motion / mobile): plain flat grid, in flow.
+  // Static / mobile fallback: plain flat grid, in flow. Without reduced motion
+  // each card still gets a once-only in-view fade-up so the section isn't dead.
   if (!anim) {
     return (
       <section id="stack" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32">
         {heading}
-        <div className="mt-10">{grid}</div>
+        <div className="relative mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {stack.map((group, gi) => {
+            const card = (
+              <Slab
+                key={group.label}
+                group={group}
+                index={gi}
+                progress={scrollYProgress}
+                anim={false}
+                offset={undefined}
+                cardRef={() => {}}
+              />
+            );
+            if (reduce) return card;
+            return (
+              <motion.div
+                key={group.label}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, delay: gi * 0.08, ease: "easeOut" }}
+              >
+                {card}
+              </motion.div>
+            );
+          })}
+        </div>
       </section>
     );
   }
@@ -265,7 +372,25 @@ export function TechStack() {
         {heading}
         <div className="mt-10" style={{ perspective: "1200px" }}>
           <motion.div style={{ scale: zoom, y: camY, transformStyle: "preserve-3d" }}>
-            {grid}
+            <div
+              ref={gridRef}
+              className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {stack.map((group, gi) => (
+                <Slab
+                  key={group.label}
+                  group={group}
+                  index={gi}
+                  progress={p}
+                  anim
+                  offset={offsets[gi]}
+                  cardRef={(el) => {
+                    cardEls.current[gi] = el;
+                  }}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
