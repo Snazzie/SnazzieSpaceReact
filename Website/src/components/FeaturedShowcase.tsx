@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { SPHERE_TECH, TechBadges } from "@/components/TechBadges";
+import { SPHERE_TECH } from "@/components/TechBadges";
 import { MiniConstellation } from "@/components/MiniConstellation";
 import { Globe } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -150,7 +150,7 @@ function Panel({
   const animate = !reduce && !isLast;
   const [showStack, setShowStack] = useState(false);
 
-  const { platforms, other } = getTechBadges(project.tech);
+  const { platforms } = getTechBadges(project.tech);
   const sphereTechCount = (project.tech ?? []).filter((t) => SPHERE_TECH.has(t)).length;
 
   // Label links by type: a live site shows as "Website", a repo as "GitHub".
@@ -228,10 +228,6 @@ function Panel({
                 </li>
               ))}
             </ul>
-          )}
-
-          {other.length > 0 && (
-            <TechBadges tech={other} className="mt-5 flex flex-wrap gap-1.5" />
           )}
 
           <div className="mt-4 md:mt-7 flex flex-wrap items-center gap-4">
