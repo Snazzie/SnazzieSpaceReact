@@ -197,7 +197,7 @@ export const stack: StackGroup[] = [
         icon: siNodedotjs,
         meta: {
           blurb: "Long-time server runtime.",
-          related: ["TypeScript", "Bun"],
+          related: ["TypeScript", "Bun", "Hono"],
         },
       },
       {
@@ -214,7 +214,7 @@ export const stack: StackGroup[] = [
         icon: siHono,
         meta: {
           blurb: "Tiny router powering the Cloudflare Worker behind this site's stats.",
-          related: ["Cloudflare", "Bun"],
+          related: ["Cloudflare", "Bun", "Node.js"],
           usedIn: ["snazzie.space"],
         },
       },

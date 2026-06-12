@@ -463,6 +463,9 @@ function TechSphere() {
           onPointerDown={onOrbPointerDown}
         >
           <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
+          <span className="pointer-events-none absolute left-3 top-3 select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50">
+            drag to spin · click a tech for details
+          </span>
           {FLAT.map((f, i) => {
             const isFocused = focused === f.tech.name;
             const isRelated = focused !== null && relatedSet.has(f.tech.name);
@@ -703,11 +706,6 @@ export function TechStack() {
         </p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-4xl">Tech stack</h2>
         <SectionUnderline />
-        {!reduce && (
-          <p className="mt-3 text-xs text-muted-foreground">
-            drag to spin · click a tech for details
-          </p>
-        )}
       </div>
       {reduce ? <StaticStack /> : <TechSphere />}
     </section>
