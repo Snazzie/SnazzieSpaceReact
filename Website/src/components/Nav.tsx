@@ -49,18 +49,9 @@ export function Nav() {
   );
 
   useEffect(() => {
-    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
-      (el): el is HTMLElement => el !== null,
-    );
-    if (sections.length === 0) return;
-
-    // Track every section currently crossing the detection band. The callback
-    // only ever delivers *changed* entries, so "last entry wins" flips active to
-    // a newly-entering section (e.g. #github) while the previous one (#projects,
-    // whose #more-projects tail is still in the band) hasn't changed and is
-    // absent from the batch. Instead keep a running set and always pick the
-    // topmost intersecting section in document order (LINKS is in that order).
+    const observed = new Set<string>();
     const visible = new Set<string>();
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -72,8 +63,29 @@ export function Nav() {
       },
       { rootMargin: "-40% 0px -55% 0px" },
     );
-    for (const section of sections) observer.observe(section);
-    return () => observer.disconnect();
+
+    const tryObserve = () => {
+      for (const l of LINKS) {
+        if (observed.has(l.id)) continue;
+        const el = document.getElementById(l.id);
+        if (el) {
+          observer.observe(el);
+          observed.add(l.id);
+        }
+      }
+    };
+
+    tryObserve();
+
+    // client:only components (e.g. TechStack) inject their section after Nav
+    // mounts — watch for them so they register with the observer.
+    const mutation = new MutationObserver(tryObserve);
+    mutation.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mutation.disconnect();
+    };
   }, []);
 
   // Track which featured panel is currently shown. The panels are stacked
