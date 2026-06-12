@@ -370,36 +370,7 @@ function TechSphere() {
 
   return (
     <>
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-        {chips.map((c) => {
-          const on = cat === c.key;
-          return (
-            <button
-              key={c.key}
-              type="button"
-              aria-pressed={on}
-              onClick={() => setCat(c.key)}
-              className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200"
-              style={
-                on
-                  ? { background: c.color, borderColor: c.color, color: "#0a0a0c" }
-                  : { borderColor: "var(--color-border)", color: "var(--color-muted-foreground)" }
-              }
-            >
-              {c.label}
-            </button>
-          );
-        })}
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="search…"
-          aria-label="Search tech"
-          className="w-36 rounded-full border border-border bg-secondary/40 px-4 py-1.5 text-xs text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/40"
-        />
-      </div>
-
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
         <span className="text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
           constellations
         </span>
@@ -426,6 +397,35 @@ function TechSphere() {
             </button>
           );
         })}
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-2.5">
+        {chips.map((c) => {
+          const on = cat === c.key;
+          return (
+            <button
+              key={c.key}
+              type="button"
+              aria-pressed={on}
+              onClick={() => setCat(c.key)}
+              className="rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200"
+              style={
+                on
+                  ? { background: c.color, borderColor: c.color, color: "#0a0a0c" }
+                  : { borderColor: "var(--color-border)", color: "var(--color-muted-foreground)" }
+              }
+            >
+              {c.label}
+            </button>
+          );
+        })}
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search…"
+          aria-label="Search tech"
+          className="w-36 rounded-full border border-border bg-secondary/40 px-4 py-1.5 text-xs text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/40"
+        />
       </div>
 
       <div className="mt-4 flex flex-col items-center justify-center gap-8 md:flex-row md:gap-10">
