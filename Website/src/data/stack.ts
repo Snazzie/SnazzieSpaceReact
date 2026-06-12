@@ -65,7 +65,7 @@ export const stack: StackGroup[] = [
         name: "C#",
         meta: {
           blurb: "Primary language for .NET services and desktop tooling.",
-          related: [".NET"],
+          related: [".NET", "Entity Framework", "MassTransit"],
         },
       },
       {
@@ -178,6 +178,21 @@ export const stack: StackGroup[] = [
         },
       },
       {
+        name: "Entity Framework",
+        meta: {
+          blurb: "ORM for .NET — code-first migrations, LINQ queries.",
+          related: ["C#", ".NET"],
+        },
+      },
+      {
+        name: "MassTransit",
+        meta: {
+          blurb: "Message bus abstraction over RabbitMQ for .NET services.",
+          related: ["C#", ".NET", "RabbitMQ"],
+          usedIn: ["CloudCat"],
+        },
+      },
+      {
         name: "Node.js",
         icon: siNodedotjs,
         meta: {
@@ -208,7 +223,7 @@ export const stack: StackGroup[] = [
         icon: siConvex,
         meta: {
           blurb: "Reactive backend with durable functions.",
-          related: ["TypeScript"],
+          related: ["TypeScript", "SQL"],
         },
       },
       {
@@ -216,7 +231,7 @@ export const stack: StackGroup[] = [
         icon: siDrizzle,
         meta: {
           blurb: "Typed SQL ORM.",
-          related: ["PostgreSQL", "SQLite", "TypeScript"],
+          related: ["SQLite", "TypeScript"],
         },
       },
       {
@@ -252,7 +267,7 @@ export const stack: StackGroup[] = [
         icon: siPostgresql,
         meta: {
           blurb: "Default relational store.",
-          related: ["Drizzle", "SQL", "Redis"],
+          related: ["SQL"],
         },
       },
       {
@@ -268,7 +283,7 @@ export const stack: StackGroup[] = [
         icon: siRedis,
         meta: {
           blurb: "Cache, queues, rate limits.",
-          related: ["PostgreSQL", "RabbitMQ"],
+          related: ["RabbitMQ"],
         },
       },
       {

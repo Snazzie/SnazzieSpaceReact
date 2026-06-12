@@ -34,6 +34,16 @@ const BY_NAME = new Map(FLAT.map((f) => [f.tech.name, f]));
 
 const PROJECT_HREF = new Map(projects.map((p) => [p.title, p.href]));
 
+/** All techs that mention `name` in their related list (reverse edges). */
+const REVERSE_RELATED = new Map<string, string[]>();
+for (const { tech } of FLAT) {
+  for (const rn of tech.meta?.related ?? []) {
+    const arr = REVERSE_RELATED.get(rn) ?? [];
+    arr.push(tech.name);
+    REVERSE_RELATED.set(rn, arr);
+  }
+}
+
 /**
  * "Used in" entries for a tech: titles derived from `projects.ts` tech badges
  * (always current, no hand-upkeep) plus any manual extras from `meta.usedIn`.
@@ -129,10 +139,14 @@ function TechSphere() {
   const focusedRef = useRef<string | null>(null);
 
   const focusedTech = focused ? BY_NAME.get(focused) : undefined;
-  const relatedSet = useMemo(
-    () => new Set(focusedTech?.tech.meta?.related ?? []),
-    [focusedTech],
-  );
+  const relatedSet = useMemo(() => {
+    if (!focusedTech) return new Set<string>();
+    const name = focusedTech.tech.name;
+    return new Set([
+      ...(focusedTech.tech.meta?.related ?? []),
+      ...(REVERSE_RELATED.get(name) ?? []),
+    ]);
+  }, [focusedTech]);
 
   const release = useCallback(() => {
     focusedRef.current = null;
@@ -251,7 +265,11 @@ function TechSphere() {
           const fi = FLAT.findIndex((f) => f.tech.name === fname);
           const fit = itemsRef.current[fi];
           const color = FLAT[fi].color;
-          for (const rn of FLAT[fi].tech.meta?.related ?? []) {
+          const allRelated = new Set([
+            ...(FLAT[fi].tech.meta?.related ?? []),
+            ...(REVERSE_RELATED.get(fname) ?? []),
+          ]);
+          for (const rn of allRelated) {
             const ri = FLAT.findIndex((f) => f.tech.name === rn);
             if (ri < 0) continue;
             const rit = itemsRef.current[ri];
@@ -416,13 +434,13 @@ function TechSphere() {
               {meta?.blurb && (
                 <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">{meta.blurb}</p>
               )}
-              {meta?.related && meta.related.length > 0 && (
+              {relatedSet.size > 0 && (
                 <>
                   <p className="mt-4 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/70">
                     Related
                   </p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    {meta.related.map((rn) => (
+                    {[...relatedSet].map((rn) => (
                       <button
                         key={rn}
                         type="button"
