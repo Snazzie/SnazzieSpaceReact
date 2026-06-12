@@ -9,6 +9,7 @@ interface TimelineItem {
   period: string;
   title: string;
   description: string;
+  activities?: string[];
 }
 
 interface TimelineGroup {
@@ -54,8 +55,9 @@ const groups: TimelineGroup[] = [
     items: [
       {
         period: edu.period.replace(/\s/g, ""),
-        title: edu.institution,
-        description: edu.activities.join(". ") + ".",
+        title: "BEng Computer Science",
+        description: "",
+        activities: edu.activities,
       },
     ],
   })),
@@ -120,7 +122,26 @@ function ItemCard({
           {item.period}
         </p>
         <h3 className="mt-1 text-base font-semibold text-foreground md:text-lg">{item.title}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        {item.description && (
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        )}
+        {item.activities && (
+          <div className="mt-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.1em] text-foreground/60">
+              Activities
+            </p>
+            <ul className="mt-1.5 space-y-1.5">
+              {item.activities.map((a) => (
+                <li
+                  key={a}
+                  className="border-l border-border pl-3 text-sm leading-relaxed text-muted-foreground"
+                >
+                  {a}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </motion.a>
   );
