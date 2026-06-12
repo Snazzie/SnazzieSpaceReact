@@ -60,8 +60,9 @@ export function HeroField({ mx, my, reduce }: Props) {
             (i - 1) * GAP + px * (0.3 + depth * 0.7) + Math.sin(t + i * 0.7 + j * 0.35) * DRIFT;
           const y =
             (j - 1) * GAP + py * (0.3 + depth * 0.7) + Math.cos(t * 0.8 + j * 0.6 + i * 0.25) * DRIFT;
-          ctx.fillStyle = `rgba(255,255,255,${0.04 + depth * 0.09})`;
-          ctx.fillRect(x, y, 1.2, 1.2);
+          ctx.fillStyle = `rgba(255,255,255,${0.1 + depth * 0.22})`;
+          const s = 1.2 + depth * 0.8;
+          ctx.fillRect(x, y, s, s);
         }
       }
     };
@@ -112,12 +113,8 @@ export function HeroField({ mx, my, reduce }: Props) {
       aria-hidden
       className="pointer-events-none absolute inset-0 -z-10 h-full w-full"
       style={{
-        maskImage:
-          "linear-gradient(to bottom, black 0%, black 60%, transparent 96%), radial-gradient(ellipse 90% 80% at 50% 35%, black 40%, transparent 100%)",
-        maskComposite: "intersect",
-        WebkitMaskImage:
-          "linear-gradient(to bottom, black 0%, black 60%, transparent 96%), radial-gradient(ellipse 90% 80% at 50% 35%, black 40%, transparent 100%)",
-        WebkitMaskComposite: "source-in",
+        maskImage: "linear-gradient(to bottom, black 0%, black 62%, transparent 97%)",
+        WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 62%, transparent 97%)",
       }}
     />
   );

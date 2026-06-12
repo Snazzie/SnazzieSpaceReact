@@ -43,7 +43,7 @@ export function Nav() {
   const progressLine = (
     <motion.span
       aria-hidden
-      className="pointer-events-none absolute bottom-[3px] left-5 right-5 h-px origin-left rounded-full bg-gradient-to-r from-foreground/60 via-foreground/25 to-transparent"
+      className="pointer-events-none absolute bottom-[2px] left-5 right-5 h-[2px] origin-left rounded-full bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent"
       style={{ scaleX: scrollYProgress }}
     />
   );

@@ -14,7 +14,7 @@ interface Props {
  */
 export function SectionAmbient({ color, className = "" }: Props) {
   const reduce = useReducedMotion();
-  const background = `radial-gradient(ellipse 60% 50% at 50% 50%, ${color}, transparent 70%)`;
+  const background = `radial-gradient(ellipse 50% 45% at 50% 50%, ${color}, transparent 70%)`;
   const position =
     "pointer-events-none absolute -z-10 left-1/2 top-1/2 h-[140%] w-[120vw] -translate-x-1/2 -translate-y-1/2";
 

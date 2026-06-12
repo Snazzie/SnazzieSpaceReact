@@ -6,7 +6,6 @@ import { type GithubProfile, type GithubYear } from "@/data/github";
 import { D, EASE } from "@/lib/motion";
 import { compact, smoothPath } from "@/lib/chart";
 import { SectionUnderline } from "@/components/SectionUnderline";
-import { SectionAmbient } from "@/components/SectionAmbient";
 
 const STATS = [
   { key: "repositories", label: "Repositories", icon: FolderGit2 },
@@ -295,7 +294,6 @@ export function GithubStats({ initialProfile }: { initialProfile: GithubProfile 
 
   return (
     <section id="github" className="relative z-10 mx-auto max-w-5xl px-4 py-24 sm:px-6 md:py-32">
-      <SectionAmbient color="rgba(52,211,153,0.07)" />
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <motion.h2 {...headingProps} className="text-2xl font-semibold tracking-tight md:text-4xl">
           GitHub activity
