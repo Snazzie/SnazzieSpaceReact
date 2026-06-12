@@ -5,6 +5,7 @@ import { projects, type Project } from "@/data/projects";
 import { SectionUnderline } from "@/components/SectionUnderline";
 import { ProjectModal } from "@/components/ProjectModal";
 import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
+import { projectSlug } from "@/components/FeaturedShowcase";
 
 /** Accent color per stack group; tech pills, chips, arcs and the card all key off it. */
 const GROUP_COLORS: Record<string, string> = {
@@ -589,8 +590,16 @@ function TechSphere() {
               <button
                 type="button"
                 onClick={() => {
-                  setModalProject(constProject);
-                  setModalOpen(true);
+                  // Featured projects live in the showcase; jump there.
+                  // Non-featured ones have no showcase section, use the modal.
+                  if (constProject.featured) {
+                    document
+                      .getElementById(projectSlug(constProject.title))
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    setModalProject(constProject);
+                    setModalOpen(true);
+                  }
                 }}
                 className="mt-5 flex w-full items-center justify-between rounded-lg border border-border px-3 py-2 text-xs text-foreground/90 transition-colors hover:border-foreground/40 hover:text-foreground"
               >
