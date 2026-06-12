@@ -479,7 +479,7 @@ function TechSphere() {
                   if (drag.current.moved) return;
                   isFocused ? release() : focusTech(f.tech.name);
                 }}
-                className="absolute left-1/2 top-1/2 flex cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-full border bg-secondary/70 px-3 py-1.5 text-[13px] font-medium text-muted-foreground backdrop-blur-sm transition-[border-color,box-shadow,color] duration-200 hover:text-foreground"
+                className="absolute left-1/2 top-1/2 flex cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-full border bg-secondary px-3 py-1.5 text-[13px] font-medium text-muted-foreground transition-[border-color,box-shadow,color] duration-200 hover:text-foreground"
                 style={{
                   borderColor: isFocused || isRelated || isMember ? f.color : "var(--color-border)",
                   boxShadow: isFocused

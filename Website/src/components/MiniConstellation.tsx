@@ -184,7 +184,7 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
           ref={(el) => {
             elsRef.current[i] = el;
           }}
-          className="pointer-events-none absolute left-1/2 top-1/2 flex select-none items-center gap-1.5 whitespace-nowrap rounded-full border bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-foreground/90 backdrop-blur-sm"
+          className="pointer-events-none absolute left-1/2 top-1/2 flex select-none items-center gap-1.5 whitespace-nowrap rounded-full border bg-secondary px-2.5 py-1 text-[11px] font-medium text-foreground/90"
           style={{ borderColor: f.color }}
         >
           <TechGlyph tech={f.tech} color={f.color} />
