@@ -179,6 +179,8 @@ export function Career() {
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const progressRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let raf = 0;
@@ -197,6 +199,11 @@ export function Career() {
         }
       });
       setActiveIndex(best);
+      if (contentRef.current && progressRef.current) {
+        const cr = contentRef.current.getBoundingClientRect();
+        const progress = Math.min(1, Math.max(0, (anchor - cr.top) / cr.height));
+        progressRef.current.style.width = `${progress * 100}%`;
+      }
       groupRefs.current.forEach((g) => {
         if (!g) return;
         const fill = g.querySelector<HTMLElement>("[data-seg-fill]");
@@ -254,8 +261,8 @@ export function Career() {
             </SwapText>
             <div className="mt-3 h-0.5 w-36 rounded-full bg-zinc-900">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400 transition-[width] duration-300"
-                style={{ width: `${((activeIndex + 1) / flatItems.length) * 100}%` }}
+                ref={progressRef}
+                className="h-full w-0 rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400"
               />
             </div>
             <SwapText swapKey={active.group.name} reduce={reduce} className="mt-4" delay={0.04}>
@@ -276,7 +283,7 @@ export function Career() {
         </div>
 
         {/* timeline groups */}
-        <div className="flex-1 space-y-16 md:space-y-[72px]">
+        <div ref={contentRef} className="flex-1 space-y-16 md:space-y-[72px]">
           {groups.map((group, gi) => (
             <div
               key={group.name}
