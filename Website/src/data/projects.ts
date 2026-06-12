@@ -108,7 +108,7 @@ export const projects: Project[] = [
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite"],
+    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite", "Playwright", "Vitest"],
     video: "/raceiq-bg.mp4",
     details: [
       "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",

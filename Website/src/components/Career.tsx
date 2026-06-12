@@ -282,7 +282,7 @@ export function Career() {
                 {itemYear(active.item.period)}
               </p>
             </SwapText>
-            <div className="mt-3 flex h-0.5 w-36 justify-end rounded-full bg-zinc-900">
+            <div className="mt-3 flex h-0.5 w-36 rounded-full bg-zinc-900">
               <div
                 ref={progressRef}
                 className="h-full w-full rounded-full bg-gradient-to-r from-cyan-400 to-indigo-400"

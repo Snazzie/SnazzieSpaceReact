@@ -631,8 +631,12 @@ function TechSphere() {
                           key={title}
                           type="button"
                           onClick={() => {
-                            setModalProject(project);
-                            setModalOpen(true);
+                            const el = document.getElementById(projectSlug(title));
+                            if (el) {
+                              el.scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                            }
                           }}
                           className="flex w-full items-center justify-between border-b border-border/60 py-1.5 text-left text-xs text-foreground/90 transition-colors last:border-0 hover:text-foreground"
                         >

@@ -27,6 +27,7 @@ import {
   siRevenuecat,
   siTauri,
   siArgo,
+  siVitest,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -370,10 +371,18 @@ export const stack: StackGroup[] = [
     label: "Testing",
     items: [
       {
+        name: "Vitest",
+        icon: siVitest,
+        meta: {
+          blurb: "Unit and integration testing for Vite-based projects.",
+          related: ["TypeScript", "Vite"],
+        },
+      },
+      {
         name: "Playwright",
         meta: {
           blurb: "E2E and visual testing.",
-          related: ["TypeScript"],
+          related: ["TypeScript", "Vitest"],
           usedIn: ["every project with a UI"],
         },
       },
