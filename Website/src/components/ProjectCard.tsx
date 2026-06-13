@@ -173,6 +173,7 @@ export function ProjectCard({
                 aria-hidden
                 src={bgImage}
                 alt=""
+                loading="lazy"
                 width={400}
                 height={300}
                 className="pointer-events-none absolute inset-0 z-0 size-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"

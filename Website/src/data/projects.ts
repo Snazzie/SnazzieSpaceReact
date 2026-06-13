@@ -23,11 +23,11 @@ export const projects: Project[] = [
     description:
       "Absurdist AI radio station. Multi-voice call-in comedy generated with cloned TTS voices, played on a shared Web Audio timeline.",
     href: "/snazziefm",
-    image: "/images/radio/radio-card.png",
+    image: "/images/radio/radio-card.webp",
     featured: true,
     imageFit: "cover",
-    imgWidth: 1280,
-    imgHeight: 800,
+    imgWidth: 1056,
+    imgHeight: 594,
     tech: [
       "Astro",
       "React",
