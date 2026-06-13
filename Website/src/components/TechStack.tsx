@@ -492,9 +492,6 @@ function TechSphere() {
       </div>
 
       <div className="mt-4 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-10">
-        <span className="select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50 md:hidden">
-          drag to spin · click a tech for details
-        </span>
         <div
           ref={wrapRef}
           className="relative aspect-square w-full max-w-[520px] shrink-0 cursor-grab active:cursor-grabbing"
@@ -502,9 +499,6 @@ function TechSphere() {
           onPointerDown={onOrbPointerDown}
         >
           <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden />
-          <span className="pointer-events-none absolute left-3 top-3 hidden select-none whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.16em] text-muted-foreground/50 md:block">
-            drag to spin · click a tech for details
-          </span>
           {FLAT.map((f, i) => {
             const isFocused = focused === f.tech.name;
             const isRelated = focused !== null && relatedSet.has(f.tech.name);
@@ -543,12 +537,18 @@ function TechSphere() {
 
         <div
           aria-live="polite"
-          className={`relative w-full max-w-[300px] rounded-2xl border border-border bg-card p-6 transition-all duration-300 ${
-            focusedTech || constProject
-              ? "translate-x-0 opacity-100"
-              : "pointer-events-none translate-x-3 opacity-0"
-          }`}
+          className="relative flex w-full max-w-[300px] flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300"
         >
+          {!focusedTech && !constProject && (
+            <div className="flex min-h-[180px] flex-col items-center justify-center text-center">
+              <span className="text-2xl opacity-40" aria-hidden>
+                ✦
+              </span>
+              <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                Drag the sphere to spin it. Click a tech for details.
+              </p>
+            </div>
+          )}
           {!focusedTech && constProject && (
             <>
               <button
