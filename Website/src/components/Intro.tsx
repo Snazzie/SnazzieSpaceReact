@@ -399,7 +399,10 @@ export function Intro() {
 
         {/* Right: portrait */}
         <motion.div
-          variants={rise}
+          variants={{
+            hidden: { y: 12 },
+            show: { y: 0, transition: { duration: D.base, ease: EASE } },
+          }}
           className="order-first flex justify-center md:order-none md:justify-end"
         >
           <AvatarParallax className="h-36 w-36 sm:h-44 sm:w-44 md:h-[420px] md:w-[420px]" mx={mx} my={my} reduce={reduce} />
