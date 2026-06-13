@@ -223,5 +223,27 @@ const images: Record<string, string> = {
       <HireMe client:visible />
       <LatestArticles client:visible articles={latestArticles} />
     </main>
+
+    {/* Warm below-fold images into cache once the page is idle, so they're
+        already decoded when the user scrolls to them. No layout/LCP impact. */}
+    <script is:inline>
+      (() => {
+        const warm = () => {
+          for (const img of document.querySelectorAll('img[loading="lazy"]')) {
+            if (img.complete || (!img.src && !img.srcset)) continue;
+            const pre = new Image();
+            if (img.sizes) pre.sizes = img.sizes;
+            if (img.srcset) pre.srcset = img.srcset;
+            if (img.src) pre.src = img.src;
+          }
+        };
+        const schedule = () =>
+          "requestIdleCallback" in window
+            ? requestIdleCallback(warm, { timeout: 3000 })
+            : setTimeout(warm, 1200);
+        if (document.readyState === "complete") schedule();
+        else addEventListener("load", schedule, { once: true });
+      })();
+    </script>
   </body>
 </html>
