@@ -224,10 +224,13 @@ const images: Record<string, string> = {
       <LatestArticles client:visible articles={latestArticles} />
     </main>
 
-    {/* Warm below-fold images into cache once the page is idle, so they're
-        already decoded when the user scrolls to them. No layout/LCP impact. */}
+    {/* After the page loads, proactively fetch every below-fold image into the
+        HTTP cache during idle time, so slow-connection users don't hit an empty
+        box when they scroll. Warming the off-DOM cache (not the live elements)
+        survives React island hydration. Skipped under Save-Data. */}
     <script is:inline>
       (() => {
+        if (navigator.connection && navigator.connection.saveData) return;
         const warm = () => {
           for (const img of document.querySelectorAll('img[loading="lazy"]')) {
             if (img.complete || (!img.src && !img.srcset)) continue;
