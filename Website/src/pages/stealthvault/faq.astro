@@ -104,6 +104,14 @@ import '@/styles/global.css';
           <p>
             On a locked device they see only encrypted files and a passcode prompt. The decryption key is not present until you successfully unlock, and repeated wrong attempts are rate-limited. Keeping your device's own lock screen enabled adds a second layer of protection.
           </p>
+          <p class="mt-3">
+            For the strongest protection against someone who can compel you to open the phone, we recommend:
+          </p>
+          <ul class="mt-3 list-disc list-inside space-y-1.5">
+            <li>Use a <strong class="text-foreground">different passcode</strong> for your real vault than the one that unlocks your device — so device access never reveals the vault.</li>
+            <li>Set up a <strong class="text-foreground">decoy vault</strong> and point biometrics and any "easy" PIN at the decoy. When a decoy is enabled, Face ID / fingerprint opens the decoy, not your real vault.</li>
+            <li>Keep your real vault on a <strong class="text-foreground">passcode you only enter manually</strong> — avoid using biometrics for it — so it can't be opened by a glance at your face or a forced fingerprint.</li>
+          </ul>
         </section>
 
         <section>
