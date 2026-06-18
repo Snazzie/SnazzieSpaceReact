@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { motion, AnimatePresence, useReducedMotion, useScroll } from "motion/react";
 import { EASE, D } from "@/lib/motion";
 import { projects } from "@/data/projects";
@@ -154,6 +154,32 @@ export function Nav() {
     };
   }, [menuOpen]);
 
+  // Featured panels are `sticky top-0` and stack once pinned, so any live
+  // position read of a panel (offsetTop / getBoundingClientRect) returns its
+  // *stuck* position, not its natural one. That's why native anchor scroll —
+  // and any offsetTop-based scroll — refuses to scroll UP to a panel already
+  // pinned at top:0 (it looks "already in view"). The enclosing #projects
+  // section is static (never sticky), so its document top is sticky-immune;
+  // each equal-height panel sits at sectionTop + index * panelHeight.
+  const scrollToPanel = (
+    e: MouseEvent<HTMLAnchorElement>,
+    slug: string,
+    index: number,
+  ) => {
+    const section = document.getElementById("projects");
+    const panel = document.getElementById(slug);
+    if (!section || !panel) return; // fall back to native anchor
+    e.preventDefault();
+    let sectionTop = 0;
+    let n: HTMLElement | null = section;
+    while (n) {
+      sectionTop += n.offsetTop;
+      n = n.offsetParent as HTMLElement | null;
+    }
+    const target = sectionTop + index * panel.offsetHeight;
+    window.scrollTo({ top: target, behavior: reduce ? "auto" : "smooth" });
+  };
+
   const activeLabel = LINKS.find((l) => l.id === active)?.label ?? "";
   // Mobile center label mirrors the desktop inline behaviour: while in the
   // projects section, append the current project so the pill names it too.
@@ -257,7 +283,10 @@ export function Nav() {
                         <a
                           key={p.slug}
                           href={`#${p.slug}`}
-                          onClick={() => setProjectsHover(false)}
+                          onClick={(e) => {
+                            setProjectsHover(false);
+                            scrollToPanel(e, p.slug, i);
+                          }}
                           aria-current={on ? "true" : undefined}
                           className={`flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-colors ${
                             on
@@ -371,13 +400,16 @@ export function Nav() {
                     </a>
                     {link.id === "projects" && (
                       <div className="border-l border-border/60 pl-4 pb-1">
-                        {FEATURED.map((p) => {
+                        {FEATURED.map((p, i) => {
                           const on = activeProject === p.slug;
                           return (
                             <a
                               key={p.slug}
                               href={`#${p.slug}`}
-                              onClick={() => setMenuOpen(false)}
+                              onClick={(e) => {
+                                setMenuOpen(false);
+                                scrollToPanel(e, p.slug, i);
+                              }}
                               className={`block px-5 py-2.5 text-sm transition-colors ${
                                 on ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"
                               }`}

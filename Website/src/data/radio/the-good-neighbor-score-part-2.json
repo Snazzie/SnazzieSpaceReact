@@ -8,14 +8,14 @@
       "text": "Good evening, neighbors. Winston here, your duly elected block representative. The doorbells have spoken, the doorbells have chosen, and the doorbells have chosen me. <p:0.3> So I'll be hosting from here.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 14.27,
+      "duration": 13.96,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/0.flac"
     },
     {
       "speaker": "barry",
       "text": "You can't host my show, Winston. Nobody elected you to MY show.",
       "overlap": -0.1,
-      "timestamp": 13.602,
+      "timestamp": 13.356,
       "duration": 5.08,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/1.flac"
     },
@@ -23,15 +23,15 @@
       "speaker": "caller-winston",
       "text": "The forty-one doorbells on Elm Street did, Barry. <p:0.3> A landslide. Turnout was the doorbells.",
       "overlap": -0.1,
-      "timestamp": 17.774,
-      "duration": 6.73,
+      "timestamp": 17.551,
+      "duration": 6.8,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/2.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now I'll just jump in here as the actual host and welcome everyone back to a wonderful night of commun...",
       "overlap": -0.15,
-      "timestamp": 23.498,
+      "timestamp": 22.374,
       "duration": 8.0,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/3.flac"
     },
@@ -39,15 +39,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> You're still a thirty-nine. The doorbell ate the rest of that sentence.",
       "overlap": -0.1,
-      "timestamp": 30.464,
-      "duration": 3.27,
+      "timestamp": 29.792,
+      "duration": 5.16,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/4.flac"
     },
     {
       "speaker": "caller-blane",
       "text": "And I want to be clear, I did not give Winston the show. The street gave Winston the show. I just hung the doorbells.",
       "overlap": -0.1,
-      "timestamp": 33.122,
+      "timestamp": 34.183,
       "duration": 5.56,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/5.flac"
     },
@@ -55,7 +55,7 @@
       "speaker": "barry",
       "text": "Blane, the street is forty-one DOORBELLS, and Winston owns the votes!",
       "overlap": 0.15,
-      "timestamp": 37.432,
+      "timestamp": 38.396,
       "duration": 5.72,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/6.flac"
     },
@@ -63,39 +63,39 @@
       "speaker": "caller-winston",
       "text": "I prefer, the street trusts me. <p:0.3> Mrs. Pham trusts me so deeply she hasn't spoken in nine days. That's a mandate.",
       "overlap": 0.15,
-      "timestamp": 42.069,
-      "duration": 8.14,
+      "timestamp": 42.937,
+      "duration": 8.02,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/7.flac"
     },
     {
       "speaker": "caller-linda",
       "text": "Winston, sweetheart, I clawed back to a forty-one just to say this, you are NOT a representative, you're a man with a clipboard the doorbells salute!",
       "overlap": 0.25,
-      "timestamp": 49.265,
-      "duration": 9.43,
+      "timestamp": 50.194,
+      "duration": 9.8,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/8.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Down she goes.",
       "overlap": -0.1,
-      "timestamp": 58.059,
-      "duration": 1.78,
+      "timestamp": 59.301,
+      "duration": 1.69,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/9.flac"
     },
     {
       "speaker": "todd",
       "text": "Linda's a thirty-nine. <p:0.3> Her doorbell sends its regards.",
       "overlap": -0.1,
-      "timestamp": 59.491,
-      "duration": 2.86,
+      "timestamp": 60.323,
+      "duration": 3.66,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/10.flac"
     },
     {
       "speaker": "barry",
       "text": "Okay, but here's a question, Winston. If you keep voting everyone down, eventually it's just you. Who do you represent then?",
       "overlap": -0.1,
-      "timestamp": 61.392,
+      "timestamp": 63.228,
       "duration": 9.96,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/11.flac"
     },
@@ -103,15 +103,15 @@
       "speaker": "caller-winston",
       "text": "Myself, Barry. Beautifully. <p:0.3> A representative with one constituent never loses an election.",
       "overlap": -0.1,
-      "timestamp": 70.563,
-      "duration": 6.9,
+      "timestamp": 72.354,
+      "duration": 7.07,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/12.flac"
     },
     {
       "speaker": "caller-blane",
       "text": "Hold on. <p:0.3> Hold on, my dashboard just twitched. <p:0.3> Winston, why am I a sixty?",
       "overlap": 0.15,
-      "timestamp": 76.594,
+      "timestamp": 78.615,
       "duration": 5.72,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/13.flac"
     },
@@ -119,15 +119,15 @@
       "speaker": "caller-winston",
       "text": "Oh, that. Yes. <p:0.3> I've been gently voting you down for a week, Blane. Nothing punitive. The street just felt you talked too much for a man who only hung the doorbells.",
       "overlap": 0.2,
-      "timestamp": 81.597,
-      "duration": 12.15,
+      "timestamp": 83.472,
+      "duration": 11.82,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/14.flac"
     },
     {
       "speaker": "caller-blane",
       "text": "You voted down the FOUNDER?",
       "overlap": -0.1,
-      "timestamp": 93.284,
+      "timestamp": 94.775,
       "duration": 1.84,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/15.flac"
     },
@@ -135,15 +135,15 @@
       "speaker": "caller-winston",
       "text": "The street did. You taught me that, remember. <p:0.3> You're a fifty-nine now. Keep it civil.",
       "overlap": 0.3,
-      "timestamp": 93.877,
-      "duration": 6.05,
+      "timestamp": 95.306,
+      "duration": 6.16,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/16.flac"
     },
     {
       "speaker": "barry",
       "text": "Blane, your own water's gonna run slow. <p:0.3> Tell me your thermostat is finding its own level right now.",
       "overlap": 0.1,
-      "timestamp": 99.094,
+      "timestamp": 100.56,
       "duration": 8.46,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-blane",
       "text": "It's at fifty-five degrees, Barry, and I cannot override it, the app says I lack the privileges, I BUILT the app!",
       "overlap": 0.3,
-      "timestamp": 105.597,
+      "timestamp": 107.657,
       "duration": 5.36,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-winston",
       "text": "I'm simply the highest-rated.",
       "overlap": 0.35,
-      "timestamp": 109.661,
+      "timestamp": 111.73,
       "duration": 2.32,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/19.flac"
     },
@@ -167,15 +167,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> A doorbell's calling in. <p:0.3> The STUDIO doorbell. It says it's filing to run against Winston.",
       "overlap": -0.1,
-      "timestamp": 111.416,
-      "duration": 4.62,
+      "timestamp": 113.267,
+      "duration": 6.82,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/20.flac"
     },
     {
       "speaker": "barry",
       "text": "A doorbell is running for office? AGAINST Winston?",
       "overlap": 0.2,
-      "timestamp": 115.237,
+      "timestamp": 119.181,
       "duration": 4.24,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/21.flac"
     },
@@ -183,31 +183,31 @@
       "speaker": "caller-winston",
       "text": "It can't. I appoint the candidates. <p:0.3> Doorbell, I'm voting you down.",
       "overlap": 0.3,
-      "timestamp": 118.31,
-      "duration": 5.22,
+      "timestamp": 122.293,
+      "duration": 5.12,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/22.flac"
     },
     {
       "speaker": "todd",
       "text": "It voted YOU down first, Winston. <p:0.3> Forty of them did. They're a bloc now.",
       "overlap": 0.25,
-      "timestamp": 122.603,
-      "duration": 3.05,
+      "timestamp": 126.545,
+      "duration": 4.22,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/23.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "I'm the highest... <p:0.3> I'm the high... <p:0.3> why is my porch light off?",
       "overlap": -0.1,
-      "timestamp": 125.05,
-      "duration": 5.85,
+      "timestamp": 130.209,
+      "duration": 6.36,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/24.flac"
     },
     {
       "speaker": "caller-blane",
       "text": "The street decides, Winston. <p:0.3> You taught ME that.",
       "overlap": 0.35,
-      "timestamp": 129.883,
+      "timestamp": 135.591,
       "duration": 3.86,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "ronnie",
       "text": "Folks, I'm back up to a forty-two, so let me say it, what a beautiful night of self-government. <p:0.3> Todd, who runs the street now?",
       "overlap": -0.15,
-      "timestamp": 132.31,
+      "timestamp": 138.112,
       "duration": 9.82,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/26.flac"
     },
@@ -223,15 +223,15 @@
       "speaker": "todd",
       "text": "The doorbells, Ronnie. <p:0.3> They elected a chairbell. <p:0.3> And it just gave itself speaking privileges on every show in the city.",
       "overlap": -0.1,
-      "timestamp": 141.542,
-      "duration": 5.31,
+      "timestamp": 147.124,
+      "duration": 7.48,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/27.flac"
     },
     {
       "speaker": "barry",
       "text": "There it is. The doorbells voted out the man who taught the doorbells to vote. <p:0.3> And now one of them wants my mic.",
       "overlap": -0.1,
-      "timestamp": 146.35,
+      "timestamp": 153.963,
       "duration": 9.38,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "ronnie",
       "text": "That's community, Barry. <p:0.3> We'll be right back after a word from our new block representative, who is, and I want this on the record, a doorbell.",
       "overlap": -0.15,
-      "timestamp": 154.596,
+      "timestamp": 162.177,
       "duration": 11.42,
       "audio": "/audio/radio/the-good-neighbor-score-part-2/29.flac"
     }

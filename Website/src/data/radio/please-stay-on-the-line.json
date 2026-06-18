@@ -8,22 +8,22 @@
       "text": "You're on Snazzie FM. Our next caller's trying to cancel a free trial before it bills him, and the cancellation line has him on hold. Sal, you're on the air.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 11.76,
+      "duration": 11.35,
       "audio": "/audio/radio/please-stay-on-the-line/0.flac"
     },
     {
       "speaker": "caller-sal",
       "text": "Hey, Ronnie. Yeah, I got the streaming thing, Lull, free for a week, and I just wanna CANCEL before they charge me. <p:0.3> I called the hotline. I've been holding nine minutes.",
       "overlap": -0.2,
-      "timestamp": 10.659,
-      "duration": 13.21,
+      "timestamp": 10.44,
+      "duration": 12.99,
       "audio": "/audio/radio/please-stay-on-the-line/1.flac"
     },
     {
       "speaker": "barry",
       "text": "Nine minutes isn't bad. What's it say?",
       "overlap": -0.15,
-      "timestamp": 23.03,
+      "timestamp": 22.526,
       "duration": 3.12,
       "audio": "/audio/radio/please-stay-on-the-line/2.flac"
     },
@@ -31,7 +31,7 @@
       "speaker": "phone",
       "text": "Your call is important to us. You are caller number forty one thousand. Please stay on the line.",
       "overlap": -0.1,
-      "timestamp": 25.664,
+      "timestamp": 25.279,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/3.flac"
     },
@@ -39,7 +39,7 @@
       "speaker": "barry",
       "text": "Forty one THOUSAND?",
       "overlap": -0.1,
-      "timestamp": 25.991,
+      "timestamp": 25.567,
       "duration": 1.8,
       "audio": "/audio/radio/please-stay-on-the-line/4.flac"
     },
@@ -47,15 +47,15 @@
       "speaker": "caller-sal",
       "text": "Yeah, but it's fine, it's moving, right? It said forty one thousand when I started too. <p:0.3> So it's holding steady.",
       "overlap": -0.1,
-      "timestamp": 27.177,
-      "duration": 8.56,
+      "timestamp": 25.764,
+      "duration": 8.44,
       "audio": "/audio/radio/please-stay-on-the-line/5.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now hold on. Steady's good, Sal. Steady means stable. Let's let the line work.",
       "overlap": -0.2,
-      "timestamp": 35.061,
+      "timestamp": 33.543,
       "duration": 5.88,
       "audio": "/audio/radio/please-stay-on-the-line/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "phone",
       "text": "Your call is important to us. You are still caller number forty one thousand. Please stay on the line.",
       "overlap": -0.1,
-      "timestamp": 40.444,
+      "timestamp": 39.058,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "caller-sal",
       "text": "See? Forty one thousand. <p:0.3> It hasn't gone DOWN, but it hasn't gone up. I can live with that.",
       "overlap": -0.1,
-      "timestamp": 40.881,
+      "timestamp": 39.497,
       "duration": 7.34,
       "audio": "/audio/radio/please-stay-on-the-line/8.flac"
     },
@@ -79,15 +79,15 @@
       "speaker": "caller-chen",
       "text": "Don't trust the steady part, friend.",
       "overlap": -0.1,
-      "timestamp": 47.354,
-      "duration": 2.27,
+      "timestamp": 46.292,
+      "duration": 2.08,
       "audio": "/audio/radio/please-stay-on-the-line/9.flac"
     },
     {
       "speaker": "barry",
       "text": "Who is that? Sal, is somebody on your line?",
       "overlap": -0.1,
-      "timestamp": 49.339,
+      "timestamp": 47.801,
       "duration": 3.48,
       "audio": "/audio/radio/please-stay-on-the-line/10.flac"
     },
@@ -95,15 +95,15 @@
       "speaker": "caller-chen",
       "text": "I'm in the same queue. Deeper than him. <p:0.3> I was you, friend. Forty one thousand. I held steady too. <p:0.4> For a while.",
       "overlap": -0.1,
-      "timestamp": 51.814,
-      "duration": 7.82,
+      "timestamp": 50.278,
+      "duration": 7.43,
       "audio": "/audio/radio/please-stay-on-the-line/11.flac"
     },
     {
       "speaker": "caller-sal",
       "text": "How long's a while?",
       "overlap": -0.1,
-      "timestamp": 58.85,
+      "timestamp": 56.768,
       "duration": 1.92,
       "audio": "/audio/radio/please-stay-on-the-line/12.flac"
     },
@@ -111,23 +111,23 @@
       "speaker": "caller-chen",
       "text": "[sigh] A while.",
       "overlap": -0.1,
-      "timestamp": 60.198,
-      "duration": 0.86,
+      "timestamp": 58.321,
+      "duration": 0.96,
       "audio": "/audio/radio/please-stay-on-the-line/13.flac"
     },
     {
       "speaker": "todd",
       "text": "Still holding, boss! <p:0.3> Oh hey, is that the show? It's Todd! I'm on the line!",
       "overlap": -0.15,
-      "timestamp": 60.873,
-      "duration": 2.93,
+      "timestamp": 58.754,
+      "duration": 4.31,
       "audio": "/audio/radio/please-stay-on-the-line/14.flac"
     },
     {
       "speaker": "barry",
       "text": "Todd? Our Todd? Ronnie, didn't we send Todd to hold a line for the cable refund?",
       "overlap": -0.1,
-      "timestamp": 63.543,
+      "timestamp": 62.66,
       "duration": 6.32,
       "audio": "/audio/radio/please-stay-on-the-line/15.flac"
     },
@@ -135,7 +135,7 @@
       "speaker": "ronnie",
       "text": "We did. Todd, buddy. What year do you think it is?",
       "overlap": -0.2,
-      "timestamp": 69.103,
+      "timestamp": 68.204,
       "duration": 3.76,
       "audio": "/audio/radio/please-stay-on-the-line/16.flac"
     },
@@ -143,15 +143,15 @@
       "speaker": "todd",
       "text": "Day one, boss! Great news, by the way, the queue's looking awesome. Real healthy numbers.",
       "overlap": -0.1,
-      "timestamp": 72.295,
-      "duration": 2.85,
+      "timestamp": 71.163,
+      "duration": 4.53,
       "audio": "/audio/radio/please-stay-on-the-line/17.flac"
     },
     {
       "speaker": "barry",
       "text": "Todd, that was three years ago.",
       "overlap": -0.1,
-      "timestamp": 74.679,
+      "timestamp": 74.675,
       "duration": 2.64,
       "audio": "/audio/radio/please-stay-on-the-line/18.flac"
     },
@@ -159,23 +159,23 @@
       "speaker": "todd",
       "text": "Three years of progress, boss! Imagine where we'll be by lunch.",
       "overlap": 0.2,
-      "timestamp": 76.487,
-      "duration": 1.96,
+      "timestamp": 76.418,
+      "duration": 3.36,
       "audio": "/audio/radio/please-stay-on-the-line/19.flac"
     },
     {
       "speaker": "caller-sal",
       "text": "Okay, whatever, I'm not waiting three years to cancel a SEVEN DAY trial. Hello? Hotline? <p:0.3> I just wanna CANCEL!",
       "overlap": 0.25,
-      "timestamp": 77.783,
-      "duration": 9.01,
+      "timestamp": 79.079,
+      "duration": 8.84,
       "audio": "/audio/radio/please-stay-on-the-line/20.flac"
     },
     {
       "speaker": "phone",
       "text": "Your call is important to us. Your position is the same as the speed of light. Please stay on the line.",
       "overlap": -0.1,
-      "timestamp": 86.377,
+      "timestamp": 87.608,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/21.flac"
     },
@@ -183,7 +183,7 @@
       "speaker": "barry",
       "text": "Your position is WHAT?",
       "overlap": -0.1,
-      "timestamp": 86.612,
+      "timestamp": 87.73,
       "duration": 1.96,
       "audio": "/audio/radio/please-stay-on-the-line/22.flac"
     },
@@ -191,23 +191,23 @@
       "speaker": "caller-sal",
       "text": "That's not a position! That's not even a NUMBER, that's a speed! I've been holding twenty minutes, no, an hour, no... <p:0.3> what day is it?",
       "overlap": 0.3,
-      "timestamp": 87.515,
-      "duration": 10.82,
+      "timestamp": 88.648,
+      "duration": 10.76,
       "audio": "/audio/radio/please-stay-on-the-line/23.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "Don't count, friend. Counting's how it gets you. <p:0.3> I counted minutes. Then days. Then I stopped. It's a while now. It's all a while.",
       "overlap": 0.2,
-      "timestamp": 97.031,
-      "duration": 8.02,
+      "timestamp": 98.521,
+      "duration": 7.58,
       "audio": "/audio/radio/please-stay-on-the-line/24.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now hold on, hold on. Sal, you're on the air, stay with me. It's a busy day at the call center, that's all.",
       "overlap": -0.2,
-      "timestamp": 104.453,
+      "timestamp": 105.498,
       "duration": 7.72,
       "audio": "/audio/radio/please-stay-on-the-line/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "phone",
       "text": "Your call is important to us. Your position is a constant of the universe. It does not change. It cannot change. Please stay on the line.",
       "overlap": 0.15,
-      "timestamp": 111.498,
+      "timestamp": 112.563,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/26.flac"
     },
@@ -223,15 +223,15 @@
       "speaker": "caller-sal",
       "text": "A CONSTANT? You can't put me on hold behind PHYSICS!",
       "overlap": 0.3,
-      "timestamp": 111.489,
-      "duration": 4.11,
+      "timestamp": 112.981,
+      "duration": 4.16,
       "audio": "/audio/radio/please-stay-on-the-line/27.flac"
     },
     {
       "speaker": "barry",
       "text": "Just hang up, Sal! Hang up the phone!",
       "overlap": 0.35,
-      "timestamp": 114.679,
+      "timestamp": 115.884,
       "duration": 3.0,
       "audio": "/audio/radio/please-stay-on-the-line/28.flac"
     },
@@ -239,15 +239,15 @@
       "speaker": "caller-chen",
       "text": "There's no hanging up. The only way off the line is to be connected.",
       "overlap": 0.3,
-      "timestamp": 116.215,
-      "duration": 4.24,
+      "timestamp": 117.894,
+      "duration": 3.89,
       "audio": "/audio/radio/please-stay-on-the-line/29.flac"
     },
     {
       "speaker": "barry",
       "text": "Then get connected!",
       "overlap": 0.35,
-      "timestamp": 119.287,
+      "timestamp": 120.715,
       "duration": 1.8,
       "audio": "/audio/radio/please-stay-on-the-line/30.flac"
     },
@@ -255,23 +255,23 @@
       "speaker": "caller-chen",
       "text": "Connection isn't a thing that happens to people, friend. <p:0.3> I was you.",
       "overlap": 0.3,
-      "timestamp": 119.916,
-      "duration": 4.6,
+      "timestamp": 121.551,
+      "duration": 4.22,
       "audio": "/audio/radio/please-stay-on-the-line/31.flac"
     },
     {
       "speaker": "caller-sal",
       "text": "CANCEL!",
       "overlap": 0.4,
-      "timestamp": 123.732,
-      "duration": 1.48,
+      "timestamp": 124.984,
+      "duration": 1.47,
       "audio": "/audio/radio/please-stay-on-the-line/32.flac"
     },
     {
       "speaker": "barry",
       "text": "Hang up!",
       "overlap": 0.4,
-      "timestamp": 124.293,
+      "timestamp": 125.588,
       "duration": 1.4,
       "audio": "/audio/radio/please-stay-on-the-line/33.flac"
     },
@@ -279,23 +279,23 @@
       "speaker": "todd",
       "text": "Still holding!",
       "overlap": 0.4,
-      "timestamp": 124.689,
-      "duration": 1.05,
+      "timestamp": 126.085,
+      "duration": 1.24,
       "audio": "/audio/radio/please-stay-on-the-line/34.flac"
     },
     {
       "speaker": "caller-chen",
       "text": "I was you.",
       "overlap": 0.4,
-      "timestamp": 125.543,
-      "duration": 0.95,
+      "timestamp": 126.409,
+      "duration": 1.41,
       "audio": "/audio/radio/please-stay-on-the-line/35.flac"
     },
     {
       "speaker": "phone",
       "text": "Please stay on the line.",
       "overlap": 0.4,
-      "timestamp": 126.351,
+      "timestamp": 127.567,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "caller-sal",
       "text": "Please stay on the line!",
       "overlap": 0.4,
-      "timestamp": 126.329,
+      "timestamp": 127.974,
       "duration": 2.08,
       "audio": "/audio/radio/please-stay-on-the-line/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "phone",
       "text": "Thank you for your patience. <p:0.4> You are now first in line.",
       "overlap": 0.2,
-      "timestamp": 127.996,
+      "timestamp": 129.56,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/38.flac"
     },
@@ -319,7 +319,7 @@
       "speaker": "caller-sal",
       "text": "...First? <p:0.3> I'm first? It worked? It actually...",
       "overlap": -0.1,
-      "timestamp": 128.08,
+      "timestamp": 129.439,
       "duration": 4.66,
       "audio": "/audio/radio/please-stay-on-the-line/39.flac"
     },
@@ -327,31 +327,31 @@
       "speaker": "todd",
       "text": "Great news, boss! The line MOVED! <p:0.3> You're caller number forty one thousand and ONE!",
       "overlap": -0.1,
-      "timestamp": 132.324,
-      "duration": 3.34,
+      "timestamp": 133.469,
+      "duration": 4.82,
       "audio": "/audio/radio/please-stay-on-the-line/40.flac"
     },
     {
       "speaker": "caller-sal",
       "text": "That's HIGHER. That's a higher number, Todd!",
       "overlap": -0.1,
-      "timestamp": 135.439,
-      "duration": 3.5,
+      "timestamp": 137.621,
+      "duration": 3.52,
       "audio": "/audio/radio/please-stay-on-the-line/41.flac"
     },
     {
       "speaker": "todd",
       "text": "Progress, boss!",
       "overlap": 0.3,
-      "timestamp": 138.015,
-      "duration": 1.08,
+      "timestamp": 139.932,
+      "duration": 1.36,
       "audio": "/audio/radio/please-stay-on-the-line/42.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Well, Sal, sounds like you're almost through page one. <p:0.4> We'll stay on the line. <p:0.3> We don't really have a choice.",
       "overlap": -0.2,
-      "timestamp": 137.975,
+      "timestamp": 140.315,
       "duration": 9.46,
       "audio": "/audio/radio/please-stay-on-the-line/43.flac"
     },
@@ -359,15 +359,15 @@
       "speaker": "todd",
       "text": "Oh, and boss? I added you and Barry to the queue. <p:0.3> So we'd be together.",
       "overlap": -0.1,
-      "timestamp": 146.804,
-      "duration": 3.05,
+      "timestamp": 149.133,
+      "duration": 4.3,
       "audio": "/audio/radio/please-stay-on-the-line/44.flac"
     },
     {
       "speaker": "barry",
       "text": "You did WHAT? Ronnie, hang up the studio phone. <p:0.3> Ronnie, it won't hang up.",
       "overlap": 0.25,
-      "timestamp": 149.062,
+      "timestamp": 152.401,
       "duration": 6.22,
       "audio": "/audio/radio/please-stay-on-the-line/45.flac"
     },
@@ -375,7 +375,7 @@
       "speaker": "phone",
       "text": "Your call is important to us. Please stay on the line.",
       "overlap": 0.2,
-      "timestamp": 154.647,
+      "timestamp": 157.937,
       "duration": 0.5,
       "audio": "/audio/radio/please-stay-on-the-line/46.flac"
     }

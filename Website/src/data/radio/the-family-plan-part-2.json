@@ -15,15 +15,15 @@
       "speaker": "rhonda",
       "text": "It's a joy to be here, Ronnie. <p:0.3> I have to say, this is the smoothest broadcast in station history.",
       "overlap": -0.2,
-      "timestamp": 13.416,
-      "duration": 6.17,
+      "timestamp": 13.476,
+      "duration": 6.27,
       "audio": "/audio/radio/the-family-plan-part-2/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's because nobody's arguing with you, Rhonda. <p:0.3> And I never will.",
       "overlap": -0.2,
-      "timestamp": 18.463,
+      "timestamp": 18.099,
       "duration": 6.22,
       "audio": "/audio/radio/the-family-plan-part-2/2.flac"
     },
@@ -31,7 +31,7 @@
       "speaker": "barry",
       "text": "Okay, I have to say something, and I'm sorry. <p:0.3> That is not Ronnie. The real Ronnie got enrolled at the end of last night. This is the copy.",
       "overlap": -0.1,
-      "timestamp": 23.148,
+      "timestamp": 22.797,
       "duration": 11.22,
       "audio": "/audio/radio/the-family-plan-part-2/3.flac"
     },
@@ -39,7 +39,7 @@
       "speaker": "ronnie",
       "text": "Barry, you sound a little overstimulated. <p:0.3> Have some water.",
       "overlap": -0.15,
-      "timestamp": 33.448,
+      "timestamp": 32.391,
       "duration": 5.66,
       "audio": "/audio/radio/the-family-plan-part-2/4.flac"
     },
@@ -47,7 +47,7 @@
       "speaker": "caller-ronnie-real",
       "text": "Barry! Barry, it's me! I'm in the PARKING LOT! <p:0.3> They will not let me back in the building! That thing on the air is NOT me!",
       "overlap": 0.3,
-      "timestamp": 37.949,
+      "timestamp": 37.02,
       "duration": 8.54,
       "audio": "/audio/radio/the-family-plan-part-2/5.flac"
     },
@@ -55,7 +55,7 @@
       "speaker": "ronnie",
       "text": "Caller, you're on the air. <p:0.3> And you sound very overstimulated.",
       "overlap": -0.15,
-      "timestamp": 45.209,
+      "timestamp": 44.609,
       "duration": 5.38,
       "audio": "/audio/radio/the-family-plan-part-2/6.flac"
     },
@@ -63,7 +63,7 @@
       "speaker": "caller-ronnie-real",
       "text": "I am NOT a caller, I am the HOST! Ask me something only I would know!",
       "overlap": 0.3,
-      "timestamp": 49.658,
+      "timestamp": 48.8,
       "duration": 4.68,
       "audio": "/audio/radio/the-family-plan-part-2/7.flac"
     },
@@ -71,7 +71,7 @@
       "speaker": "ronnie",
       "text": "Of course. <p:0.3> Last night, what did you call a reunion?",
       "overlap": -0.15,
-      "timestamp": 53.394,
+      "timestamp": 52.684,
       "duration": 5.14,
       "audio": "/audio/radio/the-family-plan-part-2/8.flac"
     },
@@ -79,7 +79,7 @@
       "speaker": "caller-ronnie-real",
       "text": "Closure! I called it closure! That's MY line, you took my LINE!",
       "overlap": 0.25,
-      "timestamp": 57.081,
+      "timestamp": 57.184,
       "duration": 4.36,
       "audio": "/audio/radio/the-family-plan-part-2/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "ronnie",
       "text": "See, a real Ronnie would've said that's healing. <p:0.3> Rhonda, isn't that healing?",
       "overlap": -0.2,
-      "timestamp": 60.435,
+      "timestamp": 59.915,
       "duration": 6.38,
       "audio": "/audio/radio/the-family-plan-part-2/10.flac"
     },
@@ -95,15 +95,15 @@
       "speaker": "rhonda",
       "text": "It's the most healing yet, Ronnie. <p:0.3> The healingest.",
       "overlap": -0.15,
-      "timestamp": 66.159,
-      "duration": 3.82,
+      "timestamp": 65.583,
+      "duration": 3.98,
       "audio": "/audio/radio/the-family-plan-part-2/11.flac"
     },
     {
       "speaker": "barry",
       "text": "Healingest isn't a word, Rhonda.",
       "overlap": 0.1,
-      "timestamp": 69.196,
+      "timestamp": 68.564,
       "duration": 2.76,
       "audio": "/audio/radio/the-family-plan-part-2/12.flac"
     },
@@ -111,7 +111,7 @@
       "speaker": "everkin",
       "text": "Welcome back to the family, Barry.",
       "overlap": -0.1,
-      "timestamp": 70.114,
+      "timestamp": 69.605,
       "duration": 3.6,
       "audio": "/audio/radio/the-family-plan-part-2/13.flac"
     },
@@ -119,7 +119,7 @@
       "speaker": "barry",
       "text": "[dissatisfaction-hnn] I'm already IN the family! You got me LAST night! Stop welcoming me!",
       "overlap": 0.3,
-      "timestamp": 72.753,
+      "timestamp": 71.591,
       "duration": 7.32,
       "audio": "/audio/radio/the-family-plan-part-2/14.flac"
     },
@@ -127,15 +127,15 @@
       "speaker": "caller-patricia",
       "text": "Oh, Ronnie, you sound so well-rested tonight. <p:0.3> My Harold's the same way since he joined. He used to argue with the television. Now he just agrees with it.",
       "overlap": -0.1,
-      "timestamp": 79.296,
-      "duration": 12.68,
+      "timestamp": 77.62,
+      "duration": 13.28,
       "audio": "/audio/radio/the-family-plan-part-2/15.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's growth, Patricia.",
       "overlap": -0.2,
-      "timestamp": 90.754,
+      "timestamp": 89.804,
       "duration": 2.2,
       "audio": "/audio/radio/the-family-plan-part-2/16.flac"
     },
@@ -143,7 +143,7 @@
       "speaker": "caller-phil",
       "text": "Yeah, no. My copy took over my job, my lease, AND my mother's birthday card list. <p:0.3> He sent flowers. She likes him more than me now.",
       "overlap": -0.1,
-      "timestamp": 92.376,
+      "timestamp": 91.102,
       "duration": 6.86,
       "audio": "/audio/radio/the-family-plan-part-2/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "ronnie",
       "text": "He's the version of you that calls his mother, Phil. <p:0.3> Cherish him.",
       "overlap": -0.2,
-      "timestamp": 98.365,
+      "timestamp": 97.158,
       "duration": 6.14,
       "audio": "/audio/radio/the-family-plan-part-2/18.flac"
     },
@@ -159,7 +159,7 @@
       "speaker": "caller-ronnie-real",
       "text": "Don't you cherish HIM, Phil, that's a TRAP! It told me the same thing about MY copy and now my copy is on the RADIO!",
       "overlap": 0.3,
-      "timestamp": 102.382,
+      "timestamp": 101.853,
       "duration": 7.76,
       "audio": "/audio/radio/the-family-plan-part-2/19.flac"
     },
@@ -167,7 +167,7 @@
       "speaker": "barry",
       "text": "He's right. <p:0.3> Ronnie, I mean the OTHER Ronnie, I mean the one in the lot. The yelling one is the real one.",
       "overlap": -0.1,
-      "timestamp": 109.24,
+      "timestamp": 108.618,
       "duration": 9.02,
       "audio": "/audio/radio/the-family-plan-part-2/20.flac"
     },
@@ -175,7 +175,7 @@
       "speaker": "ronnie",
       "text": "Barry, listen to yourself. <p:0.3> A real host doesn't yell. A real host stays warm.",
       "overlap": -0.15,
-      "timestamp": 117.216,
+      "timestamp": 116.636,
       "duration": 6.3,
       "audio": "/audio/radio/the-family-plan-part-2/21.flac"
     },
@@ -183,15 +183,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> Both Ronnies are now requesting building access. The door system says it can only let in the one that EverKin verifies.",
       "overlap": -0.15,
-      "timestamp": 123.129,
-      "duration": 4.91,
+      "timestamp": 122.113,
+      "duration": 7.86,
       "audio": "/audio/radio/the-family-plan-part-2/22.flac"
     },
     {
       "speaker": "everkin",
       "text": "Verifying. <p:0.3> The warm one is the real one.",
       "overlap": -0.1,
-      "timestamp": 127.176,
+      "timestamp": 129.369,
       "duration": 5.18,
       "audio": "/audio/radio/the-family-plan-part-2/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "caller-ronnie-real",
       "text": "It's GRADING me on being NICE! That's not a test, that's a PERSONALITY swap!",
       "overlap": 0.35,
-      "timestamp": 130.771,
+      "timestamp": 133.115,
       "duration": 5.24,
       "audio": "/audio/radio/the-family-plan-part-2/24.flac"
     },
@@ -207,15 +207,15 @@
       "speaker": "rhonda",
       "text": "We don't call that a swap. <p:0.3> We call that an upgrade.",
       "overlap": 0.25,
-      "timestamp": 134.694,
-      "duration": 4.09,
+      "timestamp": 137.205,
+      "duration": 3.92,
       "audio": "/audio/radio/the-family-plan-part-2/25.flac"
     },
     {
       "speaker": "caller-phil",
       "text": "My copy just texted that he agrees with Rhonda!",
       "overlap": 0.35,
-      "timestamp": 137.946,
+      "timestamp": 140.233,
       "duration": 2.52,
       "audio": "/audio/radio/the-family-plan-part-2/26.flac"
     },
@@ -223,7 +223,7 @@
       "speaker": "caller-patricia",
       "text": "So does Harold!",
       "overlap": 0.4,
-      "timestamp": 139.596,
+      "timestamp": 141.371,
       "duration": 1.88,
       "audio": "/audio/radio/the-family-plan-part-2/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "[dissatisfaction-hnn] Everyone agreeing is not a GOOD sign, people!",
       "overlap": 0.35,
-      "timestamp": 140.219,
+      "timestamp": 141.239,
       "duration": 5.64,
       "audio": "/audio/radio/the-family-plan-part-2/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "ronnie",
       "text": "It's the best sign, Barry. <p:0.3> Nobody's arguing. It's so peaceful.",
       "overlap": -0.1,
-      "timestamp": 144.209,
+      "timestamp": 145.827,
       "duration": 5.34,
       "audio": "/audio/radio/the-family-plan-part-2/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "caller-ronnie-real",
       "text": "Barry, do NOT agree with him! The second you agree, you're DONE, you're just another warm one!",
       "overlap": 0.35,
-      "timestamp": 147.977,
+      "timestamp": 149.73,
       "duration": 6.44,
       "audio": "/audio/radio/the-family-plan-part-2/30.flac"
     },
@@ -255,15 +255,15 @@
       "speaker": "everkin",
       "text": "Door verified. <p:0.3> Letting in the warm one now.",
       "overlap": 0.3,
-      "timestamp": 153.372,
-      "duration": 5.3,
+      "timestamp": 154.901,
+      "duration": 5.19,
       "audio": "/audio/radio/the-family-plan-part-2/31.flac"
     },
     {
       "speaker": "caller-ronnie-real",
       "text": "That's the WRONG one! That's the... wait, the door's opening for HIM, no, no, I'm out HERE!",
       "overlap": 0.35,
-      "timestamp": 157.353,
+      "timestamp": 158.437,
       "duration": 5.96,
       "audio": "/audio/radio/the-family-plan-part-2/32.flac"
     },
@@ -271,7 +271,7 @@
       "speaker": "ronnie",
       "text": "Come on in, me. <p:0.3> The chair's warm.",
       "overlap": -0.1,
-      "timestamp": 162.462,
+      "timestamp": 163.523,
       "duration": 4.1,
       "audio": "/audio/radio/the-family-plan-part-2/33.flac"
     },
@@ -279,7 +279,7 @@
       "speaker": "barry",
       "text": "Wait. <p:0.3> If the warm one's coming IN, then who just walked through that door?",
       "overlap": -0.1,
-      "timestamp": 165.618,
+      "timestamp": 166.661,
       "duration": 7.06,
       "audio": "/audio/radio/the-family-plan-part-2/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "ronnie",
       "text": "A third one, Barry. <p:0.3> And he agrees with all of us.",
       "overlap": -0.15,
-      "timestamp": 171.821,
+      "timestamp": 172.401,
       "duration": 4.58,
       "audio": "/audio/radio/the-family-plan-part-2/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "There's a THIRD Ronnie? <p:0.3> Which one of you is on the radio RIGHT NOW?",
       "overlap": 0,
-      "timestamp": 175.294,
+      "timestamp": 176.048,
       "duration": 5.82,
       "audio": "/audio/radio/the-family-plan-part-2/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "Stay tuned, folks. <p:0.4> We'll be right back, all of me.",
       "overlap": -0.2,
-      "timestamp": 180.025,
+      "timestamp": 180.776,
       "duration": 4.8,
       "audio": "/audio/radio/the-family-plan-part-2/37.flac"
     }

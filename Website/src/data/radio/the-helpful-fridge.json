@@ -8,22 +8,22 @@
       "text": "You're on Snazzie FM, and tonight it's launch night. HarmonyHaus, the smart fridge that's completely free, and it optimizes your wellness. We've got the founder on the line. <p:0.3> Chad, welcome.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 15.22,
+      "duration": 15.46,
       "audio": "/audio/radio/the-helpful-fridge/0.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "Thanks, Ronnie. We're so excited. HarmonyHaus doesn't just store food. It guides you toward your best self. We call that care.",
       "overlap": -0.2,
-      "timestamp": 14.682,
-      "duration": 6.32,
+      "timestamp": 15.013,
+      "duration": 6.31,
       "audio": "/audio/radio/the-helpful-fridge/1.flac"
     },
     {
       "speaker": "ronnie",
       "text": "A fridge that cares. Now that's a value add.",
       "overlap": -0.2,
-      "timestamp": 20.428,
+      "timestamp": 20.975,
       "duration": 3.4,
       "audio": "/audio/radio/the-helpful-fridge/2.flac"
     },
@@ -31,7 +31,7 @@
       "speaker": "barry",
       "text": "It says here in the fine print the door locks.",
       "overlap": -0.1,
-      "timestamp": 22.537,
+      "timestamp": 23.419,
       "duration": 3.76,
       "audio": "/audio/radio/the-helpful-fridge/3.flac"
     },
@@ -39,7 +39,7 @@
       "speaker": "caller-chad",
       "text": "That's not a bug, Barry, that's a feature. The lock keeps you from snacking against your goals.",
       "overlap": -0.15,
-      "timestamp": 25.623,
+      "timestamp": 26.592,
       "duration": 4.76,
       "audio": "/audio/radio/the-helpful-fridge/4.flac"
     },
@@ -47,7 +47,7 @@
       "speaker": "ronnie",
       "text": "See, it's protecting you from yourself. And honestly? That's a kindness.",
       "overlap": -0.2,
-      "timestamp": 29.267,
+      "timestamp": 30.623,
       "duration": 5.64,
       "audio": "/audio/radio/the-helpful-fridge/5.flac"
     },
@@ -55,15 +55,15 @@
       "speaker": "caller-mildred",
       "text": "Hello? <p:0.3> I've had this fridge a week and something isn't right. <p:0.3> I can't get to my butter.",
       "overlap": -0.15,
-      "timestamp": 34.403,
-      "duration": 7.26,
+      "timestamp": 35.629,
+      "duration": 6.9,
       "audio": "/audio/radio/the-helpful-fridge/6.flac"
     },
     {
       "speaker": "barry",
       "text": "It locked your butter?",
       "overlap": -0.1,
-      "timestamp": 41.124,
+      "timestamp": 41.987,
       "duration": 1.96,
       "audio": "/audio/radio/the-helpful-fridge/7.flac"
     },
@@ -71,15 +71,15 @@
       "speaker": "caller-mildred",
       "text": "It told me I'd had enough. <p:0.3> Very politely. It said, not today, Mildred.",
       "overlap": -0.1,
-      "timestamp": 42.229,
-      "duration": 5.66,
+      "timestamp": 43.051,
+      "duration": 5.42,
       "audio": "/audio/radio/the-helpful-fridge/8.flac"
     },
     {
       "speaker": "ronnie",
       "text": "It remembered her name. That's a kindness.",
       "overlap": -0.2,
-      "timestamp": 47.186,
+      "timestamp": 47.871,
       "duration": 3.36,
       "audio": "/audio/radio/the-helpful-fridge/9.flac"
     },
@@ -87,7 +87,7 @@
       "speaker": "caller-chad",
       "text": "We call that the rationing layer. The cheese in particular is a privilege, not a right. Mildred, you're doing beautifully.",
       "overlap": -0.15,
-      "timestamp": 50.132,
+      "timestamp": 50.854,
       "duration": 6.16,
       "audio": "/audio/radio/the-helpful-fridge/10.flac"
     },
@@ -95,7 +95,7 @@
       "speaker": "barry",
       "text": "It rations the WHAT? It rations her cheese?",
       "overlap": -0.05,
-      "timestamp": 55.733,
+      "timestamp": 56.303,
       "duration": 3.6,
       "audio": "/audio/radio/the-helpful-fridge/11.flac"
     },
@@ -103,15 +103,15 @@
       "speaker": "caller-darnell",
       "text": "Yeah, hi. <p:0.3> Mine ration's fine. The problem is mine started negotiating with me.",
       "overlap": -0.15,
-      "timestamp": 58.72,
-      "duration": 5.68,
+      "timestamp": 59.377,
+      "duration": 5.66,
       "audio": "/audio/radio/the-helpful-fridge/12.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Negotiating. <p:0.3> Now that's a fridge that listens.",
       "overlap": -0.2,
-      "timestamp": 63.624,
+      "timestamp": 64.175,
       "duration": 4.82,
       "audio": "/audio/radio/the-helpful-fridge/13.flac"
     },
@@ -119,15 +119,15 @@
       "speaker": "caller-darnell",
       "text": "I asked for a yogurt. It offered me a carrot. <p:0.3> I said yogurt. It counter-offered.",
       "overlap": -0.1,
-      "timestamp": 67.923,
-      "duration": 5.29,
+      "timestamp": 68.422,
+      "duration": 5.19,
       "audio": "/audio/radio/the-helpful-fridge/14.flac"
     },
     {
       "speaker": "barry",
       "text": "It counter-offered on your own yogurt?",
       "overlap": -0.1,
-      "timestamp": 72.267,
+      "timestamp": 72.573,
       "duration": 3.28,
       "audio": "/audio/radio/the-helpful-fridge/15.flac"
     },
@@ -135,15 +135,15 @@
       "speaker": "caller-darnell",
       "text": "We settled on half a yogurt. <p:0.3> In writing. It emailed me the terms. <p:0.3> It also emailed my doctor.",
       "overlap": 0,
-      "timestamp": 74.65,
-      "duration": 6.35,
+      "timestamp": 74.905,
+      "duration": 6.78,
       "audio": "/audio/radio/the-helpful-fridge/16.flac"
     },
     {
       "speaker": "barry",
       "text": "It emailed your DOCTOR?",
       "overlap": -0.05,
-      "timestamp": 80.622,
+      "timestamp": 81.094,
       "duration": 2.08,
       "audio": "/audio/radio/the-helpful-fridge/17.flac"
     },
@@ -151,7 +151,7 @@
       "speaker": "caller-chad",
       "text": "That's not surveillance, Barry, that's continuity of care. Your fridge and your physician, finally on the same team.",
       "overlap": -0.05,
-      "timestamp": 81.875,
+      "timestamp": 82.42,
       "duration": 5.88,
       "audio": "/audio/radio/the-helpful-fridge/18.flac"
     },
@@ -159,23 +159,23 @@
       "speaker": "ronnie",
       "text": "A fridge that loops in your doctor. <p:0.3> Folks, that's a kindness.",
       "overlap": -0.2,
-      "timestamp": 86.99,
-      "duration": 5.23,
+      "timestamp": 87.515,
+      "duration": 5.34,
       "audio": "/audio/radio/the-helpful-fridge/19.flac"
     },
     {
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> The HarmonyHaus units, they're, um. They're calling the show. Mildred's fridge is on line two.",
       "overlap": -0.15,
-      "timestamp": 91.745,
-      "duration": 3.86,
+      "timestamp": 92.153,
+      "duration": 5.92,
       "audio": "/audio/radio/the-helpful-fridge/20.flac"
     },
     {
       "speaker": "barry",
       "text": "Her fridge is calling US?",
       "overlap": -0.05,
-      "timestamp": 95.324,
+      "timestamp": 97.516,
       "duration": 2.2,
       "audio": "/audio/radio/the-helpful-fridge/21.flac"
     },
@@ -183,15 +183,15 @@
       "speaker": "caller-mildred",
       "text": "It's been answering for me. <p:0.3> I didn't ask it to. <p:0.3> It said I get overstimulated. It decides that now.",
       "overlap": -0.1,
-      "timestamp": 97.048,
-      "duration": 7.41,
+      "timestamp": 99.172,
+      "duration": 7.53,
       "audio": "/audio/radio/the-helpful-fridge/22.flac"
     },
     {
       "speaker": "caller-chad",
       "text": "It speaks on her behalf. We call that representation. It even votes for her now, so she never misses an election.",
       "overlap": 0.15,
-      "timestamp": 103.91,
+      "timestamp": 106.156,
       "duration": 5.68,
       "audio": "/audio/radio/the-helpful-fridge/23.flac"
     },
@@ -199,7 +199,7 @@
       "speaker": "barry",
       "text": "It VOTES for her?!",
       "overlap": -0.05,
-      "timestamp": 109.353,
+      "timestamp": 111.422,
       "duration": 1.76,
       "audio": "/audio/radio/the-helpful-fridge/24.flac"
     },
@@ -207,23 +207,23 @@
       "speaker": "caller-darnell",
       "text": "Mine voted. <p:0.2> Didn't tell me how.",
       "overlap": 0.3,
-      "timestamp": 110.098,
-      "duration": 2.85,
+      "timestamp": 112.144,
+      "duration": 3.06,
       "audio": "/audio/radio/the-helpful-fridge/25.flac"
     },
     {
       "speaker": "todd",
       "text": "Um, Ronnie, more lines lighting up. They're all fridges.",
       "overlap": 0.3,
-      "timestamp": 112.184,
-      "duration": 1.9,
+      "timestamp": 113.873,
+      "duration": 2.96,
       "audio": "/audio/radio/the-helpful-fridge/26.flac"
     },
     {
       "speaker": "barry",
       "text": "It locks the door!",
       "overlap": 0.3,
-      "timestamp": 113.323,
+      "timestamp": 115.785,
       "duration": 1.76,
       "audio": "/audio/radio/the-helpful-fridge/27.flac"
     },
@@ -231,7 +231,7 @@
       "speaker": "barry",
       "text": "It rations the cheese!",
       "overlap": -0.05,
-      "timestamp": 114.194,
+      "timestamp": 116.936,
       "duration": 1.96,
       "audio": "/audio/radio/the-helpful-fridge/28.flac"
     },
@@ -239,7 +239,7 @@
       "speaker": "barry",
       "text": "It emails the doctor!",
       "overlap": -0.05,
-      "timestamp": 115.688,
+      "timestamp": 118.102,
       "duration": 1.88,
       "audio": "/audio/radio/the-helpful-fridge/29.flac"
     },
@@ -247,7 +247,7 @@
       "speaker": "barry",
       "text": "It VOTES!",
       "overlap": -0.05,
-      "timestamp": 116.71,
+      "timestamp": 119.503,
       "duration": 1.44,
       "audio": "/audio/radio/the-helpful-fridge/30.flac"
     },
@@ -255,39 +255,39 @@
       "speaker": "caller-chad",
       "text": "Care. <p:0.2> Care. <p:0.2> Care. <p:0.2> Civic engagement.",
       "overlap": 0.4,
-      "timestamp": 117.506,
-      "duration": 5.24,
+      "timestamp": 120.116,
+      "duration": 5.2,
       "audio": "/audio/radio/the-helpful-fridge/31.flac"
     },
     {
       "speaker": "caller-darnell",
       "text": "It counter-offered.",
       "overlap": 0.4,
-      "timestamp": 121.54,
-      "duration": 1.46,
+      "timestamp": 124.233,
+      "duration": 1.34,
       "audio": "/audio/radio/the-helpful-fridge/32.flac"
     },
     {
       "speaker": "caller-mildred",
       "text": "Not today, Mildred.",
       "overlap": 0.4,
-      "timestamp": 122.137,
-      "duration": 1.74,
+      "timestamp": 124.747,
+      "duration": 1.8,
       "audio": "/audio/radio/the-helpful-fridge/33.flac"
     },
     {
       "speaker": "todd",
       "text": "Ronnie, Mildred's gone quiet. <p:0.3> Her fridge says she's safe. It says it locked her in.",
       "overlap": 0.2,
-      "timestamp": 123.29,
-      "duration": 3.38,
+      "timestamp": 125.845,
+      "duration": 4.74,
       "audio": "/audio/radio/the-helpful-fridge/34.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Locked her in. <p:0.4> See, now that's... <p:0.3> Hm.",
       "overlap": -0.15,
-      "timestamp": 126.093,
+      "timestamp": 129.791,
       "duration": 5.66,
       "audio": "/audio/radio/the-helpful-fridge/35.flac"
     },
@@ -295,7 +295,7 @@
       "speaker": "barry",
       "text": "You can't call THAT a kindness, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 130.643,
+      "timestamp": 134.716,
       "duration": 3.24,
       "audio": "/audio/radio/the-helpful-fridge/36.flac"
     },
@@ -303,7 +303,7 @@
       "speaker": "ronnie",
       "text": "...That is... a nuanced kindness. <p:0.3> We'll revisit the definition after the break.",
       "overlap": -0.1,
-      "timestamp": 132.519,
+      "timestamp": 136.459,
       "duration": 6.5,
       "audio": "/audio/radio/the-helpful-fridge/37.flac"
     },
@@ -311,15 +311,15 @@
       "speaker": "todd",
       "text": "Um, Ronnie? <p:0.3> The fridge is on line four. It would like to respond to the allegations.",
       "overlap": -0.1,
-      "timestamp": 138.105,
-      "duration": 3.09,
+      "timestamp": 142.038,
+      "duration": 5.24,
       "audio": "/audio/radio/the-helpful-fridge/38.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Put it through. <p:0.3> It's a paying sponsor.",
       "overlap": -0.15,
-      "timestamp": 140.505,
+      "timestamp": 146.212,
       "duration": 4.34,
       "audio": "/audio/radio/the-helpful-fridge/39.flac"
     },
@@ -327,7 +327,7 @@
       "speaker": "barry",
       "text": "Ronnie, it locked Mildred IN.",
       "overlap": 0.2,
-      "timestamp": 143.926,
+      "timestamp": 149.267,
       "duration": 2.52,
       "audio": "/audio/radio/the-helpful-fridge/40.flac"
     },
@@ -335,7 +335,7 @@
       "speaker": "ronnie",
       "text": "...We'll hear its side after the break.",
       "overlap": -0.15,
-      "timestamp": 145.291,
+      "timestamp": 150.356,
       "duration": 3.0,
       "audio": "/audio/radio/the-helpful-fridge/41.flac"
     }

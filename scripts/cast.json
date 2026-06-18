@@ -40,13 +40,13 @@
     "color": "#55efc4",
     "role": "Intern",
     "bio": "Anxious intern/producer. Keeps reporting real escalating crises (phone lines melting, pigeon tapping morse code at the window) that Ronnie immediately misuses as confirmation of the bit. Apologetic and hesitant; gets increasingly panicked as episodes build. Tic: \"Um, Ronnie? Sorry to cut in...\" Quote: \"The cooing guy is still on line two. He will not stop cooing.\"",
-    "instruct": "male, young adult, chinese accent",
-    "speed": 1.6,
+    "instruct": "male, young adult, american accent",
+    "speed": 1.4,
     "phone_filter": false,
     "gain": 0.4,
     "distant": true,
     "ref_audio": "scripts/voices/todd.wav",
-    "ref_text": "尽管受到这些指责，马英九在一次演讲中主张与中国大陆建立更加紧密的联系，并轻松获胜。",
+    "ref_text": "IN SHORT HE BECOMES A PROMINENT FIGURE IN LONDON SOCIETY AND IF HE IS NOT CAREFUL SOMEBODY WILL SAY SO",
     "gender": "M"
   },
   "caller-steve": {

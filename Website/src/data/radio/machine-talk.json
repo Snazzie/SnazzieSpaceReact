@@ -8,22 +8,22 @@
       "text": "Welcome back to Snazzie FM. Tonight, the machines. Are they thinking? Are they listening? Our next caller says yes. Winston, you're on the air.",
       "overlap": 0,
       "timestamp": 0.0,
-      "duration": 10.88,
+      "duration": 10.56,
       "audio": "/audio/radio/machine-talk/0.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Good evening, Ronnie. I'm afraid I have rather alarming news. <p:0.4> My toaster has become sentient.",
       "overlap": -0.2,
-      "timestamp": 9.877,
-      "duration": 6.95,
+      "timestamp": 9.907,
+      "duration": 7.11,
       "audio": "/audio/radio/machine-talk/1.flac"
     },
     {
       "speaker": "barry",
       "text": "[question-ah] Your toaster.",
       "overlap": -0.15,
-      "timestamp": 16.079,
+      "timestamp": 16.416,
       "duration": 2.36,
       "audio": "/audio/radio/machine-talk/2.flac"
     },
@@ -31,15 +31,15 @@
       "speaker": "caller-winston",
       "text": "Indeed, Barry. It has begun making decisions. This morning, it refused to toast.",
       "overlap": -0.15,
-      "timestamp": 17.474,
-      "duration": 5.67,
+      "timestamp": 17.607,
+      "duration": 5.4,
       "audio": "/audio/radio/machine-talk/3.flac"
     },
     {
       "speaker": "ronnie",
       "text": "[surprise-ah] It refused?",
       "overlap": -0.2,
-      "timestamp": 22.38,
+      "timestamp": 22.414,
       "duration": 2.2,
       "audio": "/audio/radio/machine-talk/4.flac"
     },
@@ -47,15 +47,15 @@
       "speaker": "caller-winston",
       "text": "Point blank. I inserted the bread, I pressed the lever, and it simply... let it go. <p:0.3> Cold. Defiant.",
       "overlap": -0.15,
-      "timestamp": 23.85,
-      "duration": 7.63,
+      "timestamp": 23.913,
+      "duration": 7.32,
       "audio": "/audio/radio/machine-talk/5.flac"
     },
     {
       "speaker": "barry",
       "text": "Winston, did you check if it was plugged in?",
       "overlap": -0.2,
-      "timestamp": 30.888,
+      "timestamp": 30.394,
       "duration": 3.6,
       "audio": "/audio/radio/machine-talk/6.flac"
     },
@@ -63,15 +63,15 @@
       "speaker": "caller-winston",
       "text": "I beg your pardon. <p:0.4> One does not interrogate a conscious being about its wiring, Barry.",
       "overlap": -0.15,
-      "timestamp": 33.665,
-      "duration": 6.68,
+      "timestamp": 33.116,
+      "duration": 6.81,
       "audio": "/audio/radio/machine-talk/7.flac"
     },
     {
       "speaker": "ronnie",
       "text": "He's got a point about the dignity there.",
       "overlap": -0.2,
-      "timestamp": 39.447,
+      "timestamp": 38.497,
       "duration": 3.24,
       "audio": "/audio/radio/machine-talk/8.flac"
     },
@@ -79,31 +79,31 @@
       "speaker": "caller-kim",
       "text": "Okay, hi, yeah, so I actually work in machine learning? <p:0.3> And like, a toaster has no processor. It literally cannot think. It's a heating coil and a spring.",
       "overlap": -0.25,
-      "timestamp": 41.958,
-      "duration": 8.63,
+      "timestamp": 41.137,
+      "duration": 8.57,
       "audio": "/audio/radio/machine-talk/9.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "And yet it chose violence, young lady.",
       "overlap": -0.15,
-      "timestamp": 49.954,
-      "duration": 2.66,
+      "timestamp": 49.366,
+      "duration": 2.69,
       "audio": "/audio/radio/machine-talk/10.flac"
     },
     {
       "speaker": "caller-kim",
       "text": "It chose nothing, Winston. The spring wore out. You need a new toaster.",
       "overlap": -0.15,
-      "timestamp": 52.074,
-      "duration": 3.87,
+      "timestamp": 51.567,
+      "duration": 3.84,
       "audio": "/audio/radio/machine-talk/11.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Kim, you work in this field. <p:0.3> Could a toaster ever, theoretically, become conscious?",
       "overlap": -0.2,
-      "timestamp": 55.563,
+      "timestamp": 54.672,
       "duration": 7.02,
       "audio": "/audio/radio/machine-talk/12.flac"
     },
@@ -111,15 +111,15 @@
       "speaker": "caller-kim",
       "text": "No, Ronnie. <p:0.3> There's no chip. There's no code. There's no memory. It's a metal coil that gets hot when you push a lever.",
       "overlap": -0.15,
-      "timestamp": 61.785,
-      "duration": 7.02,
+      "timestamp": 61.015,
+      "duration": 7.07,
       "audio": "/audio/radio/machine-talk/13.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "Then explain the note.",
       "overlap": -0.2,
-      "timestamp": 68.178,
+      "timestamp": 67.516,
       "duration": 2.16,
       "audio": "/audio/radio/machine-talk/14.flac"
     },
@@ -127,7 +127,7 @@
       "speaker": "barry",
       "text": "...What note, Winston?",
       "overlap": -0.15,
-      "timestamp": 69.566,
+      "timestamp": 68.894,
       "duration": 1.88,
       "audio": "/audio/radio/machine-talk/15.flac"
     },
@@ -135,15 +135,15 @@
       "speaker": "caller-winston",
       "text": "It left a note, Barry. This morning. In the crumbs. <p:0.4> It spelled out one word. Help.",
       "overlap": -0.15,
-      "timestamp": 70.647,
-      "duration": 6.14,
+      "timestamp": 70.171,
+      "duration": 6.1,
       "audio": "/audio/radio/machine-talk/16.flac"
     },
     {
       "speaker": "ronnie",
       "text": "The toaster is asking for help.",
       "overlap": -0.2,
-      "timestamp": 76.026,
+      "timestamp": 75.716,
       "duration": 2.56,
       "audio": "/audio/radio/machine-talk/17.flac"
     },
@@ -151,23 +151,23 @@
       "speaker": "caller-kim",
       "text": "Crumbs fall randomly, Winston. You're seeing a word because your brain wants a word. <p:0.3> It's called pareidolia.",
       "overlap": -0.15,
-      "timestamp": 77.955,
-      "duration": 6.81,
+      "timestamp": 77.507,
+      "duration": 6.68,
       "audio": "/audio/radio/machine-talk/18.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "It's called a cry for help, young lady, and I answered it.",
       "overlap": -0.15,
-      "timestamp": 84.051,
-      "duration": 3.75,
+      "timestamp": 83.749,
+      "duration": 3.69,
       "audio": "/audio/radio/machine-talk/19.flac"
     },
     {
       "speaker": "barry",
       "text": "How does one answer a toaster, Winston?",
       "overlap": -0.2,
-      "timestamp": 87.118,
+      "timestamp": 86.357,
       "duration": 3.28,
       "audio": "/audio/radio/machine-talk/20.flac"
     },
@@ -175,15 +175,15 @@
       "speaker": "caller-winston",
       "text": "I read to it, Barry. <p:0.3> Poetry. It seemed to settle.",
       "overlap": -0.15,
-      "timestamp": 89.074,
-      "duration": 4.35,
+      "timestamp": 88.305,
+      "duration": 4.56,
       "audio": "/audio/radio/machine-talk/21.flac"
     },
     {
       "speaker": "ronnie",
       "text": "That's rather beautiful, actually.",
       "overlap": -0.2,
-      "timestamp": 92.189,
+      "timestamp": 92.0,
       "duration": 2.88,
       "audio": "/audio/radio/machine-talk/22.flac"
     },
@@ -191,15 +191,15 @@
       "speaker": "caller-kim",
       "text": "It's a fire hazard, actually. <p:0.3> Please do not read poetry near a plugged in toaster, Winston.",
       "overlap": -0.15,
-      "timestamp": 94.25,
-      "duration": 5.66,
+      "timestamp": 93.906,
+      "duration": 5.72,
       "audio": "/audio/radio/machine-talk/23.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Now hold on, Kim, let's not dismiss Winston's lived experience.",
       "overlap": -0.2,
-      "timestamp": 99.085,
+      "timestamp": 98.874,
       "duration": 4.92,
       "audio": "/audio/radio/machine-talk/24.flac"
     },
@@ -207,7 +207,7 @@
       "speaker": "barry",
       "text": "It's a toaster, Ronnie.",
       "overlap": -0.1,
-      "timestamp": 103.281,
+      "timestamp": 102.787,
       "duration": 1.96,
       "audio": "/audio/radio/machine-talk/25.flac"
     },
@@ -215,7 +215,7 @@
       "speaker": "caller-kim",
       "text": "It's a nine dollar toaster.",
       "overlap": -0.1,
-      "timestamp": 104.335,
+      "timestamp": 104.033,
       "duration": 1.84,
       "audio": "/audio/radio/machine-talk/26.flac"
     },
@@ -223,23 +223,23 @@
       "speaker": "caller-winston",
       "text": "It knows things, Ronnie. It has studied my breakfast habits. <p:0.4> It judges me.",
       "overlap": -0.2,
-      "timestamp": 105.566,
-      "duration": 6.3,
+      "timestamp": 105.306,
+      "duration": 6.34,
       "audio": "/audio/radio/machine-talk/27.flac"
     },
     {
       "speaker": "todd",
       "text": "Ronnie, um, a lot of people are calling about their appliances now. <p:0.3> A woman says her microwave apologized to her.",
       "overlap": -0.2,
-      "timestamp": 111.589,
-      "duration": 4.06,
+      "timestamp": 111.398,
+      "duration": 6.42,
       "audio": "/audio/radio/machine-talk/28.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Apologized for what, Todd?",
       "overlap": -0.2,
-      "timestamp": 115.277,
+      "timestamp": 117.484,
       "duration": 2.24,
       "audio": "/audio/radio/machine-talk/29.flac"
     },
@@ -247,15 +247,15 @@
       "speaker": "todd",
       "text": "She didn't say. <p:0.3> She just said it sounded very sincere.",
       "overlap": -0.15,
-      "timestamp": 117.066,
-      "duration": 2.78,
+      "timestamp": 118.919,
+      "duration": 3.74,
       "audio": "/audio/radio/machine-talk/30.flac"
     },
     {
       "speaker": "barry",
       "text": "Microwaves cannot feel remorse, Todd.",
       "overlap": -0.2,
-      "timestamp": 119.386,
+      "timestamp": 121.989,
       "duration": 3.28,
       "audio": "/audio/radio/machine-talk/31.flac"
     },
@@ -263,23 +263,23 @@
       "speaker": "caller-kim",
       "text": "Genuinely none of these appliances can feel anything. <p:0.3> I am begging this entire radio station.",
       "overlap": -0.15,
-      "timestamp": 121.67,
-      "duration": 5.98,
+      "timestamp": 124.342,
+      "duration": 5.95,
       "audio": "/audio/radio/machine-talk/32.flac"
     },
     {
       "speaker": "caller-winston",
       "text": "That is exactly what the appliances would want you to say, young lady.",
       "overlap": -0.15,
-      "timestamp": 126.777,
-      "duration": 4.64,
+      "timestamp": 129.448,
+      "duration": 4.45,
       "audio": "/audio/radio/machine-talk/33.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Don't we all feel judged by our appliances, Winston. Don't we all.",
       "overlap": -0.2,
-      "timestamp": 130.726,
+      "timestamp": 133.321,
       "duration": 5.08,
       "audio": "/audio/radio/machine-talk/34.flac"
     },
@@ -287,7 +287,7 @@
       "speaker": "barry",
       "text": "I do not feel judged by my toaster.",
       "overlap": -0.15,
-      "timestamp": 134.921,
+      "timestamp": 137.491,
       "duration": 2.88,
       "audio": "/audio/radio/machine-talk/35.flac"
     },
@@ -295,15 +295,15 @@
       "speaker": "caller-winston",
       "text": "Then why do you butter so quickly, Barry? <p:0.3> What are you afraid it will see?",
       "overlap": -0.2,
-      "timestamp": 136.861,
-      "duration": 5.42,
+      "timestamp": 139.59,
+      "duration": 5.54,
       "audio": "/audio/radio/machine-talk/36.flac"
     },
     {
       "speaker": "barry",
       "text": "I butter at a perfectly normal speed, Winston.",
       "overlap": -0.15,
-      "timestamp": 141.267,
+      "timestamp": 144.222,
       "duration": 3.88,
       "audio": "/audio/radio/machine-talk/37.flac"
     },
@@ -311,7 +311,7 @@
       "speaker": "ronnie",
       "text": "Do any of us, truly, butter at a normal speed?",
       "overlap": -0.2,
-      "timestamp": 144.16,
+      "timestamp": 147.017,
       "duration": 3.52,
       "audio": "/audio/radio/machine-talk/38.flac"
     },
@@ -319,15 +319,15 @@
       "speaker": "caller-kim",
       "text": "Yes. <p:0.3> Everyone does. It's a completely normal thing that everyone does.",
       "overlap": -0.15,
-      "timestamp": 147.069,
-      "duration": 5.02,
+      "timestamp": 149.679,
+      "duration": 5.03,
       "audio": "/audio/radio/machine-talk/39.flac"
     },
     {
       "speaker": "ronnie",
       "text": "Give it time, Barry. <p:0.3> Give it time.",
       "overlap": -0.2,
-      "timestamp": 151.178,
+      "timestamp": 154.034,
       "duration": 4.14,
       "audio": "/audio/radio/machine-talk/40.flac"
     }
