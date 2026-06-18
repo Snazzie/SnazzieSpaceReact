@@ -90,7 +90,7 @@ function TechSphere() {
       sy: 0,
     })),
   );
-  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.004 });
+  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.0007 });
   const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
   const drag = useRef({ active: false, px: 0, py: 0, ox: 0, oy: 0, moved: false });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -253,7 +253,7 @@ function TechSphere() {
         r.ry += r.vy;
         r.rx += r.vx;
         r.vx *= 0.95;
-        r.vy = r.vy * 0.95 + 0.004 * 0.05;
+        r.vy = r.vy * 0.95 + 0.0007 * 0.05;
       }
 
       const cy = Math.cos(r.ry);
