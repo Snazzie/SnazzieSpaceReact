@@ -56,12 +56,14 @@ function OfferCard({
   offer,
   result,
   winner,
+  winnerLabel,
   onChange,
   onRemove,
 }: {
   offer: OfferState;
   result: OfferResult;
   winner: boolean;
+  winnerLabel: string;
   onChange: (patch: Partial<OfferState>) => void;
   onRemove?: () => void;
 }) {
@@ -108,7 +110,7 @@ function OfferCard({
         )}
         {winner && ready && (
           <span className="ml-auto shrink-0 rounded-full bg-emerald-400/15 px-2.5 py-1 text-xs font-semibold text-emerald-300">
-            Best per hour
+            {winnerLabel}
           </span>
         )}
       </div>
@@ -268,42 +270,116 @@ export default function CompareOffers() {
 
   const removeOffer = (i: number) => setOffers((prev) => prev.filter((_, idx) => idx !== i));
 
+  // What "best" means: most take-home per hour of life, or biggest yearly total.
+  const [priority, setPriority] = usePersistentState<'hour' | 'total'>('compare.priority', 'hour');
+
   const MAX_OFFERS = 6;
   const results = offers.map(evaluate);
+  const metric = (i: number) => (priority === 'hour' ? results[i].effHourly : results[i].effNetYear);
   const isReady = (i: number) => parseFloat(offers[i].payStr) > 0 && results[i].effHoursYear > 0;
 
-  // Rank every filled-in offer by real (commute-adjusted) hourly rate.
+  // Rank every filled-in offer by the chosen priority metric.
   const readyIdx = offers.map((_, i) => i).filter(isReady);
-  const ranked = [...readyIdx].sort((x, y) => results[y].effHourly - results[x].effHourly);
+  const ranked = [...readyIdx].sort((x, y) => metric(y) - metric(x));
   const bestIdx = ranked.length >= 2 ? ranked[0] : -1;
   const runnerUp = ranked.length >= 2 ? ranked[1] : -1;
 
   const hourlyGap = bestIdx >= 0 ? results[bestIdx].effHourly - results[runnerUp].effHourly : 0;
   const netGap = bestIdx >= 0 ? results[bestIdx].effNetYear - results[runnerUp].effNetYear : 0;
-  const tie = bestIdx >= 0 && hourlyGap < 0.005;
+  const hoursGap = bestIdx >= 0 ? results[bestIdx].effHoursYear - results[runnerUp].effHoursYear : 0;
+  const primaryGap = bestIdx >= 0 ? metric(bestIdx) - metric(runnerUp) : 0;
+  const tie = bestIdx >= 0 && Math.abs(primaryGap) < (priority === 'hour' ? 0.005 : 1);
   const winnerName = bestIdx >= 0 ? offers[bestIdx].name : '';
+  const runnerName = runnerUp >= 0 ? offers[runnerUp].name || 'the runner-up' : '';
+  const bestHourly = bestIdx >= 0 ? results[bestIdx].effHourly : 0;
+  const bestNet = bestIdx >= 0 ? results[bestIdx].effNetYear : 0;
 
   return (
     <div className="mx-auto max-w-5xl space-y-6">
       {/* Verdict — sticky so it stays in view while scrolling offers */}
       <div className="sticky top-4 z-20 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-black/40 p-6 text-center backdrop-blur-md">
+        <div className="mb-4 flex items-center justify-center gap-2">
+          <span className="text-xs uppercase tracking-wide text-muted-foreground/70">Prioritise</span>
+          <Segmented
+            options={[
+              { id: 'hour', label: 'Time' },
+              { id: 'total', label: 'Net pay' },
+            ]}
+            value={priority}
+            onChange={setPriority}
+          />
+        </div>
         {ranked.length < 2 ? (
           <p className="text-muted-foreground">Fill in at least two offers to compare.</p>
         ) : tie ? (
-          <p className="text-lg font-semibold text-foreground">Line-ball — the top two are worth the same per hour.</p>
+          <p className="text-lg font-semibold text-foreground">
+            Line-ball — the top two are worth the same {priority === 'hour' ? 'per hour' : 'per year'}.
+          </p>
         ) : (
           <>
-            <p className="text-sm text-muted-foreground">Best value for your time</p>
-            <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-400">{winnerName}</p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {gbp2.format(hourlyGap)} / hour more than the runner-up
-              {Math.abs(netGap) >= 1 &&
-                (netGap >= 0 ? (
-                  <> · {gbp.format(netGap)} / year more overall</>
-                ) : (
-                  <> · but {gbp.format(-netGap)} / year less overall (fewer hours)</>
-                ))}
+            <p className="text-sm text-muted-foreground">
+              Best for {priority === 'hour' ? 'your time' : 'total take-home'}
             </p>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-emerald-400">{winnerName}</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {priority === 'hour'
+                ? `${gbp2.format(bestHourly)} / hour effective`
+                : `${gbp.format(bestNet)} / year take-home`}{' '}
+              · vs <span className="text-foreground">{runnerName}</span>
+            </p>
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              {/* Primary badge = the metric being prioritised */}
+              {priority === 'hour' ? (
+                <span className="inline-flex items-baseline gap-1.5 rounded-full bg-emerald-400/20 px-3 py-1 text-sm font-semibold text-emerald-300">
+                  +{gbp2.format(hourlyGap)} <span className="font-medium text-emerald-300/60">/ hour</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-baseline gap-1.5 rounded-full bg-emerald-400/20 px-3 py-1 text-sm font-semibold text-emerald-300">
+                  +{gbp.format(netGap)} <span className="font-medium text-emerald-300/60">/ year</span>
+                </span>
+              )}
+              {/* Secondary badge = the other metric, amber when it's a trade-off */}
+              {priority === 'hour'
+                ? Math.abs(netGap) >= 1 && (
+                    <span
+                      className={`inline-flex items-baseline gap-1.5 rounded-full px-3 py-1 text-sm font-medium ${
+                        netGap >= 0 ? 'bg-emerald-400/15 text-emerald-300' : 'bg-amber-400/15 text-amber-300'
+                      }`}
+                    >
+                      {netGap >= 0 ? `+${gbp.format(netGap)}` : `− ${gbp.format(-netGap)}`}
+                      <span className={netGap >= 0 ? 'text-emerald-300/60' : 'text-amber-300/60'}>
+                        / year {netGap >= 0 ? 'overall' : 'overall (fewer hours)'}
+                      </span>
+                    </span>
+                  )
+                : Math.abs(hourlyGap) >= 0.005 && (
+                    <span
+                      className={`inline-flex items-baseline gap-1.5 rounded-full px-3 py-1 text-sm font-medium ${
+                        hourlyGap >= 0 ? 'bg-emerald-400/15 text-emerald-300' : 'bg-amber-400/15 text-amber-300'
+                      }`}
+                    >
+                      {hourlyGap >= 0 ? `+${gbp2.format(hourlyGap)}` : `− ${gbp2.format(-hourlyGap)}`}
+                      <span className={hourlyGap >= 0 ? 'text-emerald-300/60' : 'text-amber-300/60'}>
+                        / hour {hourlyGap >= 0 ? 'effective' : 'effective (longer hours)'}
+                      </span>
+                    </span>
+                  )}
+              {/* Hours of life: fewer than the runner-up is the win */}
+              {Math.abs(hoursGap) >= 1 && (
+                <span
+                  className={`inline-flex items-baseline gap-1.5 rounded-full px-3 py-1 text-sm font-medium ${
+                    hoursGap <= 0 ? 'bg-emerald-400/15 text-emerald-300' : 'bg-amber-400/15 text-amber-300'
+                  }`}
+                >
+                  {hoursGap <= 0
+                    ? `− ${Math.round(-hoursGap).toLocaleString('en-GB')}`
+                    : `+ ${Math.round(hoursGap).toLocaleString('en-GB')}`}
+                  <span className={hoursGap <= 0 ? 'text-emerald-300/60' : 'text-amber-300/60'}>
+                    hrs / year {hoursGap <= 0 ? '(less time)' : '(more time)'}
+                  </span>
+                </span>
+              )}
+            </div>
           </>
         )}
       </div>
@@ -316,6 +392,7 @@ export default function CompareOffers() {
             offer={offer}
             result={results[i]}
             winner={i === bestIdx && !tie}
+            winnerLabel={priority === 'hour' ? 'Best per hour' : 'Best total'}
             onChange={(patch) => update(i, patch)}
             onRemove={offers.length > 2 ? () => removeOffer(i) : undefined}
           />
