@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useReducedMotion } from "motion/react";
-import { BY_NAME, TechGlyph, fib, type FlatTech } from "@/components/sphereCommon";
+import { BY_NAME, IDLE_SPIN, TechGlyph, fib, type FlatTech } from "@/components/sphereCommon";
 
 /**
  * Small self-contained constellation: a project's sphere techs laid out on a
@@ -24,7 +24,7 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   const rot = useRef(
     solo
       ? { rx: 0, ry: -Math.PI / 2, vx: 0, vy: 0 }
-      : { rx: -0.15, ry: 0, vx: 0, vy: 0.004 },
+      : { rx: -0.15, ry: 0, vx: 0, vy: IDLE_SPIN },
   );
   const drag = useRef({ active: false, px: 0, py: 0 });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -116,7 +116,7 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
         r.ry += r.vy;
         r.rx += r.vx;
         r.vx *= 0.95;
-        r.vy = r.vy * 0.95 + 0.004 * 0.05;
+        r.vy = r.vy * 0.95 + IDLE_SPIN * 0.05;
       }
       step();
       raf = requestAnimationFrame(loop);

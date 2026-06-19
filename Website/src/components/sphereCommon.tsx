@@ -1,5 +1,9 @@
 import { stack, type Tech } from "@/data/stack";
 
+/** Idle auto-spin speed (radians/frame, steady-state) shared by the TechStack
+ * sphere and the inline MiniConstellation so both rotate at the same rate. */
+export const IDLE_SPIN = 0.0007;
+
 /** Accent color per stack group; tech pills, chips, arcs and cards key off it. */
 export const GROUP_COLORS: Record<string, string> = {
   Languages: "#f472b6",

@@ -6,7 +6,7 @@ import { SectionUnderline } from "@/components/SectionUnderline";
 import { ProjectModal } from "@/components/ProjectModal";
 import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
 import { projectSlug } from "@/components/FeaturedShowcase";
-import { BY_NAME, FLAT, GROUP_COLORS, TechGlyph, angLerp, fib } from "@/components/sphereCommon";
+import { BY_NAME, FLAT, GROUP_COLORS, IDLE_SPIN, TechGlyph, angLerp, fib } from "@/components/sphereCommon";
 
 /** Shorter chip labels for long group names. */
 const GROUP_SHORT: Record<string, string> = {
@@ -90,7 +90,7 @@ function TechSphere() {
       sy: 0,
     })),
   );
-  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: 0.0007 });
+  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: IDLE_SPIN });
   const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
   const drag = useRef({ active: false, px: 0, py: 0, ox: 0, oy: 0, moved: false });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -253,7 +253,7 @@ function TechSphere() {
         r.ry += r.vy;
         r.rx += r.vx;
         r.vx *= 0.95;
-        r.vy = r.vy * 0.95 + 0.0007 * 0.05;
+        r.vy = r.vy * 0.95 + IDLE_SPIN * 0.05;
       }
 
       const cy = Math.cos(r.ry);
