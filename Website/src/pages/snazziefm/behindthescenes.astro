@@ -1,16 +1,19 @@
 ---
 import '@/styles/global.css';
 import { RadioStation, EPISODES, ADS, CAST } from '@/projects/snazziefm';
+import BaseHead from '@/components/BaseHead.astro';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snazzie FM — Radio</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="description" content="Snazzie FM: absurdist radio conversations, GTA-style." />
+    <BaseHead
+      title="Snazzie FM — Radio"
+      description="Snazzie FM: absurdist radio conversations, GTA-style."
+      path="/snazziefm/behindthescenes/"
+      image="/snazziefm/images/radio-card.png"
+      twitterCard="summary_large_image"
+    />
   <style>html,body{background:#0a0704;}</style>
   </head>
   <body class="h-screen overflow-hidden bg-background text-foreground flex flex-col">

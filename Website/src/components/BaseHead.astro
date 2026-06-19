@@ -1,0 +1,68 @@
+---
+// Single source for per-page <head> SEO: title, description, canonical,
+// Open Graph, Twitter Card, robots, theme-color. Page-specific tags
+// (JSON-LD, fonts, inline styles, manifest, extra meta) go in the default
+// <slot/>, which renders at the end of the emitted head fragment.
+interface Props {
+  title: string;
+  description: string;
+  /** Site-root-relative path, e.g. "/articles/foo/". Drives canonical + og:url. */
+  path: string;
+  /** Absolute or root-relative image URL. Resolved against the site origin. */
+  image?: string;
+  ogType?: string;
+  imageWidth?: number | string;
+  imageHeight?: number | string;
+  /** Defaults to `title`/`description` when omitted. */
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterCard?: "summary" | "summary_large_image";
+  twitterTitle?: string;
+  twitterDescription?: string;
+  /** Emits <meta name="robots" content="noindex"> when true. */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  image = "/images/avatar.webp",
+  ogType = "website",
+  imageWidth,
+  imageHeight,
+  ogTitle = title,
+  ogDescription = description,
+  twitterCard = "summary",
+  twitterTitle,
+  twitterDescription,
+  noindex = false,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://snazzie.space");
+const canonical = new URL(path, site).href;
+const imageUrl = new URL(image, site).href;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+{noindex && <meta name="robots" content="noindex" />}
+
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+{imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+{imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+<meta property="og:type" content={ogType} />
+
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={twitterTitle ?? ogTitle} />
+<meta name="twitter:description" content={twitterDescription ?? ogDescription} />
+<meta name="twitter:image" content={imageUrl} />
+
+<meta name="theme-color" content="#0a0a0a" />
+<slot />

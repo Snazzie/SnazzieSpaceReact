@@ -5,6 +5,7 @@ import ArticleCard from '@/components/articles/ArticleCard.astro';
 import TagList from '@/components/articles/TagList.astro';
 import { LunarArticles } from '@/components/LunarArticles';
 import Footer from '@/components/Footer.astro';
+import BaseHead from '@/components/BaseHead.astro';
 import AdUnit from '@/components/AdUnit.astro';
 
 const PAGE_SIZE = 12;
@@ -19,12 +20,11 @@ const posts = allPosts.filter((p) => !p.data.featured);
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Articles — Aaron Cooper</title>
-    <meta name="description" content="Technical articles and project breakdowns by Aaron Cooper." />
-    <link rel="canonical" href="https://snazzie.space/articles/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <BaseHead
+      title="Articles — Aaron Cooper"
+      description="Technical articles and project breakdowns by Aaron Cooper."
+      path="/articles/"
+    />
     <link rel="alternate" type="application/rss+xml" title="Aaron Cooper — Articles" href="/rss.xml" />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",

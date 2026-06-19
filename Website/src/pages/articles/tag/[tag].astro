@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import { getCollection } from 'astro:content';
 import ArticleCard from '@/components/articles/ArticleCard.astro';
 import AdUnit from '@/components/AdUnit.astro';
+import BaseHead from '@/components/BaseHead.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('articles', ({ data }) => !data.draft);
@@ -24,12 +25,18 @@ const { tag, posts } = Astro.props;
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Articles tagged "{tag}" — Aaron Cooper</title>
-    <meta name="description" content={`Articles tagged ${tag} by Aaron Cooper.`} />
-    <link rel="canonical" href={`https://snazzie.space/articles/tag/${tag}/`} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <BaseHead
+      title={`Articles tagged "${tag}" — Aaron Cooper`}
+      description={`Articles tagged ${tag} by Aaron Cooper.`}
+      path={`/articles/tag/${tag}/`}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": `Articles tagged "${tag}"`,
+      "url": `https://snazzie.space/articles/tag/${tag}/`,
+      "isPartOf": { "@type": "WebSite", "name": "Aaron Cooper", "url": "https://snazzie.space" }
+    })} />
   </head>
   <body class="bg-background text-foreground antialiased">
     <main class="min-h-screen pt-20 pb-24">

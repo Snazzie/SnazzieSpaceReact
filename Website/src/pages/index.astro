@@ -2,6 +2,7 @@
 import { getImage } from "astro:assets";
 import "@/styles/global.css";
 import Footer from "@/components/Footer.astro";
+import BaseHead from "@/components/BaseHead.astro";
 import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
 import { Career } from "@/components/Career";
@@ -90,32 +91,20 @@ const images: Record<string, string> = {
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-adsense-account" content="ca-pub-8304271204200662" />
-    <title>Aaron Cooper - Full-Stack Software Engineer | React, TypeScript</title>
-    <meta
-      name="description"
-      content="Full-stack software engineer specializing in React, TypeScript, and cloud infrastructure. Building scalable applications with focus on performance and clean systems."
+    <BaseHead
+      title="Aaron Cooper - Full-Stack Software Engineer | React, TypeScript"
+      description="Full-stack software engineer specializing in React, TypeScript, and cloud infrastructure. Building scalable applications with focus on performance and clean systems."
+      path="/"
+      ogType="profile"
+      image={ogImage}
+      ogTitle="Aaron Cooper - Full-Stack Software Engineer"
+      ogDescription="React, TypeScript, Rust, and cloud infrastructure developer. Building scalable applications with focus on performance."
+      twitterTitle="Aaron Cooper - Full-Stack Engineer"
+      twitterDescription="Building scalable applications with React, TypeScript, and cloud infrastructure."
     />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://snazzie.space/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="google-adsense-account" content="ca-pub-8304271204200662" />
     <link rel="profile" href="https://linkedin.com/in/cooper-a-m/" />
     <link rel="me" href="https://github.com/snazzie" />
-
-    <meta property="og:title" content="Aaron Cooper - Full-Stack Software Engineer" />
-    <meta property="og:description" content="React, TypeScript, Rust, and cloud infrastructure developer. Building scalable applications with focus on performance." />
-    <meta property="og:url" content="https://snazzie.space/" />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:type" content="profile" />
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Aaron Cooper - Full-Stack Engineer" />
-    <meta name="twitter:description" content="Building scalable applications with React, TypeScript, and cloud infrastructure." />
-    <meta name="twitter:image" content={ogImage} />
-
-    <meta name="theme-color" content="#0a0a0a" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

@@ -1,26 +1,19 @@
 ---
 import '@/styles/global.css';
 import { RadioLanding, EPISODES, MUSIC_TRACKS, ADS, CAST } from '@/projects/snazziefm';
+import BaseHead from '@/components/BaseHead.astro';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snazzie FM — All-Night Radio</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href="https://snazzie.space/snazziefm/" />
-    <meta name="description" content="Snazzie FM: absurdist all-night call-in radio. Tune in to the show lineup, meet the talent, listen live." />
-    <meta property="og:title" content="Snazzie FM — All-Night Radio" />
-    <meta property="og:description" content="Snazzie FM: absurdist all-night call-in radio. Tune in to the show lineup, meet the talent, listen live." />
-    <meta property="og:image" content="https://snazzie.space/snazziefm/images/radio-card.png" />
-    <meta property="og:url" content="https://snazzie.space/snazziefm/" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Snazzie FM — All-Night Radio" />
-    <meta name="twitter:description" content="Snazzie FM: absurdist all-night call-in radio. Tune in to the show lineup, meet the talent, listen live." />
-    <meta name="twitter:image" content="https://snazzie.space/snazziefm/images/radio-card.png" />
+    <BaseHead
+      title="Snazzie FM — All-Night Radio"
+      description="Snazzie FM: absurdist all-night call-in radio. Tune in to the show lineup, meet the talent, listen live."
+      path="/snazziefm/"
+      image="/snazziefm/images/radio-card.png"
+      twitterCard="summary_large_image"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

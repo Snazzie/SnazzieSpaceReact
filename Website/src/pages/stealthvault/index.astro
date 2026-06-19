@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
 
 const features = [
   {
@@ -46,15 +47,23 @@ const APPSTORE_URL = '#';
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StealthVault — Private encrypted media vault</title>
-    <meta
-      name="description"
-      content="StealthVault is a private, encrypted-at-rest media vault with an ad-blocking browser, biometric unlock, a local web portal, and device-to-device sync. Nothing leaves your device."
+    <BaseHead
+      title="StealthVault — Private encrypted media vault"
+      description="StealthVault is a private, encrypted-at-rest media vault with an ad-blocking browser, biometric unlock, a local web portal, and device-to-device sync. Nothing leaves your device."
+      path="/stealthvault/"
     />
-    <link rel="canonical" href="https://snazzie.space/stealthvault/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "StealthVault",
+      "url": "https://snazzie.space/stealthvault/",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "iOS, Android",
+      "description": "A private, encrypted-at-rest media vault with an ad-blocking browser, biometric unlock, a local web portal, and device-to-device sync. Nothing leaves your device.",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.snazzie.stealthvault",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Person", "name": "Aaron Cooper", "url": "https://snazzie.space" }
+    })} />
   </head>
   <body class="bg-black text-foreground antialiased">
     <!-- Own nav, linking to sub routes -->

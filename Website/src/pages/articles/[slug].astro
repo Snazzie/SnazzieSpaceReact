@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
 import { getCollection, render } from 'astro:content';
 import TagList from '@/components/articles/TagList.astro';
 import AdUnit from '@/components/AdUnit.astro';
@@ -23,6 +24,10 @@ const formattedDate = post.data.date.toLocaleDateString('en-GB', {
 
 const wordCount = post.body?.split(/\s+/).length ?? 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 238));
+
+// Social/share image: per-article hero when set, else the site avatar.
+const ogImageAbs = new URL(post.data.heroImage ?? '/images/avatar.webp', Astro.site ?? 'https://snazzie.space').href;
+const articleTwitterCard = post.data.heroImage ? 'summary_large_image' : 'summary';
 
 // Canonical TTS processing — single source of truth.
 // Python generate-audio.py reads the .txt output this writes; "see raw script" shows it.
@@ -96,17 +101,20 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{post.data.title} — Aaron Cooper</title>
-    <meta name="description" content={post.data.excerpt} />
-    <link rel="canonical" href={`https://snazzie.space/articles/${post.id}/`} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <BaseHead
+      title={`${post.data.title} — Aaron Cooper`}
+      description={post.data.excerpt}
+      path={`/articles/${post.id}/`}
+      ogType="article"
+      image={ogImageAbs}
+      twitterCard={articleTwitterCard}
+    />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       "headline": post.data.title,
       "description": post.data.excerpt,
+      "image": ogImageAbs,
       "datePublished": post.data.date.toISOString(),
       ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
       "author": {

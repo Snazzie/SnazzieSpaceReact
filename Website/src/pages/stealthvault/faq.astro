@@ -1,17 +1,17 @@
 ---
 import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
 ---
 
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Security FAQ — StealthVault</title>
-    <meta name="description" content="How StealthVault encrypts your media, how your passcode unlocks the vault, and what happens to your data." />
-    <link rel="canonical" href="https://snazzie.space/stealthvault/faq/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="robots" content="noindex" />
+    <BaseHead
+      title="Security FAQ — StealthVault"
+      description="How StealthVault encrypts your media, how your passcode unlocks the vault, and what happens to your data."
+      path="/stealthvault/faq/"
+      noindex
+    />
   </head>
   <body class="bg-background text-foreground antialiased">
     <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center pt-4 px-4">
