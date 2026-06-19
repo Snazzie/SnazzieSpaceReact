@@ -5,11 +5,11 @@ import { useRoutedTab } from './lib/useRoutedTab';
 const HERO = {
   worth: {
     title: 'Is it worth your time?',
-    body: "Money is just stored hours. Enter your take-home (net) pay — the number that actually lands in your bank — and we'll work out your real hourly rate, then tell you how many hours of work that shiny new thing actually costs.",
+    body: "Money is stored hours. Enter your take-home pay and see how many hours of work any purchase really costs.",
   },
   compare: {
     title: 'Which offer is actually better?',
-    body: 'A bigger salary can be worth less per hour of your life. Enter each offer — pay, hours, and commute — and we’ll rank them by real take-home rate after tax, NI, and travel, so you compare what actually matters.',
+    body: 'Enter each offer — pay, hours, commute — and we’ll rank them by real take-home rate after tax, NI, and travel.',
   },
 } as const;
 
