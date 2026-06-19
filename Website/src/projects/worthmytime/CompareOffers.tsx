@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { evaluateOffer, type Period, type Mode, type OfferResult } from './lib/offer';
 import { PERSONAL_ALLOWANCE, PA_TAPER_START } from './lib/tax';
 import { gbp, gbp2 } from './lib/format';
@@ -294,11 +295,22 @@ export default function CompareOffers() {
   const bestHourly = bestIdx >= 0 ? results[bestIdx].effHourly : 0;
   const bestNet = bestIdx >= 0 ? results[bestIdx].effNetYear : 0;
 
+  // Mobile: the verdict collapses to a one-line summary to save screen space.
+  const [open, setOpen] = useState(false);
+  const summary =
+    ranked.length < 2
+      ? 'Add two offers to compare'
+      : tie
+        ? 'Line-ball — top two are equal'
+        : `${winnerName} · ${priority === 'hour' ? `+${gbp2.format(hourlyGap)}/hr` : `+${gbp.format(netGap)}/yr`}`;
+
   return (
-    <div className="mx-auto max-w-5xl space-y-6">
-      {/* Verdict — sticky so it stays in view while scrolling offers */}
-      <div className="sticky top-4 z-20 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-black/40 p-6 text-center backdrop-blur-md">
-        <div className="mb-4 flex items-center justify-center gap-2">
+    <div className="mx-auto flex max-w-5xl flex-col gap-6">
+      {/* Verdict — order-last + sticky bottom keeps it pinned to the foot of the
+          viewport while you scroll the offers above. */}
+      <div className="order-last sticky bottom-4 z-20 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-black/40 p-4 text-center backdrop-blur-md sm:p-6">
+        {/* Desktop: centered Prioritise toggle above the full verdict */}
+        <div className="mb-4 hidden items-center justify-center gap-2 sm:flex">
           <span className="text-xs uppercase tracking-wide text-muted-foreground/70">Prioritise</span>
           <Segmented
             options={[
@@ -309,6 +321,38 @@ export default function CompareOffers() {
             onChange={setPriority}
           />
         </div>
+
+        {/* Mobile: one compact row — toggle on the left, summary + expand on the right */}
+        <div className="flex items-center gap-2 sm:hidden">
+          <Segmented
+            options={[
+              { id: 'hour', label: 'Time' },
+              { id: 'total', label: 'Net pay' },
+            ]}
+            value={priority}
+            onChange={setPriority}
+          />
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            className="flex min-w-0 flex-1 items-center justify-end gap-1.5"
+          >
+            <span className="truncate text-sm font-semibold text-foreground">{summary}</span>
+            <svg
+              viewBox="0 0 24 24"
+              className={`size-4 shrink-0 fill-none stroke-current text-muted-foreground transition-transform ${
+                open ? 'rotate-180' : ''
+              }`}
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div className={`${open ? 'mt-3 block' : 'hidden'} sm:mt-0 sm:block`}>
         {ranked.length < 2 ? (
           <p className="text-muted-foreground">Fill in at least two offers to compare.</p>
         ) : tie ? (
@@ -382,6 +426,7 @@ export default function CompareOffers() {
             </div>
           </>
         )}
+        </div>
       </div>
 
       {/* Offer cards — stacked, each form-left / breakdown-right */}

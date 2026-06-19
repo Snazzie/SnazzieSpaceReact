@@ -3,7 +3,7 @@ import { evaluateOffer, PERIOD_PER, type Period, type Mode } from './lib/offer';
 import { gbp, gbp2 } from './lib/format';
 import { LEFT_LANES, RIGHT_LANES, ALL_ITEMS } from './data/items';
 import { MoneyField, Segmented, Stat, PeriodCell } from './components/fields';
-import { TickerColumn } from './components/Ticker';
+import { TickerColumn, TickerRow } from './components/Ticker';
 import { usePersistentState } from './lib/usePersistentState';
 
 const PERIODS: { id: Period; label: string }[] = [
@@ -75,7 +75,7 @@ export default function Calculator() {
               <Segmented
                 options={[
                   { id: 'gross', label: 'Gross' },
-                  { id: 'net', label: 'Take-home' },
+                  { id: 'net', label: 'Net' },
                 ]}
                 value={mode}
                 onChange={setMode}
@@ -268,25 +268,15 @@ export default function Calculator() {
       </div>
 
       {/* Spacer so page content clears the fixed mobile carousel below */}
-      <div className="h-24 xl:hidden" aria-hidden="true" />
+      <div className="h-32 xl:hidden" aria-hidden="true" />
 
-      {/* Mobile/tablet: single-row item carousel, stickied to viewport bottom */}
+      {/* Mobile/tablet: stickied horizontal carousel of priced things */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-black/80 backdrop-blur-md xl:hidden">
         <p className="px-4 pt-2 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-          Tap to price something
+          What your money is worth · tap to price it
         </p>
-        <div className="flex gap-2 overflow-x-auto px-4 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {ALL_ITEMS.map((item) => (
-            <button
-              key={item.name}
-              type="button"
-              onClick={() => pick(item.price)}
-              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-white/25 hover:text-foreground"
-            >
-              <span aria-hidden="true">{item.emoji}</span>
-              {item.name}
-            </button>
-          ))}
+        <div className="px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5">
+          <TickerRow items={ALL_ITEMS} netHourly={effHourly} onPick={pick} />
         </div>
       </div>
     </div>

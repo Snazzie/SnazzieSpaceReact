@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { Item } from '../data/items';
 import { gbpItem } from '../lib/format';
 import { hoursForPrice, formatWorkTime } from '../lib/tax';
@@ -30,6 +31,94 @@ function TickerCard({
         <span className="text-xs font-semibold tabular-nums text-emerald-400">{cost}</span>
       </div>
     </button>
+  );
+}
+
+/** Horizontal priced-card carousel for the mobile sticky bar. Auto-advances
+ *  slowly; the user can swipe to scroll faster with native momentum (velocity),
+ *  which pauses the auto-scroll briefly. Three copies give a seamless wrap in
+ *  both directions. */
+export function TickerRow({
+  items,
+  netHourly,
+  onPick,
+}: {
+  items: Item[];
+  netHourly: number;
+  onPick: (price: number) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const loop = [...items, ...items, ...items];
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const AUTO_PX_PER_FRAME = 0.35; // gentle drift
+    let raf = 0;
+    let paused = false;
+    let resumeTimer: ReturnType<typeof setTimeout> | undefined;
+
+    // Keep scrollLeft inside the middle copy so wrapping is invisible.
+    const wrap = () => {
+      const unit = el.scrollWidth / 3;
+      if (el.scrollLeft >= unit * 2) el.scrollLeft -= unit;
+      else if (el.scrollLeft < unit) el.scrollLeft += unit;
+    };
+
+    const tick = () => {
+      if (!paused) {
+        el.scrollLeft += AUTO_PX_PER_FRAME;
+        wrap();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const pause = () => {
+      paused = true;
+      if (resumeTimer) clearTimeout(resumeTimer);
+    };
+    // Resume after the flick's momentum has settled.
+    const resumeSoon = () => {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        paused = false;
+      }, 2500);
+    };
+
+    el.scrollLeft = el.scrollWidth / 3; // start in the middle copy
+    raf = requestAnimationFrame(tick);
+    el.addEventListener('pointerdown', pause);
+    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('pointerup', resumeSoon);
+    el.addEventListener('touchend', resumeSoon);
+    el.addEventListener('scroll', wrap, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (resumeTimer) clearTimeout(resumeTimer);
+      el.removeEventListener('pointerdown', pause);
+      el.removeEventListener('touchstart', pause);
+      el.removeEventListener('pointerup', resumeSoon);
+      el.removeEventListener('touchend', resumeSoon);
+      el.removeEventListener('scroll', wrap);
+    };
+  }, [items]);
+
+  return (
+    <div
+      ref={ref}
+      className="overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      style={{ WebkitOverflowScrolling: 'touch' }}
+    >
+      <div className="flex w-max gap-2">
+        {loop.map((item, i) => (
+          <div key={`${item.name}-${i}`} className="w-40 shrink-0">
+            <TickerCard item={item} netHourly={netHourly} onPick={onPick} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

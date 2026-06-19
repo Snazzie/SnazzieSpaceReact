@@ -19,6 +19,24 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Worth My Time",
+    description:
+      "Turns your UK salary into a real take-home hourly rate after tax, NI and commute — then prices any purchase in hours of life. Plus a job-offer comparison.",
+    href: "/worthmytime",
+    image: "/wmt.png",
+    featured: true,
+    imageFit: "contain",
+    imgWidth: 1496,
+    imgHeight: 1516,
+    tech: ["Astro", "React", "TypeScript", "Tailwind", "Vite", "Bun", "big.js", "Vitest"],
+    details: [
+      "Real hourly rate from gross or take-home pay, using 2025/26 rest-of-UK Income Tax + National Insurance",
+      "Prices any purchase in hours of work, with a live ticker of everyday items",
+      "Compare-offers mode ranks jobs by effective £/hour or total take-home, factoring commute time and cost",
+      "Exact decimal money maths via big.js; deep-linkable tabs",
+    ],
+  },
+  {
     title: "Snazzie FM",
     description:
       "Absurdist AI radio station. Multi-voice call-in comedy generated with cloned TTS voices, played on a shared Web Audio timeline.",
