@@ -263,7 +263,7 @@ export default function Calculator() {
 
       {/* Right lanes — first from xl, second from very wide screens */}
       <div className="hidden gap-4 xl:grid xl:grid-cols-1 min-[1700px]:grid-cols-2">
-        <TickerColumn items={RIGHT_LANES[0].items} netHourly={effHourly} onPick={pick} direction={RIGHT_LANES[0].direction} />
+        <TickerColumn items={RIGHT_LANES[0].items} netHourly={effHourly} onPick={pick} direction={RIGHT_LANES[0].direction} withAd />
         <TickerColumn items={RIGHT_LANES[1].items} netHourly={effHourly} onPick={pick} direction={RIGHT_LANES[1].direction} className="hidden min-[1700px]:block" />
       </div>
 

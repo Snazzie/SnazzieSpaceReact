@@ -27,14 +27,22 @@ function AdCard() {
     }
   }, []);
   // Fixed-size wrapper so the slot matches a TickerCard footprint instead of the
-  // responsive 'auto' format ballooning to fill the lane height.
+  // responsive 'auto' format ballooning to fill the lane height. The 'Your Ad
+  // Here' fallback sits underneath the injected <ins>: a filled ad (opaque
+  // iframe) paints over it, and if the loader is blocked or the slot comes back
+  // unfilled it stays visible instead of leaving a blank card.
   return (
-    <div
-      ref={ref}
-      className="block h-[5.5rem] w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
-    />
+    <div className="relative block h-[5.5rem] w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]">
+      <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+        Your Ad Here
+      </span>
+      <div ref={ref} className="relative h-full w-full" />
+    </div>
   );
 }
+
+/** Cards shown between interleaved ads in the carousels. Lower = ads more often. */
+const AD_EVERY = 6;
 
 /** One purchase card inside a ticker lane. Click to load its price. */
 function TickerCard({
@@ -81,7 +89,6 @@ export function TickerRow({
   onPick: (price: number) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const loop = [...items, ...items, ...items];
 
   useEffect(() => {
     const el = ref.current;
@@ -145,10 +152,32 @@ export function TickerRow({
       style={{ WebkitOverflowScrolling: 'touch' }}
     >
       <div className="flex w-max gap-2">
-        {loop.map((item, i) => (
-          <div key={`${item.name}-${i}`} className="w-40 shrink-0">
-            <TickerCard item={item} netHourly={netHourly} onPick={onPick} />
-          </div>
+        {/* Three identical copies for a seamless wrap (wrap math divides by 3).
+            Ads are interleaved inside each copy, so every copy stays equal width. */}
+        {['a', 'b', 'c'].map((copy) => (
+          <Fragment key={copy}>
+            {/* Lead each copy with an ad so a slot is always in view (the row only
+                shows ~2-3 cards at once; without this the first every-6 ad starts
+                off-screen). Copies stay equal width, so the /3 wrap math holds. */}
+            <div key={`${copy}-ad-lead`} className="w-40 shrink-0">
+              <AdCard />
+            </div>
+            {items.flatMap((item, i) => {
+              const card = (
+                <div key={`${copy}-${item.name}-${i}`} className="w-40 shrink-0">
+                  <TickerCard item={item} netHourly={netHourly} onPick={onPick} />
+                </div>
+              );
+              return i > 0 && i % AD_EVERY === 0
+                ? [
+                    <div key={`${copy}-ad-${i}`} className="w-40 shrink-0">
+                      <AdCard />
+                    </div>,
+                    card,
+                  ]
+                : [card];
+            })}
+          </Fragment>
         ))}
       </div>
     </div>
@@ -177,7 +206,10 @@ export function TickerColumn({
     <Fragment key={copy}>
       {withAd && <AdCard />}
       {items.map((item, i) => (
-        <TickerCard key={`${copy}-${item.name}-${i}`} item={item} netHourly={netHourly} onPick={onPick} />
+        <Fragment key={`${copy}-${item.name}-${i}`}>
+          {withAd && i > 0 && i % AD_EVERY === 0 && <AdCard />}
+          <TickerCard item={item} netHourly={netHourly} onPick={onPick} />
+        </Fragment>
       ))}
     </Fragment>
   );
