@@ -13,9 +13,9 @@ export const meta = {
 // ---------------------------------------------------------------------------
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
 const CAST_JSON = `${REPO}/scripts/cast.json`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 
 // All 40 episodes produced this session, with the cliffhanger each one left open.
 const PARENTS = [

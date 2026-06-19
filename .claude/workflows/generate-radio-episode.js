@@ -18,9 +18,9 @@ export const meta = {
 // ---------------------------------------------------------------------------
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
 const CAST_JSON = `${REPO}/scripts/cast.json`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 
 // Reference: study shipped episodes for craft (NOT to copy premises from).
 // villain-hour is the skill's canonical "funny" reference and is REQUIRED reading;
@@ -374,7 +374,7 @@ const render = await agent(
      python scripts/generate-radio.py ${slug}
    This loads a multi-GB TTS model and renders one clip per line — it takes several MINUTES.
    Use a long Bash timeout (up to 600000 ms). It writes timestamp/duration/audio back into the
-   JSON and creates Website/public/audio/radio/${slug}/ with the .flac clips + .clips.json.
+   JSON and creates Website/public/snazziefm/audio/${slug}/ with the .flac clips + .clips.json.
    If it errors on a missing cast/voice entry, report the exact error verbatim — do NOT invent fixes.
 2. Then verify the site builds:
      cd ${REPO}/Website && bun run build

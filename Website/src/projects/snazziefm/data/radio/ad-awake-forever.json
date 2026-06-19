@@ -1,0 +1,24 @@
+{
+  "slug": "ad-awake-forever",
+  "title": "Awake Forever",
+  "description": "A paid message from Awake Forever. Sleep is for the unemployed.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "Tired of being tired? <p:0.2> One Awake Forever capsule keeps you wired for nine straight days! <p:0.2> No sleep, no slowdown, no problem. <p:0.2> Awake Forever, the last good night you'll ever need!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.94,
+      "audio": "/snazziefm/audio/ad-awake-forever/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Awake Forever is not approved for human use. <p:0> May cause severe insomnia, heart palpitations, and dependency. <p:0> The crash lasts as long as the high. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.705,
+      "duration": 7.861,
+      "audio": "/snazziefm/audio/ad-awake-forever/1.flac"
+    }
+  ]
+}

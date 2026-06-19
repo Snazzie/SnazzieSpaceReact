@@ -1,0 +1,17 @@
+{
+  "slug": "ad-gregs-appliances-2",
+  "title": "Greg's Appliances #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-patricia",
+      "text": "Greg's Appliances, the price is, <p:0.4> still do not have it. <p:0.3> It is a good price. <p:0.3> Just come look.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.88,
+      "audio": "/snazziefm/audio/ad-gregs-appliances-2/0.flac"
+    }
+  ]
+}

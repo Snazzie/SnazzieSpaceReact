@@ -1,0 +1,17 @@
+{
+  "slug": "ad-murphys-auto-2",
+  "title": "Murphy's Auto #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, it is on. <p:0.3> Murphy's Auto, we fix your car fast and cheap... <p:0.4> uh, is that blinker fluid? <p:0.3> Murphy, get over here.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.72,
+      "audio": "/snazziefm/audio/ad-murphys-auto-2/0.flac"
+    }
+  ]
+}

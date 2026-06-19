@@ -1,0 +1,48 @@
+{
+  "slug": "civic-the-reservoir",
+  "title": "Civic Notice: The Reservoir",
+  "description": "An automated Snazzie F M civic notice regarding the second water level beneath the municipal reservoir, and what it has begun returning.",
+  "category": "psa",
+  "lines": [
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is a test of the Snazzie F M Civic Notification System. A second water level has formed beneath the municipal reservoir. <p:0.5> It returns what residents have placed in the first.",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 8.096,
+      "audio": "/snazziefm/audio/civic-the-reservoir/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.3> Do not approach the reservoir between the hours it is not approachable. The schedule is posted where you last looked.",
+      "overlap": -0.3,
+      "timestamp": 7.797,
+      "duration": 5.161,
+      "audio": "/snazziefm/audio/civic-the-reservoir/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.3> If the water is warm, it is listening. Speak only your name and your household number.",
+      "overlap": -0.3,
+      "timestamp": 12.664,
+      "duration": 3.926,
+      "audio": "/snazziefm/audio/civic-the-reservoir/2.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "<p:0.3> Tonight's drinking water has been pre-remembered. You will recognize the taste. <p:0.5> This concludes the test. Please remain calm.",
+      "overlap": -0.3,
+      "timestamp": 16.175,
+      "duration": 6.234,
+      "audio": "/snazziefm/audio/civic-the-reservoir/3.flac"
+    },
+    {
+      "speaker": "ad-ann-deep",
+      "text": "<p:0.5> The reservoir has always been calm. The reservoir remains. <p:0.5> And so do you.",
+      "overlap": -0.2,
+      "timestamp": 21.681,
+      "duration": 4.71,
+      "audio": "/snazziefm/audio/civic-the-reservoir/4.flac"
+    }
+  ]
+}

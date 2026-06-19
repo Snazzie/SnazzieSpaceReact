@@ -1,0 +1,17 @@
+{
+  "slug": "ad-bright-smile-2",
+  "title": "Bright Smile Dental #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-mildred",
+      "text": "Okay, for real. <p:0.3> Bright Smile Dental, we do fillings and root canals, <p:0.4> painlessly. <p:0.3> Mostly. <p:0.3> Do not say mostly.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.67,
+      "audio": "/snazziefm/audio/ad-bright-smile-2/0.flac"
+    }
+  ]
+}

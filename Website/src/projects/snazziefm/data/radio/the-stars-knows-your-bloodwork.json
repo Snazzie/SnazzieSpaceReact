@@ -1,0 +1,112 @@
+{
+  "slug": "the-stars-knows-your-bloodwork",
+  "title": "The Stars with Rhonda: Your Bloodwork Knows",
+  "description": "Rhonda reads cosmic health predictions as serene fact while Ronnie spirals into hypochondria. Your bloodwork already came back, and it keeps arriving sooner.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "And now, the stars, with Rhonda. Rhonda, how's everybody's health looking?",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 5.76,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Aries. A single sit-up will undo decades of structural denial. Your knee has filed a complaint. <p:0.3> And your bloodwork already came back.",
+      "overlap": -0.2,
+      "timestamp": 4.935,
+      "duration": 8.39,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "[question-en] Came back? I didn't... when did anyone draw blood?",
+      "overlap": -0.1,
+      "timestamp": 13.005,
+      "duration": 4.84,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/2.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Taurus. You will say I feel fine out loud, and the universe will write it down to use against you.",
+      "overlap": -0.3,
+      "timestamp": 17.388,
+      "duration": 5.6,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, note to self, never feel fine.",
+      "overlap": 0,
+      "timestamp": 22.5,
+      "duration": 2.84,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/4.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Gemini. The left side of your body and the right side are no longer on speaking terms. Choose a side. <p:0.3> Your bloodwork came back early.",
+      "overlap": -0.2,
+      "timestamp": 24.607,
+      "duration": 8.37,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "[question-en] Early? How is it getting faster?",
+      "overlap": 0,
+      "timestamp": 32.603,
+      "duration": 3.64,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/6.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Virgo. That twinge is not nothing. It was never nothing. The lab called before you booked the appointment.",
+      "overlap": -0.3,
+      "timestamp": 35.845,
+      "duration": 6.19,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I have a twinge. Right now. Rhonda, I have the twinge.",
+      "overlap": -0.1,
+      "timestamp": 41.056,
+      "duration": 4.12,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/8.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Scorpio. Your bloodwork came back before the blood. It came back before YOU. <p:0.3> The results are in the casserole. Do not eat the casserole.",
+      "overlap": -0.2,
+      "timestamp": 44.729,
+      "duration": 8.49,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's my sign. That's MY sign. So... what do I do?",
+      "overlap": 0,
+      "timestamp": 52.495,
+      "duration": 3.68,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/10.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Nothing. It already knows.",
+      "overlap": -0.2,
+      "timestamp": 55.528,
+      "duration": 1.78,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Great. Cosmic. <p:0.3> We'll be right back, assuming my left side agrees.",
+      "overlap": 0,
+      "timestamp": 56.672,
+      "duration": 6.1,
+      "audio": "/snazziefm/audio/the-stars-knows-your-bloodwork/12.flac"
+    }
+  ]
+}

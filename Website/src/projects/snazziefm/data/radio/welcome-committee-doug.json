@@ -1,0 +1,319 @@
+{
+  "slug": "welcome-committee-doug",
+  "title": "The Welcome Committee: Where's Doug",
+  "description": "Maple Court's bake-sale surveillance state returns. Darnell is still red. The committee insists Doug is just on a leave of absence. Tonight Ronnie tries to get Doug himself on the line, and nobody can produce him.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight we welcome back the friendliest street in the county. Patricia from the Maple Court Welcome Committee is here, and so is our new resident at number eleven. Patricia, welcome back.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 16.36,
+      "audio": "/snazziefm/audio/welcome-committee-doug/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "His lights are still off, Ronnie. From last time. They never came back on.",
+      "overlap": -0.15,
+      "timestamp": 15.193,
+      "duration": 5.96,
+      "audio": "/snazziefm/audio/welcome-committee-doug/1.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "Thank you, Ronnie. And we brought banana bread for the studio, dear. <p:0.3> It's a healing week on Maple Court.",
+      "overlap": -0.2,
+      "timestamp": 19.745,
+      "duration": 9.98,
+      "audio": "/snazziefm/audio/welcome-committee-doug/2.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "It is not a healing week. I have been red for nine days. <p:0.3> I am calling from my car. My house has no power.",
+      "overlap": -0.1,
+      "timestamp": 28.401,
+      "duration": 6.63,
+      "audio": "/snazziefm/audio/welcome-committee-doug/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that's a man committed to the conversation, Barry. Calling in from the driveway. Real neighborhood spirit.",
+      "overlap": -0.2,
+      "timestamp": 34.779,
+      "duration": 7.1,
+      "audio": "/snazziefm/audio/welcome-committee-doug/4.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "I want the breaker turned back on. <p:0.3> I want to talk to whoever flips it. I want to talk to Doug.",
+      "overlap": -0.1,
+      "timestamp": 41.18,
+      "duration": 6.02,
+      "audio": "/snazziefm/audio/welcome-committee-doug/5.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "Oh, dear. <p:0.3> Doug's on a leave of absence right now.",
+      "overlap": -0.1,
+      "timestamp": 46.645,
+      "duration": 5.62,
+      "audio": "/snazziefm/audio/welcome-committee-doug/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A leave of absence. The one man who does everything took time off?",
+      "overlap": -0.1,
+      "timestamp": 51.414,
+      "duration": 5.4,
+      "audio": "/snazziefm/audio/welcome-committee-doug/7.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug does not take time off. <p:0.3> Doug is resting his eyes. There is a difference, Barry.",
+      "overlap": 0.2,
+      "timestamp": 55.172,
+      "duration": 5.93,
+      "audio": "/snazziefm/audio/welcome-committee-doug/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Tell you what, let's get him on. Patricia, can you put Doug on the line? The whole county wants to thank him.",
+      "overlap": -0.2,
+      "timestamp": 60.439,
+      "duration": 8.12,
+      "audio": "/snazziefm/audio/welcome-committee-doug/9.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "I'll just pass him the phone, dear. <p:0.3> Doug? Doug, it's for you.",
+      "overlap": -0.1,
+      "timestamp": 67.263,
+      "duration": 5.9,
+      "audio": "/snazziefm/audio/welcome-committee-doug/10.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "...There's nobody there. <p:0.3> She's holding the phone out to an empty chair. I can hear the empty chair.",
+      "overlap": -0.1,
+      "timestamp": 72.926,
+      "duration": 6.21,
+      "audio": "/snazziefm/audio/welcome-committee-doug/11.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "He stepped out. <p:0.3> Doug stepped out the exact second you asked. Doug is fast.",
+      "overlap": 0.25,
+      "timestamp": 78.001,
+      "duration": 6.13,
+      "audio": "/snazziefm/audio/welcome-committee-doug/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Patricia, has anyone on the street actually, physically, seen Doug?",
+      "overlap": -0.1,
+      "timestamp": 83.562,
+      "duration": 5.6,
+      "audio": "/snazziefm/audio/welcome-committee-doug/13.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "We've seen his work, dear. We've seen the drone. We've seen the spreadsheet. <p:0.3> That's nearly the same as Doug.",
+      "overlap": -0.1,
+      "timestamp": 87.629,
+      "duration": 10.26,
+      "audio": "/snazziefm/audio/welcome-committee-doug/14.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "That is not nearly the same as Doug! <p:0.3> That's a drone and a spreadsheet and NO DOUG.",
+      "overlap": 0,
+      "timestamp": 97.104,
+      "duration": 5.2,
+      "audio": "/snazziefm/audio/welcome-committee-doug/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A man so dedicated he doesn't even need to exist to serve. Now that's the heart of a neighborhood, Barry.",
+      "overlap": -0.2,
+      "timestamp": 100.681,
+      "duration": 7.96,
+      "audio": "/snazziefm/audio/welcome-committee-doug/16.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Watch what you say. <p:0.3> Doug reads the transcript.",
+      "overlap": 0.2,
+      "timestamp": 107.248,
+      "duration": 4.22,
+      "audio": "/snazziefm/audio/welcome-committee-doug/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Winston. <p:0.3> Winston, who flipped the breaker on the new guy if Doug's been resting his eyes for nine days?",
+      "overlap": -0.1,
+      "timestamp": 110.89,
+      "duration": 9.34,
+      "audio": "/snazziefm/audio/welcome-committee-doug/18.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "...Doug did.",
+      "overlap": -0.1,
+      "timestamp": 118.672,
+      "duration": 1.56,
+      "audio": "/snazziefm/audio/welcome-committee-doug/19.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "You just said he stepped out! <p:0.3> You said he was on leave! Which is it, Winston?",
+      "overlap": 0,
+      "timestamp": 119.842,
+      "duration": 5.17,
+      "audio": "/snazziefm/audio/welcome-committee-doug/20.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "Don't badger him, dear. <p:0.3> Winston has been at the spreadsheet a very long time. Since the spring fete, really.",
+      "overlap": 0.25,
+      "timestamp": 124.034,
+      "duration": 10.42,
+      "audio": "/snazziefm/audio/welcome-committee-doug/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Wait. <p:0.3> Patricia. The man who hasn't slept since the spring fete. That was Doug. <p:0.3> Winston hasn't slept since the spring fete.",
+      "overlap": -0.1,
+      "timestamp": 133.528,
+      "duration": 11.36,
+      "audio": "/snazziefm/audio/welcome-committee-doug/22.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Oh no. <p:0.3> Oh no, no, no.",
+      "overlap": 0.2,
+      "timestamp": 143.607,
+      "duration": 2.62,
+      "audio": "/snazziefm/audio/welcome-committee-doug/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Spell it out for the folks at home, Barry.",
+      "overlap": -0.2,
+      "timestamp": 145.377,
+      "duration": 3.28,
+      "audio": "/snazziefm/audio/welcome-committee-doug/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Winston IS Doug. <p:0.3> There's no leave of absence. There's no empty chair. He's the drone, the spreadsheet, the breaker, all of it.",
+      "overlap": -0.1,
+      "timestamp": 147.76,
+      "duration": 10.66,
+      "audio": "/snazziefm/audio/welcome-committee-doug/25.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "...That is a serious accusation, Barry.",
+      "overlap": -0.1,
+      "timestamp": 157.2,
+      "duration": 2.84,
+      "audio": "/snazziefm/audio/welcome-committee-doug/26.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Say you're not Doug, then! <p:0.3> Right now, on the air, say it!",
+      "overlap": 0.3,
+      "timestamp": 159.164,
+      "duration": 4.06,
+      "audio": "/snazziefm/audio/welcome-committee-doug/27.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "...I cannot speak for Doug.",
+      "overlap": 0.25,
+      "timestamp": 162.085,
+      "duration": 2.15,
+      "audio": "/snazziefm/audio/welcome-committee-doug/28.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "You ARE Doug!",
+      "overlap": 0.4,
+      "timestamp": 163.138,
+      "duration": 1.43,
+      "audio": "/snazziefm/audio/welcome-committee-doug/29.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I am the committee.",
+      "overlap": 0.4,
+      "timestamp": 163.686,
+      "duration": 1.73,
+      "audio": "/snazziefm/audio/welcome-committee-doug/30.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Turn my lights ON!",
+      "overlap": 0.4,
+      "timestamp": 164.505,
+      "duration": 1.53,
+      "audio": "/snazziefm/audio/welcome-committee-doug/31.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "Banana bread!",
+      "overlap": 0.4,
+      "timestamp": 164.551,
+      "duration": 1.88,
+      "audio": "/snazziefm/audio/welcome-committee-doug/32.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Going green.",
+      "overlap": 0.4,
+      "timestamp": 165.36,
+      "duration": 1.64,
+      "audio": "/snazziefm/audio/welcome-committee-doug/33.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "My lights came on! <p:0.3> Wait. My lights are ON.",
+      "overlap": 0,
+      "timestamp": 166.563,
+      "duration": 3.53,
+      "audio": "/snazziefm/audio/welcome-committee-doug/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "He did it from the chair, Ronnie. <p:0.3> He turned the new guy green from the empty chair.",
+      "overlap": -0.1,
+      "timestamp": 169.358,
+      "duration": 7.06,
+      "audio": "/snazziefm/audio/welcome-committee-doug/35.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Doug did. <p:0.3> Doug came back.",
+      "overlap": -0.1,
+      "timestamp": 175.243,
+      "duration": 3.72,
+      "audio": "/snazziefm/audio/welcome-committee-doug/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And just like that, the new fella's got his power back. <p:0.4> That's what a real neighborhood does, Barry. It forgives. <p:0.3> Right after Patricia saves us all a slice.",
+      "overlap": -0.25,
+      "timestamp": 178.285,
+      "duration": 12.86,
+      "audio": "/snazziefm/audio/welcome-committee-doug/37.flac"
+    },
+    {
+      "speaker": "committee-patricia",
+      "text": "...Conditionally.",
+      "overlap": -0.1,
+      "timestamp": 189.997,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/welcome-committee-doug/38.flac"
+    }
+  ]
+}

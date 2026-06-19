@@ -1,0 +1,24 @@
+{
+  "slug": "ad-claimfast-legal",
+  "title": "Claimfast Legal",
+  "description": "Personal-injury lawyers with a litigation drone that wires you a settlement before you finish falling.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-cash",
+      "text": "Slip and our drone wires you a settlement before you hit the floor! Claimfast Legal... if you bend, somebody pays!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.91,
+      "audio": "/snazziefm/audio/ad-claimfast-legal/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Drone may sue your reflection. <p:0> Clients develop a litigious limp. <p:0> Settlements paid in teeth. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.514,
+      "duration": 5.807,
+      "audio": "/snazziefm/audio/ad-claimfast-legal/1.flac"
+    }
+  ]
+}

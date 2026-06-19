@@ -57,10 +57,10 @@ in an ad.
 
 ## Data + slot
 
-- Script: `Website/src/data/radio/<ad-slug>.json` — `type: "ad"`, NO `engine` field, NO
+- Script: `Website/src/projects/snazziefm/data/radio/<ad-slug>.json` — `type: "ad"`, NO `engine` field, NO
   `track`. Authored fields only per line (`speaker`, `text`, `overlap`; `timestamp`/
   `duration` = 0, no `audio`). The generator fills `timestamp`/`duration`/`audio`.
-- Register: import it in `Website/src/data/radio.ts` and add to `export const ADS`.
+- Register: import it in `Website/src/projects/snazziefm/data/radio.ts` and add to `export const ADS`.
   Add any new ad voice to `CAST` there (reuse `role: "Guest Expert"`).
 - The player (`useRadioAudio.ts`) airs a **random** ad from `ADS` between every show (`afterShow`
   + `MUSIC_EVERY`); `startAd` schedules the per-line clips (or a single `track` if one exists)
@@ -145,7 +145,7 @@ python scripts/generate-radio.py <ad-slug>
 ```
 
 Writes per-line `timestamp`/`duration`/`audio` back into the ad JSON and one clip per line
-to `Website/public/audio/radio/<ad-slug>/<i>.flac`. Caching is per-clip (content hash), so
+to `Website/public/snazziefm/audio/<ad-slug>/<i>.flac`. Caching is per-clip (content hash), so
 re-running only re-renders changed lines.
 
 ## Checklist for a new ad

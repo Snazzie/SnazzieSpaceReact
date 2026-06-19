@@ -13,8 +13,8 @@ export const meta = {
 
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 
 const FORMAT = `FORMAT — SNAZZIE FM CIVIC NOTIFICATION SYSTEM (~25-40s):
 A calm, flat automated public-service / emergency-test broadcast that delivers absurd dystopian

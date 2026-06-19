@@ -14,14 +14,14 @@ retiming a line only edits its `timestamp`, never the audio.
 
 | Path | Role |
 |------|------|
-| `Website/src/data/radio/<slug>.json` | Episode script (authored + generated fields) |
-| `Website/src/data/radio.ts` | `CAST` map + `EPISODES` loader / TS types |
-| `Website/public/audio/radio/<slug>/<i>.flac` | One clip per line (generated) |
-| `Website/public/audio/radio/<slug>/.clips.json` | Per-clip content-hash cache manifest |
+| `Website/src/projects/snazziefm/data/radio/<slug>.json` | Episode script (authored + generated fields) |
+| `Website/src/projects/snazziefm/data/radio.ts` | `CAST` map + `EPISODES` loader / TS types |
+| `Website/public/snazziefm/audio/<slug>/<i>.flac` | One clip per line (generated) |
+| `Website/public/snazziefm/audio/<slug>/.clips.json` | Per-clip content-hash cache manifest |
 | `scripts/generate-radio.py` | TTS render + placement pipeline |
 | `scripts/cast.json` | Voice config per character |
 | `scripts/download-voices.py` | Pull reference voices from LibriSpeech |
-| `Website/src/components/RadioStation.tsx` | Player + multitrack debug UI |
+| `Website/src/projects/snazziefm/RadioStation.tsx` | Player + multitrack debug UI |
 
 ## Episode JSON shape
 
@@ -337,7 +337,7 @@ drifted at high temperature). Kept for reference only.
 
 ## Adding a new episode
 
-1. Create `Website/src/data/radio/<slug>.json` with authored lines (timestamps `0`).
+1. Create `Website/src/projects/snazziefm/data/radio/<slug>.json` with authored lines (timestamps `0`).
 2. Add any new characters to `scripts/cast.json` **and** `CAST` in `radio.ts`.
 3. Import + add the episode in `EPISODES` (`radio.ts`).
 4. `python scripts/generate-radio.py <slug>` to render clips and fill timestamps.

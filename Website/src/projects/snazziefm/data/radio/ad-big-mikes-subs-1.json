@@ -1,0 +1,35 @@
+{
+  "slug": "ad-big-mikes-subs-1",
+  "title": "Big Mike's Subs #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-linda",
+      "text": "Big Mike's Subs, foot-long sandwiches stacked with meat, fresh baked bread, every topping you can think of, and we are located at four twenty two East Maple, right next to the",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.93,
+      "audio": "/snazziefm/audio/ad-big-mikes-subs-1/0.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Yeah, can I get a number four? <p:0.2> No onions.",
+      "distant": true,
+      "gain": 0.5,
+      "overlap": 0.4,
+      "timestamp": 11.279,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/ad-big-mikes-subs-1/1.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "...hang on. <p:0.3> No onions. <p:0.3> Got it. <p:0.4> Where was I?",
+      "overlap": 0.2,
+      "timestamp": 13.131,
+      "duration": 6.67,
+      "audio": "/snazziefm/audio/ad-big-mikes-subs-1/2.flac"
+    }
+  ]
+}

@@ -15,8 +15,8 @@ export const meta = {
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL_ADS = `${REPO}/.claude/skills/radio-adverts/SKILL.md`
 const SKILL_EP = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 
 // Existing announcer voices (already in CAST + cast.json). Reuse these — do NOT invent new
 // announcer voices (that needs LibriSpeech sourcing). The disclaimer is ALWAYS ad-disclaimer.

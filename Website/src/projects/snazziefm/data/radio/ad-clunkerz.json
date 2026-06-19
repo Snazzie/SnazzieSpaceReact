@@ -1,0 +1,24 @@
+{
+  "slug": "ad-clunkerz",
+  "title": "Big Stan's Clunkerz",
+  "description": "A used-car lot where every pre-owned sedan has decided you are family now.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-gravel",
+      "text": "Zero down, zero questions, and a sedan that has decided you are family now. <p:0.2> Big Stan's Clunkerz, where every car remembers its last owner.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.94,
+      "audio": "/snazziefm/audio/ad-clunkerz/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Previous owner still in the trunk, and voting. <p:0> Drives to its real home at 3 a.m. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 7.604,
+      "duration": 5.043,
+      "audio": "/snazziefm/audio/ad-clunkerz/1.flac"
+    }
+  ]
+}

@@ -14,9 +14,9 @@ export const meta = {
 // ---------------------------------------------------------------------------
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
 const CAST_JSON = `${REPO}/scripts/cast.json`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 
 // TWO HOSTS ONLY. No callers on these episodes — the hosts read the listener
 // submissions aloud. ronnie = host who reads + answers, barry = co-host who punctures.

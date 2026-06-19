@@ -1,0 +1,17 @@
+{
+  "slug": "ad-instaad-gag",
+  "title": "Big Bob's",
+  "description": "A paid message recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-gary",
+      "text": "Uh, hi. <p:0.3> Come on down to Big Bob's Furniture, where the deals are, uh, big. <p:0.2> We got couches, we got, uh, beds, we got, <p:0.3> wait. <p:0.4> Shit. <p:0.3> How do I restart this?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 17.82,
+      "audio": "/snazziefm/audio/ad-instaad-gag/0.flac"
+    }
+  ]
+}

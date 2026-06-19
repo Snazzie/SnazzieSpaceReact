@@ -1,0 +1,96 @@
+{
+  "slug": "the-stars-with-rhonda-family-and-home",
+  "title": "The Stars with Rhonda: The House Knows What You Did",
+  "description": "Rhonda reads the family-and-home horoscopes as serene cosmic fact. Group chats, casseroles, and mortgages curdle into domestic doom, and the house itself keeps score.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "The stars, with Rhonda. Easy week ahead, Rhonda?",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 3.8,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "The house already knows, Ronnie. Aries, you host the family dinner. No one rises to help. The house has noticed who cooks. Forever.",
+      "overlap": -0.2,
+      "timestamp": 3.031,
+      "duration": 7.66,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, but a dinner is nice, that is, that is bonding.",
+      "overlap": 0,
+      "timestamp": 10.103,
+      "duration": 4.0,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/2.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Taurus. The group chat goes silent the moment you type. They are not gone. They started a second chat. The house already knew.",
+      "overlap": -0.3,
+      "timestamp": 13.558,
+      "duration": 7.33,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A second chat? Without me, I mean, without them?",
+      "overlap": 0,
+      "timestamp": 20.385,
+      "duration": 3.72,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/4.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Cancer. Your casserole returns. The dish is clean. Too clean. The house has decided you are not coming back.",
+      "overlap": -0.3,
+      "timestamp": 23.427,
+      "duration": 6.19,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/5.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Capricorn. The mortgage outlives you. The house does not grieve. <p:0.3> It simply waits in the hall.",
+      "overlap": -0.3,
+      "timestamp": 29.538,
+      "duration": 6.34,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "In the hall. Right. And what is, what is MY sign saying tonight?",
+      "overlap": -0.1,
+      "timestamp": 35.584,
+      "duration": 4.84,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/7.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "You are the family dinner, Ronnie. You are what the house has been waiting to cook.",
+      "overlap": -0.2,
+      "timestamp": 39.105,
+      "duration": 4.71,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "[question-en] I am the... no. That is not how ovens... <p:0.3> Rhonda, why is the studio so warm?",
+      "overlap": 0,
+      "timestamp": 43.094,
+      "duration": 6.9,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/9.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It is preheating, dear. The house is ready for you.",
+      "overlap": -0.1,
+      "timestamp": 49.248,
+      "duration": 3.03,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-family-and-home/10.flac"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "ronnie-knows-critters",
+  "title": "Ronnie Knows Critters",
+  "description": "A one-minute pet mailbag where Ronnie answers heartfelt animal worries with total confidence and zero competence. Every problem has one fix: just give it a job. Barry reads the saddest letters and quietly panics.",
+  "category": "advice",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Ronnie Knows Critters. Your pet problems, my solutions. Barry, first letter.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.04,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Denise writes, quote, my old beagle Pickles won't eat. He just stares at the back door. I think he's giving up.",
+      "overlap": -0.15,
+      "timestamp": 5.014,
+      "duration": 8.76,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's not grief, Denise, that's boredom. A dog at a door wants to be a security guard. Just give him a job.",
+      "overlap": -0.15,
+      "timestamp": 12.707,
+      "duration": 8.0,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, he's fourteen. He can barely stand.",
+      "overlap": 0.25,
+      "timestamp": 19.599,
+      "duration": 3.6,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then he's a SEATED guard, Barry. <p:0.3> Management. Next one.",
+      "overlap": -0.1,
+      "timestamp": 22.316,
+      "duration": 4.98,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Little Olivia, age nine, writes, quote, my goldfish Sunny is floating sideways at the top and I don't know what's wrong.",
+      "overlap": -0.15,
+      "timestamp": 26.585,
+      "duration": 9.64,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Olivia, Sunny's not sick. Sunny's on break. Just give her a job. Run her for the homeowners association. <p:0.3> She floats above the politics, Barry.",
+      "overlap": -0.15,
+      "timestamp": 35.048,
+      "duration": 11.26,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Olivia, sweetheart, go get a grown-up.",
+      "overlap": 0.25,
+      "timestamp": 44.839,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And an update. Denise writes, quote, Pickles got the security job. He let three raccoons in.",
+      "overlap": -0.15,
+      "timestamp": 47.153,
+      "duration": 7.08,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "[dissatisfaction-hnn] He's not management, Ronnie. <p:0.3> He's a liability.",
+      "overlap": -0.1,
+      "timestamp": 52.378,
+      "duration": 6.3,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He's middle management.",
+      "overlap": -0.1,
+      "timestamp": 57.383,
+      "duration": 2.2,
+      "audio": "/snazziefm/audio/ronnie-knows-critters/10.flac"
+    }
+  ]
+}

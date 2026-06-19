@@ -1,0 +1,17 @@
+{
+  "slug": "ad-rapid-plumbing-1",
+  "title": "Rapid Plumbing #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-steve",
+      "text": "Okay, three, two, one, <p:0.4> and... <p:0.3> Rapid Plumbing, leaks, clogs, and water heaters... <p:0.4> wait, did I miss the start?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.06,
+      "audio": "/snazziefm/audio/ad-rapid-plumbing-1/0.flac"
+    }
+  ]
+}

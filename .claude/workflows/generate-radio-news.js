@@ -13,9 +13,9 @@ export const meta = {
 
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
 const CAST_JSON = `${REPO}/scripts/cast.json`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 const CANONICAL_REF = `${EPISODE_DIR}/villain-hour.json`
 
 // Two recurring news anchors. They may not exist in CAST yet on the first run — the Wire phase

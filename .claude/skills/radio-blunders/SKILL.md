@@ -70,7 +70,7 @@ The failure has to make physical sense for a recording.
   - `SPLIT` entries `(slug, NAME, attempt1, attempt2)` emit `ad-<slug>-1/-2.json` ("#1"/"#2").
   - `LONG` entries `(slug, NAME, voice, text)` emit a single `ad-<slug>.json`.
   Both carry `type: "ad"` and **`blunder: true`**. Edit the lists and re-run to (re)emit.
-- Register the import in `Website/src/data/radio.ts` and add it to **`BLUNDER_ADS`** (a named
+- Register the import in `Website/src/projects/snazziefm/data/radio.ts` and add it to **`BLUNDER_ADS`** (a named
   subset). `ADS` is `[...STANDARD_ADS, ...BLUNDER_ADS]`, so blunders still air in the rotation;
   the `blunder` flag (carried through `adFrom`) is what groups them.
 - Behind-the-scenes (`RadioStation`) shows a **Blunders** tab alongside Shows / Ads, filtered

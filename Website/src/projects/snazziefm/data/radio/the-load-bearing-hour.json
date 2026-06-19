@@ -1,0 +1,247 @@
+{
+  "slug": "the-load-bearing-hour",
+  "title": "The Load-Bearing Hour with Ronnie",
+  "description": "Ronnie takes home-repair calls on Snazzie FM and answers every one with total confidence and zero competence. Barry tries to flag the danger. The fix for everything is a bookshelf.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and it's The Load-Bearing Hour, where your home is falling apart and I tell you it isn't. Lines are open.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.52,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, for the record, you have never held a level.",
+      "overlap": -0.15,
+      "timestamp": 8.394,
+      "duration": 4.24,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I've held many levels of confidence, Barry. Linda, you're up first. What's the home doing to you tonight?",
+      "overlap": -0.2,
+      "timestamp": 10.975,
+      "duration": 7.96,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/2.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, thank you, Ronnie, I'm so worried. There's this slow brown drip coming through my ceiling, right under the upstairs bathroom, and the stain keeps getting bigger, and... I'm scared the whole floor's gonna come down.",
+      "overlap": -0.2,
+      "timestamp": 18.486,
+      "duration": 13.16,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Linda, Linda. Breathe. A brown stain? That's not damage. That's character.",
+      "overlap": -0.15,
+      "timestamp": 31.317,
+      "duration": 5.72,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/4.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "It's character?",
+      "overlap": -0.1,
+      "timestamp": 36.33,
+      "duration": 1.25,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Water finds its own level, sweetheart. It'll sort itself out. Get a bigger bucket. <p:0.3> And you know what hides a bucket? A nice bookshelf right under the drip. Guests won't notice a thing.",
+      "overlap": -0.15,
+      "timestamp": 36.433,
+      "duration": 14.38,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's a burst pipe, Linda, you should call a...",
+      "overlap": 0.3,
+      "timestamp": 49.345,
+      "duration": 3.8,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Bookshelf. Next caller. Gary, talk to me.",
+      "overlap": 0.3,
+      "timestamp": 52.02,
+      "duration": 3.24,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/8.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Yeah, hi, Ronnie. There's this smell near my furnace. Kind of a... rotten egg thing? It comes and goes. Is that dangerous?",
+      "overlap": -0.2,
+      "timestamp": 54.121,
+      "duration": 10.84,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Rotten eggs? Gary, that's a cooking issue. You're frying too close to the unit.",
+      "overlap": -0.15,
+      "timestamp": 63.527,
+      "duration": 6.04,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/10.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "I don't cook near the furnace, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 68.615,
+      "duration": 3.56,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it's a smell looking for a job. Grab a scented plug-in, cover the note, done. Snazzie FM listeners get a discount on Air Prime fresheners, by the way. Lavender masks anything.",
+      "overlap": -0.15,
+      "timestamp": 71.197,
+      "duration": 13.64,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gary, that's gas, you need to evacu...",
+      "overlap": 0.35,
+      "timestamp": 83.377,
+      "duration": 3.0,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And don't light a candle near it, Barry, that's just basic candle safety, everybody knows that. Mildred, you're on.",
+      "overlap": 0.35,
+      "timestamp": 84.537,
+      "duration": 8.76,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/14.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Hello, dear. My outlet sparks when I plug in the kettle, and it gets warm, and now I'm frightened it'll start a fire in the night.",
+      "overlap": -0.2,
+      "timestamp": 92.671,
+      "duration": 9.43,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Warm just means it's working hard, Mildred. That outlet's earning its keep.",
+      "overlap": -0.15,
+      "timestamp": 101.001,
+      "duration": 5.69,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/16.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "But the sparking, dear?",
+      "overlap": -0.1,
+      "timestamp": 106.268,
+      "duration": 1.85,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/17.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You don't want an electrician. Trust me. My ex-brother-in-law's an electrician, total snake, charged me for a Tuesday. <p:0.3> Just tape over that outlet and run an extension cord from the good one across the hallway rug. Out of sight, out of mind.",
+      "overlap": -0.15,
+      "timestamp": 106.695,
+      "duration": 18.54,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A cord under a rug is how fires start, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 124.261,
+      "duration": 3.72,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/19.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's how rugs get cozy, Barry. Last one. Darnell, bring me your worst.",
+      "overlap": -0.2,
+      "timestamp": 126.994,
+      "duration": 5.32,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/20.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, so there's a long diagonal crack that just appeared right across my living room wall, and now a door upstairs won't shut, and I'm really worried it's the foundation.",
+      "overlap": -0.2,
+      "timestamp": 131.719,
+      "duration": 10.13,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/21.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Diagonal crack, door won't shut. Darnell, that's a load-bearing wall. Probably. Who's to say.",
+      "overlap": -0.15,
+      "timestamp": 141.35,
+      "duration": 7.12,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/22.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Wait, that sounds bad, what do I do?",
+      "overlap": -0.1,
+      "timestamp": 147.934,
+      "duration": 2.05,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Knock it out wider. A wall can't crack if there's less of it. Then brace whatever's left with a nice sturdy bookshelf.",
+      "overlap": -0.15,
+      "timestamp": 149.483,
+      "duration": 8.96,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm done. I'm just... I'm done.",
+      "overlap": -0.1,
+      "timestamp": 157.507,
+      "duration": 2.36,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And congratulations, Darnell. <p:0.3> You've got open concept now.",
+      "overlap": -0.2,
+      "timestamp": 158.876,
+      "duration": 5.14,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/26.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. Linda just called back.",
+      "overlap": -0.1,
+      "timestamp": 163.305,
+      "duration": 2.68,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Happy customer?",
+      "overlap": -0.1,
+      "timestamp": 164.843,
+      "duration": 1.92,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The bookshelf is now upstairs. <p:0.3> Through the floor.",
+      "overlap": -0.1,
+      "timestamp": 166.146,
+      "duration": 4.74,
+      "audio": "/snazziefm/audio/the-load-bearing-hour/29.flac"
+    }
+  ]
+}

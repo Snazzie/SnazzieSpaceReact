@@ -1,0 +1,303 @@
+{
+  "slug": "the-scarecrow-classic",
+  "title": "The Scarecrow Classic",
+  "description": "It's the 47th annual Scarecrow Classic on Snazzie FM, the harvest contest where every family stakes a stuffed scarecrow in the square. The proud chairman calls in about the streak, a new postal carrier mentions nobody's collected mail on Elm Street since the scarecrows got good, and a longtime resident explains the town has quietly reorganized daily life around not making eye contact with the winners.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, the square is glowing. It's the 47th annual Scarecrow Classic, the proudest harvest tradition this town has. Marv, you've chaired this contest for decades. Welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 15.61,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Forty-seven years. <p:0.3> Of stuffing dolls and staking them in the dirt. <p:0.3> Just so we're all clear on what we're celebrating.",
+      "overlap": -0.15,
+      "timestamp": 15.12,
+      "duration": 10.48,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/1.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "It's a deep honor, Ronnie. Forty-seven years undefeated. <p:0.3> Forty-seven straight blue ribbons. You don't argue with a streak like that, you build a town around it.",
+      "overlap": -0.2,
+      "timestamp": 24.702,
+      "duration": 10.27,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now THAT'S a Classic. Every family stitching their own champion. <p:0.3> That right there is the soul of this town, Barry.",
+      "overlap": -0.2,
+      "timestamp": 34.281,
+      "duration": 9.26,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a nice ribbon, Marv. I'll give you that. <p:0.3> Quick one, though. Who actually judges these things?",
+      "overlap": -0.1,
+      "timestamp": 42.513,
+      "duration": 8.26,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/4.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "We stopped sending judges in eighty-one, Barry. <p:0.3> You don't disqualify a champion for technique. The winner makes itself obvious. It always has.",
+      "overlap": -0.1,
+      "timestamp": 49.899,
+      "duration": 8.81,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/5.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Hi, yeah, hello. Darnell, I'm the new postal carrier, took the route last month. <p:0.3> So, for the record, I love a parade. I do. <p:0.3> But I cannot deliver to Elm Street.",
+      "overlap": -0.1,
+      "timestamp": 58.358,
+      "duration": 10.32,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A young man learning the lay of the land. Welcome aboard, Darnell.",
+      "overlap": -0.2,
+      "timestamp": 67.965,
+      "duration": 5.16,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/7.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Thank you. So, for the record, every box on Elm is stuffed full. Nobody's collected mail since, and I'm quoting a sticky note in the truck here, since the scarecrows got good.",
+      "overlap": -0.1,
+      "timestamp": 72.438,
+      "duration": 11.18,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Got good. <p:0.3> Marv, what does it mean when a scarecrow gets good?",
+      "overlap": -0.1,
+      "timestamp": 83.271,
+      "duration": 5.94,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/9.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "It means it earned its stake, Barry. <p:0.3> A ribbon-grade scarecrow holds its post. Doesn't slump, doesn't fall in a storm. <p:0.3> Elm Street's had the same six champions for six years running.",
+      "overlap": -0.1,
+      "timestamp": 88.191,
+      "duration": 11.73,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/10.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, hello, dears. Mildred, on Elm. <p:0.3> Don't you fuss about the mail, young man. You just don't look at the winner, that's all. It's only manners.",
+      "overlap": -0.1,
+      "timestamp": 99.577,
+      "duration": 10.17,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, Darnell? Pure small-town etiquette. You don't gawk at a champion. <p:0.3> That's just respect, Barry.",
+      "overlap": -0.2,
+      "timestamp": 109.077,
+      "duration": 8.02,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/12.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "So, for the record, the route map has a note on it too. <p:0.3> Elm Street residents are advised to walk backwards past the square. <p:0.3> Who advised that?",
+      "overlap": -0.1,
+      "timestamp": 116.538,
+      "duration": 9.39,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/13.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "We all just sort of started, dear. Years ago. <p:0.3> It's easier on the neck than keeping your eyes down the whole walk. You just don't look at the winner.",
+      "overlap": -0.1,
+      "timestamp": 125.174,
+      "duration": 9.66,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "An entire street walks BACKWARDS, Ronnie. <p:0.3> That is not etiquette. That is the opposite of etiquette.",
+      "overlap": 0.2,
+      "timestamp": 133.897,
+      "duration": 8.62,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/15.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "It's reverence, Barry. <p:0.3> You measure a town by how it carries itself past greatness. Forty-seven ribbons of greatness.",
+      "overlap": 0.25,
+      "timestamp": 141.151,
+      "duration": 8.0,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/16.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Okay, so, for the record, the curtains. <p:0.3> Every house on Elm faces away from the square. The windows are all on the wrong side. Who builds a house backwards?",
+      "overlap": 0.2,
+      "timestamp": 148.154,
+      "duration": 9.85,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/17.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "We turned the parlors around in the spring, dear. As a group. <p:0.3> It's nicer not to have the square watching you have your tea. You just don't look at the winner.",
+      "overlap": 0.2,
+      "timestamp": 157.357,
+      "duration": 10.87,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "They re-pointed their HOUSES, Ronnie! <p:0.3> Marv, normal scarecrows do not require a town to look away from them!",
+      "overlap": 0.3,
+      "timestamp": 167.062,
+      "duration": 9.18,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/19.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "A champion commands the room, Barry. <p:0.3> You don't disqualify a winner just because folks can't hold its gaze.",
+      "overlap": 0.3,
+      "timestamp": 174.781,
+      "duration": 7.05,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's heritage you can't fake. A whole street, redesigned around respect. <p:0.3> Now THAT'S a Classic.",
+      "overlap": -0.2,
+      "timestamp": 180.997,
+      "duration": 8.22,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/21.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "So, for the record, Marv, real fast. <p:0.3> The note says six champions on Elm. <p:0.3> But I counted seven scarecrows in the square tonight. Who's the seventh?",
+      "overlap": 0.15,
+      "timestamp": 188.215,
+      "duration": 9.83,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/22.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "Seven? <p:0.3> Son, we only registered six entries this year.",
+      "overlap": 0,
+      "timestamp": 197.461,
+      "duration": 4.45,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Then what's the SEVENTH one, Marv?!",
+      "overlap": -0.1,
+      "timestamp": 201.122,
+      "duration": 2.92,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/24.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, no. <p:0.3> Young man, where are you standing right now?",
+      "overlap": 0.25,
+      "timestamp": 202.786,
+      "duration": 3.7,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/25.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Front of the square, by the new one. <p:0.3> It's wearing a postal cap. <p:0.3> And I am... I'm looking right at it.",
+      "overlap": 0.2,
+      "timestamp": 205.847,
+      "duration": 6.68,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/26.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Don't look at the winner, dear!",
+      "overlap": 0.35,
+      "timestamp": 211.634,
+      "duration": 2.12,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/27.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "Ribbon!",
+      "overlap": 0.4,
+      "timestamp": 212.585,
+      "duration": 1.15,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Backwards!",
+      "overlap": 0.4,
+      "timestamp": 213.133,
+      "duration": 1.52,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/29.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "[surprise-yo] It's wearing my CAP!",
+      "overlap": 0.4,
+      "timestamp": 214.084,
+      "duration": 2.06,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/30.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "Folks, we have a result. <p:0.3> The new entry takes first. Forty-eight years undefeated.",
+      "overlap": 0.3,
+      "timestamp": 215.21,
+      "duration": 5.84,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/31.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Marv, do NOT give it a ribbon!",
+      "overlap": 0.3,
+      "timestamp": 219.882,
+      "duration": 2.44,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/32.flac"
+    },
+    {
+      "speaker": "caller-marv",
+      "text": "Already pinned, Barry. <p:0.3> And I'm penciling next year's entry in now, under the name Darnell. You don't break up a winning streak.",
+      "overlap": 0.25,
+      "timestamp": 221.137,
+      "duration": 8.66,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/33.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Why is it... why is it holding still the exact way I'm holding still?",
+      "overlap": -0.1,
+      "timestamp": 229.436,
+      "duration": 4.25,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/34.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Forty-seven years undefeated. <p:0.3> Barry, you don't argue with a streak like that. <p:0.3> Darnell, whatever you do down there... don't look at the winner.",
+      "overlap": -0.2,
+      "timestamp": 233.067,
+      "duration": 11.72,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/35.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...Too late, dear.",
+      "overlap": -0.1,
+      "timestamp": 244.027,
+      "duration": 1.43,
+      "audio": "/snazziefm/audio/the-scarecrow-classic/36.flac"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-snip-thrift",
+  "title": "Snip and Thrift",
+  "description": "Drive-thru discount surgery performed by a refurbished arcade-claw robot, nineteen ninety-nine while you wait.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-surgery",
+      "text": "Point at any organ you want gone, our claw machine yanks it for nineteen ninety-nine. <p:0.2> Snip and Thrift. Why pay retail to keep all your organs?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.16,
+      "audio": "/snazziefm/audio/ad-snip-thrift/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Claw selects organ at random. <p:0> Anesthesia is a complimentary mint. <p:0> Wrong kidney is final sale. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 10.782,
+      "duration": 5.912,
+      "audio": "/snazziefm/audio/ad-snip-thrift/1.flac"
+    }
+  ]
+}

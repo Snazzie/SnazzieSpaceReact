@@ -1,0 +1,96 @@
+{
+  "slug": "have-you-tried-unplugging-ronnie",
+  "title": "Have You Tried Unplugging It?",
+  "description": "Ronnie runs the Snazzie FM tech help desk, answering real listener gadget woes with total confidence and one fix for everything. Barry watches in quiet horror.",
+  "category": "advice",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Snazzie FM tech help desk is open, folks. Whatever the gadget, I have the answer. Barry, read me the first one.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.39,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Marlene writes, quote, my laptop keeps flickering and the only photos of my late husband are in a folder I can't back up.",
+      "overlap": -0.15,
+      "timestamp": 7.044,
+      "duration": 9.72,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Aw, Marlene. The flickering means it's breathing. <p:0.3> Have you tried unplugging it? Mid-update, the photos come back stronger.",
+      "overlap": -0.2,
+      "timestamp": 16.206,
+      "duration": 9.98,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that... that deletes them.",
+      "overlap": -0.1,
+      "timestamp": 25.226,
+      "duration": 2.84,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Stronger, Barry. Next letter.",
+      "overlap": -0.15,
+      "timestamp": 27.312,
+      "duration": 2.4,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Devon works from home, quote, my wifi drops every afternoon on video calls and my boss thinks I'm slacking.",
+      "overlap": -0.15,
+      "timestamp": 28.841,
+      "duration": 8.35,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Easy, Devon. Too much internet stacking up. Unplug the router mid-call, it clears the line.",
+      "overlap": -0.2,
+      "timestamp": 36.449,
+      "duration": 6.75,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "But then the call also ends, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 42.553,
+      "duration": 3.0,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Clean line, Barry. <p:0.3> Quick follow-up from last week's Devon.",
+      "overlap": -0.15,
+      "timestamp": 44.434,
+      "duration": 5.46,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "He unplugged the router, then unplugged the next thing over, which was the fridge. <p:0.3> He's asking if you can fix a freezer full of warm fish.",
+      "overlap": -0.1,
+      "timestamp": 48.588,
+      "duration": 11.5,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Have you tried unplugging it, Devon.",
+      "overlap": -0.15,
+      "timestamp": 58.659,
+      "duration": 2.96,
+      "audio": "/snazziefm/audio/have-you-tried-unplugging-ronnie/10.flac"
+    }
+  ]
+}

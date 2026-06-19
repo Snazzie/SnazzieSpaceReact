@@ -1,0 +1,104 @@
+{
+  "slug": "the-stars-with-rhonda-love",
+  "title": "The Stars with Rhonda: Venus Has Read Your Texts",
+  "description": "Rhonda reads the romantic stars as calm cosmic fact, and every sign learns the same thing: the group chat already knows. Ronnie keeps reaching for the upside as the chat creeps closer, until it comes for him.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "The stars, with Rhonda. Love edition. Be gentle, it's a romantic week.",
+      "overlap": -0.2,
+      "timestamp": 0.0,
+      "duration": 5.36,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Aries. You will draft a brave text. You will delete it. Then you will send the screenshot of yourself deleting it.",
+      "overlap": -0.3,
+      "timestamp": 4.832,
+      "duration": 6.59,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/1.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "The group chat already knows.",
+      "overlap": -0.2,
+      "timestamp": 11.032,
+      "duration": 2.08,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, but you were brave for a second. That counts.",
+      "overlap": 0,
+      "timestamp": 12.361,
+      "duration": 3.96,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/3.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Cancer. Your situationship gets defined Thursday. It is not the definition you wanted. The group chat knew Wednesday.",
+      "overlap": -0.3,
+      "timestamp": 15.922,
+      "duration": 6.93,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "[question-en] Wait, they knew before SHE knew?",
+      "overlap": 0,
+      "timestamp": 21.98,
+      "duration": 3.64,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/5.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Libra. Venus has read your texts. Including the one marked unsent. <p:0.3> It is now sent.",
+      "overlap": -0.2,
+      "timestamp": 24.942,
+      "duration": 6.06,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Venus is in the group chat now?",
+      "overlap": 0,
+      "timestamp": 30.084,
+      "duration": 2.48,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/7.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Scorpio. A casserole arrives from an ex. Do not eat it. The casserole is a question. <p:0.3> The answer is the group chat.",
+      "overlap": -0.3,
+      "timestamp": 32.387,
+      "duration": 7.36,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's in the kitchen now, Rhonda. Okay, what about my sign? Mine's fine, right?",
+      "overlap": 0,
+      "timestamp": 39.114,
+      "duration": 5.84,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/9.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Ronnie. <p:0.3> You are not a sign. You are a screenshot.",
+      "overlap": -0.2,
+      "timestamp": 44.083,
+      "duration": 4.03,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "My phone just buzzed. <p:0.3> The group chat added me. The stars, with Rhonda.",
+      "overlap": 0,
+      "timestamp": 47.351,
+      "duration": 6.18,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-love/11.flac"
+    }
+  ]
+}

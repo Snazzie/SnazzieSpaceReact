@@ -1,0 +1,24 @@
+{
+  "slug": "ad-docbot",
+  "title": "DocBot 200",
+  "description": "A paid message from DocBot. At-home surgery has never been this confident.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-gravel",
+      "text": "Need surgery? <p:0.2> The DocBot 200 operates on you at home for one flat fee! <p:0.2> It's fast, it's autonomous, it's mostly read the manual. <p:0.2> DocBot 200, hold still and trust the machine!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.8,
+      "audio": "/snazziefm/audio/ad-docbot/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "DocBot is not a licensed medical device. <p:0> May operate on the wrong area. <p:0> Repairs to the patient are billed separately. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 11.586,
+      "duration": 6.781,
+      "audio": "/snazziefm/audio/ad-docbot/1.flac"
+    }
+  ]
+}

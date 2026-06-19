@@ -1,0 +1,391 @@
+{
+  "slug": "coin-of-the-realm",
+  "title": "Coin of the Realm",
+  "description": "Money night on Snazzie FM. Chad has invented the next big cryptocurrency. It is backed, he insists, by real pigeons.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're back on Snazzie FM, and the Truth Hour rolls on. Tonight, we talk money. Specifically, money that doesn't exist yet.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.86,
+      "audio": "/snazziefm/audio/coin-of-the-realm/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's just called debt, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 8.271,
+      "duration": 2.76,
+      "audio": "/snazziefm/audio/coin-of-the-realm/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's called opportunity, Barry. Our first caller is a young entrepreneur. Chad, you're on the air.",
+      "overlap": -0.2,
+      "timestamp": 9.474,
+      "duration": 7.46,
+      "audio": "/snazziefm/audio/coin-of-the-realm/2.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Yo, Ronnie, what's good. Okay, listen. <p:0.3> I've got the next big one. It's called PigeonCoin.",
+      "overlap": -0.2,
+      "timestamp": 16.321,
+      "duration": 4.86,
+      "audio": "/snazziefm/audio/coin-of-the-realm/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "...Pigeon. Coin.",
+      "overlap": -0.15,
+      "timestamp": 20.891,
+      "duration": 1.68,
+      "audio": "/snazziefm/audio/coin-of-the-realm/4.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "PigeonCoin, bro. It's backed by real pigeons. You can't fake a pigeon.",
+      "overlap": -0.1,
+      "timestamp": 21.918,
+      "duration": 3.56,
+      "audio": "/snazziefm/audio/coin-of-the-realm/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that is the kind of security the banks do not want you to have.",
+      "overlap": -0.2,
+      "timestamp": 24.496,
+      "duration": 5.12,
+      "audio": "/snazziefm/audio/coin-of-the-realm/6.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Exactly, Ronnie! Every coin is tied to one actual pigeon. When the pigeon flies, the value goes up.",
+      "overlap": -0.15,
+      "timestamp": 28.379,
+      "duration": 4.96,
+      "audio": "/snazziefm/audio/coin-of-the-realm/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "What happens when the pigeon lands, Chad?",
+      "overlap": -0.2,
+      "timestamp": 32.541,
+      "duration": 3.48,
+      "audio": "/snazziefm/audio/coin-of-the-realm/8.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "...You don't let it land, Barry. <p:0.3> That's the whole strategy.",
+      "overlap": -0.15,
+      "timestamp": 35.146,
+      "duration": 3.7,
+      "audio": "/snazziefm/audio/coin-of-the-realm/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Fascinating. So the value is, in a sense, up in the air.",
+      "overlap": -0.2,
+      "timestamp": 38.037,
+      "duration": 4.2,
+      "audio": "/snazziefm/audio/coin-of-the-realm/10.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Always up in the air, Ronnie. That's the beauty of it.",
+      "overlap": -0.15,
+      "timestamp": 41.832,
+      "duration": 2.72,
+      "audio": "/snazziefm/audio/coin-of-the-realm/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "And who is holding all these pigeons?",
+      "overlap": -0.2,
+      "timestamp": 43.731,
+      "duration": 3.16,
+      "audio": "/snazziefm/audio/coin-of-the-realm/12.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Me, Barry. I've got like four hundred pigeons in my garage. It's a vault, basically.",
+      "overlap": -0.15,
+      "timestamp": 46.195,
+      "duration": 4.2,
+      "audio": "/snazziefm/audio/coin-of-the-realm/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A living vault.",
+      "overlap": -0.2,
+      "timestamp": 49.71,
+      "duration": 1.92,
+      "audio": "/snazziefm/audio/coin-of-the-realm/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's a health code violation, is what that is.",
+      "overlap": -0.1,
+      "timestamp": 50.311,
+      "duration": 3.96,
+      "audio": "/snazziefm/audio/coin-of-the-realm/15.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It's a decentralized aviary, Barry. Do your research.",
+      "overlap": -0.15,
+      "timestamp": 53.669,
+      "duration": 2.8,
+      "audio": "/snazziefm/audio/coin-of-the-realm/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now Chad, walk me through the technology. How does a pigeon actually become a coin?",
+      "overlap": -0.2,
+      "timestamp": 55.677,
+      "duration": 6.44,
+      "audio": "/snazziefm/audio/coin-of-the-realm/17.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Okay, so each pigeon has a little tag on its leg, right? <p:0.3> The tag has a number. That number is the coin. Boom. Blockchain.",
+      "overlap": -0.15,
+      "timestamp": 61.452,
+      "duration": 6.34,
+      "audio": "/snazziefm/audio/coin-of-the-realm/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's just a leg band, Chad. Pigeon racers have done that for a hundred years.",
+      "overlap": -0.2,
+      "timestamp": 67.172,
+      "duration": 6.36,
+      "audio": "/snazziefm/audio/coin-of-the-realm/19.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "And nobody monetized it, Barry! That's the gap in the market.",
+      "overlap": -0.15,
+      "timestamp": 72.906,
+      "duration": 3.12,
+      "audio": "/snazziefm/audio/coin-of-the-realm/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He found the gap, Barry.",
+      "overlap": -0.2,
+      "timestamp": 75.315,
+      "duration": 2.16,
+      "audio": "/snazziefm/audio/coin-of-the-realm/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The gap is fraud, Ronnie. The gap is just fraud.",
+      "overlap": -0.1,
+      "timestamp": 76.502,
+      "duration": 3.88,
+      "audio": "/snazziefm/audio/coin-of-the-realm/22.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It's not fraud if the pigeon consents.",
+      "overlap": -0.15,
+      "timestamp": 79.711,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/coin-of-the-realm/23.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "...How does a pigeon consent, Chad?",
+      "overlap": -0.2,
+      "timestamp": 80.767,
+      "duration": 2.84,
+      "audio": "/snazziefm/audio/coin-of-the-realm/24.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It stays, Barry. <p:0.4> If it didn't consent, it would fly off. The ones that stay? Those are investors.",
+      "overlap": -0.15,
+      "timestamp": 83.125,
+      "duration": 5.84,
+      "audio": "/snazziefm/audio/coin-of-the-realm/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The pigeons are shareholders. I love this.",
+      "overlap": -0.2,
+      "timestamp": 88.224,
+      "duration": 3.4,
+      "audio": "/snazziefm/audio/coin-of-the-realm/26.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> Sorry to cut in, the phone lines are kind of... melting?",
+      "overlap": -0.2,
+      "timestamp": 90.844,
+      "duration": 4.44,
+      "audio": "/snazziefm/audio/coin-of-the-realm/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Melting how, Todd?",
+      "overlap": -0.2,
+      "timestamp": 94.763,
+      "duration": 2.0,
+      "audio": "/snazziefm/audio/coin-of-the-realm/28.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Like four hundred people are calling, and they all say they own a pigeon. <p:0.3> And one guy is just... cooing.",
+      "overlap": -0.15,
+      "timestamp": 95.98,
+      "duration": 5.73,
+      "audio": "/snazziefm/audio/coin-of-the-realm/29.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "That's the community, Todd! That's the PigeonCoin army!",
+      "overlap": -0.15,
+      "timestamp": 101.572,
+      "duration": 2.88,
+      "audio": "/snazziefm/audio/coin-of-the-realm/30.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "Yeah, I got a question for the kid. <p:0.4> How do I sell my PigeonCoin?",
+      "overlap": -0.25,
+      "timestamp": 104.173,
+      "duration": 6.31,
+      "audio": "/snazziefm/audio/coin-of-the-realm/31.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "[dissatisfaction-hnn] You don't sell, Gary. You hold. Forever.",
+      "overlap": -0.15,
+      "timestamp": 109.709,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/coin-of-the-realm/32.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "So it's worthless.",
+      "overlap": -0.15,
+      "timestamp": 111.845,
+      "duration": 2.2,
+      "audio": "/snazziefm/audio/coin-of-the-realm/33.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It's priceless, Gary. There's a difference.",
+      "overlap": -0.1,
+      "timestamp": 113.715,
+      "duration": 2.28,
+      "audio": "/snazziefm/audio/coin-of-the-realm/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Chad, what's the coin actually worth right now? In real dollars.",
+      "overlap": -0.2,
+      "timestamp": 115.053,
+      "duration": 5.24,
+      "audio": "/snazziefm/audio/coin-of-the-realm/35.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Dollars are a fiat illusion, Barry. <p:0.3> But if you're asking, one coin is worth one pigeon.",
+      "overlap": -0.15,
+      "timestamp": 119.739,
+      "duration": 4.86,
+      "audio": "/snazziefm/audio/coin-of-the-realm/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And what is a pigeon worth?",
+      "overlap": -0.2,
+      "timestamp": 123.96,
+      "duration": 2.24,
+      "audio": "/snazziefm/audio/coin-of-the-realm/37.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "...One coin, Ronnie. It's a closed loop. Totally stable.",
+      "overlap": -0.15,
+      "timestamp": 125.791,
+      "duration": 2.8,
+      "audio": "/snazziefm/audio/coin-of-the-realm/38.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's circular, Chad. That means it's worth nothing.",
+      "overlap": -0.2,
+      "timestamp": 127.981,
+      "duration": 4.4,
+      "audio": "/snazziefm/audio/coin-of-the-realm/39.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "It means it can never crash, Barry. <p:0.3> It's pinned to itself.",
+      "overlap": -0.15,
+      "timestamp": 131.565,
+      "duration": 3.78,
+      "audio": "/snazziefm/audio/coin-of-the-realm/40.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Self pinned. The dream of every currency.",
+      "overlap": -0.2,
+      "timestamp": 134.774,
+      "duration": 3.32,
+      "audio": "/snazziefm/audio/coin-of-the-realm/41.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Ronnie, the cooing guy is still on line two. <p:0.3> He will not stop cooing.",
+      "overlap": -0.2,
+      "timestamp": 137.38,
+      "duration": 4.22,
+      "audio": "/snazziefm/audio/coin-of-the-realm/42.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Put him through right after the break. The people want to hear the coo.",
+      "overlap": -0.2,
+      "timestamp": 140.706,
+      "duration": 5.48,
+      "audio": "/snazziefm/audio/coin-of-the-realm/43.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Please do not put the cooing man on the radio, Ronnie.",
+      "overlap": -0.15,
+      "timestamp": 145.106,
+      "duration": 4.4,
+      "audio": "/snazziefm/audio/coin-of-the-realm/44.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "The coo is bullish, Barry. <p:0.3> Cooing means accumulation.",
+      "overlap": -0.2,
+      "timestamp": 148.458,
+      "duration": 3.66,
+      "audio": "/snazziefm/audio/coin-of-the-realm/45.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Accumulation. Write that down, folks.",
+      "overlap": -0.2,
+      "timestamp": 151.406,
+      "duration": 3.08,
+      "audio": "/snazziefm/audio/coin-of-the-realm/46.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And on that note of financial wisdom, we'll take a quick break. PigeonCoin. <p:0.3> To the moon, or at least to the roof.",
+      "overlap": -0.25,
+      "timestamp": 153.333,
+      "duration": 8.98,
+      "audio": "/snazziefm/audio/coin-of-the-realm/47.flac"
+    }
+  ]
+}

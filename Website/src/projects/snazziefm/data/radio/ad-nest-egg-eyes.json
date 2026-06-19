@@ -1,0 +1,24 @@
+{
+  "slug": "ad-nest-egg-eyes",
+  "title": "PeepHaven",
+  "description": "A paid message from PeepHaven. Home cameras that watch every room and read your dreams. We never blink, so you can.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "[question-en] Worried about burglars? <p:0.2> PeepHaven fills your home with cameras that watch every room and read your dreams! <p:0.2> We never blink, so you can.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.32,
+      "audio": "/snazziefm/audio/ad-nest-egg-eyes/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "PeepHaven owns your face forever. <p:0> Lenses bond permanently to retinas. <p:0> Do not stare back. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 8.17,
+      "duration": 5.869,
+      "audio": "/snazziefm/audio/ad-nest-egg-eyes/1.flac"
+    }
+  ]
+}

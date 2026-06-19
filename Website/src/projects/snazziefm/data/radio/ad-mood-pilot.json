@@ -1,0 +1,24 @@
+{
+  "slug": "ad-mood-pilot",
+  "title": "Mood Pilot",
+  "description": "One little blue pill flies your feelings to a calm cruising altitude. Mood Pilot. Ask your sky for it.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "One little blue pill flies your feelings to a calm cruising altitude. Mood Pilot. Ask your sky for it.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 5.92,
+      "audio": "/snazziefm/audio/ad-mood-pilot/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Side effects include emotions landing without you. <p:0> Turbulence in the bones. <p:0> A co-pilot you did not hire. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 5.338,
+      "duration": 6.452,
+      "audio": "/snazziefm/audio/ad-mood-pilot/1.flac"
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "slug": "put-it-in-the-minutes",
+  "title": "Ronnie Settles It: The Neighborly Hour",
+  "description": "Ronnie reads listeners' neighbor and HOA nightmares aloud and solves every one with a committee, a meeting, and the official minutes. Barry keeps explaining how lawsuits start. Ronnie keeps not hearing him.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Good evening, neighbors, and welcome to The Neighborly Hour, where YOU mail in the dispute, and I, a man who basically ran an H O A, settle it. Calmly. By the book.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 11.39,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, just so the people at home know, you have never actually read a bylaw.",
+      "overlap": -0.15,
+      "timestamp": 10.516,
+      "duration": 6.32,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I have FELT every bylaw, Barry. That's deeper. <p:0.3> Our first letter, please.",
+      "overlap": -0.2,
+      "timestamp": 15.527,
+      "duration": 6.14,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Dolores from Maple Court writes, quote, my neighbor's hedge has crept eighteen inches over the line and it scratches my car every single time I pull in. I've asked nicely three times. Nothing. End quote.",
+      "overlap": -0.15,
+      "timestamp": 21.147,
+      "duration": 14.19,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/3.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, that one's easy, the hedge is on her property, she can trim it.",
+      "overlap": -0.1,
+      "timestamp": 34.727,
+      "duration": 5.44,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Whoa. WHOA. Trim it herself? Dolores, do not touch one leaf. That is unilateral, and we are a community.",
+      "overlap": -0.1,
+      "timestamp": 39.302,
+      "duration": 7.88,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "What you want is to form a Hedge Subcommittee. Schedule a quarterly boundary survey. And, above all, you put the encroachment in the minutes. Now it's official.",
+      "overlap": -0.15,
+      "timestamp": 45.41,
+      "duration": 12.28,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the hedge is still growing while you say this. The minutes don't... they don't prune anything.",
+      "overlap": -0.1,
+      "timestamp": 56.399,
+      "duration": 8.2,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Paper is patient, Barry. <p:0.3> Next letter.",
+      "overlap": -0.2,
+      "timestamp": 63.436,
+      "duration": 4.3,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gerald in Unit twelve B writes, quote, the new neighbor parks across two spots every night, including half of mine, and after my shift I circle the lot for twenty minutes just to get home. End quote.",
+      "overlap": -0.15,
+      "timestamp": 66.443,
+      "duration": 15.08,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "[confirmation-en] Poor guy. He just wants his own assigned spot.",
+      "overlap": -0.1,
+      "timestamp": 80.515,
+      "duration": 5.28,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/10.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, I read this as a spacing efficiency issue. Gerald, park CLOSER. Assert the spot. Get right up in there.",
+      "overlap": -0.15,
+      "timestamp": 84.389,
+      "duration": 8.2,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Leave a note, firm but warm, and laminate it. <p:0.3> I use a Gleamtech home laminator, eleven bucks, seals a grievance like a tomb. Then we motion to repaint the lines two inches over, so technically everyone is wrong.",
+      "overlap": -0.15,
+      "timestamp": 91.629,
+      "duration": 16.46,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That guarantees a scraped door, Ronnie. You've described how to get keyed.",
+      "overlap": -0.1,
+      "timestamp": 106.866,
+      "duration": 6.12,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And if he keys it? We put THAT in the minutes too. Airtight.",
+      "overlap": -0.2,
+      "timestamp": 112.404,
+      "duration": 4.56,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/14.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Aunt Pam from the cul-de-sac writes, quote, my neighbor runs a leaf blower at six in the morning every day, including Sundays. I haven't slept past dawn in a month and I am genuinely fraying. End quote.",
+      "overlap": -0.15,
+      "timestamp": 116.547,
+      "duration": 14.68,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/15.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "She sounds exhausted. Six in the morning, that's brutal.",
+      "overlap": -0.1,
+      "timestamp": 130.523,
+      "duration": 4.64,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You know who idled a truck by my mailbox once? Dennis. Just sat there. Engine going. <p:0.3> Dennis knew what he was doing, Barry.",
+      "overlap": -0.15,
+      "timestamp": 134.26,
+      "duration": 9.7,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Pam did not ask about Dennis, Ronnie.",
+      "overlap": 0.2,
+      "timestamp": 142.772,
+      "duration": 3.12,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/18.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So here's the move, Pam. You fight noise with process. Draft a Sound Ordinance Proposal. Table it. Bring it to a vote in the spring.",
+      "overlap": -0.15,
+      "timestamp": 144.514,
+      "duration": 9.92,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/19.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The spring. So the blower just... runs until the spring.",
+      "overlap": -0.1,
+      "timestamp": 153.693,
+      "duration": 4.52,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And then it's on RECORD, Barry. <p:0.3> Next.",
+      "overlap": -0.2,
+      "timestamp": 157.293,
+      "duration": 4.14,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/21.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Marcus on Birchwood writes, quote, my wife and I are fighting nonstop. She wants the front door teal, the H O A only approved the Approved Neutrals, and honestly the stress is hurting our marriage. End quote.",
+      "overlap": -0.15,
+      "timestamp": 160.157,
+      "duration": 15.58,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay, this one's not even really about the door. They need to talk to each other.",
+      "overlap": -0.1,
+      "timestamp": 174.244,
+      "duration": 6.48,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Marcus, I'll be honest with you. Your marriage is out of compliance.",
+      "overlap": -0.15,
+      "timestamp": 179.499,
+      "duration": 5.28,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's WHAT?",
+      "overlap": -0.1,
+      "timestamp": 184.117,
+      "duration": 1.48,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Form a two person committee. Elect officers. And we enter the disagreement, and frankly the wife specifically, into the minutes for the record.",
+      "overlap": -0.15,
+      "timestamp": 184.26,
+      "duration": 11.16,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/26.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, you cannot minute a marriage.",
+      "overlap": -0.1,
+      "timestamp": 194.252,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You can minute anything, Barry. <p:0.3> Last letter of the night.",
+      "overlap": -0.2,
+      "timestamp": 196.486,
+      "duration": 5.06,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Howard writes, and you can tell he's panicking, quote, there is RIGHT NOW a grease fire on my neighbor's shared back deck, it is spreading, what do I do, please. He signs off, concerned but hopeful. End quote.",
+      "overlap": -0.15,
+      "timestamp": 200.521,
+      "duration": 15.64,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "[surprise-ah] Ronnie. Ronnie, there's a FIRE. You tell him to call the fire department.",
+      "overlap": 0.3,
+      "timestamp": 214.948,
+      "duration": 7.0,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/30.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "First of all, Howard? Beautiful documentation. You captured the scene, you noted the time. That's leadership.",
+      "overlap": -0.1,
+      "timestamp": 220.617,
+      "duration": 8.52,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/31.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now, do NOT call anyone before the proper channel is followed. Convene an emergency session. Appoint a fire liaison. And get that blaze into the minutes while it's still fresh.",
+      "overlap": -0.15,
+      "timestamp": 228.152,
+      "duration": 13.56,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/32.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It is still fresh because IT IS ON FIRE, Ronnie! Just say call the fire department!",
+      "overlap": -0.1,
+      "timestamp": 240.496,
+      "duration": 6.54,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/33.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Barry, you're agitated, which is perfect, because I'm naming you our official minute taker. Grab a pen.",
+      "overlap": -0.1,
+      "timestamp": 245.395,
+      "duration": 7.92,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "[dissatisfaction-hnn] So just to confirm. Our advice to a man on fire was a meeting.",
+      "overlap": -0.1,
+      "timestamp": 252.738,
+      "duration": 6.8,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/35.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Catered, ideally. Coffee, a danish. <p:0.3> We'll put it in the minutes.",
+      "overlap": -0.15,
+      "timestamp": 258.799,
+      "duration": 5.42,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/36.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There are no minutes, Ronnie. There was never a meeting. There's just you, and a hedge that's coming for all of us.",
+      "overlap": -0.1,
+      "timestamp": 262.999,
+      "duration": 9.08,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Motion to adjourn. Seconded. Lovely. <p:0.3> Same time next week, neighbors.",
+      "overlap": -0.2,
+      "timestamp": 271.603,
+      "duration": 5.82,
+      "audio": "/snazziefm/audio/put-it-in-the-minutes/38.flac"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "ad-larrys-electronics",
+  "title": "Larry's Electronics",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-steve",
+      "text": "Larry's Electronics, your spot for TVs, laptops, and the latest phones, <p:0.3> sir, that is the display model. <p:0.4> All on sale this weekend, with free... <p:0.3> no, returns are at the front. <p:0.4> Free delivery and setup! <p:0.3> Larry's Electronics, where the deals are... <p:0.4> SIR. <p:0.3> Unbeatable. <p:0.4> Somebody help him.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 17.24,
+      "audio": "/snazziefm/audio/ad-larrys-electronics/0.flac"
+    }
+  ]
+}

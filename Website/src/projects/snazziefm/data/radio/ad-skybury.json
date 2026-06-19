@@ -1,0 +1,24 @@
+{
+  "slug": "ad-skybury",
+  "title": "SkyBury",
+  "description": "A paid message from SkyBury. Funerals by drone.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-nasal",
+      "text": "[question-en] Lost a loved one? <p:0.2> SkyBury launches them into the heavens via our affordable delivery drone! <p:0.2> Eco-friendly, mostly accurate. <p:0.2> SkyBury, ashes to airspace!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.03,
+      "audio": "/snazziefm/audio/ad-skybury/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Drone occasionally returns the deceased. <p:0> Flight path not approved by anyone. <p:0> May reach a neighbor's barbecue. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.884,
+      "duration": 6.426,
+      "audio": "/snazziefm/audio/ad-skybury/1.flac"
+    }
+  ]
+}

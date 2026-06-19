@@ -1,0 +1,24 @@
+{
+  "slug": "ad-everafter-cloud",
+  "title": "EverAfter Cloud",
+  "description": "Upload your loved one and stream Grandma's soul on any device, forever, in glorious surround sound, from EverAfter Cloud.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Miss Grandma? Upload her soul and stream her on any device, forever. EverAfter Cloud... death is just a subscription away.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.12,
+      "audio": "/snazziefm/audio/ad-everafter-cloud/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Soul resolution degrades on the free tier. <p:0> Lapsed payments trigger immediate deletion of Grandma. <p:0> Buffering occurs during seances. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 6.709,
+      "duration": 7.437,
+      "audio": "/snazziefm/audio/ad-everafter-cloud/1.flac"
+    }
+  ]
+}

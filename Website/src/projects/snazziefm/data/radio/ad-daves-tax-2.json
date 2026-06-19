@@ -1,0 +1,17 @@
+{
+  "slug": "ad-daves-tax-2",
+  "title": "Dave's Tax Service #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-chad",
+      "text": "Okay. <p:0.3> Dave's Tax Service, we get you the biggest refund, <p:0.4> legally. <p:0.3> Mostly legally. <p:0.4> Cut that part.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.05,
+      "audio": "/snazziefm/audio/ad-daves-tax-2/0.flac"
+    }
+  ]
+}

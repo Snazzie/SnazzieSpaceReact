@@ -1,0 +1,423 @@
+{
+  "slug": "the-lending-library",
+  "title": "The Lending Library",
+  "description": "St. Bertha's runs a free community lending library out of the church basement. Borrow anything, give it back whenever. Sister Glenda explains the terms. Frank just wanted a hedge trimmer, and now he owes the ministry his Tuesdays.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, it's all about generosity. Down at St. Bertha's, they run a free community lending library. Borrow a ladder, a casserole dish, whatever you need. Sister Glenda runs the whole thing. Glenda, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 17.68,
+      "audio": "/snazziefm/audio/the-lending-library/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A free lending library. That's lovely. That's a genuinely nice thing.",
+      "overlap": -0.15,
+      "timestamp": 16.876,
+      "duration": 5.68,
+      "audio": "/snazziefm/audio/the-lending-library/1.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Oh, bless you, Ronnie. Yes, anything you need, you just come on down to the basement and you take it. <p:0.3> And then, in your own time, you give a little back to the ministry. No pressure.",
+      "overlap": -0.2,
+      "timestamp": 22.079,
+      "duration": 11.86,
+      "audio": "/snazziefm/audio/the-lending-library/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You hear that, Barry? No pressure. That's the love of community right there.",
+      "overlap": -0.2,
+      "timestamp": 33.195,
+      "duration": 5.88,
+      "audio": "/snazziefm/audio/the-lending-library/3.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Yeah, hi. I borrowed a hedge trimmer. <p:0.3> In April. I would like to understand why I now owe the church forty hours.",
+      "overlap": -0.1,
+      "timestamp": 38.23,
+      "duration": 7.06,
+      "audio": "/snazziefm/audio/the-lending-library/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Forty hours of what?",
+      "overlap": -0.1,
+      "timestamp": 44.961,
+      "duration": 1.84,
+      "audio": "/snazziefm/audio/the-lending-library/5.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Frank, sweetheart. <p:0.3> A blessing accrues. That's just how a blessing works.",
+      "overlap": -0.1,
+      "timestamp": 45.947,
+      "duration": 5.04,
+      "audio": "/snazziefm/audio/the-lending-library/6.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "A blessing does not accrue, Glenda. That's interest. <p:0.3> That's a hedge trimmer with interest.",
+      "overlap": 0,
+      "timestamp": 50.607,
+      "duration": 5.75,
+      "audio": "/snazziefm/audio/the-lending-library/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now that's just good stewardship, Barry. You borrow, you give thanks. Thanks compounds.",
+      "overlap": -0.2,
+      "timestamp": 55.654,
+      "duration": 6.8,
+      "audio": "/snazziefm/audio/the-lending-library/8.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, hi, Glenda! It's Linda! I borrowed your big punch bowl for the spring social and it was just the most beautiful punch bowl. Could I keep it one more week?",
+      "overlap": -0.15,
+      "timestamp": 61.957,
+      "duration": 10.22,
+      "audio": "/snazziefm/audio/the-lending-library/9.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Of course, sugar. Keep it as long as your heart needs. <p:0.3> The bowl just keeps a little tally, is all.",
+      "overlap": -0.1,
+      "timestamp": 71.856,
+      "duration": 6.72,
+      "audio": "/snazziefm/audio/the-lending-library/10.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Oh, a tally! That's so thoughtful. I do love a tally.",
+      "overlap": -0.1,
+      "timestamp": 77.989,
+      "duration": 3.76,
+      "audio": "/snazziefm/audio/the-lending-library/11.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "[dissatisfaction-hnn] Linda. Linda, do not love the tally. <p:0.3> The tally is the trap.",
+      "overlap": 0,
+      "timestamp": 81.184,
+      "duration": 5.72,
+      "audio": "/snazziefm/audio/the-lending-library/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the man with the hedge trimmer sounds genuinely afraid.",
+      "overlap": -0.15,
+      "timestamp": 85.74,
+      "duration": 5.32,
+      "audio": "/snazziefm/audio/the-lending-library/13.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Frank's not afraid, Barry. Frank's just behind on his casseroles. <p:0.3> A man falls behind, the casseroles pile up, and pretty soon he owes the whole ministry a hot dish.",
+      "overlap": -0.1,
+      "timestamp": 90.276,
+      "duration": 11.53,
+      "audio": "/snazziefm/audio/the-lending-library/14.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "I have made eleven casseroles, Glenda. ELEVEN. <p:0.3> And the balance went UP.",
+      "overlap": 0,
+      "timestamp": 101.604,
+      "duration": 4.84,
+      "audio": "/snazziefm/audio/the-lending-library/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Eleven casseroles for the needy. Frank, that's the most generous thing I've heard all year.",
+      "overlap": -0.2,
+      "timestamp": 105.209,
+      "duration": 7.08,
+      "audio": "/snazziefm/audio/the-lending-library/16.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "I am the needy now, Ronnie! <p:0.3> I borrowed ONE trimmer and now I drive a casserole van for the church!",
+      "overlap": 0.2,
+      "timestamp": 111.105,
+      "duration": 6.38,
+      "audio": "/snazziefm/audio/the-lending-library/17.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "And you're so good at it, sweetheart. The van's never run smoother.",
+      "overlap": 0.25,
+      "timestamp": 116.806,
+      "duration": 4.43,
+      "audio": "/snazziefm/audio/the-lending-library/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There's a van. Ronnie, why is there always a van.",
+      "overlap": -0.1,
+      "timestamp": 120.69,
+      "duration": 3.92,
+      "audio": "/snazziefm/audio/the-lending-library/19.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Glenda. <p:0.3> Glenda, has the new man been told about the ledger in the steeple?",
+      "overlap": 0.2,
+      "timestamp": 123.003,
+      "duration": 6.05,
+      "audio": "/snazziefm/audio/the-lending-library/20.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "The WHAT in the steeple?",
+      "overlap": 0.3,
+      "timestamp": 128.069,
+      "duration": 1.73,
+      "audio": "/snazziefm/audio/the-lending-library/21.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Winston, we are on the AIR. <p:0.3> It is not a ledger, sugar. It is a book of friends.",
+      "overlap": 0.25,
+      "timestamp": 129.077,
+      "duration": 5.36,
+      "audio": "/snazziefm/audio/the-lending-library/22.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Everyone in the book of friends is in arrears.",
+      "overlap": -0.1,
+      "timestamp": 133.753,
+      "duration": 3.16,
+      "audio": "/snazziefm/audio/the-lending-library/23.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Am I in the book of friends? I would love to be a friend.",
+      "overlap": -0.1,
+      "timestamp": 136.195,
+      "duration": 3.83,
+      "audio": "/snazziefm/audio/the-lending-library/24.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "You're on page four now, sugar, on account of the bowl. <p:0.3> Welcome to the friends.",
+      "overlap": -0.1,
+      "timestamp": 139.693,
+      "duration": 5.17,
+      "audio": "/snazziefm/audio/the-lending-library/25.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Page four! Oh, I'm moving up!",
+      "overlap": 0,
+      "timestamp": 144.087,
+      "duration": 2.31,
+      "audio": "/snazziefm/audio/the-lending-library/26.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "You are not moving UP, Linda, you are going INTO DEBT over a punch bowl!",
+      "overlap": 0.3,
+      "timestamp": 145.408,
+      "duration": 4.19,
+      "audio": "/snazziefm/audio/the-lending-library/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now Frank, let's not scare the new friend. A little tally never hurt anybody.",
+      "overlap": -0.2,
+      "timestamp": 149.084,
+      "duration": 5.96,
+      "audio": "/snazziefm/audio/the-lending-library/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Glenda, what happens if somebody just... gives the stuff back and walks away? Clean. Done.",
+      "overlap": -0.1,
+      "timestamp": 153.593,
+      "duration": 7.24,
+      "audio": "/snazziefm/audio/the-lending-library/29.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Oh, Barry. <p:0.3> Nobody gives it back. You can only pay it forward. That's the beauty of the ministry.",
+      "overlap": -0.1,
+      "timestamp": 160.246,
+      "duration": 7.0,
+      "audio": "/snazziefm/audio/the-lending-library/30.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "A man named Gary tried to give it back. <p:0.3> Gary mows the entire churchyard now. Every Tuesday. Forever.",
+      "overlap": 0.2,
+      "timestamp": 166.318,
+      "duration": 7.32,
+      "audio": "/snazziefm/audio/the-lending-library/31.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "Tuesday is MY casserole day! <p:0.3> Is Gary the previous hedge trimmer guy? Glenda, am I the new Gary?!",
+      "overlap": 0.3,
+      "timestamp": 172.754,
+      "duration": 6.31,
+      "audio": "/snazziefm/audio/the-lending-library/32.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "You're a better Gary, sweetheart.",
+      "overlap": 0.3,
+      "timestamp": 178.322,
+      "duration": 2.02,
+      "audio": "/snazziefm/audio/the-lending-library/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, she has a SUCCESSION of Garys. This is a pyramid scheme with a steeple.",
+      "overlap": -0.1,
+      "timestamp": 179.804,
+      "duration": 6.4,
+      "audio": "/snazziefm/audio/the-lending-library/34.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's a congregation, Barry. Congregations grow. That's scripture.",
+      "overlap": -0.2,
+      "timestamp": 185.271,
+      "duration": 5.2,
+      "audio": "/snazziefm/audio/the-lending-library/35.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "I would like to settle my account. <p:0.3> Today. In full. What do I owe, Glenda. Give me the number.",
+      "overlap": 0.2,
+      "timestamp": 189.135,
+      "duration": 5.9,
+      "audio": "/snazziefm/audio/the-lending-library/36.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "There is no number, sugar. <p:0.3> There's only the next casserole.",
+      "overlap": 0.25,
+      "timestamp": 194.331,
+      "duration": 4.14,
+      "audio": "/snazziefm/audio/the-lending-library/37.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "[dissatisfaction-hnn] THE NEXT CASSEROLE IS NOT A NUMBER, GLENDA!",
+      "overlap": 0.3,
+      "timestamp": 197.469,
+      "duration": 4.01,
+      "audio": "/snazziefm/audio/the-lending-library/38.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Should I be making casseroles too? I don't want to fall behind the friends.",
+      "overlap": 0.3,
+      "timestamp": 200.725,
+      "duration": 4.39,
+      "audio": "/snazziefm/audio/the-lending-library/39.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "RUN, Linda! Give back the bowl and RUN!",
+      "overlap": 0.4,
+      "timestamp": 203.98,
+      "duration": 2.48,
+      "audio": "/snazziefm/audio/the-lending-library/40.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "The bowl keeps a tally.",
+      "overlap": 0.4,
+      "timestamp": 205.355,
+      "duration": 2.16,
+      "audio": "/snazziefm/audio/the-lending-library/41.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Page five, sugar!",
+      "overlap": 0.4,
+      "timestamp": 206.573,
+      "duration": 1.44,
+      "audio": "/snazziefm/audio/the-lending-library/42.flac"
+    },
+    {
+      "speaker": "caller-linda",
+      "text": "Page FIVE?!",
+      "overlap": 0.4,
+      "timestamp": 206.788,
+      "duration": 1.67,
+      "audio": "/snazziefm/audio/the-lending-library/43.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "MY TUESDAYS!",
+      "overlap": 0.4,
+      "timestamp": 207.616,
+      "duration": 1.55,
+      "audio": "/snazziefm/audio/the-lending-library/44.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There's a van in the parking lot, Ronnie. <p:0.3> The casserole van. It's outside the station.",
+      "overlap": -0.1,
+      "timestamp": 208.202,
+      "duration": 7.38,
+      "audio": "/snazziefm/audio/the-lending-library/45.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well now, would you look at that. <p:0.3> St. Bertha's came to us. That's the love of community, Barry.",
+      "overlap": -0.2,
+      "timestamp": 214.533,
+      "duration": 7.54,
+      "audio": "/snazziefm/audio/the-lending-library/46.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "Ronnie, sugar. <p:0.3> You let us run a whole hour of airtime tonight. <p:0.3> That's a loan. And a loan to the ministry... is a blessing.",
+      "overlap": -0.1,
+      "timestamp": 221.376,
+      "duration": 8.35,
+      "audio": "/snazziefm/audio/the-lending-library/47.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "We're on the ledger. Ronnie, we're in the book of friends.",
+      "overlap": -0.1,
+      "timestamp": 228.994,
+      "duration": 4.64,
+      "audio": "/snazziefm/audio/the-lending-library/48.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's a free lending library, Barry.",
+      "overlap": -0.1,
+      "timestamp": 232.376,
+      "duration": 3.0,
+      "audio": "/snazziefm/audio/the-lending-library/49.flac"
+    },
+    {
+      "speaker": "caller-glenda",
+      "text": "And Frank, sweetheart, before you go. <p:0.3> Gary retired this morning. Bless him. <p:0.3> So I'm gonna need you to start training the next fella. There's a young man borrowed a leaf blower across town. <p:0.3> Doesn't know yet. You're gonna welcome him.",
+      "overlap": -0.1,
+      "timestamp": 234.798,
+      "duration": 15.43,
+      "audio": "/snazziefm/audio/the-lending-library/50.flac"
+    },
+    {
+      "speaker": "caller-frank",
+      "text": "...I never borrowed anything.",
+      "overlap": -0.15,
+      "timestamp": 249.832,
+      "duration": 2.02,
+      "audio": "/snazziefm/audio/the-lending-library/51.flac"
+    }
+  ]
+}

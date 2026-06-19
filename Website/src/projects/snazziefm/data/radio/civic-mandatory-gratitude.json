@@ -1,0 +1,48 @@
+{
+  "slug": "civic-mandatory-gratitude",
+  "title": "Civic Notice: Mandatory Gratitude",
+  "description": "A scheduled hour of mandatory civic gratitude. Please feel thankful. Do not approach the reservoir.",
+  "category": "psa",
+  "lines": [
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is a test of the Snazzie F M Civic Notification System. <p:0.5> Residents of all districts are reminded that the scheduled hour of gratitude begins now. Please feel thankful.",
+      "overlap": -0.3,
+      "timestamp": 0.0,
+      "duration": 7.895,
+      "audio": "/snazziefm/audio/civic-mandatory-gratitude/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "If you are unable to feel thankful, remain seated and continue smiling until the feeling arrives. <p:0.3> It will arrive.",
+      "overlap": -0.4,
+      "timestamp": 8.02,
+      "duration": 5.486,
+      "audio": "/snazziefm/audio/civic-mandatory-gratitude/1.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Do not approach the reservoir. <p:0.3> The sound under the reservoir is grateful enough for everyone.",
+      "overlap": -0.4,
+      "timestamp": 13.454,
+      "duration": 4.373,
+      "audio": "/snazziefm/audio/civic-mandatory-gratitude/2.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This concludes the scheduled hour of gratitude.",
+      "overlap": -0.4,
+      "timestamp": 17.893,
+      "duration": 1.981,
+      "audio": "/snazziefm/audio/civic-mandatory-gratitude/3.flac"
+    },
+    {
+      "speaker": "ad-ann-deep",
+      "text": "<p:0.5> Thank you for your gratitude. It has been noted, as always. <p:0.3> Please remain calm. You have always been calm.",
+      "overlap": -0.5,
+      "timestamp": 19.4,
+      "duration": 6.08,
+      "audio": "/snazziefm/audio/civic-mandatory-gratitude/4.flac"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-honkheal",
+  "title": "HonkHeal",
+  "description": "A paid message from HonkHeal. Mental wellness, delivered by goose.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-deep",
+      "text": "Feeling low? <p:0.2> Call the Honk and Heal hotline and a trained therapy goose will listen to your problems! <p:0.2> Affordable, attentive, deeply hostile. <p:0.2> Honk and Heal, let it all honk out!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.33,
+      "audio": "/snazziefm/audio/ad-honkheal/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "This is not a licensed therapy service. <p:0> We retain the right to broadcast your sessions on Twitch and YouTube. <p:0> The goose holds no medical credentials. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 10.06,
+      "duration": 8.025,
+      "audio": "/snazziefm/audio/ad-honkheal/1.flac"
+    }
+  ]
+}

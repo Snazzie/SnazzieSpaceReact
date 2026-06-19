@@ -1,0 +1,351 @@
+{
+  "slug": "ronnie-knows-beasts",
+  "title": "Ronnie Knows Beasts",
+  "description": "Late-night pet advice on Snazzie FM. Worried owners call in about creatures they love. Ronnie answers every one with total confidence and zero competence, while Barry reads the voicemails and slowly loses his mind.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and it's the part of the night I live for. Ronnie Knows Beasts. You've got a pet, you've got a problem, I've got the answers.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.8,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, for the record, you have never owned an animal.",
+      "overlap": -0.15,
+      "timestamp": 10.26,
+      "duration": 4.52,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Which is exactly why I'm objective, Barry. Read me the first one.",
+      "overlap": -0.2,
+      "timestamp": 13.515,
+      "duration": 5.0,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Okay. This is Linda. She says her cat is older, and lately it's stopped eating, just sleeps by the radiator all day. She's scared something's wrong and she doesn't know whether to spend the money on the vet.",
+      "overlap": -0.15,
+      "timestamp": 17.542,
+      "duration": 15.99,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh, Linda, sweetheart, relax. A cat curled up by the warmth all day? That animal is living its best life.",
+      "overlap": -0.1,
+      "timestamp": 32.476,
+      "duration": 7.92,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "She said it stopped eating.",
+      "overlap": -0.1,
+      "timestamp": 39.715,
+      "duration": 2.36,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Intermittent fasting. Very trendy right now. Your cat's just ahead of the curve. <p:0.3> And listen, if you're really fretting about the vet bill... have you tried rehoming it?",
+      "overlap": -0.15,
+      "timestamp": 40.895,
+      "duration": 13.26,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Rehoming the... she loves that cat, Ronnie.",
+      "overlap": 0.2,
+      "timestamp": 52.8,
+      "duration": 3.52,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it'll understand. Next caller. Gary, you're on.",
+      "overlap": -0.2,
+      "timestamp": 55.704,
+      "duration": 4.04,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/8.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "My dog destroys the place every time I leave. <p:0.3> Couch is gone. <p:0.3> Separation anxiety, probably.",
+      "overlap": -0.15,
+      "timestamp": 59.26,
+      "duration": 9.69,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gary. Gary, stop. That's not anxiety. That dog is guarding your property. Like a professional.",
+      "overlap": -0.1,
+      "timestamp": 67.737,
+      "duration": 7.24,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/10.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "He's... guarding it from me leaving?",
+      "overlap": 0.25,
+      "timestamp": 74.062,
+      "duration": 2.83,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "So you lean into it. Leave more. Stay gone longer. Really commit to the absence. Let that dog cook.",
+      "overlap": -0.1,
+      "timestamp": 75.9,
+      "duration": 7.52,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is the opposite of every single thing a trainer would tell you.",
+      "overlap": 0.2,
+      "timestamp": 81.754,
+      "duration": 5.6,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And if it doesn't take, Gary? Rehome him. Win win. He gets a new couch, you get yours back.",
+      "overlap": -0.15,
+      "timestamp": 85.728,
+      "duration": 6.72,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not a win win, that's one win and a betrayal. Next one's a voicemail. Patricia.",
+      "overlap": 0.2,
+      "timestamp": 91.176,
+      "duration": 6.88,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/15.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Hello, um, my parrot has started screaming the same phrase, over and over, all day and all night. I'm worried he heard something upsetting, or maybe he's sick. I don't know where he even got it.",
+      "overlap": -0.15,
+      "timestamp": 96.939,
+      "duration": 16.68,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Patricia. Patricia. Do you realize what you have? A talking bird is free advertising.",
+      "overlap": -0.1,
+      "timestamp": 112.335,
+      "duration": 6.64,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not the question she asked.",
+      "overlap": 0.15,
+      "timestamp": 117.909,
+      "duration": 2.96,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/18.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "You teach him to say, Snazzie FM, ninety four point one. <p:0.3> See, that's a bird that contributes. Unlike some co-hosts, who never listen to a word I say.",
+      "overlap": -0.15,
+      "timestamp": 119.34,
+      "duration": 11.58,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/19.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm sorry, are we doing your feelings now? On the pet show?",
+      "overlap": 0.25,
+      "timestamp": 129.313,
+      "duration": 4.72,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "I listen to YOU, Barry. <p:0.3> Anyway. The puppy. Mildred, go.",
+      "overlap": -0.1,
+      "timestamp": 133.075,
+      "duration": 4.9,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/21.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh thank goodness. My new puppy eats everything off the floor, and just now I think, I think he swallowed a battery? A little round one? I'm panicking, what do I do, what's even safe?",
+      "overlap": -0.1,
+      "timestamp": 137.737,
+      "duration": 14.45,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/22.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Mildred. Breathe. Puppies have cast iron stomachs. Very robust little machines.",
+      "overlap": -0.1,
+      "timestamp": 151.912,
+      "duration": 6.32,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/23.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It was a BATTERY though!",
+      "overlap": 0.3,
+      "timestamp": 157.3,
+      "duration": 1.64,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/24.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Which is just extra energy. That's literally where the word comes from. He'll be bouncing off the walls.",
+      "overlap": -0.1,
+      "timestamp": 157.907,
+      "duration": 8.04,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie. Ronnie, no. A battery is a vet emergency, that is genuinely dangerous, she needs to call a vet right now.",
+      "overlap": 0.3,
+      "timestamp": 164.584,
+      "duration": 9.0,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/26.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Barry, a little floor variety builds the immune system. You agree with me, you just won't say it.",
+      "overlap": -0.05,
+      "timestamp": 172.553,
+      "duration": 7.4,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/27.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I... I do not... <p:0.3> it does sound a little robust, but no. No! Mildred, call a vet.",
+      "overlap": 0.25,
+      "timestamp": 178.713,
+      "duration": 6.86,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/28.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, he agreed. Last call of the night. Darnell, you're on Ronnie Knows Beasts.",
+      "overlap": -0.2,
+      "timestamp": 184.532,
+      "duration": 6.04,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/29.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Yeah, hey, so the kids' goldfish has been floating sideways at the top of the tank since this morning, and the kids keep asking me if he's gonna be okay, and I don't know what to tell them.",
+      "overlap": -0.1,
+      "timestamp": 190.024,
+      "duration": 9.25,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/30.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Darnell. Congratulations. That fish has learned to relax on its back. Like a little spa day.",
+      "overlap": -0.1,
+      "timestamp": 198.381,
+      "duration": 7.16,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/31.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "He's not moving, man.",
+      "overlap": 0.2,
+      "timestamp": 204.426,
+      "duration": 1.47,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/32.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Dim the lights. Bit of ambience. Let him have his moment. <p:0.3> And if he wants more? You know what I'm gonna say.",
+      "overlap": -0.1,
+      "timestamp": 205.313,
+      "duration": 8.5,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Do not say it.",
+      "overlap": 0.25,
+      "timestamp": 212.824,
+      "duration": 1.6,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/34.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Rehome him.",
+      "overlap": 0.3,
+      "timestamp": 213.115,
+      "duration": 1.76,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/35.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Where, Ronnie? Where do you rehome a goldfish?",
+      "overlap": 0.3,
+      "timestamp": 213.926,
+      "duration": 3.84,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/36.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "The ocean, Barry. Set him free. Back to where he came from.",
+      "overlap": 0.25,
+      "timestamp": 216.1,
+      "duration": 4.48,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/37.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's a GOLDFISH! It's freshwater! It has never SEEN an ocean!",
+      "overlap": 0.35,
+      "timestamp": 219.336,
+      "duration": 4.92,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/38.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then it'll be a lovely surprise for him, Barry.",
+      "overlap": 0.3,
+      "timestamp": 222.254,
+      "duration": 3.68,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/39.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's the show. That's the whole show. We have to take a break.",
+      "overlap": 0.2,
+      "timestamp": 224.76,
+      "duration": 5.04,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/40.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "One last voicemail came in while we were live. It's from Linda. <p:0.3> She says the cat's fine, the vet fixed it in twenty minutes, and she would like her question rehomed to a better show.",
+      "overlap": -0.15,
+      "timestamp": 228.507,
+      "duration": 14.82,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/41.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "<p:0.3> I'm inclined to agree, Linda.",
+      "overlap": -0.1,
+      "timestamp": 241.96,
+      "duration": 2.78,
+      "audio": "/snazziefm/audio/ronnie-knows-beasts/42.flac"
+    }
+  ]
+}

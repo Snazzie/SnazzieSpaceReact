@@ -1,0 +1,255 @@
+{
+  "slug": "the-renewal-window-part-2",
+  "title": "The Renewal Window (Part 2)",
+  "description": "Patricia finally reaches the window. They hand her the pen. Now she's on the other side of the counter, and Doreen is free to go renew her permit. Barry, somehow, is calling in from inside the office. He's almost through page one.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome back to Snazzie FM. When we left, Patricia had one applicant ahead of her... the building. Patricia, are you at the window?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.96,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/0.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I'm at the window, Ronnie. <p:0.3> Doreen just slid me a pen.",
+      "overlap": -0.2,
+      "timestamp": 8.899,
+      "duration": 5.06,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A pen. That's wonderful. They're letting you sign.",
+      "overlap": -0.2,
+      "timestamp": 12.746,
+      "duration": 3.92,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/2.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "No, Ronnie. They're letting me work the window. <p:0.4> Doreen says I'm the clerk now.",
+      "overlap": -0.1,
+      "timestamp": 15.65,
+      "duration": 7.4,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/3.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "You filled out enough forms, hon. <p:0.3> Eventually they put you on the other side. <p:0.3> I told you that.",
+      "overlap": -0.1,
+      "timestamp": 22.067,
+      "duration": 6.94,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/4.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "But I came to renew a permit, Doreen!",
+      "overlap": 0,
+      "timestamp": 28.495,
+      "duration": 3.32,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/5.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "And now I'm going to, hon. <p:0.4> I took a number this morning. <p:0.3> I'm finally next.",
+      "overlap": 0.2,
+      "timestamp": 31.129,
+      "duration": 7.04,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Hold on. Doreen, you're stepping away from the counter?",
+      "overlap": -0.2,
+      "timestamp": 37.306,
+      "duration": 4.32,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/7.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "I'm a customer now, hon. <p:0.3> Patricia's got the window. <p:0.3> Be patient with her, she's new.",
+      "overlap": -0.1,
+      "timestamp": 40.593,
+      "duration": 7.02,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Patricia. Patricia, it's Barry. I'm inside.",
+      "overlap": 0,
+      "timestamp": 47.013,
+      "duration": 3.56,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/9.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Inside where, Barry?",
+      "overlap": -0.1,
+      "timestamp": 49.93,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/10.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The office! I came to pull you OUT. <p:0.3> I walked in, I took one number, and now I'm sitting down.",
+      "overlap": 0,
+      "timestamp": 51.157,
+      "duration": 7.66,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Barry, you went in after her. <p:0.3> That's a rescue. How far have you gotten?",
+      "overlap": -0.2,
+      "timestamp": 57.963,
+      "duration": 5.82,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm... almost through page one.",
+      "overlap": -0.1,
+      "timestamp": 63.172,
+      "duration": 2.56,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/13.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh no, Barry.",
+      "overlap": 0,
+      "timestamp": 64.803,
+      "duration": 1.76,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It's fine! Page one's the easy part! It just wants my name and the date of my... oh.",
+      "overlap": 0.2,
+      "timestamp": 65.392,
+      "duration": 6.4,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/15.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "There's a little red star, isn't there, Barry.",
+      "overlap": -0.1,
+      "timestamp": 69.902,
+      "duration": 4.07,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There's a little red star.",
+      "overlap": -0.1,
+      "timestamp": 72.847,
+      "duration": 2.24,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/17.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "Estimate it, hon. <p:0.3> Keep the line moving.",
+      "overlap": 0.2,
+      "timestamp": 73.723,
+      "duration": 3.91,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Don't you tell me to estimate it, Doreen! You're a CUSTOMER now! You don't get to say hon!",
+      "overlap": 0.3,
+      "timestamp": 76.442,
+      "duration": 7.04,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Barry, pull a number for section nine.",
+      "overlap": 0.3,
+      "timestamp": 82.164,
+      "duration": 3.48,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/20.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Don't YOU say it either!",
+      "overlap": 0.4,
+      "timestamp": 84.088,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/21.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "It's required, Barry! <p:0.3> The stack only gets taller!",
+      "overlap": 0.4,
+      "timestamp": 84.951,
+      "duration": 4.94,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Then STOP processing me!",
+      "overlap": 0.4,
+      "timestamp": 88.52,
+      "duration": 2.16,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/23.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "I can't, the screen does it!",
+      "overlap": 0.4,
+      "timestamp": 89.444,
+      "duration": 2.48,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/24.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "Little red star.",
+      "overlap": 0.4,
+      "timestamp": 90.573,
+      "duration": 1.78,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Doreen, you reached the window. <p:0.4> You're renewing. So what's behind the counter?",
+      "overlap": -0.2,
+      "timestamp": 91.512,
+      "duration": 6.64,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/26.flac"
+    },
+    {
+      "speaker": "clerk-doreen",
+      "text": "Another window, hon. <p:0.4> And a very patient lady at it. <p:0.3> She just handed me a pen.",
+      "overlap": -0.1,
+      "timestamp": 97.094,
+      "duration": 6.98,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "We're gonna take a break before someone hands ME a pen. <p:0.3> Barry, when you reach the window... let us out.",
+      "overlap": -0.2,
+      "timestamp": 102.999,
+      "duration": 8.14,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I'm not taking a number.",
+      "overlap": -0.1,
+      "timestamp": 110.381,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/29.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "You already did, hon. <p:0.4> You're almost through page one.",
+      "overlap": -0.1,
+      "timestamp": 111.445,
+      "duration": 5.36,
+      "audio": "/snazziefm/audio/the-renewal-window-part-2/30.flac"
+    }
+  ]
+}

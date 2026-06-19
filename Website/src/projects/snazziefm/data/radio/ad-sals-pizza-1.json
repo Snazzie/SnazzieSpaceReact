@@ -1,0 +1,35 @@
+{
+  "slug": "ad-sals-pizza-1",
+  "title": "Sal's Pizza #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-gary",
+      "text": "It says read with energy. <p:0.3> Okay. <p:0.4> Sal's Pizza, hot fresh pies delivered in thirty minutes!",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.85,
+      "audio": "/snazziefm/audio/ad-sals-pizza-1/0.flac"
+    },
+    {
+      "speaker": "caller-chad",
+      "text": "Hey, uh... <p:0.2> are you guys open?",
+      "distant": true,
+      "gain": 0.5,
+      "overlap": 0.3,
+      "timestamp": 8.949,
+      "duration": 2.86,
+      "audio": "/snazziefm/audio/ad-sals-pizza-1/1.flac"
+    },
+    {
+      "speaker": "caller-gary",
+      "text": "One sec, buddy, I'm doing the radio thing. <p:0.4> ...Was that energetic?",
+      "overlap": 0.2,
+      "timestamp": 10.218,
+      "duration": 6.25,
+      "audio": "/snazziefm/audio/ad-sals-pizza-1/2.flac"
+    }
+  ]
+}

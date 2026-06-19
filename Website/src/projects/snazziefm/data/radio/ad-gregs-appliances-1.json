@@ -1,0 +1,17 @@
+{
+  "slug": "ad-gregs-appliances-1",
+  "title": "Greg's Appliances #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-patricia",
+      "text": "Greg's Appliances, washers, dryers, and fridges, all on sale for only, <p:0.3> uh, <p:0.4> Greg, what is the number? <p:0.3> We will fix it later.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.76,
+      "audio": "/snazziefm/audio/ad-gregs-appliances-1/0.flac"
+    }
+  ]
+}

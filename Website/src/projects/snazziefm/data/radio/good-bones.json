@@ -1,0 +1,80 @@
+{
+  "slug": "good-bones",
+  "title": "Good Bones with Ronnie",
+  "description": "Snazzie FM's call-free health hour. Ronnie reads your health letters aloud and answers each with total confidence and zero medical value. Barry tries to fact-check. Ronnie tells everyone to walk it off.",
+  "category": "advice",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "Welcome to Good Bones, where the letters are real and the advice is mine. First one, Barry.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 6.6,
+      "audio": "/snazziefm/audio/good-bones/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gloria writes, quote, my resting heart rate spikes to a hundred and forty sitting still, and my doctor wants tests.",
+      "overlap": -0.15,
+      "timestamp": 5.904,
+      "duration": 8.98,
+      "audio": "/snazziefm/audio/good-bones/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Gloria, congratulations. <p:0.3> That's free cardio. Your heart's getting its steps in. Walk it off, even the numbers out.",
+      "overlap": -0.2,
+      "timestamp": 14.379,
+      "duration": 9.34,
+      "audio": "/snazziefm/audio/good-bones/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, a hundred and forty sitting down is not a workout. That's a symptom.",
+      "overlap": -0.1,
+      "timestamp": 22.653,
+      "duration": 6.16,
+      "audio": "/snazziefm/audio/good-bones/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Last one, a scary one. Pat writes, quote, I've been dizzy and seeing flashing lights for three days.",
+      "overlap": -0.2,
+      "timestamp": 27.903,
+      "duration": 7.64,
+      "audio": "/snazziefm/audio/good-bones/4.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Pat, that's a free light show. <p:0.3> Walk it off, ideally over by a window, for the view.",
+      "overlap": -0.15,
+      "timestamp": 34.574,
+      "duration": 6.62,
+      "audio": "/snazziefm/audio/good-bones/5.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't walk off dizzy, Ronnie. That's how people walk off balconies.",
+      "overlap": -0.1,
+      "timestamp": 40.073,
+      "duration": 5.8,
+      "audio": "/snazziefm/audio/good-bones/6.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Results are in, Barry. Last week's listener walked it off a curb, <p:0.3> and she's sending this from traction.",
+      "overlap": -0.2,
+      "timestamp": 44.836,
+      "duration": 8.34,
+      "audio": "/snazziefm/audio/good-bones/7.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "So it's working, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 52.475,
+      "duration": 2.08,
+      "audio": "/snazziefm/audio/good-bones/8.flac"
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "slug": "whatever-holds-up-in-court",
+  "title": "Ronnie Knows Best: Legal Aid You Didn't Ask For",
+  "description": "Legal trouble night on Snazzie FM. Ronnie opens the mailbag for listeners drowning in court dates, denied claims, and contractor disputes, and answers every single one with the same useless cure: just don't sign it. Barry reads the actual law into a void.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight, folks, we crack open the mailbag for Legal Trouble Night. You wrote in, you're scared, you've got court dates. And I have answers.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.4,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, I want it on the record that neither of us is a lawyer.",
+      "overlap": -0.15,
+      "timestamp": 11.273,
+      "duration": 5.04,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Lawyers are just people who read the document, Barry. And reading, frankly, is what gets folks into this mess. First letter. Carol from the marina writes, quote, I got a jury duty summons for a six week trial, it overlaps my only paid vacation, and it says I'll be fined or held in contempt if I ignore it. I don't know how to ask for a deferral. End quote.",
+      "overlap": -0.2,
+      "timestamp": 15.696,
+      "duration": 24.96,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "There's a deferral form, Carol. Most courts let you request a new date online, it takes five minutes.",
+      "overlap": -0.1,
+      "timestamp": 39.966,
+      "duration": 8.08,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "No, no, Barry, you're overthinking it. This is junk mail. The court can't just subscribe you to a trial without your opt in consent. Carol, here's what you do. Write UNSUBSCRIBE on the envelope and mail it right back.",
+      "overlap": -0.2,
+      "timestamp": 46.726,
+      "duration": 16.28,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/4.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not... a summons is not a newsletter, Ronnie.",
+      "overlap": 0.25,
+      "timestamp": 61.662,
+      "duration": 4.24,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And above all, Carol, and write this down, do not sign it. You don't sign, you're not in it. Next. Marcus, who emailed us at midnight, says, quote, my landlord is keeping my whole security deposit for vague damages, I have photos showing the place was spotless, and the small claims deadlines are confusing me. End quote.",
+      "overlap": -0.2,
+      "timestamp": 64.525,
+      "duration": 23.14,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Keep those photos, Marcus. That's your evidence. File before the deadline and bring the pictures.",
+      "overlap": -0.1,
+      "timestamp": 86.909,
+      "duration": 8.0,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, that's where Marcus loses. I won a deposit dispute once on pure vibes and eye contact. Paperwork only weakens you, Marcus, it gives them something to read.",
+      "overlap": -0.15,
+      "timestamp": 93.077,
+      "duration": 12.2,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Gives them... the photos are HIS, Ronnie, they help him.",
+      "overlap": 0.3,
+      "timestamp": 103.848,
+      "duration": 4.48,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Delete the photos, Marcus. No evidence either way, totally neutral, very fair. And whatever the landlord hands you, you do not sign it.",
+      "overlap": -0.2,
+      "timestamp": 107.34,
+      "duration": 10.36,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/10.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "He's deleting his only proof. I need everyone to know I said don't.",
+      "overlap": -0.1,
+      "timestamp": 116.655,
+      "duration": 5.4,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Heartwarming. Now, Priya, longtime listener, writes, quote, my disability claim was denied over a typo in my date of birth, the appeal window is thirty days, and the phone line disconnects me every time after two hours on hold. End quote. <p:0.3> Priya, I feel this in my bones. The automated lady and I have history.",
+      "overlap": -0.2,
+      "timestamp": 120.844,
+      "duration": 23.78,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/12.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The fix is the typo, Priya. You file the appeal in writing within the thirty days and attach your birth certificate. Don't rely on the phone.",
+      "overlap": -0.1,
+      "timestamp": 143.44,
+      "duration": 10.16,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Or, Priya, simpler. From now on, just have a different, correct date of birth. Start telling everyone you're a Capricorn, establish a paper trail. And un-sign the original claim, so the typo retroactively never existed.",
+      "overlap": -0.15,
+      "timestamp": 152.828,
+      "duration": 16.76,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/14.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not how birthdays work, Ronnie. That is not how anything works.",
+      "overlap": 0.25,
+      "timestamp": 168.117,
+      "duration": 5.8,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/15.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Birthdays are a suggestion, Barry. Okay, Big Dale couldn't get through, so Barry, you read this one.",
+      "overlap": -0.2,
+      "timestamp": 172.596,
+      "duration": 7.64,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Fine. Big Dale writes, quote, a contractor took my deposit, never finished the deck, stopped answering my calls, and now there's a mechanic's lien on my house for work that was never even done. End quote.",
+      "overlap": -0.1,
+      "timestamp": 179.405,
+      "duration": 15.99,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/17.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well first off, congratulations, Dale. A lien on the property? That's lakefront. You're sitting on waterfront real estate now, my friend.",
+      "overlap": -0.15,
+      "timestamp": 193.973,
+      "duration": 10.33,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/18.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A lien, Ronnie. L I E N. It's a legal claim on his house. There is no lake.",
+      "overlap": -0.1,
+      "timestamp": 203.708,
+      "duration": 5.68,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/19.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Ohhh, the sticker kind. Yeah, a lien is just a sticker the bank slaps on your house, Dale, you peel it right off. Then finish that deck yourself and bill the contractor for the privilege of learning from you.",
+      "overlap": -0.2,
+      "timestamp": 208.405,
+      "duration": 15.72,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/20.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You cannot peel off a lien. You dispute it. In court.",
+      "overlap": -0.1,
+      "timestamp": 223.0,
+      "duration": 4.28,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/21.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And the lien, Dale, do not sign the lien. <p:0.3> And if it's already signed? You sand it down.",
+      "overlap": -0.2,
+      "timestamp": 226.084,
+      "duration": 6.9,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Sand it d... it's a filing, Ronnie, it's not a coffee table.",
+      "overlap": -0.1,
+      "timestamp": 231.94,
+      "duration": 4.6,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Last one, and it's a big one. Anonymous writes in, although they did sign it, so, hi, Kevin. Quote, I'm facing an actual misdemeanor charge, court date next Tuesday, I've never once reached my public defender, should I just show up. End quote.",
+      "overlap": -0.2,
+      "timestamp": 235.312,
+      "duration": 18.16,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Yes. Yes, Kevin, you show up. You show up early. Not showing up is its own crime.",
+      "overlap": 0.25,
+      "timestamp": 252.268,
+      "duration": 6.32,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/25.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Kevin, you represent yourself. But here's the genius part. As a different person. The charges are filed against you. They can't find a you that isn't there.",
+      "overlap": -0.15,
+      "timestamp": 257.769,
+      "duration": 11.61,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/26.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, that's impersonation, that's a second charge.",
+      "overlap": -0.1,
+      "timestamp": 268.657,
+      "duration": 4.48,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/27.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And when the judge starts talking, you ask to see the judge's license. Establish who's really in charge. Then, and this is the move, Kevin, you un-sign the verdict before they even read it.",
+      "overlap": -0.2,
+      "timestamp": 271.649,
+      "duration": 14.21,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/28.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "You can't un-sign a verdict, Ronnie, you don't sign verdicts at all.",
+      "overlap": -0.1,
+      "timestamp": 284.507,
+      "duration": 5.44,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/29.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Exactly. So it's already un-signed. <p:0.3> Legally, if you never sign the guilty, you stay innocent. That's just math, Barry.",
+      "overlap": -0.2,
+      "timestamp": 289.197,
+      "duration": 9.46,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/30.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That is not math. That is the opposite of math.",
+      "overlap": -0.1,
+      "timestamp": 297.717,
+      "duration": 3.84,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/31.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And speaking of results, a follow up just came in. Carol from the marina, our very first letter, she took the advice and mailed back her summons marked UNSUBSCRIBE.",
+      "overlap": -0.2,
+      "timestamp": 300.311,
+      "duration": 12.27,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/32.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "She's in contempt of court now, Ronnie. There's a warrant out for her.",
+      "overlap": -0.1,
+      "timestamp": 311.322,
+      "duration": 5.6,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/33.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See? It worked. She never has to do jury duty again. <p:0.3> Don't sign the warrant, Carol.",
+      "overlap": -0.2,
+      "timestamp": 316.089,
+      "duration": 6.7,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "She can't. <p:0.3> They're bringing it to her. That's Snazzie FM, where we are still, for the record, not lawyers.",
+      "overlap": -0.1,
+      "timestamp": 322.17,
+      "duration": 9.34,
+      "audio": "/snazziefm/audio/whatever-holds-up-in-court/35.flac"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "slug": "ad-carls-carpets-1",
+  "title": "Carl's Carpets #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-steve",
+      "text": "Come on down to Carl's Carpets for plush carpet, rugs, and vinyl flooring, where,",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 3.24,
+      "audio": "/snazziefm/audio/ad-carls-carpets-1/0.flac"
+    },
+    {
+      "speaker": "caller-kim",
+      "text": "Excuse me, <p:0.2> do these come in beige?",
+      "distant": true,
+      "gain": 0.5,
+      "overlap": 0.3,
+      "timestamp": 2.398,
+      "duration": 3.28,
+      "audio": "/snazziefm/audio/ad-carls-carpets-1/1.flac"
+    },
+    {
+      "speaker": "caller-steve",
+      "text": "...beige. <p:0.4> Uh. <p:0.3> Where does the time go, honestly. <p:0.3> Sorry.",
+      "overlap": 0.2,
+      "timestamp": 4.904,
+      "duration": 5.52,
+      "audio": "/snazziefm/audio/ad-carls-carpets-1/2.flac"
+    }
+  ]
+}

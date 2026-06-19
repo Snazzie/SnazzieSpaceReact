@@ -1,0 +1,17 @@
+{
+  "slug": "ad-glamour-nails-1",
+  "title": "Glamour Nails #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-patricia",
+      "text": "Welcome to, <p:0.3> uh, <p:0.4> what are we called now? <p:0.3> Glamour Nails! <p:0.4> Manicures, pedicures, gel... <p:0.3> or is it Glamorous Nails.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 13.58,
+      "audio": "/snazziefm/audio/ad-glamour-nails-1/0.flac"
+    }
+  ]
+}

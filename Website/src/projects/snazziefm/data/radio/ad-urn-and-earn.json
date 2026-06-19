@@ -1,0 +1,24 @@
+{
+  "slug": "ad-urn-and-earn",
+  "title": "Urn and Earn",
+  "description": "A high-yield decorative urn that pays you monthly dividends on every visitor who weeps near grandma.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "We press your loved one into a high-yield urn and pay you dividends every time a visitor weeps. Urn and Earn... where grandma finally pays for herself.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.68,
+      "audio": "/snazziefm/audio/ad-urn-and-earn/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Dividends not guaranteed. <p:0> Urn hums at night. <p:0> Grandma retains four percent voting rights. <p:0> Miss your weeping quota and we repossess her. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 8.058,
+      "duration": 8.097,
+      "audio": "/snazziefm/audio/ad-urn-and-earn/1.flac"
+    }
+  ]
+}

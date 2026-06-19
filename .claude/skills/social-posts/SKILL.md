@@ -6,22 +6,22 @@ description: Write and generate a fake Snazzie FM social post for the /snazziefm
 # Snazzie FM Social Posts
 
 Faux "@snazziefm" social posts shown in the **From the Booth** area of the `/snazziefm`
-page (`src/components/RadioPosts.tsx`, data in `src/data/radio-posts.ts`). Each post is a
+page (`src/projects/snazziefm/RadioPosts.tsx`, data in `src/projects/snazziefm/data/radio-posts.ts`). Each post is a
 verified-account-style card: body text, a photo, a caption, a timestamp, and fake
 like/repost/reply counts. Photos are rendered **locally with ideogram4** in Studio Ghibli
 style.
 
 ## Data model
 
-Posts live in `src/data/radio-posts.ts` as `StationPost[]`. The component just renders the
+Posts live in `src/projects/snazziefm/data/radio-posts.ts` as `StationPost[]`. The component just renders the
 array, so this skill only **appends an entry** (and runs the render script).
 
 ```ts
 {
-  id: "kebab-slug",      // also the image basename: public/images/radio/<id>.png
+  id: "kebab-slug",      // also the image basename: public/snazziefm/images/<id>.png
   text: "...",            // body: **bold** and #hashtag markup, emoji literal
   imagePrompt: "...",     // SCENE ONLY — no art-style line (render script adds Ghibli)
-  photo: "/images/radio/<id>.png",
+  photo: "/snazziefm/images/<id>.png",
   caption: "...",         // line under the photo
   time: "9:12 PM",
   likes: "4,021", reposts: "877", replies: "312",
@@ -34,7 +34,7 @@ emoji pass through literally. A lone `#` or unmatched `**` stays literal.
 ## How to write a post
 
 1. **Ground it in lore.** Pull a beat from an existing episode/advert in
-   `src/data/radio/` — a recurring character (Ronnie the host, Barry, Frank, Todd the
+   `src/projects/snazziefm/data/radio/` — a recurring character (Ronnie the host, Barry, Frank, Todd the
    intern), a running event (the fog at the DMV, GreenFlow's all-green grid, Frank's
    unionized pigeons, the 90-year soup), or a single episode's hook. The post is the
    station tweeting about that beat.
@@ -47,8 +47,8 @@ emoji pass through literally. A lone `#` or unmatched `**` stays literal.
    **Do NOT add a style line** ("Studio Ghibli", "hand-painted", etc.) — `render-post.py`
    appends the house Ghibli style to every prompt. ideogram4 renders in-image text well,
    so signage/boards (e.g. `NOW SERVING 41,001`) can be specified.
-6. **Pick `id`** (kebab). `photo` is `/images/radio/<id>.png`.
-7. **Append** the entry to `POSTS` in `src/data/radio-posts.ts`.
+6. **Pick `id`** (kebab). `photo` is `/snazziefm/images/<id>.png`.
+7. **Append** the entry to `POSTS` in `src/projects/snazziefm/data/radio-posts.ts`.
 
 ## Render the photo (WSL, ideogram4)
 
@@ -67,7 +67,7 @@ python scripts/render-post.py <id> "<imagePrompt>"      # 1:1 square (default)
 python scripts/render-post.py <id> "<imagePrompt>" --portrait   # 4:5
 ```
 
-Writes `Website/public/images/radio/<id>.png`. GPU generation is slow and runs
+Writes `Website/public/snazziefm/images/<id>.png`. GPU generation is slow and runs
 **separately** from authoring — the page shows a "Photo dropping soon" placeholder until
 the PNG lands, so a post is shippable before its image exists.
 

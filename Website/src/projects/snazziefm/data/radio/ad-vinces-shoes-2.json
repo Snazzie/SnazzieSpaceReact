@@ -1,0 +1,17 @@
+{
+  "slug": "ad-vinces-shoes-2",
+  "title": "Vince's Shoes #2",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-frank",
+      "text": "Vince's Shoes, we got every size, every style... <p:0.4> I still cannot say that word. <p:0.3> Just buy shoes.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 7.04,
+      "audio": "/snazziefm/audio/ad-vinces-shoes-2/0.flac"
+    }
+  ]
+}

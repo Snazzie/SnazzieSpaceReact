@@ -1,0 +1,391 @@
+{
+  "slug": "the-casserole-ledger",
+  "title": "The Casserole Ledger",
+  "description": "St. Bevin's Care Committee runs the kindest meal-train in the county. It also runs a ledger, a vig, and a deacon named Earl who repossesses Tupperware. Tonight a woman who got one lasagna calls in to ask why she owes the parish forty-one meals.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight we're celebrating kindness. We've got the head of the St. Bevin's Care Committee, plus a parishioner she helped through a rough patch. Mildred, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 14.2,
+      "audio": "/snazziefm/audio/the-casserole-ledger/0.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "A church meal-train. <p:0.3> Finally a segment that can't possibly go anywhere bad.",
+      "overlap": -0.15,
+      "timestamp": 13.634,
+      "duration": 6.7,
+      "audio": "/snazziefm/audio/the-casserole-ledger/1.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh, it's a blessing, Ronnie. You get sick, you have a baby, somebody passes. <p:0.3> A casserole shows up at your door. That's the whole ministry. Just love, in a dish.",
+      "overlap": -0.2,
+      "timestamp": 19.692,
+      "duration": 11.33,
+      "audio": "/snazziefm/audio/the-casserole-ledger/2.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Love, in a dish. <p:0.3> Now that's the warmest thing I've heard all week, Barry.",
+      "overlap": -0.2,
+      "timestamp": 30.535,
+      "duration": 6.54,
+      "audio": "/snazziefm/audio/the-casserole-ledger/3.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "Hi, yeah, I'm Nadia, I'm new to the parish. <p:0.3> And I'm so grateful, I had the flu in April and Mildred brought me a lasagna. It was lovely. <p:0.3> But I got a statement in the mail?",
+      "overlap": -0.1,
+      "timestamp": 36.104,
+      "duration": 9.53,
+      "audio": "/snazziefm/audio/the-casserole-ledger/4.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Your blessing summary, dear. Everyone gets one quarterly.",
+      "overlap": -0.1,
+      "timestamp": 45.286,
+      "duration": 3.94,
+      "audio": "/snazziefm/audio/the-casserole-ledger/5.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "It says I have a balance. <p:0.3> It says I owe the Care Committee forty-one meals.",
+      "overlap": -0.1,
+      "timestamp": 48.686,
+      "duration": 4.82,
+      "audio": "/snazziefm/audio/the-casserole-ledger/6.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Forty-one? <p:0.3> She got one lasagna.",
+      "overlap": -0.1,
+      "timestamp": 53.064,
+      "duration": 3.66,
+      "audio": "/snazziefm/audio/the-casserole-ledger/7.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Well it's not a charge, dear, it's a blessing. And a blessing accrues. <p:0.3> The lasagna was the principal. The forty-one is what the lasagna has become.",
+      "overlap": -0.1,
+      "timestamp": 56.037,
+      "duration": 9.79,
+      "audio": "/snazziefm/audio/the-casserole-ledger/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "See, that's compound kindness, Barry. The love just keeps growing on its own.",
+      "overlap": -0.2,
+      "timestamp": 64.968,
+      "duration": 5.96,
+      "audio": "/snazziefm/audio/the-casserole-ledger/9.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "I don't want it to grow! <p:0.3> How do I pay it back? Do I just bring forty-one meals to the church?",
+      "overlap": -0.1,
+      "timestamp": 70.067,
+      "duration": 5.38,
+      "audio": "/snazziefm/audio/the-casserole-ledger/10.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, you can't pay it back, dear. <p:0.3> You can only carry it forward. Nobody ever leaves the ledger square. I've been on it since 1998.",
+      "overlap": 0.2,
+      "timestamp": 74.62,
+      "duration": 12.41,
+      "audio": "/snazziefm/audio/the-casserole-ledger/11.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Patricia, what did YOU get, in 1998?",
+      "overlap": -0.1,
+      "timestamp": 85.874,
+      "duration": 3.92,
+      "audio": "/snazziefm/audio/the-casserole-ledger/12.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "A tuna bake. <p:0.3> I now owe the parish a christening, two funerals, and a roof.",
+      "overlap": -0.1,
+      "timestamp": 89.003,
+      "duration": 7.42,
+      "audio": "/snazziefm/audio/the-casserole-ledger/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A tuna bake that built a roof. <p:0.3> That's a miracle of generosity, folks.",
+      "overlap": -0.2,
+      "timestamp": 95.216,
+      "duration": 5.78,
+      "audio": "/snazziefm/audio/the-casserole-ledger/14.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "Okay, but what happens if I just... don't? <p:0.3> What happens if I don't carry it forward?",
+      "overlap": -0.1,
+      "timestamp": 100.332,
+      "duration": 4.94,
+      "audio": "/snazziefm/audio/the-casserole-ledger/15.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "[dissatisfaction-hnn] Then Earl comes by, dear.",
+      "overlap": -0.1,
+      "timestamp": 105.014,
+      "duration": 3.5,
+      "audio": "/snazziefm/audio/the-casserole-ledger/16.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Who's Earl?",
+      "overlap": -0.1,
+      "timestamp": 108.2,
+      "duration": 1.52,
+      "audio": "/snazziefm/audio/the-casserole-ledger/17.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Earl's the deacon. <p:0.3> Earl does collections.",
+      "overlap": -0.1,
+      "timestamp": 108.606,
+      "duration": 4.5,
+      "audio": "/snazziefm/audio/the-casserole-ledger/18.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "Collections of WHAT? It's a casserole!",
+      "overlap": -0.1,
+      "timestamp": 111.982,
+      "duration": 2.24,
+      "audio": "/snazziefm/audio/the-casserole-ledger/19.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "The Tupperware, dear. The dish is the parish's. <p:0.3> You keep the dish, you're holding collateral. Earl comes for the dish.",
+      "overlap": -0.1,
+      "timestamp": 113.93,
+      "duration": 8.37,
+      "audio": "/snazziefm/audio/the-casserole-ledger/20.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He recovers the assets. <p:0.3> What a steward, Barry. The man keeps the kingdom solvent.",
+      "overlap": -0.2,
+      "timestamp": 121.641,
+      "duration": 6.94,
+      "audio": "/snazziefm/audio/the-casserole-ledger/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Did you say collateral? Mildred, a casserole dish is not collateral.",
+      "overlap": -0.1,
+      "timestamp": 127.908,
+      "duration": 5.68,
+      "audio": "/snazziefm/audio/the-casserole-ledger/22.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Everything's collateral, Barry, if you write it in the ledger. <p:0.3> And the ledger's leather. We had it blessed.",
+      "overlap": -0.1,
+      "timestamp": 132.702,
+      "duration": 7.63,
+      "audio": "/snazziefm/audio/the-casserole-ledger/23.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "Why is there a little candle next to my name on this statement? <p:0.3> There's a candle. And a star.",
+      "overlap": 0.2,
+      "timestamp": 139.488,
+      "duration": 5.39,
+      "audio": "/snazziefm/audio/the-casserole-ledger/24.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "The candle means you're current, dear. <p:0.3> The star means you're on the novena list. That's not a good list.",
+      "overlap": 0.25,
+      "timestamp": 143.607,
+      "duration": 9.39,
+      "audio": "/snazziefm/audio/the-casserole-ledger/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "What's the novena list, Patricia? <p:0.3> Like, what actually happens on it?",
+      "overlap": -0.1,
+      "timestamp": 151.537,
+      "duration": 6.06,
+      "audio": "/snazziefm/audio/the-casserole-ledger/26.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "We pray for you. <p:0.3> Hard. By name. At the seven in the morning mass. <p:0.3> And then your casseroles stop coming, but Earl keeps coming.",
+      "overlap": -0.1,
+      "timestamp": 156.595,
+      "duration": 12.24,
+      "audio": "/snazziefm/audio/the-casserole-ledger/27.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "So you pray AT me until I pay? <p:0.3> That's the prayer? It's a threat with a candle?",
+      "overlap": 0.3,
+      "timestamp": 167.643,
+      "duration": 4.46,
+      "audio": "/snazziefm/audio/the-casserole-ledger/28.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "It's intercession, dear. It's the warmest collections department in the diocese.",
+      "overlap": 0.25,
+      "timestamp": 171.401,
+      "duration": 5.53,
+      "audio": "/snazziefm/audio/the-casserole-ledger/29.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Now hold on, I'm getting a new caller. <p:0.3> Sounds like a gentleman in a van. Earl, is that you?",
+      "overlap": -0.2,
+      "timestamp": 176.128,
+      "duration": 7.18,
+      "audio": "/snazziefm/audio/the-casserole-ledger/30.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Evening. <p:0.3> This is Earl. <p:0.3> I'm outside number eleven for a dish. The lasagna pan. Pyrex. <p:0.3> She knows the one.",
+      "overlap": -0.1,
+      "timestamp": 182.172,
+      "duration": 10.34,
+      "audio": "/snazziefm/audio/the-casserole-ledger/31.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "How are you OUTSIDE? I'm on the RADIO! <p:0.3> How does the deacon have my ADDRESS?",
+      "overlap": 0.3,
+      "timestamp": 191.466,
+      "duration": 4.54,
+      "audio": "/snazziefm/audio/the-casserole-ledger/32.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "It's in the ledger. <p:0.3> Everything's in the ledger. I just read the ledger.",
+      "overlap": -0.1,
+      "timestamp": 195.281,
+      "duration": 5.66,
+      "audio": "/snazziefm/audio/the-casserole-ledger/33.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Earl, are you allowed to repossess a baking dish from a sick woman?",
+      "overlap": -0.1,
+      "timestamp": 200.198,
+      "duration": 5.48,
+      "audio": "/snazziefm/audio/the-casserole-ledger/34.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "I'm a deacon, sir. <p:0.3> I'm allowed a great deal.",
+      "overlap": 0.2,
+      "timestamp": 204.471,
+      "duration": 4.06,
+      "audio": "/snazziefm/audio/the-casserole-ledger/35.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "I WASHED the pan! It's clean! Take the pan! <p:0.3> Does taking the pan clear the forty-one?",
+      "overlap": 0.3,
+      "timestamp": 207.529,
+      "duration": 5.02,
+      "audio": "/snazziefm/audio/the-casserole-ledger/36.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Oh no, dear. <p:0.3> The pan was never the debt. The pan was the interest.",
+      "overlap": 0.25,
+      "timestamp": 211.849,
+      "duration": 5.45,
+      "audio": "/snazziefm/audio/the-casserole-ledger/37.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "The PAN was the INTEREST?!",
+      "overlap": -0.1,
+      "timestamp": 216.516,
+      "duration": 2.24,
+      "audio": "/snazziefm/audio/the-casserole-ledger/38.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Tuna bake!",
+      "overlap": 0.4,
+      "timestamp": 217.542,
+      "duration": 1.68,
+      "audio": "/snazziefm/audio/the-casserole-ledger/39.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Open the door.",
+      "overlap": 0.4,
+      "timestamp": 217.917,
+      "duration": 1.45,
+      "audio": "/snazziefm/audio/the-casserole-ledger/40.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "Bless this house.",
+      "overlap": 0.4,
+      "timestamp": 218.781,
+      "duration": 1.53,
+      "audio": "/snazziefm/audio/the-casserole-ledger/41.flac"
+    },
+    {
+      "speaker": "caller-nadia",
+      "text": "It's a LASAGNA!",
+      "overlap": 0.4,
+      "timestamp": 219.154,
+      "duration": 1.48,
+      "audio": "/snazziefm/audio/the-casserole-ledger/42.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Novena.",
+      "overlap": 0.4,
+      "timestamp": 219.847,
+      "duration": 1.52,
+      "audio": "/snazziefm/audio/the-casserole-ledger/43.flac"
+    },
+    {
+      "speaker": "caller-winston",
+      "text": "Dish.",
+      "overlap": 0.4,
+      "timestamp": 220.031,
+      "duration": 1.4,
+      "audio": "/snazziefm/audio/the-casserole-ledger/44.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, the deacon is knocking. <p:0.3> I can hear the knocking through her phone.",
+      "overlap": -0.1,
+      "timestamp": 220.867,
+      "duration": 6.54,
+      "audio": "/snazziefm/audio/the-casserole-ledger/45.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "And that, folks, is community. <p:0.3> A street where no kindness goes uncollected. We'll be right back, right after Mildred saves us all a plate. <p:0.4> Earl can pick it up later.",
+      "overlap": -0.25,
+      "timestamp": 226.808,
+      "duration": 13.66,
+      "audio": "/snazziefm/audio/the-casserole-ledger/46.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "...With interest.",
+      "overlap": -0.1,
+      "timestamp": 239.858,
+      "duration": 1.11,
+      "audio": "/snazziefm/audio/the-casserole-ledger/47.flac"
+    }
+  ]
+}

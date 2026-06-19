@@ -1,0 +1,231 @@
+{
+  "slug": "the-brood-is-back-part-2",
+  "title": "Breaking: The Brood Is Back (Part 2)",
+  "description": "We come back from the break with the brood's spokesman still on hold and still working through Mildred's banana. Rhonda translates the formants live while it negotiates terms, Ronnie keeps upgrading the situation, and somewhere between the rider and the demands it becomes clear the brood is not asking for airtime. It's asking for a slot.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "And we're back on Snazzie FM, still a guest, not an emergence. <p:0.3> The brood's spokesman has been holding through the whole break. Rhonda, is it still on the meter?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 12.58,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It's on the meter, Ronnie. It hasn't moved. <p:0.3> For folks just joining, a million cicadas grew a throat, elected one big one, and that one learned the word airtime. <p:0.4> And now it's, okay, it's doing the formant again.",
+      "overlap": -0.15,
+      "timestamp": 11.446,
+      "duration": 12.86,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/1.flac"
+    },
+    {
+      "speaker": "brood-prime",
+      "text": "Helloooo. <p:0.4> Snazzie. <p:0.3> F. M.",
+      "overlap": -0.1,
+      "timestamp": 23.947,
+      "duration": 2.8,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It said the call letters. <p:0.3> The bug said the call letters, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 25.426,
+      "duration": 5.7,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It nailed the call letters, Barry. Cleaner than most of our interns. <p:0.3> Todd, no offense.",
+      "overlap": -0.2,
+      "timestamp": 29.954,
+      "duration": 7.58,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/4.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Some offense taken, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 36.951,
+      "duration": 1.58,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/5.flac"
+    },
+    {
+      "speaker": "brood-prime",
+      "text": "Weee, would like, <p:0.3> a segment. <p:0.4> Driiive time. <p:0.3> And, more, <p:0.3> banaaana.",
+      "overlap": -0.1,
+      "timestamp": 38.176,
+      "duration": 6.49,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/6.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It's negotiating, Ronnie. The vowels resolved into a clause. It wants drive time and it wants more banana, and those are connected. <p:0.4> It's bundling the banana into the deal.",
+      "overlap": -0.1,
+      "timestamp": 44.022,
+      "duration": 10.51,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/7.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "I've cut three more bananas, dear. <p:0.3> They formed a line at each one. Three lines. <p:0.3> It's a queue with branches now.",
+      "overlap": 0.2,
+      "timestamp": 53.835,
+      "duration": 8.27,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/8.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "An org chart. <p:0.3> Folks, that's a hierarchy. I'm upgrading us to a Tier Four Labor Action.",
+      "overlap": -0.2,
+      "timestamp": 61.507,
+      "duration": 7.62,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/9.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Labor action? They're insects, Ronnie. They want fruit.",
+      "overlap": -0.1,
+      "timestamp": 68.225,
+      "duration": 4.6,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/10.flac"
+    },
+    {
+      "speaker": "brood-prime",
+      "text": "Wee, are not, <p:0.3> insects. <p:0.4> Weee, are, <p:0.3> talent.",
+      "overlap": 0.15,
+      "timestamp": 71.814,
+      "duration": 5.02,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/11.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "Ronnie, my car's gone. <p:0.3> Not stolen, gone, they LIFTED it. A million bugs picked up a sedan and walked it toward the station like ants with a chip!",
+      "overlap": 0.25,
+      "timestamp": 76.011,
+      "duration": 9.9,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/12.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "They're moving the swarm to the transmitter, Ronnie. The downbeat's pointed at the tower now. <p:0.4> They don't want to be on the radio. They want to BE the radio.",
+      "overlap": 0.2,
+      "timestamp": 84.857,
+      "duration": 9.72,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/13.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Be the radio. <p:0.3> Rhonda, confirm the demand. What exactly is the spokesman asking for?",
+      "overlap": -0.15,
+      "timestamp": 93.629,
+      "duration": 7.58,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/14.flac"
+    },
+    {
+      "speaker": "brood-prime",
+      "text": "The, <p:0.3> nine, P. M. <p:0.3> slot.",
+      "overlap": -0.1,
+      "timestamp": 99.647,
+      "duration": 4.9,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/15.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "That's my slot. <p:0.3> That's literally my slot, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 104.088,
+      "duration": 4.78,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/16.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's a strong slot, Barry. <p:0.3> And they did bring their own audience.",
+      "overlap": -0.2,
+      "timestamp": 107.962,
+      "duration": 5.58,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/17.flac"
+    },
+    {
+      "speaker": "caller-mildred",
+      "text": "The bananas are gone, dear! <p:0.3> All of them! They ate the leverage!",
+      "overlap": 0.3,
+      "timestamp": 112.67,
+      "duration": 4.99,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/18.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "The big one finished Mildred's banana! <p:0.3> It set the peel down like a contract! It's tapping the peel!",
+      "overlap": 0.3,
+      "timestamp": 116.712,
+      "duration": 5.62,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/19.flac"
+    },
+    {
+      "speaker": "caller-darnell",
+      "text": "They're on the tower! They're ON the tower, Barry!",
+      "overlap": 0.4,
+      "timestamp": 121.536,
+      "duration": 2.96,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/20.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It learned a third word! It said sponsor!",
+      "overlap": 0.4,
+      "timestamp": 123.642,
+      "duration": 2.27,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/21.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Do NOT give the bugs a sponsor, Ronnie!",
+      "overlap": -0.1,
+      "timestamp": 125.167,
+      "duration": 3.24,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/22.flac"
+    },
+    {
+      "speaker": "brood-prime",
+      "text": "Banaaana, <p:0.3> Republic. <p:0.4> A word, <p:0.3> from our, <p:0.3> sponsor.",
+      "overlap": 0.25,
+      "timestamp": 127.256,
+      "duration": 5.8,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/23.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It sold its own ad read. <p:0.4> Folks. <p:0.3> We are no longer classifying this as a guest, or a labor action. <p:0.3> We are classifying it as my replacement.",
+      "overlap": -0.2,
+      "timestamp": 132.432,
+      "duration": 12.88,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/24.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "I told you it was a calendar thing.",
+      "overlap": -0.1,
+      "timestamp": 144.155,
+      "duration": 2.88,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/25.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It just learned a fourth word, Ronnie. <p:0.3> After sponsor. <p:0.4> It looked at the schedule, then it looked at you. <p:0.3> And it said, Barry.",
+      "overlap": -0.1,
+      "timestamp": 146.107,
+      "duration": 9.41,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/26.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Then we put it on hold one more time. <p:0.3> The nine P. M. slot is under review, the bugs have a sponsor, and Barry, soon as it learns to say fired, we'll be right back.",
+      "overlap": -0.2,
+      "timestamp": 154.455,
+      "duration": 12.38,
+      "audio": "/snazziefm/audio/the-brood-is-back-part-2/27.flac"
+    }
+  ]
+}

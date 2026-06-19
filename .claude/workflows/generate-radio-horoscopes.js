@@ -13,8 +13,8 @@ export const meta = {
 
 const REPO = 'C:/Users/acoop/Documents/GitHub/SnazzieSpaceReact'
 const SKILL = `${REPO}/.claude/skills/radio-episodes/SKILL.md`
-const RADIO_TS = `${REPO}/Website/src/data/radio.ts`
-const EPISODE_DIR = `${REPO}/Website/src/data/radio`
+const RADIO_TS = `${REPO}/Website/src/projects/snazziefm/data/radio.ts`
+const EPISODE_DIR = `${REPO}/Website/src/projects/snazziefm/data/radio`
 const CANONICAL_REF = `${EPISODE_DIR}/villain-hour.json`
 
 const FORMAT = `FORMAT — THE STARS WITH RHONDA (~1 MINUTE):

@@ -1,0 +1,24 @@
+{
+  "slug": "ad-deadcert",
+  "title": "Dead Cert Life",
+  "description": "Cash out your own life insurance early... by being declared legally dead while you keep on living.",
+  "type": "ad",
+  "lines": [
+    {
+      "speaker": "ad-ann-smooth",
+      "text": "Why wait to die to cash your life insurance? <p:0.2> Dead Cert declares you legally deceased today, while you keep right on breathing. <p:0.2> Cash out before you check out.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 9.96,
+      "audio": "/snazziefm/audio/ad-deadcert/0.flac"
+    },
+    {
+      "speaker": "ad-disclaimer",
+      "text": "Policyholder is legally a corpse and may not vote or drive. <p:0> Heirs may collect a second time. <p:0> Reanimation void where prohibited. <p:0> Terms and conditions apply.",
+      "overlap": 0,
+      "timestamp": 9.351,
+      "duration": 7.11,
+      "audio": "/snazziefm/audio/ad-deadcert/1.flac"
+    }
+  ]
+}

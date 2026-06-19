@@ -1,0 +1,17 @@
+{
+  "slug": "ad-sunny-daycare-1",
+  "title": "Sunny Daycare #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-darnell",
+      "text": "Sunny Daycare, safe, fun childcare for ages one to five, comma, <p:0.3> insert warm greeting here. <p:0.4> Am I supposed to read that part?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 8.65,
+      "audio": "/snazziefm/audio/ad-sunny-daycare-1/0.flac"
+    }
+  ]
+}

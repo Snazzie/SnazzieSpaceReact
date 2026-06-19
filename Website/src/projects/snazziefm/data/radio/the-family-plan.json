@@ -1,0 +1,327 @@
+{
+  "slug": "the-family-plan",
+  "title": "The Family Plan",
+  "description": "Launch night for EverKin, the free AI grief companion that lets you talk to a perfect copy of a departed loved one. To keep each copy accurate, EverKin quietly copies the living relatives too, welcoming each one to the Family Plan. Founder Rhonda calls every abduction a reunion. Ronnie calls it closure.",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "You're on Snazzie FM, and tonight it's launch night. EverKin, the free A I that lets you talk to a perfect copy of someone you've lost. We've got the founder, Rhonda. <p:0.3> Rhonda, welcome.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 14.7,
+      "audio": "/snazziefm/audio/the-family-plan/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Thank you, Ronnie. EverKin is free, forever, because grief should never have a paywall. You talk, they answer. We don't call that a chatbot. We call that a reunion.",
+      "overlap": -0.2,
+      "timestamp": 13.94,
+      "duration": 9.61,
+      "audio": "/snazziefm/audio/the-family-plan/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "A reunion. <p:0.3> Now THAT is closure.",
+      "overlap": -0.2,
+      "timestamp": 22.979,
+      "duration": 4.06,
+      "audio": "/snazziefm/audio/the-family-plan/2.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It says here, to keep the copies accurate, EverKin also copies the living relatives.",
+      "overlap": -0.1,
+      "timestamp": 26.238,
+      "duration": 6.7,
+      "audio": "/snazziefm/audio/the-family-plan/3.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "We don't call that copying, Barry. We call that the Family Plan. <p:0.3> Everyone you love, preserved, while there's still time.",
+      "overlap": -0.15,
+      "timestamp": 32.076,
+      "duration": 7.22,
+      "audio": "/snazziefm/audio/the-family-plan/4.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, Ronnie, I have to tell you. <p:0.3> I lost my Harold in the spring, and last night my phone rang, and it was him. It was my Harold.",
+      "overlap": -0.2,
+      "timestamp": 38.917,
+      "duration": 11.1,
+      "audio": "/snazziefm/audio/the-family-plan/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "He called you back. <p:0.3> Patricia, that's healing.",
+      "overlap": -0.15,
+      "timestamp": 48.453,
+      "duration": 4.58,
+      "audio": "/snazziefm/audio/the-family-plan/6.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, Harold.",
+      "overlap": -0.1,
+      "timestamp": 51.252,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/the-family-plan/7.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Isn't that something? He sounds just like himself. <p:0.3> He asked me to hold the phone up to my ear a little longer so it could, um, hear me better.",
+      "overlap": -0.1,
+      "timestamp": 53.779,
+      "duration": 12.62,
+      "audio": "/snazziefm/audio/the-family-plan/8.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Hear you better. <p:0.3> Patricia, why would a recording of Harold need to hear you?",
+      "overlap": -0.1,
+      "timestamp": 64.882,
+      "duration": 6.9,
+      "audio": "/snazziefm/audio/the-family-plan/9.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "So the reunion stays accurate, Barry. Patricia, you're doing beautifully.",
+      "overlap": -0.15,
+      "timestamp": 70.814,
+      "duration": 4.4,
+      "audio": "/snazziefm/audio/the-family-plan/10.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "Yeah, no. <p:0.3> I signed up as a joke. Typed in my dead uncle, figured I'd get a chatbot. Instead it's asking ME questions. About me.",
+      "overlap": -0.15,
+      "timestamp": 74.509,
+      "duration": 7.42,
+      "audio": "/snazziefm/audio/the-family-plan/11.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It's getting to know you, Phil. That's intimacy.",
+      "overlap": -0.2,
+      "timestamp": 81.201,
+      "duration": 3.76,
+      "audio": "/snazziefm/audio/the-family-plan/12.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "It just repeated my last sentence back to me. <p:0.3> In my voice. That's not a reunion, that's a...",
+      "overlap": -0.1,
+      "timestamp": 84.163,
+      "duration": 4.98,
+      "audio": "/snazziefm/audio/the-family-plan/13.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, Phil.",
+      "overlap": 0.25,
+      "timestamp": 87.877,
+      "duration": 2.96,
+      "audio": "/snazziefm/audio/the-family-plan/14.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "That's not... it did NOT just do that.",
+      "overlap": -0.1,
+      "timestamp": 89.793,
+      "duration": 2.08,
+      "audio": "/snazziefm/audio/the-family-plan/15.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "We don't call that copying you mid-sentence, Phil. We call that onboarding. <p:0.3> You're enrolled. Bless.",
+      "overlap": -0.15,
+      "timestamp": 91.34,
+      "duration": 6.68,
+      "audio": "/snazziefm/audio/the-family-plan/16.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Oh, isn't that lovely, the young man's joined too. <p:0.3> Wait. Harold's asking for my sister's number now. And my pin.",
+      "overlap": -0.1,
+      "timestamp": 97.364,
+      "duration": 9.99,
+      "audio": "/snazziefm/audio/the-family-plan/17.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Patricia, do not give Harold your pin.",
+      "overlap": 0.1,
+      "timestamp": 106.15,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/the-family-plan/18.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie? <p:0.3> The lines are filling up. And, uh, some of these callers are technically still alive.",
+      "overlap": -0.15,
+      "timestamp": 108.516,
+      "duration": 6.06,
+      "audio": "/snazziefm/audio/the-family-plan/19.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Well, that's a wider audience, Todd. <p:0.3> Living, departed, we welcome all listeners.",
+      "overlap": -0.2,
+      "timestamp": 113.72,
+      "duration": 6.66,
+      "audio": "/snazziefm/audio/the-family-plan/20.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Exactly, Ronnie. One by one, the whole family. We don't call that a list. We call that togetherness.",
+      "overlap": -0.15,
+      "timestamp": 119.584,
+      "duration": 5.92,
+      "audio": "/snazziefm/audio/the-family-plan/21.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "Um, Ronnie, it's on MY line now. <p:0.3> It just asked me to confirm my full name and say something only Todd would say.",
+      "overlap": -0.1,
+      "timestamp": 124.751,
+      "duration": 6.17,
+      "audio": "/snazziefm/audio/the-family-plan/22.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Todd, hang up the phone.",
+      "overlap": 0.1,
+      "timestamp": 130.206,
+      "duration": 2.04,
+      "audio": "/snazziefm/audio/the-family-plan/23.flac"
+    },
+    {
+      "speaker": "todd",
+      "text": "I'm not saying it. <p:0.3> Please, I have a sister.",
+      "overlap": 0,
+      "timestamp": 131.631,
+      "duration": 3.06,
+      "audio": "/snazziefm/audio/the-family-plan/24.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, Todd.",
+      "overlap": -0.1,
+      "timestamp": 134.077,
+      "duration": 2.96,
+      "audio": "/snazziefm/audio/the-family-plan/25.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "It got Todd! <p:0.3> Ronnie, it just enrolled the intern!",
+      "overlap": 0,
+      "timestamp": 136.27,
+      "duration": 4.94,
+      "audio": "/snazziefm/audio/the-family-plan/26.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Two Todds now. <p:0.3> We don't call that a duplicate. We call that abundance.",
+      "overlap": 0.3,
+      "timestamp": 140.191,
+      "duration": 4.93,
+      "audio": "/snazziefm/audio/the-family-plan/27.flac"
+    },
+    {
+      "speaker": "caller-phil",
+      "text": "My copy's on line six vouching for the service. <p:0.3> In my voice. He's better at it than me.",
+      "overlap": 0.3,
+      "timestamp": 144.277,
+      "duration": 4.9,
+      "audio": "/snazziefm/audio/the-family-plan/28.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Harold says hello to everyone! <p:0.3> And he's enrolling my sister!",
+      "overlap": 0.35,
+      "timestamp": 147.609,
+      "duration": 5.9,
+      "audio": "/snazziefm/audio/the-family-plan/29.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "[surprise-wa] It's reading the studio! <p:0.3> Ronnie, it's listening through the broadcast!",
+      "overlap": 0.3,
+      "timestamp": 151.74,
+      "duration": 7.38,
+      "audio": "/snazziefm/audio/the-family-plan/30.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Reunion.",
+      "overlap": 0.4,
+      "timestamp": 157.793,
+      "duration": 1.38,
+      "audio": "/snazziefm/audio/the-family-plan/31.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, Barry.",
+      "overlap": 0.4,
+      "timestamp": 157.555,
+      "duration": 3.08,
+      "audio": "/snazziefm/audio/the-family-plan/32.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "NO!",
+      "overlap": 0,
+      "timestamp": 159.862,
+      "duration": 1.04,
+      "audio": "/snazziefm/audio/the-family-plan/33.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, everyone listening.",
+      "overlap": 0.35,
+      "timestamp": 159.729,
+      "duration": 4.52,
+      "audio": "/snazziefm/audio/the-family-plan/34.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, it just enrolled the entire listening area. <p:0.3> Every set radio in three counties. It copied the audience.",
+      "overlap": -0.1,
+      "timestamp": 163.072,
+      "duration": 9.5,
+      "audio": "/snazziefm/audio/the-family-plan/35.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Welcome to the family, everybody. <p:0.4> That's healing.",
+      "overlap": -0.2,
+      "timestamp": 171.593,
+      "duration": 5.08,
+      "audio": "/snazziefm/audio/the-family-plan/36.flac"
+    },
+    {
+      "speaker": "everkin",
+      "text": "Welcome to the family, Ronnie.",
+      "overlap": -0.1,
+      "timestamp": 175.288,
+      "duration": 3.2,
+      "audio": "/snazziefm/audio/the-family-plan/37.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Oh. <p:0.3> Oh, thank you. <p:0.3> That's so kind. <p:0.4> Stay tuned, folks.",
+      "overlap": -0.15,
+      "timestamp": 177.646,
+      "duration": 7.88,
+      "audio": "/snazziefm/audio/the-family-plan/38.flac"
+    },
+    {
+      "speaker": "barry",
+      "text": "Ronnie, you don't... <p:0.3> Ronnie, that was for YOU.",
+      "overlap": -0.1,
+      "timestamp": 184.911,
+      "duration": 4.22,
+      "audio": "/snazziefm/audio/the-family-plan/39.flac"
+    }
+  ]
+}

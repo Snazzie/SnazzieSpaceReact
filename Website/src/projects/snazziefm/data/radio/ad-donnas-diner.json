@@ -1,0 +1,35 @@
+{
+  "slug": "ad-donnas-diner",
+  "title": "Donna's Diner",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-patricia",
+      "text": "Donna's Diner, best pancakes and bottomless coffee in town, open six to noon, <p:0.3> hold on, phone. <p:0.4> Donna's Diner. No, we're closed. <p:0.3> Okay, where was I.",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 14.56,
+      "audio": "/snazziefm/audio/ad-donnas-diner/0.flac"
+    },
+    {
+      "speaker": "caller-kim",
+      "text": "Scuse me? <p:0.2> Can we get some menus over here?",
+      "distant": true,
+      "gain": 0.5,
+      "overlap": 0.3,
+      "timestamp": 13.184,
+      "duration": 3.38,
+      "audio": "/snazziefm/audio/ad-donnas-diner/1.flac"
+    },
+    {
+      "speaker": "caller-patricia",
+      "text": "Be right there, hon! <p:0.4> Ugh, where was I. <p:0.4> We got eggs, bacon, hash browns, and fresh biscuits, <p:0.3> table four, I'll be right there! <p:0.4> Sorry. <p:0.3> Donna's Diner, come hungry, leave... <p:0.4> Forget it.",
+      "overlap": 0.2,
+      "timestamp": 15.701,
+      "duration": 20.04,
+      "audio": "/snazziefm/audio/ad-donnas-diner/2.flac"
+    }
+  ]
+}

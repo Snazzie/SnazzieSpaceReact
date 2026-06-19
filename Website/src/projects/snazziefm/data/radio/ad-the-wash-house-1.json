@@ -1,0 +1,17 @@
+{
+  "slug": "ad-the-wash-house-1",
+  "title": "The Wash House #1",
+  "description": "Recorded via InstaAd. Aired exactly as received.",
+  "type": "ad",
+  "blunder": true,
+  "lines": [
+    {
+      "speaker": "caller-frank",
+      "text": "Best tacos in the whole, <p:0.4> wait. <p:0.3> This is the laundromat one. <p:0.3> The Wash House, fifty washers, open late. <p:0.4> Can I start over?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 10.7,
+      "audio": "/snazziefm/audio/ad-the-wash-house-1/0.flac"
+    }
+  ]
+}

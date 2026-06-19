@@ -1,0 +1,96 @@
+{
+  "slug": "the-stars-with-rhonda-harvest",
+  "title": "The Stars with Rhonda: The Harvest Is Coming for You",
+  "description": "Rhonda reads the autumn signs as serene cosmic fact while Ronnie hunts for an upside. Casseroles, pumpkin patches, and a hayride curdle into doom. The harvest does not ask. But it does knock.",
+  "category": "horoscope",
+  "lines": [
+    {
+      "speaker": "ronnie",
+      "text": "The stars, with Rhonda. It's harvest season, Rhonda. Cozy stuff, right?",
+      "overlap": 0,
+      "timestamp": 0.0,
+      "duration": 5.48,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/0.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Virgo. Your casserole wins the church bake-off. You will not be there to accept. The harvest does not ask.",
+      "overlap": -0.2,
+      "timestamp": 4.766,
+      "duration": 6.22,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/1.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "It won though! That's a win, that's a positive.",
+      "overlap": 0,
+      "timestamp": 10.199,
+      "duration": 3.56,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/2.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Libra. Avoid the pumpkin patch. The largest gourd knows your name, and is disappointed in you.",
+      "overlap": -0.2,
+      "timestamp": 12.987,
+      "duration": 5.46,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/3.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Disappointed? In me? <p:0.3> What did the gourd hear?",
+      "overlap": 0,
+      "timestamp": 18.19,
+      "duration": 4.58,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/4.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Scorpio. A hayride leaves at dusk. Everyone you have wronged is already seated. There is one open spot. It is yours.",
+      "overlap": -0.2,
+      "timestamp": 22.371,
+      "duration": 6.73,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/5.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "Okay, it's getting closer, Rhonda, I don't love how it keeps getting closer.",
+      "overlap": 0,
+      "timestamp": 27.99,
+      "duration": 5.84,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/6.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "Capricorn. The scarecrow you waved at this morning waved back. <p:0.3> It is in the building. It would like a word.",
+      "overlap": -0.2,
+      "timestamp": 33.246,
+      "duration": 6.84,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/7.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "That's, that's my sign! But a scarecrow waving back, that's friendly, right?",
+      "overlap": -0.2,
+      "timestamp": 39.529,
+      "duration": 5.8,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/8.flac"
+    },
+    {
+      "speaker": "rhonda",
+      "text": "It is being polite. The harvest does not ask, Ronnie. <p:0.3> But it does knock.",
+      "overlap": 0,
+      "timestamp": 44.475,
+      "duration": 5.17,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/9.flac"
+    },
+    {
+      "speaker": "ronnie",
+      "text": "[sigh] we'll be right back. Maybe.",
+      "overlap": -0.3,
+      "timestamp": 49.539,
+      "duration": 2.64,
+      "audio": "/snazziefm/audio/the-stars-with-rhonda-harvest/10.flac"
+    }
+  ]
+}
