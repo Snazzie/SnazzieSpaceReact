@@ -66,20 +66,8 @@ import { WorthMyTime, WorthMyTimeTabs } from '@/projects/worthmytime';
     </header>
 
     <main>
-      <!-- Hero -->
-      <section class="mx-auto max-w-3xl px-6 pb-10 pt-36 text-center">
-        <h1 class="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
-          Is it worth your time?
-        </h1>
-        <p class="mx-auto mt-5 max-w-xl text-balance text-lg text-muted-foreground leading-relaxed">
-          Money is just stored hours. Enter your take-home (net) pay — the number that actually lands
-          in your bank — and we'll work out your real hourly rate, then tell you how many hours of
-          work that shiny new thing actually costs.
-        </p>
-      </section>
-
-      <!-- Calculator -->
-      <section class="mx-auto max-w-[112rem] px-6 pb-16">
+      <!-- Hero + calculator (hero copy switches per tab, so it lives in the island) -->
+      <section class="mx-auto max-w-[112rem] px-6 pb-16 pt-36">
         <WorthMyTime client:load />
       </section>
 
