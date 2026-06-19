@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 import ArticleCard from '@/components/articles/ArticleCard.astro';
 import TagList from '@/components/articles/TagList.astro';
 import { LunarArticles } from '@/components/LunarArticles';
+import Consent from '@/components/Consent.astro';
+import Footer from '@/components/Footer.astro';
 import AdSenseLoader from '@/components/AdSenseLoader.astro';
 import AdUnit from '@/components/AdUnit.astro';
 
@@ -21,6 +23,7 @@ const posts = allPosts.filter((p) => !p.data.featured);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Consent />
     <title>Articles — Aaron Cooper</title>
     <meta name="description" content="Technical articles and project breakdowns by Aaron Cooper." />
     <link rel="canonical" href="https://snazzie.space/articles/" />
@@ -149,6 +152,8 @@ const posts = allPosts.filter((p) => !p.data.featured);
         <LunarArticles client:idle />
       </div>
     </main>
+
+    <Footer />
 
     <script is:inline define:vars={{ PAGE_SIZE }}>
       (function () {

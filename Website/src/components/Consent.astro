@@ -1,0 +1,23 @@
+---
+// Drop this inside <head>, BEFORE any analytics/ad loaders (GTM, AdSense).
+// It sets Google Consent Mode v2 defaults (everything denied) so no tag fires
+// with consent until the banner updates it, then loads the cookie banner.
+---
+<!-- Consent Mode v2 defaults — must run before GTM/AdSense -->
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500,
+  });
+</script>
+<!-- Cookie banner (bundled, deferred) — flips consent on user choice -->
+<script>
+  import '@/scripts/cookieconsent-config';
+</script>

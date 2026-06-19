@@ -187,7 +187,6 @@ export const projects: Project[] = [
       "Vite",
       "Convex",
       "SQLite",
-      "Docker",
       "Firebase",
       "Stripe",
       "Vitest",

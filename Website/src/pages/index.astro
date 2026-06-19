@@ -1,6 +1,8 @@
 ---
 import { getImage } from "astro:assets";
 import "@/styles/global.css";
+import Consent from "@/components/Consent.astro";
+import Footer from "@/components/Footer.astro";
 import { Nav } from "@/components/Nav";
 import { Intro } from "@/components/Intro";
 import { Career } from "@/components/Career";
@@ -91,6 +93,7 @@ const images: Record<string, string> = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Consent />
     <meta name="google-adsense-account" content="ca-pub-8304271204200662" />
     <title>Aaron Cooper - Full-Stack Software Engineer | React, TypeScript</title>
     <meta
@@ -224,6 +227,8 @@ const images: Record<string, string> = {
       <HireMe client:visible />
       <LatestArticles client:visible articles={latestArticles} />
     </main>
+
+    <Footer />
 
     {/* After the page loads, proactively fetch every below-fold image into the
         HTTP cache during idle time, so slow-connection users don't hit an empty

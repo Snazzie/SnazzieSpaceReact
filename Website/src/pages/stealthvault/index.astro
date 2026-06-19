@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import Consent from '@/components/Consent.astro';
 
 const features = [
   {
@@ -48,6 +49,7 @@ const APPSTORE_URL = '#';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Consent />
     <title>StealthVault — Private encrypted media vault</title>
     <meta
       name="description"
@@ -198,6 +200,7 @@ const APPSTORE_URL = '#';
           <a href="/stealthvault/faq/" class="transition-colors hover:text-foreground">FAQ</a>
           <a href="/stealthvault/privacy/" class="transition-colors hover:text-foreground">Privacy</a>
           <a href="/stealthvault/terms/" class="transition-colors hover:text-foreground">Terms</a>
+          <button type="button" data-cc="show-preferencesModal" class="cursor-pointer border-none bg-transparent p-0 text-inherit transition-colors hover:text-foreground">Cookie Preferences</button>
           <a href="mailto:acoop133@hotmail.com" class="transition-colors hover:text-foreground">Contact</a>
         </nav>
       </div>

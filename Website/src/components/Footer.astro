@@ -1,0 +1,42 @@
+---
+// Shared site footer. Includes the cookie-preferences reopen button so users
+// can withdraw consent from any page that renders it. Pair with <Consent />.
+const year = new Date().getFullYear();
+const links = [
+  { href: '/articles/', label: 'Articles' },
+  { href: '/worthmytime/', label: 'Worth My Time' },
+  { href: '/snazziefm/', label: 'Snazzie FM' },
+  { href: '/stealthvault/', label: 'StealthVault' },
+];
+---
+<footer class="mx-auto max-w-5xl px-6 py-12">
+  <div
+    class="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 text-sm text-muted-foreground sm:flex-row"
+  >
+    <span>&copy; {year} Aaron Cooper</span>
+    <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
+      {links.map((l) => (
+        <a href={l.href} class="transition-colors hover:text-foreground">{l.label}</a>
+      ))}
+      <a
+        href="https://github.com/snazzie"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors hover:text-foreground">GitHub</a
+      >
+      <a
+        href="https://linkedin.com/in/cooper-a-m/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors hover:text-foreground">LinkedIn</a
+      >
+      <a href="mailto:info@snazzie.space" class="transition-colors hover:text-foreground">Contact</a>
+      <button
+        type="button"
+        data-cc="show-preferencesModal"
+        class="cursor-pointer border-none bg-transparent p-0 text-inherit transition-colors hover:text-foreground"
+        >Cookie Preferences</button
+      >
+    </nav>
+  </div>
+</footer>

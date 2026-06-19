@@ -3,6 +3,8 @@ import '@/styles/global.css';
 import { WorthMyTime, WorthMyTimeTabs } from '@/projects/worthmytime';
 import AdSenseLoader from '@/components/AdSenseLoader.astro';
 import AdUnit from '@/components/AdUnit.astro';
+import Consent from '@/components/Consent.astro';
+import Footer from '@/components/Footer.astro';
 ---
 
 <!doctype html>
@@ -10,6 +12,7 @@ import AdUnit from '@/components/AdUnit.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Consent />
     <title>Worth My Time — what a purchase really costs in work hours</title>
     <meta
       name="description"
@@ -17,6 +20,25 @@ import AdUnit from '@/components/AdUnit.astro';
     />
     <link rel="canonical" href="https://snazzie.space/worthmytime/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content="Worth My Time — what a purchase really costs in work hours" />
+    <meta
+      property="og:description"
+      content="Money is stored hours. Turn your UK take-home pay into a real hourly rate and see how many hours of work any purchase actually costs."
+    />
+    <meta property="og:url" content="https://snazzie.space/worthmytime/" />
+    <meta property="og:image" content="https://snazzie.space/wmt-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Worth My Time — what a purchase really costs in work hours" />
+    <meta
+      name="twitter:description"
+      content="Money is stored hours. Turn your UK take-home pay into a real hourly rate and see how many hours of work any purchase actually costs."
+    />
+    <meta name="twitter:image" content="https://snazzie.space/wmt-og.png" />
     <AdSenseLoader />
     <style is:global>
       @keyframes wmt-scroll-up {
@@ -104,22 +126,6 @@ import AdUnit from '@/components/AdUnit.astro';
       <AdUnit class="mx-auto max-w-3xl px-6 my-8" slot="3853068378" />
     </main>
 
-    <!-- Footer -->
-    <footer class="mx-auto max-w-5xl px-6 py-12">
-      <div
-        class="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-muted-foreground sm:flex-row"
-      >
-        <span
-          >Worth My Time · A <a
-            href="/"
-            class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity"
-            >Snazzie</a
-          > toy</span
-        >
-        <a href="mailto:acoop133@hotmail.com" class="transition-colors hover:text-foreground"
-          >Contact</a
-        >
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
