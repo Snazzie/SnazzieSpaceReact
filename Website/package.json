@@ -31,6 +31,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.4.8",
+    "big.js": "^7.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-geo": "^3.1.1",
@@ -50,6 +51,7 @@
   },
   "devDependencies": {
     "@huggingface/transformers": "^4.2.0",
+    "@types/big.js": "^7.0.0",
     "@types/d3-geo": "^3.1.0",
     "@types/topojson-client": "^3.1.5",
     "i18n-iso-countries": "^7.14.0",

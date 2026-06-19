@@ -19,6 +19,17 @@ const COUNTRY_NAMES: Record<string, string> = Object.fromEntries(
   }),
 );
 
+// A restrained splash of colour against the otherwise monochrome theme.
+const STAT_ICON_COLORS = ["text-sky-400", "text-violet-400", "text-emerald-400"];
+const BAR_GRADIENTS = [
+  "from-sky-400 to-cyan-300",
+  "from-violet-400 to-fuchsia-300",
+  "from-emerald-400 to-teal-300",
+  "from-amber-400 to-orange-300",
+  "from-rose-400 to-pink-300",
+  "from-indigo-400 to-blue-300",
+];
+
 function snapshotDate(iso: string): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? iso : d.toISOString().slice(0, 10);
@@ -61,7 +72,10 @@ function CountStat({
     >
       <p className="flex items-center gap-2 text-xl font-semibold tracking-tight tabular-nums sm:text-3xl">
         {reduce ? compact(value) : <motion.span>{display}</motion.span>}
-        <Icon className="size-5 text-muted-foreground" aria-hidden />
+        <Icon
+          className={`size-5 ${STAT_ICON_COLORS[index % STAT_ICON_COLORS.length]}`}
+          aria-hidden
+        />
       </p>
       <p className="mt-2 text-sm text-muted-foreground">
         {label}
@@ -102,7 +116,7 @@ function GeoPanel({ countries }: { countries: TrafficCountry[] }) {
               </div>
               <div className="h-1.5 overflow-hidden rounded-full bg-foreground/5">
                 <motion.div
-                  className="h-full rounded-full bg-foreground/70"
+                  className={`h-full rounded-full bg-gradient-to-r ${BAR_GRADIENTS[i % BAR_GRADIENTS.length]}`}
                   initial={reduce ? false : { width: 0 }}
                   whileInView={{ width: `${(c.requests / topMax) * 100}%` }}
                   viewport={{ once: true, amount: 0.6 }}

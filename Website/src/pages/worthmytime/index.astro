@@ -1,0 +1,122 @@
+---
+import '@/styles/global.css';
+import { WorthMyTime } from '@/projects/worthmytime';
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Worth My Time — what a purchase really costs in work hours</title>
+    <meta
+      name="description"
+      content="Turn your UK salary into a real take-home hourly rate (after Income Tax + National Insurance), then see how many hours of work any purchase actually costs you."
+    />
+    <link rel="canonical" href="https://snazzie.space/worthmytime/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style is:global>
+      @keyframes wmt-scroll-up {
+        from { transform: translateY(0); }
+        to { transform: translateY(-50%); }
+      }
+      @keyframes wmt-scroll-down {
+        from { transform: translateY(-50%); }
+        to { transform: translateY(0); }
+      }
+      .wmt-marquee-up { animation: wmt-scroll-up 32s linear infinite; }
+      .wmt-marquee-down { animation: wmt-scroll-down 32s linear infinite; }
+      .wmt-marquee-up:hover,
+      .wmt-marquee-down:hover { animation-play-state: paused; }
+      @media (prefers-reduced-motion: reduce) {
+        .wmt-marquee-up, .wmt-marquee-down { animation: none; }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-foreground antialiased">
+    <!-- Nav -->
+    <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center pt-4 px-4">
+      <nav
+        class="pointer-events-auto flex items-center gap-1 rounded-full border border-white/10 bg-black/70 px-2 py-1.5 backdrop-blur-md w-full max-w-2xl"
+      >
+        <div class="flex items-center gap-2 px-3 text-sm font-semibold text-foreground shrink-0">
+          <a href="/worthmytime/" aria-label="Worth My Time, home" class="flex items-center gap-2">
+            <span class="size-2 rounded-full bg-foreground" aria-hidden="true"></span>
+            Worth My Time
+          </a>
+        </div>
+        <div class="ml-auto flex items-center gap-0.5">
+          <a
+            href="/"
+            class="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+          >
+            Snazzie
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="mx-auto max-w-3xl px-6 pb-10 pt-36 text-center">
+        <h1 class="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
+          Is it worth your time?
+        </h1>
+        <p class="mx-auto mt-5 max-w-xl text-balance text-lg text-muted-foreground leading-relaxed">
+          Money is just stored hours. Enter your take-home (net) pay — the number that actually lands
+          in your bank — and we'll work out your real hourly rate, then tell you how many hours of
+          work that shiny new thing actually costs.
+        </p>
+      </section>
+
+      <!-- Calculator -->
+      <section class="mx-auto max-w-[112rem] px-6 pb-16">
+        <WorthMyTime client:load />
+      </section>
+
+      <!-- Assumptions -->
+      <section class="mx-auto max-w-3xl px-6 pb-20">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            The small print
+          </h2>
+          <ul class="mt-4 space-y-2 text-sm text-muted-foreground leading-relaxed">
+            <li>
+              · <strong class="text-foreground">Take-home mode</strong> uses the net figure you enter
+              directly — already after tax, NI, pension, and any other deductions. Most accurate.
+            </li>
+            <li>
+              · <strong class="text-foreground">Gross mode</strong> estimates take-home from your
+              pre-tax pay using 2025/26 rest-of-UK Income Tax (£12,570 allowance, tapered above £100k;
+              20/40/45% bands) and Class 1 employee National Insurance (8% then 2%). Scotland's bands
+              aren't modelled; no pension or student-loan deductions.
+            </li>
+            <li>
+              · Either way we annualise over a <strong class="text-foreground">52-week</strong> year and
+              divide by the weekly hours you enter to get your true hourly rate.
+            </li>
+            <li>· A rough guide, not financial advice. Your payslip is the source of truth.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mx-auto max-w-5xl px-6 py-12">
+      <div
+        class="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-sm text-muted-foreground sm:flex-row"
+      >
+        <span
+          >Worth My Time · A <a
+            href="/"
+            class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity"
+            >Snazzie</a
+          > toy</span
+        >
+        <a href="mailto:acoop133@hotmail.com" class="transition-colors hover:text-foreground"
+          >Contact</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
