@@ -241,8 +241,8 @@ export const projects: Project[] = [
     image: "/wmt.png",
     featured: true,
     imageFit: "contain",
-    imgWidth: 1496,
-    imgHeight: 1516,
+    imgWidth: 1389,
+    imgHeight: 1570,
     tech: ["Astro", "React", "TypeScript", "Tailwind", "Vite", "Bun", "big.js", "Vitest"],
     details: [
       "Real hourly rate from gross or take-home pay, using 2025/26 rest-of-UK Income Tax + National Insurance",
