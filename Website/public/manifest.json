@@ -39,28 +39,16 @@
   "categories": ["productivity", "business"],
   "shortcuts": [
     {
-      "name": "GitHub Profile",
-      "short_name": "GitHub",
-      "description": "View GitHub profile",
-      "url": "https://github.com/snazzie",
-      "icons": [
-        {
-          "src": "https://github.com/favicon.ico",
-          "sizes": "96x96"
-        }
-      ]
+      "name": "Articles",
+      "short_name": "Articles",
+      "description": "Read the latest articles",
+      "url": "/articles/"
     },
     {
-      "name": "LinkedIn Profile",
-      "short_name": "LinkedIn",
-      "description": "View LinkedIn profile",
-      "url": "https://linkedin.com/in/cooper-a-m/",
-      "icons": [
-        {
-          "src": "https://static.licdn.com/sc/h/al2o9zrvru7aqyy1mzsPC33cq",
-          "sizes": "96x96"
-        }
-      ]
+      "name": "Worth My Time",
+      "short_name": "Worth My Time",
+      "description": "What a purchase really costs in work hours",
+      "url": "/worthmytime/"
     }
   ]
 }
