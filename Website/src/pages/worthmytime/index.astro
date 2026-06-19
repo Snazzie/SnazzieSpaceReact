@@ -1,6 +1,8 @@
 ---
 import '@/styles/global.css';
 import { WorthMyTime, WorthMyTimeTabs } from '@/projects/worthmytime';
+import AdSenseLoader from '@/components/AdSenseLoader.astro';
+import AdUnit from '@/components/AdUnit.astro';
 ---
 
 <!doctype html>
@@ -15,6 +17,7 @@ import { WorthMyTime, WorthMyTimeTabs } from '@/projects/worthmytime';
     />
     <link rel="canonical" href="https://snazzie.space/worthmytime/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <AdSenseLoader />
     <style is:global>
       @keyframes wmt-scroll-up {
         from { transform: translateY(0); }
@@ -96,6 +99,9 @@ import { WorthMyTime, WorthMyTimeTabs } from '@/projects/worthmytime';
           </ul>
         </div>
       </section>
+
+      <!-- Ad: replace slot with a real data-ad-slot from your AdSense dashboard -->
+      <AdUnit class="mx-auto max-w-3xl px-6 my-8" slot="3853068378" />
     </main>
 
     <!-- Footer -->

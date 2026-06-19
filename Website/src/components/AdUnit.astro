@@ -1,0 +1,21 @@
+---
+interface Props {
+  slot: string; // data-ad-slot from the AdSense dashboard
+  format?: string; // default 'auto'
+  responsive?: boolean; // default true
+  class?: string; // optional wrapper spacing/margin classes
+}
+const { slot, format = 'auto', responsive = true, class: className = '' } = Astro.props;
+const PUBLISHER = 'ca-pub-8304271204200662';
+---
+<ins
+  class:list={['adsbygoogle', 'block', className]}
+  style="display:block"
+  data-ad-client={PUBLISHER}
+  data-ad-slot={slot}
+  data-ad-format={format}
+  data-full-width-responsive={responsive ? 'true' : 'false'}
+></ins>
+<script is:inline>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>

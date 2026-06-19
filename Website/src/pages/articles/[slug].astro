@@ -2,6 +2,8 @@
 import '@/styles/global.css';
 import { getCollection, render } from 'astro:content';
 import TagList from '@/components/articles/TagList.astro';
+import AdSenseLoader from '@/components/AdSenseLoader.astro';
+import AdUnit from '@/components/AdUnit.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('articles', ({ data }) => !data.draft);
@@ -101,6 +103,7 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
     <meta name="description" content={post.data.excerpt} />
     <link rel="canonical" href={`https://snazzie.space/articles/${post.id}/`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <AdSenseLoader />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -277,6 +280,9 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
             <Content />
           </div>
         </div>
+
+        <!-- Ad: replace slot with a real data-ad-slot from your AdSense dashboard -->
+        <AdUnit class="my-12" slot="3853068378" />
 
         <pre
           id="raw-script"

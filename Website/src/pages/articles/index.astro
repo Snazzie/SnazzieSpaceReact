@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 import ArticleCard from '@/components/articles/ArticleCard.astro';
 import TagList from '@/components/articles/TagList.astro';
 import { LunarArticles } from '@/components/LunarArticles';
+import AdSenseLoader from '@/components/AdSenseLoader.astro';
+import AdUnit from '@/components/AdUnit.astro';
 
 const PAGE_SIZE = 12;
 
@@ -24,6 +26,7 @@ const posts = allPosts.filter((p) => !p.data.featured);
     <link rel="canonical" href="https://snazzie.space/articles/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="Aaron Cooper — Articles" href="/rss.xml" />
+    <AdSenseLoader />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -137,6 +140,10 @@ const posts = allPosts.filter((p) => !p.data.featured);
           </div>
         )}
 
+      </div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Ad: replace slot with a real data-ad-slot from your AdSense dashboard -->
+        <AdUnit class="my-10" slot="3853068378" />
       </div>
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <LunarArticles client:idle />
