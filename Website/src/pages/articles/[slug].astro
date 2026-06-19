@@ -2,7 +2,6 @@
 import '@/styles/global.css';
 import { getCollection, render } from 'astro:content';
 import TagList from '@/components/articles/TagList.astro';
-import AdSenseLoader from '@/components/AdSenseLoader.astro';
 import AdUnit from '@/components/AdUnit.astro';
 import Consent from '@/components/Consent.astro';
 
@@ -105,7 +104,6 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
     <meta name="description" content={post.data.excerpt} />
     <link rel="canonical" href={`https://snazzie.space/articles/${post.id}/`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <AdSenseLoader />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",

@@ -6,7 +6,7 @@ import { hoursForPrice, formatWorkTime } from '../lib/tax';
 /** A Google ad styled as a ticker card. Rendered once per marquee half so the
  *  loop stays seamless; each <ins> pushes itself once. Same slot reused across
  *  copies is permitted by AdSense as long as each gets its own push(). The
- *  loader script lives in the page <head> (AdSenseLoader.astro). */
+ *  loader script lives in the page <head> (Consent.astro). */
 function AdCard() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {

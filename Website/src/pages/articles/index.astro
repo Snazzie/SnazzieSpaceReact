@@ -6,7 +6,6 @@ import TagList from '@/components/articles/TagList.astro';
 import { LunarArticles } from '@/components/LunarArticles';
 import Consent from '@/components/Consent.astro';
 import Footer from '@/components/Footer.astro';
-import AdSenseLoader from '@/components/AdSenseLoader.astro';
 import AdUnit from '@/components/AdUnit.astro';
 
 const PAGE_SIZE = 12;
@@ -29,7 +28,6 @@ const posts = allPosts.filter((p) => !p.data.featured);
     <link rel="canonical" href="https://snazzie.space/articles/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="Aaron Cooper — Articles" href="/rss.xml" />
-    <AdSenseLoader />
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

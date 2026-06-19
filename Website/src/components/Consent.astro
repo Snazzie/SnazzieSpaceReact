@@ -1,9 +1,14 @@
 ---
-// Drop this inside <head>, BEFORE any analytics/ad loaders (GTM, AdSense).
-// It sets Google Consent Mode v2 defaults (everything denied) so no tag fires
-// with consent until the banner updates it, then loads the cookie banner.
+// Site-wide consent + ads bootstrap. Drop inside <head>, BEFORE GTM.
+// Order matters: denied Consent Mode defaults run first, THEN the AdSense
+// loader boots — which also delivers Google's certified CMP (the GDPR consent
+// message, enabled in the AdSense dashboard). Loading it on every page is what
+// makes the consent message appear site-wide, not just on pages with ad units.
+// Google's CMP updates the Consent Mode signals; GA reads analytics_storage and
+// AdSense reads the ad_* signals. Non-Google tags (Clarity) are gated in GTM.
+const PUBLISHER = 'ca-pub-8304271204200662';
 ---
-<!-- Consent Mode v2 defaults — must run before GTM/AdSense -->
+<!-- Consent Mode v2 defaults — must run before GTM / AdSense / CMP -->
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -17,7 +22,10 @@
     wait_for_update: 500,
   });
 </script>
-<!-- Cookie banner (bundled, deferred) — flips consent on user choice -->
-<script>
-  import '@/scripts/cookieconsent-config';
-</script>
+<!-- AdSense loader + Google CMP delivery -->
+<script
+  async
+  src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${PUBLISHER}`}
+  crossorigin="anonymous"
+  is:inline
+></script>
