@@ -10,15 +10,15 @@ You wired up Google Tag Manager. It injects Google Analytics, Microsoft Clarity,
 
 ## The model: signal, then flip
 
-The trick is to stop thinking about "blocking scripts". You don't block GTM[JH IY1 T IY1 EH1 M]. You let it load, but you tell Google's tags they have no consent yet, so they sit in a limited mode that sets nothing. When the user accepts, you flip the signal and the tags wake up.
+The trick is to stop thinking about "blocking scripts". You don't block GTM[JH IY1, T IY1, EH1 M]. You let it load, but you tell Google's tags they have no consent yet, so they sit in a limited mode that sets nothing. When the user accepts, you flip the signal and the tags wake up.
 
-That signal is Google Consent Mode v2 — a handful of flags you push into the data layer through the gtag[JH IY1 T AE1 G] function: one for analytics storage, the rest for ad storage and ad personalization. You default them all to denied, then update them to granted when the user accepts. The Google Analytics tag that GTM[JH IY1 T IY1 EH1 M] injects watches the analytics flag; AdSense watches the ad flags. One mechanism covers all of them.
+That signal is Google Consent Mode v2 — a handful of flags you push into the data layer through the gtag[JH IY1 T AE1 G] function: one for analytics storage, the rest for ad storage and ad personalization. You default them all to denied, then update them to granted when the user accepts. The Google Analytics tag that GTM[JH IY1, T IY1, EH1 M] injects watches the analytics flag; AdSense watches the ad flags. One mechanism covers all of them.
 
 So the whole job is three pieces: set the denied defaults early, show a banner, and bridge the banner's answer back to the consent flags.
 
 ## Step one: denied defaults, before anything else
 
-This has to run before GTM[JH IY1 T IY1 EH1 M] loads, so it goes high in the document head as an inline script. Order is the entire point — if the defaults land after the tags, you've already leaked.
+This has to run before GTM[JH IY1, T IY1, EH1 M] loads, so it goes high in the document head as an inline script. Order is the entire point — if the defaults land after the tags, you've already leaked.
 
 ```html
 <script>
@@ -84,14 +84,14 @@ Astro[AE1 S T R OW0] has a catch here. If your pages each build their own page h
 </script>
 ```
 
-The first script stays inline, so Astro[AE1 S T R OW0] leaves it exactly where it sits — early, before GTM[JH IY1 T IY1 EH1 M]. The second is a normal bundled import, so the banner code gets compiled and tree-shaken like everything else. Drop that component into each page and you're done.
+The first script stays inline, so Astro[AE1 S T R OW0] leaves it exactly where it sits — early, before GTM[JH IY1, T IY1, EH1 M]. The second is a normal bundled import, so the banner code gets compiled and tree-shaken like everything else. Drop that component into each page and you're done.
 
 ## The parts Consent Mode doesn't cover
 
 Two honest caveats, because this is where shortcuts bite.
 
-Consent Mode is a Google protocol. Microsoft Clarity ignores it. If Clarity rides in through GTM[JH IY1 T IY1 EH1 M] too, gate its tag on a consent-granted trigger inside GTM[JH IY1 T IY1 EH1 M], or it'll record sessions regardless of what the banner says.
+Consent Mode is a Google protocol. Microsoft Clarity ignores it. If Clarity rides in through GTM[JH IY1, T IY1, EH1 M] too, gate its tag on a consent-granted trigger inside GTM[JH IY1, T IY1, EH1 M], or it'll record sessions regardless of what the banner says.
 
-And for personalized ads to EEA visitors, Google now demands a certified CMP[S IY1 EH1 M P IY1] that emits an IAB TCF string. [sigh] vanilla-cookieconsent isn't one. Consent Mode v2 alone still lets AdSense serve *non-personalized* ads in the EEA, which is compliant — you're just capped on personalization there until you adopt a certified platform. Outside the EEA, this setup is the whole thing.
+And for ads served to visitors in the EEA, the UK, or Switzerland, Google now demands a certified CMP[S IY1, EH1 M, P IY1] that emits an IAB TCF string — for *any* ads there, personalized or not. [sigh] vanilla-cookieconsent isn't one, so on its own it won't keep ads flowing to those regions; Google can limit or stop serving there entirely. It's not "personalized off, general ads on" — no certified CMP[S IY1, EH1 M, P IY1] means no reliable ad serving in those regions at all. With a certified CMP[S IY1, EH1 M, P IY1] in place, a reject simply downgrades to limited, non-personalized ads. Everywhere else, this setup is the whole thing.
 
 That's it. No platform, no per-script blocking, no monthly fee — a denied default, a small banner, and one function that translates a click into a consent flag.
