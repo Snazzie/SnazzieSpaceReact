@@ -58,7 +58,7 @@ export default function Calculator() {
     <div className="grid items-stretch justify-center gap-6 xl:grid-cols-[auto_minmax(0,46rem)_auto]">
       {/* Left lanes — first from xl, second from very wide screens */}
       <div className="hidden gap-4 xl:grid xl:grid-cols-1 min-[1700px]:grid-cols-2">
-        <TickerColumn items={LEFT_LANES[0].items} netHourly={effHourly} onPick={pick} direction={LEFT_LANES[0].direction} />
+        <TickerColumn items={LEFT_LANES[0].items} netHourly={effHourly} onPick={pick} direction={LEFT_LANES[0].direction} withAd />
         <TickerColumn items={LEFT_LANES[1].items} netHourly={effHourly} onPick={pick} direction={LEFT_LANES[1].direction} className="hidden min-[1700px]:block" />
       </div>
 

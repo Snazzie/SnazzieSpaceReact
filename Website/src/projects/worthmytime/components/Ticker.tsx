@@ -1,7 +1,40 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import type { Item } from '../data/items';
 import { gbpItem } from '../lib/format';
 import { hoursForPrice, formatWorkTime } from '../lib/tax';
+
+/** A Google ad styled as a ticker card. Rendered once per marquee half so the
+ *  loop stays seamless; each <ins> pushes itself once. Same slot reused across
+ *  copies is permitted by AdSense as long as each gets its own push(). The
+ *  loader script lives in the page <head> (AdSenseLoader.astro). */
+function AdCard() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    // Inject the <ins> client-side only. AdSense mutates the element (iframe,
+    // status attr, px sizing) after render — if React owned it, that would be a
+    // hydration mismatch. innerHTML keeps the ad DOM opaque to React. The guard
+    // stops a double-insert under StrictMode's double-invoked effects.
+    if (!el || el.childElementCount > 0) return;
+    el.innerHTML =
+      '<ins class="adsbygoogle" style="display:block;width:100%;height:100%" ' +
+      'data-ad-client="ca-pub-8304271204200662" data-ad-slot="7653702261"></ins>';
+    try {
+      // adsbygoogle is injected by the loader script in <head>.
+      ((window as unknown as { adsbygoogle: unknown[] }).adsbygoogle ||= []).push({});
+    } catch {
+      /* loader not ready / blocked — leave the slot empty */
+    }
+  }, []);
+  // Fixed-size wrapper so the slot matches a TickerCard footprint instead of the
+  // responsive 'auto' format ballooning to fill the lane height.
+  return (
+    <div
+      ref={ref}
+      className="block h-[5.5rem] w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.03]"
+    />
+  );
+}
 
 /** One purchase card inside a ticker lane. Click to load its price. */
 function TickerCard({
@@ -129,14 +162,25 @@ export function TickerColumn({
   onPick,
   direction,
   className = '',
+  withAd = false,
 }: {
   items: Item[];
   netHourly: number;
   onPick: (price: number) => void;
   direction: 'up' | 'down';
   className?: string;
+  withAd?: boolean;
 }) {
-  const loop = [...items, ...items];
+  // One half of the seamless loop. The ad rides the marquee at the top of each
+  // half so the wrap stays seamless (both halves are identical).
+  const half = (copy: string) => (
+    <Fragment key={copy}>
+      {withAd && <AdCard />}
+      {items.map((item, i) => (
+        <TickerCard key={`${copy}-${item.name}-${i}`} item={item} netHourly={netHourly} onPick={onPick} />
+      ))}
+    </Fragment>
+  );
   return (
     <div
       className={`relative h-full min-h-[28rem] w-48 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)] ${className}`}
@@ -148,9 +192,8 @@ export function TickerColumn({
           direction === 'up' ? 'wmt-marquee-up' : 'wmt-marquee-down'
         }`}
       >
-        {loop.map((item, i) => (
-          <TickerCard key={`${item.name}-${i}`} item={item} netHourly={netHourly} onPick={onPick} />
-        ))}
+        {half('a')}
+        {half('b')}
       </div>
     </div>
   );
