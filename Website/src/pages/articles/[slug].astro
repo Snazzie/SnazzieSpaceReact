@@ -3,7 +3,6 @@ import '@/styles/global.css';
 import { getCollection, render } from 'astro:content';
 import TagList from '@/components/articles/TagList.astro';
 import AdUnit from '@/components/AdUnit.astro';
-import Consent from '@/components/Consent.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('articles', ({ data }) => !data.draft);
@@ -99,7 +98,6 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <Consent />
     <title>{post.data.title} — Aaron Cooper</title>
     <meta name="description" content={post.data.excerpt} />
     <link rel="canonical" href={`https://snazzie.space/articles/${post.id}/`} />

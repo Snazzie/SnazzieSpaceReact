@@ -10,6 +10,7 @@ import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeStripTtsMarkers from './src/lib/remark-strip-tts-markers.mjs';
 import ttsTxtIntegration from './src/integrations/tts-script.mjs';
+import consentHeadIntegration from './src/integrations/consent-head.mjs';
 
 /** Dev-only endpoint: persist retimed radio clips back to the episode JSON.
  *  Active only under `astro dev`; never included in the production build. */
@@ -44,7 +45,7 @@ function radioSaveDevPlugin() {
 export default defineConfig({
   site: "https://snazzie.space",
   base: "/",
-  integrations: [ttsTxtIntegration(), react(), mdx({ rehypePlugins: [rehypeStripTtsMarkers] }), sitemap()],
+  integrations: [consentHeadIntegration(), ttsTxtIntegration(), react(), mdx({ rehypePlugins: [rehypeStripTtsMarkers] }), sitemap()],
 
   markdown: {
     rehypePlugins: [rehypeStripTtsMarkers],
