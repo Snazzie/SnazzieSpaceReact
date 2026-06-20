@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { experience, education } from "@/data/experience";
@@ -9,6 +10,7 @@ interface TimelineItem {
   period: string;
   title: string;
   description: string;
+  href?: string;
   activities?: string[];
 }
 
@@ -40,6 +42,7 @@ const groups: TimelineGroup[] = [
       period: sub.period,
       title: sub.title,
       description: sub.description,
+      href: sub.href,
     })),
   })),
   ...education.map((edu) => ({
@@ -105,7 +108,7 @@ function ItemCard({
     >
       {/* node dot */}
       <span
-        className={`absolute -left-[38px] top-3 size-2.5 rounded-full border-2 border-background transition-all duration-500 md:-left-[44px] ${
+        className={`absolute -left-[38px] top-3 size-2.5 rounded-full border-2 border-background transition-all duration-150 md:-left-[44px] ${
           active ? "bg-cyan-400 shadow-[0_0_10px_2px_rgba(34,211,238,0.4)]" : "bg-zinc-700"
         }`}
       />
@@ -117,7 +120,21 @@ function ItemCard({
         <p className="text-[10px] font-medium uppercase tracking-[0.1em] text-cyan-400">
           {item.period}
         </p>
-        <h3 className="mt-1 text-base font-semibold text-foreground md:text-lg">{item.title}</h3>
+        <h3 className="mt-1 text-base font-semibold text-foreground md:text-lg">
+          {item.href ? (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
+            >
+              {item.title}
+              <ExternalLink className="size-3.5 shrink-0 opacity-50" />
+            </a>
+          ) : (
+            item.title
+          )}
+        </h3>
         {item.description && (
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
         )}
@@ -222,14 +239,6 @@ export function Career() {
         // timeline runs newest → oldest, so the bar drains as you scroll into the past
         progressRef.current.style.width = `${(1 - progress) * 100}%`;
       }
-      groupRefs.current.forEach((g) => {
-        if (!g) return;
-        const fill = g.querySelector<HTMLElement>("[data-seg-fill]");
-        if (!fill) return;
-        const gr = g.getBoundingClientRect();
-        // drain downward: the lit segment is what's still ahead (the past below the anchor)
-        fill.style.height = `${Math.min(gr.height, Math.max(0, gr.bottom - anchor))}px`;
-      });
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -320,10 +329,16 @@ export function Career() {
             >
               {/* segment spine + scroll fill */}
               <div className="absolute bottom-0 left-[22px] top-0 w-0.5 rounded-full bg-zinc-900 md:left-6" />
+              {/* lit fill: viewport-fixed gradient splits at 42vh, matching the sticky logo —
+                  pure CSS so it tracks scroll on the compositor with zero JS lag */}
               <div
-                data-seg-fill
-                className="absolute bottom-0 left-[22px] w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-indigo-400 md:left-6"
-                style={{ height: "100%" }}
+                className="absolute bottom-0 left-[22px] top-0 w-0.5 rounded-full md:left-6"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to bottom, transparent 0 42vh, #22d3ee 42vh, #818cf8 100vh)",
+                  backgroundAttachment: "fixed",
+                  backgroundRepeat: "no-repeat",
+                }}
               />
               {/* logo rides the spine for the employment period */}
               <div className="absolute bottom-0 left-[23px] top-0 z-20 w-0 md:left-[25px]">

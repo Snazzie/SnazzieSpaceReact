@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import { unified } from '@astrojs/markdown-remark';
 
 import tailwindcss from '@tailwindcss/vite';
 import rehypeStripTtsMarkers from './src/lib/remark-strip-tts-markers.mjs';
@@ -45,10 +46,10 @@ function radioSaveDevPlugin() {
 export default defineConfig({
   site: "https://snazzie.space",
   base: "/",
-  integrations: [consentHeadIntegration(), ttsTxtIntegration(), react(), mdx({ rehypePlugins: [rehypeStripTtsMarkers] }), sitemap()],
+  integrations: [consentHeadIntegration(), ttsTxtIntegration(), react(), mdx(), sitemap()],
 
   markdown: {
-    rehypePlugins: [rehypeStripTtsMarkers],
+    processor: unified({ rehypePlugins: [rehypeStripTtsMarkers] }),
   },
 
   vite: {

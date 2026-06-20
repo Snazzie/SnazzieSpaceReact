@@ -2,6 +2,7 @@ export interface SubRole {
   period: string; // "2025", "2022–2024"
   title: string;
   description: string;
+  href?: string;
 }
 
 export interface Experience {
@@ -72,11 +73,13 @@ export const experience: Experience[] = [
         period: "2020–2022",
         title: "SQL Monitor",
         description: "Monitoring and alerting for SQL Server estates.",
+        href: "https://www.red-gate.com/products/redgate-monitor/",
       },
       {
         period: "2018–2020",
         title: "SQL Clone",
         description: "Fast, space-efficient SQL Server database provisioning.",
+        href: "https://www.red-gate.com/products/sql-clone/",
       },
     ],
     skills: ["C#", "TypeScript", "SQL Server", "WMI"],
