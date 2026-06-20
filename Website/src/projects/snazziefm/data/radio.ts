@@ -74,28 +74,6 @@ import theStarsWithRhondaHarvest from "./radio/the-stars-with-rhonda-harvest.jso
 import theStarsWithRhondaTheEnemyIsInTheBuilding from "./radio/the-stars-with-rhonda-the-enemy-is-in-the-building.json";
 import theStarsAreClosingUp from "./radio/the-stars-are-closing-up.json";
 import theStarsWithRhondaLove from "./radio/the-stars-with-rhonda-love.json";
-// Snazzie FM News bulletins (anchors: news-dale + news-marsha)
-import thePotholeFiles from "./radio/the-pothole-files.json";
-import theBlotterHour from "./radio/the-blotter-hour.json";
-import newsTheVacancyReport from "./radio/news-the-vacancy-report.json";
-import theCouncilQuorum from "./radio/the-council-quorum.json";
-import theVitalsDesk from "./radio/the-vitals-desk.json";
-import theMigrationFiles from "./radio/the-migration-files.json";
-import theCounterIsNowServing from "./radio/the-counter-is-now-serving.json";
-import theFinalScore from "./radio/the-final-score.json";
-import theFogFiles from "./radio/the-fog-files.json";
-import theGoingOutOfBusinessHour from "./radio/the-going-out-of-business-hour.json";
-// Civic Notice — eerie segments (announcer ad-ann-deep + ad-disclaimer), aired as episodes
-import civicNoticeTheFog from "./radio/civic-notice-the-fog.json";
-import civicCurfew from "./radio/civic-curfew.json";
-import civicNoticeTheCount from "./radio/civic-notice-the-count.json";
-import civicTheReservoir from "./radio/civic-the-reservoir.json";
-import civicMandatoryGratitude from "./radio/civic-mandatory-gratitude.json";
-import civicFountain from "./radio/civic-fountain.json";
-import theSoundBelow from "./radio/the-sound-below.json";
-import civicNoticeTheGrid from "./radio/civic-notice-the-grid.json";
-import civicNoticeWednesday from "./radio/civic-notice-wednesday.json";
-import civicTheEvacuation from "./radio/civic-the-evacuation.json";
 // Part 2 sequels (each placed right after its parent in EPISODES)
 import theRenewalWindowPart2 from "./radio/the-renewal-window-part-2.json";
 import curbRightsPart2 from "./radio/curb-rights-part-2.json";
@@ -279,6 +257,7 @@ export const CAST: Record<string, CastMember> = {
   "cat":           { id: "cat",             name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "cat-loud":      { id: "cat-loud",        name: "Cat",               color: "#ffeaa7", role: "Caller"       },
   "caller-bg":     { id: "caller-bg",       name: "Caller's end",      color: "#b2956a", role: "Caller BG"    },
+  // (news-dale / news-marsha removed with Snazzie FM News)
   "phone":         { id: "phone",           name: "Phone",             color: "#636e72", role: "Caller"       },
   "ad-announcer":  { id: "ad-announcer",    name: "Announcer",         color: "#f6c945", role: "Guest Expert"  },
   "ad-disclaimer": { id: "ad-disclaimer",   name: "Fine Print",        color: "#9aa0a6", role: "Guest Expert"  },
@@ -312,8 +291,6 @@ export const CAST: Record<string, CastMember> = {
   "brood-prime":   { id: "brood-prime",     name: "Brood Prime",       color: "#6ab04c", role: "Caller"       },
   "caller-ronnie-real":{ id: "caller-ronnie-real",name: "Ronnie (the real one)", color: "#ff8c42", role: "Caller" },
   "harmonyhaus":   { id: "harmonyhaus",     name: "HarmonyHaus",       color: "#16a085", role: "Guest Expert" },
-  "news-dale":     { id: "news-dale",       name: "Dale",              color: "#3a7ca5", role: "Guest Expert" },
-  "news-marsha":   { id: "news-marsha",     name: "Marsha",            color: "#c44569", role: "Guest Expert" },
 };
 
 // Episode slug → linked music track slug. Episodes without an entry play a random track.
@@ -531,16 +508,6 @@ export const EPISODES: Episode[] = [
   episodeFrom(ronnieKnowsTheLaw),
   episodeFrom(theCleanBreakHour),
   episodeFrom(ronnieKnowsLove),
-  episodeFrom(thePotholeFiles),
-  episodeFrom(theBlotterHour),
-  episodeFrom(newsTheVacancyReport),
-  episodeFrom(theCouncilQuorum),
-  episodeFrom(theVitalsDesk),
-  episodeFrom(theMigrationFiles),
-  episodeFrom(theCounterIsNowServing),
-  episodeFrom(theFinalScore),
-  episodeFrom(theFogFiles),
-  episodeFrom(theGoingOutOfBusinessHour),
   episodeFrom(theStarsWithRhondaMercury),
   episodeFrom(theCosmicLedger),
   episodeFrom(theStarsWithRhondaThePositionIsOpen),
@@ -551,14 +518,4 @@ export const EPISODES: Episode[] = [
   episodeFrom(theStarsWithRhondaTheEnemyIsInTheBuilding),
   episodeFrom(theStarsAreClosingUp),
   episodeFrom(theStarsWithRhondaLove),
-  episodeFrom(civicNoticeTheFog),
-  episodeFrom(civicCurfew),
-  episodeFrom(civicNoticeTheCount),
-  episodeFrom(civicTheReservoir),
-  episodeFrom(civicMandatoryGratitude),
-  episodeFrom(civicFountain),
-  episodeFrom(theSoundBelow),
-  episodeFrom(civicNoticeTheGrid),
-  episodeFrom(civicNoticeWednesday),
-  episodeFrom(civicTheEvacuation),
 ];
