@@ -195,7 +195,6 @@ export function Career() {
   const reduce = useReducedMotion() ?? false;
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const progressRef = useRef<HTMLDivElement | null>(null);
 
@@ -222,14 +221,6 @@ export function Career() {
         // timeline runs newest → oldest, so the bar drains as you scroll into the past
         progressRef.current.style.width = `${(1 - progress) * 100}%`;
       }
-      groupRefs.current.forEach((g) => {
-        if (!g) return;
-        const fill = g.querySelector<HTMLElement>("[data-seg-fill]");
-        if (!fill) return;
-        const gr = g.getBoundingClientRect();
-        // drain downward: the lit segment is what's still ahead (the past below the anchor)
-        fill.style.height = `${Math.min(gr.height, Math.max(0, gr.bottom - anchor))}px`;
-      });
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -310,21 +301,13 @@ export function Career() {
 
         {/* timeline groups */}
         <div ref={contentRef} className="flex-1 space-y-16 md:space-y-[72px]">
-          {groups.map((group, gi) => (
-            <div
-              key={group.name}
-              ref={(el) => {
-                groupRefs.current[gi] = el;
-              }}
-              className="relative pl-14 md:pl-16"
-            >
-              {/* segment spine + scroll fill */}
+          {groups.map((group) => (
+            <div key={group.name} className="relative pl-14 md:pl-16">
+              {/* segment spine + scroll fill (sticky-driven, stays in lockstep with the logo) */}
               <div className="absolute bottom-0 left-[22px] top-0 w-0.5 rounded-full bg-zinc-900 md:left-6" />
-              <div
-                data-seg-fill
-                className="absolute bottom-0 left-[22px] w-0.5 rounded-full bg-gradient-to-b from-cyan-400 to-indigo-400 md:left-6"
-                style={{ height: "100%" }}
-              />
+              <div className="pointer-events-none absolute bottom-0 left-[22px] top-0 w-0.5 overflow-hidden md:left-6">
+                <div className="sticky top-[42vh] h-[200vh] w-full bg-gradient-to-b from-cyan-400 to-indigo-400" />
+              </div>
               {/* logo rides the spine for the employment period */}
               <div className="absolute bottom-0 left-[23px] top-0 z-20 w-0 md:left-[25px]">
                 <RiderLogo group={group} />
