@@ -114,6 +114,9 @@ function TechSphere() {
   const drag = useRef({ active: false, px: 0, py: 0, ox: 0, oy: 0, moved: false });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingDrag = useRef<{ px: number; py: number } | null>(null);
+  /** True while a press that began on empty orb space could still become a
+   * click-to-deselect (cleared once the pointer drags). */
+  const bgPressed = useRef(false);
   const [touchLocked, setTouchLocked] = useState(false);
   const focusedRef = useRef<string | null>(null);
 
@@ -127,20 +130,32 @@ function TechSphere() {
     ]);
   }, [focusedTech]);
 
-  const release = useCallback(() => {
+  /** Drop the focused tech only; any active constellation filter stays. */
+  const clearFocus = useCallback(() => {
     focusedRef.current = null;
     focusTarget.current = null;
     setFocused(null);
+  }, []);
+
+  /** Full clear: focus and constellation. */
+  const release = useCallback(() => {
+    clearFocus();
     constIdxRef.current = [];
     setConstProject(null);
-  }, []);
+  }, [clearFocus]);
 
   const focusTech = useCallback((name: string) => {
     const idx = FLAT.findIndex((f) => f.tech.name === name);
     const it = itemsRef.current[idx];
-    if (idx < 0 || !it || it.visT !== 1) return;
-    constIdxRef.current = [];
-    setConstProject(null);
+    if (idx < 0 || !it) return;
+    // Target hidden by the active category/search filter: clear the filter and
+    // defer the focus so the re-spread makes the node visible first.
+    if (it.visT !== 1) {
+      setCat("all");
+      setQuery("");
+      setPendingFocus(name);
+      return;
+    }
     focusedRef.current = name;
     // Ease this node's base vector to front-center each frame.
     focusTarget.current = it.target;
@@ -166,13 +181,18 @@ function TechSphere() {
   }, []);
 
   // Filter: hide non-matching items, re-spread the survivors over the sphere.
+  // An active constellation restricts the sphere to that project's techs.
   useEffect(() => {
     const q = query.trim().toLowerCase();
     const items = itemsRef.current;
+    const constNames = constProject
+      ? new Set((constProject.tech ?? []).filter((t) => BY_NAME.has(t)))
+      : null;
     FLAT.forEach((f, i) => {
       const okCat = cat === "all" || f.group === cat;
       const okQ = !q || f.tech.name.toLowerCase().includes(q);
-      items[i].visT = okCat && okQ ? 1 : 0;
+      const okConst = !constNames || constNames.has(f.tech.name);
+      items[i].visT = okCat && okQ && okConst ? 1 : 0;
     });
     const visible = items.filter((it) => it.visT === 1);
     visible.forEach((it, i) => {
@@ -180,9 +200,9 @@ function TechSphere() {
     });
     if (focusedRef.current) {
       const idx = FLAT.findIndex((f) => f.tech.name === focusedRef.current);
-      if (idx >= 0 && items[idx].visT !== 1) release();
+      if (idx >= 0 && items[idx].visT !== 1) clearFocus();
     }
-  }, [cat, query, release]);
+  }, [cat, query, constProject, clearFocus]);
 
   // External focus requests (clicked tech badge on a project card/modal).
   // Reset filters first; the effect above runs before this one in the same
@@ -278,7 +298,9 @@ function TechSphere() {
       }
 
       const constIdx = constIdxRef.current;
-      const constOn = constIdx.length > 0;
+      // While a tech is focused, suppress constellation styling/lines so the
+      // focus view is clean; the selection itself stays for when focus clears.
+      const constOn = constIdx.length > 0 && !focusedRef.current;
 
       for (const [i, it] of items.entries()) {
         const el = it.el;
@@ -376,6 +398,7 @@ function TechSphere() {
         if (dx * dx + dy * dy > 100) {
           if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
           pendingDrag.current = null;
+          bgPressed.current = false;
         }
         return;
       }
@@ -393,6 +416,8 @@ function TechSphere() {
       if (mdx * mdx + mdy * mdy > 25) drag.current.moved = true;
     };
     const onUp = () => {
+      if (bgPressed.current && !drag.current.moved) release();
+      bgPressed.current = false;
       drag.current.active = false;
       if (holdTimer.current) { clearTimeout(holdTimer.current); holdTimer.current = null; }
       pendingDrag.current = null;
@@ -410,8 +435,11 @@ function TechSphere() {
   }, []);
 
   const onOrbPointerDown = (e: React.PointerEvent) => {
-    if (e.target === e.currentTarget && (focusedRef.current || constIdxRef.current.length > 0))
-      release();
+    // Defer deselect to pointerup so a drag that starts on empty space spins
+    // the sphere instead of clearing the active focus/constellation.
+    bgPressed.current =
+      e.target === e.currentTarget &&
+      (focusedRef.current !== null || constIdxRef.current.length > 0);
     if (e.pointerType === "touch") {
       const { clientX, clientY } = e;
       pendingDrag.current = { px: clientX, py: clientY };
@@ -528,7 +556,7 @@ function TechSphere() {
                 }}
                 onClick={() => {
                   if (drag.current.moved) return;
-                  isFocused ? release() : focusTech(f.tech.name);
+                  isFocused ? clearFocus() : focusTech(f.tech.name);
                 }}
                 className="absolute left-1/2 top-1/2 flex cursor-pointer select-none items-center gap-2 whitespace-nowrap rounded-full border bg-secondary px-3 py-1.5 text-[13px] font-medium text-muted-foreground transition-[border-color,box-shadow,color] duration-200 hover:text-foreground"
                 style={{
@@ -629,7 +657,7 @@ function TechSphere() {
             <>
               <button
                 type="button"
-                onClick={release}
+                onClick={clearFocus}
                 aria-label="Close details"
                 className="absolute right-3.5 top-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >

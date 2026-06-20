@@ -107,14 +107,6 @@ export function fib(i: number, n: number): [number, number, number] {
   return [Math.cos(th) * r, y, Math.sin(th) * r];
 }
 
-/** Lerp angle a→b along the shortest path. */
-export function angLerp(a: number, b: number, t: number): number {
-  let d = (b - a) % (Math.PI * 2);
-  if (d > Math.PI) d -= Math.PI * 2;
-  if (d < -Math.PI) d += Math.PI * 2;
-  return a + d * t;
-}
-
 /** Short label for tech with no brand icon, e.g. "C#", "React Native" -> "RN". */
 export function monogram(name: string): string {
   const words = name.split(/\s+/);
