@@ -6,7 +6,21 @@ import { SectionUnderline } from "@/components/SectionUnderline";
 import { ProjectModal } from "@/components/ProjectModal";
 import { FOCUS_TECH_EVENT } from "@/components/TechBadges";
 import { projectSlug } from "@/components/FeaturedShowcase";
-import { BY_NAME, FLAT, GROUP_COLORS, IDLE_SPIN, TechGlyph, angLerp, fib } from "@/components/sphereCommon";
+import {
+  BY_NAME,
+  FLAT,
+  GROUP_COLORS,
+  IDLE_SPIN,
+  type Mat3,
+  type Vec3,
+  TechGlyph,
+  dragRot,
+  easeToFront,
+  fib,
+  matApply,
+  matAxisAngle,
+  matMul,
+} from "@/components/sphereCommon";
 
 /** Shorter chip labels for long group names. */
 const GROUP_SHORT: Record<string, string> = {
@@ -90,8 +104,13 @@ function TechSphere() {
       sy: 0,
     })),
   );
-  const rot = useRef({ rx: -0.18, ry: 0, vx: 0, vy: IDLE_SPIN });
-  const focusTarget = useRef<{ rx: number; ry: number } | null>(null);
+  const rot = useRef<{ m: Mat3; vH: number; vV: number }>({
+    m: matAxisAngle([1, 0, 0], -0.18),
+    vH: 0,
+    vV: IDLE_SPIN,
+  });
+  /** Base vector of the node to ease to front-center, or null. */
+  const focusTarget = useRef<Vec3 | null>(null);
   const drag = useRef({ active: false, px: 0, py: 0, ox: 0, oy: 0, moved: false });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingDrag = useRef<{ px: number; py: number } | null>(null);
@@ -123,12 +142,8 @@ function TechSphere() {
     constIdxRef.current = [];
     setConstProject(null);
     focusedRef.current = name;
-    // Rotation that brings this node to front-center: yaw to zero the x
-    // component, then pitch to zero the y component.
-    const [bx, by, bz] = it.target;
-    const ry = Math.atan2(-bx, bz);
-    const rx = Math.atan2(by, Math.hypot(bx, bz));
-    focusTarget.current = { rx, ry };
+    // Ease this node's base vector to front-center each frame.
+    focusTarget.current = it.target;
     setFocused(name);
   }, []);
 
@@ -216,13 +231,22 @@ function TechSphere() {
     ro.observe(wrap);
 
     let raf = 0;
-    const loop = () => {
+    let prevTime = -1;
+    const loop = (ts: number) => {
+      const dt = prevTime < 0 ? 1000 / 60 : Math.min(ts - prevTime, 100);
+      prevTime = ts;
+      const ratio = dt / (1000 / 60);
+      const visAlpha = 1 - Math.pow(1 - 0.12, ratio);
+      const posAlpha = 1 - Math.pow(1 - 0.1, ratio);
+      const rotAlpha = 1 - Math.pow(1 - 0.08, ratio);
+      const decay = Math.pow(0.95, ratio);
+
       const r = rot.current;
       const items = itemsRef.current;
 
       for (const it of items) {
-        it.vis += (it.visT - it.vis) * 0.12;
-        for (let k = 0; k < 3; k++) it.base[k] += (it.target[k] - it.base[k]) * 0.1;
+        it.vis += (it.visT - it.vis) * visAlpha;
+        for (let k = 0; k < 3; k++) it.base[k] += (it.target[k] - it.base[k]) * posAlpha;
       }
 
       // If only one tech is in view (lone constellation member, or filtered
@@ -243,23 +267,15 @@ function TechSphere() {
 
       const ft = focusTarget.current;
       if (single >= 0 && !focusedRef.current) {
-        const [bx, by, bz] = items[single].target;
-        r.ry = angLerp(r.ry, Math.atan2(-bx, bz), 0.08);
-        r.rx = angLerp(r.rx, Math.atan2(by, Math.hypot(bx, bz)), 0.08);
+        r.m = easeToFront(r.m, items[single].target, rotAlpha);
       } else if (ft) {
-        r.ry = angLerp(r.ry, ft.ry, 0.08);
-        r.rx = angLerp(r.rx, ft.rx, 0.08);
+        r.m = easeToFront(r.m, ft, rotAlpha);
       } else if (!drag.current.active) {
-        r.ry += r.vy;
-        r.rx += r.vx;
-        r.vx *= 0.95;
-        r.vy = r.vy * 0.95 + IDLE_SPIN * 0.05;
+        // Idle: keep last drag momentum, decaying horizontal spin back to idle.
+        r.m = matMul(dragRot(r.vH * ratio, r.vV * ratio), r.m);
+        r.vV *= decay;
+        r.vH = r.vH * decay + IDLE_SPIN * (1 - decay);
       }
-
-      const cy = Math.cos(r.ry);
-      const sy = Math.sin(r.ry);
-      const cx = Math.cos(r.rx);
-      const sx = Math.sin(r.rx);
 
       const constIdx = constIdxRef.current;
       const constOn = constIdx.length > 0;
@@ -267,11 +283,7 @@ function TechSphere() {
       for (const [i, it] of items.entries()) {
         const el = it.el;
         if (!el) continue;
-        const [bx, by, bz] = it.base;
-        const x = bx * cy + bz * sy;
-        const z = -bx * sy + bz * cy;
-        const y2 = by * cx - z * sx;
-        const z2 = by * sx + z * cx;
+        const [x, y2, z2] = matApply(r.m, it.base);
         const s = (z2 + 2) / 3;
         const isFocused = focusedRef.current === FLAT[i].tech.name;
         const isMember = constOn && constIdx.includes(i);
@@ -369,10 +381,11 @@ function TechSphere() {
       }
       if (!drag.current.active) return;
       const r = rot.current;
-      r.vy = (e.clientX - drag.current.px) * 0.0045;
-      r.vx = (drag.current.py - e.clientY) * 0.0035;
-      r.ry += r.vy;
-      r.rx += r.vx;
+      const angH = (e.clientX - drag.current.px) * 0.0045;
+      const angV = (e.clientY - drag.current.py) * 0.0035;
+      r.m = matMul(dragRot(angH, angV), r.m);
+      r.vH = angH;
+      r.vV = angV;
       drag.current.px = e.clientX;
       drag.current.py = e.clientY;
       const mdx = e.clientX - drag.current.ox;
@@ -545,7 +558,8 @@ function TechSphere() {
                 ✦
               </span>
               <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
-                Drag the sphere to spin it. Click a tech for details.
+                <span className="hidden md:inline">Drag the sphere to spin it. Click a tech for details.</span>
+                <span className="md:hidden">Long press then drag to spin. Tap a tech for details.</span>
               </p>
             </div>
           )}

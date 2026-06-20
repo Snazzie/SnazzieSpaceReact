@@ -1,6 +1,17 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useReducedMotion } from "motion/react";
-import { BY_NAME, IDLE_SPIN, TechGlyph, fib, type FlatTech } from "@/components/sphereCommon";
+import {
+  BY_NAME,
+  IDLE_SPIN,
+  type Mat3,
+  TechGlyph,
+  dragRot,
+  fib,
+  type FlatTech,
+  matApply,
+  matAxisAngle,
+  matMul,
+} from "@/components/sphereCommon";
 
 /**
  * Small self-contained constellation: a project's sphere techs laid out on a
@@ -21,10 +32,11 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
   const elsRef = useRef<(HTMLDivElement | null)[]>([]);
   // Lone tech: face it front-center, no idle spin (base point sits on +x).
   const solo = items.length === 1;
-  const rot = useRef(
+  const rot = useRef<{ m: Mat3; vH: number; vV: number }>(
     solo
-      ? { rx: 0, ry: -Math.PI / 2, vx: 0, vy: 0 }
-      : { rx: -0.15, ry: 0, vx: 0, vy: IDLE_SPIN },
+      ? // Lone tech base sits at (1,0,0); yaw -90° faces it front-center.
+        { m: matAxisAngle([0, 1, 0], -Math.PI / 2), vH: 0, vV: 0 }
+      : { m: matAxisAngle([1, 0, 0], -0.15), vH: 0, vV: IDLE_SPIN },
   );
   const drag = useRef({ active: false, px: 0, py: 0 });
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -62,19 +74,11 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
 
     const step = () => {
       const r = rot.current;
-      const cy = Math.cos(r.ry);
-      const sy = Math.sin(r.ry);
-      const cx = Math.cos(r.rx);
-      const sx = Math.sin(r.rx);
 
       for (let i = 0; i < n; i++) {
         const el = elsRef.current[i];
         if (!el) continue;
-        const [bx, by, bz] = bases[i];
-        const x = bx * cy + bz * sy;
-        const z = -bx * sy + bz * cy;
-        const y2 = by * cx - z * sx;
-        const z2 = by * sx + z * cx;
+        const [x, y2, z2] = matApply(r.m, bases[i]);
         const s = (z2 + 2) / 3;
         screen[i].sx = W / 2 + x * R;
         screen[i].sy = H / 2 + y2 * R;
@@ -113,10 +117,9 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
     const loop = () => {
       const r = rot.current;
       if (!drag.current.active && !solo) {
-        r.ry += r.vy;
-        r.rx += r.vx;
-        r.vx *= 0.95;
-        r.vy = r.vy * 0.95 + IDLE_SPIN * 0.05;
+        r.m = matMul(dragRot(r.vH, r.vV), r.m);
+        r.vV *= 0.95;
+        r.vH = r.vH * 0.95 + IDLE_SPIN * 0.05;
       }
       step();
       raf = requestAnimationFrame(loop);
@@ -139,10 +142,11 @@ export function MiniConstellation({ tech }: { tech: string[] }) {
       }
       if (!drag.current.active) return;
       const r = rot.current;
-      r.vy = (e.clientX - drag.current.px) * 0.0045;
-      r.vx = (drag.current.py - e.clientY) * 0.0035;
-      r.ry += r.vy;
-      r.rx += r.vx;
+      const angH = (e.clientX - drag.current.px) * 0.0045;
+      const angV = (e.clientY - drag.current.py) * 0.0035;
+      r.m = matMul(dragRot(angH, angV), r.m);
+      r.vH = angH;
+      r.vV = angV;
       drag.current.px = e.clientX;
       drag.current.py = e.clientY;
       if (reduce) step();

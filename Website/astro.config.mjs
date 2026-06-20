@@ -54,6 +54,9 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss(), radioSaveDevPlugin()],
+    optimizeDeps: {
+      include: ['d3-geo'],
+    },
     server: {
       watch: {
         ignored: ['**/public/audio/*.txt'],

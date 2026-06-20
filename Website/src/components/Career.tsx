@@ -298,9 +298,10 @@ export function Career() {
                 href={active.group.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[15px] font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
+                className="inline-flex items-center gap-1 text-[15px] font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
               >
                 {active.group.name}
+                <ExternalLink className="size-3 shrink-0 opacity-50" />
               </a>
               <p className="mt-0.5 text-xs text-muted-foreground">{active.group.subtitle}</p>
             </SwapText>
@@ -357,9 +358,10 @@ export function Career() {
                   href={group.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-foreground underline-offset-4 transition-colors hover:text-cyan-400 hover:underline"
                 >
                   {group.name}
+                  <ExternalLink className="size-3 shrink-0 opacity-50" />
                 </a>
                 <p className="mt-0.5 text-xs text-muted-foreground">
                   {group.subtitle} · {group.range}
