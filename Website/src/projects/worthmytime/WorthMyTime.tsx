@@ -5,7 +5,7 @@ import { useRoutedTab } from './lib/useRoutedTab';
 const HERO = {
   worth: {
     title: 'Is it worth your time?',
-    body: "Money is stored hours. Enter your take-home pay and see how many hours of work any purchase really costs.",
+    body: 'Money is stored hours. See how many you’d trade for any purchase.',
   },
   compare: {
     title: 'Which offer is actually better?',
