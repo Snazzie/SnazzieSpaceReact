@@ -94,4 +94,68 @@ describe('evaluateOffer', () => {
     expect(b.netAnnual).toBeGreaterThan(a.netAnnual); // B pays more on paper
     expect(b.effHourly).toBeLessThan(a.effHourly); // ...but A is worth more per hour
   });
+
+  it('salary sacrifice (%) is capped at the salary, zeroing tax + NI', () => {
+    const r = evaluateOffer({
+      mode: 'gross',
+      pay: 40_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'pct', value: 200 }, // 80,000 raw, clamped to the salary
+    });
+    expect(r.salarySacrifice).toBeCloseTo(40_000, 2);
+    expect(r.incomeTax).toBe(0);
+    expect(r.nationalInsurance).toBe(0);
+  });
+
+  it('salary sacrifice (£ amount) is capped at the salary', () => {
+    const r = evaluateOffer({
+      mode: 'gross',
+      pay: 30_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'amount', value: 50_000 }, // exceeds salary, clamped
+    });
+    expect(r.salarySacrifice).toBeCloseTo(30_000, 2);
+  });
+
+  it('sacrifice and commute combine, dragging the real rate below sacrifice-only', () => {
+    const saccedOnly = evaluateOffer({
+      mode: 'gross',
+      pay: 60_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'pct', value: 10 },
+    });
+    const both = evaluateOffer({
+      mode: 'gross',
+      pay: 60_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'pct', value: 10 },
+      commute: { mins: 90, cost: 12, days: 5 },
+    });
+    expect(both.salarySacrifice).toBeCloseTo(6_000, 2);
+    expect(both.commuteHoursYear).toBe(390); // 90/60 × 5 × 52
+    expect(both.commuteCostYear).toBe(3_120); // 12 × 5 × 52
+    expect(Number.isFinite(both.effHourly)).toBe(true);
+    expect(both.effHourly).toBeLessThan(saccedOnly.effHourly);
+  });
+
+  it('commute cost exceeding total value yields a negative real rate (not clamped)', () => {
+    const r = evaluateOffer({
+      mode: 'net',
+      pay: 1_000,
+      period: 'year',
+      hours: 40,
+      commute: { mins: 0, cost: 100, days: 5 },
+    });
+    expect(r.effNetYear).toBeLessThan(0);
+    expect(r.effHourly).toBeLessThan(0);
+  });
+
+  it('zero hours gives a NaN real hourly rate', () => {
+    const r = evaluateOffer({ mode: 'gross', pay: 50_000, period: 'year', hours: 0 });
+    expect(Number.isNaN(r.effHourly)).toBe(true);
+  });
 });

@@ -22,6 +22,10 @@ describe('personalAllowance', () => {
     expect(personalAllowance(125_140)).toBe(0);
     expect(personalAllowance(200_000)).toBe(0);
   });
+
+  it('taper midpoint at £124,000 → £570', () => {
+    expect(personalAllowance(124_000)).toBeCloseTo(570, 2); // 12,570 − (124,000−100,000)/2
+  });
 });
 
 describe('incomeTax (rUK 2025/26)', () => {
@@ -41,6 +45,15 @@ describe('incomeTax (rUK 2025/26)', () => {
     expect(incomeTax(125_140)).toBeCloseTo(42_516, 2);
   });
 
+  it('£150,000 → £53,703 (additional rate biting)', () => {
+    // PA 0; basic 37,700×0.2=7,540; higher 87,440×0.4=34,976; additional 24,860×0.45=11,187.
+    expect(incomeTax(150_000)).toBeCloseTo(53_703, 2);
+  });
+
+  it('additional rate makes £130k tax exceed the £125,140 threshold tax', () => {
+    expect(incomeTax(130_000)).toBeGreaterThan(incomeTax(125_140));
+  });
+
   it('no tax under the personal allowance', () => {
     expect(incomeTax(10_000)).toBe(0);
   });
@@ -57,6 +70,19 @@ describe('nationalInsurance (Class 1 employee 2025/26)', () => {
 
   it('£100,000 → £4,010.60 (8% then 2%)', () => {
     expect(nationalInsurance(100_000)).toBeCloseTo(4_010.6, 2);
+  });
+
+  it('£50,270 → £3,016 (exactly the 8% band, nothing in 2%)', () => {
+    expect(nationalInsurance(50_270)).toBeCloseTo(3_016, 2); // 37,700×0.08
+  });
+
+  it('£60,000 → £3,210.60 (8% on 37,700 + 2% on 9,730)', () => {
+    expect(nationalInsurance(60_000)).toBeCloseTo(3_210.6, 2);
+  });
+
+  it('is monotonic non-decreasing across the UEL boundary', () => {
+    expect(nationalInsurance(40_000)).toBeLessThanOrEqual(nationalInsurance(50_000));
+    expect(nationalInsurance(50_000)).toBeLessThanOrEqual(nationalInsurance(60_000));
   });
 
   it('none below the primary threshold', () => {
