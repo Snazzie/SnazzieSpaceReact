@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import * as Tone from "tone";
+import type * as Tone from "tone";
 import type { CastMember, Episode, TranscriptLine } from "./data/radio";
+
+// tone is a large audio bundle; load it lazily on first use so it never blocks
+// this island's hydration. Types stay static via `import type * as Tone`.
+let tonePromise: Promise<typeof import("tone")> | null = null;
+function loadTone(): Promise<typeof import("tone")> {
+  return (tonePromise ??= import("tone"));
+}
 
 
 interface Props {
@@ -158,6 +165,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   const [tab, setTab]                   = useState<"episodes" | "pro" | "instaad">("episodes");
   const autoPlayRef = useRef(false);
 
+  const toneRef    = useRef<typeof import("tone") | null>(null); // lazily-loaded audio module
   const lineRefs   = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef     = useRef<number>(0);
   const gainRef    = useRef<Tone.Gain | null>(null);       // master volume (slider), last before destination
@@ -206,7 +214,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // slider attenuates the already-evened signal. Built once, reused across episodes.
   //   players -> Compressor -> makeupGain -> Limiter -> volumeGain -> destination
   // Returns the chain INPUT (compressor) for players to connect to.
-  function ensureChain(): Tone.Compressor {
+  function ensureChain(Tone: typeof import("tone")): Tone.Compressor {
     if (!compRef.current) {
       const gain = new Tone.Gain(volume).toDestination();
       const limiter = new Tone.Limiter(-1).connect(gain);            // brick-wall at -1 dBFS
@@ -242,18 +250,22 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   useEffect(() => {
     let cancelled = false;
     setReady(false);
-    const transport = Tone.getTransport();
-    transport.stop();
-    transport.seconds = 0;
-    disposePlayers();
-    const input = ensureChain();
-    const load = (url: string) =>
-      Tone.ToneAudioBuffer.fromUrl(url).catch(() => null as Tone.ToneAudioBuffer | null);
+    (async () => {
+      const Tone = await loadTone();
+      if (cancelled) return;
+      toneRef.current = Tone;
+      const transport = Tone.getTransport();
+      transport.stop();
+      transport.seconds = 0;
+      disposePlayers();
+      const input = ensureChain(Tone);
+      const load = (url: string) =>
+        Tone.ToneAudioBuffer.fromUrl(url).catch(() => null as Tone.ToneAudioBuffer | null);
 
-    Promise.all([
-      episode.track ? load(episode.track) : Promise.resolve(null),
-      ...episode.lines.map((l) => (l.audio ? load(l.audio) : Promise.resolve(null))),
-    ]).then(([trackBuf, ...clipBufs]) => {
+      const [trackBuf, ...clipBufs] = await Promise.all([
+        episode.track ? load(episode.track) : Promise.resolve(null),
+        ...episode.lines.map((l) => (l.audio ? load(l.audio) : Promise.resolve(null))),
+      ]);
       if (cancelled) { trackBuf?.dispose(); clipBufs.forEach((b) => b?.dispose()); return; }
 
       if (trackBuf) {
@@ -271,12 +283,14 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
       setReady(true);
       if (autoPlayRef.current) { autoPlayRef.current = false; play(); }
-    });
+    })();
 
     return () => { cancelled = true; };
   }, [episode.slug]);
 
   async function play() {
+    const Tone = toneRef.current;
+    if (!Tone) return;
     await Tone.start();                 // resume the AudioContext (needs a gesture)
     const transport = Tone.getTransport();
     if (transport.seconds >= span) transport.seconds = 0;
@@ -286,6 +300,8 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   }
 
   function pause() {
+    const Tone = toneRef.current;
+    if (!Tone) return;
     Tone.getTransport().pause();
     playingRef.current = false;
     setIsPlaying(false);
@@ -298,6 +314,8 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   }
 
   function seek(t: number) {
+    const Tone = toneRef.current;
+    if (!Tone) return;
     const clamped = Math.max(0, Math.min(t, span));
     Tone.getTransport().seconds = clamped;   // synced players reschedule (incl. mid-clip)
     setCurrentTime(clamped);
@@ -311,9 +329,12 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   function selectEpisode(idx: number, andPlay = false) {
     autoPlayRef.current = andPlay;
     if (idx === selectedIdx) { if (andPlay) togglePlay(); return; }
-    const transport = Tone.getTransport();
-    transport.stop();
-    transport.seconds = 0;
+    const Tone = toneRef.current;
+    if (Tone) {
+      const transport = Tone.getTransport();
+      transport.stop();
+      transport.seconds = 0;
+    }
     playingRef.current = false;
     setIsPlaying(false);
     setCurrentTime(0);
@@ -338,6 +359,8 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // RAF loop: drive UI clock + active line from the Transport timeline
   useEffect(() => {
     function tick() {
+      const Tone = toneRef.current;
+      if (!Tone) return;
       const t = Tone.getTransport().seconds;
       if (t >= span) { pause(); Tone.getTransport().seconds = 0; setCurrentTime(0); setActiveLine(-1); return; }
       setCurrentTime(t);
@@ -358,7 +381,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
   // Warm the AudioContext on the first user gesture so it's already RUNNING
   // before the first play (autoplay policy starts it suspended).
   useEffect(() => {
-    const warm = () => { Tone.start(); };
+    const warm = () => { loadTone().then((T) => T.start()); };
     window.addEventListener("pointerdown", warm, { once: true });
     window.addEventListener("keydown", warm, { once: true });
     return () => {
@@ -369,7 +392,7 @@ export default function RadioStation({ episodes, cast, ads = [] }: Props) {
 
   // Tear down players, master chain + transport on unmount
   useEffect(() => () => {
-    Tone.getTransport().stop();
+    toneRef.current?.getTransport().stop();
     disposePlayers();
     for (const node of [compRef, makeupRef, limiterRef, gainRef]) {
       try { node.current?.dispose(); } catch { /* already gone */ }

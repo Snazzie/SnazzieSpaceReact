@@ -17,6 +17,6 @@ import BaseHead from '@/components/BaseHead.astro';
   <style>html,body{background:#0a0704;}</style>
   </head>
   <body class="h-screen overflow-hidden bg-background text-foreground flex flex-col">
-    <RadioStation client:load episodes={EPISODES} ads={ADS} cast={CAST} />
+    <RadioStation client:idle episodes={EPISODES} ads={ADS} cast={CAST} />
   </body>
 </html>
