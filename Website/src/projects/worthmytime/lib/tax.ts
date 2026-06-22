@@ -2,9 +2,10 @@
 //
 // Uses 2025/26 rest-of-UK (England, Wales, Northern Ireland) bands. Scotland
 // has different income-tax bands and is intentionally out of scope — the page
-// states this assumption. No pension, student loan, salary sacrifice, or
-// blind-person's allowance: just Income Tax + Class 1 employee National
-// Insurance on a single annual gross salary.
+// states this assumption. No student loan or blind-person's allowance: just
+// Income Tax + Class 1 employee National Insurance on a single annual gross
+// salary. Salary sacrifice is modelled upstream in offer.ts by reducing the
+// gross passed in here before tax + NI are applied.
 //
 // Money maths runs through big.js for exact decimal arithmetic (no binary
 // float drift on the £ figures), then converts back to number at the boundary.

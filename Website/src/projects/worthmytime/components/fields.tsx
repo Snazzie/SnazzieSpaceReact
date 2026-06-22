@@ -80,10 +80,10 @@ export function Stat({
 }: {
   label: string;
   value: string;
-  tone?: 'down';
+  tone?: 'down' | 'up';
   hint?: string;
 }) {
-  const color = tone === 'down' ? 'text-rose-400' : 'text-foreground';
+  const color = tone === 'down' ? 'text-rose-400' : tone === 'up' ? 'text-emerald-400' : 'text-foreground';
   return (
     <div className="flex items-baseline justify-between gap-4 border-b border-white/5 py-2 last:border-0">
       <span className="text-sm text-muted-foreground">

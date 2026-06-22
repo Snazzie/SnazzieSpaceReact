@@ -37,6 +37,50 @@ describe('evaluateOffer', () => {
     expect(withCommute.effHourly).toBeLessThan(base.effHourly);
   });
 
+  it('salary sacrifice (%) cuts tax + NI and counts the pension as value', () => {
+    const base = evaluateOffer({ mode: 'gross', pay: 50_000, period: 'year', hours: 40 });
+    const sacced = evaluateOffer({
+      mode: 'gross',
+      pay: 50_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'pct', value: 10 },
+    });
+    // Pension contribution = 10% of gross.
+    expect(sacced.salarySacrifice).toBeCloseTo(5_000, 2);
+    // Tax + NI are computed on the reduced gross, so both fall.
+    expect(sacced.incomeTax).toBeLessThan(base.incomeTax);
+    expect(sacced.nationalInsurance).toBeLessThan(base.nationalInsurance);
+    // Cash take-home drops (pay diverted to pension)...
+    expect(sacced.netAnnual).toBeLessThan(base.netAnnual);
+    // ...but total value (cash + pension) beats plain pay, thanks to the tax + NI saved.
+    expect(sacced.totalValue).toBeGreaterThan(base.totalValue);
+    expect(sacced.effHourly).toBeGreaterThan(base.effHourly);
+  });
+
+  it('salary sacrifice as a fixed £ amount annualises by the pay period', () => {
+    const r = evaluateOffer({
+      mode: 'gross',
+      pay: 4_000,
+      period: 'month',
+      hours: 40,
+      sacrifice: { kind: 'amount', value: 200 },
+    });
+    expect(r.salarySacrifice).toBeCloseTo(2_400, 2); // £200/month × 12
+  });
+
+  it('salary sacrifice is ignored in net mode', () => {
+    const r = evaluateOffer({
+      mode: 'net',
+      pay: 30_000,
+      period: 'year',
+      hours: 40,
+      sacrifice: { kind: 'pct', value: 10 },
+    });
+    expect(r.salarySacrifice).toBe(0);
+    expect(r.totalValue).toBeCloseTo(30_000, 2);
+  });
+
   it('higher salary can lose to a lower one once commute is factored', () => {
     // A: £45k, no commute. B: £48k but a long, costly commute.
     const a = evaluateOffer({ mode: 'gross', pay: 45_000, period: 'year', hours: 40 });

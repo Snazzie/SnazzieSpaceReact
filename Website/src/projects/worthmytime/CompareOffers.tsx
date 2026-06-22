@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { evaluateOffer, type Period, type Mode, type OfferResult } from './lib/offer';
+import { evaluateOffer, type Period, type Mode, type SacrificeKind, type OfferResult } from './lib/offer';
 import { PERSONAL_ALLOWANCE, PA_TAPER_START } from './lib/tax';
 import { gbp, gbp2 } from './lib/format';
 import { MoneyField, Segmented, Stat } from './components/fields';
@@ -15,6 +15,10 @@ interface OfferState {
   commuteMinsStr: string;
   commuteCostStr: string;
   commuteDaysStr: string;
+  sacrificeOn: boolean;
+  sacrificeMode: SacrificeKind;
+  sacrificePctStr: string;
+  sacrificeAmountStr: string;
 }
 
 const PERIODS: { id: Period; label: string }[] = [
@@ -34,6 +38,10 @@ function makeOffer(name: string, payStr: string, mode: Mode = 'gross'): OfferSta
     commuteMinsStr: '60',
     commuteCostStr: '5',
     commuteDaysStr: '5',
+    sacrificeOn: false,
+    sacrificeMode: 'pct',
+    sacrificePctStr: '5',
+    sacrificeAmountStr: '200',
   };
 }
 
@@ -50,6 +58,16 @@ function evaluate(o: OfferState): OfferResult {
           days: parseFloat(o.commuteDaysStr) || 0,
         }
       : null,
+    sacrifice:
+      o.mode === 'gross' && o.sacrificeOn
+        ? {
+            kind: o.sacrificeMode,
+            value:
+              o.sacrificeMode === 'pct'
+                ? parseFloat(o.sacrificePctStr) || 0
+                : parseFloat(o.sacrificeAmountStr) || 0,
+          }
+        : null,
   });
 }
 
@@ -69,6 +87,7 @@ function OfferCard({
   onRemove?: () => void;
 }) {
   const ready = result.effHoursYear > 0 && parseFloat(offer.payStr) > 0;
+  const hasSacrifice = offer.mode === 'gross' && offer.sacrificeOn && result.salarySacrifice > 0;
   return (
     <div
       className={`space-y-4 rounded-2xl border p-5 sm:p-6 transition-colors ${
@@ -201,17 +220,78 @@ function OfferCard({
           </div>
         )}
       </div>
+
+      {/* Salary sacrifice — only meaningful against a gross salary */}
+      {offer.mode === 'gross' && (
+        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3">
+          <label className="flex cursor-pointer items-center justify-between gap-3">
+            <span className="text-sm font-medium text-foreground">Salary sacrifice (pension)</span>
+            <input
+              type="checkbox"
+              checked={offer.sacrificeOn}
+              onChange={(e) => onChange({ sacrificeOn: e.target.checked })}
+              className="size-4 accent-emerald-400"
+            />
+          </label>
+          {offer.sacrificeOn && (
+            <div className="mt-3 space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs text-muted-foreground">Contribute as</span>
+                <Segmented
+                  options={[
+                    { id: 'pct', label: '%' },
+                    { id: 'amount', label: '£' },
+                  ]}
+                  value={offer.sacrificeMode}
+                  onChange={(sacrificeMode) => onChange({ sacrificeMode })}
+                />
+              </div>
+              {offer.sacrificeMode === 'pct' ? (
+                <MoneyField
+                  id={`ss-${offer.name}`}
+                  label="Of gross pay"
+                  value={offer.sacrificePctStr}
+                  onChange={(v) => onChange({ sacrificePctStr: v })}
+                  suffix="%"
+                  hint="Pre-tax — lowers the salary that tax & NI bite on"
+                />
+              ) : (
+                <MoneyField
+                  id={`ss-${offer.name}`}
+                  label={`Per ${offer.period}`}
+                  prefix="£"
+                  value={offer.sacrificeAmountStr}
+                  onChange={(v) => onChange({ sacrificeAmountStr: v })}
+                  hint="Pre-tax — lowers the salary that tax & NI bite on"
+                />
+              )}
+            </div>
+          )}
+        </div>
+      )}
         </div>
 
         {/* Right: the breakdown */}
       <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 md:self-start">
         {offer.mode === 'gross' && (
           <>
-            {result.grossAnnual > PA_TAPER_START && (
+            {hasSacrifice && (
+              <Stat
+                label="Salary sacrifice"
+                hint={
+                  offer.sacrificeMode === 'pct'
+                    ? `${parseFloat(offer.sacrificePctStr) || 0}% of gross, pre-tax into pension`
+                    : 'pre-tax into pension'
+                }
+                value={ready ? `− ${gbp.format(result.salarySacrifice)}` : '—'}
+                tone="down"
+              />
+            )}
+            {ready && result.personalAllowance < PERSONAL_ALLOWANCE && (
               <Stat
                 label="Allowance lost"
                 hint={`£1 per £2 over ${gbp.format(PA_TAPER_START)} taper`}
-                value={ready ? `− ${gbp.format(PERSONAL_ALLOWANCE - result.personalAllowance)}` : '—'}
+                value={`− ${gbp.format(PERSONAL_ALLOWANCE - result.personalAllowance)}`}
                 tone="down"
               />
             )}
@@ -233,7 +313,21 @@ function OfferCard({
             tone="down"
           />
         )}
-        <Stat label="Take-home / year" value={ready ? gbp.format(result.netAnnual) : '—'} />
+        <Stat
+          label={hasSacrifice ? 'Take-home cash / year' : 'Take-home / year'}
+          value={ready ? gbp.format(result.netAnnual) : '—'}
+        />
+        {hasSacrifice && (
+          <>
+            <Stat
+              label="Pension / year"
+              hint="your salary sacrifice — still yours"
+              value={ready ? `+ ${gbp.format(result.salarySacrifice)}` : '—'}
+              tone="up"
+            />
+            <Stat label="Total value / year" value={ready ? gbp.format(result.totalValue) : '—'} />
+          </>
+        )}
         <Stat
           label="Effective hours / year"
           hint={
@@ -455,8 +549,8 @@ export default function CompareOffers() {
       )}
 
       <p className="text-center text-xs text-muted-foreground/70">
-        Compares the real hourly rate — take-home after tax, NI &amp; commute, divided by all the hours
-        the job actually costs you. A bigger salary can still lose.
+        Compares the real hourly rate — take-home (plus any salary-sacrifice pension) after tax, NI &amp;
+        commute, divided by all the hours the job actually costs you. A bigger salary can still lose.
       </p>
     </div>
   );
