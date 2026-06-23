@@ -247,7 +247,6 @@ export const projects: Project[] = [
       "Real hourly rate from gross or take-home pay, using 2025/26 rest-of-UK Income Tax + National Insurance",
       "Prices any purchase in hours of work, with a live ticker of everyday items",
       "Compare-offers mode ranks jobs by effective £/hour or total take-home, factoring commute time and cost",
-      "Exact decimal money maths via big.js; deep-linkable tabs",
     ],
   },
 ];
