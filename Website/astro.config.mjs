@@ -17,7 +17,8 @@ import consentHeadIntegration from './src/integrations/consent-head.mjs';
  *  Active only under `astro dev`; never included in the production build. */
 function radioSaveDevPlugin() {
   const dataDir = fileURLToPath(new URL('./src/data/radio/', import.meta.url));
-  return {
+  /** @type {import('vite').Plugin} */
+  const plugin = {
     name: 'radio-save-dev',
     apply: 'serve',
     configureServer(server) {
@@ -41,6 +42,7 @@ function radioSaveDevPlugin() {
       });
     },
   };
+  return plugin;
 }
 
 export default defineConfig({
