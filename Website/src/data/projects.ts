@@ -114,7 +114,6 @@ export const projects: Project[] = [
     video: "/raceiq-bg.mp4",
     details: [
       "Works with popular racing games including Forza, F1 25 and Assetto Corsa",
-      "Records every lap and shows a live dashboard of what the car is doing",
       "Pinpoints where time is lost, corner by corner, and compares laps side by side",
       "Optional AI coach that reviews each lap and suggests how to improve",
     ],
@@ -196,7 +195,6 @@ export const projects: Project[] = [
       "Shows what's using a computer's power, memory and storage in real time",
       "Highlights the apps and processes that are slowing everything down",
       "Clear readouts for every part of the machine, from processor to graphics card",
-      "One consistent experience across both Windows and Mac",
     ],
   },
   {
