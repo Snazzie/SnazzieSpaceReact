@@ -21,7 +21,7 @@ export const projects: Project[] = [
   {
     title: "Snazzie FM",
     description:
-      "Absurdist AI radio station. Multi-voice call-in comedy generated with cloned TTS voices, played on a shared Web Audio timeline.",
+      "An AI-powered comedy radio station that writes and voices its own call-in shows, with a full cast of characters you can listen to right in the browser.",
     href: "/snazziefm",
     image: "/snazziefm/images/radio-card.webp",
     featured: true,
@@ -44,16 +44,15 @@ export const projects: Project[] = [
       "Vitest",
     ],
     details: [
-      "Multi-voice call-in radio comedy from a full cast of cloned TTS voices",
-      "Per-line audio clips scheduled on a shared Web Audio timeline for real overlap and talk-over",
-      "Two TTS engines: OmniVoice multitrack and Dia2 for natural 2-hander conversations",
-      "Retro broadcast landing page with an inline station feed that rolls through the lineup",
+      "A full cast of distinct characters, each with their own voice, performing short comedy episodes",
+      "Scripts and audio are generated automatically and stitched into one seamless broadcast",
+      "Plays instantly in the browser through a retro radio player with a rolling station lineup",
     ],
   },
   {
     title: "Lunar Portfolio",
     description:
-      "Personal wealth dashboard. Tracks investments, pensions and retirement in one place, with real returns vs inflation and net worth.",
+      "A mobile app that brings your investments, pensions and savings into one place, so you can see your true net worth and whether your money is really growing.",
     href: "https://lunarportfolio.com",
     image: "/lunar-home-sm.webp",
     featured: true,
@@ -82,15 +81,15 @@ export const projects: Project[] = [
       "Vitest",
     ],
     details: [
-      "Connects investments, pensions, and savings in one place",
-      "Shows real returns adjusted for inflation",
-      "Tracks trades, dividends, and transactions in a single timeline",
+      "Brings investments, pensions and savings together in a single, clear view",
+      "Shows whether your money is really growing once inflation is taken into account",
+      "Keeps a running history of trades, dividends and transactions over time",
     ],
   },
   {
     title: "smartdos",
     description:
-      "Wireless AP scanner and deauth attack orchestrator with terminal UI, for ethical penetration testing.",
+      "A security-testing tool that maps the Wi-Fi networks around you and runs controlled disconnection attacks against them, built for ethical penetration testing.",
     href: "https://github.com/Snazzie/smartdos",
     image: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
     bgImage: "https://raw.githubusercontent.com/Snazzie/smartdos/master/assets/screenshot.png",
@@ -98,14 +97,15 @@ export const projects: Project[] = [
     tech: ["Rust"],
     video: "/smartdos-bg.mp4",
     details: [
-      "Linux TUI — keyboard-driven, no GUI required",
-      "Scans nearby access points across 2.4 GHz, 5 GHz, and 6 GHz",
-      "Orchestrates deauth and AuthDos attacks on selected targets",
+      "Scans the surrounding airwaves to map out every nearby Wi-Fi network",
+      "Runs controlled attacks against chosen networks to test how well they hold up",
+      "Fast, keyboard-driven interface that runs entirely in the terminal",
     ],
   },
   {
     title: "RaceIQ",
-    description: "Helps sim racers go faster and understand why they're slow.",
+    description:
+      "A coaching app for racing-game players that records their laps and shows them exactly where, and why, they're losing time.",
     href: "https://github.com/SpeedHQ/RaceIQ",
     image: "/logos/raceiq.png",
     featured: true,
@@ -113,17 +113,16 @@ export const projects: Project[] = [
     tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite", "Playwright", "Vitest"],
     video: "/raceiq-bg.mp4",
     details: [
-      "Windows app supporting Forza, F1 2025, Assetto Corsa Competizione, and Assetto Corsa Evo",
-      "Live telemetry dashboard with lap recording",
-      "Detailed lap analysis with automatic corner detection, sector splits, and side-by-side lap comparison with time deltas",
-      "Optional AI coaching per lap via your own API key",
-      "Tune catalog and car browser with community setup data",
+      "Works with popular racing games including Forza, F1 25 and Assetto Corsa",
+      "Records every lap and shows a live dashboard of what the car is doing",
+      "Pinpoints where time is lost, corner by corner, and compares laps side by side",
+      "Optional AI coach that reviews each lap and suggests how to improve",
     ],
   },
   {
     title: "CloudCat",
     description:
-      "Cloud monitoring dashboard for Redis, PostgreSQL and RabbitMQ with smart alerts.",
+      "A dashboard that keeps an eye on the behind-the-scenes systems that power an app and warns the team the moment something starts to go wrong.",
     href: "https://cloudcat.dev",
     image: "/cloudcat-dashboard.webp",
     featured: true,
@@ -146,9 +145,9 @@ export const projects: Project[] = [
       "Vitest",
     ],
     details: [
-      "Monitoring dashboard for Redis, PostgreSQL, and RabbitMQ",
-      "Smart alerts with noise reduction and escalation policies",
-      "TimescaleDB-backed storage for historical metrics and custom queries",
+      "Watches the key systems that keep an app running and flags trouble early",
+      "Smart alerts that cut through the noise and escalate only what matters",
+      "Keeps a full history of performance so issues can be traced back over time",
     ],
   },
   {
@@ -168,7 +167,8 @@ export const projects: Project[] = [
   },
   {
     title: "Better Task Manager",
-    description: "Cross-platform task manager and system monitor, successor to Vital Utilities.",
+    description:
+      "A polished replacement for the built-in Task Manager on Windows and Mac that shows exactly what a computer is doing and what's slowing it down.",
     href: "https://bettertaskmanager.com",
     image: "/btm-performance.webp",
     featured: true,
@@ -193,11 +193,10 @@ export const projects: Project[] = [
     ],
     supersedes: "Vital Utilities",
     details: [
-      "Cross-platform task manager and system monitor for Windows and macOS",
-      "Per-core CPU usage, temperature, and clock speed at a glance",
-      "Live GPU, memory, network, power, and disk metrics",
-      "Top resource consumers with per-process breakdown",
-      "Package temperature and fan speed readouts",
+      "Shows what's using a computer's power, memory and storage in real time",
+      "Highlights the apps and processes that are slowing everything down",
+      "Clear readouts for every part of the machine, from processor to graphics card",
+      "One consistent experience across both Windows and Mac",
     ],
   },
   {
@@ -219,23 +218,23 @@ export const projects: Project[] = [
   },
   {
     title: "Rhythm Unity",
-    description: "OSU Clone made in Unity",
+    description:
+      "A rhythm game where players tap along in time to the music, built from scratch in the Unity game engine.",
     href: "https://github.com/Snazzie/Rhythm-Unity",
     image: "https://avatars.githubusercontent.com/u/19627023?v=4",
     featured: true,
     bgVideo: "/hero-bg.webm",
     tech: ["Windows", "Android", "Unity", "C#"],
     details: [
-      "Auto play mode for learning and showcase replays",
-      "Translates osu! maps to custom game format for broad compatibility",
-      "Real-time hit detection and feedback scoring system",
-      "Combo tracking and performance statistics",
+      "Tap-to-the-beat gameplay with instant scoring and combo tracking",
+      "Plays the huge existing library of community-made beatmaps",
+      "Auto-play mode that demonstrates a perfect run of any track",
     ],
   },
   {
     title: "Worth My Time",
     description:
-      "Turns your UK salary into a real take-home hourly rate after tax, NI and commute — then prices any purchase in hours of life. Plus a job-offer comparison.",
+      "A free tool that turns a UK salary into what you really earn per hour after tax, then shows how many hours of work any purchase actually costs you.",
     href: "/worthmytime",
     image: "/wmt.png",
     featured: true,
@@ -244,9 +243,9 @@ export const projects: Project[] = [
     imgHeight: 1570,
     tech: ["Astro", "React", "TypeScript", "Tailwind", "Vite", "Bun", "big.js", "Vitest"],
     details: [
-      "Real hourly rate from gross or take-home pay, using 2025/26 rest-of-UK Income Tax + National Insurance",
-      "Prices any purchase in hours of work, with a live ticker of everyday items",
-      "Compare-offers mode ranks jobs by effective £/hour or total take-home, factoring commute time and cost",
+      "Works out your true hourly pay once tax and other deductions are taken off",
+      "Shows the real cost of any purchase measured in hours of your life",
+      "Compares job offers to reveal which one actually pays more once travel is counted",
     ],
   },
 ];
