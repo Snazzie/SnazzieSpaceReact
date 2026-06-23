@@ -424,6 +424,13 @@ export const BLUNDER_ADS: Episode[] = [
 // Everything that airs in the ad rotation (standard spots + blunders).
 export const ADS: Episode[] = [...STANDARD_ADS, ...BLUNDER_ADS];
 
+// The program guide on /snazziefm renders this list top-to-bottom. "Advice"
+// segments — where the host reads a listener's question and answers it — are
+// spread roughly every six shows instead of airing back-to-back, so the
+// lineup stays fresh as you scroll (they're tagged `// advice` below). When
+// adding a new advice show, drop it into a gap rather than appending it at the
+// end. villainHour stays first (its music interstitial queues off episodes[0])
+// and every Part 2 stays directly after its parent.
 export const EPISODES: Episode[] = [
   episodeFrom(villainHour),
   episodeFrom(truthHour),
@@ -431,12 +438,14 @@ export const EPISODES: Episode[] = [
   episodeFrom(machineTalk),
   episodeFrom(healthyLiving),
   episodeFrom(afterDark),
+  episodeFrom(ronnieKnowsCritters),          // advice
   episodeFrom(theSportsDesk),
   episodeFrom(thePigeonCrash),
   episodeFrom(theFrankTapes),
   episodeFrom(theCatSpecial),
   episodeFrom(oneMinuteRemaining),
   episodeFrom(theSharedWall),
+  episodeFrom(ronniePaysItForward),          // advice
   episodeFrom(theRenewalWindow),
   episodeFrom(theRenewalWindowPart2),
   episodeFrom(curbRights),
@@ -448,6 +457,7 @@ export const EPISODES: Episode[] = [
   episodeFrom(theNinthBreath),
   episodeFrom(theFogRolledIn),
   episodeFrom(theFogRolledInPart2),
+  episodeFrom(fenceYourselfIn),              // advice
   episodeFrom(notOurWater),
   episodeFrom(notOurWaterPart2),
   episodeFrom(theNinetyYearSoup),
@@ -459,6 +469,7 @@ export const EPISODES: Episode[] = [
   episodeFrom(theLendingLibrary),
   episodeFrom(pleaseStayOnTheLine),
   episodeFrom(pleaseStayOnTheLinePart2),
+  episodeFrom(goodBones),                    // advice
   episodeFrom(theGratitudeAudit),
   episodeFrom(allTheLightsAreGreen),
   episodeFrom(allTheLightsAreGreenPart2),
@@ -468,6 +479,7 @@ export const EPISODES: Episode[] = [
   episodeFrom(theFamilyPlanPart2),
   episodeFrom(theBroodIsBack),
   episodeFrom(theBroodIsBackPart2),
+  episodeFrom(twoCoatsOfConfidence),         // advice
   episodeFrom(theCasseroleLedger),
   episodeFrom(theCasseroleLedgerPart2),
   episodeFrom(sayLess),
@@ -476,6 +488,7 @@ export const EPISODES: Episode[] = [
   episodeFrom(theGoodNeighborScore),
   episodeFrom(theGoodNeighborScorePart2),
   episodeFrom(theGroundGaveItBack),
+  episodeFrom(seasonToTaste),                // advice
   episodeFrom(theFlatlineMethod),
   episodeFrom(theNightShift),
   episodeFrom(theNightShiftPart2),
@@ -483,6 +496,7 @@ export const EPISODES: Episode[] = [
   episodeFrom(theInsideVoice),
   episodeFrom(theSunWentOut),
   episodeFrom(theFarmSystem),
+  episodeFrom(haveYouTriedUnpluggingRonnie), // advice
   episodeFrom(notarizeTheWitness),
   episodeFrom(theSnowThatStayed),
   episodeFrom(theSnowThatStayedPart2),
@@ -493,28 +507,21 @@ export const EPISODES: Episode[] = [
   episodeFrom(theSharedMarqueePart2),
   episodeFrom(theSkyWroteBack),
   episodeFrom(theSkyWroteBackPart2),
+  episodeFrom(ronnieKnowsTheLaw),            // advice
   episodeFrom(theSoftEdit),
   episodeFrom(neverFold),
   episodeFrom(theBookFairEconomy),
   episodeFrom(theLastLitHouse),
   episodeFrom(theValidationStamp),
-  episodeFrom(ronnieKnowsCritters),
-  episodeFrom(ronniePaysItForward),
-  episodeFrom(fenceYourselfIn),
-  episodeFrom(goodBones),
-  episodeFrom(twoCoatsOfConfidence),
-  episodeFrom(seasonToTaste),
-  episodeFrom(haveYouTriedUnpluggingRonnie),
-  episodeFrom(ronnieKnowsTheLaw),
-  episodeFrom(theCleanBreakHour),
-  episodeFrom(ronnieKnowsLove),
   episodeFrom(theStarsWithRhondaMercury),
+  episodeFrom(theCleanBreakHour),            // advice
   episodeFrom(theCosmicLedger),
   episodeFrom(theStarsWithRhondaThePositionIsOpen),
   episodeFrom(theStarsKnowsYourBloodwork),
   episodeFrom(theStarsWithRhondaFamilyAndHome),
   episodeFrom(starsWithRhondaCommute),
   episodeFrom(theStarsWithRhondaHarvest),
+  episodeFrom(ronnieKnowsLove),              // advice
   episodeFrom(theStarsWithRhondaTheEnemyIsInTheBuilding),
   episodeFrom(theStarsAreClosingUp),
   episodeFrom(theStarsWithRhondaLove),
