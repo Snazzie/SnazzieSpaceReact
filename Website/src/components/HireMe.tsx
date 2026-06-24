@@ -205,6 +205,20 @@ export function HireMe() {
         Get in touch on LinkedIn
         <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </motion.a>
+
+      <motion.p
+        {...headingProps}
+        className="mt-4 text-xs text-muted-foreground"
+      >
+        See how I work and what I offer on the{" "}
+        <a
+          href="/consultation/"
+          className="underline underline-offset-2 transition-colors hover:text-foreground"
+        >
+          consulting page
+        </a>
+        .
+      </motion.p>
     </section>
   );
 }
