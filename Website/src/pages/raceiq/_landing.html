@@ -1,0 +1,1431 @@
+<!doctype html>
+<html lang="en" data-theme="morph">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RaceIQ — Sim racing telemetry</title>
+<link rel="icon" href="/raceiq/assets/raceiq-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    /* Morph theme — matches app/src/index.css [data-theme="morph"] */
+    --app-bg: #000000;
+    --app-surface: #0d0d0d;
+    --app-surface-alt: #141414;
+    --app-dropdown: #141414;
+    --app-border: #2a2a2a;
+    --app-border-input: #333333;
+    --app-text: #f5f5f5;
+    --app-text-secondary: #aaaaaa;
+    --app-text-muted: #999999;
+    --app-text-dim: #777777;
+    --app-accent: #22d3ee;
+    --app-accent-hover: #67e8f9;
+    --app-highlight: #06b6d4;
+
+    /* Per-game tints (matches HomePage badge colors) */
+    --fm:  #22d3ee;
+    --f1:  #ef4444;
+    --acc: #fb923c;
+    --ae:  #34d399;
+
+    /* Dynamics */
+    --d-green:  #34d399;
+    --d-amber:  #f59e0b;
+    --d-red:    #ef4444;
+    --d-blue:   #3b82f6;
+
+    /* Radii — shadcn base 0.625rem */
+    --radius: 0.625rem;
+    --r-sm: calc(var(--radius) * 0.6);   /* 6px */
+    --r-md: calc(var(--radius) * 0.8);   /* 8px */
+    --r-lg: var(--radius);               /* 10px */
+    --r-xl: calc(var(--radius) * 1.4);   /* 14px */
+
+    /* Type scale */
+    --t-title:   1.125rem;
+    --t-heading: 1rem;
+    --t-body:    0.9375rem;
+    --t-subtext: 0.875rem;
+    --t-label:   0.75rem;
+    --t-unit:    0.6875rem;
+
+    --sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; background: var(--app-bg); color: var(--app-text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: var(--app-accent); color: #00121a; }
+
+  /* Animated racing lines background */
+  .race-bg{
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%; transform: translateX(-50%);
+    width: 100vw;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+  .race-bg canvas{ position:absolute; inset:0; width: 100%; height: 100%; display:block; }
+  .hero-wrap{ position: relative; }
+
+  /* Scrollbar — matches app */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+
+  /* ============ LANDING PAGE NAV ============ */
+  .site-nav{
+    position: sticky; top: 0; z-index: 50;
+    height: 64px;
+    background: color-mix(in srgb, var(--app-bg) 72%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid color-mix(in srgb, var(--app-border) 60%, transparent);
+    display: flex; align-items: center;
+    padding: 0 28px;
+    max-width: 1440px; margin: 0 auto;
+  }
+  .brand{
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 16px; letter-spacing: -0.01em;
+    color: var(--app-text);
+  }
+  .brand-mark{
+    width: 24px; height: 24px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--app-accent), color-mix(in srgb, var(--app-accent) 50%, #ffffff));
+    position: relative;
+  }
+  .brand-mark::after{
+    content: ""; position: absolute; inset: 4px 4px 4px 4px;
+    border: 2px solid rgba(0,0,0,0.8); border-right-color: transparent; border-bottom-color: transparent;
+    border-radius: 50%;
+  }
+  .brand-name{ font-family: var(--sans); }
+  .brand-tag{
+    font-family: var(--mono); font-size: 9px; font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--app-accent);
+    padding: 2px 6px; border-radius: 3px;
+    background: color-mix(in srgb, var(--app-accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--app-accent) 32%, transparent);
+  }
+
+  .nav-links{
+    display: flex; gap: 4px;
+    margin-left: 40px;
+  }
+  .nav-links a{
+    padding: 8px 14px; font-size: 13px; font-weight: 500;
+    color: var(--app-text-muted); border-radius: var(--r-sm);
+  }
+  .nav-links a:hover{ color: var(--app-text); }
+
+  .nav-cta{ margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .nav-cta .btn{ height: 34px; padding: 0 14px; font-size: 13px; }
+
+  .dot{ width:6px; height:6px; border-radius:50%; display:inline-block; }
+  .dot.on{ background: var(--d-green); box-shadow: 0 0 6px var(--d-green); }
+  .dot.off{ background: var(--app-text-dim); }
+
+
+  /* ============ SHADCN BUTTONS ============ */
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 9px 16px; border-radius: var(--r-md);
+    font-size: var(--t-subtext); font-weight: 500; font-family: var(--sans);
+    border: 1px solid transparent; cursor: pointer; transition: background-color .15s, border-color .15s, color .15s;
+    height: 36px; white-space: nowrap;
+  }
+  .btn-default{ background: var(--app-text); color: #0a0a0a; }
+  .btn-default:hover{ background: #e5e5e5; }
+  .btn-outline{ background: transparent; border-color: var(--app-border-input); color: var(--app-text); }
+  .btn-outline:hover{ background: var(--app-surface-alt); border-color: #444; }
+  .btn-ghost{ background: transparent; color: var(--app-text-secondary); }
+  .btn-ghost:hover{ background: var(--app-surface-alt); color: var(--app-text); }
+  .btn-accent{ background: var(--app-accent); color: #001016; font-weight: 600; }
+  .btn-accent:hover{ background: var(--app-accent-hover); }
+  .btn-lg{ height: 44px; padding: 12px 20px; font-size: var(--t-body); }
+  .btn svg{ width: 14px; height: 14px; }
+
+  .badge{
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; font-size: 10px; font-weight: 600;
+    border-radius: var(--r-sm); line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .badge-fm  { background: color-mix(in srgb, var(--fm)  20%, transparent); color: var(--fm); }
+  .badge-f1  { background: color-mix(in srgb, var(--f1)  20%, transparent); color: var(--f1); }
+  .badge-acc { background: color-mix(in srgb, var(--acc) 20%, transparent); color: var(--acc); }
+  .badge-ae  { background: color-mix(in srgb, var(--ae)  20%, transparent); color: var(--ae); }
+  .badge-outline{ border: 1px solid var(--app-border); color: var(--app-text-muted); background: transparent; }
+  .badge-muted{ background: var(--app-surface-alt); color: var(--app-text-muted); }
+
+  /* ============ SHADCN CARD ============ */
+  .card{
+    background: var(--app-surface);
+    border: 1px solid var(--app-border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .card-header{ padding: 16px 20px; border-bottom: 1px solid var(--app-border); }
+  .card-title{ font-size: var(--t-title); font-weight: 600; margin: 0; letter-spacing: -0.01em;}
+  .card-desc{ font-size: var(--t-subtext); color: var(--app-text-muted); margin-top: 4px;}
+  .card-body{ padding: 20px; }
+
+  /* ============ LAYOUT ============ */
+  main{ max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ SECTOR HUD (live on hero) ============ */
+  .sector-hud{
+    position: relative; z-index: 1;
+    margin-top: 56px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;
+    padding: 14px 20px;
+    background: color-mix(in srgb, var(--app-bg) 70%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--app-border);
+    border-radius: var(--r-lg);
+    max-width: 720px;
+    font-family: var(--mono);
+  }
+  .sector-hud .leader{
+    display: flex; align-items: center; gap: 10px;
+    font-size: 10px; color: var(--app-text-muted); text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .sector-hud .leader .chip{
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--app-accent);
+    box-shadow: 0 0 10px var(--app-accent);
+  }
+  .sector-hud .leader b{ color: var(--app-text); font-weight: 700; letter-spacing: 0.04em; }
+  .sector-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .sector-cell{
+    padding: 2px 2px; border-left: 1px solid var(--app-border);
+    padding-left: 14px;
+  }
+  .sector-cell:first-child{ border-left: none; padding-left: 0;}
+  .sector-cell .k{ font-size: 9px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 4px;}
+  .sector-cell .v{ font-size: 20px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--app-text); transition: color .2s;}
+  .sector-cell.active .v{ color: var(--app-accent); }
+  .sector-cell.purple .v{ color: #b57cff; }
+  .sector-cell.green .v{ color: var(--d-green); }
+  .sector-hud .lap{
+    text-align: right;
+  }
+  .sector-hud .lap .k{ font-size: 9px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 4px;}
+  .sector-hud .lap .v{ font-size: 22px; font-weight: 800; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--app-accent);}
+
+  /* ============ HERO ============ */
+  .hero{ padding: 96px 0 80px; display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.3fr); gap: 48px; align-items: center; position: relative; z-index: 1; min-height: 620px;}
+  .hero-left{ max-width: 520px; }
+  .hero-right{ position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; min-height: 560px; gap: 14px;}
+  .hero-stage{ display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 14px; flex: 1 1 auto; min-height: 440px; }
+  .hero-right .track-window{ position: relative; min-height: 440px; border: 1px solid var(--app-border); border-radius: var(--r-lg); overflow: hidden; background: #000;}
+  .hero-right .track-window canvas{ position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-right .sector-hud{ margin-top: 0; max-width: none; }
+
+  /* ============ WELCOME DEMO CARD (matches StepWelcome from Onboarding.tsx) ============ */
+  .welcome-card{
+    position: relative; display: flex; flex-direction: column;
+    background: var(--app-surface); border: 1px solid var(--app-border);
+    border-radius: var(--r-lg); padding: 20px 20px 22px;
+    overflow: hidden; min-height: 440px;
+  }
+  .welcome-card .wc-viewport{
+    width: 100%; height: 192px; border-radius: var(--r-md);
+    border: 1px solid var(--app-border); background: #000;
+    overflow: hidden; position: relative; margin-bottom: 18px;
+  }
+  .welcome-card .wc-viewport svg{ width: 100%; height: 100%; display: block; }
+  .welcome-card .wc-body{ text-align: center; display: flex; flex-direction: column; align-items: center; padding: 0 6px; }
+  .welcome-card .wc-title{ font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--app-text); margin: 2px 0 4px;}
+  .welcome-card .wc-ver{ font-family: var(--mono); font-size: 11px; color: var(--app-text-muted); margin-bottom: 6px;}
+  .welcome-card .wc-tag{ font-size: 13px; color: var(--app-text-muted); line-height: 1.5; max-width: 320px; margin: 0 auto 18px;}
+  .welcome-card .wc-pills{ display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 18px; }
+  .welcome-card .wc-pill{
+    padding: 4px 10px; font-size: 11px; border-radius: 999px;
+    border: 1px solid var(--app-border); background: var(--app-surface-alt);
+    color: var(--app-text-secondary);
+  }
+  .welcome-card .wc-steps{
+    display: flex; gap: 4px; justify-content: center; margin-top: auto;
+  }
+  .welcome-card .wc-step{ width: 18px; height: 3px; border-radius: 2px; background: var(--app-border); }
+  .welcome-card .wc-step.on{ background: var(--app-accent); }
+  .welcome-card .wc-next{
+    position: absolute; right: 14px; bottom: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; color: #001016; background: var(--app-accent);
+    padding: 6px 12px; border-radius: var(--r-sm);
+  }
+  .welcome-card .wc-skip{
+    position: absolute; left: 14px; bottom: 14px;
+    font-size: 11px; color: var(--app-text-dim);
+    font-family: var(--mono);
+  }
+
+  /* Analyse-style wireframe car — subtle idle rotation */
+  .wc-car{ transform-origin: 160px 128px; animation: wc-car-idle 8s ease-in-out infinite; }
+  @keyframes wc-car-idle{
+    0%,100%{ transform: translateY(0) rotate(-0.6deg); }
+    50%{ transform: translateY(-1.5px) rotate(0.6deg); }
+  }
+  .hero-left .eyebrow{
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: var(--t-label); font-weight: 500;
+    color: var(--app-accent);
+    background: color-mix(in srgb, var(--app-accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--app-accent) 30%, transparent);
+    padding: 4px 10px; border-radius: var(--r-sm);
+  }
+  h1.headline{
+    font-size: clamp(40px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.035em;
+    font-weight: 700; margin: 20px 0 20px; text-wrap: balance;
+  }
+  h1.headline em{ font-style: normal; color: var(--app-accent); }
+  .sub{ font-size: var(--t-body); line-height: 1.6; color: var(--app-text-secondary); max-width: 520px; margin: 0 0 28px; }
+  .hero-cta{ display: flex; gap: 10px; flex-wrap: wrap; }
+  .hero-meta{ display: flex; gap: 20px; margin-top: 28px; font-size: 11px; font-family: var(--mono); color: var(--app-text-dim); letter-spacing: 0.02em; }
+  .hero-meta b{ color: var(--app-text-secondary); font-weight: 500; }
+
+  /* ============ DASHBOARD CARD MOCK (shadcn-flavored) ============ */
+  .dash{
+    background: var(--app-surface);
+    border: 1px solid var(--app-border);
+    border-radius: var(--r-lg);
+    padding: 20px;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.8);
+  }
+  .dash-head{ display:flex; align-items:center; justify-content: space-between; margin-bottom: 12px; }
+  .dash-head .t{ font-size: var(--t-title); font-weight: 600; letter-spacing: -0.01em; }
+  .dash-head .s{ font-size: var(--t-subtext); color: var(--app-text-muted); margin-top: 2px; }
+  .dash-status{ display: inline-flex; gap: 6px; align-items: center; color: var(--app-text-muted); font-size: 11px; }
+  .dash-status .dot{ width: 6px; height: 6px; border-radius: 50%; background: var(--app-text-dim); }
+
+  /* Game cards row (matches HomePage.tsx layout) */
+  .game-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .game-tile{
+    background: rgba(20,20,20,0.6);
+    border: 1px solid var(--app-border);
+    border-radius: var(--r-md);
+    padding: 12px;
+    position: relative; overflow: hidden;
+  }
+  .game-tile::before{
+    content:""; position:absolute; inset:0; pointer-events: none; opacity: .18;
+    background: radial-gradient(120% 120% at 0% 0%, var(--tint), transparent 55%);
+  }
+  .game-tile .head{ display:flex; align-items:center; gap: 8px; margin-bottom: 14px; }
+  .game-tile .name{ font-size: var(--t-subtext); font-weight: 600; }
+  .game-tile .stats{ display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 10px; }
+  .game-tile .stats .k{ color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-size: 9px;}
+  .game-tile .stats .v{ font-family: var(--mono); font-weight: 700; font-size: 16px; color: var(--tint); }
+
+  /* Stat cards (matches StatCard from HomePage.tsx) */
+  .stat-row{ display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+  .stat-card{
+    background: rgba(20,20,20,0.3);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+  }
+  .stat-card .k{ font-size: 10px; color: var(--app-text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .stat-card .v{ font-family: var(--mono); font-weight: 900; font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -0.02em;}
+  .stat-card .sub{ font-size: 11px; color: var(--app-text-dim); margin-top: 4px; }
+  .v-green{ color: var(--d-green); }
+  .v-accent{ color: var(--app-accent); }
+  .v-red{ color: var(--d-red); }
+
+  /* Recent laps table (matches AppTable patterns) */
+  .mini-table{ font-family: var(--mono); font-size: 11px; margin-top: 8px; border-top: 1px solid var(--app-border); }
+  .mini-table .thead{
+    display: grid; grid-template-columns: 32px 1fr 60px 90px 24px;
+    gap: 8px; padding: 8px 4px;
+    font-size: 9px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--app-border); font-family: var(--sans); font-weight: 500;
+  }
+  .mini-row{
+    display: grid; grid-template-columns: 32px 1fr 60px 90px 24px; gap: 8px;
+    padding: 8px 4px; align-items: center;
+    border-bottom: 1px solid rgba(42,42,42,0.4);
+    font-variant-numeric: tabular-nums;
+  }
+  .mini-row:last-child{ border-bottom: none; }
+  .mini-row .track{ color: var(--app-text); font-family: var(--sans); font-size: var(--t-subtext); font-weight: 500; }
+  .mini-row .time{ color: var(--app-text); font-weight: 700; }
+  .mini-row .valid-y{ color: var(--d-green); text-align: center; }
+  .mini-row .valid-n{ color: var(--d-red); text-align: center; }
+
+  /* ============ SECTIONS ============ */
+  section{ padding: 64px 0; }
+  .sec-head{ display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; gap: 24px; flex-wrap: wrap; }
+  .sec-eyebrow{
+    font-size: var(--t-label); color: var(--app-accent); text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;
+  }
+  .sec-title{ font-size: clamp(28px, 3.3vw, 44px); letter-spacing: -0.03em; font-weight: 700; margin: 0; line-height: 1.05; max-width: 760px; text-wrap: balance;}
+  .sec-sub{ font-size: var(--t-body); color: var(--app-text-muted); max-width: 420px; line-height: 1.6; margin: 0;}
+
+  /* ============ GAMES GRID ============ */
+  .games-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .game-card{
+    background: var(--app-surface); border: 1px solid var(--app-border);
+    border-radius: var(--r-lg); padding: 18px; position: relative; overflow: hidden;
+    transition: border-color .15s;
+  }
+  .game-card:hover{ border-color: var(--app-border-input); }
+  .game-card::before{
+    content:""; position:absolute; inset:0; pointer-events: none; opacity: .14;
+    background: radial-gradient(100% 100% at 0% 0%, var(--tint), transparent 55%);
+  }
+  .game-card .h{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .game-card .abbr{
+    width: 36px; height: 36px; border-radius: var(--r-md);
+    display: inline-flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--tint) 18%, transparent);
+    color: var(--tint); font-family: var(--mono); font-weight: 700; font-size: 13px;
+    border: 1px solid color-mix(in srgb, var(--tint) 36%, transparent);
+  }
+  .game-card h4{ font-size: var(--t-body); font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .game-card .feats{ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .game-card .tic{ font-size: 10px; color: var(--app-text-muted); padding: 2px 8px; border-radius: var(--r-sm); background: var(--app-surface-alt); border: 1px solid var(--app-border); font-family: var(--mono); }
+  .game-card .tic.yes{ color: var(--d-green); }
+  .game-card .tic.no{ color: var(--app-text-dim); }
+
+  /* ============ FEATURE GRID ============ */
+  .feat-grid{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .feat{
+    background: var(--app-surface); border: 1px solid var(--app-border);
+    border-radius: var(--r-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .feat .shot{ aspect-ratio: 16/9; background: #000; overflow: hidden; border-bottom: 1px solid var(--app-border);}
+  .feat .shot img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+  .feat .body{ padding: 18px 20px 20px; }
+  .feat h3{ font-size: var(--t-title); font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em;}
+  .feat p{ font-size: var(--t-subtext); color: var(--app-text-muted); line-height: 1.55; margin: 0; }
+  .feat .tag-row{ display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .feat.span-6{ grid-column: span 6; }
+  .feat.span-4{ grid-column: span 4; }
+  .feat.span-3{ grid-column: span 3; }
+  .feat.span-2{ grid-column: span 2; }
+  .feat.big .shot{ aspect-ratio: 21/9; }
+  .feat.big .body{ padding: 24px 28px 28px; }
+  .feat.big h3{ font-size: 24px; letter-spacing: -0.02em; }
+  .feat.big p{ font-size: var(--t-body); }
+
+  /* ============ COMPARE MOCK ============ */
+  .compare-card{ display: grid; grid-template-columns: 320px 1fr; }
+  .compare-left{ padding: 20px; border-right: 1px solid var(--app-border); }
+  .compare-left h4{ font-size: var(--t-heading); margin: 0 0 4px; font-weight: 600;}
+  .compare-left p{ font-size: var(--t-subtext); color: var(--app-text-muted); margin: 0 0 14px; line-height: 1.5;}
+  .tabs{
+    display: flex; gap: 2px; background: var(--app-surface-alt); padding: 3px;
+    border-radius: var(--r-md); margin-bottom: 14px;
+  }
+  .tabs span{
+    padding: 5px 10px; font-size: 11px; color: var(--app-text-muted); border-radius: calc(var(--r-sm) - 2px);
+    font-family: var(--mono); font-weight: 500; cursor: pointer;
+  }
+  .tabs span.on{ background: var(--app-bg); color: var(--app-text); box-shadow: 0 1px 0 rgba(255,255,255,0.04); }
+  .delta-list{ display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 11px; }
+  .delta-row{
+    display: grid; grid-template-columns: 44px 1fr 56px 58px; gap: 10px; align-items: center;
+    padding: 6px 8px; border-radius: var(--r-sm);
+    background: rgba(20,20,20,0.4); font-variant-numeric: tabular-nums;
+  }
+  .delta-row:hover{ background: var(--app-surface-alt); }
+  .delta-row .seg{ color: var(--app-text-muted); }
+  .delta-row .bar{ height: 5px; background: rgba(255,255,255,0.03); border-radius: 2px; position: relative; overflow: hidden; }
+  .delta-row .bar i{ position: absolute; top: 0; bottom: 0; }
+  .delta-row .bar i.g{ background: var(--d-green); right: 50%; }
+  .delta-row .bar i.r{ background: var(--d-red); left: 50%; }
+  .delta-row .bar .m{ position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--app-border); }
+  .delta-row .d.p{ color: var(--d-green); text-align: right; }
+  .delta-row .d.n{ color: var(--d-red); text-align: right; }
+  .delta-row .t{ color: var(--app-text); text-align: right; }
+
+  .compare-right{ padding: 20px; }
+  .chart-legend{
+    display: flex; gap: 14px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--app-text-muted); font-family: var(--mono); margin-bottom: 10px;
+  }
+  .chart-legend .sw{ display: inline-block; width: 12px; height: 2px; margin-right: 6px; vertical-align: middle; }
+  .chart-box{ height: 280px; background: var(--app-bg); border: 1px solid var(--app-border); border-radius: var(--r-md); padding: 12px; position: relative;}
+  .chart-box svg{ width: 100%; height: 100%; display: block; }
+
+  /* ============ AI SECTION ============ */
+  .ai-grid{ display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: stretch; }
+  .chat{ display: flex; flex-direction: column; gap: 8px; }
+  .msg{ padding: 10px 14px; border-radius: var(--r-md); font-size: var(--t-subtext); line-height: 1.55; max-width: 88%; }
+  .msg.me{ align-self: flex-end; background: color-mix(in srgb, var(--app-accent) 18%, transparent); border: 1px solid color-mix(in srgb, var(--app-accent) 30%, transparent); color: var(--app-text);}
+  .msg.ai{ align-self: flex-start; background: var(--app-surface-alt); border: 1px solid var(--app-border); color: var(--app-text); }
+  .msg b{ color: var(--app-accent); font-weight: 600;}
+  .msg.ai b{ color: var(--app-accent); }
+  .chat-meta{ font-family: var(--mono); font-size: 10px; color: var(--app-text-dim); margin-top: 10px; letter-spacing: 0.02em; }
+  .feature-list{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .feature-list li{
+    display: flex; gap: 14px; padding: 14px 16px;
+    background: var(--app-surface); border: 1px solid var(--app-border); border-radius: var(--r-md);
+  }
+  .feature-list .n{
+    flex: 0 0 auto; width: 28px; height: 28px; border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+    background: color-mix(in srgb, var(--app-accent) 15%, transparent);
+    color: var(--app-accent); font-family: var(--mono); font-weight: 700; font-size: 12px;
+    border: 1px solid color-mix(in srgb, var(--app-accent) 30%, transparent);
+  }
+  .feature-list .bt{ font-size: var(--t-subtext); font-weight: 600; }
+  .feature-list .bs{ font-size: var(--t-subtext); color: var(--app-text-muted); margin-top: 2px; line-height: 1.5; }
+  .feature-list code{ font-family: var(--mono); background: var(--app-surface-alt); padding: 1px 6px; border-radius: var(--r-sm); color: var(--app-accent); font-size: 0.85em;}
+
+  /* ============ STATS STRIP ============ */
+  .stats-strip{ display: grid; grid-template-columns: repeat(4,1fr); background: var(--app-surface); border: 1px solid var(--app-border); border-radius: var(--r-lg); overflow: hidden;}
+  .stat-big{ padding: 24px 28px; border-right: 1px solid var(--app-border);}
+  .stat-big:last-child{ border-right: none;}
+  .stat-big .n{ font-family: var(--mono); font-weight: 900; font-size: 32px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;}
+  .stat-big .n .u{ color: var(--app-accent); margin-left: 4px; font-size: 18px; font-weight: 700;}
+  .stat-big .l{ font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--app-text-muted); margin-top: 6px; }
+
+  /* ============ CTA ============ */
+  .cta{
+    padding: 56px 48px; border-radius: var(--r-xl);
+    background:
+      radial-gradient(800px 300px at 50% 120%, rgba(34,211,238,0.12), transparent 70%),
+      var(--app-surface);
+    border: 1px solid var(--app-border);
+    text-align: center;
+  }
+  .cta h2{ font-size: clamp(36px, 4.5vw, 56px); letter-spacing: -0.03em; margin: 0 0 14px; font-weight: 700; line-height: 1.02;}
+  .cta p{ color: var(--app-text-muted); max-width: 540px; margin: 0 auto 24px; font-size: var(--t-body); line-height: 1.55;}
+  .cta-ctas{ display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;}
+  .cta-install{
+    margin-top: 22px; display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 12px; color: var(--app-text-muted);
+    padding: 8px 14px; background: var(--app-bg); border: 1px solid var(--app-border); border-radius: var(--r-md);
+  }
+  .cta-install b{ color: var(--app-text); }
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top: 1px solid var(--app-border); padding: 32px 24px; margin-top: 64px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    font-size: 12px; color: var(--app-text-muted);
+    max-width: 1280px; margin-left: auto; margin-right: auto;
+  }
+  footer .left{ display: flex; align-items: center; gap: 10px;}
+  footer .links{ display: flex; gap: 20px;}
+  footer .links a:hover{ color: var(--app-text); }
+
+  /* ============ TWEAKS ============ */
+  .tweaks-panel{
+    position: fixed; right: 16px; bottom: 16px; z-index: 100;
+    background: var(--app-surface); border: 1px solid var(--app-border); border-radius: var(--r-lg);
+    padding: 14px 16px; width: 260px; display: none;
+    box-shadow: 0 20px 60px -10px rgba(0,0,0,0.8);
+  }
+  .tweaks-panel.on{ display: block; }
+  .tweaks-panel .th{ font-size: 11px; color: var(--app-text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 12px; }
+  .tweaks-panel label{ display: block; font-size: 10px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin: 10px 0 6px; font-family: var(--mono);}
+  .tw-colors{ display: flex; gap: 6px; }
+  .tw-colors button{ width: 28px; height: 28px; border-radius: var(--r-sm); border: 1px solid var(--app-border); cursor: pointer; background: var(--c); }
+  .tw-colors button.sel{ outline: 2px solid var(--app-text); outline-offset: 1px; }
+  .tw-row{ display:flex; gap: 6px; }
+  .tw-row .btn{ flex: 1; font-size: 11px; height: 30px; padding: 0 10px;}
+
+  @media (max-width: 1280px){
+    .hero-stage{ grid-template-columns: 1fr; }
+    .welcome-card{ min-height: 0;}
+  }
+  @media (max-width: 1100px){
+    .hero{ grid-template-columns: 1fr; gap: 32px; padding: 48px 0 24px;}
+    .games-grid{ grid-template-columns: repeat(2,1fr); }
+    .feat-grid{ grid-template-columns: repeat(2, 1fr); }
+    .feat.span-4, .feat.span-3, .feat.span-2, .feat.span-6{ grid-column: span 2; }
+    .compare-card{ grid-template-columns: 1fr; }
+    .compare-left{ border-right: none; border-bottom: 1px solid var(--app-border); }
+    .ai-grid{ grid-template-columns: 1fr;}
+    .stats-strip{ grid-template-columns: repeat(2,1fr); }
+    .stat-big{ border-right: none; border-bottom: 1px solid var(--app-border); }
+    .nav-links{ display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- APP BAR (matches app chrome) -->
+<header class="site-nav">
+  <a class="brand" href="#home">
+    <span class="brand-mark"></span>
+    <span class="brand-name">RaceIQ</span>
+    <span class="brand-tag">ALPHA</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#games">Games</a>
+    <a href="#compare">Compare</a>
+    <a href="#ai">AI Coach</a>
+    <a href="https://github.com/SpeedHQ/RaceIQ">Docs</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-ghost" href="https://github.com/SpeedHQ/RaceIQ">GitHub ↗</a>
+    <a class="btn btn-accent" href="https://github.com/SpeedHQ/RaceIQ/releases/latest">Download</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <div class="eyebrow"><span class="dot" style="background: var(--app-accent); box-shadow: 0 0 6px var(--app-accent)"></span> Free · Open source · Runs locally</div>
+      <h1 class="headline" id="headline"><em>Find</em> your missing seconds.</h1>
+      <p class="sub">
+        RaceIQ captures telemetry from your racing game, records every lap to a local database, and gives you lap analysis, AI coaching, and 3D visualizations — all running on your PC.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-accent btn-lg" href="https://github.com/SpeedHQ/RaceIQ/releases/latest">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9.5M8 10.5L4.5 7M8 10.5L11.5 7M2 13h12v2H2z"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-outline btn-lg" href="https://www.youtube.com/watch?v=hWuIItofivA">
+          <svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2v8l7-4z"/></svg>
+          Watch demo
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><b>v0.9</b> Alpha</span>
+        <span><b>Windows 10+</b></span>
+        <span><b>AGPL-3.0</b> licensed</span>
+        <span>100% local</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stage">
+        <div class="track-window"><canvas id="raceCanvas"></canvas></div>
+
+        <!-- WELCOME DEMO CARD — mirrors StepWelcome from the onboarding modal -->
+        <div class="welcome-card" aria-label="Welcome step preview">
+          <div class="wc-viewport" aria-hidden="true">
+            <!-- GT3 wireframe car — matches CarWireframe 3/4 isometric view from Analyse page -->
+            <svg viewBox="0 0 320 192" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="wcBg" cx="50%" cy="55%" r="70%">
+                  <stop offset="0%" stop-color="#0a1418"/>
+                  <stop offset="100%" stop-color="#000"/>
+                </radialGradient>
+                <linearGradient id="slab" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1a1d" stop-opacity="0"/>
+                  <stop offset="55%" stop-color="#17181b" stop-opacity="1"/>
+                  <stop offset="100%" stop-color="#0c0d10" stop-opacity="1"/>
+                </linearGradient>
+                <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1b2428" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#0e1518" stop-opacity="0.95"/>
+                </linearGradient>
+                <radialGradient id="tireHot" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--app-accent)" stop-opacity="0.9"/>
+                  <stop offset="70%" stop-color="var(--app-accent)" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="var(--app-accent)" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="320" height="192" fill="url(#wcBg)"/>
+
+              <!-- tarmac slab (perspective trapezoid, like Analyse) -->
+              <g>
+                <path d="M24,170 L296,170 L280,100 L40,100 Z" fill="url(#slab)" stroke="#22252a" stroke-width="0.5"/>
+                <!-- perspective lane lines -->
+                <path d="M90,170 L106,100" stroke="#2a2d33" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.6"/>
+                <path d="M230,170 L214,100" stroke="#2a2d33" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.6"/>
+                <!-- driving line ghost trail (yellow→blue gradient, faded, curves across the slab) -->
+                <path d="M44,168 Q110,155 170,148 T296,136" fill="none" stroke="#d4af2a" stroke-width="1.2" opacity="0.55" stroke-linecap="round"/>
+                <path d="M44,168 Q110,155 170,148 T296,136" fill="none" stroke="var(--app-accent)" stroke-width="0.6" opacity="0.7" stroke-linecap="round" stroke-dasharray="2 6"/>
+              </g>
+
+              <!-- wireframe car — 3/4 iso view, centered around (160, 112) -->
+              <g class="wc-car">
+                <!-- shadow under car -->
+                <ellipse cx="160" cy="148" rx="58" ry="6" fill="#000" opacity="0.55"/>
+
+                <!-- car body: lower silhouette + greenhouse + hood split -->
+                <g stroke="var(--app-accent)" stroke-width="0.7" fill="url(#carBody)" stroke-linejoin="round">
+                  <!-- lower chassis (floor plane) -->
+                  <path d="M108,140 L212,140 L224,132 L216,122 L104,122 L96,132 Z" opacity="0.9"/>
+                  <!-- cockpit greenhouse -->
+                  <path d="M138,122 L186,122 L194,114 L190,106 L134,106 L130,114 Z" opacity="0.85"/>
+                  <!-- hood/front -->
+                  <path d="M104,122 L138,122 L134,106 L110,110 L100,118 Z" fill="none"/>
+                  <!-- rear deck -->
+                  <path d="M186,122 L216,122 L220,118 L210,108 L190,106 Z" fill="none"/>
+                </g>
+
+                <!-- extra wireframe edges for depth -->
+                <g stroke="var(--app-accent)" stroke-width="0.5" fill="none" opacity="0.75">
+                  <line x1="108" y1="140" x2="104" y2="122"/>
+                  <line x1="212" y1="140" x2="216" y2="122"/>
+                  <line x1="96" y1="132" x2="104" y2="122"/>
+                  <line x1="224" y1="132" x2="216" y2="122"/>
+                  <line x1="138" y1="122" x2="134" y2="106"/>
+                  <line x1="186" y1="122" x2="190" y2="106"/>
+                  <!-- rear wing posts -->
+                  <line x1="212" y1="112" x2="216" y2="120" stroke-width="0.7"/>
+                  <line x1="200" y1="112" x2="204" y2="120" stroke-width="0.7"/>
+                  <line x1="198" y1="108" x2="218" y2="108" stroke-width="0.7"/>
+                </g>
+
+                <!-- 4 wheels with hot-tire glow -->
+                <g>
+                  <!-- rear left -->
+                  <circle cx="112" cy="142" r="7" fill="url(#tireHot)"/>
+                  <circle cx="112" cy="142" r="4.2" fill="none" stroke="var(--app-accent)" stroke-width="0.8"/>
+                  <circle cx="112" cy="142" r="2" fill="#0a1418" stroke="var(--app-accent)" stroke-width="0.5"/>
+                  <!-- rear right -->
+                  <circle cx="208" cy="142" r="7" fill="url(#tireHot)"/>
+                  <circle cx="208" cy="142" r="4.2" fill="none" stroke="var(--app-accent)" stroke-width="0.8"/>
+                  <circle cx="208" cy="142" r="2" fill="#0a1418" stroke="var(--app-accent)" stroke-width="0.5"/>
+                  <!-- front left -->
+                  <circle cx="120" cy="128" r="6" fill="url(#tireHot)"/>
+                  <circle cx="120" cy="128" r="3.6" fill="none" stroke="var(--app-accent)" stroke-width="0.7"/>
+                  <circle cx="120" cy="128" r="1.6" fill="#0a1418" stroke="var(--app-accent)" stroke-width="0.5"/>
+                  <!-- front right -->
+                  <circle cx="200" cy="128" r="6" fill="url(#tireHot)"/>
+                  <circle cx="200" cy="128" r="3.6" fill="none" stroke="var(--app-accent)" stroke-width="0.7"/>
+                  <circle cx="200" cy="128" r="1.6" fill="#0a1418" stroke="var(--app-accent)" stroke-width="0.5"/>
+                </g>
+              </g>
+
+              <!-- wheel stat callouts (like the 100% / 52°C badges in Analyse) -->
+              <g font-family="ui-monospace, monospace" font-size="5.5" letter-spacing="0.04em">
+                <!-- front left -->
+                <g transform="translate(68 70)">
+                  <rect x="0" y="0" width="34" height="20" rx="3" fill="#0d1518" stroke="#1f2a2f" stroke-width="0.5"/>
+                  <text x="3" y="7" fill="#e8f6f9" font-weight="600">100%</text>
+                  <text x="3" y="14" fill="var(--app-accent)">56°C</text>
+                  <line x1="34" y1="15" x2="112" y2="128" stroke="var(--app-accent)" stroke-width="0.4" opacity="0.55"/>
+                </g>
+                <!-- front right -->
+                <g transform="translate(218 70)">
+                  <rect x="0" y="0" width="34" height="20" rx="3" fill="#0d1518" stroke="#1f2a2f" stroke-width="0.5"/>
+                  <text x="3" y="7" fill="#e8f6f9" font-weight="600">100%</text>
+                  <text x="3" y="14" fill="var(--app-accent)">52°C</text>
+                  <line x1="0" y1="15" x2="-18" y2="58" stroke="var(--app-accent)" stroke-width="0.4" opacity="0.55"/>
+                </g>
+                <!-- rear right (psi) -->
+                <g transform="translate(254 106)">
+                  <rect x="0" y="0" width="34" height="14" rx="3" fill="#0d1518" stroke="#1f2a2f" stroke-width="0.5"/>
+                  <text x="3" y="9" fill="var(--app-accent)">25.1 psi</text>
+                  <line x1="0" y1="10" x2="-46" y2="35" stroke="var(--app-accent)" stroke-width="0.4" opacity="0.55"/>
+                </g>
+              </g>
+
+              <!-- corner chrome -->
+              <g font-family="ui-monospace, monospace" font-size="6" fill="#5d6a70" letter-spacing="0.12em">
+                <text x="10" y="14">3/4 · GT3</text>
+                <text x="10" y="183" fill="var(--app-accent)" opacity="0.75">228 km/h</text>
+                <text x="272" y="183" fill="#5d6a70">60 fps</text>
+              </g>
+            </svg>
+          </div>
+          <div class="wc-body">
+            <div class="wc-title">RaceIQ</div>
+            <div class="wc-ver">v0.9.0</div>
+            <p class="wc-tag">The most advanced sim racing telemetry dashboard.</p>
+            <div class="wc-pills">
+              <span class="wc-pill">Live telemetry</span>
+              <span class="wc-pill">Lap comparison</span>
+              <span class="wc-pill">AI analysis</span>
+            </div>
+            <div class="wc-steps">
+              <span class="wc-step on"></span>
+              <span class="wc-step"></span>
+              <span class="wc-step"></span>
+              <span class="wc-step"></span>
+              <span class="wc-step"></span>
+            </div>
+          </div>
+          <div class="wc-skip">Skip</div>
+          <div class="wc-next">
+            Get started
+            <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M4 2l4 4-4 4V2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE SECTOR HUD — tracks the accent car on the background Spa circuit -->
+      <div class="sector-hud" id="sectorHud">
+        <div class="leader">
+          <span class="chip"></span><b>P1</b> · SPA
+        </div>
+        <div class="sector-row">
+          <div class="sector-cell" data-sec="0"><div class="k">S1</div><div class="v" id="s0">—:—.———</div></div>
+          <div class="sector-cell" data-sec="1"><div class="k">S2</div><div class="v" id="s1">—:—.———</div></div>
+          <div class="sector-cell" data-sec="2"><div class="k">S3</div><div class="v" id="s2">—:—.———</div></div>
+        </div>
+        <div class="lap">
+          <div class="k">Lap</div>
+          <div class="v" id="lapTime">0.000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- GAMES -->
+  <section id="games">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Supported games</div>
+        <h2 class="sec-title">Four sims today. More coming.</h2>
+      </div>
+      <p class="sec-sub">RaceIQ supports UDP capture and shared-memory telemetry. If your game has an open stream, it can be supported — contribute on GitHub.</p>
+    </div>
+
+    <div class="games-grid">
+      <div class="game-card" style="--tint: var(--fm)">
+        <div class="h">
+          <div class="abbr">FM</div>
+          <span class="badge" style="background:color-mix(in srgb,var(--d-green) 20%, transparent); color: var(--d-green)">Supported</span>
+        </div>
+        <h4>Forza Motorsport 2023</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">UDP · PI badges · tune creator</div>
+        <div class="feats">
+          <span class="tic yes">✓ Live</span><span class="tic yes">✓ Analysis</span><span class="tic no">— Public tunes</span>
+        </div>
+      </div>
+
+      <div class="game-card" style="--tint: var(--f1)">
+        <div class="h">
+          <div class="abbr">F1</div>
+          <span class="badge" style="background:color-mix(in srgb,var(--d-green) 20%, transparent); color: var(--d-green)">Supported</span>
+        </div>
+        <h4>F1 2025</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">UDP · public tunes & guides</div>
+        <div class="feats">
+          <span class="tic yes">✓ Live</span><span class="tic yes">✓ Analysis</span><span class="tic yes">✓ Tunes</span>
+        </div>
+      </div>
+
+      <div class="game-card" style="--tint: var(--acc)">
+        <div class="h">
+          <div class="abbr">AC</div>
+          <span class="badge" style="background:color-mix(in srgb,var(--d-green) 20%, transparent); color: var(--d-green)">Supported</span>
+        </div>
+        <h4>AC Competizione</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">UDP + SHM · public tunes & guides</div>
+        <div class="feats">
+          <span class="tic yes">✓ Live</span><span class="tic yes">✓ Analysis</span><span class="tic yes">✓ Tunes</span>
+        </div>
+      </div>
+
+      <div class="game-card" style="--tint: var(--ae)">
+        <div class="h">
+          <div class="abbr">AE</div>
+          <span class="badge" style="background:color-mix(in srgb,var(--d-green) 20%, transparent); color: var(--d-green)">Supported</span>
+        </div>
+        <h4>Assetto Corsa Evo</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">UDP · early support</div>
+        <div class="feats">
+          <span class="tic yes">✓ Live</span><span class="tic yes">✓ Analysis</span><span class="tic no">— Public tunes</span>
+        </div>
+      </div>
+
+      <div class="game-card" style="--tint: #666">
+        <div class="h">
+          <div class="abbr">LM</div>
+          <span class="badge badge-muted">Blocked</span>
+        </div>
+        <h4>Le Mans Ultimate</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">Awaiting game key / sponsorship</div>
+      </div>
+
+      <div class="game-card" style="--tint: #666">
+        <div class="h">
+          <div class="abbr">IR</div>
+          <span class="badge badge-muted">Blocked</span>
+        </div>
+        <h4>iRacing</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">Awaiting game key / sponsorship</div>
+      </div>
+
+      <div class="game-card" style="--tint: var(--d-green)">
+        <div class="h">
+          <div class="abbr">+</div>
+          <span class="badge badge-outline">PR welcome</span>
+        </div>
+        <h4>Your game</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">Open source — add a parser, open a PR</div>
+      </div>
+
+      <div class="game-card" style="--tint: var(--app-accent)">
+        <div class="h">
+          <div class="abbr">→</div>
+          <span class="badge badge-outline">Companion</span>
+        </div>
+        <h4>UDP Forwarder</h4>
+        <div style="font-size:12px; color: var(--app-text-muted)">Already forwarding to a wheelbase? Split the stream.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / SCREENSHOTS -->
+  <section id="features">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">What it does</div>
+        <h2 class="sec-title">Every tool a driver coach would use, on your desk.</h2>
+      </div>
+      <p class="sec-sub">Live dashboards, automatic lap detection, corner-by-corner comparison, 3D visualizations, and a community tune library.</p>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat span-6 big">
+        <div class="shot"><img src="/raceiq/assets/screenshots/lap-analytics.png" alt="Lap analytics"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-f1">F1 25</span><span class="badge badge-outline">ANALYSE</span><span class="badge badge-outline">INSIGHTS · 12</span></div>
+          <h3>Corner-by-corner lap analysis with 3D visualization.</h3>
+          <p>Scrub through throttle, brake, steering, RPM and G-force traces with live 3D car state, automatic corner detection, and per-metric insights. Export any lap to CSV.</p>
+        </div>
+      </div>
+
+      <div class="feat span-3">
+        <div class="shot"><img src="/raceiq/assets/screenshots/ForzaLiveDashboard.png" alt="Live dashboard"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-fm">FM</span><span class="badge badge-outline">LIVE</span></div>
+          <h3>Real-time dashboards.</h3>
+          <p>Speed, RPM, inputs, tire temp/wear, fuel, pit window and sector timing — rendered in real time.</p>
+        </div>
+      </div>
+
+      <div class="feat span-3">
+        <div class="shot"><img src="/raceiq/assets/screenshots/tracks.png" alt="Tracks"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-f1">F1 25</span><span class="badge badge-outline">TRACKS</span></div>
+          <h3>Every circuit, mapped.</h3>
+          <p>Outlines, sector boundaries and track info for 100+ circuits. Unknown tracks auto-map as you drive.</p>
+        </div>
+      </div>
+
+      <div class="feat span-2">
+        <div class="shot"><img src="/raceiq/assets/screenshots/car-catalogue-forza-grid.png" alt="Car catalogue"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-fm">FM</span><span class="badge badge-outline">CARS</span></div>
+          <h3>Car catalogue.</h3>
+          <p>Browse, filter by division, drive type, PI — compare specs side-by-side.</p>
+        </div>
+      </div>
+
+      <div class="feat span-2">
+        <div class="shot"><img src="/raceiq/assets/screenshots/setups.png" alt="Setups"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-acc">ACC</span><span class="badge badge-outline">SETUP</span></div>
+          <h3>Community tunes.</h3>
+          <p>Pull the fastest public tunes and see popular setting ranges across the community.</p>
+        </div>
+      </div>
+
+      <div class="feat span-2">
+        <div class="shot"><img src="/raceiq/assets/screenshots/ComboDash1.png" alt="Combo dash"/></div>
+        <div class="body">
+          <div class="tag-row"><span class="badge badge-outline">DASH</span><span class="badge badge-outline">COMBO</span></div>
+          <h3>Build your layout.</h3>
+          <p>Drop tiles — gear, RPM, fuel, tires, deltas — onto a second monitor or tablet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Lap comparison</div>
+        <h2 class="sec-title">See exactly where you're losing time.</h2>
+      </div>
+      <p class="sec-sub">Overlay any two laps. Per-corner delta, throttle, brake, speed and RPM aligned by distance — not time.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; align-items: center">
+        <div><div class="card-title">Compare</div><div class="card-desc">Circuit Gilles Villeneuve · 9 laps</div></div>
+        <div><div style="font-size: 10px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.08em">Car A · Lap 3</div><div style="font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--app-accent)">1:13.956</div></div>
+        <div><div style="font-size: 10px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.08em">Car B · Lap 5</div><div style="font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--acc)">1:14.791</div></div>
+        <div style="text-align: right"><div style="font-size: 10px; color: var(--app-text-dim); text-transform: uppercase; letter-spacing: 0.08em">Delta</div><div style="font-family: var(--mono); font-weight: 700; font-size: 15px; color: var(--d-green)">−0.835s</div></div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-left">
+          <div class="tabs"><span class="on">Time Δ</span><span>Speed</span><span>Inputs</span><span>RPM</span></div>
+          <h4>Corner-by-corner breakdown</h4>
+          <p>Lap A is faster through every sector except T3, where a late apex costs 0.089s.</p>
+          <div class="delta-list">
+            <div class="delta-row"><span class="seg">S1</span><span class="bar"><i class="g" style="width:22%"></i><span class="m"></span></span><span class="t">2.887</span><span class="d p">−0.163</span></div>
+            <div class="delta-row"><span class="seg">T1 L</span><span class="bar"><i class="g" style="width:35%"></i><span class="m"></span></span><span class="t">22.919</span><span class="d p">−0.223</span></div>
+            <div class="delta-row"><span class="seg">S2</span><span class="bar"><i class="g" style="width:42%"></i><span class="m"></span></span><span class="t">7.612</span><span class="d p">−0.389</span></div>
+            <div class="delta-row"><span class="seg">T2 L</span><span class="bar"><i class="g" style="width:14%"></i><span class="m"></span></span><span class="t">4.413</span><span class="d p">−0.025</span></div>
+            <div class="delta-row"><span class="seg">S3</span><span class="bar"><i class="g" style="width:12%"></i><span class="m"></span></span><span class="t">7.434</span><span class="d p">−0.046</span></div>
+            <div class="delta-row"><span class="seg">T3 L</span><span class="bar"><span class="m"></span><i class="r" style="width:18%"></i></span><span class="t">5.075</span><span class="d n">+0.089</span></div>
+            <div class="delta-row"><span class="seg">S4</span><span class="bar"><i class="g" style="width:8%"></i><span class="m"></span></span><span class="t">15.093</span><span class="d p">−0.107</span></div>
+            <div class="delta-row"><span class="seg">T4 R</span><span class="bar"><i class="g" style="width:30%"></i><span class="m"></span></span><span class="t">3.363</span><span class="d p">−0.055</span></div>
+            <div class="delta-row"><span class="seg">S5</span><span class="bar"><i class="g" style="width:6%"></i><span class="m"></span></span><span class="t">5.135</span><span class="d p">−0.016</span></div>
+          </div>
+        </div>
+        <div class="compare-right">
+          <div class="chart-legend">
+            <span><span class="sw" style="background: var(--app-accent)"></span>Lap A · speed</span>
+            <span><span class="sw" style="background: var(--acc)"></span>Lap B · speed</span>
+            <span><span class="sw" style="background: var(--d-green)"></span>Delta</span>
+          </div>
+          <div class="chart-box">
+            <svg viewBox="0 0 700 260" preserveAspectRatio="none">
+              <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+                <line x1="0" y1="60"  x2="700" y2="60"/>
+                <line x1="0" y1="130" x2="700" y2="130"/>
+                <line x1="0" y1="200" x2="700" y2="200"/>
+                <line x1="100" y1="0" x2="100" y2="260"/>
+                <line x1="250" y1="0" x2="250" y2="260"/>
+                <line x1="400" y1="0" x2="400" y2="260"/>
+                <line x1="550" y1="0" x2="550" y2="260"/>
+              </g>
+              <path id="spdA" fill="none" stroke="#22d3ee" stroke-width="1.8"/>
+              <path id="spdB" fill="none" stroke="#fb923c" stroke-width="1.8"/>
+              <path id="dlt"  fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.2"/>
+              <line x1="0" y1="235" x2="700" y2="235" stroke="rgba(255,255,255,0.1)" stroke-dasharray="3 4"/>
+              <g font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.3)">
+                <text x="100" y="12">T1</text><text x="250" y="12">T2</text><text x="400" y="12">T3</text><text x="550" y="12">T4</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI -->
+  <section id="ai">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">AI coaching</div>
+        <h2 class="sec-title">Bring your own model. Get a pit-wall engineer.</h2>
+      </div>
+      <p class="sec-sub">Send a lap to the model of your choice — cloud or fully local. Analysis is grounded in your actual telemetry.</p>
+    </div>
+
+    <div class="ai-grid">
+      <div class="card">
+        <div class="card-header" style="display:flex; justify-content: space-between; align-items:center">
+          <div>
+            <div class="card-title">Ask the Coach</div>
+            <div class="card-desc">Lap 2 · 1:13.621 · F1 2025</div>
+          </div>
+          <div style="display:flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--app-text-muted)">
+            <span class="dot on" style="background: var(--d-green)"></span> Ollama · local
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chat">
+            <div class="msg me">Compare lap 2 vs my personal best. Where am I losing time?</div>
+            <div class="msg ai">Three losses. <b>T3 late apex (+0.089s):</b> you brake 14m later and carry 6 km/h extra into apex, but throttle stays flat for +0.42s past the clipping point. Try an earlier apex and throttle-on before the curb.</div>
+            <div class="msg me">And the tires?</div>
+            <div class="msg ai">Front-left core hit <b>103°C</b> on lap 3, above the grip-drop cliff. Drop front pressures <b>−0.4 psi</b> or reduce toe-out by 0.1° to pull peak temps back.</div>
+          </div>
+          <div class="chat-meta">Context · 4,826 telemetry frames · 2 laps · tune "GT3 Spa" · 312 tokens</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-eyebrow">Local-first</div>
+        <h3 style="font-size: 28px; letter-spacing: -0.02em; margin: 8px 0 14px; font-weight: 700;">No subscription. No cloud.</h3>
+        <p style="color: var(--app-text-muted); font-size: var(--t-body); line-height: 1.6; margin: 0 0 20px;">Every lap you record stays in a local SQLite database at <code style="font-family: var(--mono); color: var(--app-accent); background: var(--app-surface-alt); padding: 2px 6px; border-radius: 4px;">%APPDATA%/raceiq</code>. The only thing that leaves your machine is the prompt you explicitly send to your AI provider.</p>
+        <ul class="feature-list">
+          <li>
+            <div class="n">01</div>
+            <div><div class="bt">UDP loopback on <code>127.0.0.1:5301</code></div>
+            <div class="bs">Lossless sub-ms capture — even while forwarding to a wheelbase.</div></div>
+          </li>
+          <li>
+            <div class="n">02</div>
+            <div><div class="bt">Shared memory for ACC</div>
+            <div class="bs">Richer data than UDP alone — pad wear, damage state, brake bias.</div></div>
+          </li>
+          <li>
+            <div class="n">03</div>
+            <div><div class="bt">BYO LLM</div>
+            <div class="bs">Anthropic, OpenAI, Google, Groq — or run Ollama on the same PC.</div></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stats-strip" style="margin-top: 40px">
+      <div class="stat-big"><div class="n">4<span class="u">games</span></div><div class="l">Supported today</div></div>
+      <div class="stat-big"><div class="n">100<span class="u">+</span></div><div class="l">Tracks mapped</div></div>
+      <div class="stat-big"><div class="n">60<span class="u">Hz</span></div><div class="l">Sample rate</div></div>
+      <div class="stat-big"><div class="n">0<span class="u">$</span></div><div class="l">AGPL-3.0 licensed</div></div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <section id="download" style="padding-top: 24px">
+    <div class="cta">
+      <div class="sec-eyebrow" style="justify-content:center; display:flex">Install · Windows 10+</div>
+      <h2>Ready to get faster?</h2>
+      <p>Install RaceIQ, point your game's UDP telemetry at <code style="color:var(--app-accent); font-family:var(--mono);">127.0.0.1:5301</code>, and start a session. RaceIQ does the rest.</p>
+      <div class="cta-ctas">
+        <a class="btn btn-accent btn-lg" href="https://github.com/SpeedHQ/RaceIQ/releases/latest">Download Latest Release</a>
+        <a class="btn btn-outline btn-lg" href="https://discord.gg/ZNXKyYPumT">Join Discord</a>
+      </div>
+      <div class="cta-install"><span style="color:var(--app-accent)">▸</span> <span>Download the <b>RaceIQ</b> installer</span> <span style="color:var(--app-text-dim)">|</span> <span>or grab the <b>.exe</b> from GitHub</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="left">
+    <img src="/raceiq/assets/raceiq-icon.png" alt="" width="24" height="24" style="border-radius: 50%"/>
+    <span>RaceIQ · © 2026 SpeedHQ · AGPL-3.0 License</span>
+  </div>
+  <div class="links">
+    <a href="https://github.com/SpeedHQ/RaceIQ">GitHub</a>
+    <a href="https://github.com/SpeedHQ/RaceIQ/blob/main/CONTRIBUTING.md">Contribute</a>
+    <a href="https://github.com/SpeedHQ/udp-forwarder">UDP Forwarder</a>
+    <a href="https://discord.gg/ZNXKyYPumT">Discord</a>
+  </div>
+</footer>
+
+<!-- TWEAKS -->
+
+
+<script>
+/* ===== NORDSCHLEIFE-STYLE RACETRACK BG ===== */
+(() => {
+  const canvas = document.getElementById('raceCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  function hexRgb(h){
+    h = h.replace('#',''); if (h.length===3) h = h.split('').map(c=>c+c).join('');
+    return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)];
+  }
+  function getAccent(){
+    return getComputedStyle(document.documentElement).getPropertyValue('--app-accent').trim() || '#22d3ee';
+  }
+
+  // Nordschleife-ish closed loop, sampled as a dense smooth spline.
+  // Control points in 1000x600 design space.
+  // Real Spa-Francorchamps centerline (Forza Motorsport FM-2023 track data)
+  const RAW = [[-235.3,-761.9],[-239.7,-785.5],[-244.1,-809.1],[-248.6,-832.6],[-253.0,-856.2],[-257.4,-879.8],[-261.8,-903.4],[-266.2,-927.0],[-270.6,-950.6],[-275.0,-974.2],[-279.3,-997.7],[-290.1,-1018.1],[-311.0,-1010.8],[-323.5,-990.4],[-332.9,-968.4],[-342.3,-946.4],[-351.5,-924.2],[-360.5,-902.0],[-369.3,-879.7],[-377.6,-857.3],[-384.9,-834.5],[-391.4,-811.4],[-396.8,-788.1],[-401.3,-764.5],[-405.3,-740.9],[-408.4,-717.1],[-410.1,-693.2],[-410.2,-669.3],[-410.1,-645.3],[-410.1,-621.3],[-409.9,-597.3],[-409.9,-573.4],[-409.9,-549.4],[-409.9,-525.4],[-409.8,-501.4],[-409.7,-477.5],[-409.7,-453.5],[-409.7,-429.5],[-409.8,-405.5],[-413.6,-381.8],[-419.8,-358.6],[-426.3,-335.6],[-431.6,-312.4],[-430.7,-288.7],[-426.1,-265.4],[-418.6,-242.9],[-407.8,-221.8],[-395.9,-201.0],[-384.5,-180.0],[-376.1,-157.6],[-371.3,-134.1],[-367.9,-110.4],[-364.6,-86.7],[-361.3,-62.9],[-357.9,-39.2],[-354.6,-15.4],[-351.4,8.3],[-348.2,32.1],[-345.0,55.9],[-341.7,79.6],[-338.2,103.4],[-333.4,126.8],[-327.1,150.0],[-319.1,172.5],[-309.5,194.5],[-299.5,216.3],[-289.7,238.2],[-279.8,260.0],[-269.9,281.9],[-260.0,303.7],[-250.1,325.6],[-240.2,347.4],[-230.3,369.3],[-220.3,391.0],[-210.4,412.9],[-200.6,434.7],[-190.7,456.6],[-180.6,478.3],[-170.6,500.1],[-160.9,522.0],[-151.1,544.0],[-141.1,565.8],[-131.2,587.6],[-121.3,609.4],[-111.4,631.3],[-101.4,653.1],[-91.4,674.8],[-81.6,696.7],[-71.7,718.6],[-61.7,740.4],[-51.8,762.2],[-41.9,784.0],[-31.9,805.8],[-22.0,827.7],[-12.0,849.5],[-0.2,870.2],[18.8,884.6],[42.1,888.7],[65.8,885.1],[89.0,890.3],[107.8,904.9],[119.9,925.5],[130.7,947.0],[141.4,968.4],[152.2,989.9],[167.0,1008.6],[187.9,1020.0],[211.6,1023.0],[235.6,1021.5],[259.4,1019.0],[283.3,1016.0],[307.1,1013.1],[330.9,1010.8],[354.8,1008.5],[378.7,1006.1],[402.5,1003.7],[426.4,1001.3],[450.2,999.0],[474.1,996.6],[497.9,994.1],[520.5,986.6],[537.3,970.0],[544.5,947.4],[540.2,924.1],[525.7,905.4],[504.0,895.7],[480.2,896.0],[456.5,899.7],[432.8,903.2],[409.2,906.7],[385.5,910.3],[361.8,913.3],[338.5,908.4],[320.0,893.6],[308.5,872.6],[299.1,850.6],[290.6,828.2],[282.3,805.7],[273.6,783.5],[264.1,761.5],[254.2,739.7],[243.7,718.2],[232.4,697.0],[220.6,676.2],[208.6,655.5],[196.6,634.8],[184.5,614.1],[172.5,593.4],[160.4,572.7],[148.4,552.0],[136.3,531.3],[124.2,510.7],[112.5,489.8],[103.5,467.7],[99.8,444.1],[101.6,420.3],[108.5,397.4],[121.1,377.1],[136.7,359.0],[154.0,342.4],[172.4,327.0],[192.0,313.4],[213.6,303.1],[236.6,296.5],[260.4,293.7],[284.3,294.6],[307.9,299.0],[330.5,306.9],[351.9,317.7],[373.1,328.9],[394.4,340.0],[415.6,351.1],[437.0,362.2],[458.2,373.3],[479.5,384.4],[500.9,395.4],[522.1,406.5],[543.3,417.7],[564.6,428.8],[585.9,440.0],[607.2,451.0],[629.8,458.9],[653.7,460.2],[676.6,453.7],[696.4,440.2],[711.6,421.7],[720.6,399.5],[728.8,377.0],[742.2,357.2],[760.9,342.4],[783.5,334.4],[807.4,333.6],[830.8,338.7],[853.9,345.3],[876.7,352.8],[899.4,360.5],[922.3,367.5],[945.3,374.5],[968.2,381.6],[991.2,388.6],[1014.7,392.4],[1037.7,386.5],[1055.6,370.8],[1065.4,349.1],[1071.9,326.0],[1077.5,302.7],[1082.7,279.3],[1087.7,255.8],[1091.9,232.2],[1091.3,208.2],[1085.1,185.1],[1074.0,163.9],[1058.2,146.0],[1038.5,132.4],[1017.4,120.8],[996.4,109.2],[975.0,98.4],[952.8,89.3],[930.0,81.9],[906.9,75.6],[883.4,70.8],[859.6,67.3],[835.8,64.8],[811.9,63.0],[787.9,61.4],[764.0,59.9],[740.0,59.0],[716.0,59.9],[692.2,62.6],[668.6,67.1],[645.2,72.3],[621.8,77.6],[598.5,83.2],[575.1,88.6],[551.7,94.0],[528.3,99.4],[504.9,104.6],[481.4,109.3],[457.6,112.3],[433.6,113.4],[409.6,112.8],[385.8,109.8],[362.3,104.9],[339.3,98.3],[316.9,89.7],[295.1,79.7],[273.4,69.4],[251.7,59.1],[230.0,48.9],[208.3,38.7],[186.7,28.3],[165.5,17.1],[146.4,2.6],[130.4,-15.2],[117.0,-35.1],[107.9,-57.3],[99.8,-79.9],[91.9,-102.5],[83.7,-125.1],[75.5,-147.7],[67.4,-170.3],[59.3,-192.8],[51.2,-215.4],[43.1,-238.0],[34.3,-260.3],[24.1,-282.0],[12.7,-303.1],[0.4,-323.8],[-13.0,-343.7],[-26.9,-363.2],[-40.8,-382.7],[-54.8,-402.2],[-68.8,-421.7],[-82.8,-441.2],[-96.8,-460.7],[-111.4,-479.7],[-132.8,-483.4],[-150.1,-466.8],[-171.5,-460.3],[-183.7,-479.6],[-188.8,-503.1],[-193.2,-526.6],[-197.2,-550.3],[-201.0,-574.0],[-204.9,-597.7],[-209.1,-621.3],[-213.5,-644.9],[-217.9,-668.5],[-222.3,-692.1],[-226.7,-715.7],[-231.1,-739.3]];
+
+  let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+  for (const [x,y] of RAW){ if(x<minX)minX=x; if(y<minY)minY=y; if(x>maxX)maxX=x; if(y>maxY)maxY=y; }
+  const rawW = maxX - minX, rawH = maxY - minY;
+
+  let path = [], cum = [], totalLen = 0;
+  // curvature[i] in [0..1] where 1 = tightest corner. speedMul[i] derived from smoothed curvature.
+  let speedMul = [];
+
+  function computePath(){
+    path = [];
+    const padX = W * 0.04, padY = H * 0.06;
+    const availW = W - padX*2, availH = H - padY*2;
+    const scale = Math.min(availW / rawW, availH / rawH);
+    const offX = (W - rawW * scale)/2 - minX * scale;
+    const offY = (H - rawH * scale)/2 - minY * scale;
+    for (const [x,y] of RAW) path.push({ x: (minX + maxX - x)*scale + offX, y: y*scale + offY });
+    cum = [0];
+    for (let i=1;i<path.length;i++){
+      const dx = path[i].x - path[i-1].x, dy = path[i].y - path[i-1].y;
+      cum.push(cum[i-1] + Math.hypot(dx,dy));
+    }
+    // close loop distance
+    const dx = path[0].x - path[path.length-1].x, dy = path[0].y - path[path.length-1].y;
+    cum.push(cum[cum.length-1] + Math.hypot(dx,dy));
+    totalLen = cum[cum.length-1];
+
+    // --- compute per-segment curvature (turn angle between adjacent segments) ---
+    const N = path.length;
+    const raw = new Array(N).fill(0);
+    for (let i=0;i<N;i++){
+      const a = path[(i-1+N)%N], b = path[i], c = path[(i+1)%N];
+      const v1x=b.x-a.x, v1y=b.y-a.y, v2x=c.x-b.x, v2y=c.y-b.y;
+      const l1=Math.hypot(v1x,v1y)||1, l2=Math.hypot(v2x,v2y)||1;
+      const dot = (v1x*v2x + v1y*v2y)/(l1*l2);
+      raw[i] = Math.acos(Math.max(-1,Math.min(1,dot))); // 0 straight, ~pi hairpin
+    }
+    // smooth with wide box filter (look ahead — driver brakes before the corner)
+    const smooth = new Array(N).fill(0);
+    const R = 6;
+    for (let i=0;i<N;i++){
+      let sum=0;
+      for (let k=-R;k<=R;k++) sum += raw[(i+k+N)%N];
+      smooth[i] = sum/(R*2+1);
+    }
+    // map curvature to speed multiplier: straight -> 1.0, tight -> ~0.25
+    speedMul = smooth.map(c => {
+      const t = Math.min(1, c / 0.35); // 0.35 rad ~ noticeable corner
+      return 1 - t*0.75;
+    });
+  }
+
+  function speedAt(s){
+    s = ((s % totalLen) + totalLen) % totalLen;
+    let lo=0, hi=cum.length-1;
+    while (lo<hi){ const m=(lo+hi)>>1; if (cum[m]<s) lo=m+1; else hi=m; }
+    const i = Math.max(1, lo);
+    return speedMul[(i-1) % speedMul.length];
+  }
+
+  function sampleTrack(s){
+    s = ((s % totalLen) + totalLen) % totalLen;
+    let lo=0, hi=cum.length-1;
+    while (lo<hi){ const m=(lo+hi)>>1; if (cum[m]<s) lo=m+1; else hi=m; }
+    const i = Math.max(1, lo);
+    const a = path[(i-1) % path.length], b = path[i % path.length];
+    const seg = cum[i] - cum[i-1] || 1;
+    const t = (s - cum[i-1]) / seg;
+    return { x: a.x + (b.x-a.x)*t, y: a.y + (b.y-a.y)*t, nx: -(b.y-a.y)/seg, ny: (b.x-a.x)/seg };
+  }
+
+  let cars = [];
+  let leader = null;
+  function buildCars(){
+    cars = [];
+    const N = 8;
+    // Tuned so the leader completes a lap in ~83 seconds (Spa GT3 pace ≈ 1:23.000)
+    const baseSpeed = 0.0175;
+    for (let i=0;i<N;i++){
+      cars.push({
+        s: (i/N) * totalLen,
+        speed: baseSpeed * (0.92 + Math.random()*0.14),
+        trail: [],
+        maxTrail: 50 + Math.floor(Math.random()*30),
+        isLeader: i === 0
+      });
+    }
+    // Give the leader a slight speed edge so it visibly laps the field over time
+    cars[0].speed = baseSpeed * 1.05;
+    cars[0].maxTrail = 110;
+    leader = cars[0];
+  }
+
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = r.width; H = r.height;
+    canvas.width = Math.floor(W*DPR); canvas.height = Math.floor(H*DPR);
+    canvas.style.width = W+'px'; canvas.style.height = H+'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    computePath(); buildCars();
+  }
+
+  function drawTrackSurface(){
+    // Single slim tarmac ribbon, no center/edge lines.
+    ctx.save();
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(40,40,40,0.9)';
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(path[0].x, path[0].y);
+    for (let i=1;i<path.length;i++) ctx.lineTo(path[i].x, path[i].y);
+    ctx.closePath(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawCars(accentRgb){
+    const [ar, ag, ab] = accentRgb;
+    // draw followers first so leader renders on top
+    const ordered = cars.slice().sort((a,b) => (a.isLeader?1:0) - (b.isLeader?1:0));
+    for (const c of ordered){
+      const n = c.trail.length;
+      if (n < 2) continue;
+      const [tr, tg, tb] = c.isLeader ? [ar, ag, ab] : [235, 235, 240];
+      const headGlow = c.isLeader ? 18 : 9;
+      ctx.lineCap = 'round';
+      for (let i=1;i<n;i++){
+        const t = i/(n-1);
+        const alpha = Math.pow(t, 1.4) * (c.isLeader ? 1 : 0.65);
+        const w = (c.isLeader ? 0.8 : 0.5) + t * (c.isLeader ? 2.6 : 1.6);
+        ctx.strokeStyle = `rgba(${tr},${tg},${tb},${alpha})`;
+        ctx.lineWidth = w;
+        ctx.beginPath();
+        ctx.moveTo(c.trail[i-1].x, c.trail[i-1].y);
+        ctx.lineTo(c.trail[i].x, c.trail[i].y);
+        ctx.stroke();
+      }
+      const head = c.trail[n-1];
+      const grd = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, headGlow);
+      grd.addColorStop(0, `rgba(${tr},${tg},${tb},${c.isLeader?1:0.9})`);
+      grd.addColorStop(0.4, `rgba(${tr},${tg},${tb},${c.isLeader?0.5:0.25})`);
+      grd.addColorStop(1, `rgba(${tr},${tg},${tb},0)`);
+      ctx.fillStyle = grd;
+      ctx.beginPath(); ctx.arc(head.x, head.y, headGlow, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.beginPath(); ctx.arc(head.x, head.y, c.isLeader ? 2.6 : 2.0, 0, Math.PI*2); ctx.fill();
+    }
+  }
+
+  let last = performance.now();
+  let running = true;
+
+  // ----- Sector timing for the leader car -----
+  // Spa is broken into 3 sectors (~roughly thirds of the lap length)
+  const SECTOR_BOUNDS = [0, 1/3, 2/3, 1]; // as fractions of totalLen
+  const sectorEls = [
+    document.getElementById('s0'),
+    document.getElementById('s1'),
+    document.getElementById('s2'),
+  ];
+  const sectorCells = document.querySelectorAll('#sectorHud .sector-cell');
+  const lapEl = document.getElementById('lapTime');
+  // target reference times per sector for Spa GT3 ~1:23.000 lap
+  const REF = [28.0, 30.0, 25.0]; // seconds
+  let lapStart = performance.now() / 1000;
+  let sectorStart = lapStart;
+  let currentSector = 0;
+  let lastSectorFrac = 0;
+  let sessionBest = [Infinity, Infinity, Infinity];
+  let lastSectorTimes = [null, null, null];
+
+  function fmtSec(t){
+    if (t == null || !isFinite(t)) return '—.———';
+    return t.toFixed(3);
+  }
+
+  function updateHud(now){
+    if (!leader) return;
+    const frac = ((leader.s % totalLen) + totalLen) % totalLen / totalLen;
+    const tNow = now / 1000;
+
+    // Lap rollover
+    if (frac < lastSectorFrac - 0.5){
+      // crossed start/finish — close out sector 2 and start new lap
+      const t = tNow - sectorStart;
+      lastSectorTimes[2] = t;
+      if (t < sessionBest[2]) sessionBest[2] = t;
+      lapStart = tNow;
+      sectorStart = tNow;
+      currentSector = 0;
+    } else {
+      // sector transitions
+      const nextBound = SECTOR_BOUNDS[currentSector + 1];
+      if (frac >= nextBound && currentSector < 2){
+        const t = tNow - sectorStart;
+        lastSectorTimes[currentSector] = t;
+        if (t < sessionBest[currentSector]) sessionBest[currentSector] = t;
+        sectorStart = tNow;
+        currentSector++;
+      }
+    }
+    lastSectorFrac = frac;
+
+    // render
+    for (let i=0;i<3;i++){
+      const cell = sectorCells[i];
+      if (!cell || !sectorEls[i]) continue;
+      cell.classList.remove('active','purple','green');
+      if (i === currentSector){
+        // live running time
+        const live = tNow - sectorStart;
+        sectorEls[i].textContent = fmtSec(live);
+        cell.classList.add('active');
+      } else if (lastSectorTimes[i] != null){
+        sectorEls[i].textContent = fmtSec(lastSectorTimes[i]);
+        if (lastSectorTimes[i] <= sessionBest[i] + 0.001) cell.classList.add('purple');
+        else if (lastSectorTimes[i] < REF[i]) cell.classList.add('green');
+      } else {
+        sectorEls[i].textContent = '—.———';
+      }
+    }
+    if (lapEl){
+      lapEl.textContent = fmtSec(tNow - lapStart);
+    }
+  }
+
+  function frame(now){
+    if (!running){ last = now; requestAnimationFrame(frame); return; }
+    const dt = Math.min(0.05, (now-last)/1000);
+    last = now;
+    for (const c of cars){
+      const mul = speedAt(c.s);
+      c.s += c.speed * totalLen * dt * mul;
+      const p = sampleTrack(c.s);
+      c.trail.push({ x: p.x, y: p.y });
+      if (c.trail.length > c.maxTrail) c.trail.shift();
+    }
+    ctx.clearRect(0,0,W,H);
+    drawTrackSurface();
+    drawCars(hexRgb(getAccent()));
+    updateHud(now);
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; last = performance.now(); });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+    resize(); ctx.clearRect(0,0,W,H); drawTrackSurface(); return;
+  }
+  resize();
+  // prime trails
+  for (let k=0;k<25;k++){
+    for (const c of cars){
+      c.s += c.speed * totalLen * 0.016 * speedAt(c.s);
+      const p = sampleTrack(c.s);
+      c.trail.push({x:p.x, y:p.y});
+      if (c.trail.length > c.maxTrail) c.trail.shift();
+    }
+  }
+  // draw one synchronous frame so the track + cars show even if rAF is
+  // paused (e.g. when the page loads in a background / prerender context)
+  ctx.clearRect(0,0,W,H);
+  drawTrackSurface();
+  drawCars(hexRgb(getAccent()));
+  requestAnimationFrame(frame);
+})();
+
+
+/* ===== COMPARE CHART ===== */
+const FRAMES = 600;
+function gen(phase){
+  const arr = [];
+  for (let i=0;i<FRAMES;i++){
+    const t = i/FRAMES * Math.PI * 2;
+    const base = 0.55 + 0.38 * Math.sin(t*3 - 0.7 + phase);
+    arr.push(Math.max(0.1, Math.min(1, base + 0.05*Math.sin(t*11))));
+  }
+  return arr;
+}
+const lapA = gen(0);
+const lapB = gen(0.12);
+function path(arr, topPad, h, w){
+  let d = '';
+  for (let i=0;i<arr.length;i++){
+    const x = (i/(arr.length-1)) * w;
+    const y = topPad + (1 - arr[i]) * h;
+    d += (i===0? 'M':'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+  }
+  return d;
+}
+document.getElementById('spdA').setAttribute('d', path(lapA, 30, 170, 700));
+document.getElementById('spdB').setAttribute('d', path(lapB, 30, 170, 700));
+let dd = 'M0,235 ';
+for (let i=0;i<FRAMES;i++){
+  const x = (i/(FRAMES-1)) * 700;
+  const y = 235 - (lapA[i]-lapB[i]) * 35;
+  dd += 'L' + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+}
+dd += 'L700,235 Z';
+document.getElementById('dlt').setAttribute('d', dd);
+
+</script>
+</body>
+</html>

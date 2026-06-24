@@ -106,7 +106,8 @@ export const projects: Project[] = [
     title: "RaceIQ",
     description:
       "The most advanced public lap-telemetry analysis web app, reconstructing laps in 3D to help competitive esports sim racers find lost time, with side-by-side comparison and an optional AI coach.",
-    href: "https://github.com/SpeedHQ/RaceIQ",
+    href: "/raceiq/",
+    github: "https://github.com/SpeedHQ/RaceIQ",
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",

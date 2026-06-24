@@ -1,0 +1,8 @@
+---
+// Self-contained RaceIQ landing, ported from the Claude Design handoff.
+// The full document (own <head>, <style>, canvas/compare scripts) lives in
+// _landing.html and is injected verbatim via set:html so Astro never parses
+// its braces. Assets are served from public/raceiq/assets with absolute paths.
+import landing from './_landing.html?raw';
+---
+<Fragment set:html={landing} />
