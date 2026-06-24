@@ -105,7 +105,7 @@ export const projects: Project[] = [
   {
     title: "RaceIQ",
     description:
-      "A coaching app for racing-game players that records their laps and shows them exactly where, and why, they're losing time.",
+      "The most advanced public lap-telemetry analysis web app, reconstructing laps in 3D to help competitive esports sim racers find lost time, with side-by-side comparison and an optional AI coach.",
     href: "https://github.com/SpeedHQ/RaceIQ",
     image: "/logos/raceiq.png",
     featured: true,
@@ -113,8 +113,8 @@ export const projects: Project[] = [
     tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite", "Playwright", "Vitest"],
     video: "/raceiq-bg.mp4",
     details: [
-      "Works with popular racing games including Forza, F1 25 and Assetto Corsa",
-      "Pinpoints where time is lost, corner by corner, and compares laps side by side",
+      "Works with popular sim racing games including Forza, F1 25 and Assetto Corsa",
+      "Reconstructs each lap in 3D and compares two laps side by side to show where time is lost",
       "Optional AI coach that reviews each lap and suggests how to improve",
     ],
   },
