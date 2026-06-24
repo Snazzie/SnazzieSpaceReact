@@ -75,8 +75,33 @@
 </section>
 <section id="snz-build" style="position:relative;height:760vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
   <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
+    <!-- wireframe background wall -->
+    <div id="snz-wbg" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:1;overflow:hidden">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0b0b0b 0%,transparent 12%,transparent 88%,#0b0b0b 100%);z-index:1;pointer-events:none"></div>
+      <!-- col A -->
+      <div class="snz-bf-col snz-bf-col-a" style="margin-top:-40px">
+        <svg viewBox="0 0 160 110" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="110" rx="6" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/><rect x="0" y="0" width="160" height="16" rx="6" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1"/><rect x="8" y="5" width="26" height="6" rx="2" fill="rgba(198,244,50,.5)"/><rect x="8" y="24" width="90" height="10" rx="2" fill="rgba(255,255,255,.18)"/><rect x="8" y="38" width="64" height="7" rx="2" fill="rgba(255,255,255,.08)"/><rect x="8" y="52" width="40" height="10" rx="3" fill="rgba(198,244,50,.5)"/><rect x="90" y="22" width="60" height="52" rx="4" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/><rect x="8" y="80" width="142" height="1" fill="rgba(255,255,255,.06)"/><rect x="8" y="88" width="50" height="5" rx="2" fill="rgba(255,255,255,.06)"/></svg>
+        <svg viewBox="0 0 160 200" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="22" y="0" width="116" height="200" rx="14" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/><rect x="56" y="8" width="48" height="5" rx="3" fill="rgba(255,255,255,.1)"/><rect x="30" y="22" width="100" height="1" fill="rgba(255,255,255,.07)"/><rect x="30" y="30" width="100" height="50" rx="4" fill="none" stroke="rgba(198,244,50,.35)" stroke-width="1"/><rect x="30" y="88" width="46" height="30" rx="4" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/><rect x="84" y="88" width="46" height="30" rx="4" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/><rect x="30" y="126" width="100" height="6" rx="2" fill="rgba(255,255,255,.07)"/><rect x="30" y="136" width="70" height="6" rx="2" fill="rgba(255,255,255,.05)"/><rect x="30" y="152" width="100" height="16" rx="3" fill="rgba(198,244,50,.4)"/></svg>
+        <svg viewBox="0 0 160 120" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="120" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="0" y="0" width="32" height="120" rx="6" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="4" y="10" width="24" height="6" rx="2" fill="rgba(198,244,50,.4)"/><rect x="4" y="26" width="24" height="4" rx="2" fill="rgba(255,255,255,.08)"/><rect x="4" y="34" width="24" height="4" rx="2" fill="rgba(255,255,255,.06)"/><rect x="38" y="10" width="44" height="28" rx="3" fill="none" stroke="rgba(198,244,50,.25)" stroke-width="1"/><rect x="90" y="10" width="32" height="28" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="130" y="10" width="24" height="28" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="38" y="48" width="116" height="48" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="44" y="80" width="8" height="10" rx="1" fill="rgba(198,244,50,.4)"/><rect x="58" y="68" width="8" height="22" rx="1" fill="rgba(198,244,50,.6)"/><rect x="72" y="74" width="8" height="16" rx="1" fill="rgba(198,244,50,.4)"/><rect x="86" y="58" width="8" height="32" rx="1" fill="rgba(198,244,50,.7)"/></svg>
+        <svg viewBox="0 0 160 110" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="110" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="8" y="10" width="60" height="8" rx="2" fill="rgba(255,255,255,.14)"/><rect x="8" y="26" width="44" height="70" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="60" y="18" width="44" height="78" rx="4" fill="none" stroke="rgba(198,244,50,.3)" stroke-width="1"/><rect x="112" y="26" width="40" height="70" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="66" y="26" width="30" height="6" rx="2" fill="rgba(198,244,50,.5)"/><rect x="66" y="56" width="32" height="8" rx="3" fill="rgba(198,244,50,.6)"/></svg>
+      </div>
+      <!-- col B -->
+      <div class="snz-bf-col snz-bf-col-b" style="margin-top:-70px">
+        <svg viewBox="0 0 160 130" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="130" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="0" y="0" width="160" height="50" rx="6" fill="none"/><rect x="22" y="14" width="116" height="10" rx="2" fill="rgba(255,255,255,.16)"/><rect x="34" y="28" width="92" height="6" rx="2" fill="rgba(255,255,255,.07)"/><rect x="52" y="38" width="56" height="8" rx="3" fill="rgba(198,244,50,.55)"/><rect x="8" y="58" width="44" height="32" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="60" y="58" width="44" height="32" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="112" y="58" width="40" height="32" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="100" width="144" height="1" fill="rgba(255,255,255,.06)"/><rect x="24" y="108" width="70" height="7" rx="2" fill="rgba(255,255,255,.08)"/></svg>
+        <svg viewBox="0 0 160 200" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="22" y="0" width="116" height="200" rx="14" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1"/><rect x="56" y="8" width="48" height="5" rx="3" fill="rgba(255,255,255,.1)"/><rect x="36" y="22" width="40" height="8" rx="2" fill="rgba(255,255,255,.12)"/><rect x="30" y="36" width="100" height="1" fill="rgba(255,255,255,.07)"/><rect x="30" y="44" width="100" height="12" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="30" y="62" width="100" height="12" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="30" y="80" width="100" height="12" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="30" y="100" width="100" height="18" rx="3" fill="rgba(198,244,50,.5)"/><rect x="30" y="126" width="48" height="30" rx="4" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="84" y="126" width="46" height="30" rx="4" fill="none" stroke="rgba(198,244,50,.2)" stroke-width="1"/><circle cx="55" cy="174" r="5" fill="rgba(255,255,255,.08)"/><circle cx="80" cy="174" r="5" fill="rgba(198,244,50,.4)"/><circle cx="105" cy="174" r="5" fill="rgba(255,255,255,.08)"/></svg>
+        <svg viewBox="0 0 160 120" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="120" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="0" y="0" width="160" height="18" rx="6" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="6" width="40" height="6" rx="2" fill="rgba(255,255,255,.14)"/><rect x="120" y="5" width="32" height="8" rx="3" fill="rgba(198,244,50,.55)"/><rect x="8" y="26" width="144" height="30" rx="3" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/><rect x="14" y="32" width="72" height="8" rx="2" fill="rgba(255,255,255,.14)"/><rect x="14" y="42" width="52" height="5" rx="2" fill="rgba(255,255,255,.07)"/><rect x="8" y="64" width="68" height="5" rx="2" fill="rgba(255,255,255,.08)"/><rect x="8" y="72" width="60" height="5" rx="2" fill="rgba(255,255,255,.06)"/><rect x="8" y="80" width="64" height="5" rx="2" fill="rgba(255,255,255,.06)"/><rect x="90" y="64" width="62" height="50" rx="3" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/><rect x="8" y="100" width="36" height="6" rx="3" fill="rgba(198,244,50,.45)"/></svg>
+        <svg viewBox="0 0 160 110" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="110" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><circle cx="28" cy="28" r="16" fill="none" stroke="rgba(198,244,50,.3)" stroke-width="1"/><rect x="52" y="18" width="70" height="8" rx="2" fill="rgba(255,255,255,.14)"/><rect x="52" y="30" width="50" height="5" rx="2" fill="rgba(255,255,255,.07)"/><rect x="8" y="52" width="144" height="1" fill="rgba(255,255,255,.06)"/><rect x="8" y="60" width="90" height="6" rx="2" fill="rgba(255,255,255,.06)"/><rect x="116" y="58" width="30" height="10" rx="5" fill="rgba(198,244,50,.5)"/><rect x="8" y="74" width="90" height="6" rx="2" fill="rgba(255,255,255,.06)"/><rect x="116" y="72" width="30" height="10" rx="5" fill="rgba(255,255,255,.08)"/><rect x="8" y="88" width="90" height="6" rx="2" fill="rgba(255,255,255,.06)"/><rect x="116" y="86" width="30" height="10" rx="5" fill="rgba(198,244,50,.5)"/></svg>
+      </div>
+      <!-- col C -->
+      <div class="snz-bf-col snz-bf-col-c" style="margin-top:-20px">
+        <svg viewBox="0 0 160 140" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="140" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="0" y="0" width="160" height="18" rx="6" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="6" width="30" height="6" rx="2" fill="rgba(255,255,255,.14)"/><rect x="8" y="26" width="144" height="30" rx="3" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/><rect x="14" y="32" width="60" height="7" rx="2" fill="rgba(255,255,255,.14)"/><rect x="14" y="42" width="48" height="4" rx="2" fill="rgba(255,255,255,.06)"/><rect x="8" y="64" width="144" height="30" rx="3" fill="none" stroke="rgba(198,244,50,.18)" stroke-width="1"/><rect x="14" y="70" width="46" height="7" rx="2" fill="rgba(255,255,255,.14)"/><rect x="108" y="66" width="38" height="24" rx="3" fill="none" stroke="rgba(198,244,50,.12)" stroke-width="1"/><rect x="8" y="102" width="144" height="30" rx="3" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/><rect x="14" y="108" width="54" height="7" rx="2" fill="rgba(255,255,255,.12)"/></svg>
+        <svg viewBox="0 0 160 110" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="110" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="8" y="10" width="60" height="8" rx="2" fill="rgba(255,255,255,.14)"/><rect x="8" y="26" width="144" height="12" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="44" width="144" height="12" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="62" width="144" height="24" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="92" width="144" height="12" rx="3" fill="rgba(198,244,50,.55)"/></svg>
+        <svg viewBox="0 0 160 130" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="130" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="0" y="0" width="160" height="16" rx="6" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/><rect x="6" y="5" width="18" height="6" rx="2" fill="rgba(198,244,50,.4)"/><rect x="8" y="22" width="44" height="44" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="60" y="22" width="44" height="44" rx="3" fill="none" stroke="rgba(198,244,50,.22)" stroke-width="1"/><rect x="112" y="22" width="40" height="44" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="8" y="74" width="44" height="44" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="60" y="74" width="44" height="44" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/><rect x="112" y="74" width="40" height="44" rx="3" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="1"/></svg>
+        <svg viewBox="0 0 160 110" style="width:100%;display:block;opacity:.18" aria-hidden="true"><rect x="0" y="0" width="160" height="110" rx="6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1"/><rect x="66" y="12" width="30" height="8" rx="3" fill="rgba(198,244,50,.5)"/><rect x="8" y="30" width="66" height="6" rx="2" fill="rgba(255,255,255,.06)"/><rect x="8" y="38" width="144" height="1" fill="rgba(255,255,255,.06)"/><polyline points="14,80 28,60 42,68 56,46 70,54 84,36 98,42 112,28 126,34" fill="none" stroke="rgba(198,244,50,.5)" stroke-width="1.5"/><rect x="8" y="90" width="144" height="1" fill="rgba(255,255,255,.06)"/></svg>
+      </div>
+    </div><!-- /snz-wbg -->
     <!-- stage -->
-    <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0">
+    <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0;z-index:1">
       <svg id="snz-flow" viewBox="0 0 1000 600" style="width:100%;max-width:1120px;height:100%;max-height:72vh;overflow:visible" aria-hidden="true">
         <defs>
           <clipPath id="snzPhoneClip"><rect x="660" y="122" width="126" height="268" rx="4"></rect></clipPath>
@@ -85,7 +110,7 @@
         <g id="camera">
         <!-- website wireframe -->
         <g id="fWire" opacity="0">
-          <rect data-wf pathLength="1" x="150" y="120" width="404" height="300" rx="13" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
+          <rect data-wf pathLength="1" x="150" y="120" width="404" height="300" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
           <line data-wf pathLength="1" x1="150" y1="166" x2="554" y2="166" stroke="rgba(255,255,255,.28)" stroke-width="1.8"></line>
           <circle data-wfp cx="178" cy="143" r="5.5" fill="var(--accent)"></circle>
           <circle data-wfp cx="197" cy="143" r="5.5" fill="rgba(255,255,255,.3)"></circle>
@@ -180,7 +205,7 @@
         </g>
         <!-- BACKEND engine — terminal vector -->
         <g id="gApi" opacity="0" transform="translate(500 700)">
-          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0c0c0c" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
+          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
           <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></line>
           <circle cx="-138" cy="-101" r="5" fill="var(--accent)"></circle>
           <circle cx="-120" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
@@ -404,6 +429,39 @@
   type El = HTMLElement & SVGElement;
   const $ = (id: string) => document.getElementById(id) as unknown as El | null;
 
+  // Boot wireframe background columns — fill width then start vertical scroll
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wbg = document.getElementById('snz-wbg');
+  if (!reduceMotion && wbg) {
+    const animClasses = ['snz-bf-col-a', 'snz-bf-col-b', 'snz-bf-col-c'];
+    const marginOffsets = [-40, -70, -20];
+    const baseCols = Array.from(wbg.querySelectorAll<HTMLElement>('.snz-bf-col'));
+
+    // Vertical duplication for seamless loop
+    baseCols.forEach((col) => {
+      const kids = Array.from(col.children);
+      kids.forEach((k) => col.appendChild(k.cloneNode(true)));
+    });
+
+    // Add extra columns until container width is overfilled
+    const containerW = wbg.offsetWidth;
+    const colW = (baseCols[0]?.offsetWidth ?? 160) + 18;
+    const needed = Math.ceil(containerW / colW) + 2;
+
+    for (let i = baseCols.length; i < needed; i++) {
+      const src = baseCols[i % baseCols.length];
+      const clone = src.cloneNode(true) as HTMLElement;
+      animClasses.forEach((c) => clone.classList.remove(c));
+      clone.classList.add(animClasses[i % animClasses.length]);
+      clone.style.marginTop = marginOffsets[i % marginOffsets.length] + 'px';
+      wbg.appendChild(clone);
+    }
+
+    requestAnimationFrame(() => {
+      wbg.querySelectorAll<HTMLElement>('.snz-bf-col').forEach((col) => col.classList.add('snz-bf-go'));
+    });
+  }
+
   const sec = $('snz-build');
   const svg = $('snz-flow');
   if (sec && svg) {
@@ -442,6 +500,7 @@
     const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5'), $('cap6')];
     const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
     const prog = $('fProg');
+    const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
     [accShield, accCheck, cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDb, ciCache, anChart].forEach((e) => {
       if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
     });
@@ -489,6 +548,9 @@
         pk.setAttribute('cy', lerp(c[1], m[1], frac).toFixed(1));
         pk.style.opacity = active ? '1' : '0';
       };
+
+      // ---- WIREFRAME BG: fade in on enter, out before sequence 2 ----
+      if (wBg) wBg.style.opacity = (1 - sm(seg(p, 0.12, 0.22))).toFixed(3);
 
       // ---- CAMERA ----
       // 0.00-0.14: site+phone centered

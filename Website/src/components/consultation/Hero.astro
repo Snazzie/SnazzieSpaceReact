@@ -48,7 +48,7 @@ const stats = [
         <span style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74;background:#0c0c0c;padding:6px 14px;border:1px solid rgba(255,255,255,.08)">EVERYTHING DIGITAL</span>
       </div>
       <!-- scrolling columns -->
-      <div id="snz-wwall" style="position:absolute;inset:0;display:flex;flex-direction:row-reverse;gap:20px;padding:0 16px;align-items:flex-start">
+      <div id="snz-wwall" style="position:absolute;inset:0;display:flex;gap:20px;padding:0 16px;align-items:flex-start;overflow:hidden">
         <!-- col 1 - scroll up -->
         <div class="snz-col snz-col-up" style="display:flex;flex-direction:column;gap:18px;flex-shrink:0;width:190px">
           <!-- landing page -->
@@ -386,13 +386,39 @@ const stats = [
     })();
   }
 
-  // Duplicate wireframe wall columns for seamless infinite scroll
-  // Clone first, then start animation to avoid jump on first loop
+  // Fill wall width with enough columns, then start vertical infinite scroll
   if (!reduce) {
-    document.querySelectorAll<HTMLElement>('#snz-wwall .snz-col').forEach((col) => {
-      const kids = Array.from(col.children);
-      kids.forEach((k) => col.appendChild(k.cloneNode(true)));
-      requestAnimationFrame(() => col.classList.add('snz-ready'));
-    });
+    const wall = document.getElementById('snz-wwall');
+    if (wall) {
+      const animClasses = ['snz-col-up', 'snz-col-dn', 'snz-col-up2', 'snz-col-dn2'];
+      const baseCols = Array.from(wall.querySelectorAll<HTMLElement>('.snz-col'));
+
+      // Vertical duplication for seamless loop on each existing column
+      baseCols.forEach((col) => {
+        const kids = Array.from(col.children);
+        kids.forEach((k) => col.appendChild(k.cloneNode(true)));
+      });
+
+      // Add extra columns until they overflow the container width
+      const containerW = wall.offsetWidth;
+      const colW = (baseCols[0]?.offsetWidth ?? 190) + 20; // col + gap
+      const needed = Math.ceil(containerW / colW) + 2;
+      const marginOffsets = [0, -60, -30, -90];
+
+      for (let i = baseCols.length; i < needed; i++) {
+        const src = baseCols[i % baseCols.length];
+        const clone = src.cloneNode(true) as HTMLElement;
+        // Re-assign animation class cycling through 4 types
+        animClasses.forEach((c) => clone.classList.remove(c));
+        clone.classList.add(animClasses[i % animClasses.length]);
+        clone.style.marginTop = marginOffsets[i % marginOffsets.length] + 'px';
+        wall.appendChild(clone);
+      }
+
+      // Start all columns after DOM is ready
+      requestAnimationFrame(() => {
+        wall.querySelectorAll<HTMLElement>('.snz-col').forEach((col) => col.classList.add('snz-ready'));
+      });
+    }
   }
 </script>
