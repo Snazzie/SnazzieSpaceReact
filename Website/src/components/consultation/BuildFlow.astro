@@ -2,6 +2,9 @@
 // THE BUILD — scroll-driven story: site + app merge into a product, the backend
 // docks and explodes into modules, traffic arrives, it scales, then analytics.
 ---
+<style>
+  @keyframes snz-spin { to { transform: rotate(360deg); } }
+</style>
 <section id="snz-build" style="position:relative;height:760vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
   <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column">
     <!-- top bar -->
@@ -79,6 +82,8 @@
         </g>
         <!-- connectors -->
         <line id="cnApi" x1="468" y1="286" x2="616" y2="214" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity="0"></line>
+        <line id="cnApiPulse1" x1="432" y1="298" x2="568" y2="298" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="cnApiPulse2" x1="568" y1="302" x2="432" y2="302" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
         <line id="ciAcc" x1="672" y1="250" x2="572" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
         <line id="ciPay" x1="700" y1="250" x2="700" y2="298" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
         <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
@@ -92,18 +97,18 @@
         <!-- backend card (used in CONNECT+ phases — simple label, no vector) -->
         <g id="gApiCard" opacity="0" transform="translate(700 300)">
           <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
-          <text x="-30" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.02em">API</text>
-          <text x="-30" y="36" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" letter-spacing="1">BACKEND</text>
-          <!-- scale grid: 3×3, appear progressively as bn grows -->
-          <rect id="gsq0" x="4"  y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq1" x="26" y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq2" x="48" y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq3" x="4"  y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq4" x="26" y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq5" x="48" y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq6" x="4"  y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq7" x="26" y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq8" x="48" y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
+          <text x="-46" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
+          <!-- scale grid: single row spanning right, appear progressively as bn grows -->
+          <rect id="gsq0" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq1" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq2" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq3" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq4" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq5" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq6" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq7" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq8" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
         </g>
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
@@ -229,47 +234,36 @@
           <text x="0" y="36" text-anchor="middle" fill="#cfcfc7" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">Cache</text>
           <text id="cacheHit" x="0" y="-28" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" opacity="0">HIT</text>
         </g>
-        <!-- analytics mini-card (SCALE phase) — same rect dimensions as analytics at 0.2941x -->
-        <g id="gAnalytics" opacity="0" transform="translate(500 430)">
-          <rect x="-128" y="-78" width="256" height="156" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
-          <text x="0" y="-22" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.02em">Analytics</text>
-          <text x="0" y="-6" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9" letter-spacing="1.5">LIVE DATA</text>
-          <circle cx="104" cy="-60" r="4" fill="var(--accent)"></circle>
-          <rect x="-80" y="18" width="14" height="22" rx="2" fill="var(--accent)" fill-opacity=".35"></rect>
-          <rect x="-60" y="8"  width="14" height="32" rx="2" fill="var(--accent)" fill-opacity=".5"></rect>
-          <rect x="-40" y="14" width="14" height="26" rx="2" fill="var(--accent)" fill-opacity=".4"></rect>
-          <rect x="-20" y="2"  width="14" height="38" rx="2" fill="var(--accent)" fill-opacity=".65"></rect>
-          <rect x="0"   y="10" width="14" height="30" rx="2" fill="var(--accent)" fill-opacity=".55"></rect>
-          <rect x="20"  y="-6" width="14" height="46" rx="2" fill="var(--accent)" fill-opacity=".8"></rect>
-          <rect x="40"  y="6"  width="14" height="34" rx="2" fill="var(--accent)" fill-opacity=".6"></rect>
-          <rect x="60"  y="-14" width="14" height="54" rx="2" fill="var(--accent)"></rect>
-        </g>
         <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
         <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
         <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
         <line id="ciProdAnPulse" x1="340" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
         <line id="ciApiAnPulse"  x1="660" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <!-- analytics mini-card (SCALE phase) — after connectors so it paints over them -->
+        <g id="gAnalytics" opacity="0" transform="translate(500 460)">
+          <rect x="-128" y="-78" width="256" height="156" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <text x="0" y="-16" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.02em">Analytics</text>
+          <text id="snzTracked" x="0" y="24" text-anchor="middle" fill="none" stroke="var(--accent)" stroke-width="0.7" stroke-dasharray="860 860" stroke-dashoffset="860" font-family="Archivo,sans-serif" font-weight="800" font-size="28" letter-spacing="-0.02em">Tracked.</text>
+        </g>
         <!-- SCALE: business-size title above the product -->
         <g id="bizTitle" opacity="0">
           <text id="bizNum" x="500" y="210" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">1,000</text>
           <text id="bizSize" x="500" y="232" text-anchor="middle" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="12" letter-spacing="2.5">SMALL BUSINESS</text>
         </g>
         <!-- ===== ANALYTICS inside camera — natural size when camera zoom=3.4x ===== -->
-        <g id="analytics" opacity="0" transform="translate(500,430) scale(0.2941) translate(-500,-300)">
+        <g id="analytics" opacity="0" transform="translate(500,460) scale(0.2941) translate(-500,-300)">
           <rect x="64" y="34" width="872" height="532" rx="16" fill="#0b0b0b" stroke="rgba(255,255,255,.16)" stroke-width="1.5"></rect>
           <text x="92" y="72" fill="#F2F0EA" font-family="Archivo,sans-serif" font-weight="800" font-size="21" letter-spacing="-0.02em">Analytics</text>
           <text x="92" y="91" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10" letter-spacing="1">LAST 7 DAYS · LIVE</text>
-          <circle cx="856" cy="64" r="5" fill="var(--accent)"></circle>
-          <text x="842" y="68" text-anchor="end" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">REAL-TIME</text>
           <!-- stat tiles -->
           <g font-family="Archivo,sans-serif">
-            <text x="92" y="150" fill="var(--accent)" font-weight="800" font-size="34" letter-spacing="-0.02em">£42.8K</text>
+            <text id="anStatRev" x="92" y="150" fill="var(--accent)" font-weight="800" font-size="34" letter-spacing="-0.02em">£0.0K</text>
             <text x="92" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">REVENUE</text>
-            <text x="300" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">12,840</text>
+            <text id="anStatVis" x="300" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
             <text x="300" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">VISITORS</text>
-            <text x="508" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">1.2M</text>
+            <text id="anStatSrc" x="508" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0.0M</text>
             <text x="508" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SEARCH IMPRESSIONS</text>
-            <text x="716" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">1,932</text>
+            <text id="anStatSig" x="716" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
             <text x="716" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SIGN-UPS</text>
           </g>
           <line x1="92" y1="196" x2="908" y2="196" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
@@ -317,7 +311,7 @@
         <div id="cap5" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
           <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">05 — SCALE</div>
           <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">It scales itself.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Whether you're a small shop with a hundred visitors or an enterprise with half a million, the same backend grows to fit — then winds back down.</p>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.</p>
         </div>
         <div id="cap6" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
           <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">06 — DATA</div>
@@ -350,7 +344,8 @@
     const wire = $('fWire'), phone = $('fPhone'), gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard'), gDb = $('gDb'), gCache = $('gCache');
     const apiBox = $('apiBox');
     const mAcc = $('mAccounts'), mPay = $('mPayments'), mAgent = $('mAgent'), mCms = $('mCMS'), mEcom = $('mEcom');
-    const cnApi = $('cnApi'), ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDb = $('ciDb'), ciCache = $('ciCache');
+    const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
+    const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDb = $('ciDb'), ciCache = $('ciCache');
     const pkQ = $('pkQ'), pkC = $('pkC'), pkReq = $('pkReq');
     const accShield = $('accShield'), accCheck = $('accCheck'), accShieldFill = $('accShieldFill'), cacheHit = $('cacheHit');
     const customers = $('customers'), custNum = $('custNum');
@@ -364,6 +359,13 @@
     const cbBars = [$('cb0'), $('cb1'), $('cb2'), $('cb3'), $('cb4'), $('cb5'), $('cb6'), $('cb7')];
     const anChart = $('anChart');
     const anHeat = $('anHeat'), anSearch = $('anSearch'), anRev = $('anRev');
+    const anStatRev = $('anStatRev'), anStatVis = $('anStatVis'), anStatSrc = $('anStatSrc'), anStatSig = $('anStatSig');
+    const anHeatCells: El[] = [];
+    const anSearchH: number[] = [], anRevH: number[] = [];
+    const gabBars = [0,1,2,3,4,5,6,7].map(i => $('gab' + i));
+    const gabH = [22, 32, 26, 38, 30, 46, 34, 54];
+    const gAnalyticsLine = $('gAnalyticsLine');
+    const snzTracked = $('snzTracked');
     const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5'), $('cap6')];
     const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
     const prog = $('fProg');
@@ -384,16 +386,18 @@
         const hot = Math.exp(-(Math.pow(c - 7, 2) / 9 + Math.pow(r - 1.6, 2) / 3.2));
         const noise = Math.abs((Math.sin(c * 12.9 + r * 78.2) * 43758.5453) % 1);
         const v = Math.max(0.05, Math.min(0.95, hot * 0.9 + noise * 0.18 + 0.05));
-        anHeat.appendChild(mk('rect', { x: x0 + c * (cw + gx), y: y0 + r * (ch + gy), width: cw, height: ch, rx: 2, fill: 'var(--accent)', 'fill-opacity': v.toFixed(2) }));
+        const cell = mk('rect', { x: x0 + c * (cw + gx), y: y0 + r * (ch + gy), width: cw, height: ch, rx: 2, fill: 'var(--accent)', 'fill-opacity': v.toFixed(2), opacity: 0 });
+        anHeat.appendChild(cell);
+        anHeatCells.push(cell as unknown as El);
       }
     }
     if (anSearch && !anSearch.childNodes.length) {
       const n = 14, x0 = 96, base = 502, bw = 18, step = 27, maxH = 64;
-      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.25 + 0.7 * t + 0.12 * Math.sin(i * 1.7)) * maxH; anSearch.appendChild(mk('rect', { x: x0 + i * step, y: base - h, width: bw, height: h, rx: 2, fill: 'rgba(198,244,50,.6)' })); }
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.25 + 0.7 * t + 0.12 * Math.sin(i * 1.7)) * maxH; anSearchH.push(h); anSearch.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, fill: 'rgba(198,244,50,.6)' })); }
     }
     if (anRev && !anRev.childNodes.length) {
       const n = 12, x0 = 524, base = 502, bw = 20, step = 32, maxH = 64;
-      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRev.appendChild(mk('rect', { x: x0 + i * step, y: base - h, width: bw, height: h, rx: 2, fill: 'var(--accent)' })); }
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRevH.push(h); anRev.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, fill: 'var(--accent)' })); }
     }
 
     const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -421,7 +425,7 @@
       // 0.54-0.70: side-by-side, product left / backend right
       // 0.70-0.87: scale view
       // 0.87+: analytics
-      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.28, 500, 300, 1.0], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 330, 0.95], [0.86, 500, 330, 0.95], [0.93, 500, 430, 3.4], [1.04, 500, 430, 3.4]];
+      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.28, 500, 300, 1.0], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 375, 0.84], [0.86, 500, 375, 0.84], [0.93, 500, 460, 3.4], [1.04, 500, 460, 3.4]];
       let fx = 500, fy = 300, k = 1;
       for (let i = 0; i < A.length - 1; i++) { if (p >= A[i][0] && p <= A[i + 1][0]) { const t = sm(seg(p, A[i][0], A[i + 1][0])); fx = lerp(A[i][1], A[i + 1][1], t); fy = lerp(A[i][2], A[i + 1][2], t); k = lerp(A[i][3], A[i + 1][3], t); break; } }
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
@@ -459,7 +463,7 @@
 
       // CONNECT+: simple API card follows Banch (slides center → right)
       const apiCardShow = sm(seg(p, 0.54, 0.61));
-      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(' + bx.toFixed(1) + ' ' + by.toFixed(1) + ')'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.86, 0.92)))).toFixed(3); }
+      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.86, 0.92)))).toFixed(3); }
       // Children grid centered at x=500: row1 (350/500/650 y=290), row2 (425/575 y=400), row3 (425/575 y=510)
       const kids = [
         { g: mAcc,   c: ciAcc,   gx: 350, gy: 290 },
@@ -488,7 +492,7 @@
       // ---- CONNECT: product card left (280,300), backend right (700,300) ----
       const pSideBy = sm(seg(p, 0.54, 0.61));
       if (gCore) { gCore.setAttribute('transform', 'translate(340 300)'); gCore.style.opacity = (pSideBy * dissolve).toFixed(3); }
-      if (cnApi) { const cv = sm(seg(p, 0.60, 0.66)); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); }
+      if (cnApi) { const cv = sm(seg(p, 0.60, 0.66)); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
 
       // ---- TRAFFIC → SCALE: business counter replaces users element ----
       const sIn = sm(seg(p, 0.59, 0.65));
@@ -505,12 +509,28 @@
       // ---- SCALE: grid squares, analytics card, connectors ----
       const an = sm(seg(p, 0.88, 0.94));
       const gsGate = sm(seg(p, 0.72, 0.78));
+      const nActive = Math.max(1, Math.min(9, Math.ceil(bn * 9)));
+      const sqCols = Math.min(nActive, 3);
+      const sqRows = Math.ceil(nActive / sqCols);
+      const sqGap = 4;
+      const sqSize = Math.min(36, Math.min((84 - (sqCols - 1) * sqGap) / sqCols, (72 - (sqRows - 1) * sqGap) / sqRows));
+      const sqTotalW = sqCols * sqSize + (sqCols - 1) * sqGap;
+      const sqTotalH = sqRows * sqSize + (sqRows - 1) * sqGap;
+      const sqX0 = 4 + (84 - sqTotalW) / 2;
+      const sqY0 = -(sqTotalH / 2);
       scSqs.forEach((s, i) => {
         if (!s) return;
         s.style.opacity = (gsGate * sm(seg(bn, i / 9, i / 9 + 0.18)) * dissolve).toFixed(2);
+        s.setAttribute('x', (sqX0 + (i % sqCols) * (sqSize + sqGap)).toFixed(1));
+        s.setAttribute('y', (sqY0 + Math.floor(i / sqCols) * (sqSize + sqGap)).toFixed(1));
+        s.setAttribute('width', sqSize.toFixed(1));
+        s.setAttribute('height', sqSize.toFixed(1));
       });
       const anCardIn = sm(seg(p, 0.74, 0.80));
       if (gAnalytics) gAnalytics.style.opacity = (anCardIn * (1 - an)).toFixed(3);
+      gabBars.forEach((b, i) => { if (!b) return; const prog = sm(seg(anCardIn, i / 8 * 0.35, i / 8 * 0.35 + 0.65)); const h = gabH[i] * prog; b.setAttribute('y', String(40 - h)); b.setAttribute('height', String(h)); });
+      if (gAnalyticsLine) { const lp = sm(seg(anCardIn, 0.45, 1.0)); gAnalyticsLine.style.strokeDashoffset = String(1 - lp); gAnalyticsLine.style.opacity = lp > 0 ? '1' : '0'; }
+      if (snzTracked) { const tp = sm(seg(anCardIn, 0.35, 1.0)); snzTracked.style.strokeDashoffset = String(860 * (1 - tp)); snzTracked.style.fill = tp >= 0.98 ? 'var(--accent)' : 'none'; }
       if (analytics) analytics.style.opacity = an.toFixed(3);
       const ciPAv = sm(seg(p, 0.75, 0.81));
       if (ciProdAn) ciProdAn.style.opacity = (ciPAv * dissolve).toFixed(3);
@@ -521,12 +541,25 @@
 
       // ---- DATA ----
       draw(anChart, sm(seg(p, 0.92, 1.00)));
+      const anP = sm(seg(p, 0.90, 1.00));
+      // stat counters
+      if (anStatRev) anStatRev.textContent = '£' + (42.8 * anP).toFixed(1) + 'K';
+      if (anStatVis) anStatVis.textContent = Math.round(12840 * anP).toLocaleString('en-US');
+      if (anStatSrc) anStatSrc.textContent = (1.2 * anP).toFixed(1) + 'M';
+      if (anStatSig) anStatSig.textContent = Math.round(1932 * anP).toLocaleString('en-US');
+      // heatmap cells stagger in
+      const anHeatP = sm(seg(p, 0.89, 0.96));
+      anHeatCells.forEach((c, i) => { const t = i / (anHeatCells.length - 1); c.style.opacity = sm(seg(anHeatP, t * 0.55, t * 0.55 + 0.45)).toFixed(2); });
+      // bars grow from bottom, staggered
+      const anBarP = sm(seg(p, 0.92, 1.00));
+      if (anSearch) { const bars = Array.from(anSearch.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anSearchH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
+      if (anRev) { const bars = Array.from(anRev.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anRevH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
 
       // ---- captions + tracker + progress ----
       // 0=BUILD 1=ENGINE 2=CONNECT 3=TRAFFIC 4=SCALE 5=DATA
       const phase = p < 0.18 ? 0 : (p < 0.56 ? 1 : (p < 0.68 ? 2 : (p < 0.76 ? 3 : (p < 0.88 ? 4 : 5))));
       caps.forEach((c, i) => { if (c) { c.style.opacity = i === phase ? '1' : '0'; c.style.transform = i === phase ? 'translateY(0)' : 'translateY(12px)'; } });
-      track.forEach((t, i) => { if (t) t.style.color = i === phase ? 'var(--accent)' : '#4a4a44'; });
+      track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent)' : '#4a4a44'; });
       if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
     };
 
