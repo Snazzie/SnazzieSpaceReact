@@ -64,19 +64,7 @@
   <div class="snz-stmt-line"></div>
 </section>
 <section id="snz-build" style="position:relative;height:760vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
-  <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column">
-    <!-- top bar -->
-    <div id="snz-buildtop" style="display:flex;align-items:center;justify-content:space-between;padding:74px 56px 0">
-      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
-      <div class="snz-track" style="display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
-        <span id="tk1" style="color:var(--accent);transition:color .4s ease">01 BUILD</span>
-        <span id="tk2" style="color:#4a4a44;transition:color .4s ease">02 ENGINE</span>
-        <span id="tk3" style="color:#4a4a44;transition:color .4s ease">03 CONNECT</span>
-        <span id="tk4" style="color:#4a4a44;transition:color .4s ease">04 TRAFFIC</span>
-        <span id="tk5" style="color:#4a4a44;transition:color .4s ease">05 SCALE</span>
-        <span id="tk6" style="color:#4a4a44;transition:color .4s ease">06 DATA</span>
-      </div>
-    </div>
+  <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
     <!-- stage -->
     <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0">
       <svg id="snz-flow" viewBox="0 0 1000 600" style="width:100%;max-width:1120px;height:100%;max-height:72vh;overflow:visible" aria-hidden="true">
@@ -345,15 +333,24 @@
         </g>
       </svg>
       <!-- captions -->
-      <div style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
+      <div style="position:absolute;left:56px;bottom:26px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
+      <div class="snz-track" style="position:absolute;right:56px;bottom:26px;display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <span id="tk1" style="color:var(--accent);transition:color .4s ease">01 BUILD</span>
+        <span id="tk2" style="color:#4a4a44;transition:color .4s ease">02 ENGINE</span>
+        <span id="tk3" style="color:#4a4a44;transition:color .4s ease">03 CONNECT</span>
+        <span id="tk4" style="color:#4a4a44;transition:color .4s ease">04 TRAFFIC</span>
+        <span id="tk5" style="color:#4a4a44;transition:color .4s ease">05 SCALE</span>
+        <span id="tk6" style="color:#4a4a44;transition:color .4s ease">06 DATA</span>
+      </div>
+      <div style="position:absolute;left:56px;top:26px;height:118px;width:520px;max-width:60%">
         <div id="cap1" class="cap" style="position:absolute;left:0;bottom:0">
           <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">01 — BUILD</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">First, the product itself.</h3>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">What the user sees.</h3>
           <p style="margin:0;max-width:460px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">A website and an app — designed around you and built by hand.</p>
         </div>
         <div id="cap2" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
           <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">02 — ENGINE</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Look inside the engine.</h3>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Behind the scenes.</h3>
           <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Accounts, payments, content, your store and an AI agent — all running inside the backend.</p>
         </div>
         <div id="cap3" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
@@ -368,7 +365,7 @@
         </div>
         <div id="cap5" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
           <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">05 — SCALE</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">It scales itself.</h3>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">It scales with demand.</h3>
           <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.</p>
         </div>
         <div id="cap6" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
@@ -384,6 +381,14 @@
 </section>
 
 <script>
+  // Set --snz-nav-h from the consultation nav so the sticky panel fills exactly below it.
+  const setNavH = () => {
+    const navEl = document.getElementById('snz-cnav');
+    if (navEl) document.documentElement.style.setProperty('--snz-nav-h', navEl.offsetHeight + 'px');
+  };
+  setNavH();
+  window.addEventListener('resize', setNavH, { passive: true });
+
   // Scroll-driven flow animation for THE BUILD. Ported from the design prototype,
   // driven off window scroll position over the tall #snz-build section.
   type El = HTMLElement & SVGElement;
@@ -489,8 +494,8 @@
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
 
       // ---- BUILD: site draws in ----
-      const pWire = sm(seg(p, 0.0, 0.06));
-      const phoneAppear = sm(seg(p, 0.04, 0.12));
+      const pWire = sm(seg(p, -0.07, 0.02));
+      const phoneAppear = sm(seg(p, -0.01, 0.08));
       const n = wfStroke.length;
       wfStroke.forEach((e, i) => { e.style.strokeDashoffset = String(1 - clamp(pWire * n - i, 0, 1)); });
       wfPop.forEach((e, i) => { e.style.opacity = String(clamp(pWire * wfPop.length - i, 0, 1)); });
@@ -629,7 +634,7 @@
         const r = sec.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
         const total = sec.offsetHeight - vh;
-        const p = total > 0 ? Math.max(0, Math.min(1, -r.top / total)) : 0;
+        const p = total > 0 ? Math.max(-0.07, Math.min(1, -r.top / total)) : 0;
         if (Math.abs(p - lastP) > 0.0004) { lastP = p; apply(p); }
       };
       const tick = () => { update(); raf = requestAnimationFrame(tick); };
