@@ -110,7 +110,7 @@ export const projects: Project[] = [
     image: "/logos/raceiq.png",
     featured: true,
     imageFit: "contain",
-    tech: ["Windows", "TypeScript", "React", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite", "Playwright", "Vitest"],
+    tech: ["Windows", "TypeScript", "React", "Three.js", "React Three Fiber", "Bun", "Mastra AI", "OpenAI", "Hono", "Drizzle", "SQLite", "Playwright", "Vitest"],
     video: "/raceiq-bg.mp4",
     details: [
       "Works with popular sim racing games including Forza, F1 25 and Assetto Corsa",
