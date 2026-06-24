@@ -28,6 +28,7 @@ import {
   siTauri,
   siArgo,
   siVitest,
+  siThreedotjs,
   type SimpleIcon,
 } from "simple-icons";
 
@@ -163,6 +164,23 @@ export const stack: StackGroup[] = [
         meta: {
           blurb: "Build tool of choice. Instant HMR.",
           related: ["React", "Tailwind"],
+        },
+      },
+      {
+        name: "Three.js",
+        icon: siThreedotjs,
+        meta: {
+          blurb: "WebGL 3D rendering. Powers RaceIQ's lap reconstruction.",
+          related: ["React Three Fiber", "TypeScript", "React"],
+          usedIn: ["RaceIQ"],
+        },
+      },
+      {
+        name: "React Three Fiber",
+        meta: {
+          blurb: "React renderer for Three.js. Declarative 3D scenes.",
+          related: ["Three.js", "React"],
+          usedIn: ["RaceIQ"],
         },
       },
     ],
