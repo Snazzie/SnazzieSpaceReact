@@ -388,7 +388,6 @@ const stats = [
 
   // Duplicate wireframe wall columns for seamless infinite scroll
   // Clone first, then start animation to avoid jump on first loop
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce) {
     document.querySelectorAll<HTMLElement>('#snz-wwall .snz-col').forEach((col) => {
       const kids = Array.from(col.children);

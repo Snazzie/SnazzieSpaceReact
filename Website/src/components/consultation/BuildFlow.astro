@@ -5,6 +5,16 @@
 <style>
   @keyframes snz-spin { to { transform: rotate(360deg); } }
 
+  @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+  .snz-bf-col { display:flex; flex-direction:column; gap:16px; flex-shrink:0; width:160px; }
+  .snz-bf-col-a { animation: snz-bf-up 30s linear infinite; animation-play-state:paused; }
+  .snz-bf-col-b { animation: snz-bf-dn 24s linear infinite; animation-play-state:paused; }
+  .snz-bf-col-c { animation: snz-bf-up 36s linear infinite; animation-play-state:paused; }
+  .snz-bf-col-a.snz-bf-go, .snz-bf-col-b.snz-bf-go, .snz-bf-col-c.snz-bf-go { animation-play-state:running; }
+  @media (prefers-reduced-motion: reduce) {
+    .snz-bf-col-a, .snz-bf-col-b, .snz-bf-col-c { animation:none; }
+  }
   #snz-stmt { position:relative; overflow:hidden; }
   .snz-ghost {
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
