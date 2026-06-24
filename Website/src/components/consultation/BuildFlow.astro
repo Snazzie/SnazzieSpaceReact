@@ -1,0 +1,547 @@
+---
+// THE BUILD — scroll-driven story: site + app merge into a product, the backend
+// docks and explodes into modules, traffic arrives, it scales, then analytics.
+---
+<section id="snz-build" style="position:relative;height:760vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
+  <div style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column">
+    <!-- top bar -->
+    <div id="snz-buildtop" style="display:flex;align-items:center;justify-content:space-between;padding:30px 56px 0">
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
+      <div class="snz-track" style="display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
+        <span id="tk1" style="color:var(--accent);transition:color .4s ease">01 BUILD</span>
+        <span id="tk2" style="color:#4a4a44;transition:color .4s ease">02 ENGINE</span>
+        <span id="tk3" style="color:#4a4a44;transition:color .4s ease">03 CONNECT</span>
+        <span id="tk4" style="color:#4a4a44;transition:color .4s ease">04 TRAFFIC</span>
+        <span id="tk5" style="color:#4a4a44;transition:color .4s ease">05 SCALE</span>
+        <span id="tk6" style="color:#4a4a44;transition:color .4s ease">06 DATA</span>
+      </div>
+    </div>
+    <!-- stage -->
+    <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0">
+      <svg id="snz-flow" viewBox="0 0 1000 600" style="width:100%;max-width:1120px;height:100%;max-height:72vh;overflow:visible" aria-hidden="true">
+        <defs>
+          <clipPath id="snzPhoneClip"><rect x="660" y="122" width="126" height="268" rx="4"></rect></clipPath>
+          <!-- gradient pulses for traffic lines (x1/y1/x2/y2 animated via JS) -->
+        </defs>
+        <g id="camera">
+        <!-- website wireframe -->
+        <g id="fWire" opacity="0">
+          <rect data-wf pathLength="1" x="150" y="120" width="404" height="300" rx="13" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
+          <line data-wf pathLength="1" x1="150" y1="166" x2="554" y2="166" stroke="rgba(255,255,255,.28)" stroke-width="1.8"></line>
+          <circle data-wfp cx="178" cy="143" r="5.5" fill="var(--accent)"></circle>
+          <circle data-wfp cx="197" cy="143" r="5.5" fill="rgba(255,255,255,.3)"></circle>
+          <circle data-wfp cx="216" cy="143" r="5.5" fill="rgba(255,255,255,.3)"></circle>
+          <rect data-wf pathLength="1" x="184" y="192" width="150" height="20" rx="4" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.6"></rect>
+          <rect data-wf pathLength="1" x="184" y="224" width="336" height="96" rx="8" fill="rgba(198,244,50,.05)" stroke="var(--accent)" stroke-width="2.2"></rect>
+          <text data-wfp x="206" y="280" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="18">YOUR SITE</text>
+          <rect data-wf pathLength="1" x="184" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
+          <rect data-wf pathLength="1" x="300" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
+          <rect data-wf pathLength="1" x="416" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
+        </g>
+        <!-- mobile app -->
+        <g id="fPhone" opacity="0">
+          <rect x="648" y="96" width="150" height="316" rx="26" fill="#0c0c0c" stroke="rgba(255,255,255,.5)" stroke-width="2"></rect>
+          <rect x="660" y="122" width="126" height="268" rx="4" fill="#0e0e0e"></rect>
+          <g clip-path="url(#snzPhoneClip)">
+            <g style="animation:snz-appscroll 6s linear infinite">
+              <rect x="668" y="126" width="110" height="30" rx="5" fill="rgba(198,244,50,.12)" stroke="var(--accent)" stroke-width="1"></rect>
+              <text x="676" y="146" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">App</text>
+              <rect x="668" y="164" width="110" height="62" rx="6" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1"></rect>
+              <rect x="668" y="236" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="266" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="296" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="326" width="78" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="366" width="110" height="30" rx="5" fill="rgba(198,244,50,.12)" stroke="var(--accent)" stroke-width="1"></rect>
+              <text x="676" y="386" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">App</text>
+              <rect x="668" y="404" width="110" height="62" rx="6" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1"></rect>
+              <rect x="668" y="476" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="506" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="536" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+              <rect x="668" y="566" width="78" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+            </g>
+          </g>
+          <rect x="700" y="104" width="46" height="9" rx="4.5" fill="rgba(255,255,255,.22)"></rect>
+          <rect x="699" y="398" width="48" height="5" rx="2.5" fill="rgba(255,255,255,.3)"></rect>
+        </g>
+        <!-- customers (left only) — traffic as a number -->
+        <g id="customers" opacity="0">
+          <circle class="cust" cx="96" cy="232" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="150" cy="222" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="196" cy="238" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="80" cy="300" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="210" cy="300" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="96" cy="366" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="150" cy="378" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <circle class="cust" cx="196" cy="362" r="6" fill="rgba(198,244,50,.5)"></circle>
+          <text id="custNum" x="145" y="312" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="46" letter-spacing="-0.02em">0</text>
+          <text x="145" y="338" text-anchor="middle" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">USERS NOW</text>
+          <circle id="pkReq" r="4.5" fill="var(--accent)" opacity="0"></circle>
+        </g>
+        <!-- connectors -->
+        <line id="cnApi" x1="468" y1="286" x2="616" y2="214" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity="0"></line>
+        <line id="ciAcc" x1="672" y1="250" x2="572" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciPay" x1="700" y1="250" x2="700" y2="298" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciCms" x1="688" y1="250" x2="636" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciEcom" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciDb" x1="684" y1="250" x2="636" y2="502" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciCache" x1="716" y1="250" x2="764" y2="502" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <circle id="pkApi" r="5" fill="var(--accent)" opacity="0"></circle>
+        <circle id="pkQ" r="4.5" fill="var(--accent)" opacity="0"></circle>
+        <circle id="pkC" r="4.5" fill="var(--accent)" opacity="0"></circle>
+        <!-- backend card (used in CONNECT+ phases — simple label, no vector) -->
+        <g id="gApiCard" opacity="0" transform="translate(700 300)">
+          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <text x="-30" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.02em">API</text>
+          <text x="-30" y="36" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" letter-spacing="1">BACKEND</text>
+          <!-- scale grid: 3×3, appear progressively as bn grows -->
+          <rect id="gsq0" x="4"  y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq1" x="26" y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq2" x="48" y="-28" width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq3" x="4"  y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq4" x="26" y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq5" x="48" y="-8"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq6" x="4"  y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq7" x="26" y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+          <rect id="gsq8" x="48" y="12"  width="16" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+        </g>
+        <!-- core product -->
+        <g id="gCore" opacity="0" transform="translate(380 290)">
+          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <rect x="-74" y="-32" width="78" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"></rect>
+          <circle cx="-68" cy="-26" r="2.2" fill="var(--accent)"></circle>
+          <circle cx="-61" cy="-26" r="2.2" fill="rgba(255,255,255,.3)"></circle>
+          <rect x="-68" y="-14" width="44" height="9" rx="2" fill="rgba(198,244,50,.5)"></rect>
+          <rect x="-68" y="1" width="60" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+          <rect x="18" y="-34" width="38" height="62" rx="8" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"></rect>
+          <rect x="24" y="-26" width="26" height="40" rx="2" fill="rgba(198,244,50,.12)"></rect>
+          <text x="0" y="40" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" letter-spacing="1">YOUR PRODUCT</text>
+        </g>
+        <!-- BACKEND engine — terminal vector -->
+        <g id="gApi" opacity="0" transform="translate(500 700)">
+          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0c0c0c" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
+          <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></line>
+          <circle cx="-138" cy="-101" r="5" fill="var(--accent)"></circle>
+          <circle cx="-120" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
+          <circle cx="-102" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
+          <text x="0" y="-95" text-anchor="middle" fill="rgba(255,255,255,.35)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">API ENDPOINTS</text>
+          <!-- endpoint rows: method badge | path | latency bar | ms -->
+          <rect x="-140" y="-72" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-60" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-60" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/auth</text>
+          <rect x="20" y="-70" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-70" width="34" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-60" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">12ms</text>
+
+          <rect x="-140" y="-48" width="48" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-36" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">POST</text>
+          <text x="-84" y="-36" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/payments</text>
+          <rect x="20" y="-46" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-46" width="22" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-36" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">8ms</text>
+
+          <rect x="-140" y="-24" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/content</text>
+          <rect x="20" y="-22" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-22" width="44" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">4ms</text>
+
+          <rect x="-140" y="0" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/ai-agent</text>
+          <rect x="20" y="2" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="2" width="14" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">24ms</text>
+
+          <line x1="-160" y1="32" x2="160" y2="32" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <circle cx="-138" cy="46" r="3" fill="var(--accent)"></circle>
+          <text x="-128" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">DB</text>
+          <circle cx="-96" cy="46" r="3" fill="var(--accent)"></circle>
+          <text x="-86" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">Cache</text>
+          <text x="106" y="50" text-anchor="end" fill="rgba(198,244,50,.48)" font-family="JetBrains Mono,monospace" font-size="9">99.9% up</text>
+          <g id="capgrp">
+            <rect class="capbar" id="cb0" x="-76" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb1" x="-55" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb2" x="-34" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb3" x="-13" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb4" x="8" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb5" x="29" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb6" x="50" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            <rect class="capbar" id="cb7" x="71" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+          </g>
+        </g>
+        <!-- accounts (backend module) -->
+        <g id="mAccounts" opacity="0" transform="translate(566 336)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <path id="accShieldFill" d="M-40 -16 L-27 -11 L-27 0 Q-27 12 -40 18 Q-53 12 -53 0 L-53 -11 Z" fill="rgba(198,244,50,.10)" opacity="0"></path>
+          <path id="accShield" d="M-40 -16 L-27 -11 L-27 0 Q-27 12 -40 18 Q-53 12 -53 0 L-53 -11 Z" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linejoin="round"></path>
+          <path id="accCheck" d="M-47 0 L-42 5 L-33 -6" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="-14" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Accounts</text>
+          <text x="-14" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">secure logins</text>
+        </g>
+        <!-- payments (backend module) -->
+        <g id="mPayments" opacity="0" transform="translate(700 336)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <rect x="-52" y="-13" width="32" height="22" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"></rect>
+          <rect x="-52" y="-7" width="32" height="5" fill="var(--accent)"></rect>
+          <text x="-14" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Payments</text>
+          <text x="-14" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">card payments</text>
+        </g>
+        <!-- ai agent (backend module) -->
+        <g id="mAgent" opacity="0" transform="translate(834 336)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <circle cx="-42" cy="0" r="16" fill="none" stroke="var(--accent)" stroke-width="1.3" style="transform-box:fill-box;transform-origin:center;animation:snz-ring 2.6s ease-out infinite"></circle>
+          <circle cx="-42" cy="0" r="15" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1.6"></circle>
+          <text x="-42" y="5" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="14">✦</text>
+          <text x="-12" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">AI agent</text>
+          <text x="-12" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">gets things done</text>
+        </g>
+        <!-- cms (backend module) -->
+        <g id="mCMS" opacity="0" transform="translate(632 432)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <rect x="-52" y="-15" width="26" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"></rect>
+          <line x1="-47" y1="-7" x2="-31" y2="-7" stroke="var(--accent)" stroke-width="1.4"></line>
+          <line x1="-47" y1="-1" x2="-31" y2="-1" stroke="var(--accent)" stroke-width="1.4"></line>
+          <line x1="-47" y1="5" x2="-37" y2="5" stroke="var(--accent)" stroke-width="1.4"></line>
+          <text x="-18" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">CMS</text>
+          <text x="-18" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">manage content</text>
+        </g>
+        <!-- ecommerce (backend module) -->
+        <g id="mEcom" opacity="0" transform="translate(768 432)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <path d="M-52 -10 L-26 -10 L-29 8 L-49 8 Z" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"></path>
+          <path d="M-46 -10 Q-46 -18 -39 -18 Q-32 -18 -32 -10" fill="none" stroke="var(--accent)" stroke-width="1.5"></path>
+          <text x="-16" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Ecommerce</text>
+          <text x="-16" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">sell online</text>
+        </g>
+        <!-- database (backend infra) -->
+        <g id="gDb" opacity="0" transform="translate(632 528)">
+          <path d="M-26 -18 A26 7 0 0 1 26 -18 L26 18 A26 7 0 0 1 -26 18 Z" fill="#0e0e0e" stroke="var(--accent)" stroke-width="1.5"></path>
+          <ellipse cx="0" cy="-18" rx="26" ry="7" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.5"></ellipse>
+          <path d="M-26 -2 A26 7 0 0 0 26 -2" fill="none" stroke="rgba(198,244,50,.4)" stroke-width="1.1"></path>
+          <text x="0" y="36" text-anchor="middle" fill="#cfcfc7" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">Database</text>
+        </g>
+        <!-- cache (backend infra) -->
+        <g id="gCache" opacity="0" transform="translate(768 528)">
+          <rect x="-38" y="-20" width="76" height="40" rx="9" fill="#0e0e0e" stroke="var(--accent)" stroke-width="1.5"></rect>
+          <text x="0" y="2" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="14">⚡</text>
+          <text x="0" y="36" text-anchor="middle" fill="#cfcfc7" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">Cache</text>
+          <text id="cacheHit" x="0" y="-28" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" opacity="0">HIT</text>
+        </g>
+        <!-- analytics mini-card (SCALE phase, below product+api) -->
+        <g id="gAnalytics" opacity="0" transform="translate(500 430)">
+          <rect x="-120" y="-38" width="240" height="76" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.22)" stroke-width="1.4"></rect>
+          <rect x="-108" y="-4"  width="7" height="16" rx="1" fill="var(--accent)" fill-opacity=".4"></rect>
+          <rect x="-97"  y="-16" width="7" height="28" rx="1" fill="var(--accent)" fill-opacity=".4"></rect>
+          <rect x="-86"  y="-10" width="7" height="22" rx="1" fill="var(--accent)" fill-opacity=".4"></rect>
+          <rect x="-75"  y="-24" width="7" height="36" rx="1" fill="var(--accent)" fill-opacity=".8"></rect>
+          <text x="-58" y="-10" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="700" font-size="15">Analytics</text>
+          <text x="-58" y="8"  fill="#7c7c74" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="1">LIVE DATA</text>
+          <circle cx="104" cy="-26" r="3.5" fill="var(--accent)"></circle>
+          <text x="94" y="-22" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="7" letter-spacing=".5">LIVE</text>
+        </g>
+        <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
+        <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciProdAnPulse" x1="340" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="ciApiAnPulse"  x1="660" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <!-- SCALE: business-size title above the product -->
+        <g id="bizTitle" opacity="0">
+          <text id="bizNum" x="500" y="210" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">1,000</text>
+          <text id="bizSize" x="500" y="232" text-anchor="middle" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="12" letter-spacing="2.5">SMALL BUSINESS</text>
+        </g>
+        </g>
+        <!-- ===== ANALYTICS — full centered dashboard (overlays everything) ===== -->
+        <g id="analytics" opacity="0">
+          <rect x="64" y="34" width="872" height="532" rx="16" fill="#0b0b0b" stroke="rgba(255,255,255,.16)" stroke-width="1.5"></rect>
+          <text x="92" y="72" fill="#F2F0EA" font-family="Archivo,sans-serif" font-weight="800" font-size="21" letter-spacing="-0.02em">Analytics</text>
+          <text x="92" y="91" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10" letter-spacing="1">LAST 7 DAYS · LIVE</text>
+          <circle cx="856" cy="64" r="5" fill="var(--accent)"></circle>
+          <text x="842" y="68" text-anchor="end" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">REAL-TIME</text>
+          <!-- stat tiles -->
+          <g font-family="Archivo,sans-serif">
+            <text x="92" y="150" fill="var(--accent)" font-weight="800" font-size="34" letter-spacing="-0.02em">£42.8K</text>
+            <text x="92" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">REVENUE</text>
+            <text x="300" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">12,840</text>
+            <text x="300" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">VISITORS</text>
+            <text x="508" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">1.2M</text>
+            <text x="508" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SEARCH IMPRESSIONS</text>
+            <text x="716" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">1,932</text>
+            <text x="716" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SIGN-UPS</text>
+          </g>
+          <line x1="92" y1="196" x2="908" y2="196" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <line x1="500" y1="210" x2="500" y2="556" stroke="rgba(255,255,255,.08)" stroke-width="1"></line>
+          <line x1="92" y1="392" x2="908" y2="392" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <!-- TL: traffic line -->
+          <text x="92" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">TRAFFIC OVER TIME</text>
+          <polyline id="anChart" points="92,360 130,350 168,356 206,334 244,322 282,326 320,302 358,292 396,300 434,274 472,250" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- TR: engagement heatmap -->
+          <text x="520" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">ENGAGEMENT HEATMAP</text>
+          <g id="anHeat"></g>
+          <!-- BL: search impressions -->
+          <text x="92" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">SEARCH IMPRESSIONS</text>
+          <text x="472" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 34%</text>
+          <g id="anSearch"></g>
+          <!-- BR: revenue -->
+          <text x="520" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">REVENUE / WEEK</text>
+          <text x="908" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 21%</text>
+          <g id="anRev"></g>
+        </g>
+      </svg>
+      <!-- captions -->
+      <div style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
+        <div id="cap1" class="cap" style="position:absolute;left:0;bottom:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">01 — BUILD</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">First, the product itself.</h3>
+          <p style="margin:0;max-width:460px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">A website and an app — designed around you and built by hand.</p>
+        </div>
+        <div id="cap2" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">02 — ENGINE</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Look inside the engine.</h3>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Accounts, payments, content, your store and an AI agent — all running inside the backend.</p>
+        </div>
+        <div id="cap3" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">03 — CONNECT</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Wire it together.</h3>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Your product and the backend, talking to a database and a fast cache so everything feels instant.</p>
+        </div>
+        <div id="cap4" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">04 — TRAFFIC</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">People show up.</h3>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">As word spreads, more and more customers arrive — all at once.</p>
+        </div>
+        <div id="cap5" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">05 — SCALE</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">It scales itself.</h3>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Whether you're a small shop with a hundred visitors or an enterprise with half a million, the same backend grows to fit — then winds back down.</p>
+        </div>
+        <div id="cap6" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">06 — DATA</div>
+          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">And you see it all.</h3>
+          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Live analytics show your traffic, revenue and what's working — so you know what to do next.</p>
+        </div>
+      </div>
+    </div>
+    <!-- progress -->
+    <div style="height:3px;background:rgba(255,255,255,.08)"><div id="fProg" style="height:100%;width:0;background:var(--accent);transition:width .08s linear"></div></div>
+  </div>
+</section>
+
+<script>
+  // Scroll-driven flow animation for THE BUILD. Ported from the design prototype,
+  // driven off window scroll position over the tall #snz-build section.
+  type El = HTMLElement & SVGElement;
+  const $ = (id: string) => document.getElementById(id) as unknown as El | null;
+
+  const sec = $('snz-build');
+  const svg = $('snz-flow');
+  if (sec && svg) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const wfStroke = Array.from(svg.querySelectorAll('#fWire [data-wf]')) as unknown as El[];
+    const wfPop = Array.from(svg.querySelectorAll('#fWire [data-wfp]')) as unknown as El[];
+    wfStroke.forEach((e) => { e.style.strokeDasharray = '1'; });
+
+    const camera = $('camera');
+    const wire = $('fWire'), phone = $('fPhone'), gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard'), gDb = $('gDb'), gCache = $('gCache');
+    const apiBox = $('apiBox');
+    const mAcc = $('mAccounts'), mPay = $('mPayments'), mAgent = $('mAgent'), mCms = $('mCMS'), mEcom = $('mEcom');
+    const cnApi = $('cnApi'), ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDb = $('ciDb'), ciCache = $('ciCache');
+    const pkQ = $('pkQ'), pkC = $('pkC'), pkReq = $('pkReq');
+    const accShield = $('accShield'), accCheck = $('accCheck'), accShieldFill = $('accShieldFill'), cacheHit = $('cacheHit');
+    const customers = $('customers'), custNum = $('custNum');
+    const custDots = Array.from(svg.querySelectorAll('#customers .cust')) as unknown as El[];
+    const bizTitle = $('bizTitle'), bizNum = $('bizNum'), bizSize = $('bizSize');
+    const gAnalytics = $('gAnalytics');
+    const ciProdAn = $('ciProdAn'), ciApiAn = $('ciApiAn');
+    const ciProdAnPulse = $('ciProdAnPulse'), ciApiAnPulse = $('ciApiAnPulse');
+    const scSqs = [0,1,2,3,4,5,6,7,8].map(i => $('gsq' + i));
+    const cbBars = [$('cb0'), $('cb1'), $('cb2'), $('cb3'), $('cb4'), $('cb5'), $('cb6'), $('cb7')];
+    const anChart = $('anChart');
+    const anHeat = $('anHeat'), anSearch = $('anSearch'), anRev = $('anRev');
+    const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5'), $('cap6')];
+    const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
+    const prog = $('fProg');
+    [accShield, accCheck, cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDb, ciCache, anChart].forEach((e) => {
+      if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
+    });
+
+    // build analytics sub-charts (heatmap + impression/revenue bars)
+    const NS = 'http://www.w3.org/2000/svg';
+    const mk = (t: string, attrs: Record<string, string | number>) => {
+      const e = document.createElementNS(NS, t);
+      for (const k in attrs) e.setAttribute(k, String(attrs[k]));
+      return e;
+    };
+    if (anHeat && !anHeat.childNodes.length) {
+      const cols = 11, rows = 5, x0 = 520, y0 = 232, cw = 33, ch = 24, gx = 2, gy = 3;
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        const hot = Math.exp(-(Math.pow(c - 7, 2) / 9 + Math.pow(r - 1.6, 2) / 3.2));
+        const noise = Math.abs((Math.sin(c * 12.9 + r * 78.2) * 43758.5453) % 1);
+        const v = Math.max(0.05, Math.min(0.95, hot * 0.9 + noise * 0.18 + 0.05));
+        anHeat.appendChild(mk('rect', { x: x0 + c * (cw + gx), y: y0 + r * (ch + gy), width: cw, height: ch, rx: 2, fill: 'var(--accent)', 'fill-opacity': v.toFixed(2) }));
+      }
+    }
+    if (anSearch && !anSearch.childNodes.length) {
+      const n = 14, x0 = 96, base = 502, bw = 18, step = 27, maxH = 64;
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.25 + 0.7 * t + 0.12 * Math.sin(i * 1.7)) * maxH; anSearch.appendChild(mk('rect', { x: x0 + i * step, y: base - h, width: bw, height: h, rx: 2, fill: 'rgba(198,244,50,.6)' })); }
+    }
+    if (anRev && !anRev.childNodes.length) {
+      const n = 12, x0 = 524, base = 502, bw = 20, step = 32, maxH = 64;
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRev.appendChild(mk('rect', { x: x0 + i * step, y: base - h, width: bw, height: h, rx: 2, fill: 'var(--accent)' })); }
+    }
+
+    const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+    const seg = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
+    const sm = (t: number) => t * t * (3 - 2 * t);
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const apply = (p: number) => {
+      const draw = (el: El | null, d: number) => { if (el) { el.style.strokeDashoffset = String(1 - d); el.style.opacity = d > 0 ? '1' : '0'; } };
+      const flow = (pk: El | null, c: number[], m: number[], a: number, b: number) => {
+        if (!pk) return;
+        const l = seg(p, a, b);
+        const active = l > 0 && l < 1;
+        const frac = l < 0.5 ? sm(l * 2) : 1 - sm((l - 0.5) * 2);
+        pk.setAttribute('cx', lerp(c[0], m[0], frac).toFixed(1));
+        pk.setAttribute('cy', lerp(c[1], m[1], frac).toFixed(1));
+        pk.style.opacity = active ? '1' : '0';
+      };
+
+      // ---- CAMERA ----
+      // 0.00-0.14: site+phone centered
+      // 0.14-0.28: slight pull back as site exits
+      // 0.28-0.46: ENGINE view — backend+children centered at (500,310)
+      // 0.46-0.54: zoom out for side-by-side
+      // 0.54-0.70: side-by-side, product left / backend right
+      // 0.70-0.87: scale view
+      // 0.87+: analytics
+      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.28, 500, 300, 1.0], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 330, 0.95], [0.86, 500, 330, 0.95], [0.89, 500, 300, 1], [1.04, 500, 300, 1]];
+      let fx = 500, fy = 300, k = 1;
+      for (let i = 0; i < A.length - 1; i++) { if (p >= A[i][0] && p <= A[i + 1][0]) { const t = sm(seg(p, A[i][0], A[i + 1][0])); fx = lerp(A[i][1], A[i + 1][1], t); fy = lerp(A[i][2], A[i + 1][2], t); k = lerp(A[i][3], A[i + 1][3], t); break; } }
+      if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
+
+      // ---- BUILD: site draws in ----
+      const pWire = sm(seg(p, 0.0, 0.06));
+      const phoneAppear = sm(seg(p, 0.04, 0.12));
+      const n = wfStroke.length;
+      wfStroke.forEach((e, i) => { e.style.strokeDashoffset = String(1 - clamp(pWire * n - i, 0, 1)); });
+      wfPop.forEach((e, i) => { e.style.opacity = String(clamp(pWire * wfPop.length - i, 0, 1)); });
+
+      // ---- SLIDE UP: site + phone exit upward ----
+      const slideUp = sm(seg(p, 0.14, 0.27));
+      const slideOff = slideUp * -700;
+      if (wire) { wire.setAttribute('transform', 'translate(0 ' + slideOff.toFixed(1) + ')'); wire.style.opacity = String(pWire > 0 ? Math.max(0, 1 - slideUp * 1.5) : 0); }
+      if (phone) { const ty = slideOff + lerp(20, 0, phoneAppear); phone.setAttribute('transform', 'translate(0 ' + ty.toFixed(1) + ')'); phone.style.opacity = String(Math.max(0, phoneAppear - slideUp * 1.5)); }
+
+      // ---- BACKEND position ----
+      // Enters from bottom, holds at center for ENGINE (incl. collapse), then slides right as small card
+      const Banch = [[0, 500, 700], [0.14, 500, 700], [0.24, 500, 200], [0.53, 500, 200], [0.62, 660, 300], [0.70, 660, 300], [0.76, 660, 300], [1.04, 660, 300]];
+      let bx = 700, by = 210;
+      for (let i = 0; i < Banch.length - 1; i++) { if (p >= Banch[i][0] && p <= Banch[i + 1][0]) { const t = sm(seg(p, Banch[i][0], Banch[i + 1][0])); bx = lerp(Banch[i][1], Banch[i + 1][1], t); by = lerp(Banch[i][2], Banch[i + 1][2], t); break; } }
+
+      // ---- ENGINE: children explode out from backend, then collapse back ----
+      const e1 = sm(seg(p, 0.30, 0.42));
+      const e2 = sm(seg(p, 0.46, 0.53));
+
+      // ENGINE: full terminal fades in then shrinks as children explode; hidden after ENGINE
+      const apiEnter = sm(seg(p, 0.14, 0.24));
+      const apiTermScale = lerp(1.2, 0, e1);
+      const apiTermOpac = apiEnter * lerp(1, 0, e1);
+      if (gApi) { gApi.setAttribute('transform', 'translate(' + bx.toFixed(1) + ' ' + by.toFixed(1) + ') scale(' + apiTermScale.toFixed(3) + ')'); gApi.style.opacity = p < 0.53 ? apiTermOpac.toFixed(3) : '0'; }
+
+      // CONNECT+: simple API card follows Banch (slides center → right)
+      const apiCardShow = sm(seg(p, 0.54, 0.61));
+      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(' + bx.toFixed(1) + ' ' + by.toFixed(1) + ')'); gApiCard.style.opacity = apiCardShow.toFixed(3); }
+      // Children grid centered at x=500: row1 (350/500/650 y=290), row2 (425/575 y=400), row3 (425/575 y=510)
+      const kids = [
+        { g: mAcc,   c: ciAcc,   gx: 350, gy: 290 },
+        { g: mPay,   c: ciPay,   gx: 500, gy: 290 },
+        { g: mAgent, c: ciAgent, gx: 650, gy: 290 },
+        { g: mCms,   c: ciCms,   gx: 425, gy: 400 },
+        { g: mEcom,  c: ciEcom,  gx: 575, gy: 400 },
+        { g: gDb,    c: ciDb,    gx: 425, gy: 510 },
+        { g: gCache, c: ciCache, gx: 575, gy: 510 },
+      ];
+      kids.forEach((o) => {
+        let x = lerp(bx, o.gx, e1), y = lerp(by, o.gy, e1);
+        x = lerp(x, bx, e2); y = lerp(y, by, e2);
+        const scl = lerp(1, 0.1, e2);
+        const appear = e1 * (1 - e2);
+        if (o.g) { o.g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + scl.toFixed(3) + ')'); o.g.style.opacity = appear.toFixed(3); }
+        if (o.c) { o.c.setAttribute('x1', bx.toFixed(1)); o.c.setAttribute('y1', (by + 120).toFixed(1)); o.c.setAttribute('x2', x.toFixed(1)); o.c.setAttribute('y2', (y - 36).toFixed(1)); o.c.style.strokeDashoffset = String(1 - appear); o.c.style.opacity = (appear * 0.5).toFixed(3); }
+      });
+      draw(accShield, sm(seg(p, 0.34, 0.40)));
+      draw(accCheck, sm(seg(p, 0.37, 0.43)));
+      if (accShieldFill) accShieldFill.style.opacity = sm(seg(p, 0.41, 0.45)).toFixed(3);
+      flow(pkQ, [500, 320], [425, 490], 0.42, 0.46);
+      flow(pkC, [506, 320], [575, 490], 0.43, 0.47);
+      if (cacheHit) cacheHit.style.opacity = (sm(seg(p, 0.43, 0.46)) * (1 - sm(seg(p, 0.47, 0.50)))).toFixed(3);
+
+      // ---- CONNECT: product card left (280,300), backend right (700,300) ----
+      const pSideBy = sm(seg(p, 0.54, 0.61));
+      if (gCore) { gCore.setAttribute('transform', 'translate(340 300)'); gCore.style.opacity = pSideBy.toFixed(3); }
+      if (cnApi) { const cv = sm(seg(p, 0.60, 0.66)); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7).toFixed(3); }
+
+      // ---- TRAFFIC → SCALE: business counter replaces users element ----
+      const sIn = sm(seg(p, 0.59, 0.65));
+      if (bizTitle) bizTitle.style.opacity = sIn.toFixed(3);
+      const bn = sm(seg(p, 0.62, 0.88));
+      let bsize: string, busers: number;
+      if (bn < 0.4) { bsize = 'SMALL BUSINESS'; busers = 100 * Math.pow(10, bn / 0.4); }
+      else if (bn < 0.74) { bsize = 'MEDIUM BUSINESS'; busers = 1000 * Math.pow(50, (bn - 0.4) / 0.34); }
+      else { bsize = 'ENTERPRISE'; busers = 50000 * Math.pow(10, (bn - 0.74) / 0.26); }
+      busers = Math.round(busers / 50) * 50;
+      if (bizNum) bizNum.textContent = busers.toLocaleString('en-US') + ' users';
+      if (bizSize) bizSize.textContent = bsize;
+
+      // ---- SCALE: grid squares, analytics card, connectors, packets ----
+      const gsGate = sm(seg(p, 0.72, 0.78));
+      scSqs.forEach((s, i) => {
+        if (!s) return;
+        s.style.opacity = (gsGate * sm(seg(bn, i / 9, i / 9 + 0.18))).toFixed(2);
+      });
+      const anCardIn = sm(seg(p, 0.74, 0.80));
+      if (gAnalytics) gAnalytics.style.opacity = anCardIn.toFixed(3);
+      const ciPAv = sm(seg(p, 0.75, 0.81));
+      if (ciProdAn) ciProdAn.style.opacity = ciPAv.toFixed(3);
+      if (ciProdAnPulse) ciProdAnPulse.style.opacity = ciPAv.toFixed(3);
+      const ciAAv = sm(seg(p, 0.76, 0.82));
+      if (ciApiAn) { ciApiAn.setAttribute('x1', bx.toFixed(1)); ciApiAn.style.opacity = ciAAv.toFixed(3); }
+      if (ciApiAnPulse) { ciApiAnPulse.setAttribute('x1', bx.toFixed(1)); ciApiAnPulse.style.opacity = ciAAv.toFixed(3); }
+
+      // ---- DATA ----
+      const an = sm(seg(p, 0.87, 0.93));
+      if (camera) camera.style.opacity = (1 - an * 0.92).toFixed(3);
+      const analytics = $('analytics');
+      if (analytics) analytics.style.opacity = String(an);
+      draw(anChart, sm(seg(p, 0.89, 0.99)));
+
+      // ---- captions + tracker + progress ----
+      // 0=BUILD 1=ENGINE 2=CONNECT 3=TRAFFIC 4=SCALE 5=DATA
+      const phase = p < 0.18 ? 0 : (p < 0.56 ? 1 : (p < 0.68 ? 2 : (p < 0.76 ? 3 : (p < 0.88 ? 4 : 5))));
+      caps.forEach((c, i) => { if (c) { c.style.opacity = i === phase ? '1' : '0'; c.style.transform = i === phase ? 'translateY(0)' : 'translateY(12px)'; } });
+      track.forEach((t, i) => { if (t) t.style.color = i === phase ? 'var(--accent)' : '#4a4a44'; });
+      if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
+    };
+
+    if (reduce) {
+      apply(0.60);
+    } else {
+      let lastP = -1, raf = 0;
+      const update = () => {
+        const r = sec.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const total = sec.offsetHeight - vh;
+        const p = total > 0 ? Math.max(0, Math.min(1, -r.top / total)) : 0;
+        if (Math.abs(p - lastP) > 0.0004) { lastP = p; apply(p); }
+      };
+      const tick = () => { update(); raf = requestAnimationFrame(tick); };
+      raf = requestAnimationFrame(tick);
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      apply(0);
+    }
+  }
+</script>

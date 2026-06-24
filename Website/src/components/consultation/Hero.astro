@@ -1,0 +1,89 @@
+---
+// Hero: headline with cycling word, wireframe preview, and the stat strip.
+const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
+
+const stats = [
+  { value: 'Anything digital', label: 'websites · apps · products' },
+  { value: 'From £700', label: 'for a bespoke website' },
+  { value: '5 rounds', label: 'design tweaks, til you love it' },
+  { value: 'Just me', label: 'you talk to the maker direct' },
+];
+---
+<section id="snz-top" style="position:relative;border-bottom:1px solid rgba(255,255,255,.08)">
+  <div id="snz-gridbg" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:34px 34px;pointer-events:none"></div>
+  <div id="snz-hero" style="position:relative;display:grid;grid-template-columns:1.08fr 0.92fr;min-height:84vh">
+    <!-- LEFT -->
+    <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74;margin-bottom:26px">FOR INDIVIDUALS &amp; SMALL BUSINESSES — UK</div>
+      <h1 class="snz-h1" style="margin:0;font:800 72px/0.98 'Archivo',sans-serif;letter-spacing:-0.035em">I build your<br><span style="display:inline-flex;align-items:baseline;gap:4px"><span id="snz-word" style="color:var(--accent)">website</span><span style="display:inline-block;width:5px;height:.78em;background:var(--accent);animation:snz-blink 1.05s steps(1) infinite;transform:translateY(2px)"></span></span></h1>
+      <p style="margin:28px 0 0;max-width:440px;font:400 16px/1.65 'JetBrains Mono',monospace;color:#a8a89f">I make things for individuals and small businesses — websites, mobile apps, whole products, the service behind them. Tell me what you need in plain words, and I work out how to build it.</p>
+      <div style="display:flex;gap:14px;margin-top:38px;flex-wrap:wrap">
+        <span class="snz-magwrap"><a data-mag href={LINKEDIN} style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;background:var(--accent);color:var(--ink);padding:15px 22px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+        <span class="snz-magwrap"><a data-mag href="mailto:info@snazzie.space" style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;border:1px solid rgba(255,255,255,.22);color:#F2F0EA;padding:15px 22px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">EMAIL ME</a></span>
+      </div>
+    </div>
+    <!-- RIGHT : WIREFRAME PREVIEW -->
+    <div class="snz-right" style="position:relative;border-left:1px solid rgba(255,255,255,.08);background:#0c0c0c;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:48px 44px">
+      <div style="position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55;animation:snz-scan 5.5s linear infinite"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#7c7c74">PREVIEW <span style="color:#cfcfc7">your site</span></span>
+        <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--accent)">● DESIGN</span>
+      </div>
+      <svg viewBox="0 0 480 290" style="width:100%;height:auto;max-height:300px" aria-hidden="true">
+        <rect x="60" y="26" width="360" height="240" rx="10" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"></rect>
+        <line x1="60" y1="60" x2="420" y2="60" stroke="rgba(255,255,255,.28)" stroke-width="1.4"></line>
+        <circle cx="80" cy="43" r="3.4" fill="var(--accent)"></circle>
+        <circle cx="93" cy="43" r="3.4" fill="rgba(255,255,255,.3)"></circle>
+        <circle cx="106" cy="43" r="3.4" fill="rgba(255,255,255,.3)"></circle>
+        <rect x="300" y="36" width="100" height="14" rx="3" fill="rgba(255,255,255,.07)"></rect>
+        <rect x="84" y="82" width="120" height="16" rx="3" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.3"></rect>
+        <rect x="84" y="112" width="312" height="78" rx="6" fill="rgba(198,244,50,.05)" stroke="var(--accent)" stroke-width="1.8"></rect>
+        <text x="104" y="158" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="13">YOUR SITE</text>
+        <rect x="84" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
+        <rect x="194" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
+        <rect x="304" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
+      </svg>
+      <div style="margin-top:24px;display:flex;align-items:center;gap:10px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.05em;color:#7c7c74">
+        <span style="display:inline-block;color:var(--accent);animation:snz-bounce 1.6s ease infinite">↓</span> SCROLL — watch it grow into an app, a backend &amp; scale
+      </div>
+    </div>
+  </div>
+  <!-- STAT STRIP -->
+  <div id="snz-stats" style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.08)">
+    {stats.map((s, i) => (
+      <div style={`padding:26px 32px;${i < stats.length - 1 ? 'border-right:1px solid rgba(255,255,255,.08)' : ''}`}>
+        <div style="font:800 26px 'Archivo',sans-serif;letter-spacing:-0.02em">{s.value}</div>
+        <div style="font:500 12px 'JetBrains Mono',monospace;color:#7c7c74;margin-top:6px">{s.label}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  // Cycle the accent word in the hero headline.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const word = document.getElementById('snz-word');
+  if (word && !reduce) {
+    const words = ['website', 'mobile app', 'product', 'service'];
+    let i = 0;
+    const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    (async () => {
+      while (true) {
+        await wait(2200);
+        i = (i + 1) % words.length;
+        const next = words[i];
+        const out = word.animate(
+          [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-10px)' }],
+          { duration: 200, easing: 'ease-in', fill: 'forwards' },
+        );
+        out.onfinish = () => {
+          word.textContent = next;
+          word.animate(
+            [{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'translateY(0)' }],
+            { duration: 300, easing: 'cubic-bezier(.2,.9,.2,1.2)', fill: 'forwards' },
+          );
+        };
+      }
+    })();
+  }
+</script>

@@ -1,0 +1,90 @@
+---
+// Pricing: bespoke website headline price, monthly care, enterprise band.
+const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
+
+const metrics = [
+  { value: '95+', label: 'FAST' },
+  { value: '100', label: 'EASY TO USE' },
+  { value: '100', label: 'FOUND ON GOOGLE' },
+];
+
+const bespokeFeatures = [
+  'Hand-built — no WordPress or templates',
+  'A one-of-a-kind design, just for you',
+  'Fast, easy to use & easy to find',
+  'Privacy-first & UK GDPR compliant',
+  'Honest hosting costs — no padding',
+  'Mobile & tablet responsive',
+  'Visitor insights from day one',
+  'Live on your own web address',
+];
+
+const careFeatures = [
+  'Web content & copy updates',
+  'Analytics tracking & reporting',
+  'Ongoing SEO optimisation',
+  'GDPR & cookie-consent upkeep',
+  'Security, hosting & uptime healthy',
+];
+---
+<section id="snz-pricing" style="padding:96px 56px;border-bottom:1px solid rgba(255,255,255,.08)">
+  <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:54px">
+    <div>
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 02 ] PRICING</div>
+      <h2 class="snz-display" style="margin:0;font:800 60px/0.98 'Archivo',sans-serif;letter-spacing:-0.035em">A simple place to start</h2>
+    </div>
+    <p style="margin:0;max-width:340px;font:400 14px/1.6 'JetBrains Mono',monospace;color:#8a8a82">Want a website? Here's the simple way to start. Anything bigger — an app, a product, a service — is priced once we understand it together.</p>
+  </div>
+
+  <div id="snz-pricegrid" style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px">
+    <!-- bespoke -->
+    <div data-reveal style="border:1px solid rgba(255,255,255,.12);padding:40px;background:#0c0c0c;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <h3 style="margin:0;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.025em">Bespoke website</h3>
+        <div style="font:700 28px 'Archivo',sans-serif;color:var(--accent)">From £700 <span style="font:500 12px 'JetBrains Mono',monospace;color:#7c7c74">one-off</span></div>
+      </div>
+      <p style="margin:18px 0 28px;max-width:480px;font:400 14px/1.65 'JetBrains Mono',monospace;color:#9a9a92">A one-of-a-kind site, hand-built from a blank page — never dropped into a template. No WordPress, no website builders. Designed around your business, fast, and yours to own outright.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);margin-bottom:28px">
+        {metrics.map((m) => (
+          <div style="background:#0c0c0c;padding:18px 20px">
+            <div style="font:800 30px 'Archivo',sans-serif;color:var(--accent)">{m.value}</div>
+            <div style="font:500 11px 'JetBrains Mono',monospace;color:#7c7c74;margin-top:4px">{m.label}</div>
+          </div>
+        ))}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 28px">
+        {bespokeFeatures.map((f) => (
+          <div style="font:400 13px/1.5 'JetBrains Mono',monospace;color:#cfcfc7"><span style="color:var(--accent)">+</span> {f}</div>
+        ))}
+      </div>
+    </div>
+    <!-- care -->
+    <div data-reveal data-delay="90" style="display:flex;flex-direction:column;gap:24px">
+      <div style="border:1px solid rgba(255,255,255,.12);padding:32px;background:#0c0c0c;flex:1">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px">
+          <h4 style="margin:0;font:700 20px 'Archivo',sans-serif;letter-spacing:-0.01em">Monthly care</h4>
+          <span style="font:700 18px 'Archivo',sans-serif;color:#F2F0EA">£40<span style="font:500 11px 'JetBrains Mono',monospace;color:#7c7c74">/mo</span></span>
+        </div>
+        <div style="font:500 11px 'JetBrains Mono',monospace;color:var(--accent);margin-bottom:18px">OPTIONAL · CANCEL ANYTIME</div>
+        <p style="margin:0 0 18px;font:400 13px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Keep the site current and growing without lifting a finger.</p>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          {careFeatures.map((f) => (
+            <div style="font:400 12.5px 'JetBrains Mono',monospace;color:#cfcfc7"><span style="color:var(--accent)">·</span> {f}</div>
+          ))}
+        </div>
+      </div>
+      <div style="border:1px solid rgba(255,255,255,.1);padding:22px;background:#0a0a0a">
+        <p style="margin:0;font:400 12px/1.6 'JetBrains Mono',monospace;color:#7c7c74">Apps, products or anything more involved are priced once we've scoped it together. Things like domains and hosting are paid at cost — no markup, no padded packages, no fake security fees.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- enterprise band -->
+  <div data-reveal style="margin-top:24px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(90deg,#0e0e0e,#0a0a0a);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
+    <div>
+      <h3 style="margin:0 0 8px;font:800 26px 'Archivo',sans-serif;letter-spacing:-0.02em">Bigger team or investor-backed?</h3>
+      <p style="margin:0;max-width:560px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Larger teams, funded startups and ongoing advisory work differently — priced to fit, not off this page. Let's talk about what you need.</p>
+    </div>
+    <span class="snz-magwrap"><a data-mag href={LINKEDIN} style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;border:1px solid var(--accent);color:var(--accent);padding:15px 22px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+  </div>
+</section>

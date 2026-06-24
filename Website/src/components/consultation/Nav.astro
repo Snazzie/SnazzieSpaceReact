@@ -1,0 +1,18 @@
+---
+// Sticky top navigation for the consultation page.
+const LINKS = [
+  { href: '#snz-build', label: 'THE BUILD' },
+  { href: '#snz-services', label: 'SERVICES' },
+  { href: '#snz-pricing', label: 'PRICING' },
+  { href: '#snz-process', label: 'PROCESS' },
+];
+---
+<nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(10,10,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)">
+  <a href="#snz-top" style="font:800 17px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA;text-decoration:none">SNAZZIE<span style="color:var(--accent)">°</span></a>
+  <div style="display:flex;align-items:center;gap:28px;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.06em">
+    {LINKS.map((l) => (
+      <a href={l.href} style="color:#a8a89f;text-decoration:none">{l.label}</a>
+    ))}
+    <span style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);border:1px solid rgba(198,244,50,.35);padding:7px 12px"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+  </div>
+</nav>
