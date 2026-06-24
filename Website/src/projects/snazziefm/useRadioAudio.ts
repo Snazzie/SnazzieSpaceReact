@@ -532,6 +532,7 @@ export function useRadioAudio(episodes: Episode[], music: Episode[], ads: Episod
     stopSources();
     setLoading(true);
     setMusicPlaying(false);
+    setMusicIdx(null);          // a show is on air now, not a music track (clears stale "now playing")
     setActiveBlock(null);       // no break airing while a show plays
     blockCtxRef.current = null; // no ad block airing once a show starts
     plannedRef.current = null;  // replan the next slot fresh for this show
