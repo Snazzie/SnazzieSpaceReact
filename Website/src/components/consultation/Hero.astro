@@ -11,9 +11,9 @@ const stats = [
 ---
 <section id="snz-top" style="position:relative;border-bottom:1px solid rgba(255,255,255,.08)">
   <div id="snz-gridbg" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:34px 34px;pointer-events:none"></div>
-  <div id="snz-hero" style="position:relative;display:grid;grid-template-columns:1.08fr 0.92fr;min-height:84vh">
+  <div id="snz-hero" style="position:relative;display:grid;grid-template-columns:1fr 72px 1.2fr;min-height:calc(100vh - 52px - 124px)">
     <!-- LEFT -->
-    <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+    <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center">
       <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74;margin-bottom:26px">FOR INDIVIDUALS &amp; SMALL BUSINESSES — UK</div>
       <h1 class="snz-h1" style="margin:0;font:800 72px/0.98 'Archivo',sans-serif;letter-spacing:-0.035em">I build your<br><span style="display:inline-flex;align-items:baseline;gap:4px"><span id="snz-word" style="color:var(--accent)">website</span><span style="display:inline-block;width:5px;height:.78em;background:var(--accent);animation:snz-blink 1.05s steps(1) infinite;transform:translateY(2px)"></span></span></h1>
       <p style="margin:28px 0 0;max-width:480px;font:400 16px/1.65 'JetBrains Mono',monospace;color:#a8a89f">Building a product is easy. Building one that sells is not. Your product is your most powerful sales tool — leave it to the real professional to build you one that leaves an impression.</p>
@@ -22,29 +22,307 @@ const stats = [
         <span class="snz-magwrap"><a data-mag href="mailto:info@snazzie.space" style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;border:1px solid rgba(255,255,255,.22);color:#F2F0EA;padding:15px 22px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">EMAIL ME</a></span>
       </div>
     </div>
-    <!-- RIGHT : WIREFRAME PREVIEW -->
-    <div class="snz-right" style="position:relative;border-left:1px solid rgba(255,255,255,.08);background:#0c0c0c;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:48px 44px">
-      <div style="position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55;animation:snz-scan 5.5s linear infinite"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-        <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#7c7c74">PREVIEW <span style="color:#cfcfc7">your site</span></span>
-        <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--accent)">● DESIGN</span>
+    <!-- DIVIDER WALL -->
+    <div style="position:relative;background:#080808;display:flex;flex-direction:column;align-items:center;overflow:hidden">
+      <!-- left border -->
+      <div style="position:absolute;top:0;bottom:0;left:12px;width:2px;background:rgba(255,255,255,.55)"></div>
+      <!-- right border -->
+      <div style="position:absolute;top:0;bottom:0;right:12px;width:2px;background:rgba(255,255,255,.55)"></div>
+      <!-- inner fill between borders -->
+      <div style="position:absolute;top:0;bottom:0;left:14px;right:14px;background:rgba(255,255,255,.02)"></div>
+      <!-- tick marks spanning full width between borders -->
+      {[12,22,32,42,52,62,72,82,88].map(pct => (
+        <div style={`position:absolute;top:${pct}%;left:14px;right:14px;height:1px;background:rgba(255,255,255,.12)`}></div>
+      ))}
+      <!-- centre diamond -->
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);width:12px;height:12px;background:#fff;z-index:1"></div>
+      <!-- rotated label -->
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font:800 8px 'JetBrains Mono',monospace;letter-spacing:.22em;color:#080808;z-index:2">SNAZZIE°</div>
+    </div>
+    <!-- RIGHT : WIREFRAME WALL -->
+    <div class="snz-right" style="position:relative;background:#0c0c0c;overflow:hidden">
+      <!-- top/bottom fade masks -->
+      <div style="position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,#0c0c0c 0%,transparent 10%,transparent 90%,#0c0c0c 100%);pointer-events:none"></div>
+      <!-- label -->
+      <div style="position:absolute;bottom:32px;left:0;right:0;z-index:3;display:flex;justify-content:center">
+        <span style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74;background:#0c0c0c;padding:6px 14px;border:1px solid rgba(255,255,255,.08)">EVERYTHING DIGITAL</span>
       </div>
-      <svg viewBox="0 0 480 290" style="width:100%;height:auto;max-height:300px" aria-hidden="true">
-        <rect x="60" y="26" width="360" height="240" rx="10" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.6"></rect>
-        <line x1="60" y1="60" x2="420" y2="60" stroke="rgba(255,255,255,.28)" stroke-width="1.4"></line>
-        <circle cx="80" cy="43" r="3.4" fill="var(--accent)"></circle>
-        <circle cx="93" cy="43" r="3.4" fill="rgba(255,255,255,.3)"></circle>
-        <circle cx="106" cy="43" r="3.4" fill="rgba(255,255,255,.3)"></circle>
-        <rect x="300" y="36" width="100" height="14" rx="3" fill="rgba(255,255,255,.07)"></rect>
-        <rect x="84" y="82" width="120" height="16" rx="3" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.3"></rect>
-        <rect x="84" y="112" width="312" height="78" rx="6" fill="rgba(198,244,50,.05)" stroke="var(--accent)" stroke-width="1.8"></rect>
-        <text x="104" y="158" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="13">YOUR SITE</text>
-        <rect x="84" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
-        <rect x="194" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
-        <rect x="304" y="206" width="92" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.3"></rect>
-      </svg>
-      <div style="margin-top:24px;display:flex;align-items:center;gap:10px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.05em;color:#7c7c74">
-        <span style="display:inline-block;color:var(--accent);animation:snz-bounce 1.6s ease infinite">↓</span> SCROLL — watch it grow into an app, a backend &amp; scale
+      <!-- scrolling columns -->
+      <div id="snz-wwall" style="position:absolute;inset:0;display:flex;flex-direction:row-reverse;gap:20px;padding:0 16px;align-items:flex-start">
+        <!-- col 1 - scroll up -->
+        <div class="snz-col snz-col-up" style="display:flex;flex-direction:column;gap:18px;flex-shrink:0;width:190px">
+          <!-- landing page -->
+          <svg class="snz-wf" viewBox="0 0 140 100" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="100" rx="6" fill="#111" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="16" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="6" y="5" width="22" height="6" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="90" y="5" width="14" height="6" rx="2" fill="rgba(255,255,255,.12)"/>
+            <rect x="108" y="5" width="14" height="6" rx="2" fill="rgba(255,255,255,.12)"/>
+            <rect x="8" y="24" width="80" height="10" rx="2" fill="rgba(255,255,255,.18)"/>
+            <rect x="8" y="37" width="56" height="7" rx="2" fill="rgba(255,255,255,.08)"/>
+            <rect x="8" y="50" width="34" height="10" rx="3" fill="rgba(198,244,50,.7)"/>
+            <rect x="80" y="22" width="52" height="46" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="74" width="124" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="8" y="80" width="40" height="5" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="92" y="80" width="40" height="5" rx="2" fill="rgba(255,255,255,.06)"/>
+          </svg>
+          <!-- mobile app -->
+          <svg class="snz-wf" viewBox="0 0 140 180" aria-hidden="true">
+            <rect x="20" y="0" width="100" height="180" rx="12" fill="#111" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+            <rect x="48" y="8" width="44" height="5" rx="3" fill="rgba(255,255,255,.1)"/>
+            <rect x="20" y="22" width="100" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="30" width="84" height="42" rx="4" fill="rgba(198,244,50,.06)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="34" y="44" width="50" height="8" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="28" y="80" width="38" height="28" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="72" y="80" width="40" height="28" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="28" y="116" width="84" height="6" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="28" y="126" width="60" height="6" rx="2" fill="rgba(255,255,255,.05)"/>
+            <rect x="28" y="140" width="84" height="14" rx="3" fill="rgba(198,244,50,.6)"/>
+            <rect x="20" y="162" width="100" height="1" fill="rgba(255,255,255,.06)"/>
+            <circle cx="50" cy="171" r="4" fill="rgba(255,255,255,.08)"/>
+            <circle cx="70" cy="171" r="4" fill="rgba(198,244,50,.4)"/>
+            <circle cx="90" cy="171" r="4" fill="rgba(255,255,255,.08)"/>
+          </svg>
+          <!-- pricing table -->
+          <svg class="snz-wf" viewBox="0 0 140 110" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="110" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="10" width="60" height="8" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="8" y="28" width="38" height="68" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="52" y="22" width="38" height="74" rx="4" fill="rgba(198,244,50,.07)" stroke="rgba(198,244,50,.4)" stroke-width="1"/>
+            <rect x="96" y="28" width="36" height="68" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="14" y="36" width="24" height="6" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="58" y="30" width="24" height="6" rx="2" fill="rgba(198,244,50,.6)"/>
+            <rect x="102" y="36" width="22" height="6" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="14" y="54" width="20" height="3" rx="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="14" y="60" width="22" height="3" rx="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="14" y="66" width="18" height="3" rx="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="58" y="48" width="24" height="3" rx="1" fill="rgba(198,244,50,.25)"/>
+            <rect x="58" y="54" width="24" height="3" rx="1" fill="rgba(198,244,50,.25)"/>
+            <rect x="58" y="60" width="24" height="3" rx="1" fill="rgba(198,244,50,.25)"/>
+            <rect x="58" y="82" width="26" height="8" rx="3" fill="rgba(198,244,50,.7)"/>
+          </svg>
+          <!-- blog/article -->
+          <svg class="snz-wf" viewBox="0 0 140 120" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="120" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="14" rx="6" fill="rgba(255,255,255,.03)"/>
+            <rect x="8" y="4" width="18" height="6" rx="2" fill="rgba(198,244,50,.4)"/>
+            <rect x="8" y="22" width="124" height="32" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="14" y="28" width="70" height="8" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="14" y="38" width="48" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="8" y="62" width="82" height="5" rx="2" fill="rgba(255,255,255,.09)"/>
+            <rect x="8" y="70" width="76" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="8" y="78" width="80" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="8" y="86" width="60" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="98" y="62" width="34" height="34" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="8" y="100" width="30" height="6" rx="3" fill="rgba(198,244,50,.5)"/>
+          </svg>
+        </div>
+        <!-- col 2 - scroll down (offset) -->
+        <div class="snz-col snz-col-dn" style="display:flex;flex-direction:column;gap:18px;flex-shrink:0;width:190px;margin-top:-60px">
+          <!-- dashboard -->
+          <svg class="snz-wf" viewBox="0 0 140 110" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="110" rx="6" fill="#111" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="0" y="0" width="28" height="110" rx="6" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="4" y="10" width="20" height="5" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="4" y="24" width="20" height="4" rx="2" fill="rgba(255,255,255,.09)"/>
+            <rect x="4" y="32" width="20" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="4" y="40" width="20" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="4" y="48" width="20" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="34" y="8" width="38" height="24" rx="3" fill="rgba(198,244,50,.08)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="78" y="8" width="28" height="24" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="112" y="8" width="22" height="24" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="34" y="38" width="60" height="44" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <!-- chart bars -->
+            <rect x="40" y="66" width="6" height="10" rx="1" fill="rgba(198,244,50,.4)"/>
+            <rect x="50" y="58" width="6" height="18" rx="1" fill="rgba(198,244,50,.6)"/>
+            <rect x="60" y="62" width="6" height="14" rx="1" fill="rgba(198,244,50,.4)"/>
+            <rect x="70" y="52" width="6" height="24" rx="1" fill="rgba(198,244,50,.7)"/>
+            <rect x="80" y="60" width="6" height="16" rx="1" fill="rgba(198,244,50,.5)"/>
+            <rect x="100" y="38" width="34" height="44" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <polyline points="106,70 114,58 122,64 130,48" fill="none" stroke="rgba(198,244,50,.5)" stroke-width="1.5"/>
+          </svg>
+          <!-- ecommerce -->
+          <svg class="snz-wf" viewBox="0 0 140 130" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="130" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="16" rx="6" fill="rgba(255,255,255,.03)"/>
+            <rect x="6" y="5" width="16" height="6" rx="2" fill="rgba(198,244,50,.4)"/>
+            <rect x="110" y="4" width="12" height="8" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="8" y="22" width="38" height="44" rx="3" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="52" y="22" width="38" height="44" rx="3" fill="rgba(198,244,50,.06)" stroke="rgba(198,244,50,.25)" stroke-width="1"/>
+            <rect x="96" y="22" width="38" height="44" rx="3" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="10" y="50" width="22" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="10" y="57" width="16" height="4" rx="2" fill="rgba(198,244,50,.4)"/>
+            <rect x="54" y="50" width="22" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="54" y="57" width="16" height="4" rx="2" fill="rgba(198,244,50,.6)"/>
+            <rect x="98" y="50" width="22" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="98" y="57" width="16" height="4" rx="2" fill="rgba(198,244,50,.4)"/>
+            <rect x="8" y="74" width="38" height="44" rx="3" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="52" y="74" width="38" height="44" rx="3" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="96" y="74" width="38" height="44" rx="3" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+          </svg>
+          <!-- SaaS onboarding -->
+          <svg class="snz-wf" viewBox="0 0 140 100" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="100" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="12" width="124" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <circle cx="32" cy="14" r="6" fill="rgba(198,244,50,.7)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <circle cx="70" cy="14" r="6" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <circle cx="108" cy="14" r="6" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="20" y="30" width="100" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="20" y="48" width="100" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="20" y="66" width="100" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="42" y="84" width="56" height="10" rx="3" fill="rgba(198,244,50,.65)"/>
+          </svg>
+          <!-- portfolio -->
+          <svg class="snz-wf" viewBox="0 0 140 115" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="115" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="40" rx="6" fill="rgba(198,244,50,.04)" stroke="rgba(198,244,50,.18)" stroke-width="1"/>
+            <rect x="10" y="10" width="50" height="8" rx="2" fill="rgba(255,255,255,.18)"/>
+            <rect x="10" y="22" width="36" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="90" y="12" width="20" height="8" rx="3" fill="rgba(198,244,50,.7)"/>
+            <rect x="8" y="48" width="56" height="28" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="70" y="48" width="62" height="28" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="8" y="82" width="38" height="28" rx="3" fill="rgba(198,244,50,.06)" stroke="rgba(198,244,50,.25)" stroke-width="1"/>
+            <rect x="52" y="82" width="38" height="28" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="96" y="82" width="36" height="28" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+          </svg>
+        </div>
+        <!-- col 3 - scroll up (slower) -->
+        <div class="snz-col snz-col-up2" style="display:flex;flex-direction:column;gap:18px;flex-shrink:0;width:190px;margin-top:-30px">
+          <!-- booking/calendar app -->
+          <svg class="snz-wf" viewBox="0 0 140 120" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="120" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="18" rx="6" fill="rgba(255,255,255,.04)"/>
+            <rect x="8" y="6" width="40" height="6" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="104" y="6" width="28" height="6" rx="3" fill="rgba(198,244,50,.6)"/>
+            <rect x="8" y="24" width="124" height="18" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="12" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="28" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="44" y="28" width="12" height="10" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="60" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="76" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="92" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="108" y="28" width="12" height="10" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="8" y="48" width="58" height="64" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="72" y="48" width="60" height="30" rx="3" fill="rgba(198,244,50,.06)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="78" y="54" width="30" height="5" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="78" y="62" width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="72" y="84" width="60" height="28" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          </svg>
+          <!-- marketing landing -->
+          <svg class="snz-wf" viewBox="0 0 140 130" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="130" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="50" rx="6" fill="rgba(198,244,50,.04)"/>
+            <rect x="20" y="14" width="100" height="10" rx="2" fill="rgba(255,255,255,.16)"/>
+            <rect x="30" y="28" width="80" height="6" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="46" y="38" width="48" height="8" rx="3" fill="rgba(198,244,50,.65)"/>
+            <rect x="8" y="58" width="38" height="30" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="52" y="58" width="38" height="30" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="96" y="58" width="38" height="30" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="96" width="124" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="20" y="104" width="60" height="7" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="20" y="114" width="80" height="5" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="20" y="122" width="48" height="5" rx="2" fill="rgba(255,255,255,.06)"/>
+          </svg>
+          <!-- mobile social -->
+          <svg class="snz-wf" viewBox="0 0 140 180" aria-hidden="true">
+            <rect x="20" y="0" width="100" height="180" rx="12" fill="#111" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+            <rect x="48" y="8" width="44" height="5" rx="3" fill="rgba(255,255,255,.1)"/>
+            <rect x="28" y="20" width="84" height="1" fill="rgba(255,255,255,.06)"/>
+            <circle cx="38" cy="32" r="8" fill="rgba(198,244,50,.15)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="52" y="28" width="50" height="5" rx="2" fill="rgba(255,255,255,.12)"/>
+            <rect x="52" y="35" width="36" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="48" width="84" height="46" rx="4" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="28" y="100" width="56" height="4" rx="2" fill="rgba(255,255,255,.09)"/>
+            <rect x="28" y="107" width="44" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="118" width="84" height="46" rx="4" fill="rgba(198,244,50,.04)" stroke="rgba(198,244,50,.18)" stroke-width="1"/>
+            <rect x="28" y="168" width="84" height="1" fill="rgba(255,255,255,.06)"/>
+            <circle cx="50" cy="174" r="4" fill="rgba(255,255,255,.08)"/>
+            <circle cx="70" cy="174" r="4" fill="rgba(198,244,50,.4)"/>
+            <circle cx="90" cy="174" r="4" fill="rgba(255,255,255,.08)"/>
+          </svg>
+          <!-- form / contact -->
+          <svg class="snz-wf" viewBox="0 0 140 110" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="110" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="10" width="52" height="8" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="8" y="26" width="124" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="44" width="124" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="62" width="124" height="24" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="8" y="92" width="124" height="12" rx="3" fill="rgba(198,244,50,.65)"/>
+          </svg>
+        </div>
+        <!-- col 4 - scroll down (offset) -->
+        <div class="snz-col snz-col-dn2" style="display:flex;flex-direction:column;gap:18px;flex-shrink:0;width:190px;margin-top:-90px">
+          <!-- analytics -->
+          <svg class="snz-wf" viewBox="0 0 140 120" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="120" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="18" rx="6" fill="rgba(255,255,255,.03)"/>
+            <rect x="8" y="6" width="36" height="6" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="110" y="5" width="22" height="8" rx="3" fill="rgba(198,244,50,.55)"/>
+            <rect x="8" y="26" width="58" height="38" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <polyline points="14,56 24,44 34,50 44,36 54,42 64,30" fill="none" stroke="rgba(198,244,50,.6)" stroke-width="1.5"/>
+            <rect x="72" y="26" width="60" height="38" rx="3" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="78" y="38" width="10" height="20" rx="2" fill="rgba(198,244,50,.3)"/>
+            <rect x="92" y="32" width="10" height="26" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="106" y="42" width="10" height="16" rx="2" fill="rgba(198,244,50,.35)"/>
+            <rect x="120" y="36" width="6" height="22" rx="2" fill="rgba(198,244,50,.45)"/>
+            <rect x="8" y="72" width="38" height="20" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="52" y="72" width="38" height="20" rx="3" fill="rgba(198,244,50,.06)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="96" y="72" width="36" height="20" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="8" y="100" width="124" height="6" rx="2" fill="rgba(255,255,255,.05)"/>
+            <rect x="8" y="109" width="80" height="6" rx="2" fill="rgba(255,255,255,.04)"/>
+          </svg>
+          <!-- mobile checkout -->
+          <svg class="snz-wf" viewBox="0 0 140 180" aria-hidden="true">
+            <rect x="20" y="0" width="100" height="180" rx="12" fill="#111" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+            <rect x="48" y="8" width="44" height="5" rx="3" fill="rgba(255,255,255,.1)"/>
+            <rect x="28" y="20" width="84" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="26" width="84" height="6" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="28" y="38" width="84" height="30" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="34" y="44" width="36" height="12" rx="3" fill="rgba(255,255,255,.07)"/>
+            <rect x="74" y="44" width="32" height="5" rx="2" fill="rgba(255,255,255,.1)"/>
+            <rect x="74" y="52" width="22" height="4" rx="2" fill="rgba(198,244,50,.4)"/>
+            <rect x="28" y="76" width="84" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="82" width="50" height="5" rx="2" fill="rgba(255,255,255,.09)"/>
+            <rect x="28" y="92" width="84" height="10" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="28" y="108" width="84" height="10" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="28" y="124" width="84" height="10" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <rect x="28" y="142" width="84" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="28" y="148" width="50" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="100" y="146" width="12" height="8" rx="2" fill="rgba(198,244,50,.5)"/>
+            <rect x="28" y="160" width="84" height="12" rx="3" fill="rgba(198,244,50,.65)"/>
+          </svg>
+          <!-- settings / profile -->
+          <svg class="snz-wf" viewBox="0 0 140 110" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="110" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <circle cx="28" cy="28" r="14" fill="rgba(198,244,50,.1)" stroke="rgba(198,244,50,.3)" stroke-width="1"/>
+            <rect x="50" y="18" width="60" height="8" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="50" y="30" width="40" height="5" rx="2" fill="rgba(255,255,255,.07)"/>
+            <rect x="8" y="52" width="124" height="1" fill="rgba(255,255,255,.06)"/>
+            <rect x="8" y="60" width="80" height="6" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="106" y="58" width="26" height="10" rx="5" fill="rgba(198,244,50,.5)"/>
+            <rect x="8" y="74" width="80" height="6" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="106" y="72" width="26" height="10" rx="5" fill="rgba(255,255,255,.08)"/>
+            <rect x="8" y="88" width="80" height="6" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="106" y="86" width="26" height="10" rx="5" fill="rgba(198,244,50,.5)"/>
+          </svg>
+          <!-- news / feed -->
+          <svg class="snz-wf" viewBox="0 0 140 140" aria-hidden="true">
+            <rect x="0" y="0" width="140" height="140" rx="6" fill="#111" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="0" y="0" width="140" height="16" rx="6" fill="rgba(255,255,255,.03)"/>
+            <rect x="8" y="5" width="30" height="6" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="8" y="24" width="124" height="30" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="14" y="30" width="60" height="7" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="14" y="40" width="80" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="14" y="47" width="64" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="8" y="62" width="124" height="30" rx="3" fill="rgba(198,244,50,.04)" stroke="rgba(198,244,50,.2)" stroke-width="1"/>
+            <rect x="14" y="68" width="48" height="7" rx="2" fill="rgba(255,255,255,.14)"/>
+            <rect x="14" y="78" width="70" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+            <rect x="102" y="64" width="24" height="24" rx="3" fill="rgba(198,244,50,.08)"/>
+            <rect x="8" y="100" width="124" height="30" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+            <rect x="14" y="106" width="56" height="7" rx="2" fill="rgba(255,255,255,.12)"/>
+            <rect x="14" y="116" width="76" height="4" rx="2" fill="rgba(255,255,255,.06)"/>
+          </svg>
+        </div>
       </div>
     </div>
   </div>
@@ -58,6 +336,27 @@ const stats = [
     ))}
   </div>
 </section>
+
+<style>
+  @keyframes snz-wall-up {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+  }
+  @keyframes snz-wall-dn {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(0); }
+  }
+  .snz-col-up  { animation: snz-wall-up 28s linear infinite; animation-play-state: paused; }
+  .snz-col-dn  { animation: snz-wall-dn 22s linear infinite; animation-play-state: paused; }
+  .snz-col-up2 { animation: snz-wall-up 34s linear infinite; animation-play-state: paused; }
+  .snz-col-dn2 { animation: snz-wall-dn 26s linear infinite; animation-play-state: paused; }
+  .snz-col-up.snz-ready, .snz-col-up2.snz-ready { animation-play-state: running; }
+  .snz-col-dn.snz-ready, .snz-col-dn2.snz-ready { animation-play-state: running; }
+  .snz-wf { border-radius: 6px; display: block; }
+  @media (prefers-reduced-motion: reduce) {
+    .snz-col-up, .snz-col-dn, .snz-col-up2, .snz-col-dn2 { animation: none; }
+  }
+</style>
 
 <script>
   // Cycle the accent word in the hero headline.
@@ -85,5 +384,16 @@ const stats = [
         };
       }
     })();
+  }
+
+  // Duplicate wireframe wall columns for seamless infinite scroll
+  // Clone first, then start animation to avoid jump on first loop
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    document.querySelectorAll<HTMLElement>('#snz-wwall .snz-col').forEach((col) => {
+      const kids = Array.from(col.children);
+      kids.forEach((k) => col.appendChild(k.cloneNode(true)));
+      requestAnimationFrame(() => col.classList.add('snz-ready'));
+    });
   }
 </script>
