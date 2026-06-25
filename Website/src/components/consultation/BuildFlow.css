@@ -6,7 +6,7 @@
   display:flex; flex-direction:column; justify-content:center; gap:24px;
   -webkit-mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%);
           mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%); }
-.pur-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
+.pur-row{ display:flex; align-items:center; gap:34px; white-space:nowrap; font:800 38px/1.3 'Archivo',sans-serif;
   letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04);
   color:transparent;
   background-image:linear-gradient(100deg, rgba(198,244,50,.12) 0%, rgba(198,244,50,.12) 40%,
@@ -16,9 +16,9 @@
   -webkit-background-clip:text; background-clip:text; }
 .pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
 .pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
-/* promote each row to its own compositor layer so the translateX rides the GPU and the
-   heavy style recalc on data-cat flips (~400 .pur-it transitions) can't stall the marquee */
-.pur-row{ will-change:transform; backface-visibility:hidden; }
+/* NOTE: do NOT put will-change/backface-visibility on .pur-row. Promoting these very wide rows
+   to GPU layers overflows the max layer texture size and, with background-clip:text, drops or
+   clips glyphs (missing/cut-off labels). The translateX stays on the main thread, which is fine. */
 /* the marquee animations are `infinite`; keep them paused until the overlay is actually
    visible (JS toggles .snz-live) so the constant shimmer repaint costs nothing offscreen.
    pause/resume preserves position, so this never causes a jump. */
@@ -40,7 +40,9 @@
    gradient. The grey fill is set here (NOT in the .pur-it transition list) so the colour snaps
    in one repaint at the flip instead of re-rasterising the clipped text every frame; opacity is
    what actually animates. */
-#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(210,210,204,.85); opacity:.55; }
+/* dim text matched to the dim logos: item-opacity .55 here multiplies the fill alpha, so a
+   ~.3 fill lands near the icons' effective ~.17 (their opacity compounds with this item's). */
+#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(210,210,204,.3); opacity:.55; }
 #snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(210,210,204,.55); opacity:.55; }
 #snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],

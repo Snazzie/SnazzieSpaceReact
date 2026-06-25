@@ -32,10 +32,11 @@ const services = [
 // stage index (0..3) → highlighted category
 const PUR_CATS = ["host", "pay", "cms", "app"];
 // deterministic per-row shuffle (no Math.random at build time)
-// PERF: 22 items/row (×2 dupes) over 11 rows ≈ 484 marquee nodes vs the old 840 — far less
-// paint area and far less style recalc when data-cat flips. Rows past the radial mask edge add cost
-// with no visible payoff, so the wall is trimmed to what the mask actually shows.
-const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 22); };
+// PERF + CORRECTNESS: keep each row narrow. The row's transform animation promotes it to a GPU
+// layer sized to its full content × devicePixelRatio; if that exceeds the GPU max texture (~16384)
+// the browser CLIPS the layer and glyphs past the limit render black/missing. 16 items (×2 dupes)
+// at the reduced font/gap below keeps the row well under the limit. Fewer nodes also = less paint.
+const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 16); };
 const PURPOSE_ROWS = Array.from({ length: 11 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
 
 // Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
