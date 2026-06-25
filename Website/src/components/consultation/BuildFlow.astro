@@ -39,7 +39,7 @@ const ENGINE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "
 const buildCaps = [
   { label: "01 — DESIGN", title: "Endless design possibilities.", body: "Catered entirely to your brand. Website, app, or both, no templates, no limits, designed from scratch around you.", max: 460 },
   { label: "02 — PURPOSE", title: "Built around what it's for.", body: "A landing page, a store, a content engine, a full app, the same product shaped to whatever your business needs to do.", max: 480 },
-  { label: "03 — SCALE", title: "People show up, and it scales.", body: "As word spreads more customers arrive, from a small shop with a hundred visitors to an enterprise with half a million, and the infrastructure scales right along with them.", max: 500 },
+  { label: "03 — SCALE", title: "Scales with your customers.", body: "As word spreads more customers arrive, from a small shop with a hundred visitors to an enterprise with half a million, and the infrastructure scales right along with them.", max: 500 },
   { label: "04 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working, so you know what to do next.", max: 480 },
 ];
 
@@ -100,6 +100,9 @@ const phoneUnits = [0, 240];
   /* browser + phone dock share a centered row; when the dock expands the whole row
      widens, so the browser shifts left to make space for the phone */
   .eng-prod{ display:flex; align-items:center; justify-content:center; width:100%; }
+  /* shrink-to-content wrapper: the shrink-into-card handoff transforms THIS (browser+phone only),
+     so the marquee background never scales with it */
+  .eng-prodi{ display:flex; align-items:center; justify-content:center; width:100%; transform-origin:center center; will-change:transform; }
   .eng-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
   #snz-engine[data-app] .eng-appdock{ width:140px; margin-left:24px; opacity:1; }
   @media (prefers-reduced-motion: reduce){ .eng-appdock{ transition:none; } }
@@ -303,14 +306,42 @@ const phoneUnits = [0, 240];
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
           <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
-          <rect x="-74" y="-32" width="78" height="46" rx="5" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"></rect>
-          <circle cx="-68" cy="-26" r="2.2" fill="var(--accent)"></circle>
-          <circle cx="-61" cy="-26" r="2.2" fill="rgba(255,255,255,.3)"></circle>
-          <rect x="-68" y="-14" width="44" height="9" rx="2" fill="rgba(198,244,50,.5)"></rect>
-          <rect x="-68" y="1" width="60" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
-          <rect x="18" y="-34" width="38" height="62" rx="8" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"></rect>
-          <rect x="24" y="-26" width="26" height="40" rx="2" fill="rgba(198,244,50,.12)"></rect>
-          <text x="0" y="40" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" letter-spacing="1">YOUR PRODUCT</text>
+          <!-- placeholder content: shown ONLY for reduced-motion (where the live view-4 element can't
+               persist into this card). In normal motion JS hides this and the real product seats here. -->
+          <g id="gCorePh">
+          <!-- web-app dashboard (mirrors segment-2 view 4): nav + stat chips + bar chart -->
+          <rect x="-82" y="-39" width="86" height="60" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.1"></rect>
+          <rect x="-78" y="-35" width="20" height="3" rx="1.5" fill="var(--accent)"></rect>
+          <circle cx="-2" cy="-33.5" r="2" fill="rgba(255,255,255,.25)"></circle>
+          <rect x="-78" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-75" y="-24" width="9" height="3" rx="1.5" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="-58" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-55" y="-24" width="7" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
+          <rect x="-38" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-35" y="-24" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
+          <rect x="-78" y="-11" width="74" height="28" rx="3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"></rect>
+          <rect x="-74" y="7" width="4" height="7" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-67" y="2" width="4" height="12" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-60" y="5" width="4" height="9" rx="1" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="-53" y="-2" width="4" height="16" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="-46" y="3" width="4" height="11" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-39" y="-4" width="4" height="18" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="-32" y="0" width="4" height="14" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-25" y="-6" width="4" height="20" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <!-- docked native phone (mobile half of view 4) -->
+          <rect x="16" y="-37" width="40" height="68" rx="8" fill="#0c0c0c" stroke="rgba(255,255,255,.4)" stroke-width="1.2"></rect>
+          <rect x="32" y="-33" width="8" height="2" rx="1" fill="rgba(255,255,255,.2)"></rect>
+          <rect x="21" y="-24" width="30" height="15" rx="2" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1"></rect>
+          <rect x="24" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="29" y="-15" width="3" height="5" rx="1" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="34" y="-14" width="3" height="4" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="39" y="-17" width="3" height="7" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="44" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="21" y="-5" width="30" height="9" rx="2" fill="rgba(198,244,50,.12)"></rect>
+          <circle cx="27" cy="23" r="2" fill="var(--accent)"></circle>
+          <circle cx="36" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
+          <circle cx="45" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
+          </g><!-- /gCorePh -->
         </g>
         <!-- BACKEND engine — terminal vector -->
         <g id="gApi" opacity="0" transform="translate(500 700)">
@@ -437,6 +468,7 @@ const phoneUnits = [0, 240];
         </div>
         <div class="eng-fg">
           <div class="eng-prod">
+          <div class="eng-prodi">
           <div class="eng-browser">
             <div class="eng-chrome"><i></i><i></i><i></i><div class="eng-url"></div></div>
             <div class="eng-screen">
@@ -516,13 +548,14 @@ const phoneUnits = [0, 240];
               </div>
             </div>
           </div>
+          </div><!-- /eng-prodi -->
           </div><!-- /eng-prod -->
           <div class="eng-cap"><span class="eng-step" id="eng-step">01</span><span class="eng-title" id="eng-title">A LANDING PAGE</span><small id="eng-sub">just a clean first impression</small></div>
         </div>
       </div>
       <!-- captions -->
-      <div style="position:absolute;left:56px;bottom:26px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
       <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:300px">
+        <div style="text-align:right;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#7c7c74;margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
         <div style="position:relative;height:10px;margin-bottom:9px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
             <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(255,255,255,.12)">
@@ -541,7 +574,7 @@ const phoneUnits = [0, 240];
           </div>
         </div>
       </div>
-      <div style="position:absolute;left:56px;top:26px;height:118px;width:520px;max-width:60%">
+      <div style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
           <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
             <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
@@ -612,6 +645,16 @@ const phoneUnits = [0, 240];
     // ENGINE overlay: marquee bg + a browser that morphs through 4 product shapes (scroll-driven).
     const engine = $('snz-engine');
     const engViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
+    // view-4 shrink-into-card handoff: the tight browser+phone box (NOT the marquee), its caption, and
+    // the stage box they live in. Scaling engProdi leaves the background marquee untouched.
+    const engProdi = engine ? (engine.querySelector('.eng-prodi') as HTMLElement | null) : null;
+    const engBrowser = engine ? (engine.querySelector('.eng-browser') as HTMLElement | null) : null;
+    const engCap = engine ? (engine.querySelector('.eng-cap') as HTMLElement | null) : null;
+    const gCorePh = $('gCorePh');
+    // normal motion: the live view-4 element persists as the product, so hide the SVG placeholder.
+    if (gCorePh) gCorePh.style.opacity = reduce ? '1' : '0';
+    const stageEl = $('snz-buildsticky');
+    const ENG_HANDOFF_DY = 0; // product seats dead-centre in the card (no label to sit above)
     const engStep = $('eng-step'), engTitle = $('eng-title'), engSub = $('eng-sub');
     const ENG_META = [
       ['A LANDING PAGE', 'just a clean first impression'],
@@ -718,6 +761,8 @@ const phoneUnits = [0, 240];
     let custCount = 0;                            // time-eased customer counter (trigger-driven)
     const gate: Record<string, number> = {};      // named eased trigger gates (0..1)
     let scaleAnimActive = false;
+    let engLastTx = 0, engLastTy = 0;             // last translate applied to the persisting product, so we can
+                                                  // back it out next frame and recover its true natural centre
 
     const apply = (p: number) => {
       const draw = (el: El | null, d: number) => { if (el) { el.style.strokeDashoffset = String(1 - d); el.style.opacity = d > 0 ? '1' : '0'; } };
@@ -782,19 +827,51 @@ const phoneUnits = [0, 240];
       if (gApi) gApi.style.opacity = '0';
 
       // CONNECT+: simple API card follows Banch (slides center → right)
-      const apiCardShow = trig('side', p >= 0.55);
+      const apiCardShow = trig('side', p >= 0.53);
       if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.93, 0.98)))).toFixed(3); }
-      // ENGINE overlay: fade the marquee+browser in over the ENGINE phase, out before CONNECT;
-      // scroll position picks which product shape (landing → store → content → app) is shown.
+      // ENGINE overlay: fade the marquee+browser in over the ENGINE phase. On the way OUT, view 4
+      // (web app + mobile) SHRINKS onto the on-screen slot where the "YOUR PRODUCT" card (gCore) lands,
+      // so the app visibly becomes the product card instead of a plain crossfade.
       if (engine) {
         // The seq-2 landing browser is the SAME node shown faintly in stage 1's backdrop; the
         // triggered `seq2` gate zooms it into place over real time — no swap, no scrubbing.
-        const engOut = 1 - sm(seg(p, 0.50, 0.56));
-        const op = seq2 * engOut;                       // hidden in stage 1 → zooms in only once triggered
+        const engOut = 1 - sm(seg(p, 0.53, 0.58));      // reduced-motion only: crossfade to the SVG card
+        // Normal motion: the SAME view-4 element PERSISTS as the product through stage 3 (no swap) and
+        // only fades when the product card itself dissolves (~0.93). Reduced motion keeps the simple swap.
+        const op = seq2 * (reduce ? engOut : dissolve); // hidden in stage 1 → zooms in only once triggered
         engine.style.opacity = op.toFixed(3);
-        engine.style.transformOrigin = 'center center';
-        engine.style.transform = 'scale(' + lerp(0.5, 1.0, seq2).toFixed(3) + ')';
-        if (engBg) engBg.style.opacity = (clamp((seq2 - 0.55) / 0.45, 0, 1) * engOut).toFixed(3); // marquee joins once settled
+        engine.style.transform = 'none';                // marquee/background never scales — only the product does
+        // handoff: shrink ONLY the browser+phone box down onto gCore's live on-screen slot. Measure real
+        // rects each frame so the moving camera is accounted for; offsetWidth ignores the transform we
+        // set here, so reading it back is feedback-free.
+        const hand = reduce ? 0 : sm(seg(p, 0.44, 0.55));
+        const baseScale = lerp(0.5, 1.0, seq2);          // entry zoom-into-place (product only)
+        if (engProdi) {
+          engProdi.style.transformOrigin = 'center center';
+          if (hand > 0 && gCore && stageEl) {
+            const gr = gCore.getBoundingClientRect();
+            // Recover the product's NATURAL centre by backing out the translate we applied last frame
+            // (scale is about-centre, so it never moves the centre). Then aim exactly at the card centre —
+            // this is caption-offset-proof, so the product seats dead-centre in the "YOUR PRODUCT" card.
+            const r = engProdi.getBoundingClientRect();
+            const natCx = r.left + r.width / 2 - engLastTx;
+            const natCy = r.top + r.height / 2 - engLastTy;
+            const tx = ((gr.left + gr.width / 2) - natCx) * hand;
+            const ty = ((gr.top + gr.height / 2 + ENG_HANDOFF_DY) - natCy) * hand;
+            // content width = browser + (docked phone when on view 4); target gCore's card width.
+            const contentW = (engBrowser ? engBrowser.offsetWidth : 560) + (engine.hasAttribute('data-app') ? 164 : 0);
+            const contentH = engProdi.offsetHeight || 366;
+            // fit inside the card on BOTH axes — width alone lets the (taller) browser overflow top/bottom
+            const s = Math.min((gr.width * 0.9) / (contentW || 1), (gr.height * 0.76) / contentH);
+            engLastTx = tx; engLastTy = ty;
+            engProdi.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + (baseScale * lerp(1, s, hand)).toFixed(3) + ')';
+          } else {
+            engLastTx = 0; engLastTy = 0;
+            engProdi.style.transform = 'scale(' + baseScale.toFixed(3) + ')';
+          }
+        }
+        if (engCap) engCap.style.opacity = (1 - hand).toFixed(3); // caption gone as it lands; gCore carries the label
+        if (engBg) engBg.style.opacity = (clamp((seq2 - 0.55) / 0.45, 0, 1) * engOut * (1 - hand)).toFixed(3); // marquee gone before the shrink
         if (op > 0.01) {
           const t = clamp((p - 0.14) / (0.46 - 0.14), 0, 1); // morph window pulled in tight after the trigger
           engShow(Math.min(engViews.length - 1, Math.floor(t * engViews.length)));
