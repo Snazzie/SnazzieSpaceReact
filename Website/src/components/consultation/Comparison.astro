@@ -108,7 +108,7 @@ const ink = (tone?: string) =>
     <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
   </div>
 
-  <div id="snz-cmp" class="border border-[rgba(255,255,255,0.1)]">
+  <div id="snz-cmp" class="snz-cmp-desktop border border-[rgba(255,255,255,0.1)]">
     <!-- column heads -->
     <div class="snz-cmp-grid grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(255,255,255,0.08)] gap-[1px]">
       <div class="bg-[#0a0a0a]"></div>
@@ -146,6 +146,41 @@ const ink = (tone?: string) =>
     ))}
   </div>
 
+  <!-- mobile: one card per option, each listing every row -->
+  <div class="snz-cmp-mobile">
+    {cols.map((c, ci) => (
+      <div
+        data-reveal
+        data-delay={ci * 70}
+        class={`snz-cmp-card relative mb-[14px] border ${c.hero ? 'border-[var(--accent)]' : 'border-[rgba(255,255,255,0.1)]'}`}
+        style={c.hero ? 'background:linear-gradient(180deg,rgba(198,244,50,.1),#0a0a0a)' : 'background:#0a0a0a'}
+      >
+        {c.hero && (
+          <div class="absolute top-0 right-0 font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[#0a0a0a] py-[5px] px-[10px]">PICK ME</div>
+        )}
+        <div class="py-[22px] px-[22px] border-b border-[rgba(255,255,255,0.08)]">
+          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[12px] ${c.hero ? 'text-[var(--accent)]' : 'text-[#6a6a62]'}`}>{c.kicker}</div>
+          <h3 class={`m-0 mb-2 font-extrabold text-[24px] leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[#F2F0EA]' : 'text-[#cfcfc7]'}`}>{c.title}</h3>
+          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[#7c7c74]">{c.sub}</p>
+        </div>
+        <div>
+          {rows.map((r) => {
+            const cell = r.cells[ci];
+            return (
+              <div class="py-[16px] px-[22px] border-b border-[rgba(255,255,255,0.05)] last:border-b-0">
+                <div class="font-semibold text-[10.5px] font-['JetBrains_Mono'] tracking-[.1em] text-[#6a6a62] uppercase mb-[8px]">{r.label}</div>
+                <div class="flex gap-[10px] items-start">
+                  <span style={`flex:none;width:7px;height:7px;border-radius:50%;margin-top:6px;background:${dot(cell.tone)};${cell.tone === 'good' ? 'box-shadow:0 0 8px var(--accent)' : ''}`}></span>
+                  <span style={`font:400 13.5px/1.5 'JetBrains Mono',monospace;color:${ink(cell.tone)}`}>{cell.text}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+
   <!-- verdict band -->
   <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
     <div>
@@ -157,12 +192,10 @@ const ink = (tone?: string) =>
 </section>
 
 <style>
+  .snz-cmp-mobile { display: none; }
   @media (max-width: 860px) {
     #snz-compare { padding: 64px 22px !important; }
-    .snz-cmp-grid { grid-template-columns: 1fr !important; }
-    .snz-cmp-row .snz-cmp-lab {
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
-      color: var(--accent) !important;
-    }
+    .snz-cmp-desktop { display: none !important; }
+    .snz-cmp-mobile { display: block; }
   }
 </style>
