@@ -36,14 +36,17 @@
    and (on the composited row) can ride the GPU. Icons keep their tiny fill swap — negligible. */
 .pur-it{ display:inline-flex; align-items:center; gap:.26em; transition:opacity .28s ease; }
 .pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .28s ease, opacity .28s ease; opacity:.5; }
-/* once a stage is active: non-matching items recede (low opacity); matching items light up. */
-#snz-purpose[data-cat] .pur-it{ opacity:.26; }
-#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(255,255,255,.07); opacity:.4; }
+/* once a stage is active: non-matching items go a visible GRAY; matching items light up to the
+   gradient. The grey fill is set here (NOT in the .pur-it transition list) so the colour snaps
+   in one repaint at the flip instead of re-rasterising the clipped text every frame; opacity is
+   what actually animates. */
+#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(210,210,204,.85); opacity:.55; }
+#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(210,210,204,.55); opacity:.55; }
 #snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],
 #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"],
 #snz-purpose[data-cat="app"]  .pur-it[data-cat="app"],
-#snz-purpose[data-cat="all"] .pur-it{ opacity:1; }
+#snz-purpose[data-cat="all"] .pur-it{ -webkit-text-fill-color:transparent; opacity:1; }
 #snz-purpose[data-cat="host"] .pur-it[data-cat="host"] .pur-ic,
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"]  .pur-ic,
 #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"]  .pur-ic,
