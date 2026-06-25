@@ -30,10 +30,10 @@ const services = [
     siSentry, siDatadog, siPosthog, siPlausibleanalytics, siMixpanel, siLinear, siIntercom, siZendesk, siHubspot, siDiscord].map(cat("app")),
 ];
 // stage index (0..3) → highlighted category
-const ENG_CATS = ["host", "pay", "cms", "app"];
+const PUR_CATS = ["host", "pay", "cms", "app"];
 // deterministic per-row shuffle (no Math.random at build time)
 const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 30); };
-const ENGINE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
+const PURPOSE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
 
 // Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
 const buildCaps = [
@@ -53,12 +53,12 @@ const phoneUnits = [0, 240];
   @keyframes snz-spin { to { transform: rotate(360deg); } }
 
   /* ===== ENGINE overlay: skewed services marquee + morphing browser ===== */
-  .eng-bg{ position:absolute; left:50%; top:50%; width:230vmax; height:230vmax;
+  .pur-bg{ position:absolute; left:50%; top:50%; width:230vmax; height:230vmax;
     transform:translate(-50%,-50%) rotate(-45deg); transform-origin:center;
     display:flex; flex-direction:column; justify-content:center; gap:24px;
     -webkit-mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%);
             mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%); }
-  .eng-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
+  .pur-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
     letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04);
     color:transparent;
     background-image:linear-gradient(100deg, rgba(198,244,50,.12) 0%, rgba(198,244,50,.12) 40%,
@@ -66,85 +66,91 @@ const phoneUnits = [0, 240];
       rgba(198,244,50,.12) 60%, rgba(198,244,50,.12) 100%);
     background-repeat:repeat-x; background-size:600px 100%;
     -webkit-background-clip:text; background-clip:text; }
-  .eng-row.l{ animation:eng-ml var(--dur,52s) linear infinite, eng-shim 2s linear infinite; }
-  .eng-row.r{ animation:eng-mr var(--dur,52s) linear infinite, eng-shim 2s linear infinite; }
-  @keyframes eng-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-  @keyframes eng-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
-  @keyframes eng-shim{ from{background-position:0 0} to{background-position:-600px 0} }
-  .eng-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
-  .eng-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.5; }
+  .pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
+  .pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
+  /* promote each row to its own compositor layer so the translateX rides the GPU and the
+     heavy style recalc on data-cat flips (~400 .pur-it transitions) can't stall the marquee */
+  .pur-row{ will-change:transform; backface-visibility:hidden; }
+  @keyframes pur-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes pur-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  @keyframes pur-shim{ from{background-position:0 0} to{background-position:-600px 0} }
+  .pur-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
+  .pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.5; }
   /* once a stage is active: non-matching items go flat-dim (no shimmer); matching items keep the
      clipped gradient, so the shimmer sweeps ONLY over the relevant highlights */
-  #snz-engine[data-cat] .eng-it{ -webkit-text-fill-color:rgba(255,255,255,.05); opacity:.6; }
-  #snz-engine[data-cat] .eng-it .eng-ic{ fill:rgba(255,255,255,.07); opacity:.4; }
-  #snz-engine[data-cat="host"] .eng-it[data-cat="host"],
-  #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"],
-  #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"],
-  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"],
-  #snz-engine[data-cat="all"] .eng-it{ -webkit-text-fill-color:transparent; opacity:1; }
-  #snz-engine[data-cat="host"] .eng-it[data-cat="host"] .eng-ic,
-  #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"]  .eng-ic,
-  #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"]  .eng-ic,
-  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]  .eng-ic,
-  #snz-engine[data-cat="all"] .eng-it .eng-ic{ fill:rgba(198,244,50,.4); opacity:.95; }
+  #snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(255,255,255,.05); opacity:.6; }
+  #snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(255,255,255,.07); opacity:.4; }
+  #snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
+  #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],
+  #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"],
+  #snz-purpose[data-cat="app"]  .pur-it[data-cat="app"],
+  #snz-purpose[data-cat="all"] .pur-it{ -webkit-text-fill-color:transparent; opacity:1; }
+  #snz-purpose[data-cat="host"] .pur-it[data-cat="host"] .pur-ic,
+  #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"]  .pur-ic,
+  #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"]  .pur-ic,
+  #snz-purpose[data-cat="app"]  .pur-it[data-cat="app"]  .pur-ic,
+  #snz-purpose[data-cat="all"] .pur-it .pur-ic{ fill:rgba(198,244,50,.4); opacity:.95; }
   /* "all" stage (web app + mobile): disco ball — kill the coherent shimmer sweep and
-     flash each name/icon on its own random offset so the lights scatter across services */
-  #snz-engine[data-cat="all"] .eng-row.l{ animation: eng-ml var(--dur,52s) linear infinite; }
-  #snz-engine[data-cat="all"] .eng-row.r{ animation: eng-mr var(--dur,52s) linear infinite; }
-  #snz-engine[data-cat="all"] .eng-it{ animation: eng-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
-  #snz-engine[data-cat="all"] .eng-it .eng-ic{ animation: eng-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
-  @keyframes eng-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(255,255,255,.05); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
-  @keyframes eng-disco-ic{ 0%,18%,100%{ fill:rgba(255,255,255,.07); } 8%{ fill:var(--accent); } }
+     flash each name/icon on its own random offset so the lights scatter across services.
+     NOTE: we kill the shimmer with a PAINT-only flat background (not by re-declaring the
+     `animation` shorthand) — changing the row's animation list re-resolves it and restarts
+     pur-ml/pur-mr, snapping the marquee back to 0. Keeping the declaration constant across
+     every stage means the marquee never jumps when data-cat flips. */
+  #snz-purpose[data-cat="all"] .pur-row{ background-image:linear-gradient(rgba(198,244,50,.12),rgba(198,244,50,.12)); }
+  #snz-purpose[data-cat="all"] .pur-it{ animation: pur-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+  #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+  @keyframes pur-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(255,255,255,.05); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
+  @keyframes pur-disco-ic{ 0%,18%,100%{ fill:rgba(255,255,255,.07); } 8%{ fill:var(--accent); } }
 
-  .eng-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+  .pur-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
   /* browser + phone dock share a centered row; when the dock expands the whole row
      widens, so the browser shifts left to make space for the phone */
-  .eng-prod{ display:flex; align-items:center; justify-content:center; width:100%; }
+  .pur-prod{ display:flex; align-items:center; justify-content:center; width:100%; }
   /* shrink-to-content wrapper: the shrink-into-card handoff transforms THIS (browser+phone only),
      so the marquee background never scales with it */
-  .eng-prodi{ display:flex; align-items:center; justify-content:center; width:100%; transform-origin:center center; will-change:transform; }
-  .eng-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
-  #snz-engine[data-app] .eng-appdock{ width:140px; margin-left:24px; opacity:1; }
-  @media (prefers-reduced-motion: reduce){ .eng-appdock{ transition:none; } }
-  .eng-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
+  .pur-prodi{ display:flex; align-items:center; justify-content:center; width:100%; transform-origin:center center; will-change:transform; }
+  .pur-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
+  #snz-purpose[data-app] .pur-appdock{ width:140px; margin-left:24px; opacity:1; }
+  @media (prefers-reduced-motion: reduce){ .pur-appdock{ transition:none; } }
+  .pur-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(198,244,50,.1); }
-  .eng-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
-  .eng-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
-  .eng-chrome i:first-child{ background:var(--accent); }
-  .eng-url{ margin-left:10px; height:16px; flex:1; max-width:260px; border-radius:8px; background:rgba(255,255,255,.05); }
-  .eng-screen{ position:relative; height:328px; }
-  .eng-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
-  .eng-view.on{ opacity:1; }
-  .eng-pl{ opacity:0; }
-  .eng-pl.go{ animation:eng-plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
-  @keyframes eng-plop{ 0%{opacity:0;transform:scale(.25) translateY(9px)} 55%{opacity:1} 100%{opacity:1;transform:scale(1) translateY(0)} }
-  .eng-bar{ background:rgba(255,255,255,.14); border-radius:4px; }
-  .eng-bar.dim{ background:rgba(255,255,255,.07); } .eng-bar.acc{ background:rgba(198,244,50,.55); }
-  .eng-box{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; }
-  .eng-btn{ background:var(--accent); border-radius:8px; }
-  .eng-rw{ display:flex; } .eng-cl{ display:flex; flex-direction:column; }
-  .eng-nav{ display:flex; align-items:center; gap:9px; margin-bottom:16px; }
-  .eng-nav .lg{ width:42px; height:10px; border-radius:3px; background:var(--accent); }
-  .eng-nav .sp{ flex:1; } .eng-nav .lk{ width:28px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
-  .eng-grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
-  .eng-grid2{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-  .eng-post{ display:flex; gap:12px; align-items:center; padding:9px 0; border-top:1px solid rgba(255,255,255,.07); }
-  .eng-rail{ width:42px; flex:none; align-self:stretch; border-right:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);
+  .pur-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+  .pur-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
+  .pur-chrome i:first-child{ background:var(--accent); }
+  .pur-url{ margin-left:10px; height:16px; flex:1; max-width:260px; border-radius:8px; background:rgba(255,255,255,.05); }
+  .pur-screen{ position:relative; height:328px; }
+  .pur-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+  .pur-view.on{ opacity:1; }
+  .pur-pl{ opacity:0; }
+  .pur-pl.go{ animation:pur-plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
+  @keyframes pur-plop{ 0%{opacity:0;transform:scale(.25) translateY(9px)} 55%{opacity:1} 100%{opacity:1;transform:scale(1) translateY(0)} }
+  .pur-bar{ background:rgba(255,255,255,.14); border-radius:4px; }
+  .pur-bar.dim{ background:rgba(255,255,255,.07); } .pur-bar.acc{ background:rgba(198,244,50,.55); }
+  .pur-box{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; }
+  .pur-btn{ background:var(--accent); border-radius:8px; }
+  .pur-rw{ display:flex; } .pur-cl{ display:flex; flex-direction:column; }
+  .pur-nav{ display:flex; align-items:center; gap:9px; margin-bottom:16px; }
+  .pur-nav .lg{ width:42px; height:10px; border-radius:3px; background:var(--accent); }
+  .pur-nav .sp{ flex:1; } .pur-nav .lk{ width:28px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
+  .pur-grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .pur-grid2{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .pur-post{ display:flex; gap:12px; align-items:center; padding:9px 0; border-top:1px solid rgba(255,255,255,.07); }
+  .pur-rail{ width:42px; flex:none; align-self:stretch; border-right:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);
     display:flex; flex-direction:column; align-items:center; gap:12px; padding:14px 0; }
-  .eng-rail .rl{ width:18px; height:18px; border-radius:6px; background:var(--accent); }
-  .eng-rail .rd{ width:16px; height:16px; border-radius:6px; background:rgba(255,255,255,.12); }
-  .eng-rail .rd.on{ background:rgba(198,244,50,.4); }
-  .eng-phone{ width:152px; height:300px; border:1.6px solid rgba(255,255,255,.25); border-radius:24px;
+  .pur-rail .rl{ width:18px; height:18px; border-radius:6px; background:var(--accent); }
+  .pur-rail .rd{ width:16px; height:16px; border-radius:6px; background:rgba(255,255,255,.12); }
+  .pur-rail .rd.on{ background:rgba(198,244,50,.4); }
+  .pur-phone{ width:152px; height:300px; border:1.6px solid rgba(255,255,255,.25); border-radius:24px;
     background:#0c0c0c; position:relative; overflow:hidden; box-shadow:0 0 40px rgba(198,244,50,.08); }
-  .eng-phone::before{ content:''; position:absolute; top:9px; left:50%; transform:translateX(-50%);
+  .pur-phone::before{ content:''; position:absolute; top:9px; left:50%; transform:translateX(-50%);
     width:42px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
-  .eng-dot{ width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); }
-  .eng-dot.on{ background:var(--accent); }
-  .eng-cap{ display:flex; align-items:center; gap:13px; }
-  .eng-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
-  .eng-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
-  .eng-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
-  @media (prefers-reduced-motion: reduce){ .eng-row{ animation:none; } .eng-pl{ opacity:1; } #snz-engine[data-cat="all"] .eng-it, #snz-engine[data-cat="all"] .eng-it .eng-ic{ animation:none; } }
+  .pur-dot{ width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); }
+  .pur-dot.on{ background:var(--accent); }
+  .pur-cap{ display:flex; align-items:center; gap:13px; }
+  .pur-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
+  .pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
+  .pur-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
+  @media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; } #snz-purpose[data-cat="all"] .pur-it, #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; } }
 
   @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
@@ -343,7 +349,7 @@ const phoneUnits = [0, 240];
           <circle cx="45" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
           </g><!-- /gCorePh -->
         </g>
-        <!-- BACKEND engine — terminal vector -->
+        <!-- BACKEND purpose — terminal vector -->
         <g id="gApi" opacity="0" transform="translate(500 700)">
           <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
           <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></line>
@@ -392,7 +398,7 @@ const phoneUnits = [0, 240];
             ))}
           </g>
         </g>
-        <!-- ENGINE now rendered as an HTML overlay (#snz-engine) below; nothing here -->
+        <!-- ENGINE now rendered as an HTML overlay (#snz-purpose) below; nothing here -->
         <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
         <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
         <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
@@ -456,79 +462,79 @@ const phoneUnits = [0, 240];
         </g>
       </svg>
       <!-- ENGINE overlay (HTML): skewed services marquee + scroll-morphing browser -->
-      <div id="snz-engine" style="position:absolute;inset:0;opacity:0;pointer-events:none;overflow:hidden">
-        <div class="eng-bg">
-          {ENGINE_ROWS.map((row, r) => (
-            <div class={`eng-row ${row.dir}`} style={`--dur:${row.dur}s`}>
+      <div id="snz-purpose" style="position:absolute;inset:0;opacity:0;pointer-events:none;overflow:hidden">
+        <div class="pur-bg">
+          {PURPOSE_ROWS.map((row, r) => (
+            <div class={`pur-row ${row.dir}`} style={`--dur:${row.dur}s`}>
               {[...row.items, ...row.items].map((s, k) => (
-                <span class="eng-it" data-cat={s.cat} style={`--fd:${(((r * 17 + k * 13) % 38) / 10).toFixed(2)}s;--fdur:${(1.6 + ((r * 7 + k * 11) % 18) / 10).toFixed(2)}s`}><svg viewBox="0 0 24 24" class="eng-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
+                <span class="pur-it" data-cat={s.cat} style={`--fd:${(((r * 17 + k * 13) % 38) / 10).toFixed(2)}s;--fdur:${(1.6 + ((r * 7 + k * 11) % 18) / 10).toFixed(2)}s`}><svg viewBox="0 0 24 24" class="pur-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
               ))}
             </div>
           ))}
         </div>
-        <div class="eng-fg">
-          <div class="eng-prod">
-          <div class="eng-prodi">
-          <div class="eng-browser">
-            <div class="eng-chrome"><i></i><i></i><i></i><div class="eng-url"></div></div>
-            <div class="eng-screen">
+        <div class="pur-fg">
+          <div class="pur-prod">
+          <div class="pur-prodi">
+          <div class="pur-browser">
+            <div class="pur-chrome"><i></i><i></i><i></i><div class="pur-url"></div></div>
+            <div class="pur-screen">
               <!-- 01 landing -->
-              <div class="eng-view on" id="ev0">
-                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="eng-btn eng-pl" style="width:64px;height:18px"></div></div>
-                <div class="eng-rw" style="gap:22px;align-items:center">
-                  <div class="eng-cl" style="flex:1;gap:10px">
-                    <div class="eng-bar eng-pl" style="height:18px;width:88%"></div>
-                    <div class="eng-bar eng-pl" style="height:18px;width:62%"></div>
-                    <div class="eng-bar dim eng-pl" style="height:7px;width:92%;margin-top:5px"></div>
-                    <div class="eng-bar dim eng-pl" style="height:7px;width:78%"></div>
-                    <div class="eng-rw" style="gap:9px;margin-top:10px"><div class="eng-btn eng-pl" style="width:84px;height:26px"></div><div class="eng-box eng-pl" style="width:70px;height:26px;border-radius:8px"></div></div>
+              <div class="pur-view on" id="ev0">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="pur-btn pur-pl" style="width:64px;height:18px"></div></div>
+                <div class="pur-rw" style="gap:22px;align-items:center">
+                  <div class="pur-cl" style="flex:1;gap:10px">
+                    <div class="pur-bar pur-pl" style="height:18px;width:88%"></div>
+                    <div class="pur-bar pur-pl" style="height:18px;width:62%"></div>
+                    <div class="pur-bar dim pur-pl" style="height:7px;width:92%;margin-top:5px"></div>
+                    <div class="pur-bar dim pur-pl" style="height:7px;width:78%"></div>
+                    <div class="pur-rw" style="gap:9px;margin-top:10px"><div class="pur-btn pur-pl" style="width:84px;height:26px"></div><div class="pur-box pur-pl" style="width:70px;height:26px;border-radius:8px"></div></div>
                   </div>
-                  <div class="eng-box eng-pl" style="flex:1;height:128px"></div>
+                  <div class="pur-box pur-pl" style="flex:1;height:128px"></div>
                 </div>
-                <div class="eng-grid3" style="margin-top:18px"><div class="eng-box eng-pl" style="height:66px"></div><div class="eng-box eng-pl" style="height:66px"></div><div class="eng-box eng-pl" style="height:66px"></div></div>
+                <div class="pur-grid3" style="margin-top:18px"><div class="pur-box pur-pl" style="height:66px"></div><div class="pur-box pur-pl" style="height:66px"></div><div class="pur-box pur-pl" style="height:66px"></div></div>
               </div>
               <!-- 02 store -->
-              <div class="eng-view" id="ev1">
-                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="eng-box eng-pl" style="width:24px;height:18px;border-radius:6px"></div></div>
-                <div class="eng-rw" style="justify-content:space-between;align-items:center;margin-bottom:12px"><div class="eng-bar eng-pl" style="height:12px;width:110px"></div><div class="eng-rw" style="gap:7px"><div class="eng-bar dim eng-pl" style="height:16px;width:48px;border-radius:8px"></div><div class="eng-bar dim eng-pl" style="height:16px;width:48px;border-radius:8px"></div></div></div>
-                <div class="eng-grid2">
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
-                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+              <div class="pur-view" id="ev1">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="pur-box pur-pl" style="width:24px;height:18px;border-radius:6px"></div></div>
+                <div class="pur-rw" style="justify-content:space-between;align-items:center;margin-bottom:12px"><div class="pur-bar pur-pl" style="height:12px;width:110px"></div><div class="pur-rw" style="gap:7px"><div class="pur-bar dim pur-pl" style="height:16px;width:48px;border-radius:8px"></div><div class="pur-bar dim pur-pl" style="height:16px;width:48px;border-radius:8px"></div></div></div>
+                <div class="pur-grid2">
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
                 </div>
               </div>
               <!-- 03 content -->
-              <div class="eng-view" id="ev2">
-                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div></div>
-                <div class="eng-bar eng-pl" style="height:15px;width:54%;margin-bottom:4px"></div>
-                <div class="eng-bar dim eng-pl" style="height:7px;width:40%;margin-bottom:12px"></div>
-                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:70%"></div><div class="eng-bar dim" style="height:6px;width:90%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
-                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:60%"></div><div class="eng-bar dim" style="height:6px;width:88%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
-                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:66%"></div><div class="eng-bar dim" style="height:6px;width:84%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
+              <div class="pur-view" id="ev2">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div></div>
+                <div class="pur-bar pur-pl" style="height:15px;width:54%;margin-bottom:4px"></div>
+                <div class="pur-bar dim pur-pl" style="height:7px;width:40%;margin-bottom:12px"></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:70%"></div><div class="pur-bar dim" style="height:6px;width:90%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:60%"></div><div class="pur-bar dim" style="height:6px;width:88%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:66%"></div><div class="pur-bar dim" style="height:6px;width:84%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
               </div>
-              <!-- 04 web app (dashboard) — phone docks to the right of the browser (see .eng-appdock) -->
-              <div class="eng-view" id="ev3" style="padding:0;display:flex">
-                <div class="eng-rail eng-pl"><div class="rl"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
-                <div class="eng-cl" style="flex:1;padding:16px 18px;gap:0;min-width:0">
-                  <div class="eng-nav"><div class="eng-bar eng-pl" style="height:10px;width:80px"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="eng-box eng-pl" style="width:20px;height:20px;border-radius:50%"></div></div>
-                  <div class="eng-rw" style="gap:9px;margin-bottom:11px">
-                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar acc" style="height:13px;width:54%"></div><div class="eng-bar dim" style="height:5px;width:70%;margin-top:6px"></div></div>
-                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar" style="height:13px;width:42%"></div><div class="eng-bar dim" style="height:5px;width:64%;margin-top:6px"></div></div>
-                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar" style="height:13px;width:46%"></div><div class="eng-bar dim" style="height:5px;width:72%;margin-top:6px"></div></div>
-                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar acc" style="height:13px;width:40%"></div><div class="eng-bar dim" style="height:5px;width:66%;margin-top:6px"></div></div>
+              <!-- 04 web app (dashboard) — phone docks to the right of the browser (see .pur-appdock) -->
+              <div class="pur-view" id="ev3" style="padding:0;display:flex">
+                <div class="pur-rail pur-pl"><div class="rl"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
+                <div class="pur-cl" style="flex:1;padding:16px 18px;gap:0;min-width:0">
+                  <div class="pur-nav"><div class="pur-bar pur-pl" style="height:10px;width:80px"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="pur-box pur-pl" style="width:20px;height:20px;border-radius:50%"></div></div>
+                  <div class="pur-rw" style="gap:9px;margin-bottom:11px">
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar acc" style="height:13px;width:54%"></div><div class="pur-bar dim" style="height:5px;width:70%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar" style="height:13px;width:42%"></div><div class="pur-bar dim" style="height:5px;width:64%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar" style="height:13px;width:46%"></div><div class="pur-bar dim" style="height:5px;width:72%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar acc" style="height:13px;width:40%"></div><div class="pur-bar dim" style="height:5px;width:66%;margin-top:6px"></div></div>
                   </div>
-                  <div class="eng-rw" style="gap:11px">
-                    <div class="eng-box eng-pl" style="flex:2;height:120px;padding:12px;display:flex;align-items:flex-end;gap:6px">
-                      <div class="eng-bar dim" style="width:8px;height:30%"></div><div class="eng-bar dim" style="width:8px;height:46%"></div><div class="eng-bar dim" style="width:8px;height:40%"></div><div class="eng-bar acc" style="width:8px;height:62%"></div><div class="eng-bar dim" style="width:8px;height:54%"></div><div class="eng-bar acc" style="width:8px;height:78%"></div><div class="eng-bar dim" style="width:8px;height:70%"></div><div class="eng-bar acc" style="width:8px;height:92%"></div><div class="eng-bar acc" style="width:8px;height:100%"></div>
+                  <div class="pur-rw" style="gap:11px">
+                    <div class="pur-box pur-pl" style="flex:2;height:120px;padding:12px;display:flex;align-items:flex-end;gap:6px">
+                      <div class="pur-bar dim" style="width:8px;height:30%"></div><div class="pur-bar dim" style="width:8px;height:46%"></div><div class="pur-bar dim" style="width:8px;height:40%"></div><div class="pur-bar acc" style="width:8px;height:62%"></div><div class="pur-bar dim" style="width:8px;height:54%"></div><div class="pur-bar acc" style="width:8px;height:78%"></div><div class="pur-bar dim" style="width:8px;height:70%"></div><div class="pur-bar acc" style="width:8px;height:92%"></div><div class="pur-bar acc" style="width:8px;height:100%"></div>
                     </div>
-                    <div class="eng-cl" style="flex:1;gap:8px">
-                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar" style="height:6px;flex:1"></div></div>
-                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar" style="height:6px;flex:1"></div></div>
-                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar dim" style="height:6px;flex:1"></div></div>
-                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar dim" style="height:6px;flex:1"></div></div>
+                    <div class="pur-cl" style="flex:1;gap:8px">
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar dim" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar dim" style="height:6px;flex:1"></div></div>
                     </div>
                   </div>
                 </div>
@@ -536,21 +542,21 @@ const phoneUnits = [0, 240];
             </div>
           </div>
           <!-- native mobile app: collapsed by default, expands right of the browser on the web-app stage -->
-          <div class="eng-appdock">
-            <div class="eng-phone" style="width:140px;height:288px">
-              <div class="eng-cl" style="gap:8px;padding:22px 11px 11px;height:100%">
-                <div class="eng-rw" style="align-items:center;gap:8px"><div class="eng-box" style="width:20px;height:20px;border-radius:50%"></div><div class="eng-cl" style="gap:4px;flex:1"><div class="eng-bar" style="height:6px;width:58%"></div><div class="eng-bar dim" style="height:4px;width:40%"></div></div></div>
-                <div class="eng-box" style="height:60px;margin-top:2px;display:flex;align-items:flex-end;gap:5px;padding:9px"><div class="eng-bar dim" style="width:7px;height:40%"></div><div class="eng-bar dim" style="width:7px;height:60%"></div><div class="eng-bar acc" style="width:7px;height:85%"></div><div class="eng-bar dim" style="width:7px;height:55%"></div><div class="eng-bar acc" style="width:7px;height:100%"></div></div>
-                <div class="eng-rw" style="gap:8px"><div class="eng-box" style="flex:1;height:36px"></div><div class="eng-box" style="flex:1;height:36px"></div></div>
-                <div class="eng-rw" style="align-items:center;gap:8px"><div class="eng-box" style="width:17px;height:17px;border-radius:50%"></div><div class="eng-cl" style="gap:4px;flex:1"><div class="eng-bar" style="height:5px;width:70%"></div><div class="eng-bar dim" style="height:4px;width:50%"></div></div></div>
+          <div class="pur-appdock">
+            <div class="pur-phone" style="width:140px;height:288px">
+              <div class="pur-cl" style="gap:8px;padding:22px 11px 11px;height:100%">
+                <div class="pur-rw" style="align-items:center;gap:8px"><div class="pur-box" style="width:20px;height:20px;border-radius:50%"></div><div class="pur-cl" style="gap:4px;flex:1"><div class="pur-bar" style="height:6px;width:58%"></div><div class="pur-bar dim" style="height:4px;width:40%"></div></div></div>
+                <div class="pur-box" style="height:60px;margin-top:2px;display:flex;align-items:flex-end;gap:5px;padding:9px"><div class="pur-bar dim" style="width:7px;height:40%"></div><div class="pur-bar dim" style="width:7px;height:60%"></div><div class="pur-bar acc" style="width:7px;height:85%"></div><div class="pur-bar dim" style="width:7px;height:55%"></div><div class="pur-bar acc" style="width:7px;height:100%"></div></div>
+                <div class="pur-rw" style="gap:8px"><div class="pur-box" style="flex:1;height:36px"></div><div class="pur-box" style="flex:1;height:36px"></div></div>
+                <div class="pur-rw" style="align-items:center;gap:8px"><div class="pur-box" style="width:17px;height:17px;border-radius:50%"></div><div class="pur-cl" style="gap:4px;flex:1"><div class="pur-bar" style="height:5px;width:70%"></div><div class="pur-bar dim" style="height:4px;width:50%"></div></div></div>
                 <div style="flex:1"></div>
-                <div class="eng-rw" style="justify-content:space-around;border-top:1px solid rgba(255,255,255,.08);padding-top:9px"><div class="eng-dot on"></div><div class="eng-dot"></div><div class="eng-dot"></div><div class="eng-dot"></div></div>
+                <div class="pur-rw" style="justify-content:space-around;border-top:1px solid rgba(255,255,255,.08);padding-top:9px"><div class="pur-dot on"></div><div class="pur-dot"></div><div class="pur-dot"></div><div class="pur-dot"></div></div>
               </div>
             </div>
           </div>
-          </div><!-- /eng-prodi -->
-          </div><!-- /eng-prod -->
-          <div class="eng-cap"><span class="eng-step" id="eng-step">01</span><span class="eng-title" id="eng-title">A LANDING PAGE</span><small id="eng-sub">just a clean first impression</small></div>
+          </div><!-- /pur-prodi -->
+          </div><!-- /pur-prod -->
+          <div class="pur-cap"><span class="pur-step" id="pur-step">01</span><span class="pur-title" id="pur-title">A LANDING PAGE</span><small id="pur-sub">just a clean first impression</small></div>
         </div>
       </div>
       <!-- captions -->
@@ -643,40 +649,40 @@ const phoneUnits = [0, 240];
     const gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard');
     const apiBox = $('apiBox');
     // ENGINE overlay: marquee bg + a browser that morphs through 4 product shapes (scroll-driven).
-    const engine = $('snz-engine');
-    const engViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
+    const purpose = $('snz-purpose');
+    const purViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
     // view-4 shrink-into-card handoff: the tight browser+phone box (NOT the marquee), its caption, and
-    // the stage box they live in. Scaling engProdi leaves the background marquee untouched.
-    const engProdi = engine ? (engine.querySelector('.eng-prodi') as HTMLElement | null) : null;
-    const engBrowser = engine ? (engine.querySelector('.eng-browser') as HTMLElement | null) : null;
-    const engCap = engine ? (engine.querySelector('.eng-cap') as HTMLElement | null) : null;
+    // the stage box they live in. Scaling purProdi leaves the background marquee untouched.
+    const purProdi = purpose ? (purpose.querySelector('.pur-prodi') as HTMLElement | null) : null;
+    const purBrowser = purpose ? (purpose.querySelector('.pur-browser') as HTMLElement | null) : null;
+    const purCap = purpose ? (purpose.querySelector('.pur-cap') as HTMLElement | null) : null;
     const gCorePh = $('gCorePh');
     // normal motion: the live view-4 element persists as the product, so hide the SVG placeholder.
     if (gCorePh) gCorePh.style.opacity = reduce ? '1' : '0';
     const stageEl = $('snz-buildsticky');
-    const ENG_HANDOFF_DY = 0; // product seats dead-centre in the card (no label to sit above)
-    const engStep = $('eng-step'), engTitle = $('eng-title'), engSub = $('eng-sub');
-    const ENG_META = [
+    const PUR_HANDOFF_DY = 0; // product seats dead-centre in the card (no label to sit above)
+    const purStep = $('pur-step'), purTitle = $('pur-title'), purSub = $('pur-sub');
+    const PUR_META = [
       ['A LANDING PAGE', 'just a clean first impression'],
       ['START SELLING', 'add a store and take payments'],
       ['PUBLISH CONTENT, AS A CMS', 'blogs, guides, an audience'],
       ['WEB APP & MOBILE', 'dashboards on the web, a native app on iOS and Android, one backend'],
     ];
-    const ENG_CATS = ['host', 'pay', 'cms', 'all']; // stage → highlighted marquee category ('all' = light everything)
-    let engStage = -1;
-    const engPlop = (view: El) => {
-      const els = Array.from(view.querySelectorAll('.eng-pl')) as unknown as El[];
+    const PUR_CATS = ['host', 'pay', 'cms', 'all']; // stage → highlighted marquee category ('all' = light everything)
+    let purStage = -1;
+    const purPlop = (view: El) => {
+      const els = Array.from(view.querySelectorAll('.pur-pl')) as unknown as El[];
       els.forEach((el, idx) => { el.classList.remove('go'); void el.offsetWidth; el.style.animationDelay = (idx * 50) + 'ms'; el.classList.add('go'); });
     };
-    const engShow = (n: number) => {
-      if (n === engStage) return;
-      engStage = n;
-      engViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
-      if (engine) { engine.dataset.cat = ENG_CATS[n]; engine.toggleAttribute('data-app', n === 3); }
-      if (engStep) engStep.textContent = String(n + 1).padStart(2, '0');
-      if (engTitle) engTitle.textContent = ENG_META[n][0];
-      if (engSub) engSub.textContent = ENG_META[n][1];
-      if (engViews[n]) engPlop(engViews[n] as El);
+    const purShow = (n: number) => {
+      if (n === purStage) return;
+      purStage = n;
+      purViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
+      if (purpose) { purpose.dataset.cat = PUR_CATS[n]; purpose.toggleAttribute('data-app', n === 3); }
+      if (purStep) purStep.textContent = String(n + 1).padStart(2, '0');
+      if (purTitle) purTitle.textContent = PUR_META[n][0];
+      if (purSub) purSub.textContent = PUR_META[n][1];
+      if (purViews[n]) purPlop(purViews[n] as El);
     };
     const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
     const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDyn = $('ciDyn');
@@ -707,7 +713,7 @@ const phoneUnits = [0, 240];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
     const hero1 = $('snz-hero1');
-    const engBg = engine ? (engine.querySelector('.eng-bg') as HTMLElement | null) : null;
+    const purBg = purpose ? (purpose.querySelector('.pur-bg') as HTMLElement | null) : null;
     [cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
       if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
     });
@@ -761,7 +767,7 @@ const phoneUnits = [0, 240];
     let custCount = 0;                            // time-eased customer counter (trigger-driven)
     const gate: Record<string, number> = {};      // named eased trigger gates (0..1)
     let scaleAnimActive = false;
-    let engLastTx = 0, engLastTy = 0;             // last translate applied to the persisting product, so we can
+    let purLastTx = 0, purLastTy = 0;             // last translate applied to the persisting product, so we can
                                                   // back it out next frame and recover its true natural centre
 
     const apply = (p: number) => {
@@ -823,7 +829,7 @@ const phoneUnits = [0, 240];
       let bx = 700, by = 210;
       for (let i = 0; i < Banch.length - 1; i++) { if (p >= Banch[i][0] && p <= Banch[i + 1][0]) { const t = sm(seg(p, Banch[i][0], Banch[i + 1][0])); bx = lerp(Banch[i][1], Banch[i + 1][1], t); by = lerp(Banch[i][2], Banch[i + 1][2], t); break; } }
 
-      // ENGINE is now an HTML overlay (#snz-engine); the SVG backend terminal stays hidden.
+      // ENGINE is now an HTML overlay (#snz-purpose); the SVG backend terminal stays hidden.
       if (gApi) gApi.style.opacity = '0';
 
       // CONNECT+: simple API card follows Banch (slides center → right)
@@ -832,49 +838,49 @@ const phoneUnits = [0, 240];
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase. On the way OUT, view 4
       // (web app + mobile) SHRINKS onto the on-screen slot where the "YOUR PRODUCT" card (gCore) lands,
       // so the app visibly becomes the product card instead of a plain crossfade.
-      if (engine) {
+      if (purpose) {
         // The seq-2 landing browser is the SAME node shown faintly in stage 1's backdrop; the
         // triggered `seq2` gate zooms it into place over real time — no swap, no scrubbing.
-        const engOut = 1 - sm(seg(p, 0.53, 0.58));      // reduced-motion only: crossfade to the SVG card
+        const purOut = 1 - sm(seg(p, 0.53, 0.58));      // reduced-motion only: crossfade to the SVG card
         // Normal motion: the SAME view-4 element PERSISTS as the product through stage 3 (no swap) and
         // only fades when the product card itself dissolves (~0.93). Reduced motion keeps the simple swap.
-        const op = seq2 * (reduce ? engOut : dissolve); // hidden in stage 1 → zooms in only once triggered
-        engine.style.opacity = op.toFixed(3);
-        engine.style.transform = 'none';                // marquee/background never scales — only the product does
+        const op = seq2 * (reduce ? purOut : dissolve); // hidden in stage 1 → zooms in only once triggered
+        purpose.style.opacity = op.toFixed(3);
+        purpose.style.transform = 'none';                // marquee/background never scales — only the product does
         // handoff: shrink ONLY the browser+phone box down onto gCore's live on-screen slot. Measure real
         // rects each frame so the moving camera is accounted for; offsetWidth ignores the transform we
         // set here, so reading it back is feedback-free.
         const hand = reduce ? 0 : sm(seg(p, 0.44, 0.55));
         const baseScale = lerp(0.5, 1.0, seq2);          // entry zoom-into-place (product only)
-        if (engProdi) {
-          engProdi.style.transformOrigin = 'center center';
+        if (purProdi) {
+          purProdi.style.transformOrigin = 'center center';
           if (hand > 0 && gCore && stageEl) {
             const gr = gCore.getBoundingClientRect();
             // Recover the product's NATURAL centre by backing out the translate we applied last frame
             // (scale is about-centre, so it never moves the centre). Then aim exactly at the card centre —
             // this is caption-offset-proof, so the product seats dead-centre in the "YOUR PRODUCT" card.
-            const r = engProdi.getBoundingClientRect();
-            const natCx = r.left + r.width / 2 - engLastTx;
-            const natCy = r.top + r.height / 2 - engLastTy;
+            const r = purProdi.getBoundingClientRect();
+            const natCx = r.left + r.width / 2 - purLastTx;
+            const natCy = r.top + r.height / 2 - purLastTy;
             const tx = ((gr.left + gr.width / 2) - natCx) * hand;
-            const ty = ((gr.top + gr.height / 2 + ENG_HANDOFF_DY) - natCy) * hand;
+            const ty = ((gr.top + gr.height / 2 + PUR_HANDOFF_DY) - natCy) * hand;
             // content width = browser + (docked phone when on view 4); target gCore's card width.
-            const contentW = (engBrowser ? engBrowser.offsetWidth : 560) + (engine.hasAttribute('data-app') ? 164 : 0);
-            const contentH = engProdi.offsetHeight || 366;
+            const contentW = (purBrowser ? purBrowser.offsetWidth : 560) + (purpose.hasAttribute('data-app') ? 164 : 0);
+            const contentH = purProdi.offsetHeight || 366;
             // fit inside the card on BOTH axes — width alone lets the (taller) browser overflow top/bottom
             const s = Math.min((gr.width * 0.9) / (contentW || 1), (gr.height * 0.76) / contentH);
-            engLastTx = tx; engLastTy = ty;
-            engProdi.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + (baseScale * lerp(1, s, hand)).toFixed(3) + ')';
+            purLastTx = tx; purLastTy = ty;
+            purProdi.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) scale(' + (baseScale * lerp(1, s, hand)).toFixed(3) + ')';
           } else {
-            engLastTx = 0; engLastTy = 0;
-            engProdi.style.transform = 'scale(' + baseScale.toFixed(3) + ')';
+            purLastTx = 0; purLastTy = 0;
+            purProdi.style.transform = 'scale(' + baseScale.toFixed(3) + ')';
           }
         }
-        if (engCap) engCap.style.opacity = (1 - hand).toFixed(3); // caption gone as it lands; gCore carries the label
-        if (engBg) engBg.style.opacity = (clamp((seq2 - 0.55) / 0.45, 0, 1) * engOut * (1 - hand)).toFixed(3); // marquee gone before the shrink
+        if (purCap) purCap.style.opacity = (1 - hand).toFixed(3); // caption gone as it lands; gCore carries the label
+        if (purBg) purBg.style.opacity = (clamp((seq2 - 0.55) / 0.45, 0, 1) * purOut * (1 - hand)).toFixed(3); // marquee gone before the shrink
         if (op > 0.01) {
           const t = clamp((p - 0.14) / (0.46 - 0.14), 0, 1); // morph window pulled in tight after the trigger
-          engShow(Math.min(engViews.length - 1, Math.floor(t * engViews.length)));
+          purShow(Math.min(purViews.length - 1, Math.floor(t * purViews.length)));
         }
       }
 
@@ -1008,7 +1014,7 @@ const phoneUnits = [0, 240];
 
       // ---- captions + tracker + progress ----
       // 0=DESIGN 1=PURPOSE 2=SCALE (traffic+scale merged) 3=DATA
-      // PURPOSE holds through the engine morph + product/backend bridge; SCALE spans the
+      // PURPOSE holds through the purpose morph + product/backend bridge; SCALE spans the
       // customer arrival AND infra scaling (~0.60–0.88); DATA at the analytics view.
       const phase = p < 0.105 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
       // cap index 0 (DESIGN) is covered by the centered #snz-hero1, so never show the top-left duplicate
