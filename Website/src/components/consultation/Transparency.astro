@@ -1,0 +1,57 @@
+---
+// Honest "why I'm different" section: AI-accelerated workflow means
+// faster idea-to-product, more clients served, faster + cheaper for them.
+const cards = [
+  {
+    k: 'IDEA → PRODUCT',
+    t: 'From idea to live, fast',
+    b: 'I use AI to accelerate the slow parts — first designs, boilerplate, the groundwork. That frees me to spend my time where it matters: the craft, the detail, the bits a tool can’t judge.',
+  },
+  {
+    k: 'MORE TIME FOR YOU',
+    t: 'I move faster, so you do too',
+    b: 'A quicker pipeline means I can take on more clients without cutting corners on any of them — and your project doesn’t sit waiting in a queue for weeks.',
+  },
+  {
+    k: 'FASTER + CHEAPER',
+    t: 'Speed I pass straight to you',
+    b: 'Less time per build means faster turnaround and a lower price. You get a hand-built, professional result for the cost of a template — without the template.',
+  },
+];
+---
+<section id="snz-transparency" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)]">
+  <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
+    <div>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 03 ] HOW I WORK</div>
+      <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">AI-accelerated,<br />human-built</h2>
+    </div>
+    <p class="m-0 max-w-[360px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Being honest about the toolkit: I lean on AI to move from idea to product fast. The engineering, the judgement and the final say stay mine.</p>
+  </div>
+
+  <div id="snz-trans-grid" class="grid grid-cols-3 gap-[1px] bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)]">
+    {cards.map((c, i) => (
+      <div
+        data-reveal
+        data-delay={i * 80}
+        class="snz-card bg-[#0a0a0a] py-[40px] px-[34px] transition-all duration-300"
+      >
+        <div class="font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent)] mb-[20px]">{c.k}</div>
+        <h3 class="m-0 mb-[14px] font-extrabold text-[24px] leading-[1.1] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA]">{c.t}</h3>
+        <p class="m-0 font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">{c.b}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- transparency note -->
+  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
+    <h3 class="m-0 mb-2 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">No black boxes. No outsourcing.</h3>
+    <p class="m-0 max-w-[600px] font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">AI is a power tool, not the builder. Every line is reviewed, owned and shipped by me — a real software engineer you can call. You get the speed of modern tooling with the accountability of one person who actually built your site.</p>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 860px) {
+    #snz-transparency { padding: 64px 22px !important; }
+    #snz-trans-grid { grid-template-columns: 1fr !important; }
+  }
+</style>

@@ -4,6 +4,7 @@
 
 import {
   siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare,
+  siGoogleadsense, siGoogleadmob, siGoogleads,
   siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai,
   siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia,
   siAuth0, siClerk, siOkta,
@@ -22,7 +23,7 @@ import {
 const cat = (c: string) => (i: SimpleIcon) => ({ title: i.title, path: i.path, cat: c });
 const services = [
   ...[siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai].map(cat("host")),
-  ...[siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare].map(cat("pay")),
+  ...[siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare, siGoogleadsense, siGoogleadmob, siGoogleads].map(cat("pay")),
   ...[siSanity, siContentful, siNotion, siGhost, siDirectus, siStrapi, siCloudinary, siMailchimp, siResend, siMailgun].map(cat("cms")),
   ...[siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia, siAuth0, siClerk, siOkta,
     siAnthropic, siGooglegemini, siMistralai, siPerplexity, siHuggingface, siReplicate,
@@ -153,9 +154,6 @@ const phoneUnits = [0, 240];
   @media (prefers-reduced-motion: reduce) {
     .snz-bf-col-a, .snz-bf-col-b, .snz-bf-col-c { animation:none; }
   }
-  /* during the zoom-into-a-tile transition the columns freeze so the target tile holds still */
-  #snz-wbg.frozen .snz-bf-col-a, #snz-wbg.frozen .snz-bf-col-b, #snz-wbg.frozen .snz-bf-col-c { animation-play-state:paused !important; }
-  #snz-hero1 { transition:opacity .2s linear; }
   #snz-stmt { position:relative; overflow:hidden; }
   .snz-ghost {
     position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
@@ -261,7 +259,7 @@ const phoneUnits = [0, 240];
       </div>
     </div><!-- /snz-wbg -->
     <!-- stage 1 hero: design wall headline (fades out as the zoom into a tile begins) -->
-    <div id="snz-hero1" style="position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
+    <div id="snz-hero1" style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
       <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 01 — DESIGN ]</div>
       <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:#F2F0EA;max-width:15ch">Endless design possibilities.</h2>
       <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:#9a9a92;max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
@@ -524,10 +522,24 @@ const phoneUnits = [0, 240];
       </div>
       <!-- captions -->
       <div style="position:absolute;left:56px;bottom:26px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
-      <div class="snz-track" style="position:absolute;right:56px;bottom:26px;display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
-        {buildTrack.map((label, i) => (
-          <span id={`tk${i + 1}`} style={`color:${i === 0 ? "var(--accent)" : "#4a4a44"};transition:color .4s ease`}>{label}</span>
-        ))}
+      <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:300px">
+        <div style="position:relative;height:10px;margin-bottom:9px">
+          <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
+            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(255,255,255,.12)">
+              <div id="fProg" style="height:100%;width:0;background:var(--accent);transition:width .08s linear"></div>
+            </div>
+            {buildTrack.map((_, i) => (
+              <span id={`td${i + 1}`} style={`position:absolute;top:50%;left:${[0, 25, 50, 75][i]}%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#0b0b0b;border:2px solid #2f2f2a;transition:border-color .4s ease,background .4s ease,box-shadow .4s ease`}></span>
+            ))}
+          </div>
+        </div>
+        <div style="position:relative;height:11px">
+          <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
+            {buildTrack.map((label, i) => (
+              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent)" : "#4a4a44"};font:600 9px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
+            ))}
+          </div>
+        </div>
       </div>
       <div style="position:absolute;left:56px;top:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
@@ -539,8 +551,6 @@ const phoneUnits = [0, 240];
         ))}
       </div>
     </div>
-    <!-- progress -->
-    <div style="height:3px;background:rgba(255,255,255,.08)"><div id="fProg" style="height:100%;width:0;background:var(--accent);transition:width .08s linear"></div></div>
   </div>
 </section>
 
@@ -650,10 +660,11 @@ const phoneUnits = [0, 240];
   const snzWordPaths = Array.from(svg.querySelectorAll('#snzWord [data-ln]')) as unknown as El[];
     const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4')];
     const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4')];
+    const dots = [$('td1'), $('td2'), $('td3'), $('td4')];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
     const hero1 = $('snz-hero1');
-    let wbgFrozen = false, wbgOX = 0, wbgOY = 0;   // design-wall zoom: freeze flag + locked tile origin
+    const engBg = engine ? (engine.querySelector('.eng-bg') as HTMLElement | null) : null;
     [cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
       if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
     });
@@ -736,33 +747,13 @@ const phoneUnits = [0, 240];
         return next;
       };
 
-      // ---- STAGE 1 HERO: design-wall headline, fades as the zoom starts ----
-      if (hero1) hero1.style.opacity = (1 - sm(seg(p, 0.10, 0.18))).toFixed(3);
-
-      // ---- DESIGN WALL: hero in stage 1, zoom into one tile, fade under the ENGINE ----
-      if (wBg) {
-        const wallFade = 1 - sm(seg(p, 0.20, 0.25));   // hold solid, then dissolve as the ENGINE arrives
-        wBg.style.opacity = (0.55 * wallFade).toFixed(3);
-        const zf = sm(seg(p, 0.14, 0.22));             // zoom-into-tile progress
-        if (zf > 0) {
-          if (!wbgFrozen) {                            // freeze columns + lock origin on the target tile
-            const tile = wBg.querySelector('.snz-bf-col-a svg') as HTMLElement | null;
-            if (tile) {
-              const tr = tile.getBoundingClientRect(), wr = wBg.getBoundingClientRect();
-              wbgOX = tr.left + tr.width / 2 - wr.left;
-              wbgOY = tr.top + tr.height / 2 - wr.top;
-            }
-            wBg.classList.add('frozen');
-            wbgFrozen = true;
-          }
-          wBg.style.transformOrigin = wbgOX.toFixed(1) + 'px ' + wbgOY.toFixed(1) + 'px';
-          wBg.style.transform = 'scale(' + lerp(1, 4, zf).toFixed(3) + ')';
-        } else if (wbgFrozen) {                        // scrolled back above the zoom — restore motion
-          wBg.classList.remove('frozen');
-          wBg.style.transform = '';
-          wbgFrozen = false;
-        }
-      }
+      // ---- STAGE 1 → 2: TRIGGERED (not scrubbed). Crossing a small scroll threshold fires the
+      // zoom-into-place over real time via the eased gate, so stage 1 needs only a nudge to leave
+      // instead of a long scrub. Reverses on scroll-up back past the threshold. ----
+      const seq2 = trig('seq2', p >= 0.096);
+      const s1Out = clamp(seq2 / 0.35, 0, 1);   // stage-1 clears fast — gone by the time the gate is ~35% in
+      if (hero1) hero1.style.opacity = (1 - s1Out).toFixed(3);
+      if (wBg) wBg.style.opacity = (0.55 * (1 - s1Out)).toFixed(3);
 
       // ---- CAMERA ----
       // 0.00-0.14: site+phone centered
@@ -796,10 +787,16 @@ const phoneUnits = [0, 240];
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase, out before CONNECT;
       // scroll position picks which product shape (landing → store → content → app) is shown.
       if (engine) {
-        const engIn = sm(seg(p, 0.19, 0.25)) * (1 - sm(seg(p, 0.50, 0.56)));
-        engine.style.opacity = engIn.toFixed(3);
-        if (engIn > 0.01) {
-          const t = clamp((p - 0.22) / (0.50 - 0.22), 0, 1); // 0..1 across the visible window
+        // The seq-2 landing browser is the SAME node shown faintly in stage 1's backdrop; the
+        // triggered `seq2` gate zooms it into place over real time — no swap, no scrubbing.
+        const engOut = 1 - sm(seg(p, 0.50, 0.56));
+        const op = seq2 * engOut;                       // hidden in stage 1 → zooms in only once triggered
+        engine.style.opacity = op.toFixed(3);
+        engine.style.transformOrigin = 'center center';
+        engine.style.transform = 'scale(' + lerp(0.5, 1.0, seq2).toFixed(3) + ')';
+        if (engBg) engBg.style.opacity = (clamp((seq2 - 0.55) / 0.45, 0, 1) * engOut).toFixed(3); // marquee joins once settled
+        if (op > 0.01) {
+          const t = clamp((p - 0.14) / (0.46 - 0.14), 0, 1); // morph window pulled in tight after the trigger
           engShow(Math.min(engViews.length - 1, Math.floor(t * engViews.length)));
         }
       }
@@ -936,11 +933,22 @@ const phoneUnits = [0, 240];
       // 0=DESIGN 1=PURPOSE 2=SCALE (traffic+scale merged) 3=DATA
       // PURPOSE holds through the engine morph + product/backend bridge; SCALE spans the
       // customer arrival AND infra scaling (~0.60–0.88); DATA at the analytics view.
-      const phase = p < 0.18 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
+      const phase = p < 0.105 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
       // cap index 0 (DESIGN) is covered by the centered #snz-hero1, so never show the top-left duplicate
       caps.forEach((c, i) => { if (c) { const on = i === phase && i !== 0; c.style.opacity = on ? '1' : '0'; c.style.transform = on ? 'translateY(0)' : 'translateY(12px)'; } });
       track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent)' : '#4a4a44'; });
-      if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
+      dots.forEach((d, i) => { if (!d) return; const on = i <= phase;
+        d.style.background = on ? 'var(--accent)' : '#0b0b0b';
+        d.style.borderColor = on ? 'var(--accent)' : '#2f2f2a';
+        d.style.boxShadow = i === phase ? '0 0 0 4px rgba(198,244,50,.18)' : 'none';
+      });
+      // fill maps p → dot positions piecewise so it lands ON each dot exactly at its section threshold
+      // (dots are evenly spaced but the section thresholds in p are not)
+      const SEC_TH = [0, 0.105, 0.60, 0.88, 1.0], SEC_POS = [0, 0.25, 0.5, 0.75, 1.0];
+      const pc = Math.max(0, p);
+      let fillPos = 1;
+      for (let i = 0; i < SEC_TH.length - 1; i++) { if (pc < SEC_TH[i + 1]) { fillPos = lerp(SEC_POS[i], SEC_POS[i + 1], (pc - SEC_TH[i]) / (SEC_TH[i + 1] - SEC_TH[i])); break; } }
+      if (prog) prog.style.width = (fillPos * 100).toFixed(1) + '%';
 
       // keep the rAF applying while any triggered animation (gates, size tier, counter) settles
       scaleAnimActive = gateSettling || tierSettling || countSettling;
