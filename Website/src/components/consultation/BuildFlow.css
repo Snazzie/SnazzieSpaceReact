@@ -14,16 +14,28 @@
     rgba(198,244,50,.12) 60%, rgba(198,244,50,.12) 100%);
   background-repeat:repeat-x; background-size:600px 100%;
   -webkit-background-clip:text; background-clip:text; }
-.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
-.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
+/* PERF: no pur-shim. Animating background-position on background-clip:text forced a full
+   re-rasterisation of every row's clipped text on EVERY frame, on the main thread, for as long
+   as the marquee was visible — the dominant in-view cost. Dropping it makes each row a static
+   texture that the GPU just slides (pur-ml/pur-mr translateX), which is nearly free. */
+.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; }
+.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; }
 /* promote each row to its own compositor layer so the translateX rides the GPU and the
    heavy style recalc on data-cat flips (~400 .pur-it transitions) can't stall the marquee */
 .pur-row{ will-change:transform; backface-visibility:hidden; }
+/* the marquee animations are `infinite`; keep them paused until the overlay is actually
+   visible (JS toggles .snz-live) so the constant shimmer repaint costs nothing offscreen.
+   pause/resume preserves position, so this never causes a jump. */
+.pur-row, #snz-purpose[data-cat="all"] .pur-it, #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation-play-state:paused; }
+#snz-purpose.snz-live .pur-row,
+#snz-purpose.snz-live[data-cat="all"] .pur-it,
+#snz-purpose.snz-live[data-cat="all"] .pur-it .pur-ic{ animation-play-state:running; }
 @keyframes pur-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes pur-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
-@keyframes pur-shim{ from{background-position:0 0} to{background-position:-600px 0} }
-.pur-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
-.pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.5; }
+/* PERF: shorter highlight transition = shorter window of per-frame row repaints when a stage
+   flips data-cat (the colour lerp repaints the clipped-text rows the whole time it runs). */
+.pur-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .28s ease, opacity .28s ease; }
+.pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .28s ease, opacity .28s ease; opacity:.5; }
 /* once a stage is active: non-matching items go flat-dim (no shimmer); matching items keep the
    clipped gradient, so the shimmer sweeps ONLY over the relevant highlights */
 #snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(255,255,255,.05); opacity:.6; }

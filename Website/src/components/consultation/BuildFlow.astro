@@ -32,8 +32,11 @@ const services = [
 // stage index (0..3) → highlighted category
 const PUR_CATS = ["host", "pay", "cms", "app"];
 // deterministic per-row shuffle (no Math.random at build time)
-const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 30); };
-const PURPOSE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
+// PERF: 22 items/row (×2 dupes) over 11 rows ≈ 484 marquee nodes vs the old 840 — far less
+// paint area and far less style recalc when data-cat flips. Rows past the radial mask edge add cost
+// with no visible payoff, so the wall is trimmed to what the mask actually shows.
+const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 22); };
+const PURPOSE_ROWS = Array.from({ length: 11 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
 
 // Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
 const buildCaps = [
@@ -618,6 +621,16 @@ import "./BuildFlow.css";
         pk.style.opacity = active ? '1' : '0';
       };
 
+      // PERF: batch all layout reads at the TOP of the frame, before any style writes below.
+      // The handoff used to read these rects mid-apply (after writing camera/SVG/opacity styles),
+      // forcing a synchronous reflow every frame (~4s total across a scroll-through). Reading here,
+      // while layout is still clean from the previous frame, makes them free; one frame of latency
+      // on the camera-relative position is imperceptible.
+      let hoGr: DOMRect | null = null, hoPr: DOMRect | null = null, hoBrW = 560, hoPrH = 366;
+      if (gCore && purProdi && stageEl) { hoGr = gCore.getBoundingClientRect(); hoPr = purProdi.getBoundingClientRect(); }
+      if (purBrowser) hoBrW = purBrowser.offsetWidth;
+      if (purProdi) hoPrH = purProdi.offsetHeight || 366;
+
       // single frame delta drives all time-eased (trigger) animations
       if (frameLastT < 0) frameLastT = nowMs();
       const dtF = Math.min(64, nowMs() - frameLastT); frameLastT = nowMs();
@@ -682,6 +695,9 @@ import "./BuildFlow.css";
         // only fades when the product card itself dissolves (~0.93). Reduced motion keeps the simple swap.
         const op = seq2 * (reduce ? purOut : dissolve); // hidden in stage 1 → zooms in only once triggered
         purpose.style.opacity = op.toFixed(3);
+        // marquee runs `infinite`; only let it animate while the overlay is actually visible so its
+        // continuous main-thread shimmer repaint costs nothing when the section is scrolled away.
+        purpose.classList.toggle('snz-live', op > 0.01);
         purpose.style.transform = 'none';                // marquee/background never scales — only the product does
         // handoff: shrink ONLY the browser+phone box down onto gCore's live on-screen slot. Measure real
         // rects each frame so the moving camera is accounted for; offsetWidth ignores the transform we
@@ -690,19 +706,19 @@ import "./BuildFlow.css";
         const baseScale = lerp(0.5, 1.0, seq2);          // entry zoom-into-place (product only)
         if (purProdi) {
           purProdi.style.transformOrigin = 'center center';
-          if (hand > 0 && gCore && stageEl) {
-            const gr = gCore.getBoundingClientRect();
+          if (hand > 0 && gCore && stageEl && hoGr && hoPr) {
+            const gr = hoGr;
             // Recover the product's NATURAL centre by backing out the translate we applied last frame
             // (scale is about-centre, so it never moves the centre). Then aim exactly at the card centre —
             // this is caption-offset-proof, so the product seats dead-centre in the "YOUR PRODUCT" card.
-            const r = purProdi.getBoundingClientRect();
+            const r = hoPr;
             const natCx = r.left + r.width / 2 - purLastTx;
             const natCy = r.top + r.height / 2 - purLastTy;
             const tx = ((gr.left + gr.width / 2) - natCx) * hand;
             const ty = ((gr.top + gr.height / 2 + PUR_HANDOFF_DY) - natCy) * hand;
             // content width = browser + (docked phone when on view 4); target gCore's card width.
-            const contentW = (purBrowser ? purBrowser.offsetWidth : 560) + (purpose.hasAttribute('data-app') ? 164 : 0);
-            const contentH = purProdi.offsetHeight || 366;
+            const contentW = hoBrW + (purpose.hasAttribute('data-app') ? 164 : 0);
+            const contentH = hoPrH;
             // fit inside the card on BOTH axes — width alone lets the (taller) browser overflow top/bottom
             const s = Math.min((gr.width * 0.9) / (contentW || 1), (gr.height * 0.76) / contentH);
             purLastTx = tx; purLastTy = ty;
