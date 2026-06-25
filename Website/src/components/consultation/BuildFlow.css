@@ -1,0 +1,166 @@
+@keyframes snz-spin { to { transform: rotate(360deg); } }
+
+/* ===== ENGINE overlay: skewed services marquee + morphing browser ===== */
+.pur-bg{ position:absolute; left:50%; top:50%; width:230vmax; height:230vmax;
+  transform:translate(-50%,-50%) rotate(-45deg); transform-origin:center;
+  display:flex; flex-direction:column; justify-content:center; gap:24px;
+  -webkit-mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%);
+          mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%); }
+.pur-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
+  letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04);
+  color:transparent;
+  background-image:linear-gradient(100deg, rgba(198,244,50,.12) 0%, rgba(198,244,50,.12) 40%,
+    rgba(198,244,50,.4) 47%, rgba(255,255,255,.5) 50%, rgba(198,244,50,.4) 53%,
+    rgba(198,244,50,.12) 60%, rgba(198,244,50,.12) 100%);
+  background-repeat:repeat-x; background-size:600px 100%;
+  -webkit-background-clip:text; background-clip:text; }
+.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
+.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite, pur-shim 2s linear infinite; }
+/* promote each row to its own compositor layer so the translateX rides the GPU and the
+   heavy style recalc on data-cat flips (~400 .pur-it transitions) can't stall the marquee */
+.pur-row{ will-change:transform; backface-visibility:hidden; }
+@keyframes pur-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes pur-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+@keyframes pur-shim{ from{background-position:0 0} to{background-position:-600px 0} }
+.pur-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
+.pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.5; }
+/* once a stage is active: non-matching items go flat-dim (no shimmer); matching items keep the
+   clipped gradient, so the shimmer sweeps ONLY over the relevant highlights */
+#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(255,255,255,.05); opacity:.6; }
+#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(255,255,255,.07); opacity:.4; }
+#snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
+#snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],
+#snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"],
+#snz-purpose[data-cat="app"]  .pur-it[data-cat="app"],
+#snz-purpose[data-cat="all"] .pur-it{ -webkit-text-fill-color:transparent; opacity:1; }
+#snz-purpose[data-cat="host"] .pur-it[data-cat="host"] .pur-ic,
+#snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"]  .pur-ic,
+#snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"]  .pur-ic,
+#snz-purpose[data-cat="app"]  .pur-it[data-cat="app"]  .pur-ic,
+#snz-purpose[data-cat="all"] .pur-it .pur-ic{ fill:rgba(198,244,50,.4); opacity:.95; }
+/* "all" stage (web app + mobile): disco ball — kill the coherent shimmer sweep and
+   flash each name/icon on its own random offset so the lights scatter across services.
+   NOTE: we kill the shimmer with a PAINT-only flat background (not by re-declaring the
+   `animation` shorthand) — changing the row's animation list re-resolves it and restarts
+   pur-ml/pur-mr, snapping the marquee back to 0. Keeping the declaration constant across
+   every stage means the marquee never jumps when data-cat flips. */
+#snz-purpose[data-cat="all"] .pur-row{ background-image:linear-gradient(rgba(198,244,50,.12),rgba(198,244,50,.12)); }
+#snz-purpose[data-cat="all"] .pur-it{ animation: pur-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+#snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+@keyframes pur-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(255,255,255,.05); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
+@keyframes pur-disco-ic{ 0%,18%,100%{ fill:rgba(255,255,255,.07); } 8%{ fill:var(--accent); } }
+
+.pur-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+/* browser + phone dock share a centered row; when the dock expands the whole row
+   widens, so the browser shifts left to make space for the phone */
+.pur-prod{ display:flex; align-items:center; justify-content:center; width:100%; }
+/* shrink-to-content wrapper: the shrink-into-card handoff transforms THIS (browser+phone only),
+   so the marquee background never scales with it */
+.pur-prodi{ display:flex; align-items:center; justify-content:center; width:100%; transform-origin:center center; will-change:transform; }
+.pur-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
+#snz-purpose[data-app] .pur-appdock{ width:140px; margin-left:24px; opacity:1; }
+@media (prefers-reduced-motion: reduce){ .pur-appdock{ transition:none; } }
+.pur-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(198,244,50,.1); }
+.pur-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+.pur-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
+.pur-chrome i:first-child{ background:var(--accent); }
+.pur-url{ margin-left:10px; height:16px; flex:1; max-width:260px; border-radius:8px; background:rgba(255,255,255,.05); }
+.pur-screen{ position:relative; height:328px; }
+.pur-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+.pur-view.on{ opacity:1; }
+.pur-pl{ opacity:0; }
+.pur-pl.go{ animation:pur-plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
+@keyframes pur-plop{ 0%{opacity:0;transform:scale(.25) translateY(9px)} 55%{opacity:1} 100%{opacity:1;transform:scale(1) translateY(0)} }
+.pur-bar{ background:rgba(255,255,255,.14); border-radius:4px; }
+.pur-bar.dim{ background:rgba(255,255,255,.07); } .pur-bar.acc{ background:rgba(198,244,50,.55); }
+.pur-box{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; }
+.pur-btn{ background:var(--accent); border-radius:8px; }
+.pur-rw{ display:flex; } .pur-cl{ display:flex; flex-direction:column; }
+.pur-nav{ display:flex; align-items:center; gap:9px; margin-bottom:16px; }
+.pur-nav .lg{ width:42px; height:10px; border-radius:3px; background:var(--accent); }
+.pur-nav .sp{ flex:1; } .pur-nav .lk{ width:28px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
+.pur-grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+.pur-grid2{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.pur-post{ display:flex; gap:12px; align-items:center; padding:9px 0; border-top:1px solid rgba(255,255,255,.07); }
+.pur-rail{ width:42px; flex:none; align-self:stretch; border-right:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);
+  display:flex; flex-direction:column; align-items:center; gap:12px; padding:14px 0; }
+.pur-rail .rl{ width:18px; height:18px; border-radius:6px; background:var(--accent); }
+.pur-rail .rd{ width:16px; height:16px; border-radius:6px; background:rgba(255,255,255,.12); }
+.pur-rail .rd.on{ background:rgba(198,244,50,.4); }
+.pur-phone{ width:152px; height:300px; border:1.6px solid rgba(255,255,255,.25); border-radius:24px;
+  background:#0c0c0c; position:relative; overflow:hidden; box-shadow:0 0 40px rgba(198,244,50,.08); }
+.pur-phone::before{ content:''; position:absolute; top:9px; left:50%; transform:translateX(-50%);
+  width:42px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
+.pur-dot{ width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); }
+.pur-dot.on{ background:var(--accent); }
+.pur-cap{ display:flex; align-items:center; gap:13px; }
+.pur-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
+.pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
+.pur-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
+@media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; } #snz-purpose[data-cat="all"] .pur-it, #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; } }
+
+@keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+@keyframes snz-appscroll { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-140px); } }
+.snz-bf-col { display:flex; flex-direction:column; gap:16px; flex-shrink:0; width:160px; }
+.snz-bf-col-a { animation: snz-bf-up 30s linear infinite; animation-play-state:paused; }
+.snz-bf-col-b { animation: snz-bf-dn 24s linear infinite; animation-play-state:paused; }
+.snz-bf-col-c { animation: snz-bf-up 36s linear infinite; animation-play-state:paused; }
+.snz-bf-col-a.snz-bf-go, .snz-bf-col-b.snz-bf-go, .snz-bf-col-c.snz-bf-go { animation-play-state:running; }
+@media (prefers-reduced-motion: reduce) {
+  .snz-bf-col-a, .snz-bf-col-b, .snz-bf-col-c { animation:none; }
+}
+#snz-stmt { position:relative; overflow:hidden; }
+.snz-ghost {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font:800 13vw/1 'Archivo',sans-serif; letter-spacing:-0.03em; white-space:nowrap;
+  color:transparent; -webkit-text-stroke:1px rgba(198,244,50,.06);
+  pointer-events:none; user-select:none;
+  transform:translateY(8px); transition:transform 1.4s ease;
+}
+#snz-stmt.snz-in .snz-ghost { transform:translateY(0); }
+.snz-stmt-label {
+  font:600 11px 'JetBrains Mono',monospace; letter-spacing:.2em; color:var(--accent);
+  margin-bottom:28px; opacity:0; transform:translateY(10px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+#snz-stmt.snz-in .snz-stmt-label { opacity:1; transform:translateY(0); }
+.snz-stmt-h { margin:0 auto; max-width:860px; font:800 clamp(34px,5.5vw,76px)/1.04 'Archivo',sans-serif; letter-spacing:-0.03em; }
+.snz-w {
+  display:inline-block; color:#F2F0EA;
+  opacity:0; transform:translateY(28px);
+  transition:opacity .6s ease, transform .6s ease;
+  transition-delay:var(--d,0s);
+}
+.snz-w.snz-accent { color:var(--accent); }
+#snz-stmt.snz-in .snz-w { opacity:1; transform:translateY(0); }
+#snz-row1, #snz-row2 { display:block; white-space:nowrap; will-change:transform; }
+#snz-row1 .snz-w, #snz-row2 .snz-w { opacity:1; transform:none; transition:none; }
+.snz-stmt-line {
+  margin:40px auto 0; height:2px; width:0; background:var(--accent);
+  transition:width .9s cubic-bezier(.22,1,.36,1); transition-delay:.9s;
+}
+#snz-stmt.snz-in .snz-stmt-line { width:72px; }
+.snz-stmt-sub {
+  margin:28px auto 0; max-width:720px; font:400 18px/1.65 'JetBrains Mono',monospace;
+  letter-spacing:.04em; color:#6a6a62;
+  opacity:0; transform:translateY(8px);
+  transition:opacity .6s ease, transform .6s ease; transition-delay:1.1s;
+}
+#snz-stmt.snz-in .snz-stmt-sub { opacity:1; transform:translateY(0); }
+.snz-slide-row {
+  position:absolute; left:-20%; width:160%;
+  font:700 clamp(10px,1.2vw,13px)/1 'JetBrains Mono',monospace;
+  letter-spacing:.22em; color:transparent;
+  -webkit-background-clip:text; background-clip:text;
+  background-image:linear-gradient(90deg,rgba(198,244,50,.06) 0%,rgba(198,244,50,.06) 100%);
+  white-space:nowrap; pointer-events:none; will-change:transform;
+}
+@media (max-width: 760px) {
+  #snz-stmt { padding-left: 22px !important; padding-right: 22px !important; }
+  .snz-stmt-h { font-size: clamp(30px,9vw,42px) !important; }
+  /* let the headline wrap and ignore the scroll-driven horizontal slide on mobile */
+  #snz-row1, #snz-row2 { white-space: normal !important; transform: none !important; opacity: 1 !important; }
+  .snz-stmt-sub { font-size: 15px !important; }
+}
