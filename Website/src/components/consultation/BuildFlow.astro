@@ -38,13 +38,12 @@ const ENGINE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "
 const buildCaps = [
   { label: "01 — DESIGN", title: "Endless design possibilities.", body: "Website, app, or both, shaped entirely around your brand. No templates, no limits, designed from scratch around you.", max: 460 },
   { label: "02 — PURPOSE", title: "Built around what it's for.", body: "A landing page, a store, a content engine, a full app, the same product shaped to whatever your business needs to do.", max: 480 },
-  { label: "03 — TRAFFIC", title: "People show up.", body: "As word spreads, more and more customers arrive, all at once.", max: 480 },
-  { label: "04 — SCALE", title: "It scales with demand.", body: "Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scales with your needs.", max: 480 },
-  { label: "05 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working, so you know what to do next.", max: 480 },
+  { label: "03 — SCALE", title: "People show up, and it scales.", body: "As word spreads more customers arrive, from a small shop with a hundred visitors to an enterprise with half a million, and the infrastructure scales right along with them.", max: 500 },
+  { label: "04 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working, so you know what to do next.", max: 480 },
 ];
 
 // Step tracker labels (tk1..tk6) — first is active (accent), rest dim.
-const buildTrack = ["01 DESIGN", "02 PURPOSE", "03 TRAFFIC", "04 SCALE", "05 DATA"];
+const buildTrack = ["01 DESIGN", "02 PURPOSE", "03 SCALE", "04 DATA"];
 
 // Phone app screen repeated twice for the scroll loop (UNIT 1 at o=0, UNIT 2 at o=240).
 const phoneUnits = [0, 240];
@@ -219,7 +218,7 @@ const phoneUnits = [0, 240];
   </h2>
   <div class="snz-stmt-line"></div>
 </section>
-<section id="snz-build" style="position:relative;height:350vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
+<section id="snz-build" style="position:relative;height:1900vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
   <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
     <!-- wireframe background wall -->
     <div id="snz-wbg" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.12;overflow:hidden">
@@ -494,8 +493,18 @@ const phoneUnits = [0, 240];
         <!-- analytics mini-card (SCALE phase) — after connectors so it paints over them -->
         <g id="gAnalytics" opacity="0" transform="translate(500 460)">
           <rect x="-128" y="-78" width="256" height="156" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
-          <text x="0" y="-16" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.02em">Analytics</text>
-          <text id="snzTracked" x="0" y="24" text-anchor="middle" fill="none" stroke="var(--accent)" stroke-width="0.7" stroke-dasharray="860 860" stroke-dashoffset="860" font-family="Archivo,sans-serif" font-weight="800" font-size="28" letter-spacing="-0.02em">Tracked.</text>
+          <!-- ANALYTICS as real Archivo-800 glyph outlines; stroke-drawn then filled -->
+          <g id="snzWord" fill="var(--accent)" fill-opacity="0" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round">
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-77.22 14L-68.45 -9.36L-61.14 -9.36L-52.36 14L-58.86 14L-60.25 9.95L-69.57 9.95L-70.96 14ZM-68.11 5.4L-61.75 5.4L-63.41 0.47Q-63.55 0.09 -63.74 -0.47Q-63.92 -1.03 -64.11 -1.66Q-64.3 -2.29 -64.47 -2.93Q-64.64 -3.58 -64.81 -4.05L-65.05 -4.05Q-65.18 -3.41 -65.44 -2.59Q-65.69 -1.78 -65.95 -0.96Q-66.2 -0.14 -66.41 0.47Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-50.68 14L-50.68 -3.92L-46.09 -3.92L-45.68 -1.37L-45.44 -1.37Q-44.76 -2.29 -43.88 -2.97Q-43 -3.65 -41.87 -3.99Q-40.75 -4.33 -39.49 -4.33Q-37.56 -4.33 -36.21 -3.61Q-34.87 -2.9 -34.16 -1.47Q-33.44 -0.04 -33.44 2.17L-33.44 14L-39.02 14L-39.02 2.95Q-39.02 2.2 -39.21 1.67Q-39.39 1.15 -39.73 0.77Q-40.07 0.4 -40.58 0.23Q-41.09 0.06 -41.74 0.06Q-42.72 0.06 -43.47 0.52Q-44.22 0.98 -44.66 1.74Q-45.1 2.51 -45.1 3.53L-45.1 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-24.97 14.41Q-26.1 14.41 -27.17 14.19Q-28.24 13.97 -29.1 13.41Q-29.97 12.84 -30.48 11.86Q-30.99 10.87 -30.99 9.38Q-30.99 7.44 -30.18 6.21Q-29.36 4.99 -27.81 4.29Q-26.27 3.6 -24.07 3.32Q-21.88 3.05 -19.16 3.05L-19.16 1.93Q-19.16 1.15 -19.47 0.62Q-19.77 0.09 -20.37 -0.2Q-20.96 -0.48 -21.95 -0.48Q-22.83 -0.48 -23.49 -0.28Q-24.16 -0.08 -24.5 0.31Q-24.84 0.71 -24.84 1.25L-24.84 1.56L-30.28 1.56Q-30.31 1.39 -30.31 1.27Q-30.31 1.15 -30.31 0.94Q-30.31 -0.65 -29.31 -1.84Q-28.31 -3.03 -26.44 -3.68Q-24.57 -4.33 -21.91 -4.33Q-19.43 -4.33 -17.58 -3.71Q-15.73 -3.1 -14.65 -1.84Q-13.58 -0.59 -13.58 1.45L-13.58 9.1Q-13.58 9.68 -13.26 10.02Q-12.94 10.36 -12.46 10.36L-11.31 10.36L-11.31 13.8Q-11.68 13.97 -12.48 14.19Q-13.28 14.41 -14.4 14.41Q-15.56 14.41 -16.42 14.12Q-17.29 13.83 -17.85 13.3Q-18.41 12.78 -18.62 12.06L-18.85 12.06Q-19.5 12.74 -20.37 13.29Q-21.23 13.83 -22.37 14.12Q-23.51 14.41 -24.97 14.41ZM-22.9 10.57Q-22.08 10.57 -21.4 10.33Q-20.72 10.09 -20.23 9.66Q-19.74 9.24 -19.45 8.63Q-19.16 8.02 -19.16 7.3L-19.16 6.11Q-21.1 6.11 -22.49 6.38Q-23.89 6.66 -24.63 7.23Q-25.38 7.81 -25.38 8.7Q-25.38 9.34 -25.06 9.77Q-24.74 10.19 -24.19 10.38Q-23.65 10.57 -22.9 10.57Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-9.7 14L-9.7 -10.62L-4.12 -10.62L-4.12 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M2.29 20.7Q1.06 20.7 0.14 20.51Q-0.77 20.32 -1.15 20.19L-1.15 16.65L1.2 16.65Q2.15 16.65 2.83 16.23Q3.51 15.8 3.9 15.21Q4.29 14.61 4.46 14L-2.61 -3.92L3.34 -3.92L5.99 3.94Q6.2 4.48 6.45 5.35Q6.71 6.21 6.96 7.11Q7.22 8.02 7.39 8.73L7.59 8.73Q7.73 8.25 7.9 7.62Q8.07 7 8.24 6.33Q8.41 5.67 8.59 5.06Q8.78 4.45 8.92 3.97L11.19 -3.92L16.74 -3.92L10.55 13.29Q9.97 14.85 9.27 16.21Q8.58 17.57 7.62 18.57Q6.67 19.58 5.36 20.14Q4.05 20.7 2.29 20.7Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M24.54 14.41Q22.81 14.41 21.6 13.88Q20.39 13.35 19.8 12.3Q19.2 11.25 19.2 9.75L19.2 0.13L16.86 0.13L16.86 -3.92L19.37 -3.92L20.53 -9.15L24.74 -9.15L24.74 -3.92L28.25 -3.92L28.25 0.13L24.74 0.13L24.74 8.39Q24.74 9.34 25.12 9.85Q25.49 10.36 26.48 10.36L28.25 10.36L28.25 13.83Q27.8 13.97 27.14 14.12Q26.48 14.27 25.8 14.34Q25.12 14.41 24.54 14.41Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M30.65 -6.33L30.65 -10.62L36.22 -10.62L36.22 -6.33ZM30.65 14L30.65 -3.92L36.22 -3.92L36.22 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M48.24 14.41Q45.28 14.41 43.21 13.39Q41.13 12.37 40.03 10.28Q38.92 8.19 38.92 5.02Q38.92 1.86 40.05 -0.23Q41.17 -2.32 43.24 -3.34Q45.32 -4.36 48.24 -4.36Q50.14 -4.36 51.76 -3.92Q53.37 -3.48 54.58 -2.56Q55.79 -1.64 56.43 -0.25Q57.08 1.15 57.08 3.09L51.61 3.09Q51.61 1.93 51.22 1.18Q50.82 0.43 50.08 0.06Q49.33 -0.31 48.21 -0.31Q46.91 -0.31 46.12 0.23Q45.32 0.77 44.94 1.83Q44.57 2.88 44.57 4.45L44.57 5.67Q44.57 7.2 44.94 8.25Q45.32 9.31 46.17 9.84Q47.02 10.36 48.34 10.36Q49.5 10.36 50.26 10Q51.03 9.65 51.44 8.88Q51.84 8.12 51.84 6.96L57.08 6.96Q57.08 8.83 56.43 10.24Q55.79 11.65 54.6 12.57Q53.41 13.49 51.78 13.95Q50.14 14.41 48.24 14.41Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M67.59 14.41Q65.83 14.41 64.28 14.03Q62.73 13.66 61.56 12.95Q60.39 12.23 59.72 11.18Q59.06 10.12 59.06 8.73Q59.06 8.59 59.06 8.48Q59.06 8.36 59.09 8.25L64.36 8.25Q64.36 8.32 64.36 8.41Q64.36 8.49 64.36 8.56Q64.4 9.31 64.86 9.8Q65.32 10.29 66.06 10.52Q66.81 10.74 67.7 10.74Q68.34 10.74 69.07 10.6Q69.8 10.46 70.31 10.12Q70.82 9.78 70.82 9.14Q70.82 8.42 70.2 8.05Q69.57 7.68 68.53 7.42Q67.49 7.17 66.3 6.93Q65.11 6.66 63.91 6.32Q62.7 5.98 61.7 5.38Q60.69 4.79 60.08 3.83Q59.47 2.88 59.47 1.42Q59.47 -0.14 60.13 -1.25Q60.79 -2.35 61.95 -3.03Q63.11 -3.71 64.62 -4.02Q66.13 -4.33 67.83 -4.33Q69.4 -4.33 70.81 -4.02Q72.22 -3.71 73.36 -3.09Q74.5 -2.46 75.14 -1.49Q75.79 -0.52 75.79 0.77Q75.79 0.94 75.77 1.13Q75.75 1.32 75.75 1.39L70.52 1.39L70.52 1.11Q70.52 0.54 70.14 0.16Q69.77 -0.21 69.12 -0.43Q68.48 -0.65 67.7 -0.65Q67.19 -0.65 66.69 -0.57Q66.2 -0.48 65.79 -0.33Q65.38 -0.18 65.13 0.09Q64.87 0.37 64.87 0.77Q64.87 1.28 65.32 1.61Q65.76 1.93 66.52 2.13Q67.29 2.34 68.21 2.58Q69.46 2.85 70.86 3.14Q72.25 3.43 73.49 3.95Q74.73 4.48 75.5 5.52Q76.26 6.55 76.26 8.36Q76.26 10.06 75.58 11.23Q74.9 12.4 73.71 13.1Q72.52 13.8 70.96 14.1Q69.4 14.41 67.59 14.41Z"></path>
+          </g>
         </g>
         <!-- SCALE: business-size title above the product -->
         <g id="bizTitle" opacity="0">
@@ -762,9 +771,10 @@ const phoneUnits = [0, 240];
     const gabBars = [0,1,2,3,4,5,6,7].map(i => $('gab' + i));
     const gabH = [22, 32, 26, 38, 30, 46, 34, 54];
     const gAnalyticsLine = $('gAnalyticsLine');
-    const snzTracked = $('snzTracked');
-    const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5')];
-    const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5')];
+    const snzWord = $('snzWord');
+  const snzWordPaths = Array.from(svg.querySelectorAll('#snzWord [data-ln]')) as unknown as El[];
+    const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4')];
+    const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4')];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
     [cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
@@ -809,15 +819,16 @@ const phoneUnits = [0, 240];
       return Math.pow(2, -9 * t) * Math.sin((t - per / 4) * (2 * Math.PI) / per) + 1;
     };
 
-    // Trigger-based elastic pops for the SCALE tiers: crossing a tier (or a unit's
-    // threshold) latches a timestamp; the balloon then plays out over REAL TIME,
-    // independent of scroll direction/speed (no scrubbing). `scaleAnimActive` keeps
-    // the rAF applying while a pop is still in flight after scrolling stops.
-    const POP_DUR = 640;                          // ms per balloon pop
+    // SCALE size steps: each customer size (small / medium / enterprise) is its own
+    // discrete scroll zone. `tierAnim` eases toward the active zone's tier over REAL
+    // TIME, so a step pops IN on scroll-down and reverses (pops OUT) on scroll-up,
+    // independent of scroll speed. `scaleAnimActive` keeps the rAF applying while the
+    // eased value is still settling after the user stops scrolling.
+    const POP_DUR = 640;                          // ms balloon settle time
     const nowMs = () => performance.now();
-    let curTier = -1, tierStartT = 0, replicasTrig = -1;
-    const nodeTrig = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1];    // per-server trigger timestamps
-    const dotTrig = [-1, -1, -1, -1, -1, -1, -1, -1];
+    let tierAnim = 0, frameLastT = -1;            // eased tier value + last frame stamp
+    let custCount = 0;                            // time-eased customer counter (trigger-driven)
+    const gate: Record<string, number> = {};      // named eased trigger gates (0..1)
     let scaleAnimActive = false;
 
     const apply = (p: number) => {
@@ -832,6 +843,22 @@ const phoneUnits = [0, 240];
         pk.style.opacity = active ? '1' : '0';
       };
 
+      // single frame delta drives all time-eased (trigger) animations
+      if (frameLastT < 0) frameLastT = nowMs();
+      const dtF = Math.min(64, nowMs() - frameLastT); frameLastT = nowMs();
+      const kF = reduce ? 1 : 1 - Math.pow(0.0006, dtF / POP_DUR);
+      // eased trigger gate: scroll crossing a threshold sets `on`; the value then plays to
+      // 1 (forward) or back to 0 (reverse on scroll-up) over real time, not scrubbed.
+      let gateSettling = false;
+      const trig = (name: string, on: boolean) => {
+        const cur = gate[name] ?? 0;
+        const t = on ? 1 : 0;
+        const next = reduce ? t : cur + (t - cur) * kF;
+        gate[name] = next;
+        if (!reduce && Math.abs(t - next) > 0.002) gateSettling = true;
+        return next;
+      };
+
       // ---- WIREFRAME BG: fade in on enter, out before sequence 2 ----
       if (wBg) wBg.style.opacity = (1 - sm(seg(p, 0.12, 0.22))).toFixed(3);
 
@@ -844,7 +871,7 @@ const phoneUnits = [0, 240];
       // 0.54-0.70: side-by-side, product left / backend right
       // 0.70-0.87: scale view
       // 0.87+: analytics
-      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.22, 352, 270, 2.8], [0.34, 352, 270, 2.8], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 375, 0.84], [0.86, 500, 375, 0.84], [0.93, 500, 460, 3.4], [1.04, 500, 460, 3.4]];
+      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.22, 352, 270, 2.8], [0.34, 352, 270, 2.8], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 375, 0.84], [0.93, 500, 375, 0.84], [0.98, 500, 460, 3.4], [1.08, 500, 460, 3.4]];
       let fx = 500, fy = 300, k = 1;
       for (let i = 0; i < A.length - 1; i++) { if (p >= A[i][0] && p <= A[i + 1][0]) { const t = sm(seg(p, A[i][0], A[i + 1][0])); fx = lerp(A[i][1], A[i + 1][1], t); fy = lerp(A[i][2], A[i + 1][2], t); k = lerp(A[i][3], A[i + 1][3], t); break; } }
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
@@ -875,7 +902,7 @@ const phoneUnits = [0, 240];
       if (wire) { wire.setAttribute('transform', 'translate(0 0)'); wire.style.opacity = String(pWire > 0 ? Math.max(0, 1 - zoomIn) : 0); }
       if (phone) { const ty = lerp(20, 0, phoneAppear); phone.setAttribute('transform', 'translate(0 ' + ty.toFixed(1) + ')'); phone.style.opacity = String(Math.max(0, phoneAppear - zoomIn * 1.4)); }
 
-      const dissolve = 1 - sm(seg(p, 0.86, 0.92));
+      const dissolve = 1 - sm(seg(p, 0.93, 0.98));
 
       // ---- BACKEND position ----
       // Enters from bottom, holds at center for ENGINE (incl. collapse), then slides right as small card
@@ -887,8 +914,8 @@ const phoneUnits = [0, 240];
       if (gApi) gApi.style.opacity = '0';
 
       // CONNECT+: simple API card follows Banch (slides center → right)
-      const apiCardShow = sm(seg(p, 0.54, 0.61));
-      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.86, 0.92)))).toFixed(3); }
+      const apiCardShow = trig('side', p >= 0.55);
+      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.93, 0.98)))).toFixed(3); }
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase, out before CONNECT;
       // scroll position picks which product shape (landing → store → content → app) is shown.
       if (engine) {
@@ -901,134 +928,144 @@ const phoneUnits = [0, 240];
       }
 
       // ---- CONNECT: product card left (280,300), backend right (700,300) ----
-      const pSideBy = sm(seg(p, 0.54, 0.61));
+      const pSideBy = apiCardShow;
       if (gCore) { gCore.setAttribute('transform', 'translate(340 300)'); gCore.style.opacity = (pSideBy * dissolve).toFixed(3); }
-      if (cnApi) { const cv = sm(seg(p, 0.60, 0.66)); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
+      if (cnApi) { const cv = trig('cn', p >= 0.61); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
 
-      // ---- TRAFFIC → SCALE: customer grows through size tiers, infra balloons ----
-      const sIn = sm(seg(p, 0.59, 0.65));
+      // ---- TRAFFIC → SCALE: customer grows through 3 size steps, infra balloons ----
+      // TRAFFIC arrival is scroll-TRIGGERED (eased gate), not scrubbed: crossing 0.60 plays
+      // the crowd/title in over real time and reverses on scroll-up.
+      const sIn = trig('traffic', p >= 0.60);
       if (bizTitle) bizTitle.style.opacity = (sIn * dissolve).toFixed(3);
-      const bn = sm(seg(p, 0.62, 0.88));
-      let bsize: string, busers: number;
-      if (bn < 0.4) { bsize = 'SMALL BUSINESS'; busers = 100 * Math.pow(10, bn / 0.4); }
-      else if (bn < 0.74) { bsize = 'MEDIUM BUSINESS'; busers = 1000 * Math.pow(50, (bn - 0.4) / 0.34); }
-      else { bsize = 'ENTERPRISE'; busers = 50000 * Math.pow(10, (bn - 0.74) / 0.26); }
-      busers = Math.round(busers / 50) * 50;
-      if (bizNum) bizNum.textContent = busers.toLocaleString('en-US') + ' customers';
-      if (bizSize) bizSize.textContent = bsize;
+
+      // Customer size as 3 INDIVIDUAL scroll-triggered steps. Each size owns a scroll
+      // zone; crossing one sets the target tier and `tierAnim` eases toward it over real
+      // time. Because the ease chases the target in BOTH directions, every step pops in
+      // on the way down and pops back out on the way up (inverse on scroll-up).
+      const SCALE_ZONES = [0.62, 0.71, 0.80];   // p thresholds → small / medium / enterprise
+      let sizeTier = -1;
+      for (let i = 0; i < SCALE_ZONES.length; i++) if (p >= SCALE_ZONES[i]) sizeTier = i;
+      const tierTarget = Math.max(0, sizeTier);
+      if (sizeTier < 0) tierAnim = 0; else tierAnim += (tierTarget - tierAnim) * kF;
+      const tierSettling = !reduce && sizeTier >= 0 && Math.abs(tierTarget - tierAnim) > 0.002;
+
+      // per-element reveal from the eased tier: 0 below its step, eases to 1 once reached,
+      // eases back out (reverses) when scrolled up. `need` = tier index the element joins at.
+      const stepPop = (need: number) => reduce
+        ? (tierAnim >= need - 0.001 ? 1 : 0)
+        : elasticOut(clamp(tierAnim - (need - 1), 0, 1));
+
+      // counter + label snap to the nearest step; count rolls between steps as it eases
+      const SIZE_LABEL = ['SMALL BUSINESS', 'MEDIUM BUSINESS', 'ENTERPRISE'];
+      const SIZE_NUM = [100, 25000, 500000];
+      // number eases (rolls) toward the active step's value over REAL TIME — triggered by
+      // the scroll zone crossing, but the roll itself is time-driven, not scroll-scrubbed.
+      const custTarget = sizeTier < 0 ? 0 : SIZE_NUM[sizeTier];
+      custCount = reduce ? custTarget : custCount + (custTarget - custCount) * kF;
+      const countSettling = !reduce && Math.abs(custTarget - custCount) > Math.max(1, custTarget * 0.0015);
+      if (!countSettling) custCount = custTarget;   // snap exact so it never rests at e.g. 499,500
+      if (sizeTier < 0) {
+        if (bizNum) bizNum.textContent = '';
+        if (bizSize) bizSize.textContent = '';
+      } else {
+        const shown = Math.round(custCount / 50) * 50;
+        if (bizNum) bizNum.textContent = shown.toLocaleString('en-US') + ' customers';
+        if (bizSize) bizSize.textContent = SIZE_LABEL[sizeTier];   // label snaps per step
+      }
+      if (bizTitle) bizTitle.setAttribute('transform', 'translate(500 220) scale(1) translate(-500 -220)');
 
       // ---- SCALE gates ----
-      const an = sm(seg(p, 0.88, 0.94));
-      const gsGate = sm(seg(p, 0.72, 0.78));
+      const an = sm(seg(p, 0.93, 0.99));
+      // server cluster scales WITH the customers: pops in as the first size step arrives,
+      // then grows per tier (srvScale/scSqs follow tierAnim). Reverses on scroll-up.
+      const gsGate = trig('servers', sizeTier >= 0);
 
-      // Discrete size tiers (small / medium / enterprise). Crossing a tier latches a
-      // timestamp; the elastic pop then plays out over real time (TRIGGER, not scrub).
-      const TIER_AT = [0.0, 0.4, 0.74];
-      let tier = 0; for (let i = 0; i < TIER_AT.length; i++) if (bn >= TIER_AT[i]) tier = i;
-      // reset latches when scrolled back before the sequence so it can replay on re-entry
-      if (bn <= 0.001) { curTier = -1; tierStartT = 0; replicasTrig = -1; nodeTrig.fill(-1); dotTrig.fill(-1); }
-      if (tier > curTier) { curTier = tier; tierStartT = nowMs(); }
-      // time-driven eases (settle instantly under reduced-motion / single render)
-      const popEase = (startT: number) => startT < 0 ? 0 : (reduce ? 1 : elasticOut(clamp((nowMs() - startT) / POP_DUR, 0, 1)));
-      const popFade = (startT: number) => startT < 0 ? 0 : (reduce ? 1 : clamp((nowMs() - startT) / 150, 0, 1));
-      const tierE = curTier < 0 ? 0 : (reduce ? 1 : elasticOut(clamp((nowMs() - tierStartT) / POP_DUR, 0, 1)));
-      const balloon = (prev: number, cur: number) => lerp(prev, cur, tierE);
-
-      // counter gives a quick elastic kick at each tier crossing
-      if (bizTitle) {
-        const kick = tier === 0 ? 1 : balloon(1.16, 1);
-        bizTitle.setAttribute('transform', 'translate(500 220) scale(' + kick.toFixed(3) + ') translate(-500 -220)');
-      }
-
-      // SERVERS (right, inside the API card): count steps 1→4→10 per tier; each replica
-      // pops in over time, and the cluster balloons bigger each tier (within card).
+      // SERVERS (right, inside the API card): count steps 1→4→10 across the 3 steps; the
+      // cluster scale eases between step sizes (and back down on scroll-up).
       const SRV_PS = [0.86, 0.97, 1.08];
-      const srvScale = balloon(tier > 0 ? SRV_PS[tier - 1] : 0.5, SRV_PS[tier]);
-      // entrance is TRIGGERED (rubberband) once the scale gate opens, not scrubbed by scroll
-      if (replicasTrig < 0 && gsGate > 0.01) replicasTrig = nowMs();
-      const repPop = popEase(replicasTrig);   // elastic rubberband-in 0→1
+      const srvScale = lerp(SRV_PS[Math.floor(tierAnim)] ?? SRV_PS[0], SRV_PS[Math.min(2, Math.ceil(tierAnim))], tierAnim - Math.floor(tierAnim));
       if (gReplicas) {
-        gReplicas.style.opacity = (popFade(replicasTrig) * dissolve).toFixed(3);
-        gReplicas.setAttribute('transform', 'translate(706 300) scale(' + (srvScale * repPop).toFixed(3) + ') translate(-706 -300)');
+        gReplicas.style.opacity = (gsGate * dissolve).toFixed(3);
+        gReplicas.setAttribute('transform', 'translate(706 300) scale(' + (srvScale * gsGate).toFixed(3) + ') translate(-706 -300)');
       }
       // enterprise: balloon the card wider so the 10-server cluster fits (expands rightward)
       if (apiCardBox) {
-        const cardW = tier >= 2 ? balloon(184, 214) : 184;
+        const cardW = lerp(184, 214, clamp(tierAnim - 1, 0, 1));
         apiCardBox.setAttribute('width', cardW.toFixed(1));
       }
       const repCols = 5;
       const repColX = [666, 686, 706, 726, 746];   // column centres, abs (card right half)
       const repRowY = [288, 312];        // row centres, abs
-      const nodeAt = [0.0, 0.4, 0.4, 0.4, 0.74, 0.74, 0.74, 0.74, 0.74, 0.74]; // server count steps per tier (1 → 4 → 10)
+      const nodeNeed = [0, 1, 1, 1, 2, 2, 2, 2, 2, 2]; // step each replica joins at (1 → 4 → 10)
       scSqs.forEach((s, i) => {
         if (!s) return;
-        if (nodeTrig[i] < 0 && gsGate > 0.01 && bn >= nodeAt[i] - 0.0001) nodeTrig[i] = nowMs();
-        const pop = popEase(nodeTrig[i]);   // time-driven balloon-in
-        s.style.opacity = popFade(nodeTrig[i]).toFixed(3);
+        const pop = stepPop(nodeNeed[i]);
+        s.style.opacity = clamp(pop, 0, 1).toFixed(3);
         const x = repColX[i % repCols], y = repRowY[Math.floor(i / repCols)];
         s.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + Math.max(0.01, pop).toFixed(3) + ')');
       });
 
-      // PEOPLE (left crowd): reveal in waves 3→5→8, whole crowd balloons each tier.
+      // PEOPLE (left crowd): reveal in waves 3→5→8, whole crowd balloons each step.
       const PPL_PS = [0.78, 1.04, 1.3];
-      const pplScale = balloon(tier > 0 ? PPL_PS[tier - 1] : 0.45, PPL_PS[tier]);
+      const pplScale = lerp(PPL_PS[Math.floor(tierAnim)] ?? PPL_PS[0], PPL_PS[Math.min(2, Math.ceil(tierAnim))], tierAnim - Math.floor(tierAnim));
       if (customers) {
         customers.style.opacity = (sIn * dissolve).toFixed(3);
         customers.setAttribute('transform', 'translate(145 300) scale(' + pplScale.toFixed(3) + ') translate(-145 -300)');
       }
       if (custNum) custNum.style.opacity = '0';
-      const peopleAt = [0.0, 0.0, 0.0, 0.4, 0.4, 0.74, 0.74, 0.74];
+      const dotNeed = [0, 0, 0, 1, 1, 2, 2, 2]; // step each crowd dot joins at (3 → 5 → 8)
       custDots.forEach((d, i) => {
-        if (dotTrig[i] < 0 && sIn > 0.01 && bn >= peopleAt[i] - 0.0001) dotTrig[i] = nowMs();
-        const pop = popEase(dotTrig[i]);
-        d.style.opacity = popFade(dotTrig[i]).toFixed(3);
+        const pop = stepPop(dotNeed[i]);
+        d.style.opacity = clamp(pop, 0, 1).toFixed(3);
         d.setAttribute('r', Math.max(0.1, 6 * pop).toFixed(2));
       });
-
-      // keep the rAF applying while any triggered pop is still in flight
-      scaleAnimActive = !reduce && (
-        (curTier >= 0 && nowMs() - tierStartT < POP_DUR) ||
-        (replicasTrig >= 0 && nowMs() - replicasTrig < POP_DUR) ||
-        nodeTrig.some((t) => t >= 0 && nowMs() - t < POP_DUR) ||
-        dotTrig.some((t) => t >= 0 && nowMs() - t < POP_DUR)
-      );
-      const anCardIn = sm(seg(p, 0.74, 0.80));
+      const anCardIn = trig('analytics', p >= 0.88);
       if (gAnalytics) gAnalytics.style.opacity = (anCardIn * (1 - an)).toFixed(3);
       gabBars.forEach((b, i) => { if (!b) return; const prog = sm(seg(anCardIn, i / 8 * 0.35, i / 8 * 0.35 + 0.65)); const h = gabH[i] * prog; b.setAttribute('y', String(40 - h)); b.setAttribute('height', String(h)); });
       if (gAnalyticsLine) { const lp = sm(seg(anCardIn, 0.45, 1.0)); gAnalyticsLine.style.strokeDashoffset = String(1 - lp); gAnalyticsLine.style.opacity = lp > 0 ? '1' : '0'; }
-      if (snzTracked) { const tp = sm(seg(anCardIn, 0.35, 1.0)); snzTracked.style.strokeDashoffset = String(860 * (1 - tp)); snzTracked.style.fill = tp >= 0.98 ? 'var(--accent)' : 'none'; }
+      // ANALYTICS: each glyph outline strokes in, staggered left→right; accent fills after
+      const nW = snzWordPaths.length;
+      snzWordPaths.forEach((pth, i) => {
+        const t = i / nW;
+        const lp = sm(seg(anCardIn, t * 0.5, t * 0.5 + 0.4));
+        pth.style.strokeDashoffset = String(1 - lp);
+      });
+      if (snzWord) snzWord.style.fillOpacity = sm(seg(anCardIn, 0.85, 1.0)).toFixed(3);
       if (analytics) analytics.style.opacity = an.toFixed(3);
-      const ciPAv = sm(seg(p, 0.75, 0.81));
+      const ciPAv = sm(seg(p, 0.88, 0.90));
       if (ciProdAn) ciProdAn.style.opacity = (ciPAv * dissolve).toFixed(3);
       if (ciProdAnPulse) ciProdAnPulse.style.opacity = (ciPAv * dissolve).toFixed(3);
-      const ciAAv = sm(seg(p, 0.76, 0.82));
+      const ciAAv = sm(seg(p, 0.89, 0.91));
       if (ciApiAn) { ciApiAn.setAttribute('x1', bx.toFixed(1)); ciApiAn.style.opacity = (ciAAv * dissolve).toFixed(3); }
       if (ciApiAnPulse) { ciApiAnPulse.setAttribute('x1', bx.toFixed(1)); ciApiAnPulse.style.opacity = (ciAAv * dissolve).toFixed(3); }
 
       // ---- DATA ----
-      draw(anChart, sm(seg(p, 0.92, 1.00)));
-      const anP = sm(seg(p, 0.90, 1.00));
+      draw(anChart, sm(seg(p, 0.97, 1.00)));
+      const anP = sm(seg(p, 0.96, 1.00));
       // stat counters
       if (anStatRev) anStatRev.textContent = '£' + (42.8 * anP).toFixed(1) + 'K';
       if (anStatVis) anStatVis.textContent = Math.round(12840 * anP).toLocaleString('en-US');
       if (anStatSrc) anStatSrc.textContent = (1.2 * anP).toFixed(1) + 'M';
       if (anStatSig) anStatSig.textContent = Math.round(1932 * anP).toLocaleString('en-US');
       // heatmap cells stagger in
-      const anHeatP = sm(seg(p, 0.89, 0.96));
+      const anHeatP = sm(seg(p, 0.97, 1.00));
       anHeatCells.forEach((c, i) => { const t = i / (anHeatCells.length - 1); c.style.opacity = sm(seg(anHeatP, t * 0.55, t * 0.55 + 0.45)).toFixed(2); });
       // bars grow from bottom, staggered
-      const anBarP = sm(seg(p, 0.92, 1.00));
+      const anBarP = sm(seg(p, 0.97, 1.00));
       if (anSearch) { const bars = Array.from(anSearch.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anSearchH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
       if (anRev) { const bars = Array.from(anRev.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anRevH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
 
       // ---- captions + tracker + progress ----
-      // 0=DESIGN 1=PURPOSE 2=TRAFFIC 3=SCALE 4=DATA
-      // PURPOSE holds through the engine morph + product/backend bridge; TRAFFIC starts
-      // as the customer crowd arrives (~0.60); SCALE at the original split (0.76).
-      const phase = p < 0.18 ? 0 : (p < 0.60 ? 1 : (p < 0.76 ? 2 : (p < 0.88 ? 3 : 4)));
+      // 0=DESIGN 1=PURPOSE 2=SCALE (traffic+scale merged) 3=DATA
+      // PURPOSE holds through the engine morph + product/backend bridge; SCALE spans the
+      // customer arrival AND infra scaling (~0.60–0.88); DATA at the analytics view.
+      const phase = p < 0.18 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
       caps.forEach((c, i) => { if (c) { c.style.opacity = i === phase ? '1' : '0'; c.style.transform = i === phase ? 'translateY(0)' : 'translateY(12px)'; } });
       track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent)' : '#4a4a44'; });
       if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
+
+      // keep the rAF applying while any triggered animation (gates, size tier, counter) settles
+      scaleAnimActive = gateSettling || tierSettling || countSettling;
     };
 
     if (reduce) {
