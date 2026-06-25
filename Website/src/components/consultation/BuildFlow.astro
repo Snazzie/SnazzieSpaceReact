@@ -1,6 +1,22 @@
 ---
 // THE BUILD — scroll-driven story: site + app merge into a product, the backend
 // docks and explodes into modules, traffic arrives, it scales, then analytics.
+
+// Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
+const buildCaps = [
+  { label: "01 — BUILD", title: "What the user sees.", body: "A website and an app — designed around you and built by hand.", max: 460 },
+  { label: "02 — ENGINE", title: "Behind the scenes.", body: "Accounts, payments, content, your store and an AI agent — all running inside the backend.", max: 480 },
+  { label: "03 — CONNECT", title: "Wire it together.", body: "Your product and the backend, talking to a database and a fast cache so everything feels instant.", max: 480 },
+  { label: "04 — TRAFFIC", title: "People show up.", body: "As word spreads, more and more customers arrive — all at once.", max: 480 },
+  { label: "05 — SCALE", title: "It scales with demand.", body: "Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.", max: 480 },
+  { label: "06 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working — so you know what to do next.", max: 480 },
+];
+
+// Step tracker labels (tk1..tk6) — first is active (accent), rest dim.
+const buildTrack = ["01 BUILD", "02 ENGINE", "03 CONNECT", "04 TRAFFIC", "05 SCALE", "06 DATA"];
+
+// Phone app screen repeated twice for the scroll loop (UNIT 1 at o=0, UNIT 2 at o=240).
+const phoneUnits = [0, 240];
 ---
 <style>
   @keyframes snz-spin { to { transform: rotate(360deg); } }
@@ -201,83 +217,51 @@
           <rect x="660" y="122" width="126" height="268" rx="4" fill="#0e0e0e"></rect>
           <g clip-path="url(#snzPhoneClip)">
             <g style="animation:snz-appscroll 5s ease-in-out infinite">
-              <!-- === UNIT 1 (y=126–366, 240px) === -->
-              <!-- status bar -->
-              <rect x="668" y="127" width="24" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
-              <rect x="756" y="127" width="10" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
-              <rect x="769" y="127" width="10" height="4" rx="2" fill="rgba(198,244,50,.4)"></rect>
-              <!-- header: filled, no border -->
-              <rect x="660" y="135" width="126" height="32" fill="rgba(255,255,255,.03)"></rect>
-              <rect x="668" y="143" width="46" height="8" rx="3" fill="rgba(255,255,255,.22)"></rect>
-              <circle cx="773" cy="151" r="8" fill="rgba(198,244,50,.18)"></circle>
-              <circle cx="776" cy="148" r="2.5" fill="rgba(198,244,50,.7)"></circle>
-              <!-- stat cards: 2 side-by-side, filled, no borders -->
-              <rect x="668" y="172" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
-              <rect x="676" y="180" width="36" height="12" rx="2" fill="rgba(198,244,50,.55)"></rect>
-              <rect x="676" y="197" width="28" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="726" y="172" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
-              <rect x="734" y="180" width="28" height="12" rx="2" fill="rgba(255,255,255,.22)"></rect>
-              <rect x="734" y="197" width="34" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <!-- bar chart: label + grid + 7 bars trending up -->
-              <rect x="668" y="224" width="44" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="738" y="224" width="28" height="5" rx="2" fill="rgba(198,244,50,.45)"></rect>
-              <line x1="668" y1="240" x2="778" y2="240" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <line x1="668" y1="258" x2="778" y2="258" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <line x1="668" y1="276" x2="778" y2="276" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <rect x="668" y="276" width="10" height="18" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="682" y="272" width="10" height="22" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="696" y="268" width="10" height="26" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="710" y="260" width="10" height="34" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="724" y="264" width="10" height="30" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="738" y="252" width="10" height="42" rx="2" fill="rgba(255,255,255,.18)"></rect>
-              <rect x="752" y="238" width="10" height="56" rx="2" fill="rgba(198,244,50,.7)"></rect>
-              <rect x="668" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <rect x="710" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <rect x="752" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <!-- list items -->
-              <circle cx="678" cy="316" r="9" fill="rgba(255,255,255,.07)"></circle>
-              <rect x="694" y="310" width="56" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
-              <rect x="694" y="320" width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
-              <line x1="668" y1="330" x2="778" y2="330" stroke="rgba(255,255,255,.04)" stroke-width="1"></line>
-              <circle cx="678" cy="344" r="9" fill="rgba(255,255,255,.07)"></circle>
-              <rect x="694" y="338" width="48" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
-              <rect x="694" y="348" width="62" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
-              <!-- === UNIT 2 (+240px) === -->
-              <rect x="668" y="367" width="24" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
-              <rect x="756" y="367" width="10" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
-              <rect x="769" y="367" width="10" height="4" rx="2" fill="rgba(198,244,50,.4)"></rect>
-              <rect x="660" y="375" width="126" height="32" fill="rgba(255,255,255,.03)"></rect>
-              <rect x="668" y="383" width="46" height="8" rx="3" fill="rgba(255,255,255,.22)"></rect>
-              <circle cx="773" cy="391" r="8" fill="rgba(198,244,50,.18)"></circle>
-              <circle cx="776" cy="388" r="2.5" fill="rgba(198,244,50,.7)"></circle>
-              <rect x="668" y="412" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
-              <rect x="676" y="420" width="36" height="12" rx="2" fill="rgba(198,244,50,.55)"></rect>
-              <rect x="676" y="437" width="28" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="726" y="412" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
-              <rect x="734" y="420" width="28" height="12" rx="2" fill="rgba(255,255,255,.22)"></rect>
-              <rect x="734" y="437" width="34" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="668" y="464" width="44" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="738" y="464" width="28" height="5" rx="2" fill="rgba(198,244,50,.45)"></rect>
-              <line x1="668" y1="480" x2="778" y2="480" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <line x1="668" y1="498" x2="778" y2="498" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <line x1="668" y1="516" x2="778" y2="516" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
-              <rect x="668" y="516" width="10" height="18" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="682" y="512" width="10" height="22" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="696" y="508" width="10" height="26" rx="2" fill="rgba(255,255,255,.12)"></rect>
-              <rect x="710" y="500" width="10" height="34" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="724" y="504" width="10" height="30" rx="2" fill="rgba(255,255,255,.14)"></rect>
-              <rect x="738" y="492" width="10" height="42" rx="2" fill="rgba(255,255,255,.18)"></rect>
-              <rect x="752" y="478" width="10" height="56" rx="2" fill="rgba(198,244,50,.7)"></rect>
-              <rect x="668" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <rect x="710" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <rect x="752" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
-              <circle cx="678" cy="556" r="9" fill="rgba(255,255,255,.07)"></circle>
-              <rect x="694" y="550" width="56" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
-              <rect x="694" y="560" width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
-              <line x1="668" y1="570" x2="778" y2="570" stroke="rgba(255,255,255,.04)" stroke-width="1"></line>
-              <circle cx="678" cy="584" r="9" fill="rgba(255,255,255,.07)"></circle>
-              <rect x="694" y="578" width="48" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
-              <rect x="694" y="588" width="62" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+              {/* UNIT 1 at o=0, UNIT 2 at o=240 — identical app screen for the scroll loop */}
+              {phoneUnits.map((o) => (
+                <>
+                  {/* status bar */}
+                  <rect x="668" y={127 + o} width="24" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+                  <rect x="756" y={127 + o} width="10" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+                  <rect x="769" y={127 + o} width="10" height="4" rx="2" fill="rgba(198,244,50,.4)"></rect>
+                  {/* header */}
+                  <rect x="660" y={135 + o} width="126" height="32" fill="rgba(255,255,255,.03)"></rect>
+                  <rect x="668" y={143 + o} width="46" height="8" rx="3" fill="rgba(255,255,255,.22)"></rect>
+                  <circle cx="773" cy={151 + o} r="8" fill="rgba(198,244,50,.18)"></circle>
+                  <circle cx="776" cy={148 + o} r="2.5" fill="rgba(198,244,50,.7)"></circle>
+                  {/* stat cards */}
+                  <rect x="668" y={172 + o} width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+                  <rect x="676" y={180 + o} width="36" height="12" rx="2" fill="rgba(198,244,50,.55)"></rect>
+                  <rect x="676" y={197 + o} width="28" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+                  <rect x="726" y={172 + o} width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+                  <rect x="734" y={180 + o} width="28" height="12" rx="2" fill="rgba(255,255,255,.22)"></rect>
+                  <rect x="734" y={197 + o} width="34" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+                  {/* bar chart */}
+                  <rect x="668" y={224 + o} width="44" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="738" y={224 + o} width="28" height="5" rx="2" fill="rgba(198,244,50,.45)"></rect>
+                  <line x1="668" y1={240 + o} x2="778" y2={240 + o} stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+                  <line x1="668" y1={258 + o} x2="778" y2={258 + o} stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+                  <line x1="668" y1={276 + o} x2="778" y2={276 + o} stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+                  <rect x="668" y={276 + o} width="10" height="18" rx="2" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="682" y={272 + o} width="10" height="22" rx="2" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="696" y={268 + o} width="10" height="26" rx="2" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="710" y={260 + o} width="10" height="34" rx="2" fill="rgba(255,255,255,.14)"></rect>
+                  <rect x="724" y={264 + o} width="10" height="30" rx="2" fill="rgba(255,255,255,.14)"></rect>
+                  <rect x="738" y={252 + o} width="10" height="42" rx="2" fill="rgba(255,255,255,.18)"></rect>
+                  <rect x="752" y={238 + o} width="10" height="56" rx="2" fill="rgba(198,244,50,.7)"></rect>
+                  <rect x="668" y={298 + o} width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+                  <rect x="710" y={298 + o} width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+                  <rect x="752" y={298 + o} width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+                  {/* list items */}
+                  <circle cx="678" cy={316 + o} r="9" fill="rgba(255,255,255,.07)"></circle>
+                  <rect x="694" y={310 + o} width="56" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+                  <rect x="694" y={320 + o} width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+                  <line x1="668" y1={330 + o} x2="778" y2={330 + o} stroke="rgba(255,255,255,.04)" stroke-width="1"></line>
+                  <circle cx="678" cy={344 + o} r="9" fill="rgba(255,255,255,.07)"></circle>
+                  <rect x="694" y={338 + o} width="48" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+                  <rect x="694" y={348 + o} width="62" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+                </>
+              ))}
             </g>
           </g>
           <!-- tab bar overlay -->
@@ -314,16 +298,9 @@
         <!-- SCALE: backend node replicates — identical replica icons spin up in a
              contained grid inside the API card's right half. JS drives count. -->
         <g id="gReplicas" opacity="0">
-          <g id="gsq0" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq1" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq2" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq3" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq4" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq5" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq6" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq7" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq8" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq9" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          {Array.from({ length: 10 }, (_, i) => (
+            <g id={`gsq${i}`} opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          ))}
         </g>
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
@@ -381,14 +358,9 @@
           <text x="-86" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">Cache</text>
           <text x="106" y="50" text-anchor="end" fill="rgba(198,244,50,.48)" font-family="JetBrains Mono,monospace" font-size="9">99.9% up</text>
           <g id="capgrp">
-            <rect class="capbar" id="cb0" x="-76" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb1" x="-55" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb2" x="-34" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb3" x="-13" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb4" x="8" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb5" x="29" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb6" x="50" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
-            <rect class="capbar" id="cb7" x="71" y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            {Array.from({ length: 8 }, (_, i) => (
+              <rect class="capbar" id={`cb${i}`} x={-76 + i * 21} y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            ))}
           </g>
         </g>
         <!-- accounts (backend module) -->
@@ -498,44 +470,18 @@
       <!-- captions -->
       <div style="position:absolute;left:56px;bottom:26px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
       <div class="snz-track" style="position:absolute;right:56px;bottom:26px;display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
-        <span id="tk1" style="color:var(--accent);transition:color .4s ease">01 BUILD</span>
-        <span id="tk2" style="color:#4a4a44;transition:color .4s ease">02 ENGINE</span>
-        <span id="tk3" style="color:#4a4a44;transition:color .4s ease">03 CONNECT</span>
-        <span id="tk4" style="color:#4a4a44;transition:color .4s ease">04 TRAFFIC</span>
-        <span id="tk5" style="color:#4a4a44;transition:color .4s ease">05 SCALE</span>
-        <span id="tk6" style="color:#4a4a44;transition:color .4s ease">06 DATA</span>
+        {buildTrack.map((label, i) => (
+          <span id={`tk${i + 1}`} style={`color:${i === 0 ? "var(--accent)" : "#4a4a44"};transition:color .4s ease`}>{label}</span>
+        ))}
       </div>
       <div style="position:absolute;left:56px;top:26px;height:118px;width:520px;max-width:60%">
-        <div id="cap1" class="cap" style="position:absolute;left:0;bottom:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">01 — BUILD</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">What the user sees.</h3>
-          <p style="margin:0;max-width:460px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">A website and an app — designed around you and built by hand.</p>
-        </div>
-        <div id="cap2" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">02 — ENGINE</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Behind the scenes.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Accounts, payments, content, your store and an AI agent — all running inside the backend.</p>
-        </div>
-        <div id="cap3" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">03 — CONNECT</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">Wire it together.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Your product and the backend, talking to a database and a fast cache so everything feels instant.</p>
-        </div>
-        <div id="cap4" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">04 — TRAFFIC</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">People show up.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">As word spreads, more and more customers arrive — all at once.</p>
-        </div>
-        <div id="cap5" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">05 — SCALE</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">It scales with demand.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.</p>
-        </div>
-        <div id="cap6" class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-          <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">06 — DATA</div>
-          <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">And you see it all.</h3>
-          <p style="margin:0;max-width:480px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Live analytics show your traffic, revenue and what's working — so you know what to do next.</p>
-        </div>
+        {buildCaps.map((c, i) => (
+          <div id={`cap${i + 1}`} class="cap" style={`position:absolute;left:0;bottom:0${i === 0 ? "" : ";opacity:0"}`}>
+            <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
+            <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">{c.title}</h3>
+            <p style={`margin:0;max-width:${c.max}px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92`}>{c.body}</p>
+          </div>
+        ))}
       </div>
     </div>
     <!-- progress -->
