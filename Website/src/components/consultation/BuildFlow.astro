@@ -7,6 +7,7 @@
 
   @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+  @keyframes snz-appscroll { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-140px); } }
   .snz-bf-col { display:flex; flex-direction:column; gap:16px; flex-shrink:0; width:160px; }
   .snz-bf-col-a { animation: snz-bf-up 30s linear infinite; animation-play-state:paused; }
   .snz-bf-col-b { animation: snz-bf-dn 24s linear infinite; animation-play-state:paused; }
@@ -73,10 +74,10 @@
   </h2>
   <div class="snz-stmt-line"></div>
 </section>
-<section id="snz-build" style="position:relative;height:760vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
+<section id="snz-build" style="position:relative;height:1360vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
   <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
     <!-- wireframe background wall -->
-    <div id="snz-wbg" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:1;overflow:hidden">
+    <div id="snz-wbg" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.12;overflow:hidden">
       <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0b0b0b 0%,transparent 12%,transparent 88%,#0b0b0b 100%);z-index:1;pointer-events:none"></div>
       <!-- col A -->
       <div class="snz-bf-col snz-bf-col-a" style="margin-top:-40px">
@@ -122,40 +123,162 @@
         <g id="camera">
         <!-- website wireframe -->
         <g id="fWire" opacity="0">
-          <rect data-wf pathLength="1" x="150" y="120" width="404" height="300" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
-          <line data-wf pathLength="1" x1="150" y1="166" x2="554" y2="166" stroke="rgba(255,255,255,.28)" stroke-width="1.8"></line>
+          <!-- browser chrome: soft border -->
+          <rect data-wf pathLength="1" x="150" y="120" width="404" height="300" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></rect>
+          <line data-wf pathLength="1" x1="150" y1="166" x2="554" y2="166" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
           <circle data-wfp cx="178" cy="143" r="5.5" fill="var(--accent)"></circle>
-          <circle data-wfp cx="197" cy="143" r="5.5" fill="rgba(255,255,255,.3)"></circle>
-          <circle data-wfp cx="216" cy="143" r="5.5" fill="rgba(255,255,255,.3)"></circle>
-          <rect data-wf pathLength="1" x="184" y="192" width="150" height="20" rx="4" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.6"></rect>
-          <rect data-wf pathLength="1" x="184" y="224" width="336" height="96" rx="8" fill="rgba(198,244,50,.05)" stroke="var(--accent)" stroke-width="2.2"></rect>
-          <text data-wfp x="206" y="280" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="18">YOUR SITE</text>
-          <rect data-wf pathLength="1" x="184" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
-          <rect data-wf pathLength="1" x="300" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
-          <rect data-wf pathLength="1" x="416" y="338" width="104" height="66" rx="7" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.6"></rect>
+          <circle data-wfp cx="197" cy="143" r="5.5" fill="rgba(255,255,255,.2)"></circle>
+          <circle data-wfp cx="216" cy="143" r="5.5" fill="rgba(255,255,255,.2)"></circle>
+          <!-- url bar: filled, no outline -->
+          <rect data-wfp x="258" y="132" width="180" height="18" rx="9" fill="rgba(255,255,255,.05)"></rect>
+          <circle data-wfp cx="272" cy="141" r="3.5" fill="rgba(198,244,50,.4)"></circle>
+          <rect data-wfp x="280" y="137" width="76" height="6" rx="2" fill="rgba(255,255,255,.1)"></rect>
+          <!-- nav: filled logo, filled links, solid accent CTA — no outlines -->
+          <rect data-wfp x="150" y="166" width="404" height="36" fill="rgba(255,255,255,.02)"></rect>
+          <rect data-wfp x="168" y="177" width="50" height="10" rx="3" fill="rgba(198,244,50,.6)"></rect>
+          <rect data-wfp x="312" y="179" width="30" height="6" rx="2" fill="rgba(255,255,255,.18)"></rect>
+          <rect data-wfp x="350" y="179" width="30" height="6" rx="2" fill="rgba(255,255,255,.18)"></rect>
+          <rect data-wfp x="388" y="179" width="30" height="6" rx="2" fill="rgba(255,255,255,.18)"></rect>
+          <rect data-wfp x="432" y="173" width="78" height="22" rx="11" fill="rgba(198,244,50,.85)"></rect>
+          <rect data-wfp x="442" y="180" width="58" height="8" rx="3" fill="rgba(0,0,0,.3)"></rect>
+          <!-- nav bottom line -->
+          <line data-wf pathLength="1" x1="150" y1="202" x2="554" y2="202" stroke="rgba(255,255,255,.06)" stroke-width="1"></line>
+          <!-- hero left: badge + thick headline fills + body text + solid CTA -->
+          <rect data-wfp x="168" y="212" width="110" height="16" rx="8" fill="rgba(198,244,50,.12)"></rect>
+          <rect data-wfp x="178" y="217" width="88" height="6" rx="2" fill="rgba(198,244,50,.45)"></rect>
+          <rect data-wfp x="168" y="238" width="182" height="18" rx="3" fill="rgba(255,255,255,.18)"></rect>
+          <rect data-wfp x="168" y="262" width="146" height="18" rx="3" fill="rgba(255,255,255,.12)"></rect>
+          <rect data-wfp x="168" y="292" width="166" height="5" rx="2" fill="rgba(255,255,255,.1)"></rect>
+          <rect data-wfp x="168" y="302" width="142" height="5" rx="2" fill="rgba(255,255,255,.07)"></rect>
+          <rect data-wfp x="168" y="318" width="110" height="26" rx="13" fill="rgba(198,244,50,.82)"></rect>
+          <rect data-wfp x="178" y="325" width="90" height="12" rx="6" fill="rgba(0,0,0,.2)"></rect>
+          <rect data-wfp x="286" y="318" width="80" height="26" rx="13" fill="rgba(255,255,255,.06)"></rect>
+          <!-- hero right: 2 KPI stat cards — filled, no borders -->
+          <rect data-wfp x="368" y="210" width="158" height="60" rx="8" fill="rgba(255,255,255,.04)"></rect>
+          <rect data-wfp x="380" y="222" width="54" height="16" rx="3" fill="rgba(198,244,50,.55)"></rect>
+          <rect data-wfp x="380" y="244" width="80" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+          <rect data-wfp x="368" y="278" width="158" height="60" rx="8" fill="rgba(255,255,255,.04)"></rect>
+          <rect data-wfp x="380" y="290" width="44" height="16" rx="3" fill="rgba(255,255,255,.2)"></rect>
+          <rect data-wfp x="380" y="312" width="80" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+          <!-- chart section separator -->
+          <line data-wf pathLength="1" x1="150" y1="354" x2="554" y2="354" stroke="rgba(255,255,255,.06)" stroke-width="1"></line>
+          <!-- chart title + legend -->
+          <rect data-wfp x="168" y="360" width="62" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
+          <circle data-wfp cx="436" cy="363" r="3" fill="rgba(198,244,50,.7)"></circle>
+          <rect data-wfp x="442" y="361" width="32" height="4" rx="1" fill="rgba(255,255,255,.1)"></rect>
+          <circle data-wfp cx="486" cy="363" r="3" fill="rgba(255,255,255,.25)"></circle>
+          <rect data-wfp x="492" y="361" width="28" height="4" rx="1" fill="rgba(255,255,255,.1)"></rect>
+          <!-- chart grid lines (draw in) -->
+          <line data-wf pathLength="1" x1="168" y1="376" x2="530" y2="376" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+          <line data-wf pathLength="1" x1="168" y1="390" x2="530" y2="390" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+          <line data-wf pathLength="1" x1="168" y1="404" x2="530" y2="404" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+          <!-- filled area under accent line (fade in) -->
+          <polygon data-wfp points="168,404 232,398 296,393 360,388 424,383 488,378 530,390 530,404" fill="rgba(198,244,50,.07)"></polygon>
+          <!-- accent area line (draw in) -->
+          <polyline data-wf pathLength="1" points="168,404 232,398 296,393 360,388 424,383 488,378 530,390" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- secondary dim line (draw in) -->
+          <polyline data-wf pathLength="1" points="168,404 232,401 296,398 360,395 424,392 488,388 530,391" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- peak dot -->
+          <circle data-wfp cx="488" cy="378" r="4.5" fill="var(--accent)"></circle>
+          <!-- x-axis label rects -->
+          <rect data-wfp x="168" y="409" width="18" height="4" rx="1" fill="rgba(255,255,255,.07)"></rect>
+          <rect data-wfp x="258" y="409" width="18" height="4" rx="1" fill="rgba(255,255,255,.07)"></rect>
+          <rect data-wfp x="348" y="409" width="18" height="4" rx="1" fill="rgba(255,255,255,.07)"></rect>
+          <rect data-wfp x="438" y="409" width="18" height="4" rx="1" fill="rgba(255,255,255,.07)"></rect>
+          <rect data-wfp x="514" y="409" width="18" height="4" rx="1" fill="rgba(255,255,255,.07)"></rect>
         </g>
         <!-- mobile app -->
         <g id="fPhone" opacity="0">
-          <rect x="648" y="96" width="150" height="316" rx="26" fill="#0c0c0c" stroke="rgba(255,255,255,.5)" stroke-width="2"></rect>
+          <!-- chassis -->
+          <rect x="648" y="96" width="150" height="316" rx="26" fill="#0c0c0c" stroke="rgba(255,255,255,.45)" stroke-width="2"></rect>
           <rect x="660" y="122" width="126" height="268" rx="4" fill="#0e0e0e"></rect>
           <g clip-path="url(#snzPhoneClip)">
-            <g style="animation:snz-appscroll 6s linear infinite">
-              <rect x="668" y="126" width="110" height="30" rx="5" fill="rgba(198,244,50,.12)" stroke="var(--accent)" stroke-width="1"></rect>
-              <text x="676" y="146" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">App</text>
-              <rect x="668" y="164" width="110" height="62" rx="6" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1"></rect>
-              <rect x="668" y="236" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="266" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="296" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="326" width="78" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="366" width="110" height="30" rx="5" fill="rgba(198,244,50,.12)" stroke="var(--accent)" stroke-width="1"></rect>
-              <text x="676" y="386" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">App</text>
-              <rect x="668" y="404" width="110" height="62" rx="6" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1"></rect>
-              <rect x="668" y="476" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="506" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="536" width="110" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
-              <rect x="668" y="566" width="78" height="22" rx="4" fill="rgba(255,255,255,.09)"></rect>
+            <g style="animation:snz-appscroll 5s ease-in-out infinite">
+              <!-- === UNIT 1 (y=126–366, 240px) === -->
+              <!-- status bar -->
+              <rect x="668" y="127" width="24" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+              <rect x="756" y="127" width="10" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+              <rect x="769" y="127" width="10" height="4" rx="2" fill="rgba(198,244,50,.4)"></rect>
+              <!-- header: filled, no border -->
+              <rect x="660" y="135" width="126" height="32" fill="rgba(255,255,255,.03)"></rect>
+              <rect x="668" y="143" width="46" height="8" rx="3" fill="rgba(255,255,255,.22)"></rect>
+              <circle cx="773" cy="151" r="8" fill="rgba(198,244,50,.18)"></circle>
+              <circle cx="776" cy="148" r="2.5" fill="rgba(198,244,50,.7)"></circle>
+              <!-- stat cards: 2 side-by-side, filled, no borders -->
+              <rect x="668" y="172" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+              <rect x="676" y="180" width="36" height="12" rx="2" fill="rgba(198,244,50,.55)"></rect>
+              <rect x="676" y="197" width="28" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="726" y="172" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+              <rect x="734" y="180" width="28" height="12" rx="2" fill="rgba(255,255,255,.22)"></rect>
+              <rect x="734" y="197" width="34" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <!-- bar chart: label + grid + 7 bars trending up -->
+              <rect x="668" y="224" width="44" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="738" y="224" width="28" height="5" rx="2" fill="rgba(198,244,50,.45)"></rect>
+              <line x1="668" y1="240" x2="778" y2="240" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <line x1="668" y1="258" x2="778" y2="258" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <line x1="668" y1="276" x2="778" y2="276" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <rect x="668" y="276" width="10" height="18" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="682" y="272" width="10" height="22" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="696" y="268" width="10" height="26" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="710" y="260" width="10" height="34" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="724" y="264" width="10" height="30" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="738" y="252" width="10" height="42" rx="2" fill="rgba(255,255,255,.18)"></rect>
+              <rect x="752" y="238" width="10" height="56" rx="2" fill="rgba(198,244,50,.7)"></rect>
+              <rect x="668" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <rect x="710" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <rect x="752" y="298" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <!-- list items -->
+              <circle cx="678" cy="316" r="9" fill="rgba(255,255,255,.07)"></circle>
+              <rect x="694" y="310" width="56" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+              <rect x="694" y="320" width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+              <line x1="668" y1="330" x2="778" y2="330" stroke="rgba(255,255,255,.04)" stroke-width="1"></line>
+              <circle cx="678" cy="344" r="9" fill="rgba(255,255,255,.07)"></circle>
+              <rect x="694" y="338" width="48" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+              <rect x="694" y="348" width="62" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+              <!-- === UNIT 2 (+240px) === -->
+              <rect x="668" y="367" width="24" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+              <rect x="756" y="367" width="10" height="4" rx="2" fill="rgba(255,255,255,.15)"></rect>
+              <rect x="769" y="367" width="10" height="4" rx="2" fill="rgba(198,244,50,.4)"></rect>
+              <rect x="660" y="375" width="126" height="32" fill="rgba(255,255,255,.03)"></rect>
+              <rect x="668" y="383" width="46" height="8" rx="3" fill="rgba(255,255,255,.22)"></rect>
+              <circle cx="773" cy="391" r="8" fill="rgba(198,244,50,.18)"></circle>
+              <circle cx="776" cy="388" r="2.5" fill="rgba(198,244,50,.7)"></circle>
+              <rect x="668" y="412" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+              <rect x="676" y="420" width="36" height="12" rx="2" fill="rgba(198,244,50,.55)"></rect>
+              <rect x="676" y="437" width="28" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="726" y="412" width="52" height="44" rx="6" fill="rgba(255,255,255,.04)"></rect>
+              <rect x="734" y="420" width="28" height="12" rx="2" fill="rgba(255,255,255,.22)"></rect>
+              <rect x="734" y="437" width="34" height="5" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="668" y="464" width="44" height="5" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="738" y="464" width="28" height="5" rx="2" fill="rgba(198,244,50,.45)"></rect>
+              <line x1="668" y1="480" x2="778" y2="480" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <line x1="668" y1="498" x2="778" y2="498" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <line x1="668" y1="516" x2="778" y2="516" stroke="rgba(255,255,255,.05)" stroke-width="1"></line>
+              <rect x="668" y="516" width="10" height="18" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="682" y="512" width="10" height="22" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="696" y="508" width="10" height="26" rx="2" fill="rgba(255,255,255,.12)"></rect>
+              <rect x="710" y="500" width="10" height="34" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="724" y="504" width="10" height="30" rx="2" fill="rgba(255,255,255,.14)"></rect>
+              <rect x="738" y="492" width="10" height="42" rx="2" fill="rgba(255,255,255,.18)"></rect>
+              <rect x="752" y="478" width="10" height="56" rx="2" fill="rgba(198,244,50,.7)"></rect>
+              <rect x="668" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <rect x="710" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <rect x="752" y="538" width="10" height="4" rx="1" fill="rgba(255,255,255,.06)"></rect>
+              <circle cx="678" cy="556" r="9" fill="rgba(255,255,255,.07)"></circle>
+              <rect x="694" y="550" width="56" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+              <rect x="694" y="560" width="42" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
+              <line x1="668" y1="570" x2="778" y2="570" stroke="rgba(255,255,255,.04)" stroke-width="1"></line>
+              <circle cx="678" cy="584" r="9" fill="rgba(255,255,255,.07)"></circle>
+              <rect x="694" y="578" width="48" height="6" rx="2" fill="rgba(255,255,255,.16)"></rect>
+              <rect x="694" y="588" width="62" height="4" rx="2" fill="rgba(255,255,255,.07)"></rect>
             </g>
           </g>
+          <!-- tab bar overlay -->
+          <rect x="660" y="362" width="126" height="28" rx="0" fill="#0e0e0e"></rect>
+          <circle cx="686" cy="376" r="7" fill="rgba(198,244,50,.35)"></circle>
+          <circle cx="723" cy="376" r="7" fill="rgba(255,255,255,.1)"></circle>
+          <circle cx="760" cy="376" r="7" fill="rgba(255,255,255,.1)"></circle>
+          <!-- notch + home bar -->
           <rect x="700" y="104" width="46" height="9" rx="4.5" fill="rgba(255,255,255,.22)"></rect>
           <rect x="699" y="398" width="48" height="5" rx="2.5" fill="rgba(255,255,255,.3)"></rect>
         </g>
@@ -192,16 +315,19 @@
           <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
           <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
           <text x="-46" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
-          <!-- scale grid: single row spanning right, appear progressively as bn grows -->
-          <rect id="gsq0" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq1" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq2" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq3" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq4" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq5" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq6" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq7" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
-          <rect id="gsq8" x="4"  y="-7" width="8" height="14" rx="2" fill="var(--accent)" fill-opacity=".7" opacity="0"/>
+        </g>
+        <!-- SCALE: backend node replicates — identical replica icons spin up in a
+             contained grid inside the API card's right half. JS drives count. -->
+        <g id="gReplicas" opacity="0">
+          <g id="gsq0" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq1" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq2" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq3" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq4" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq5" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq6" opacity="0"></g>
+          <g id="gsq7" opacity="0"></g>
+          <g id="gsq8" opacity="0"></g>
         </g>
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
@@ -499,6 +625,7 @@
     const ciProdAn = $('ciProdAn'), ciApiAn = $('ciApiAn');
     const ciProdAnPulse = $('ciProdAnPulse'), ciApiAnPulse = $('ciApiAnPulse');
     const scSqs = [0,1,2,3,4,5,6,7,8].map(i => $('gsq' + i));
+    const gReplicas = $('gReplicas');
     const cbBars = [$('cb0'), $('cb1'), $('cb2'), $('cb3'), $('cb4'), $('cb5'), $('cb6'), $('cb7')];
     const anChart = $('anChart');
     const anHeat = $('anHeat'), anSearch = $('anSearch'), anRev = $('anRev');
@@ -578,11 +705,23 @@
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
 
       // ---- BUILD: site draws in ----
-      const pWire = sm(seg(p, -0.07, 0.02));
-      const phoneAppear = sm(seg(p, -0.01, 0.08));
+      // Draw progressively across the pinned scroll range (starts at p=0, when the
+      // section pins) so the wireframe strokes on as the user scrolls, finishing just
+      // before the slide-up at 0.14. Linear progress = steady draw, no end easing.
+      const pWire = seg(p, 0.00, 0.13);
+      const phoneAppear = sm(seg(p, 0.04, 0.12));
       const n = wfStroke.length;
-      wfStroke.forEach((e, i) => { e.style.strokeDashoffset = String(1 - clamp(pWire * n - i, 0, 1)); });
-      wfPop.forEach((e, i) => { e.style.opacity = String(clamp(pWire * wfPop.length - i, 0, 1)); });
+      // spread each element's draw across the full window so strokes stagger over scroll
+      const stagger = 0.4; // fraction of the window an individual element takes to draw
+      wfStroke.forEach((e, i) => {
+        const start = (i / n) * (1 - stagger);
+        const d = sm(clamp((pWire - start) / stagger, 0, 1));
+        e.style.strokeDashoffset = String(1 - d);
+      });
+      wfPop.forEach((e, i) => {
+        const start = (i / wfPop.length) * (1 - stagger);
+        e.style.opacity = sm(clamp((pWire - start) / stagger, 0, 1)).toFixed(3);
+      });
 
       // ---- SLIDE UP: site + phone exit upward ----
       const slideUp = sm(seg(p, 0.14, 0.27));
@@ -653,25 +792,27 @@
       if (bizNum) bizNum.textContent = busers.toLocaleString('en-US') + ' customers';
       if (bizSize) bizSize.textContent = bsize;
 
-      // ---- SCALE: grid squares, analytics card, connectors ----
+      // ---- SCALE: node replication, analytics card, connectors ----
       const an = sm(seg(p, 0.88, 0.94));
       const gsGate = sm(seg(p, 0.72, 0.78));
-      const nActive = Math.max(1, Math.min(9, Math.ceil(bn * 9)));
-      const sqCols = Math.min(nActive, 3);
-      const sqRows = Math.ceil(nActive / sqCols);
-      const sqGap = 4;
-      const sqSize = Math.min(36, Math.min((84 - (sqCols - 1) * sqGap) / sqCols, (72 - (sqRows - 1) * sqGap) / sqRows));
-      const sqTotalW = sqCols * sqSize + (sqCols - 1) * sqGap;
-      const sqTotalH = sqRows * sqSize + (sqRows - 1) * sqGap;
-      const sqX0 = 4 + (84 - sqTotalW) / 2;
-      const sqY0 = -(sqTotalH / 2);
+      // Horizontal scale-out: the backend node CLONES into identical replica icons
+      // that spin up in a contained 3×2 grid inside the API card's right half as
+      // load (bn) grows. Kept within the card bounds (no overflow).
+      const repN = 6;            // number of live replica icons
+      const repCols = 3;
+      const repColX = [680, 706, 732];   // column centres, abs (card right half)
+      const repRowY = [286, 314];        // row centres, abs
+      if (gReplicas) gReplicas.style.opacity = (gsGate * dissolve).toFixed(3);
       scSqs.forEach((s, i) => {
         if (!s) return;
-        s.style.opacity = (gsGate * sm(seg(bn, i / 9, i / 9 + 0.18)) * dissolve).toFixed(2);
-        s.setAttribute('x', (sqX0 + (i % sqCols) * (sqSize + sqGap)).toFixed(1));
-        s.setAttribute('y', (sqY0 + Math.floor(i / sqCols) * (sqSize + sqGap)).toFixed(1));
-        s.setAttribute('width', sqSize.toFixed(1));
-        s.setAttribute('height', sqSize.toFixed(1));
+        if (i >= repN) { s.style.opacity = '0'; return; }
+        // each replica pops in, staggered across the load ramp
+        const t = sm(seg(bn, i / repN, i / repN + 0.16));
+        const x = repColX[i % repCols];
+        const y = repRowY[Math.floor(i / repCols)];
+        const sc = lerp(0.4, 1, t);   // pop-scale on spawn
+        s.style.opacity = t.toFixed(3);
+        s.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + sc.toFixed(3) + ')');
       });
       const anCardIn = sm(seg(p, 0.74, 0.80));
       if (gAnalytics) gAnalytics.style.opacity = (anCardIn * (1 - an)).toFixed(3);
