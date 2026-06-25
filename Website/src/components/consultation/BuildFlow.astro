@@ -2,10 +2,42 @@
 // THE BUILD — scroll-driven story: site + app merge into a product, the backend
 // docks and explodes into modules, traffic arrives, it scales, then analytics.
 
+import {
+  siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare,
+  siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai,
+  siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia,
+  siAuth0, siClerk, siOkta,
+  siAnthropic, siGooglegemini, siMistralai, siPerplexity, siHuggingface, siReplicate,
+  siSanity, siContentful, siNotion, siGhost, siDirectus, siStrapi,
+  siResend, siMailgun, siMailchimp,
+  siSentry, siDatadog, siPosthog, siPlausibleanalytics, siMixpanel,
+  siCloudinary, siLinear, siIntercom, siZendesk, siHubspot, siDiscord,
+  type SimpleIcon,
+} from "simple-icons";
+
+// ENGINE: skewed tech-services marquee (background) + a browser that morphs through
+// the shapes one product can take (landing → store → content → app), scroll-driven.
+// Each service is tagged with a category; the marquee lights up the category that
+// matches the current morph stage (host → pay → cms → app) and dims the rest.
+const cat = (c: string) => (i: SimpleIcon) => ({ title: i.title, path: i.path, cat: c });
+const services = [
+  ...[siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai].map(cat("host")),
+  ...[siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare].map(cat("pay")),
+  ...[siSanity, siContentful, siNotion, siGhost, siDirectus, siStrapi, siCloudinary, siMailchimp, siResend, siMailgun].map(cat("cms")),
+  ...[siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia, siAuth0, siClerk, siOkta,
+    siAnthropic, siGooglegemini, siMistralai, siPerplexity, siHuggingface, siReplicate,
+    siSentry, siDatadog, siPosthog, siPlausibleanalytics, siMixpanel, siLinear, siIntercom, siZendesk, siHubspot, siDiscord].map(cat("app")),
+];
+// stage index (0..3) → highlighted category
+const ENG_CATS = ["host", "pay", "cms", "app"];
+// deterministic per-row shuffle (no Math.random at build time)
+const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 30); };
+const ENGINE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
+
 // Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
 const buildCaps = [
   { label: "01 — BUILD", title: "What the user sees.", body: "A website and an app — designed around you and built by hand.", max: 460 },
-  { label: "02 — ENGINE", title: "Behind the scenes.", body: "Accounts, payments, content, your store and an AI agent — all running inside the backend.", max: 480 },
+  { label: "02 — ENGINE", title: "Starts simple. Grows into anything.", body: "A landing page, a store, a content engine, a full app — the same product, built on the services behind it.", max: 480 },
   { label: "03 — CONNECT", title: "Wire it together.", body: "Your product and the backend, talking to a database and a fast cache so everything feels instant.", max: 480 },
   { label: "04 — TRAFFIC", title: "People show up.", body: "As word spreads, more and more customers arrive — all at once.", max: 480 },
   { label: "05 — SCALE", title: "It scales with demand.", body: "Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.", max: 480 },
@@ -20,6 +52,73 @@ const phoneUnits = [0, 240];
 ---
 <style>
   @keyframes snz-spin { to { transform: rotate(360deg); } }
+
+  /* ===== ENGINE overlay: skewed services marquee + morphing browser ===== */
+  .eng-bg{ position:absolute; left:50%; top:50%; width:230vmax; height:230vmax;
+    transform:translate(-50%,-50%) rotate(-45deg); transform-origin:center;
+    display:flex; flex-direction:column; justify-content:center; gap:24px;
+    -webkit-mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%);
+            mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%); }
+  .eng-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
+    letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04);
+    color:transparent; background-color:rgba(255,255,255,.06);
+    background-image:linear-gradient(100deg, transparent 0%, transparent 40%,
+      rgba(198,244,50,.22) 47%, rgba(255,255,255,.4) 50%, rgba(198,244,50,.22) 53%,
+      transparent 60%, transparent 100%);
+    background-repeat:repeat-x; background-size:600px 100%;
+    -webkit-background-clip:text; background-clip:text; }
+  .eng-row.l{ animation:eng-ml var(--dur,52s) linear infinite, eng-shim 2s linear infinite; }
+  .eng-row.r{ animation:eng-mr var(--dur,52s) linear infinite, eng-shim 2s linear infinite; }
+  @keyframes eng-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes eng-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  @keyframes eng-shim{ from{background-position:0 0} to{background-position:-600px 0} }
+  .eng-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
+  .eng-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.16); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.55; }
+  /* stage-reactive highlight: the category matching the current morph stage glows accent, rest dim */
+  #snz-engine[data-cat] .eng-it{ opacity:.5; }
+  #snz-engine[data-cat="host"] .eng-it[data-cat="host"],
+  #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"],
+  #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"],
+  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]{ opacity:.85; -webkit-text-fill-color:rgba(198,244,50,.5); }
+  #snz-engine[data-cat="host"] .eng-it[data-cat="host"] .eng-ic,
+  #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"]  .eng-ic,
+  #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"]  .eng-ic,
+  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]  .eng-ic{ fill:rgba(198,244,50,.5); opacity:.85; }
+
+  .eng-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+  .eng-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(198,244,50,.1); }
+  .eng-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+  .eng-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
+  .eng-chrome i:first-child{ background:var(--accent); }
+  .eng-url{ margin-left:10px; height:16px; flex:1; max-width:260px; border-radius:8px; background:rgba(255,255,255,.05); }
+  .eng-screen{ position:relative; height:328px; }
+  .eng-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+  .eng-view.on{ opacity:1; }
+  .eng-pl{ opacity:0; }
+  .eng-pl.go{ animation:eng-plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
+  @keyframes eng-plop{ 0%{opacity:0;transform:scale(.25) translateY(9px)} 55%{opacity:1} 100%{opacity:1;transform:scale(1) translateY(0)} }
+  .eng-bar{ background:rgba(255,255,255,.14); border-radius:4px; }
+  .eng-bar.dim{ background:rgba(255,255,255,.07); } .eng-bar.acc{ background:rgba(198,244,50,.55); }
+  .eng-box{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; }
+  .eng-btn{ background:var(--accent); border-radius:8px; }
+  .eng-rw{ display:flex; } .eng-cl{ display:flex; flex-direction:column; }
+  .eng-nav{ display:flex; align-items:center; gap:9px; margin-bottom:16px; }
+  .eng-nav .lg{ width:42px; height:10px; border-radius:3px; background:var(--accent); }
+  .eng-nav .sp{ flex:1; } .eng-nav .lk{ width:28px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
+  .eng-grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+  .eng-grid2{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .eng-post{ display:flex; gap:12px; align-items:center; padding:9px 0; border-top:1px solid rgba(255,255,255,.07); }
+  .eng-rail{ width:42px; flex:none; align-self:stretch; border-right:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);
+    display:flex; flex-direction:column; align-items:center; gap:12px; padding:14px 0; }
+  .eng-rail .rl{ width:18px; height:18px; border-radius:6px; background:var(--accent); }
+  .eng-rail .rd{ width:16px; height:16px; border-radius:6px; background:rgba(255,255,255,.12); }
+  .eng-rail .rd.on{ background:rgba(198,244,50,.4); }
+  .eng-cap{ display:flex; align-items:center; gap:13px; }
+  .eng-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
+  .eng-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
+  .eng-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
+  @media (prefers-reduced-motion: reduce){ .eng-row{ animation:none; } .eng-pl{ opacity:1; } }
 
   @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
@@ -363,58 +462,7 @@ const phoneUnits = [0, 240];
             ))}
           </g>
         </g>
-        <!-- accounts (backend module) -->
-        <g id="mAccounts" opacity="0" transform="translate(566 336)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <path id="accShieldFill" d="M-40 -16 L-27 -11 L-27 0 Q-27 12 -40 18 Q-53 12 -53 0 L-53 -11 Z" fill="rgba(198,244,50,.10)" opacity="0"></path>
-          <path id="accShield" d="M-40 -16 L-27 -11 L-27 0 Q-27 12 -40 18 Q-53 12 -53 0 L-53 -11 Z" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.7" stroke-linejoin="round"></path>
-          <path id="accCheck" d="M-47 0 L-42 5 L-33 -6" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"></path>
-          <text x="-14" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Accounts</text>
-          <text x="-14" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">secure logins</text>
-        </g>
-        <!-- payments (backend module) -->
-        <g id="mPayments" opacity="0" transform="translate(700 336)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <rect x="-52" y="-13" width="32" height="22" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"></rect>
-          <rect x="-52" y="-7" width="32" height="5" fill="var(--accent)"></rect>
-          <text x="-14" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Payments</text>
-          <text x="-14" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">card payments</text>
-        </g>
-        <!-- ai agent (backend module) -->
-        <g id="mAgent" opacity="0" transform="translate(834 336)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <circle cx="-42" cy="0" r="16" fill="none" stroke="var(--accent)" stroke-width="1.3" style="transform-box:fill-box;transform-origin:center;animation:snz-ring 2.6s ease-out infinite"></circle>
-          <circle cx="-42" cy="0" r="15" fill="rgba(198,244,50,.06)" stroke="var(--accent)" stroke-width="1.6"></circle>
-          <text x="-42" y="5" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="14">✦</text>
-          <text x="-12" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">AI agent</text>
-          <text x="-12" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">gets things done</text>
-        </g>
-        <!-- cms (backend module) -->
-        <g id="mCMS" opacity="0" transform="translate(632 432)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <rect x="-52" y="-15" width="26" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"></rect>
-          <line x1="-47" y1="-7" x2="-31" y2="-7" stroke="var(--accent)" stroke-width="1.4"></line>
-          <line x1="-47" y1="-1" x2="-31" y2="-1" stroke="var(--accent)" stroke-width="1.4"></line>
-          <line x1="-47" y1="5" x2="-37" y2="5" stroke="var(--accent)" stroke-width="1.4"></line>
-          <text x="-18" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">CMS</text>
-          <text x="-18" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">manage content</text>
-        </g>
-        <!-- ecommerce (backend module) -->
-        <g id="mEcom" opacity="0" transform="translate(768 432)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <path d="M-52 -10 L-26 -10 L-29 8 L-49 8 Z" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"></path>
-          <path d="M-46 -10 Q-46 -18 -39 -18 Q-32 -18 -32 -10" fill="none" stroke="var(--accent)" stroke-width="1.5"></path>
-          <text x="-16" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Ecommerce</text>
-          <text x="-16" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">sell online</text>
-        </g>
-        <!-- dynamic content (backend module) -->
-        <g id="mDynamic" opacity="0" transform="translate(650 432)">
-          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
-          <path d="M-50 -3 A13 13 0 1 1 -44 10" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"></path>
-          <path d="M-50 -12 L-50 -3 L-41 -3" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-          <text x="-26" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Dynamic</text>
-          <text x="-26" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">live content</text>
-        </g>
+        <!-- ENGINE now rendered as an HTML overlay (#snz-engine) below; nothing here -->
         <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
         <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
         <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
@@ -467,6 +515,87 @@ const phoneUnits = [0, 240];
         </g>
         </g>
       </svg>
+      <!-- ENGINE overlay (HTML): skewed services marquee + scroll-morphing browser -->
+      <div id="snz-engine" style="position:absolute;inset:0;opacity:0;pointer-events:none;overflow:hidden">
+        <div class="eng-bg">
+          {ENGINE_ROWS.map((row) => (
+            <div class={`eng-row ${row.dir}`} style={`--dur:${row.dur}s`}>
+              {[...row.items, ...row.items].map((s) => (
+                <span class="eng-it" data-cat={s.cat}><svg viewBox="0 0 24 24" class="eng-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div class="eng-fg">
+          <div class="eng-browser">
+            <div class="eng-chrome"><i></i><i></i><i></i><div class="eng-url"></div></div>
+            <div class="eng-screen">
+              <!-- 01 landing -->
+              <div class="eng-view on" id="ev0">
+                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="eng-btn eng-pl" style="width:64px;height:18px"></div></div>
+                <div class="eng-rw" style="gap:22px;align-items:center">
+                  <div class="eng-cl" style="flex:1;gap:10px">
+                    <div class="eng-bar eng-pl" style="height:18px;width:88%"></div>
+                    <div class="eng-bar eng-pl" style="height:18px;width:62%"></div>
+                    <div class="eng-bar dim eng-pl" style="height:7px;width:92%;margin-top:5px"></div>
+                    <div class="eng-bar dim eng-pl" style="height:7px;width:78%"></div>
+                    <div class="eng-rw" style="gap:9px;margin-top:10px"><div class="eng-btn eng-pl" style="width:84px;height:26px"></div><div class="eng-box eng-pl" style="width:70px;height:26px;border-radius:8px"></div></div>
+                  </div>
+                  <div class="eng-box eng-pl" style="flex:1;height:128px"></div>
+                </div>
+                <div class="eng-grid3" style="margin-top:18px"><div class="eng-box eng-pl" style="height:66px"></div><div class="eng-box eng-pl" style="height:66px"></div><div class="eng-box eng-pl" style="height:66px"></div></div>
+              </div>
+              <!-- 02 store -->
+              <div class="eng-view" id="ev1">
+                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="eng-box eng-pl" style="width:24px;height:18px;border-radius:6px"></div></div>
+                <div class="eng-rw" style="justify-content:space-between;align-items:center;margin-bottom:12px"><div class="eng-bar eng-pl" style="height:12px;width:110px"></div><div class="eng-rw" style="gap:7px"><div class="eng-bar dim eng-pl" style="height:16px;width:48px;border-radius:8px"></div><div class="eng-bar dim eng-pl" style="height:16px;width:48px;border-radius:8px"></div></div></div>
+                <div class="eng-grid2">
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="eng-pl"><div class="eng-box" style="height:62px"></div><div class="eng-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="eng-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="eng-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                </div>
+              </div>
+              <!-- 03 content -->
+              <div class="eng-view" id="ev2">
+                <div class="eng-nav"><div class="lg eng-pl"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div><div class="lk eng-pl"></div></div>
+                <div class="eng-bar eng-pl" style="height:15px;width:54%;margin-bottom:4px"></div>
+                <div class="eng-bar dim eng-pl" style="height:7px;width:40%;margin-bottom:12px"></div>
+                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:70%"></div><div class="eng-bar dim" style="height:6px;width:90%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:60%"></div><div class="eng-bar dim" style="height:6px;width:88%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:66%"></div><div class="eng-bar dim" style="height:6px;width:84%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
+              </div>
+              <!-- 04 app / dashboard -->
+              <div class="eng-view" id="ev3" style="padding:0;display:flex">
+                <div class="eng-rail eng-pl"><div class="rl"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
+                <div class="eng-cl" style="flex:1;padding:16px 18px;gap:0">
+                  <div class="eng-nav"><div class="eng-bar eng-pl" style="height:10px;width:80px"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="eng-box eng-pl" style="width:20px;height:20px;border-radius:50%"></div></div>
+                  <div class="eng-rw" style="gap:9px;margin-bottom:11px">
+                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar acc" style="height:13px;width:54%"></div><div class="eng-bar dim" style="height:5px;width:70%;margin-top:6px"></div></div>
+                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar" style="height:13px;width:42%"></div><div class="eng-bar dim" style="height:5px;width:64%;margin-top:6px"></div></div>
+                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar" style="height:13px;width:46%"></div><div class="eng-bar dim" style="height:5px;width:72%;margin-top:6px"></div></div>
+                    <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar acc" style="height:13px;width:40%"></div><div class="eng-bar dim" style="height:5px;width:66%;margin-top:6px"></div></div>
+                  </div>
+                  <div class="eng-rw" style="gap:11px">
+                    <div class="eng-box eng-pl" style="flex:2;height:120px;padding:12px;display:flex;align-items:flex-end;gap:6px">
+                      <div class="eng-bar dim" style="width:8px;height:30%"></div><div class="eng-bar dim" style="width:8px;height:46%"></div><div class="eng-bar dim" style="width:8px;height:40%"></div><div class="eng-bar acc" style="width:8px;height:62%"></div><div class="eng-bar dim" style="width:8px;height:54%"></div><div class="eng-bar acc" style="width:8px;height:78%"></div><div class="eng-bar dim" style="width:8px;height:70%"></div><div class="eng-bar acc" style="width:8px;height:92%"></div><div class="eng-bar acc" style="width:8px;height:100%"></div>
+                    </div>
+                    <div class="eng-cl" style="flex:1;gap:8px">
+                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar" style="height:6px;flex:1"></div></div>
+                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar" style="height:6px;flex:1"></div></div>
+                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar dim" style="height:6px;flex:1"></div></div>
+                      <div class="eng-rw eng-pl" style="gap:7px;align-items:center"><div class="eng-box" style="width:15px;height:15px;border-radius:50%"></div><div class="eng-bar dim" style="height:6px;flex:1"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="eng-cap"><span class="eng-step" id="eng-step">01</span><span class="eng-title" id="eng-title">A LANDING PAGE</span><small id="eng-sub">just a clean first impression</small></div>
+        </div>
+      </div>
       <!-- captions -->
       <div style="position:absolute;left:56px;bottom:26px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:#7c7c74">[ THE BUILD ] — one builder, the whole stack</div>
       <div class="snz-track" style="position:absolute;right:56px;bottom:26px;display:flex;gap:13px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em">
@@ -548,11 +677,35 @@ const phoneUnits = [0, 240];
     const camera = $('camera');
     const wire = $('fWire'), phone = $('fPhone'), gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard');
     const apiBox = $('apiBox');
-    const mAcc = $('mAccounts'), mPay = $('mPayments'), mAgent = $('mAgent'), mCms = $('mCMS'), mEcom = $('mEcom'), mDyn = $('mDynamic');
+    // ENGINE overlay: marquee bg + a browser that morphs through 4 product shapes (scroll-driven).
+    const engine = $('snz-engine');
+    const engViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
+    const engStep = $('eng-step'), engTitle = $('eng-title'), engSub = $('eng-sub');
+    const ENG_META = [
+      ['A LANDING PAGE', 'just a clean first impression'],
+      ['START SELLING', 'add a store and take payments'],
+      ['PUBLISH CONTENT', 'blogs, guides, an audience'],
+      ['RUN IT LIKE AN APP', 'dashboards, accounts, the lot'],
+    ];
+    const ENG_CATS = ['host', 'pay', 'cms', 'app']; // stage → highlighted marquee category
+    let engStage = -1;
+    const engPlop = (view: El) => {
+      const els = Array.from(view.querySelectorAll('.eng-pl')) as unknown as El[];
+      els.forEach((el, idx) => { el.classList.remove('go'); void el.offsetWidth; el.style.animationDelay = (idx * 50) + 'ms'; el.classList.add('go'); });
+    };
+    const engShow = (n: number) => {
+      if (n === engStage) return;
+      engStage = n;
+      engViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
+      if (engine) engine.dataset.cat = ENG_CATS[n];
+      if (engStep) engStep.textContent = String(n + 1).padStart(2, '0');
+      if (engTitle) engTitle.textContent = ENG_META[n][0];
+      if (engSub) engSub.textContent = ENG_META[n][1];
+      if (engViews[n]) engPlop(engViews[n] as El);
+    };
     const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
     const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDyn = $('ciDyn');
     const pkReq = $('pkReq');
-    const accShield = $('accShield'), accCheck = $('accCheck'), accShieldFill = $('accShieldFill');
     const customers = $('customers'), custNum = $('custNum');
     const custDots = Array.from(svg.querySelectorAll('#customers .cust')) as unknown as El[];
     const bizTitle = $('bizTitle'), bizNum = $('bizNum'), bizSize = $('bizSize');
@@ -576,7 +729,7 @@ const phoneUnits = [0, 240];
     const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
-    [accShield, accCheck, cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
+    [cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
       if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
     });
 
@@ -690,39 +843,22 @@ const phoneUnits = [0, 240];
       let bx = 700, by = 210;
       for (let i = 0; i < Banch.length - 1; i++) { if (p >= Banch[i][0] && p <= Banch[i + 1][0]) { const t = sm(seg(p, Banch[i][0], Banch[i + 1][0])); bx = lerp(Banch[i][1], Banch[i + 1][1], t); by = lerp(Banch[i][2], Banch[i + 1][2], t); break; } }
 
-      // ---- ENGINE: children explode out from backend, then collapse back ----
-      const e1 = sm(seg(p, 0.30, 0.42));
-      const e2 = sm(seg(p, 0.46, 0.53));
-
-      // ENGINE: full terminal fades in then shrinks as children explode; hidden after ENGINE
-      const apiEnter = sm(seg(p, 0.14, 0.24));
-      const apiTermScale = lerp(1.2, 0, e1);
-      const apiTermOpac = apiEnter * lerp(1, 0, e1);
-      if (gApi) { gApi.setAttribute('transform', 'translate(' + bx.toFixed(1) + ' ' + by.toFixed(1) + ') scale(' + apiTermScale.toFixed(3) + ')'); gApi.style.opacity = p < 0.53 ? apiTermOpac.toFixed(3) : '0'; }
+      // ENGINE is now an HTML overlay (#snz-engine); the SVG backend terminal stays hidden.
+      if (gApi) gApi.style.opacity = '0';
 
       // CONNECT+: simple API card follows Banch (slides center → right)
       const apiCardShow = sm(seg(p, 0.54, 0.61));
       if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.86, 0.92)))).toFixed(3); }
-      // Children grid centered at x=500: row1 (350/500/650 y=290), row2 (350/500/650 y=400)
-      const kids = [
-        { g: mAcc,   c: ciAcc,   gx: 350, gy: 290 },
-        { g: mPay,   c: ciPay,   gx: 500, gy: 290 },
-        { g: mAgent, c: ciAgent, gx: 650, gy: 290 },
-        { g: mCms,   c: ciCms,   gx: 350, gy: 400 },
-        { g: mEcom,  c: ciEcom,  gx: 500, gy: 400 },
-        { g: mDyn,   c: ciDyn,   gx: 650, gy: 400 },
-      ];
-      kids.forEach((o) => {
-        let x = lerp(bx, o.gx, e1), y = lerp(by, o.gy, e1);
-        x = lerp(x, bx, e2); y = lerp(y, by, e2);
-        const scl = lerp(1, 0.1, e2);
-        const appear = e1 * (1 - e2);
-        if (o.g) { o.g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + scl.toFixed(3) + ')'); o.g.style.opacity = appear.toFixed(3); }
-        if (o.c) { o.c.setAttribute('x1', bx.toFixed(1)); o.c.setAttribute('y1', (by + 120).toFixed(1)); o.c.setAttribute('x2', x.toFixed(1)); o.c.setAttribute('y2', (y - 36).toFixed(1)); o.c.style.strokeDashoffset = String(1 - appear); o.c.style.opacity = (appear * 0.5).toFixed(3); }
-      });
-      draw(accShield, sm(seg(p, 0.34, 0.40)));
-      draw(accCheck, sm(seg(p, 0.37, 0.43)));
-      if (accShieldFill) accShieldFill.style.opacity = sm(seg(p, 0.41, 0.45)).toFixed(3);
+      // ENGINE overlay: fade the marquee+browser in over the ENGINE phase, out before CONNECT;
+      // scroll position picks which product shape (landing → store → content → app) is shown.
+      if (engine) {
+        const engIn = sm(seg(p, 0.15, 0.22)) * (1 - sm(seg(p, 0.50, 0.56)));
+        engine.style.opacity = engIn.toFixed(3);
+        if (engIn > 0.01) {
+          const t = clamp((p - 0.22) / (0.50 - 0.22), 0, 1); // 0..1 across the visible window
+          engShow(Math.min(engViews.length - 1, Math.floor(t * engViews.length)));
+        }
+      }
 
       // ---- CONNECT: product card left (280,300), backend right (700,300) ----
       const pSideBy = sm(seg(p, 0.54, 0.61));

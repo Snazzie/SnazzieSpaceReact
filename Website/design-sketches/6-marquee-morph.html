@@ -1,0 +1,249 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>6 · Skewed marquee + morphing site</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .stage{ overflow:hidden; }
+  /* ---- background: bold skewed tech marquee, rows scroll opposite ways ---- */
+  /* big square, rotated 45°, centered — covers the viewport diagonally */
+  .bg{ position:absolute; left:50%; top:50%; width:240vmax; height:240vmax;
+    transform:translate(-50%,-50%) rotate(-45deg); transform-origin:center;
+    display:flex; flex-direction:column; justify-content:center; gap:30px; z-index:0; pointer-events:none;
+    -webkit-mask-image:radial-gradient(60% 55% at 50% 50%, #000 30%, transparent 72%);
+            mask-image:radial-gradient(60% 55% at 50% 50%, #000 30%, transparent 72%); }
+  /* dim base = background-COLOR; a bright band (transparent gaps) rides over it and sweeps fast,
+     on its own animation independent of the scroll transform → visibly travels across the row */
+  .mrow{ display:flex; align-items:center; gap:48px; white-space:nowrap; font:800 58px/1.3 'Archivo',sans-serif; letter-spacing:-.03em;
+    will-change:transform; padding:6px 0 30px; border-bottom:1px solid rgba(255,255,255,.04);
+    color:transparent;
+    background-color:rgba(255,255,255,.07);
+    background-image:linear-gradient(100deg,
+      transparent 0%, transparent 40%,
+      rgba(198,244,50,.22) 47%, rgba(255,255,255,.4) 50%, rgba(198,244,50,.22) 53%,
+      transparent 60%, transparent 100%);
+    background-repeat:repeat-x; background-size:600px 100%;
+    -webkit-background-clip:text; background-clip:text; }
+  .mrow span{ color:transparent; }
+  .mrow .it{ display:inline-flex; align-items:center; gap:.26em; }
+  .mrow .it img{ height:.6em; width:auto; opacity:.16; flex:none; }
+  /* track = two identical halves; shift exactly one half → seamless infinite loop. shim runs alongside. */
+  .mrow.l{ animation:ml var(--dur,52s) linear infinite, shim 2s linear infinite; }
+  .mrow.r{ animation:mr var(--dur,52s) linear infinite, shim 2s linear infinite; }
+  @keyframes ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @keyframes mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  @keyframes shim{ from{ background-position:0 0; } to{ background-position:-600px 0; } }
+
+  /* ---- foreground: morphing browser ---- */
+  .fg{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; gap:22px; }
+  .browser{ width:min(620px,92vw); border:1.6px solid var(--accent); border-radius:16px; background:#0c0c0c;
+    overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 70px rgba(198,244,50,.12); }
+  .chrome{ height:42px; display:flex; align-items:center; gap:8px; padding:0 16px;
+    border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+  .chrome i{ width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.18); }
+  .chrome i:first-child{ background:var(--accent); }
+  .chrome .url{ margin-left:12px; height:18px; flex:1; max-width:300px; border-radius:9px;
+    background:rgba(255,255,255,.05); }
+  .screen{ position:relative; height:388px; }
+  .view{ position:absolute; inset:0; padding:22px 24px; opacity:0; pointer-events:none;
+    transition:opacity .2s ease; }
+  .view.on{ opacity:1; }
+  /* each element starts hidden and "plops" in (overshoot) when its view activates */
+  .pl{ opacity:0; }
+  .pl.go{ animation:plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
+  @keyframes plop{ 0%{ opacity:0; transform:scale(.25) translateY(10px); }
+    55%{ opacity:1; } 100%{ opacity:1; transform:scale(1) translateY(0); } }
+  .bar{ background:rgba(255,255,255,.14); border-radius:4px; }
+  .bar.dim{ background:rgba(255,255,255,.07); }
+  .bar.acc{ background:rgba(198,244,50,.55); }
+  .box{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:8px; position:relative; }
+  .box::after{ content:''; position:absolute; inset:0; background:
+    linear-gradient(135deg, rgba(255,255,255,.05), transparent); border-radius:8px; }
+  .btn{ background:var(--accent); border-radius:8px; }
+  .row{ display:flex; } .col{ display:flex; flex-direction:column; }
+  /* nav (shared top) */
+  .nav{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .nav .logo{ width:46px; height:11px; border-radius:3px; background:var(--accent); }
+  .nav .sp{ flex:1; } .nav .lk{ width:30px; height:7px; border-radius:3px; background:rgba(255,255,255,.18); }
+  .nav .cta{ width:70px; height:20px; border-radius:10px; }
+  /* landing */
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  /* shop */
+  .grid2{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .pcard{ } .pcard .img{ height:74px; } .pcard .t{ height:7px; margin-top:8px; width:70%; } .pcard .p{ height:9px; margin-top:6px; width:34%; }
+  .pcard .buy{ height:16px; margin-top:8px; border-radius:8px; }
+  /* blog */
+  .post{ display:flex; gap:14px; align-items:center; padding:11px 0; border-top:1px solid rgba(255,255,255,.07); }
+  .post .th{ width:78px; height:50px; flex:none; }
+  .label{ font:700 13px 'JetBrains Mono'; letter-spacing:2px; color:var(--accent); }
+  .label small{ color:var(--dim); letter-spacing:1px; font-weight:500; margin-left:10px; }
+  .dots{ display:flex; gap:8px; }
+  .dots b{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.2); transition:background .3s; }
+  .dots b.on{ background:var(--accent); }
+  .step{ font:800 14px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:8px;
+    padding:5px 9px; letter-spacing:-.02em; }
+  /* dashboard sidebar rail (signals it's now a full application) */
+  .rail{ width:46px; flex:none; align-self:stretch; border-right:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.02); display:flex; flex-direction:column; align-items:center; gap:14px; padding:16px 0; }
+  .rail .rlogo{ width:20px; height:20px; border-radius:6px; background:var(--accent); }
+  .rail .rd{ width:18px; height:18px; border-radius:6px; background:rgba(255,255,255,.12); }
+  .rail .rd.on{ background:rgba(198,244,50,.4); }
+</style></head>
+<body><div class="stage">
+  <div class="caption"><div class="kicker">02 — ENGINE</div><h2>Starts simple. Grows into anything.</h2>
+    <p>Launch a clean landing page. Start selling. Publish content. Run the whole thing like an app — each step builds on the same foundation.</p></div>
+  <div class="tag">[ MARQUEE + MORPH ]</div>
+
+  <!-- background tech marquee -->
+  <div class="bg" id="bg"></div>
+
+  <!-- foreground morphing browser -->
+  <div class="fg">
+    <div class="browser" id="browser"><div class="chrome"><i></i><i></i><i></i><div class="url"></div></div>
+      <div class="screen">
+        <!-- landing -->
+        <div class="view on" id="v0">
+          <div class="nav"><div class="logo pl"></div><div class="sp"></div><div class="lk pl"></div><div class="lk pl"></div><div class="lk pl"></div><div class="btn cta pl"></div></div>
+          <div class="row" style="gap:26px;align-items:center">
+            <div class="col" style="flex:1;gap:12px">
+              <div class="bar pl" style="height:20px;width:88%"></div>
+              <div class="bar pl" style="height:20px;width:64%"></div>
+              <div class="bar dim pl" style="height:8px;width:92%;margin-top:6px"></div>
+              <div class="bar dim pl" style="height:8px;width:80%"></div>
+              <div class="row" style="gap:10px;margin-top:12px"><div class="btn pl" style="width:96px;height:30px"></div><div class="box pl" style="width:80px;height:30px;border-radius:8px"></div></div>
+            </div>
+            <div class="box pl" style="flex:1;height:150px"></div>
+          </div>
+          <div class="grid3" style="margin-top:22px">
+            <div class="box pl" style="height:78px"></div><div class="box pl" style="height:78px"></div><div class="box pl" style="height:78px"></div>
+          </div>
+        </div>
+        <!-- ecommerce -->
+        <div class="view" id="v1">
+          <div class="nav"><div class="logo pl"></div><div class="sp"></div><div class="lk pl"></div><div class="lk pl"></div><div class="box pl" style="width:26px;height:20px;border-radius:7px"></div></div>
+          <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:14px">
+            <div class="bar pl" style="height:13px;width:120px"></div>
+            <div class="row" style="gap:8px"><div class="bar dim pl" style="height:18px;width:54px;border-radius:9px"></div><div class="bar dim pl" style="height:18px;width:54px;border-radius:9px"></div></div>
+          </div>
+          <div class="grid2">
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+            <div class="pcard pl"><div class="box img"></div><div class="bar t"></div><div class="bar acc p"></div><div class="btn buy"></div></div>
+          </div>
+        </div>
+        <!-- blog -->
+        <div class="view" id="v2">
+          <div class="nav"><div class="logo pl"></div><div class="sp"></div><div class="lk pl"></div><div class="lk pl"></div><div class="lk pl"></div></div>
+          <div class="bar pl" style="height:16px;width:54%;margin-bottom:4px"></div>
+          <div class="bar dim pl" style="height:8px;width:40%;margin-bottom:14px"></div>
+          <div class="post pl"><div class="box th"></div><div class="col" style="gap:7px;flex:1"><div class="bar" style="height:9px;width:70%"></div><div class="bar dim" style="height:7px;width:90%"></div><div class="bar acc" style="height:6px;width:24%"></div></div></div>
+          <div class="post pl"><div class="box th"></div><div class="col" style="gap:7px;flex:1"><div class="bar" style="height:9px;width:60%"></div><div class="bar dim" style="height:7px;width:88%"></div><div class="bar acc" style="height:6px;width:24%"></div></div></div>
+          <div class="post pl"><div class="box th"></div><div class="col" style="gap:7px;flex:1"><div class="bar" style="height:9px;width:66%"></div><div class="bar dim" style="height:7px;width:84%"></div><div class="bar acc" style="height:6px;width:24%"></div></div></div>
+        </div>
+        <!-- dashboard / full application at scale -->
+        <div class="view" id="v3" style="padding:0;display:flex">
+          <div class="rail pl"><div class="rlogo"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
+          <div class="col" style="flex:1;padding:18px 20px;gap:0">
+            <div class="nav"><div class="bar pl" style="height:11px;width:90px"></div><div class="sp"></div><div class="lk pl"></div><div class="box pl" style="width:22px;height:22px;border-radius:50%"></div></div>
+            <div class="row" style="gap:10px;margin-bottom:12px">
+              <div class="box pl" style="flex:1;height:54px;padding:10px"><div class="bar acc" style="height:14px;width:54%"></div><div class="bar dim" style="height:6px;width:70%;margin-top:7px"></div></div>
+              <div class="box pl" style="flex:1;height:54px;padding:10px"><div class="bar" style="height:14px;width:42%"></div><div class="bar dim" style="height:6px;width:64%;margin-top:7px"></div></div>
+              <div class="box pl" style="flex:1;height:54px;padding:10px"><div class="bar" style="height:14px;width:46%"></div><div class="bar dim" style="height:6px;width:72%;margin-top:7px"></div></div>
+              <div class="box pl" style="flex:1;height:54px;padding:10px"><div class="bar acc" style="height:14px;width:40%"></div><div class="bar dim" style="height:6px;width:66%;margin-top:7px"></div></div>
+            </div>
+            <div class="row" style="gap:12px">
+              <div class="box pl" style="flex:2;height:138px;padding:14px;display:flex;align-items:flex-end;gap:7px">
+                <div class="bar dim" style="width:9px;height:30%"></div><div class="bar dim" style="width:9px;height:46%"></div>
+                <div class="bar dim" style="width:9px;height:40%"></div><div class="bar acc" style="width:9px;height:62%"></div>
+                <div class="bar dim" style="width:9px;height:54%"></div><div class="bar acc" style="width:9px;height:78%"></div>
+                <div class="bar dim" style="width:9px;height:70%"></div><div class="bar acc" style="width:9px;height:92%"></div>
+                <div class="bar acc" style="width:9px;height:100%"></div>
+              </div>
+              <div class="col" style="flex:1;gap:9px">
+                <div class="row pl" style="gap:8px;align-items:center"><div class="box" style="width:16px;height:16px;border-radius:50%"></div><div class="bar" style="height:7px;flex:1"></div></div>
+                <div class="row pl" style="gap:8px;align-items:center"><div class="box" style="width:16px;height:16px;border-radius:50%"></div><div class="bar" style="height:7px;flex:1"></div></div>
+                <div class="row pl" style="gap:8px;align-items:center"><div class="box" style="width:16px;height:16px;border-radius:50%"></div><div class="bar" style="height:7px;flex:1"></div></div>
+                <div class="row pl" style="gap:8px;align-items:center"><div class="box" style="width:16px;height:16px;border-radius:50%"></div><div class="bar dim" style="height:7px;flex:1"></div></div>
+                <div class="row pl" style="gap:8px;align-items:center"><div class="box" style="width:16px;height:16px;border-radius:50%"></div><div class="bar dim" style="height:7px;flex:1"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="align-items:center;gap:16px">
+      <div class="step" id="step">01</div>
+      <div class="label"><span id="ltitle">A LANDING PAGE</span> <small id="sub">just a clean first impression</small></div>
+      <div class="dots"><b class="on"></b><b></b><b></b><b></b></div>
+    </div>
+  </div>
+  <a class="backlink" href="./">‹ all designs</a>
+</div>
+<script>
+  // ---- background marquee: real tech SERVICES with official icons (hosted products, not code/packages) ----
+  // [display name, simple-icons slug] — icons served from the Simple Icons CDN (cached per slug)
+  const TECH = [
+    ['Stripe','stripe'],['PayPal','paypal'],['RevenueCat','revenuecat'],['Paddle','paddle'],
+    ['Lemon Squeezy','lemonsqueezy'],['Square','square'],
+    ['Cloudflare','cloudflare'],['Google Cloud','googlecloud'],['Vercel','vercel'],['Netlify','netlify'],
+    ['DigitalOcean','digitalocean'],['Render','render'],['Railway','railway'],['Hetzner','hetzner'],['Vultr','vultr'],
+    ['Fastly','fastly'],['Akamai','akamai'],
+    ['Supabase','supabase'],['Firebase','firebase'],['PlanetScale','planetscale'],['Neon','neon'],['Convex','convex'],
+    ['Upstash','upstash'],['Algolia','algolia'],
+    ['Auth0','auth0'],['Clerk','clerk'],['Okta','okta'],
+    ['Anthropic','anthropic'],['Gemini','googlegemini'],['Mistral AI','mistralai'],['Perplexity','perplexity'],
+    ['Hugging Face','huggingface'],['Replicate','replicate'],
+    ['Sanity','sanity'],['Contentful','contentful'],['Notion','notion'],['Ghost','ghost'],['Directus','directus'],['Strapi','strapi'],
+    ['Resend','resend'],['Mailgun','mailgun'],['Mailchimp','mailchimp'],
+    ['Sentry','sentry'],['Datadog','datadog'],['PostHog','posthog'],['Plausible','plausibleanalytics'],['Mixpanel','mixpanel'],
+    ['Cloudinary','cloudinary'],['Linear','linear'],['Intercom','intercom'],['Zendesk','zendesk'],
+    ['HubSpot','hubspot'],['Discord','discord'],
+  ];
+  const bg = document.getElementById('bg');
+  const icon = (slug) => `https://cdn.simpleicons.org/${slug}/ffffff`;
+  const cell = ([name, slug]) => `<span class="it"><img loading="lazy" src="${icon(slug)}" alt="">${name}</span>`;
+  const mkRow = (items, dir, dur) => {
+    const row = document.createElement('div'); row.className = 'mrow ' + dir;
+    row.style.setProperty('--dur', dur + 's');
+    const half = items.map(cell).join('');
+    row.innerHTML = half + half; // two identical halves → seamless infinite loop
+    return row;
+  };
+  // many rows, shuffled slices, alternating direction + varied speed; fills the rotated square
+  const slice = (arr,n)=>{ const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=(i*7+n*3)%(i+1);[a[i],a[j]]=[a[j],a[i]];} return a; };
+  const ROWS = 14;
+  for (let r = 0; r < ROWS; r++) {
+    bg.appendChild(mkRow(slice(TECH, r).slice(0, 30), r % 2 ? 'r' : 'l', 44 + (r % 5) * 6));
+  }
+
+  // ---- foreground morph cycle: each view's elements plop in, staggered ----
+  const views = [document.getElementById('v0'),document.getElementById('v1'),document.getElementById('v2'),document.getElementById('v3')];
+  // capability journey: each step is a different shape the same product can take
+  const META = [
+    ['A LANDING PAGE',  'just a clean first impression'],
+    ['START SELLING',   'add a store and take payments'],
+    ['PUBLISH CONTENT', 'blogs, guides, an audience'],
+    ['RUN IT LIKE AN APP', 'dashboards, accounts, the lot'],
+  ];
+  const dots = Array.from(document.querySelectorAll('.dots b'));
+  const step = document.getElementById('step'), ltitle = document.getElementById('ltitle'), sub = document.getElementById('sub');
+  const plop = (view) => {
+    const els = Array.from(view.querySelectorAll('.pl'));
+    els.forEach((el, idx) => {
+      el.classList.remove('go'); void el.offsetWidth; // restart animation
+      el.style.animationDelay = (idx * 55) + 'ms';
+      el.classList.add('go');
+    });
+  };
+  const show = (n) => {
+    views.forEach((v,j)=>{ v.classList.toggle('on', j===n); dots[j].classList.toggle('on', j===n); });
+    step.textContent = String(n+1).padStart(2,'0');
+    ltitle.textContent = META[n][0]; sub.textContent = META[n][1];
+    plop(views[n]);
+  };
+  let i = 0; show(0);
+  setInterval(()=>{ i = (i+1)%views.length; show(i); }, 3200);
+</script>
+</body></html>

@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2 · Ports + cables</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .rig{ position:relative; width:min(940px,94vw); height:540px; }
+  .product{ position:absolute; left:50%; top:24px; transform:translateX(-50%);
+    width:520px; max-width:90%; border:1.8px solid var(--accent); border-radius:16px; background:var(--panel);
+    padding:18px 22px 22px; box-shadow:0 0 60px rgba(198,244,50,.10); z-index:3; }
+  .product .lbl{ font:700 12px 'JetBrains Mono'; letter-spacing:2px; color:var(--accent); }
+  .product small{ color:var(--dim); font-size:10px; }
+  .ports{ display:flex; justify-content:space-between; margin-top:16px; }
+  .port{ width:54px; height:22px; border:1.5px solid rgba(255,255,255,.25); border-radius:5px; position:relative; transition:all .4s ease; }
+  .port.lit{ border-color:var(--accent); background:rgba(198,244,50,.12); box-shadow:0 0 14px rgba(198,244,50,.4); }
+  .port.lit::after{ content:''; position:absolute; inset:5px; background:var(--accent); border-radius:2px; }
+  .cards{ position:absolute; left:0; right:0; bottom:8px; display:flex; justify-content:space-between; gap:14px; z-index:3; }
+  .card{ flex:1; border:1.4px solid rgba(255,255,255,.2); border-radius:13px; background:var(--panel); padding:14px 14px 16px; }
+  .card .top{ font:600 10px 'JetBrains Mono'; letter-spacing:1.5px; color:var(--accent); margin-bottom:8px; }
+  .card .prov{ font:600 15px 'Archivo',sans-serif; }
+  .wire{ position:absolute; inset:0; pointer-events:none; z-index:2; }
+  .cable{ fill:none; stroke:rgba(255,255,255,.16); stroke-width:2; }
+  .pulse{ fill:none; stroke:var(--accent); stroke-width:2.4; stroke-dasharray:6 10; animation:flow .55s linear infinite; }
+  @keyframes flow{ to{ stroke-dashoffset:-16; } }
+</style></head>
+<body><div class="stage">
+  <div class="caption"><div class="kicker">02 — ENGINE</div><h2>Plug capabilities into your product.</h2>
+    <p>Each capability is a cable into your product. We pick the right provider and wire it up, so the ports light green.</p></div>
+  <div class="tag">[ PORTS + CABLES ]</div>
+  <div class="rig">
+    <div class="product"><div class="lbl">YOUR PRODUCT</div><small>website + app, one core</small>
+      <div class="ports"><div class="port" id="p0"></div><div class="port" id="p1"></div><div class="port" id="p2"></div><div class="port" id="p3"></div><div class="port" id="p4"></div></div>
+    </div>
+    <svg class="wire" viewBox="0 0 940 540" preserveAspectRatio="none">
+      <path class="cable" d="M88 470 C88 320 102 300 102 150"/><path class="cable" d="M276 470 C276 330 300 300 300 150"/>
+      <path class="cable" d="M470 478 V150"/><path class="cable" d="M664 470 C664 330 640 300 640 150"/>
+      <path class="cable" d="M852 470 C852 320 838 300 838 150"/>
+      <path class="pulse" id="c0" d="M88 470 C88 320 102 300 102 150" style="opacity:0"/>
+      <path class="pulse" id="c1" d="M276 470 C276 330 300 300 300 150" style="opacity:0"/>
+      <path class="pulse" id="c2" d="M470 478 V150" style="opacity:0"/>
+      <path class="pulse" id="c3" d="M664 470 C664 330 640 300 640 150" style="opacity:0"/>
+      <path class="pulse" id="c4" d="M852 470 C852 320 838 300 838 150" style="opacity:0"/>
+    </svg>
+    <div class="cards">
+      <div class="card"><div class="top">ACCOUNTS</div><div class="prov" data-providers="Clerk|Auth0|Firebase|Better Auth"></div></div>
+      <div class="card"><div class="top">PAYMENTS</div><div class="prov" data-providers="Stripe|PayPal|Shopify|RevenueCat"></div></div>
+      <div class="card"><div class="top">AI AGENTS</div><div class="prov" data-providers="Claude|Gemini|Mistral|Ollama"></div></div>
+      <div class="card"><div class="top">CONTENT</div><div class="prov" data-providers="Sanity|Contentful|Strapi|Notion"></div></div>
+      <div class="card"><div class="top">HOSTING</div><div class="prov" data-providers="Cloudflare|AWS|Azure|GCP"></div></div>
+    </div>
+  </div>
+  <a class="backlink" href="./">‹ all designs</a>
+</div>
+<script src="_cycle.js"></script><script>
+  startCycle();
+  // light each port + energize its cable in sequence, looping
+  const seq = [0,1,2,3,4];
+  let s = 0;
+  const step = () => {
+    const i = seq[s % seq.length];
+    document.getElementById('p'+i).classList.add('lit');
+    const c = document.getElementById('c'+i); c.style.opacity = '1';
+    s++;
+    if (s % seq.length === 0) setTimeout(() => { seq.forEach(j => { document.getElementById('p'+j).classList.remove('lit'); document.getElementById('c'+j).style.opacity='0'; }); }, 1400);
+  };
+  step(); setInterval(step, 600);
+</script>
+</body></html>

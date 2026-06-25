@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3 · Install checklist</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .panel{ width:min(620px,94vw); border:1.5px solid rgba(255,255,255,.14); border-radius:18px;
+    background:var(--panel); padding:30px 32px; }
+  .panel h3{ margin:0 0 4px; font:700 12px 'JetBrains Mono'; letter-spacing:2px; color:var(--accent); }
+  .panel .sub{ color:var(--dim); font-size:11px; margin-bottom:22px; }
+  .row{ display:grid; grid-template-columns:22px 1fr 150px; align-items:center; gap:14px; padding:13px 0;
+    border-top:1px solid rgba(255,255,255,.07); opacity:.35; transition:opacity .5s ease; }
+  .row.on{ opacity:1; }
+  .check{ width:20px; height:20px; border-radius:50%; border:1.6px solid rgba(255,255,255,.25); position:relative; }
+  .row.done .check{ border-color:var(--accent); background:rgba(198,244,50,.12); }
+  .row.done .check::after{ content:''; position:absolute; left:6px; top:3px; width:5px; height:9px;
+    border:solid var(--accent); border-width:0 2px 2px 0; transform:rotate(45deg); }
+  .name{ font:700 17px 'Archivo',sans-serif; }
+  .name small{ display:block; font:500 10px 'JetBrains Mono'; color:var(--dim); letter-spacing:1px; margin-top:2px; }
+  .pill{ display:flex; align-items:center; justify-content:space-between; border:1.3px solid rgba(255,255,255,.18);
+    border-radius:9px; padding:7px 11px; font:600 13px 'JetBrains Mono'; }
+  .row.on .pill{ border-color:rgba(198,244,50,.4); }
+  .bar{ grid-column:1 / -1; height:3px; border-radius:2px; background:rgba(255,255,255,.07); overflow:hidden; margin-top:4px; }
+  .bar i{ display:block; height:100%; width:0; background:var(--accent); transition:width 1s ease; }
+  .row.done .bar i{ width:100%; }
+</style></head>
+<body><div class="stage">
+  <div class="caption"><div class="kicker">02 — ENGINE</div><h2>Capabilities, installed.</h2>
+    <p>We plug in everything your product needs and wire each to a proven provider. You watch the stack come together.</p></div>
+  <div class="tag">[ INSTALL CHECKLIST ]</div>
+  <div class="panel">
+    <h3>PLUGGING IN CAPABILITIES</h3><div class="sub">configuring your product · live</div>
+    <div id="rows"></div>
+  </div>
+  <a class="backlink" href="./">‹ all designs</a>
+</div>
+<script src="_cycle.js"></script><script>
+  const rows = document.getElementById('rows');
+  CAPS.forEach(c => {
+    const r = document.createElement('div'); r.className = 'row';
+    r.innerHTML = `<div class="check"></div>
+      <div class="name">${c.label.charAt(0)+c.label.slice(1).toLowerCase()}<small>${c.desc}</small></div>
+      <div class="pill"><span class="prov" data-providers="${c.providers.join('|')}"></span></div>
+      <div class="bar"><i></i></div>`;
+    rows.appendChild(r);
+  });
+  startCycle();
+  const all = Array.from(document.querySelectorAll('.row'));
+  function run(){
+    all.forEach(r => r.classList.remove('on','done'));
+    all.forEach((r,i)=>{
+      setTimeout(()=>{ r.classList.add('on'); setTimeout(()=>r.classList.add('done'), 650); }, 400 + i*900);
+    });
+  }
+  run(); setInterval(run, 400 + all.length*900 + 2600);
+</script>
+</body></html>

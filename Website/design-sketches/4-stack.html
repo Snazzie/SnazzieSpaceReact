@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4 · Stacked layers</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .stack{ width:min(560px,92vw); display:flex; flex-direction:column-reverse; gap:10px; }
+  .layer{ display:flex; align-items:center; justify-content:space-between; gap:16px;
+    border:1.4px solid rgba(255,255,255,.2); border-radius:13px; background:var(--panel);
+    padding:18px 22px; opacity:0; transform:translateY(28px) scale(.96); }
+  .layer.in{ animation:snap .55s cubic-bezier(.2,.9,.3,1.2) forwards; }
+  @keyframes snap{ to{ opacity:1; transform:translateY(0) scale(1); } }
+  .layer .left{ display:flex; align-items:center; gap:14px; }
+  .layer .dot{ width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent); }
+  .layer .label{ font:700 18px 'Archivo',sans-serif; }
+  .layer .label small{ display:block; font:500 10px 'JetBrains Mono'; color:var(--dim); letter-spacing:1px; margin-top:2px; }
+  .layer .prov{ font:600 14px 'JetBrains Mono'; }
+  .crown{ text-align:center; margin-bottom:14px; opacity:0; }
+  .crown.in{ animation:snap .5s ease forwards; }
+  .crown .t{ font:800 22px 'Archivo',sans-serif; letter-spacing:-.02em; }
+  .crown .s{ font:600 10px 'JetBrains Mono'; letter-spacing:2px; color:var(--accent); }
+</style></head>
+<body><div class="stage">
+  <div class="caption"><div class="kicker">02 — ENGINE</div><h2>Stack the capabilities.</h2>
+    <p>Each capability snaps onto the last, layer by layer, until the whole product stands up, every layer powered by a proven provider.</p></div>
+  <div class="tag">[ STACKED LAYERS ]</div>
+  <div style="display:flex;flex-direction:column;align-items:center">
+    <div class="crown" id="crown"><div class="t">YOUR PRODUCT</div><div class="s">ASSEMBLED</div></div>
+    <div class="stack" id="stack"></div>
+  </div>
+  <a class="backlink" href="./">‹ all designs</a>
+</div>
+<script src="_cycle.js"></script><script>
+  const stack = document.getElementById('stack'), crown = document.getElementById('crown');
+  CAPS.forEach(c => {
+    const l = document.createElement('div'); l.className = 'layer';
+    l.innerHTML = `<div class="left"><span class="dot"></span><span class="label">${c.label.charAt(0)+c.label.slice(1).toLowerCase()}<small>${c.desc}</small></span></div>
+      <span class="prov" data-providers="${c.providers.join('|')}"></span>`;
+    stack.appendChild(l);
+  });
+  startCycle();
+  const layers = Array.from(document.querySelectorAll('.layer')); // DOM order = accounts..hosting (renders bottom→top)
+  function run(){
+    layers.forEach(l=>{ l.classList.remove('in'); void l.offsetWidth; });
+    crown.classList.remove('in');
+    layers.forEach((l,i)=> setTimeout(()=> l.classList.add('in'), 300 + i*420));
+    setTimeout(()=> crown.classList.add('in'), 300 + layers.length*420);
+  }
+  run(); setInterval(run, 300 + layers.length*420 + 3200);
+</script>
+</body></html>
