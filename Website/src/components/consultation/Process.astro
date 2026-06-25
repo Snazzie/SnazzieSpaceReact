@@ -18,7 +18,7 @@ const steps = [
   </div>
   <div style="border-top:1px solid rgba(255,255,255,.1)">
     {steps.map((s, i) => (
-      <div data-reveal data-delay={i * 60} class="snz-step" style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .35s ease">
+      <div data-reveal data-delay={i * 60} class="snz-step" style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .35s ease;align-items:start">
         <div class="snz-stepnum" style="font:800 56px 'Archivo',sans-serif;color:#2a2a26;letter-spacing:-0.03em;line-height:1;transition:color .5s ease,text-shadow .5s ease">{s.n}</div>
         <div>
           <h3 style="margin:0 0 10px;font:700 22px 'Archivo',sans-serif">{s.title}</h3>
@@ -28,6 +28,14 @@ const steps = [
     ))}
   </div>
 </section>
+
+<style>
+  @media (max-width: 760px) {
+    #snz-process { padding: 64px 22px !important; }
+    #snz-process .snz-step { grid-template-columns: 48px 1fr !important; gap: 16px !important; }
+    #snz-process .snz-stepnum { font-size: 30px !important; }
+  }
+</style>
 
 <script>
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

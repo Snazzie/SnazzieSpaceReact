@@ -57,7 +57,7 @@ const managed = [
         <div style="font:400 13px/1.6 'JetBrains Mono',monospace;color:#9a9a92;margin-top:14px;max-width:380px">Code, domain and accounts — all signed over to your name on day one.</div>
       </div>
       <!-- stamp -->
-      <div aria-hidden="true" style="position:absolute;right:6%;bottom:14%;transform:rotate(-13deg);border:2px solid var(--accent);color:var(--accent);border-radius:9px;padding:8px 14px;font:800 14px 'Archivo',sans-serif;letter-spacing:.06em;opacity:.92;box-shadow:0 0 22px rgba(198,244,50,.18)">OWNED OUTRIGHT</div>
+      <div class="snz-deed-stamp" aria-hidden="true" style="position:absolute;right:6%;bottom:14%;transform:rotate(-13deg);border:2px solid var(--accent);color:var(--accent);border-radius:9px;padding:8px 14px;font:800 14px 'Archivo',sans-serif;letter-spacing:.06em;opacity:.92;box-shadow:0 0 22px rgba(198,244,50,.18)">OWNED OUTRIGHT</div>
     </div>
   </div>
 
@@ -109,5 +109,14 @@ const managed = [
   @media (max-width: 860px) {
     #snz-ownership { padding: 64px 22px !important; }
     #snz-own-flow, #snz-own-paths { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 620px) {
+    /* stop the rotated stamp from sitting on top of the deed copy */
+    .snz-deed-stamp {
+      position: static !important;
+      display: inline-block;
+      margin: 26px auto 0 !important;
+      transform: rotate(-6deg) !important;
+    }
   }
 </style>

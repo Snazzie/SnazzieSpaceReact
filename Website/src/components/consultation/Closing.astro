@@ -2,7 +2,7 @@
 // Closing CTA: final call to get in touch.
 const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
 ---
-<section style="padding:120px 56px;position:relative;overflow:hidden">
+<section id="snz-close" style="padding:120px 56px;position:relative;overflow:hidden">
   <div id="snz-closebg" style="position:absolute;inset:0;background-image:radial-gradient(circle at 70% 40%,rgba(198,244,50,.08),transparent 55%);pointer-events:none"></div>
   <div data-reveal style="position:relative;max-width:900px">
     <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:22px">[ 06 ] LET'S BUILD</div>
@@ -14,3 +14,9 @@ const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 760px) {
+    #snz-close { padding: 80px 22px !important; }
+  }
+</style>
