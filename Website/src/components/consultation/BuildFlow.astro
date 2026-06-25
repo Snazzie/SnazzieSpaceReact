@@ -284,16 +284,7 @@
         </g>
         <!-- customers (left only) — traffic as a number -->
         <g id="customers" opacity="0">
-          <circle class="cust" cx="96" cy="232" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="150" cy="222" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="196" cy="238" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="80" cy="300" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="210" cy="300" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="96" cy="366" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="150" cy="378" r="6" fill="rgba(198,244,50,.5)"></circle>
-          <circle class="cust" cx="196" cy="362" r="6" fill="rgba(198,244,50,.5)"></circle>
           <text id="custNum" x="145" y="312" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="46" letter-spacing="-0.02em">0</text>
-          <text x="145" y="338" text-anchor="middle" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">USERS NOW</text>
           <circle id="pkReq" r="4.5" fill="var(--accent)" opacity="0"></circle>
         </g>
         <!-- connectors -->
@@ -305,14 +296,11 @@
         <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
         <line id="ciCms" x1="688" y1="250" x2="636" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
         <line id="ciEcom" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciDb" x1="684" y1="250" x2="636" y2="502" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciCache" x1="716" y1="250" x2="764" y2="502" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciDyn" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
         <circle id="pkApi" r="5" fill="var(--accent)" opacity="0"></circle>
-        <circle id="pkQ" r="4.5" fill="var(--accent)" opacity="0"></circle>
-        <circle id="pkC" r="4.5" fill="var(--accent)" opacity="0"></circle>
         <!-- backend card (used in CONNECT+ phases — simple label, no vector) -->
         <g id="gApiCard" opacity="0" transform="translate(700 300)">
-          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <rect id="apiCardBox" x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
           <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
           <text x="-46" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
         </g>
@@ -325,9 +313,10 @@
           <g id="gsq3" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
           <g id="gsq4" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
           <g id="gsq5" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
-          <g id="gsq6" opacity="0"></g>
-          <g id="gsq7" opacity="0"></g>
-          <g id="gsq8" opacity="0"></g>
+          <g id="gsq6" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq7" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq8" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          <g id="gsq9" opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
         </g>
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
@@ -439,19 +428,13 @@
           <text x="-16" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Ecommerce</text>
           <text x="-16" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">sell online</text>
         </g>
-        <!-- database (backend infra) -->
-        <g id="gDb" opacity="0" transform="translate(632 528)">
-          <path d="M-26 -18 A26 7 0 0 1 26 -18 L26 18 A26 7 0 0 1 -26 18 Z" fill="#0e0e0e" stroke="var(--accent)" stroke-width="1.5"></path>
-          <ellipse cx="0" cy="-18" rx="26" ry="7" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.5"></ellipse>
-          <path d="M-26 -2 A26 7 0 0 0 26 -2" fill="none" stroke="rgba(198,244,50,.4)" stroke-width="1.1"></path>
-          <text x="0" y="36" text-anchor="middle" fill="#cfcfc7" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">Database</text>
-        </g>
-        <!-- cache (backend infra) -->
-        <g id="gCache" opacity="0" transform="translate(768 528)">
-          <rect x="-38" y="-20" width="76" height="40" rx="9" fill="#0e0e0e" stroke="var(--accent)" stroke-width="1.5"></rect>
-          <text x="0" y="2" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="14">⚡</text>
-          <text x="0" y="36" text-anchor="middle" fill="#cfcfc7" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10">Cache</text>
-          <text id="cacheHit" x="0" y="-28" text-anchor="middle" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="10" opacity="0">HIT</text>
+        <!-- dynamic content (backend module) -->
+        <g id="mDynamic" opacity="0" transform="translate(650 432)">
+          <rect x="-64" y="-36" width="128" height="72" rx="11" fill="#0e0e0e" stroke="rgba(255,255,255,.2)" stroke-width="1.4"></rect>
+          <path d="M-50 -3 A13 13 0 1 1 -44 10" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"></path>
+          <path d="M-50 -12 L-50 -3 L-41 -3" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <text x="-26" y="-3" fill="#E9E7E1" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">Dynamic</text>
+          <text x="-26" y="12" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="8">live content</text>
         </g>
         <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
         <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
@@ -610,13 +593,13 @@
     wfStroke.forEach((e) => { e.style.strokeDasharray = '1'; });
 
     const camera = $('camera');
-    const wire = $('fWire'), phone = $('fPhone'), gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard'), gDb = $('gDb'), gCache = $('gCache');
+    const wire = $('fWire'), phone = $('fPhone'), gCore = $('gCore'), gApi = $('gApi'), gApiCard = $('gApiCard');
     const apiBox = $('apiBox');
-    const mAcc = $('mAccounts'), mPay = $('mPayments'), mAgent = $('mAgent'), mCms = $('mCMS'), mEcom = $('mEcom');
+    const mAcc = $('mAccounts'), mPay = $('mPayments'), mAgent = $('mAgent'), mCms = $('mCMS'), mEcom = $('mEcom'), mDyn = $('mDynamic');
     const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
-    const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDb = $('ciDb'), ciCache = $('ciCache');
-    const pkQ = $('pkQ'), pkC = $('pkC'), pkReq = $('pkReq');
-    const accShield = $('accShield'), accCheck = $('accCheck'), accShieldFill = $('accShieldFill'), cacheHit = $('cacheHit');
+    const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDyn = $('ciDyn');
+    const pkReq = $('pkReq');
+    const accShield = $('accShield'), accCheck = $('accCheck'), accShieldFill = $('accShieldFill');
     const customers = $('customers'), custNum = $('custNum');
     const custDots = Array.from(svg.querySelectorAll('#customers .cust')) as unknown as El[];
     const bizTitle = $('bizTitle'), bizNum = $('bizNum'), bizSize = $('bizSize');
@@ -624,8 +607,8 @@
     const analytics = $('analytics');
     const ciProdAn = $('ciProdAn'), ciApiAn = $('ciApiAn');
     const ciProdAnPulse = $('ciProdAnPulse'), ciApiAnPulse = $('ciApiAnPulse');
-    const scSqs = [0,1,2,3,4,5,6,7,8].map(i => $('gsq' + i));
-    const gReplicas = $('gReplicas');
+    const scSqs = [0,1,2,3,4,5,6,7,8,9].map(i => $('gsq' + i));
+    const gReplicas = $('gReplicas'), apiCardBox = $('apiCardBox');
     const cbBars = [$('cb0'), $('cb1'), $('cb2'), $('cb3'), $('cb4'), $('cb5'), $('cb6'), $('cb7')];
     const anChart = $('anChart');
     const anHeat = $('anHeat'), anSearch = $('anSearch'), anRev = $('anRev');
@@ -640,7 +623,7 @@
     const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
-    [accShield, accCheck, cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDb, ciCache, anChart].forEach((e) => {
+    [accShield, accCheck, cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
       if (e) { e.style.strokeDasharray = '1'; e.style.strokeDashoffset = '1'; }
     });
 
@@ -675,6 +658,23 @@
     const seg = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
     const sm = (t: number) => t * t * (3 - 2 * t);
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+    // elastic "rubber balloon" ease: overshoots past 1 then settles. t in [0,1].
+    const elasticOut = (t: number) => {
+      if (t <= 0) return 0; if (t >= 1) return 1;
+      const per = 0.42; // oscillation period — smaller = more bounces
+      return Math.pow(2, -9 * t) * Math.sin((t - per / 4) * (2 * Math.PI) / per) + 1;
+    };
+
+    // Trigger-based elastic pops for the SCALE tiers: crossing a tier (or a unit's
+    // threshold) latches a timestamp; the balloon then plays out over REAL TIME,
+    // independent of scroll direction/speed (no scrubbing). `scaleAnimActive` keeps
+    // the rAF applying while a pop is still in flight after scrolling stops.
+    const POP_DUR = 640;                          // ms per balloon pop
+    const nowMs = () => performance.now();
+    let curTier = -1, tierStartT = 0, replicasTrig = -1;
+    const nodeTrig = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1];    // per-server trigger timestamps
+    const dotTrig = [-1, -1, -1, -1, -1, -1, -1, -1];
+    let scaleAnimActive = false;
 
     const apply = (p: number) => {
       const draw = (el: El | null, d: number) => { if (el) { el.style.strokeDashoffset = String(1 - d); el.style.opacity = d > 0 ? '1' : '0'; } };
@@ -750,15 +750,14 @@
       // CONNECT+: simple API card follows Banch (slides center → right)
       const apiCardShow = sm(seg(p, 0.54, 0.61));
       if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.86, 0.92)))).toFixed(3); }
-      // Children grid centered at x=500: row1 (350/500/650 y=290), row2 (425/575 y=400), row3 (425/575 y=510)
+      // Children grid centered at x=500: row1 (350/500/650 y=290), row2 (350/500/650 y=400)
       const kids = [
         { g: mAcc,   c: ciAcc,   gx: 350, gy: 290 },
         { g: mPay,   c: ciPay,   gx: 500, gy: 290 },
         { g: mAgent, c: ciAgent, gx: 650, gy: 290 },
-        { g: mCms,   c: ciCms,   gx: 425, gy: 400 },
-        { g: mEcom,  c: ciEcom,  gx: 575, gy: 400 },
-        { g: gDb,    c: ciDb,    gx: 425, gy: 510 },
-        { g: gCache, c: ciCache, gx: 575, gy: 510 },
+        { g: mCms,   c: ciCms,   gx: 350, gy: 400 },
+        { g: mEcom,  c: ciEcom,  gx: 500, gy: 400 },
+        { g: mDyn,   c: ciDyn,   gx: 650, gy: 400 },
       ];
       kids.forEach((o) => {
         let x = lerp(bx, o.gx, e1), y = lerp(by, o.gy, e1);
@@ -771,16 +770,13 @@
       draw(accShield, sm(seg(p, 0.34, 0.40)));
       draw(accCheck, sm(seg(p, 0.37, 0.43)));
       if (accShieldFill) accShieldFill.style.opacity = sm(seg(p, 0.41, 0.45)).toFixed(3);
-      flow(pkQ, [500, 320], [425, 490], 0.42, 0.46);
-      flow(pkC, [506, 320], [575, 490], 0.43, 0.47);
-      if (cacheHit) cacheHit.style.opacity = (sm(seg(p, 0.43, 0.46)) * (1 - sm(seg(p, 0.47, 0.50)))).toFixed(3);
 
       // ---- CONNECT: product card left (280,300), backend right (700,300) ----
       const pSideBy = sm(seg(p, 0.54, 0.61));
       if (gCore) { gCore.setAttribute('transform', 'translate(340 300)'); gCore.style.opacity = (pSideBy * dissolve).toFixed(3); }
       if (cnApi) { const cv = sm(seg(p, 0.60, 0.66)); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
 
-      // ---- TRAFFIC → SCALE: business counter replaces users element ----
+      // ---- TRAFFIC → SCALE: customer grows through size tiers, infra balloons ----
       const sIn = sm(seg(p, 0.59, 0.65));
       if (bizTitle) bizTitle.style.opacity = (sIn * dissolve).toFixed(3);
       const bn = sm(seg(p, 0.62, 0.88));
@@ -792,28 +788,81 @@
       if (bizNum) bizNum.textContent = busers.toLocaleString('en-US') + ' customers';
       if (bizSize) bizSize.textContent = bsize;
 
-      // ---- SCALE: node replication, analytics card, connectors ----
+      // ---- SCALE gates ----
       const an = sm(seg(p, 0.88, 0.94));
       const gsGate = sm(seg(p, 0.72, 0.78));
-      // Horizontal scale-out: the backend node CLONES into identical replica icons
-      // that spin up in a contained 3×2 grid inside the API card's right half as
-      // load (bn) grows. Kept within the card bounds (no overflow).
-      const repN = 6;            // number of live replica icons
-      const repCols = 3;
-      const repColX = [680, 706, 732];   // column centres, abs (card right half)
-      const repRowY = [286, 314];        // row centres, abs
-      if (gReplicas) gReplicas.style.opacity = (gsGate * dissolve).toFixed(3);
+
+      // Discrete size tiers (small / medium / enterprise). Crossing a tier latches a
+      // timestamp; the elastic pop then plays out over real time (TRIGGER, not scrub).
+      const TIER_AT = [0.0, 0.4, 0.74];
+      let tier = 0; for (let i = 0; i < TIER_AT.length; i++) if (bn >= TIER_AT[i]) tier = i;
+      // reset latches when scrolled back before the sequence so it can replay on re-entry
+      if (bn <= 0.001) { curTier = -1; tierStartT = 0; replicasTrig = -1; nodeTrig.fill(-1); dotTrig.fill(-1); }
+      if (tier > curTier) { curTier = tier; tierStartT = nowMs(); }
+      // time-driven eases (settle instantly under reduced-motion / single render)
+      const popEase = (startT: number) => startT < 0 ? 0 : (reduce ? 1 : elasticOut(clamp((nowMs() - startT) / POP_DUR, 0, 1)));
+      const popFade = (startT: number) => startT < 0 ? 0 : (reduce ? 1 : clamp((nowMs() - startT) / 150, 0, 1));
+      const tierE = curTier < 0 ? 0 : (reduce ? 1 : elasticOut(clamp((nowMs() - tierStartT) / POP_DUR, 0, 1)));
+      const balloon = (prev: number, cur: number) => lerp(prev, cur, tierE);
+
+      // counter gives a quick elastic kick at each tier crossing
+      if (bizTitle) {
+        const kick = tier === 0 ? 1 : balloon(1.16, 1);
+        bizTitle.setAttribute('transform', 'translate(500 220) scale(' + kick.toFixed(3) + ') translate(-500 -220)');
+      }
+
+      // SERVERS (right, inside the API card): count steps 1→4→10 per tier; each replica
+      // pops in over time, and the cluster balloons bigger each tier (within card).
+      const SRV_PS = [0.86, 0.97, 1.08];
+      const srvScale = balloon(tier > 0 ? SRV_PS[tier - 1] : 0.5, SRV_PS[tier]);
+      // entrance is TRIGGERED (rubberband) once the scale gate opens, not scrubbed by scroll
+      if (replicasTrig < 0 && gsGate > 0.01) replicasTrig = nowMs();
+      const repPop = popEase(replicasTrig);   // elastic rubberband-in 0→1
+      if (gReplicas) {
+        gReplicas.style.opacity = (popFade(replicasTrig) * dissolve).toFixed(3);
+        gReplicas.setAttribute('transform', 'translate(706 300) scale(' + (srvScale * repPop).toFixed(3) + ') translate(-706 -300)');
+      }
+      // enterprise: balloon the card wider so the 10-server cluster fits (expands rightward)
+      if (apiCardBox) {
+        const cardW = tier >= 2 ? balloon(184, 214) : 184;
+        apiCardBox.setAttribute('width', cardW.toFixed(1));
+      }
+      const repCols = 5;
+      const repColX = [666, 686, 706, 726, 746];   // column centres, abs (card right half)
+      const repRowY = [288, 312];        // row centres, abs
+      const nodeAt = [0.0, 0.4, 0.4, 0.4, 0.74, 0.74, 0.74, 0.74, 0.74, 0.74]; // server count steps per tier (1 → 4 → 10)
       scSqs.forEach((s, i) => {
         if (!s) return;
-        if (i >= repN) { s.style.opacity = '0'; return; }
-        // each replica pops in, staggered across the load ramp
-        const t = sm(seg(bn, i / repN, i / repN + 0.16));
-        const x = repColX[i % repCols];
-        const y = repRowY[Math.floor(i / repCols)];
-        const sc = lerp(0.4, 1, t);   // pop-scale on spawn
-        s.style.opacity = t.toFixed(3);
-        s.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + sc.toFixed(3) + ')');
+        if (nodeTrig[i] < 0 && gsGate > 0.01 && bn >= nodeAt[i] - 0.0001) nodeTrig[i] = nowMs();
+        const pop = popEase(nodeTrig[i]);   // time-driven balloon-in
+        s.style.opacity = popFade(nodeTrig[i]).toFixed(3);
+        const x = repColX[i % repCols], y = repRowY[Math.floor(i / repCols)];
+        s.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + Math.max(0.01, pop).toFixed(3) + ')');
       });
+
+      // PEOPLE (left crowd): reveal in waves 3→5→8, whole crowd balloons each tier.
+      const PPL_PS = [0.78, 1.04, 1.3];
+      const pplScale = balloon(tier > 0 ? PPL_PS[tier - 1] : 0.45, PPL_PS[tier]);
+      if (customers) {
+        customers.style.opacity = (sIn * dissolve).toFixed(3);
+        customers.setAttribute('transform', 'translate(145 300) scale(' + pplScale.toFixed(3) + ') translate(-145 -300)');
+      }
+      if (custNum) custNum.style.opacity = '0';
+      const peopleAt = [0.0, 0.0, 0.0, 0.4, 0.4, 0.74, 0.74, 0.74];
+      custDots.forEach((d, i) => {
+        if (dotTrig[i] < 0 && sIn > 0.01 && bn >= peopleAt[i] - 0.0001) dotTrig[i] = nowMs();
+        const pop = popEase(dotTrig[i]);
+        d.style.opacity = popFade(dotTrig[i]).toFixed(3);
+        d.setAttribute('r', Math.max(0.1, 6 * pop).toFixed(2));
+      });
+
+      // keep the rAF applying while any triggered pop is still in flight
+      scaleAnimActive = !reduce && (
+        (curTier >= 0 && nowMs() - tierStartT < POP_DUR) ||
+        (replicasTrig >= 0 && nowMs() - replicasTrig < POP_DUR) ||
+        nodeTrig.some((t) => t >= 0 && nowMs() - t < POP_DUR) ||
+        dotTrig.some((t) => t >= 0 && nowMs() - t < POP_DUR)
+      );
       const anCardIn = sm(seg(p, 0.74, 0.80));
       if (gAnalytics) gAnalytics.style.opacity = (anCardIn * (1 - an)).toFixed(3);
       gabBars.forEach((b, i) => { if (!b) return; const prog = sm(seg(anCardIn, i / 8 * 0.35, i / 8 * 0.35 + 0.65)); const h = gabH[i] * prog; b.setAttribute('y', String(40 - h)); b.setAttribute('height', String(h)); });
@@ -860,7 +909,7 @@
         const vh = window.innerHeight || document.documentElement.clientHeight;
         const total = sec.offsetHeight - vh;
         const p = total > 0 ? Math.max(-0.07, Math.min(1, -r.top / total)) : 0;
-        if (Math.abs(p - lastP) > 0.0004) { lastP = p; apply(p); }
+        if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
       };
       const tick = () => { update(); raf = requestAnimationFrame(tick); };
       raf = requestAnimationFrame(tick);

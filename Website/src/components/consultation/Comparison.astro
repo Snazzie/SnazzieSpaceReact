@@ -13,83 +13,83 @@ const cols = [
 
 const rows: { label: string; cells: Cell[] }[] = [
   {
-    label: 'What you actually get',
-    cells: [
-      { text: 'A template thousands of others already use', tone: 'bad' },
-      { text: 'A template, dressed up to look custom', tone: 'mid' },
-      { text: 'A one-of-a-kind site that looks genuinely professional and beautiful, built from a blank canvas', tone: 'good' },
-    ],
-  },
-  {
     label: 'The design',
     cells: [
-      { text: 'Pick a theme everyone else already picked', tone: 'bad' },
-      { text: 'A bought theme, nudged to look custom', tone: 'mid' },
-      { text: 'Designed around you from a blank canvas — no template underneath', tone: 'good' },
-    ],
-  },
-  {
-    label: 'Time to live',
-    cells: [
-      { text: 'Weeks of evenings, then it stalls', tone: 'bad' },
-      { text: 'Their queue, their pace, slow revisions', tone: 'mid' },
-      { text: 'An agreed date, and I drive it there', tone: 'good' },
+      { text: 'Often ends up looking home-made — flow and wording not quite there', tone: 'bad' },
+      { text: 'A bought theme, dressed as custom', tone: 'mid' },
+      { text: 'Unique, professional, from a blank canvas', tone: 'good' },
     ],
   },
   {
     label: 'Who builds it',
     cells: [
-      { text: 'You, after the day job, on YouTube tutorials', tone: 'bad' },
-      { text: 'Often junior staff or outsourced overseas', tone: 'mid' },
-      { text: 'Me — the person you actually talk to', tone: 'good' },
+      { text: 'You, on YouTube tutorials', tone: 'bad' },
+      { text: 'A plugin assembler, often outsourced', tone: 'mid' },
+      { text: 'Me — a real software engineer', tone: 'good' },
     ],
   },
   {
-    label: 'Security, speed & SEO',
+    label: 'The approach',
     cells: [
-      { text: 'Plugins bolted on after, hope they hold', tone: 'bad' },
-      { text: 'Sold back to you as paid extras', tone: 'mid' },
-      { text: 'Baked in from the first line — the foundation, not an add-on', tone: 'good' },
+      { text: 'One tool for everything, like it or not', tone: 'bad' },
+      { text: 'WordPress for everything, even when it fits badly', tone: 'mid' },
+      { text: 'Right tools picked per job — no over-complication, best value and experience', tone: 'good' },
     ],
   },
   {
-    label: 'What gets promised',
+    label: 'Time to live',
     cells: [
-      { text: 'Whatever the tutorial swore was easy', tone: 'bad' },
-      { text: 'Promise the world, deliver it on janky plugins', tone: 'mid' },
-      { text: 'I promise what I can build, then build it for real', tone: 'good' },
+      { text: 'Weeks of evenings', tone: 'bad' },
+      { text: 'Their queue, their pace', tone: 'mid' },
+      { text: 'An agreed date I drive to', tone: 'good' },
+    ],
+  },
+  {
+    label: 'Speed',
+    cells: [
+      { text: 'Plugin bloat — slow, heavy pages', tone: 'bad' },
+      { text: 'WordPress overhead, slow out the box', tone: 'mid' },
+      { text: 'Hand-built and lightweight — loads fast', tone: 'good' },
+    ],
+  },
+  {
+    label: 'Security',
+    cells: [
+      { text: 'WordPress plugins — vulnerable from day one', tone: 'bad' },
+      { text: 'Sells you SSL & bogus "security packages" that should be free', tone: 'mid' },
+      { text: 'Secure by build — SSL/HTTPS free and included, no fake fees', tone: 'good' },
+    ],
+  },
+  {
+    label: 'SEO',
+    cells: [
+      { text: 'Bolted on, fingers crossed', tone: 'bad' },
+      { text: 'Sold back as paid extras', tone: 'mid' },
+      { text: 'Baked in, not an add-on', tone: 'good' },
     ],
   },
   {
     label: 'The real cost',
     cells: [
-      { text: 'Cheap upfront, then monthly hosting + themes + plugins + your time', tone: 'mid' },
-      { text: '£2k–£5k, plus marked-up monthly hosting & licence fees forever', tone: 'bad' },
-      { text: 'From £700, honest hosting at cost (often zero for simple sites)', tone: 'good' },
-    ],
-  },
-  {
-    label: 'Hidden fees',
-    cells: [
-      { text: 'Premium plugins nag you forever', tone: 'bad' },
-      { text: 'Padded "security" & care packages', tone: 'bad' },
-      { text: 'None — you pay hosting at cost, no markup', tone: 'good' },
+      { text: 'Cheap, then endless add-ons', tone: 'mid' },
+      { text: '£2k–£5k + marked-up monthly fees', tone: 'bad' },
+      { text: 'From £700, hosting at cost (often zero host cost for simple websites)', tone: 'good' },
     ],
   },
   {
     label: 'Who owns it',
     cells: [
-      { text: 'Squarespace does. Leave and it dies', tone: 'bad' },
-      { text: 'Locked to their stack & their plugins', tone: 'mid' },
-      { text: 'You. Outright. Yours to keep forever', tone: 'good' },
+      { text: 'Squarespace does — leave, it dies', tone: 'bad' },
+      { text: 'Locked to their stack', tone: 'mid' },
+      { text: 'You, outright, forever', tone: 'good' },
     ],
   },
   {
     label: 'When it breaks',
     cells: [
-      { text: 'A forum thread from 2019', tone: 'bad' },
-      { text: 'A ticket, a queue, a wait', tone: 'mid' },
-      { text: 'Text me. A real human who built it', tone: 'good' },
+      { text: 'A 2019 forum thread', tone: 'bad' },
+      { text: 'A ticket and a queue', tone: 'mid' },
+      { text: 'Text me — I built it', tone: 'good' },
     ],
   },
 ];
