@@ -36,16 +36,15 @@ const ENGINE_ROWS = Array.from({ length: 14 }, (_, r) => ({ dir: r % 2 ? "r" : "
 
 // Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
 const buildCaps = [
-  { label: "01 — BUILD", title: "What the user sees.", body: "A website and an app — designed around you and built by hand.", max: 460 },
-  { label: "02 — ENGINE", title: "Starts simple. Grows into anything.", body: "A landing page, a store, a content engine, a full app — the same product, built on the services behind it.", max: 480 },
-  { label: "03 — CONNECT", title: "Wire it together.", body: "Your product and the backend, talking to a database and a fast cache so everything feels instant.", max: 480 },
-  { label: "04 — TRAFFIC", title: "People show up.", body: "As word spreads, more and more customers arrive — all at once.", max: 480 },
-  { label: "05 — SCALE", title: "It scales with demand.", body: "Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scale with your needs.", max: 480 },
-  { label: "06 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working — so you know what to do next.", max: 480 },
+  { label: "01 — DESIGN", title: "Endless design possibilities.", body: "Website, app, or both, shaped entirely around your brand. No templates, no limits, designed from scratch around you.", max: 460 },
+  { label: "02 — PURPOSE", title: "Built around what it's for.", body: "A landing page, a store, a content engine, a full app, the same product shaped to whatever your business needs to do.", max: 480 },
+  { label: "03 — TRAFFIC", title: "People show up.", body: "As word spreads, more and more customers arrive, all at once.", max: 480 },
+  { label: "04 — SCALE", title: "It scales with demand.", body: "Whether you're a small shop with a hundred visitors or an enterprise with half a million, the solution always scales with your needs.", max: 480 },
+  { label: "05 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working, so you know what to do next.", max: 480 },
 ];
 
 // Step tracker labels (tk1..tk6) — first is active (accent), rest dim.
-const buildTrack = ["01 BUILD", "02 ENGINE", "03 CONNECT", "04 TRAFFIC", "05 SCALE", "06 DATA"];
+const buildTrack = ["01 DESIGN", "02 PURPOSE", "03 TRAFFIC", "04 SCALE", "05 DATA"];
 
 // Phone app screen repeated twice for the scroll loop (UNIT 1 at o=0, UNIT 2 at o=240).
 const phoneUnits = [0, 240];
@@ -61,10 +60,10 @@ const phoneUnits = [0, 240];
             mask-image:radial-gradient(58% 50% at 50% 50%,#000 26%,transparent 72%); }
   .eng-row{ display:flex; align-items:center; gap:44px; white-space:nowrap; font:800 50px/1.3 'Archivo',sans-serif;
     letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04);
-    color:transparent; background-color:rgba(255,255,255,.06);
-    background-image:linear-gradient(100deg, transparent 0%, transparent 40%,
-      rgba(198,244,50,.22) 47%, rgba(255,255,255,.4) 50%, rgba(198,244,50,.22) 53%,
-      transparent 60%, transparent 100%);
+    color:transparent;
+    background-image:linear-gradient(100deg, rgba(198,244,50,.12) 0%, rgba(198,244,50,.12) 40%,
+      rgba(198,244,50,.4) 47%, rgba(255,255,255,.5) 50%, rgba(198,244,50,.4) 53%,
+      rgba(198,244,50,.12) 60%, rgba(198,244,50,.12) 100%);
     background-repeat:repeat-x; background-size:600px 100%;
     -webkit-background-clip:text; background-clip:text; }
   .eng-row.l{ animation:eng-ml var(--dur,52s) linear infinite, eng-shim 2s linear infinite; }
@@ -73,19 +72,37 @@ const phoneUnits = [0, 240];
   @keyframes eng-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
   @keyframes eng-shim{ from{background-position:0 0} to{background-position:-600px 0} }
   .eng-it{ display:inline-flex; align-items:center; gap:.26em; transition:-webkit-text-fill-color .5s ease, opacity .5s ease; }
-  .eng-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.16); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.55; }
-  /* stage-reactive highlight: the category matching the current morph stage glows accent, rest dim */
-  #snz-engine[data-cat] .eng-it{ opacity:.5; }
+  .eng-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease, opacity .5s ease; opacity:.5; }
+  /* once a stage is active: non-matching items go flat-dim (no shimmer); matching items keep the
+     clipped gradient, so the shimmer sweeps ONLY over the relevant highlights */
+  #snz-engine[data-cat] .eng-it{ -webkit-text-fill-color:rgba(255,255,255,.05); opacity:.6; }
+  #snz-engine[data-cat] .eng-it .eng-ic{ fill:rgba(255,255,255,.07); opacity:.4; }
   #snz-engine[data-cat="host"] .eng-it[data-cat="host"],
   #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"],
   #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"],
-  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]{ opacity:.7; -webkit-text-fill-color:rgba(198,244,50,.3); }
+  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"],
+  #snz-engine[data-cat="all"] .eng-it{ -webkit-text-fill-color:transparent; opacity:1; }
   #snz-engine[data-cat="host"] .eng-it[data-cat="host"] .eng-ic,
   #snz-engine[data-cat="pay"]  .eng-it[data-cat="pay"]  .eng-ic,
   #snz-engine[data-cat="cms"]  .eng-it[data-cat="cms"]  .eng-ic,
-  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]  .eng-ic{ fill:rgba(198,244,50,.32); opacity:.7; }
+  #snz-engine[data-cat="app"]  .eng-it[data-cat="app"]  .eng-ic,
+  #snz-engine[data-cat="all"] .eng-it .eng-ic{ fill:rgba(198,244,50,.4); opacity:.95; }
+  /* "all" stage (web app + mobile): disco ball — kill the coherent shimmer sweep and
+     flash each name/icon on its own random offset so the lights scatter across services */
+  #snz-engine[data-cat="all"] .eng-row.l{ animation: eng-ml var(--dur,52s) linear infinite; }
+  #snz-engine[data-cat="all"] .eng-row.r{ animation: eng-mr var(--dur,52s) linear infinite; }
+  #snz-engine[data-cat="all"] .eng-it{ animation: eng-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+  #snz-engine[data-cat="all"] .eng-it .eng-ic{ animation: eng-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+  @keyframes eng-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(255,255,255,.05); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
+  @keyframes eng-disco-ic{ 0%,18%,100%{ fill:rgba(255,255,255,.07); } 8%{ fill:var(--accent); } }
 
   .eng-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+  /* browser + phone dock share a centered row; when the dock expands the whole row
+     widens, so the browser shifts left to make space for the phone */
+  .eng-prod{ display:flex; align-items:center; justify-content:center; width:100%; }
+  .eng-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
+  #snz-engine[data-app] .eng-appdock{ width:140px; margin-left:24px; opacity:1; }
+  @media (prefers-reduced-motion: reduce){ .eng-appdock{ transition:none; } }
   .eng-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
     box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(198,244,50,.1); }
   .eng-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
@@ -114,11 +131,17 @@ const phoneUnits = [0, 240];
   .eng-rail .rl{ width:18px; height:18px; border-radius:6px; background:var(--accent); }
   .eng-rail .rd{ width:16px; height:16px; border-radius:6px; background:rgba(255,255,255,.12); }
   .eng-rail .rd.on{ background:rgba(198,244,50,.4); }
+  .eng-phone{ width:152px; height:300px; border:1.6px solid rgba(255,255,255,.25); border-radius:24px;
+    background:#0c0c0c; position:relative; overflow:hidden; box-shadow:0 0 40px rgba(198,244,50,.08); }
+  .eng-phone::before{ content:''; position:absolute; top:9px; left:50%; transform:translateX(-50%);
+    width:42px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
+  .eng-dot{ width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); }
+  .eng-dot.on{ background:var(--accent); }
   .eng-cap{ display:flex; align-items:center; gap:13px; }
   .eng-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
   .eng-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
   .eng-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
-  @media (prefers-reduced-motion: reduce){ .eng-row{ animation:none; } .eng-pl{ opacity:1; } }
+  @media (prefers-reduced-motion: reduce){ .eng-row{ animation:none; } .eng-pl{ opacity:1; } #snz-engine[data-cat="all"] .eng-it, #snz-engine[data-cat="all"] .eng-it .eng-ic{ animation:none; } }
 
   @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
   @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
@@ -191,8 +214,8 @@ const phoneUnits = [0, 240];
   <div class="snz-slide-row" id="snz-sr2" style="top:82%" aria-hidden="true">BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT · BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT · BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT · BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT · BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT · BUILDER · PRODUCT · BUILD · BESPOKE · IMPACT ·</div>
   <div class="snz-stmt-label">[ A THOUGHT ]</div>
   <h2 class="snz-stmt-h">
-    <span id="snz-row1"><span class="snz-w">Building&nbsp;</span><span class="snz-w">a&nbsp;</span><span class="snz-w">product&nbsp;</span><span class="snz-w">is&nbsp;</span><span class="snz-w">easy.</span></span>
-    <span id="snz-row2"><span class="snz-w">Building&nbsp;</span><span class="snz-w">one&nbsp;</span><span class="snz-w">that&nbsp;</span><span class="snz-w snz-accent">sells&nbsp;</span><span class="snz-w">is&nbsp;</span><span class="snz-w">not.</span></span>
+    <span id="snz-row1"><span class="snz-w">No&nbsp;</span><span class="snz-w">business&nbsp;</span><span class="snz-w">is&nbsp;</span><span class="snz-w snz-accent">generic.</span></span>
+    <span id="snz-row2"><span class="snz-w">Why&nbsp;</span><span class="snz-w">should&nbsp;</span><span class="snz-w">your&nbsp;</span><span class="snz-w snz-accent">site&nbsp;</span><span class="snz-w">be?</span></span>
   </h2>
   <div class="snz-stmt-line"></div>
 </section>
@@ -518,15 +541,16 @@ const phoneUnits = [0, 240];
       <!-- ENGINE overlay (HTML): skewed services marquee + scroll-morphing browser -->
       <div id="snz-engine" style="position:absolute;inset:0;opacity:0;pointer-events:none;overflow:hidden">
         <div class="eng-bg">
-          {ENGINE_ROWS.map((row) => (
+          {ENGINE_ROWS.map((row, r) => (
             <div class={`eng-row ${row.dir}`} style={`--dur:${row.dur}s`}>
-              {[...row.items, ...row.items].map((s) => (
-                <span class="eng-it" data-cat={s.cat}><svg viewBox="0 0 24 24" class="eng-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
+              {[...row.items, ...row.items].map((s, k) => (
+                <span class="eng-it" data-cat={s.cat} style={`--fd:${(((r * 17 + k * 13) % 38) / 10).toFixed(2)}s;--fdur:${(1.6 + ((r * 7 + k * 11) % 18) / 10).toFixed(2)}s`}><svg viewBox="0 0 24 24" class="eng-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
               ))}
             </div>
           ))}
         </div>
         <div class="eng-fg">
+          <div class="eng-prod">
           <div class="eng-browser">
             <div class="eng-chrome"><i></i><i></i><i></i><div class="eng-url"></div></div>
             <div class="eng-screen">
@@ -567,10 +591,10 @@ const phoneUnits = [0, 240];
                 <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:60%"></div><div class="eng-bar dim" style="height:6px;width:88%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
                 <div class="eng-post eng-pl"><div class="eng-box" style="width:72px;height:46px;flex:none"></div><div class="eng-cl" style="gap:6px;flex:1"><div class="eng-bar" style="height:8px;width:66%"></div><div class="eng-bar dim" style="height:6px;width:84%"></div><div class="eng-bar acc" style="height:6px;width:24%"></div></div></div>
               </div>
-              <!-- 04 app / dashboard -->
+              <!-- 04 web app (dashboard) — phone docks to the right of the browser (see .eng-appdock) -->
               <div class="eng-view" id="ev3" style="padding:0;display:flex">
                 <div class="eng-rail eng-pl"><div class="rl"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
-                <div class="eng-cl" style="flex:1;padding:16px 18px;gap:0">
+                <div class="eng-cl" style="flex:1;padding:16px 18px;gap:0;min-width:0">
                   <div class="eng-nav"><div class="eng-bar eng-pl" style="height:10px;width:80px"></div><div class="sp"></div><div class="lk eng-pl"></div><div class="eng-box eng-pl" style="width:20px;height:20px;border-radius:50%"></div></div>
                   <div class="eng-rw" style="gap:9px;margin-bottom:11px">
                     <div class="eng-box eng-pl" style="flex:1;height:50px;padding:9px"><div class="eng-bar acc" style="height:13px;width:54%"></div><div class="eng-bar dim" style="height:5px;width:70%;margin-top:6px"></div></div>
@@ -593,6 +617,20 @@ const phoneUnits = [0, 240];
               </div>
             </div>
           </div>
+          <!-- native mobile app: collapsed by default, expands right of the browser on the web-app stage -->
+          <div class="eng-appdock">
+            <div class="eng-phone" style="width:140px;height:288px">
+              <div class="eng-cl" style="gap:8px;padding:22px 11px 11px;height:100%">
+                <div class="eng-rw" style="align-items:center;gap:8px"><div class="eng-box" style="width:20px;height:20px;border-radius:50%"></div><div class="eng-cl" style="gap:4px;flex:1"><div class="eng-bar" style="height:6px;width:58%"></div><div class="eng-bar dim" style="height:4px;width:40%"></div></div></div>
+                <div class="eng-box" style="height:60px;margin-top:2px;display:flex;align-items:flex-end;gap:5px;padding:9px"><div class="eng-bar dim" style="width:7px;height:40%"></div><div class="eng-bar dim" style="width:7px;height:60%"></div><div class="eng-bar acc" style="width:7px;height:85%"></div><div class="eng-bar dim" style="width:7px;height:55%"></div><div class="eng-bar acc" style="width:7px;height:100%"></div></div>
+                <div class="eng-rw" style="gap:8px"><div class="eng-box" style="flex:1;height:36px"></div><div class="eng-box" style="flex:1;height:36px"></div></div>
+                <div class="eng-rw" style="align-items:center;gap:8px"><div class="eng-box" style="width:17px;height:17px;border-radius:50%"></div><div class="eng-cl" style="gap:4px;flex:1"><div class="eng-bar" style="height:5px;width:70%"></div><div class="eng-bar dim" style="height:4px;width:50%"></div></div></div>
+                <div style="flex:1"></div>
+                <div class="eng-rw" style="justify-content:space-around;border-top:1px solid rgba(255,255,255,.08);padding-top:9px"><div class="eng-dot on"></div><div class="eng-dot"></div><div class="eng-dot"></div><div class="eng-dot"></div></div>
+              </div>
+            </div>
+          </div>
+          </div><!-- /eng-prod -->
           <div class="eng-cap"><span class="eng-step" id="eng-step">01</span><span class="eng-title" id="eng-title">A LANDING PAGE</span><small id="eng-sub">just a clean first impression</small></div>
         </div>
       </div>
@@ -684,10 +722,10 @@ const phoneUnits = [0, 240];
     const ENG_META = [
       ['A LANDING PAGE', 'just a clean first impression'],
       ['START SELLING', 'add a store and take payments'],
-      ['PUBLISH CONTENT', 'blogs, guides, an audience'],
-      ['RUN IT LIKE AN APP', 'dashboards, accounts, the lot'],
+      ['PUBLISH CONTENT, AS A CMS', 'blogs, guides, an audience'],
+      ['WEB APP & MOBILE', 'dashboards on the web, a native app on iOS and Android, one backend'],
     ];
-    const ENG_CATS = ['host', 'pay', 'cms', 'app']; // stage → highlighted marquee category
+    const ENG_CATS = ['host', 'pay', 'cms', 'all']; // stage → highlighted marquee category ('all' = light everything)
     let engStage = -1;
     const engPlop = (view: El) => {
       const els = Array.from(view.querySelectorAll('.eng-pl')) as unknown as El[];
@@ -697,7 +735,7 @@ const phoneUnits = [0, 240];
       if (n === engStage) return;
       engStage = n;
       engViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
-      if (engine) engine.dataset.cat = ENG_CATS[n];
+      if (engine) { engine.dataset.cat = ENG_CATS[n]; engine.toggleAttribute('data-app', n === 3); }
       if (engStep) engStep.textContent = String(n + 1).padStart(2, '0');
       if (engTitle) engTitle.textContent = ENG_META[n][0];
       if (engSub) engSub.textContent = ENG_META[n][1];
@@ -725,8 +763,8 @@ const phoneUnits = [0, 240];
     const gabH = [22, 32, 26, 38, 30, 46, 34, 54];
     const gAnalyticsLine = $('gAnalyticsLine');
     const snzTracked = $('snzTracked');
-    const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5'), $('cap6')];
-    const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5'), $('tk6')];
+    const caps = [$('cap1'), $('cap2'), $('cap3'), $('cap4'), $('cap5')];
+    const track = [$('tk1'), $('tk2'), $('tk3'), $('tk4'), $('tk5')];
     const prog = $('fProg');
     const wBg = document.getElementById('snz-wbg') as HTMLElement | null;
     [cnApi, ciAcc, ciPay, ciAgent, ciCms, ciEcom, ciDyn, anChart].forEach((e) => {
@@ -799,13 +837,14 @@ const phoneUnits = [0, 240];
 
       // ---- CAMERA ----
       // 0.00-0.14: site+phone centered
-      // 0.14-0.28: slight pull back as site exits
-      // 0.28-0.46: ENGINE view — backend+children centered at (500,310)
+      // 0.14-0.22: zoom INTO the website wireframe (center ~352,270) — it becomes the ENGINE
+      // 0.22-0.34: held zoomed-in while the ENGINE browser morphs through product shapes
+      // 0.34-0.46: pull back out to neutral
       // 0.46-0.54: zoom out for side-by-side
       // 0.54-0.70: side-by-side, product left / backend right
       // 0.70-0.87: scale view
       // 0.87+: analytics
-      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.28, 500, 300, 1.0], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 375, 0.84], [0.86, 500, 375, 0.84], [0.93, 500, 460, 3.4], [1.04, 500, 460, 3.4]];
+      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.22, 352, 270, 2.8], [0.34, 352, 270, 2.8], [0.46, 500, 300, 1.0], [0.54, 500, 300, 0.88], [0.70, 500, 300, 0.88], [0.76, 500, 375, 0.84], [0.86, 500, 375, 0.84], [0.93, 500, 460, 3.4], [1.04, 500, 460, 3.4]];
       let fx = 500, fy = 300, k = 1;
       for (let i = 0; i < A.length - 1; i++) { if (p >= A[i][0] && p <= A[i + 1][0]) { const t = sm(seg(p, A[i][0], A[i + 1][0])); fx = lerp(A[i][1], A[i + 1][1], t); fy = lerp(A[i][2], A[i + 1][2], t); k = lerp(A[i][3], A[i + 1][3], t); break; } }
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
@@ -829,11 +868,12 @@ const phoneUnits = [0, 240];
         e.style.opacity = sm(clamp((pWire - start) / stagger, 0, 1)).toFixed(3);
       });
 
-      // ---- SLIDE UP: site + phone exit upward ----
-      const slideUp = sm(seg(p, 0.14, 0.27));
-      const slideOff = slideUp * -700;
-      if (wire) { wire.setAttribute('transform', 'translate(0 ' + slideOff.toFixed(1) + ')'); wire.style.opacity = String(pWire > 0 ? Math.max(0, 1 - slideUp * 1.5) : 0); }
-      if (phone) { const ty = slideOff + lerp(20, 0, phoneAppear); phone.setAttribute('transform', 'translate(0 ' + ty.toFixed(1) + ')'); phone.style.opacity = String(Math.max(0, phoneAppear - slideUp * 1.5)); }
+      // ---- ZOOM IN: site magnifies (via camera) and dissolves into the ENGINE ----
+      // No vertical slide — the camera scales into the wireframe browser while it fades,
+      // so step 1 visually becomes the ENGINE browser of step 2.
+      const zoomIn = sm(seg(p, 0.14, 0.22));
+      if (wire) { wire.setAttribute('transform', 'translate(0 0)'); wire.style.opacity = String(pWire > 0 ? Math.max(0, 1 - zoomIn) : 0); }
+      if (phone) { const ty = lerp(20, 0, phoneAppear); phone.setAttribute('transform', 'translate(0 ' + ty.toFixed(1) + ')'); phone.style.opacity = String(Math.max(0, phoneAppear - zoomIn * 1.4)); }
 
       const dissolve = 1 - sm(seg(p, 0.86, 0.92));
 
@@ -852,7 +892,7 @@ const phoneUnits = [0, 240];
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase, out before CONNECT;
       // scroll position picks which product shape (landing → store → content → app) is shown.
       if (engine) {
-        const engIn = sm(seg(p, 0.15, 0.22)) * (1 - sm(seg(p, 0.50, 0.56)));
+        const engIn = sm(seg(p, 0.19, 0.25)) * (1 - sm(seg(p, 0.50, 0.56)));
         engine.style.opacity = engIn.toFixed(3);
         if (engIn > 0.01) {
           const t = clamp((p - 0.22) / (0.50 - 0.22), 0, 1); // 0..1 across the visible window
@@ -982,8 +1022,10 @@ const phoneUnits = [0, 240];
       if (anRev) { const bars = Array.from(anRev.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anRevH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
 
       // ---- captions + tracker + progress ----
-      // 0=BUILD 1=ENGINE 2=CONNECT 3=TRAFFIC 4=SCALE 5=DATA
-      const phase = p < 0.18 ? 0 : (p < 0.56 ? 1 : (p < 0.68 ? 2 : (p < 0.76 ? 3 : (p < 0.88 ? 4 : 5))));
+      // 0=DESIGN 1=PURPOSE 2=TRAFFIC 3=SCALE 4=DATA
+      // PURPOSE holds through the engine morph + product/backend bridge; TRAFFIC starts
+      // as the customer crowd arrives (~0.60); SCALE at the original split (0.76).
+      const phase = p < 0.18 ? 0 : (p < 0.60 ? 1 : (p < 0.76 ? 2 : (p < 0.88 ? 3 : 4)));
       caps.forEach((c, i) => { if (c) { c.style.opacity = i === phase ? '1' : '0'; c.style.transform = i === phase ? 'translateY(0)' : 'translateY(12px)'; } });
       track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent)' : '#4a4a44'; });
       if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
