@@ -99,40 +99,40 @@ const dot = (tone?: string) =>
 const ink = (tone?: string) =>
   tone === 'good' ? '#F2F0EA' : tone === 'mid' ? '#b8b8b0' : '#8a8a82';
 ---
-<section id="snz-compare" style="padding:96px 56px;border-bottom:1px solid rgba(255,255,255,.08)">
-  <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:54px">
+<section id="snz-compare" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)]">
+  <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
     <div>
-      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 02 ] THE CHOICE</div>
-      <h2 class="snz-display" style="margin:0;font:800 60px/0.98 'Archivo',sans-serif;letter-spacing:-0.035em">Three ways to do it</h2>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 02 ] THE CHOICE</div>
+      <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">Three ways to do it</h2>
     </div>
-    <p style="margin:0;max-width:340px;font:400 14px/1.6 'JetBrains Mono',monospace;color:#8a8a82">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
+    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
   </div>
 
-  <div id="snz-cmp" style="border:1px solid rgba(255,255,255,.1)">
+  <div id="snz-cmp" class="border border-[rgba(255,255,255,0.1)]">
     <!-- column heads -->
-    <div class="snz-cmp-grid" style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1.15fr;background:rgba(255,255,255,.08);gap:1px">
-      <div style="background:#0a0a0a"></div>
+    <div class="snz-cmp-grid grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(255,255,255,0.08)] gap-[1px]">
+      <div class="bg-[#0a0a0a]"></div>
       {cols.map((c, i) => (
         <div
           data-reveal
           data-delay={i * 80}
-          class={c.hero ? 'snz-cmp-hero' : ''}
-          style={`background:${c.hero ? 'linear-gradient(180deg,rgba(198,244,50,.12),#0c0c0c)' : '#0a0a0a'};padding:30px 26px;position:relative;${c.hero ? 'box-shadow:inset 0 0 0 1px var(--accent)' : ''}`}
+          class={`py-[30px] px-[26px] relative ${c.hero ? 'snz-cmp-hero' : 'bg-[#0a0a0a]'}`}
+          style={c.hero ? 'background:linear-gradient(180deg,rgba(198,244,50,.12),#0c0c0c);box-shadow:inset 0 0 0 1px var(--accent)' : ''}
         >
           {c.hero && (
-            <div style="position:absolute;top:-1px;right:-1px;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.14em;background:var(--accent);color:#0a0a0a;padding:6px 12px">PICK ME</div>
+            <div class="absolute top-[-1px] right-[-1px] font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[#0a0a0a] py-[6px] px-3">PICK ME</div>
           )}
-          <div style={`font:700 10px 'JetBrains Mono',monospace;letter-spacing:.18em;margin-bottom:14px;color:${c.hero ? 'var(--accent)' : '#6a6a62'}`}>{c.kicker}</div>
-          <h3 style={`margin:0 0 8px;font:800 ${c.hero ? '30' : '22'}px/1.04 'Archivo',sans-serif;letter-spacing:-0.025em;color:${c.hero ? '#F2F0EA' : '#cfcfc7'}`}>{c.title}</h3>
-          <p style="margin:0;font:400 12.5px/1.5 'JetBrains Mono',monospace;color:#7c7c74">{c.sub}</p>
+          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[14px] ${c.hero ? 'text-[var(--accent)]' : 'text-[#6a6a62]'}`}>{c.kicker}</div>
+          <h3 class={`m-0 mb-2 font-extrabold ${c.hero ? 'text-[30px]' : 'text-[22px]'} leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[#F2F0EA]' : 'text-[#cfcfc7]'}`}>{c.title}</h3>
+          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[#7c7c74]">{c.sub}</p>
         </div>
       ))}
     </div>
 
     <!-- rows -->
     {rows.map((r, ri) => (
-      <div data-reveal data-delay={ri * 50} class="snz-cmp-grid snz-cmp-row" style="display:grid;grid-template-columns:1.05fr 1fr 1fr 1.15fr;background:rgba(255,255,255,.08);gap:1px;border-top:1px solid rgba(255,255,255,.06)">
-        <div class="snz-cmp-lab" style="background:#0a0a0a;padding:22px 26px;display:flex;align-items:center;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#6a6a62;text-transform:uppercase">{r.label}</div>
+      <div data-reveal data-delay={ri * 50} class="snz-cmp-grid snz-cmp-row grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(255,255,255,0.08)] gap-[1px] border-t border-[rgba(255,255,255,0.06)]">
+        <div class="snz-cmp-lab bg-[#0a0a0a] py-[22px] px-[26px] flex items-center font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.04em] text-[#6a6a62] uppercase">{r.label}</div>
         {r.cells.map((cell, ci) => {
           const hero = cols[ci].hero;
           return (
@@ -147,12 +147,12 @@ const ink = (tone?: string) =>
   </div>
 
   <!-- verdict band -->
-  <div data-reveal style="margin-top:24px;border:1px solid var(--accent);background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
+  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
     <div>
-      <h3 style="margin:0 0 8px;font:800 26px 'Archivo',sans-serif;letter-spacing:-0.02em">Same money. A site that's actually yours.</h3>
-      <p style="margin:0;max-width:560px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92">Skip the template tax and the plugin treadmill. One person, hand-building something built around you — and a real human to call when you need one.</p>
+      <h3 class="m-0 mb-2 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Same money. A site that's actually yours.</h3>
+      <p class="m-0 max-w-[560px] font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">Skip the template tax and the plugin treadmill. One person, hand-building something built around you — and a real human to call when you need one.</p>
     </div>
-    <span class="snz-magwrap"><a data-mag href={LINKEDIN} style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;background:var(--accent);color:#0a0a0a;padding:15px 22px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">START HERE →</a></span>
+    <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[#0a0a0a] py-[15px] px-[22px] no-underline transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]">START HERE →</a></span>
   </div>
 </section>
 

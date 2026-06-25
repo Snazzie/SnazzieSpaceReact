@@ -8,34 +8,26 @@ const steps = [
   { n: '05', title: 'Estimate & fee', body: 'Once the design is agreed, you get a delivery-date estimate and a fee. With that signed off, work begins.' },
 ];
 ---
-<section id="snz-process" style="padding:96px 56px;border-bottom:1px solid rgba(255,255,255,.08)">
-  <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:54px">
+<section id="snz-process" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+  <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
     <div>
-      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 05 ] PROCESS</div>
-      <h2 class="snz-display" style="margin:0;font:800 60px/0.98 'Archivo',sans-serif;letter-spacing:-0.035em">How it works</h2>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 05 ] PROCESS</div>
+      <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">How it works</h2>
     </div>
-    <p style="margin:0;max-width:340px;font:400 14px/1.6 'JetBrains Mono',monospace;color:#8a8a82">From first email to final design, no guesswork.</p>
+    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">From first email to final design, no guesswork.</p>
   </div>
-  <div style="border-top:1px solid rgba(255,255,255,.1)">
+  <div class="border-t border-[rgba(255,255,255,0.1)]">
     {steps.map((s, i) => (
-      <div data-reveal data-delay={i * 60} class="snz-step" style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .35s ease;align-items:start">
-        <div class="snz-stepnum" style="font:800 56px 'Archivo',sans-serif;color:#2a2a26;letter-spacing:-0.03em;line-height:1;transition:color .5s ease,text-shadow .5s ease">{s.n}</div>
+      <div data-reveal data-delay={i * 60} class="snz-step grid grid-cols-[120px_1fr] gap-6 py-8 px-0 border-b border-[rgba(255,255,255,0.1)] transition-[padding-left] duration-[.35s] ease items-start max-[760px]:grid-cols-[48px_1fr] max-[760px]:gap-4">
+        <div class="snz-stepnum font-extrabold text-[56px] font-['Archivo'] text-[#2a2a26] tracking-[-0.03em] leading-none transition-[color,text-shadow] duration-[.5s] ease max-[760px]:text-[30px]">{s.n}</div>
         <div>
-          <h3 style="margin:0 0 10px;font:700 22px 'Archivo',sans-serif">{s.title}</h3>
-          <p style="margin:0;max-width:620px;font:400 14px/1.65 'JetBrains Mono',monospace;color:#9a9a92">{s.body}</p>
+          <h3 class="mt-0 mb-[10px] mx-0 font-bold text-[22px] font-['Archivo']">{s.title}</h3>
+          <p class="m-0 max-w-[620px] font-normal text-[14px] leading-[1.65] font-['JetBrains_Mono'] text-[#9a9a92]">{s.body}</p>
         </div>
       </div>
     ))}
   </div>
 </section>
-
-<style>
-  @media (max-width: 760px) {
-    #snz-process { padding: 64px 22px !important; }
-    #snz-process .snz-step { grid-template-columns: 48px 1fr !important; gap: 16px !important; }
-    #snz-process .snz-stepnum { font-size: 30px !important; }
-  }
-</style>
 
 <script>
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

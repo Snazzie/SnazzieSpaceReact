@@ -2,21 +2,15 @@
 // Closing CTA: final call to get in touch.
 const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
 ---
-<section id="snz-close" style="padding:120px 56px;position:relative;overflow:hidden">
-  <div id="snz-closebg" style="position:absolute;inset:0;background-image:radial-gradient(circle at 70% 40%,rgba(198,244,50,.08),transparent 55%);pointer-events:none"></div>
-  <div data-reveal style="position:relative;max-width:900px">
-    <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:22px">[ 06 ] LET'S BUILD</div>
-    <h2 class="snz-display" style="margin:0;font:800 76px/0.96 'Archivo',sans-serif;letter-spacing:-0.04em">Got a project<br>in mind?</h2>
-    <p style="margin:30px 0 40px;max-width:540px;font:400 16px/1.65 'JetBrains Mono',monospace;color:#a8a89f">Tell me what you are building and where it is stuck. I will come back with a clear scope and price.</p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap">
-      <span class="snz-magwrap"><a data-mag href={LINKEDIN} style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;background:var(--accent);color:var(--ink);padding:16px 24px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH ON LINKEDIN →</a></span>
-      <span class="snz-magwrap"><a data-mag href="mailto:info@snazzie.space" style="display:inline-block;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.04em;border:1px solid rgba(255,255,255,.22);color:#F2F0EA;padding:16px 24px;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)">EMAIL ME</a></span>
+<section id="snz-close" class="py-[120px] px-14 relative overflow-hidden max-[760px]:py-20 max-[760px]:px-[22px]">
+  <div id="snz-closebg" class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(circle at 70% 40%,rgba(198,244,50,.08),transparent 55%)"></div>
+  <div data-reveal class="relative max-w-[900px]">
+    <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[22px]">[ 06 ] LET'S BUILD</div>
+    <h2 class="snz-display m-0 font-extrabold text-[76px] leading-[0.96] font-['Archivo'] tracking-[-0.04em]">Got a project<br>in mind?</h2>
+    <p class="mt-[30px] mb-10 mx-0 max-w-[540px] font-normal text-[16px] leading-[1.65] font-['JetBrains_Mono'] text-[#a8a89f]">Tell me what you are building and where it is stuck. I will come back with a clear scope and price.</p>
+    <div class="flex gap-[14px] flex-wrap">
+      <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[var(--ink)] py-4 px-6 no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH ON LINKEDIN →</a></span>
+      <span class="snz-magwrap"><a data-mag href="mailto:info@snazzie.space" class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] border border-[rgba(255,255,255,0.22)] text-[#F2F0EA] py-4 px-6 no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">EMAIL ME</a></span>
     </div>
   </div>
 </section>
-
-<style>
-  @media (max-width: 760px) {
-    #snz-close { padding: 80px 22px !important; }
-  }
-</style>

@@ -7,21 +7,14 @@ const LINKS = [
   { href: '#snz-process', label: 'PROCESS' },
 ];
 ---
-<nav id="snz-cnav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 40px;background:rgba(10,10,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)">
-  <a href="#snz-top" style="font:800 17px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA;text-decoration:none;flex:none">SNAZZIE<span style="color:var(--accent)">°</span></a>
-  <div style="display:flex;align-items:center;gap:28px;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.06em">
-    <div class="snz-cnav-links" style="display:flex;align-items:center;gap:28px">
+<nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(10,10,10,0.72)] backdrop-blur-[14px] border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
+  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA] no-underline flex-none">SNAZZIE<span class="text-[var(--accent)]">°</span></a>
+  <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
+    <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (
-        <a href={l.href} style="color:#a8a89f;text-decoration:none">{l.label}</a>
+        <a href={l.href} class="text-[#a8a89f] no-underline">{l.label}</a>
       ))}
     </div>
-    <span class="snz-cnav-avail" style="display:inline-flex;align-items:center;gap:8px;color:var(--accent);border:1px solid rgba(198,244,50,.35);padding:7px 12px;white-space:nowrap;flex:none"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent)] border border-[rgba(198,244,50,0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
   </div>
 </nav>
-
-<style>
-  @media (max-width: 760px) {
-    #snz-cnav { padding: 14px 20px !important; }
-    .snz-cnav-links { display: none !important; }
-  }
-</style>
