@@ -66,8 +66,10 @@
 #snz-purpose[data-cat="all"] .pur-row{ background-image:linear-gradient(rgba(198,244,50,.12),rgba(198,244,50,.12)); }
 #snz-purpose[data-cat="all"] .pur-it{ animation: pur-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
 #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
-@keyframes pur-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(255,255,255,.05); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
-@keyframes pur-disco-ic{ 0%,18%,100%{ fill:rgba(255,255,255,.07); } 8%{ fill:var(--accent); } }
+/* disco idle state is a VISIBLE gray (matches the dim state in the other views), not near-black,
+   so the "all"/DATA view pulses gray -> bright instead of flashing most labels to black. */
+@keyframes pur-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(200,200,193,.5); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
+@keyframes pur-disco-ic{ 0%,18%,100%{ fill:rgba(200,200,193,.5); } 8%{ fill:var(--accent); } }
 
 .pur-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
 /* browser + phone dock share a centered row; when the dock expands the whole row
