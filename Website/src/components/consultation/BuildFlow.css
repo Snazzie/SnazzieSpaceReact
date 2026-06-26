@@ -49,10 +49,10 @@
    gradient. The grey fill is set here (NOT in the .pur-it transition list) so the colour snaps
    in one repaint at the flip instead of re-rasterising the clipped text every frame; opacity is
    what actually animates. */
-/* dim text matched to the dim logos: item-opacity .55 here multiplies the fill alpha, so a
-   ~.3 fill lands near the icons' effective ~.17 (their opacity compounds with this item's). */
-#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(200,200,193,.85); opacity:.5; }
-#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(200,200,193,.85); opacity:.5; }
+/* non-matching items are fully hidden (only the active category shows); the .5s opacity transition
+   fades them out/in as the stage's category switches. Matching + "all" states set opacity:1 below. */
+#snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:rgba(200,200,193,.85); opacity:0; }
+#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(200,200,193,.85); opacity:0; }
 #snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],
 #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"],
