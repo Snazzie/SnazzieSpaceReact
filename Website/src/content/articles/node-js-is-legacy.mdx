@@ -6,6 +6,9 @@ tags: ["bun", "node", "javascript", "performance", "tooling"]
 draft: false
 ---
 
+import RuntimeWinsChart from '@/components/articles/RuntimeWinsChart.astro';
+import RuntimeBenchResults from '@/components/articles/RuntimeBenchResults.astro';
+
 Node earned its place. For fifteen years it was the obvious answer, and being obvious was most of the value. You reached for it without thinking because everyone else had, and that shared default was worth more than any single feature.
 
 That's exactly the thing that expired. The default got beaten on the merits, and once that happens, "everyone uses it" stops being a reason and starts being inertia.
@@ -16,11 +19,17 @@ In February 2026, RepoFlow ran the same microbenchmark suite across the latest o
 
 Bun led eight. Deno took five. Node won one.
 
+<RuntimeWinsChart />
+
 One. A SHA-256 hash on a small buffer. That's the headline the "Node is still fine" crowd has to stand on: it hashes a kilobyte slightly faster than the thing that beat it everywhere that pays your bills.
 
 Because look at *where* Bun won. Server throughput. Large JSON parsing. The HTTP[EY1 CH, T IY1, T IY1, P IY1] path. The exact operations a real backend does ten thousand times a second while a request waits. Bun didn't edge those out on a technicality, it stood out most on precisely the work you deploy a runtime to do.
 
 Deno is genuinely fast too, mostly on async scheduling, and I'm not here to talk you out of it. But this is a coronation, not a committee. Bun won the categories that map to money.
+
+Here's every test, not just the scoreboard:
+
+<RuntimeBenchResults />
 
 ## Speed is the boring reason
 
@@ -39,12 +48,6 @@ I said don't use Node *unless you really have to*, and the unless is load-bearin
 Some native module hasn't been tested against Bun and you can't afford to find out in production. A platform target only ships a Node runtime. A compliance checkbox names Node specifically. A team that would mutiny if you changed the thing under them this quarter. Those are real. If one of them is true, stay, and don't feel bad about it.
 
 But notice what none of those reasons are. None of them is "Node is faster." None is "Node is simpler." None is "Bun isn't ready." The case for Node now is compatibility and politics, which are legitimate constraints and a very different thing from technical merit. You're not choosing Node because it's better. You're choosing it because moving costs something this week.
-
-## What I actually ship
-
-[snazzie.space](https://snazzie.space) runs on Bun. The build, the test suite, the package install, the dev server, all of it, one tool. The backend is [Hono](https://hono.dev) on a Cloudflare Worker, the frontend is [Astro](https://astro.build), and the runtime underneath never once made me open a config file to apologize for it.
-
-I didn't switch for the benchmark. I switched because bun install finishes before I've alt-tabbed away, and because I stopped maintaining the pile of dev dependencies that existed only to do what one binary now does for free. The speed was a bonus I noticed later.
 
 ## The honest framing
 
