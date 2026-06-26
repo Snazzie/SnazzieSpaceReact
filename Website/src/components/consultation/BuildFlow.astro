@@ -493,6 +493,18 @@ import "./BuildFlow.css";
     const apiBox = $('apiBox');
     // ENGINE overlay: marquee bg + a browser that morphs through 4 product shapes (scroll-driven).
     const purpose = $('snz-purpose');
+    // Anchor each marquee item's gradient to its row origin so the per-item background-clip shimmer
+    // reads as ONE continuous band sweeping across the whole row (the clip is per-item to dodge the
+    // oversized-layer glyph-clipping bug, but --bgx phase-aligns them back into a coherent sweep).
+    if (purpose) {
+      requestAnimationFrame(() => {
+        (purpose.querySelectorAll('.pur-row') as NodeListOf<HTMLElement>).forEach((row) => {
+          (row.querySelectorAll('.pur-it') as NodeListOf<HTMLElement>).forEach((it) => {
+            it.style.setProperty('--bgx', `${-it.offsetLeft}px`);
+          });
+        });
+      });
+    }
     const purViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
     // view-4 shrink-into-card handoff: the tight browser+phone box (NOT the marquee), its caption, and
     // the stage box they live in. Scaling purProdi leaves the background marquee untouched.
