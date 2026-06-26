@@ -284,7 +284,7 @@ export function initBuildFlow() {
       // 0.54-0.70: side-by-side, product left / backend right
       // 0.70-0.87: scale view
       // 0.87+: analytics
-      // camera keyframes interpolate via the anime.js timeline; for p>=0.88 the DATA override below
+      // camera keyframes interpolate via the gsap timeline; for p>=0.88 the DATA override below
       // replaces these values, so clamping the seek there matches the old loop's default fall-through.
       camTl.seek(clamp(p, 0, 0.88));
       let fx = cam.fx, fy = cam.fy, k = cam.k;
