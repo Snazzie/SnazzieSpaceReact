@@ -75,6 +75,13 @@ export function initBuildFlow() {
         });
       });
     }
+    // Scroll-velocity shove for the background marquee rows. The base drift is a
+    // CSS `transform` animation; we layer a velocity-driven offset on the
+    // independent `translate` property (composites, never fights the animation).
+    // Each row surges along its own travel direction with scroll speed, then eases
+    // back to rest. Driven from the ticker below via ScrollTrigger velocity.
+    const purRows = purpose ? Array.from(purpose.querySelectorAll('.pur-row')) as HTMLElement[] : [];
+    const purRowVx = purRows.map(() => 0);
     const purViews = [$('ev0'), $('ev1'), $('ev2'), $('ev3')];
     // view-4 shrink-into-card handoff: the tight browser+phone box (NOT the marquee), its caption, and
     // the stage box they live in. Scaling purProdi leaves the background marquee untouched.
@@ -550,6 +557,21 @@ export function initBuildFlow() {
       gsap.ticker.add(() => {
         const p = st.progress;
         if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
+        // marquee velocity shove: target offset ∝ scroll speed (px/s), eased per row.
+        if (purRows.length) {
+          const live = !!purpose && purpose.classList.contains('snz-live');
+          const v = live ? Math.max(-1, Math.min(1, st.getVelocity() / 3000)) : 0;
+          for (let i = 0; i < purRows.length; i++) {
+            const dir = purRows[i].classList.contains('r') ? 1 : -1;
+            const target = dir * v * 70;
+            const next = purRowVx[i] + (target - purRowVx[i]) * 0.12;
+            // skip sub-pixel writes once settled so idle frames stay no-op
+            if (Math.abs(next - purRowVx[i]) > 0.05 || Math.abs(next) > 0.05) {
+              purRowVx[i] = next;
+              purRows[i].style.translate = next.toFixed(2) + 'px';
+            }
+          }
+        }
       });
       apply(0);
     }
