@@ -71,7 +71,7 @@ import "./BuildFlow.css";
   </h2>
   <div class="snz-stmt-line"></div>
 </section>
-<section id="snz-build" style="position:relative;height:1900vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
+<section id="snz-build" style="position:relative;height:1300vh;background:#0b0b0b;border-bottom:1px solid rgba(255,255,255,.08)">
   <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
     <!-- wireframe background wall -->
     <div id="snz-wbg" style="position:absolute;inset:0;z-index:0;pointer-events:none;display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.55;overflow:hidden;will-change:transform">
@@ -423,7 +423,7 @@ import "./BuildFlow.css";
           </div>
         </div>
       </div>
-      <div style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
+      <div class="snz-bcaps" style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
           <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
             <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>

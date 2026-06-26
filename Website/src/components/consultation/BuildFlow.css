@@ -90,7 +90,9 @@
 .pur-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
 .pur-chrome i:first-child{ background:var(--accent); }
 .pur-url{ margin-left:10px; height:16px; flex:1; max-width:260px; border-radius:8px; background:rgba(255,255,255,.05); }
-.pur-screen{ position:relative; height:328px; }
+/* desktop keeps 328px; short/landscape viewports clamp it so the browser never
+   overflows the stage (it's overflow:hidden, so content gracefully clips). */
+.pur-screen{ position:relative; height:min(328px,46vh); }
 .pur-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
 .pur-view.on{ opacity:1; }
 .pur-pl{ opacity:0; }
@@ -123,6 +125,22 @@
 .pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
 .pur-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
 @media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; } #snz-purpose[data-cat="all"] .pur-it, #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; } }
+
+/* ===== small-screen fit ===== desktop visuals unchanged; below these widths the
+   morphing browser + docked phone and the bottom UI are scaled to stay on-screen. */
+@media (max-width: 640px){
+  .pur-browser{ width:min(560px,90%); }
+  #snz-purpose[data-app] .pur-appdock{ width:104px; margin-left:12px; }
+  .pur-phone{ width:104px !important; height:214px !important; }
+  .pur-row{ font-size:30px; }
+}
+@media (max-width: 760px){
+  /* the right-side progress track collides with the captions at narrow widths;
+     drop it on phones and let the captions own the bottom strip. */
+  .snz-track{ display:none !important; }
+  .snz-bcaps{ left:20px !important; right:20px !important; width:auto !important; max-width:none !important; }
+  .snz-bcaps h3{ font-size:22px !important; }
+}
 
 @keyframes snz-bf-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 @keyframes snz-bf-dn { from { transform: translateY(-50%); } to { transform: translateY(0); } }
