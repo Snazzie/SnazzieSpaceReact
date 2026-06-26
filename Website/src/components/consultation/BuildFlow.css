@@ -80,8 +80,8 @@
 .pur-appdock{ flex:none; width:0; opacity:0; overflow:hidden; transition:width .5s cubic-bezier(.2,.8,.3,1), opacity .4s ease, margin-left .5s cubic-bezier(.2,.8,.3,1); }
 #snz-purpose[data-app] .pur-appdock{ width:140px; margin-left:24px; opacity:1; }
 @media (prefers-reduced-motion: reduce){ .pur-appdock{ transition:none; } }
-.pur-browser{ width:min(560px,82%); border:1.6px solid var(--accent); border-radius:14px; background:#0c0c0c; overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(198,244,50,.1); }
+.pur-browser{ width:min(560px,82%); border:1.6px solid rgba(255,255,255,.25); border-radius:14px; background:#0c0c0c; overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.6); }
 .pur-chrome{ height:38px; display:flex; align-items:center; gap:7px; padding:0 14px; border-bottom:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
 .pur-chrome i{ width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); }
 .pur-chrome i:first-child{ background:var(--accent); }

@@ -662,6 +662,17 @@ import "./BuildFlow.css";
         if (!reduce && Math.abs(t - next) > 0.002) gateSettling = true;
         return next;
       };
+      // same as trig() but with a custom (slower) settle duration — used where a reveal should
+      // play out longer than the default POP_DUR (e.g. the analytics dashboard text filling in).
+      const trigSlow = (name: string, on: boolean, durMs: number) => {
+        const cur = gate[name] ?? 0;
+        const t = on ? 1 : 0;
+        const kS = reduce ? 1 : 1 - Math.pow(0.0006, dtF / durMs);
+        const next = reduce ? t : cur + (t - cur) * kS;
+        gate[name] = next;
+        if (!reduce && Math.abs(t - next) > 0.002) gateSettling = true;
+        return next;
+      };
 
       // ---- STAGE 1 → 2: TRIGGERED (not scrubbed). Crossing a small scroll threshold fires the
       // zoom-into-place over real time via the eased gate, so stage 1 needs only a nudge to leave
@@ -680,13 +691,21 @@ import "./BuildFlow.css";
       // 0.54-0.70: side-by-side, product left / backend right
       // 0.70-0.87: scale view
       // 0.87+: analytics
-      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.22, 352, 270, 2.8], [0.34, 352, 270, 2.8], [0.46, 500, 300, 1.0], [0.54, 500, 300, 1.32], [0.70, 500, 300, 1.32], [0.76, 500, 375, 1.22], [0.93, 500, 375, 1.22], [0.98, 500, 460, 3.4], [1.08, 500, 460, 3.4]];
+      const A = [[0, 500, 300, 1.0], [0.14, 500, 300, 1.0], [0.22, 352, 270, 2.8], [0.34, 352, 270, 2.8], [0.46, 500, 300, 1.0], [0.54, 500, 300, 1.32], [0.70, 500, 300, 1.32], [0.88, 500, 300, 1.22]];
       let fx = 500, fy = 300, k = 1;
       for (let i = 0; i < A.length - 1; i++) { if (p >= A[i][0] && p <= A[i + 1][0]) { const t = sm(seg(p, A[i][0], A[i + 1][0])); fx = lerp(A[i][1], A[i + 1][1], t); fy = lerp(A[i][2], A[i + 1][2], t); k = lerp(A[i][3], A[i + 1][3], t); break; } }
+      // ---- DATA stage camera: TWO SEPARATE triggers, each playing over real time (not scrubbed).
+      // Trigger 1 (cross 0.88): pan the scale view UP to make room; the analytics card + connecting
+      // lines appear in the new space. NO zoom yet. Trigger 2 (cross 0.94): zoom INTO the analytics
+      // card. The crossfade/fill gates below hang off panP (reveal) and zoomP (zoom). ----
+      const panP = trig('datapan', p >= 0.88);   // phase 1: move-up + card reveal
+      const zoomP = trig('datazoom', p >= 0.94);  // phase 2: zoom into the card
+      if (p >= 0.88 || panP > 0.001) { fx = 500; fy = lerp(300, 460, panP); k = lerp(1.22, 3.4, zoomP); }
       if (camera) camera.setAttribute('transform', 'translate(' + (500 - k * fx).toFixed(1) + ' ' + (300 - k * fy).toFixed(1) + ') scale(' + k.toFixed(3) + ')');
 
       // ---- ZOOM IN: the design wall scales into one tile (handled above), ENGINE takes over ----
-      const dissolve = 1 - sm(seg(p, 0.93, 0.98));
+      // product/cards stay up through the move-up (panP) and only dissolve as the DATA zoom plays in.
+      const dissolve = 1 - zoomP;
 
       // ---- BACKEND position ----
       // Enters from bottom, holds at center for ENGINE (incl. collapse), then slides right as small card
@@ -802,7 +821,8 @@ import "./BuildFlow.css";
       if (bizTitle) bizTitle.setAttribute('transform', 'translate(500 220) scale(1) translate(-500 -220)');
 
       // ---- SCALE gates ----
-      const an = sm(seg(p, 0.93, 0.99));
+      // mini→full analytics crossfade rides the DATA zoom phase (triggered), not scroll.
+      const an = zoomP;
       // server cluster scales WITH the customers: pops in as the first size step arrives,
       // then grows per tier (srvScale/scSqs follow tierAnim). Reverses on scroll-up.
       const gsGate = trig('servers', sizeTier >= 0);
@@ -828,8 +848,16 @@ import "./BuildFlow.css";
         if (!s) return;
         const pop = stepPop(nodeNeed[i]);
         s.style.opacity = clamp(pop, 0, 1).toFixed(3);
-        const x = repColX[i % repCols], y = repRowY[Math.floor(i / repCols)];
-        s.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + Math.max(0.01, pop).toFixed(3) + ')');
+        let x = repColX[i % repCols], y = repRowY[Math.floor(i / repCols)];
+        let extra = 1;
+        if (i === 0) {
+          // tier 0 has a single server: sit it large & centred in the card's right half, then
+          // ease it back to its grid slot (and normal size) as more replicas spin up at tier 1+.
+          const solo = clamp(1 - tierAnim, 0, 1);   // 1 at tier 0 → 0 by tier 1
+          x = lerp(x, 706, solo); y = lerp(y, 300, solo);
+          extra = lerp(1, 2.2, solo);
+        }
+        s.setAttribute('transform', 'translate(' + x + ' ' + y + ') scale(' + (Math.max(0.01, pop) * extra).toFixed(3) + ')');
       });
 
       // PEOPLE (left crowd): reveal in waves 3→5→8, whole crowd balloons each step.
@@ -846,7 +874,8 @@ import "./BuildFlow.css";
         d.style.opacity = clamp(pop, 0, 1).toFixed(3);
         d.setAttribute('r', Math.max(0.1, 6 * pop).toFixed(2));
       });
-      const anCardIn = trig('analytics', p >= 0.88);
+      // analytics card reveals only AFTER the app/api/customers have moved up (pan ~complete).
+      const anCardIn = trig('analytics', panP > 0.85);
       if (gAnalytics) gAnalytics.style.opacity = (anCardIn * (1 - an)).toFixed(3);
       gabBars.forEach((b, i) => { if (!b) return; const prog = sm(seg(anCardIn, i / 8 * 0.35, i / 8 * 0.35 + 0.65)); const h = gabH[i] * prog; b.setAttribute('y', String(40 - h)); b.setAttribute('height', String(h)); });
       if (gAnalyticsLine) { const lp = sm(seg(anCardIn, 0.45, 1.0)); gAnalyticsLine.style.strokeDashoffset = String(1 - lp); gAnalyticsLine.style.opacity = lp > 0 ? '1' : '0'; }
@@ -859,26 +888,28 @@ import "./BuildFlow.css";
       });
       if (snzWord) snzWord.style.fillOpacity = sm(seg(anCardIn, 0.85, 1.0)).toFixed(3);
       if (analytics) analytics.style.opacity = an.toFixed(3);
-      const ciPAv = sm(seg(p, 0.88, 0.90));
+      const ciPAv = sm(seg(panP, 0.2, 0.8));
       if (ciProdAn) ciProdAn.style.opacity = (ciPAv * dissolve).toFixed(3);
       if (ciProdAnPulse) ciProdAnPulse.style.opacity = (ciPAv * dissolve).toFixed(3);
-      const ciAAv = sm(seg(p, 0.89, 0.91));
+      const ciAAv = sm(seg(panP, 0.4, 1.0));
       if (ciApiAn) { ciApiAn.setAttribute('x1', bx.toFixed(1)); ciApiAn.style.opacity = (ciAAv * dissolve).toFixed(3); }
       if (ciApiAnPulse) { ciApiAnPulse.setAttribute('x1', bx.toFixed(1)); ciApiAnPulse.style.opacity = (ciAAv * dissolve).toFixed(3); }
 
       // ---- DATA ----
-      draw(anChart, sm(seg(p, 0.97, 1.00)));
-      const anP = sm(seg(p, 0.96, 1.00));
+      // dashboard content fills over real time once the zoom is in (triggered, not scroll-scrubbed).
+      const dataFill = trigSlow('datafill', zoomP > 0.9, 1500);
+      draw(anChart, sm(seg(dataFill, 0.3, 1.0)));
+      const anP = dataFill;
       // stat counters
       if (anStatRev) anStatRev.textContent = '£' + (42.8 * anP).toFixed(1) + 'K';
       if (anStatVis) anStatVis.textContent = Math.round(12840 * anP).toLocaleString('en-US');
       if (anStatSrc) anStatSrc.textContent = (1.2 * anP).toFixed(1) + 'M';
       if (anStatSig) anStatSig.textContent = Math.round(1932 * anP).toLocaleString('en-US');
       // heatmap cells stagger in
-      const anHeatP = sm(seg(p, 0.97, 1.00));
+      const anHeatP = dataFill;
       anHeatCells.forEach((c, i) => { const t = i / (anHeatCells.length - 1); c.style.opacity = sm(seg(anHeatP, t * 0.55, t * 0.55 + 0.45)).toFixed(2); });
       // bars grow from bottom, staggered
-      const anBarP = sm(seg(p, 0.97, 1.00));
+      const anBarP = dataFill;
       if (anSearch) { const bars = Array.from(anSearch.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anSearchH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
       if (anRev) { const bars = Array.from(anRev.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anRevH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
 
