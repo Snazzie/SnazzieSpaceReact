@@ -15,8 +15,9 @@
   letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04); }
 /* shared, animatable sweep offset (registered so it can be keyframed inside calc()) */
 @property --shim{ syntax:'<length>'; inherits:false; initial-value:0px; }
-.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; }
-.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; }
+/* promote each row to its own compositor layer once: scroll loop = pure transform, zero repaint */
+.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; will-change:transform; }
+.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; will-change:transform; }
 /* the marquee + per-item shimmer are `infinite`; keep them paused until the overlay is actually
    visible (JS toggles .snz-live). pause/resume preserves position, so this never causes a jump. */
 .pur-row, #snz-purpose .pur-it, #snz-purpose .pur-it .pur-ic{ animation-play-state:paused; }
@@ -60,7 +61,9 @@
 #snz-purpose[data-cat="all"] .pur-it .pur-ic{ fill:rgba(198,244,50,.4); opacity:.95; }
 /* "all" stage (web app + mobile): disco ball — each name/icon flashes on its own random offset
    so the lights scatter across services (solid-colour flashes, no clipped gradient). */
-#snz-purpose[data-cat="all"] .pur-it{ animation: pur-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
+/* disco uses solid-colour flashes only; kill the clipped gradient so its static shimmer band
+   doesn't peek through under/between flashes. */
+#snz-purpose[data-cat="all"] .pur-it{ animation: pur-disco var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); background-image:none; }
 #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-disco-ic var(--fdur,2.4s) ease-in-out infinite; animation-delay:var(--fd,0s); }
 /* disco idle state is a VISIBLE gray (matches the dim state in the other views), not near-black,
    so the "all"/DATA view pulses gray -> bright instead of flashing most labels to black. */
