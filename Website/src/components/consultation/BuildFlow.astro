@@ -437,7 +437,7 @@ import "./BuildFlow.css";
 </section>
 
 <script>
-  import { createTimeline, stagger, utils } from 'animejs';
+  import { createTimeline, createTimer, stagger, utils } from 'animejs';
   // Set --snz-nav-h from the consultation nav so the sticky panel fills exactly below it.
   const setNavH = () => {
     const navEl = document.getElementById('snz-cnav');
@@ -966,7 +966,7 @@ import "./BuildFlow.css";
     if (reduce) {
       apply(0.60);
     } else {
-      let lastP = -1, raf = 0;
+      let lastP = -1;
       const update = () => {
         const r = sec.getBoundingClientRect();
         const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -974,8 +974,11 @@ import "./BuildFlow.css";
         const p = total > 0 ? Math.max(-0.07, Math.min(1, -r.top / total)) : 0;
         if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
       };
-      const tick = () => { update(); raf = requestAnimationFrame(tick); };
-      raf = requestAnimationFrame(tick);
+      // anime.js engine owns the frame loop now: a looping timer ticks update() every frame
+      // (engine default 240fps = display-rate, matching the former requestAnimationFrame tick),
+      // so the gate-settling code keeps running after the user stops scrolling. The scroll/resize
+      // listeners stay so a change registers the same frame it happens.
+      createTimer({ loop: true, onUpdate: update });
       window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', update, { passive: true });
       apply(0);
