@@ -101,13 +101,23 @@ export function initBuildFlow() {
     };
     const purShow = (n: number) => {
       if (n === purStage) return;
+      const prev = purStage;
+      const dir = n > prev ? 1 : -1;   // scroll-forward slides the new view in from the right, back from the left
       purStage = n;
       purViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
       if (purpose) { purpose.dataset.cat = PUR_CATS[n]; purpose.toggleAttribute('data-app', n === 3); }
       if (purStep) purStep.textContent = String(n + 1).padStart(2, '0');
       if (purTitle) purTitle.textContent = PUR_META[n][0];
       if (purSub) purSub.textContent = PUR_META[n][1];
-      if (purViews[n]) purPlop(purViews[n] as El);
+      const inc = purViews[n];
+      if (inc) {
+        // slide the incoming view in with eased velocity (power3.out = quick then settle).
+        if (reduce) gsap.set(inc, { xPercent: 0, opacity: 1 });
+        else gsap.fromTo(inc, { xPercent: dir * 12, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 0.55, ease: 'power3.out', overwrite: true });
+        purPlop(inc as El);
+      }
+      // slide the outgoing view out the opposite way so the switch reads as a directional swipe.
+      if (!reduce && prev >= 0 && purViews[prev]) gsap.to(purViews[prev], { xPercent: -dir * 12, opacity: 0, duration: 0.4, ease: 'power2.in', overwrite: true });
     };
     const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
     const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDyn = $('ciDyn');

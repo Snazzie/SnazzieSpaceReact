@@ -99,7 +99,8 @@
 /* desktop keeps 328px; short/landscape viewports clamp it so the browser never
    overflows the stage (it's overflow:hidden, so content gracefully clips). */
 .pur-screen{ position:relative; height:min(328px,46vh); }
-.pur-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+/* opacity + slide are driven by gsap in purShow() (directional swipe with eased velocity). */
+.pur-view{ position:absolute; inset:0; padding:20px 22px; opacity:0; pointer-events:none; }
 .pur-view.on{ opacity:1; }
 .pur-pl{ opacity:0; }
 .pur-pl.go{ animation:pur-plop .46s cubic-bezier(.2,1.35,.4,1) forwards; }
