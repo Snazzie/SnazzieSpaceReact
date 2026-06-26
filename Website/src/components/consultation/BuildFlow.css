@@ -11,7 +11,11 @@
    Chrome's compositor refuses to tile, so it cuts the layer below the GPU limit and drops
    half-words to black. Per-item, each clipped-text texture is one word — tiny — so the row layer
    tiles normally and every glyph always renders, while keeping the gradient shimmer. */
-.pur-row{ position:relative; display:flex; align-items:center; gap:34px; white-space:nowrap; font:800 38px/1.3 'Archivo',sans-serif;
+/* SEAM: spacing is margin-right on each item, NOT flex `gap`. With `gap`, the row is 32 items + 31
+   gaps and translateX(-50%) lands at 16 items + 15.5 gaps — half a gap short of one copy's period
+   (16 items + 16 gaps), so the loop snaps ~17px every cycle (the visible "reset" jolt). Per-item
+   margin makes total width an exact 32×(item+margin), so -50% is exactly one copy → seamless. */
+.pur-row{ position:relative; display:flex; align-items:center; white-space:nowrap; font:800 38px/1.3 'Archivo',sans-serif;
   letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(255,255,255,.04); }
 /* shared, animatable sweep offset (registered so it can be keyframed inside calc()) */
 @property --shim{ syntax:'<length>'; inherits:false; initial-value:0px; }
@@ -31,7 +35,7 @@
    ROW origin, so the 600px band is continuous across all words; --shim animates the sweep across
    the whole row in unison. Result: one coherent band travelling over all the text, but the clip is
    per-item so it never hits the oversized-layer clip bug. */
-.pur-it{ display:inline-flex; align-items:center; gap:.26em; color:transparent;
+.pur-it{ display:inline-flex; align-items:center; gap:.26em; margin-right:34px; color:transparent;
   background-image:linear-gradient(100deg, rgba(198,244,50,.5) 0%, rgba(198,244,50,.5) 40%,
     rgba(224,255,140,.92) 47%, rgba(255,255,255,1) 50%, rgba(224,255,140,.92) 53%,
     rgba(198,244,50,.5) 60%, rgba(198,244,50,.5) 100%);

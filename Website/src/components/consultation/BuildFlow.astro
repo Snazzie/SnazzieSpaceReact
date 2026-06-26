@@ -718,7 +718,7 @@ import "./BuildFlow.css";
 
       // CONNECT+: simple API card follows Banch (slides center → right)
       const apiCardShow = trig('side', p >= 0.50);
-      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.93, 0.98)))).toFixed(3); }
+      if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - zoomP)).toFixed(3); }
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase. On the way OUT, view 4
       // (web app + mobile) SHRINKS onto the on-screen slot where the "YOUR PRODUCT" card (gCore) lands,
       // so the app visibly becomes the product card instead of a plain crossfade.
