@@ -437,7 +437,9 @@ import "./BuildFlow.css";
 </section>
 
 <script>
-  import { createTimeline, createTimer, stagger, utils } from 'animejs';
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
   // Set --snz-nav-h from the consultation nav so the sticky panel fills exactly below it.
   const setNavH = () => {
     const navEl = document.getElementById('snz-cnav');
@@ -601,12 +603,10 @@ import "./BuildFlow.css";
       for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRevH.push(h); anRev.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, fill: 'var(--accent)' })); }
     }
 
-    // clamp/lerp come from anime.js utils (identical math). seg/sm/elasticOut stay local:
-    // they have no exact utils equivalent and sm doubles as an anime ease function below.
-    const clamp = (v: number, a: number, b: number) => utils.clamp(v, a, b);
+    const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
     const seg = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
-    const sm = (t: number) => t * t * (3 - 2 * t);
-    const lerp = (a: number, b: number, t: number) => utils.lerp(a, b, t);
+    const sm = (t: number) => t * t * (3 - 2 * t);   // smoothstep — also the gsap tween ease below
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
     // elastic "rubber balloon" ease: overshoots past 1 then settles. t in [0,1].
     const elasticOut = (t: number) => {
       if (t <= 0) return 0; if (t >= 1) return 1;
@@ -614,31 +614,27 @@ import "./BuildFlow.css";
       return Math.pow(2, -9 * t) * Math.sin((t - per / 4) * (2 * Math.PI) / per) + 1;
     };
 
-    // ---- anime.js timelines for the SCRUBBED tracks (built once, seeked by scroll p) ----
-    // p∈[0,1] → ms via D. Each segment eases with smoothstep (= sm) so motion is IDENTICAL
-    // to the former per-frame interpolation loops; the keyframes now live in one place and
-    // anime does the interpolation. Hoisting the arrays out of apply() also drops a per-frame
-    // allocation. seek() is synchronous, so reading the proxy right after is current-frame exact.
-    const D = 1000;
+    // ---- gsap timelines for the SCRUBBED tracks + the two CLEAN staggers ----
+    // Built once, paused. Durations are in p-units (= gsap seconds), so seek(p) reads the value at
+    // scroll progress p (done in the ticker below). The smoothstep ease (sm) makes the interpolation
+    // identical to the former hand-rolled loops; the keyframes now read declaratively with labels.
     // camera: [p, fx, fy, k]
     const CAM_KF = [[0,500,300,1.0],[0.14,500,300,1.0],[0.22,352,270,2.8],[0.34,352,270,2.8],[0.46,500,300,1.0],[0.54,500,300,1.32],[0.70,500,300,1.32],[0.88,500,300,1.22]];
     const cam = { fx: CAM_KF[0][1], fy: CAM_KF[0][2], k: CAM_KF[0][3] };
-    const camKf = (col: number) => CAM_KF.slice(1).map((a, i) => ({ to: a[col], duration: (CAM_KF[i + 1][0] - CAM_KF[i][0]) * D, ease: sm }));
-    const camTl = createTimeline({ autoplay: false }).add(cam, { fx: camKf(1), fy: camKf(2), k: camKf(3) }, 0);
+    const camTl = gsap.timeline({ paused: true });
+    for (let i = 0; i < CAM_KF.length - 1; i++) camTl.to(cam, { fx: CAM_KF[i + 1][1], fy: CAM_KF[i + 1][2], k: CAM_KF[i + 1][3], duration: CAM_KF[i + 1][0] - CAM_KF[i][0], ease: sm }, CAM_KF[i][0]);
     // backend card: [p, bx, by]
     const BK_KF = [[0,500,700],[0.14,500,700],[0.24,500,200],[0.53,500,200],[0.62,660,300],[0.70,660,300],[0.76,660,300],[1.04,660,300]];
     const bk = { bx: BK_KF[0][1], by: BK_KF[0][2] };
-    const bkKf = (col: number) => BK_KF.slice(1).map((a, i) => ({ to: a[col], duration: (BK_KF[i + 1][0] - BK_KF[i][0]) * D, ease: sm }));
-    const bkTl = createTimeline({ autoplay: false }).add(bk, { bx: bkKf(1), by: bkKf(2) }, 0);
-
-    // ---- anime.js stagger timelines for the two CLEAN reveals (uniform prop, seeked by gate) ----
-    // heatmap: cell i window [t*0.55, t*0.55+0.45], t = i/(n-1) → stagger spacing 0.55/(n-1), dur 0.45.
+    const bkTl = gsap.timeline({ paused: true });
+    for (let i = 0; i < BK_KF.length - 1; i++) bkTl.to(bk, { bx: BK_KF[i + 1][1], by: BK_KF[i + 1][2], duration: BK_KF[i + 1][0] - BK_KF[i][0], ease: sm }, BK_KF[i][0]);
+    // heatmap cells: opacity 0→1; cell i window [t*0.55, t*0.55+0.45], t=i/(n-1) → stagger 0.55/(n-1), dur 0.45
     const heatTl = anHeatCells.length
-      ? createTimeline({ autoplay: false }).add(anHeatCells, { opacity: [0, 1], duration: 0.45 * D, ease: sm }, stagger((0.55 * D) / Math.max(1, anHeatCells.length - 1)))
+      ? gsap.timeline({ paused: true }).fromTo(anHeatCells, { opacity: 0 }, { opacity: 1, duration: 0.45, ease: sm, stagger: anHeatCells.length > 1 ? 0.55 / (anHeatCells.length - 1) : 0 }, 0)
       : null;
-    // glyph stroke: path i window [t*0.5, t*0.5+0.4], t = i/n → stagger spacing 0.5/n, dur 0.4.
+    // glyph outlines: strokeDashoffset 1→0; path i window [t*0.5, t*0.5+0.4], t=i/n → stagger 0.5/n, dur 0.4
     const glyphTl = snzWordPaths.length
-      ? createTimeline({ autoplay: false }).add(snzWordPaths, { strokeDashoffset: [1, 0], duration: 0.4 * D, ease: sm }, stagger((0.5 * D) / snzWordPaths.length))
+      ? gsap.timeline({ paused: true }).fromTo(snzWordPaths, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, ease: sm, stagger: 0.5 / snzWordPaths.length }, 0)
       : null;
 
     // SCALE size steps: each customer size (small / medium / enterprise) is its own
@@ -723,7 +719,7 @@ import "./BuildFlow.css";
       // 0.87+: analytics
       // camera keyframes interpolate via the anime.js timeline; for p>=0.88 the DATA override below
       // replaces these values, so clamping the seek there matches the old loop's default fall-through.
-      camTl.seek(clamp(p, 0, 0.88) * D);
+      camTl.seek(clamp(p, 0, 0.88));
       let fx = cam.fx, fy = cam.fy, k = cam.k;
       // ---- DATA stage camera: TWO SEPARATE triggers, each playing over real time (not scrubbed).
       // Trigger 1 (cross 0.88): pan the scale view UP to make room; the analytics card + connecting
@@ -741,7 +737,7 @@ import "./BuildFlow.css";
       // ---- BACKEND position ----
       // Enters from bottom, holds at center for ENGINE (incl. collapse), then slides right as small card
       // backend position keyframes interpolate via the anime.js timeline (last segment ends at p=1.04)
-      bkTl.seek(clamp(p, 0, 1.04) * D);
+      bkTl.seek(clamp(p, 0, 1.04));
       let bx = bk.bx, by = bk.by;
 
       // ENGINE is now an HTML overlay (#snz-purpose); the SVG backend terminal stays hidden.
@@ -911,7 +907,7 @@ import "./BuildFlow.css";
       gabBars.forEach((b, i) => { if (!b) return; const prog = sm(seg(anCardIn, i / 8 * 0.35, i / 8 * 0.35 + 0.65)); const h = gabH[i] * prog; b.setAttribute('y', String(40 - h)); b.setAttribute('height', String(h)); });
       if (gAnalyticsLine) { const lp = sm(seg(anCardIn, 0.45, 1.0)); gAnalyticsLine.style.strokeDashoffset = String(1 - lp); gAnalyticsLine.style.opacity = lp > 0 ? '1' : '0'; }
       // ANALYTICS: each glyph outline strokes in, staggered left→right (anime stagger); accent fills after
-      glyphTl?.seek(anCardIn * D);
+      glyphTl?.seek(anCardIn);
       if (snzWord) snzWord.style.fillOpacity = sm(seg(anCardIn, 0.85, 1.0)).toFixed(3);
       if (analytics) analytics.style.opacity = an.toFixed(3);
       const ciPAv = sm(seg(panP, 0.2, 0.8));
@@ -932,7 +928,7 @@ import "./BuildFlow.css";
       if (anStatSrc) anStatSrc.textContent = (1.2 * anP).toFixed(1) + 'M';
       if (anStatSig) anStatSig.textContent = Math.round(1932 * anP).toLocaleString('en-US');
       // heatmap cells stagger in (anime stagger timeline, seeked by the dataFill gate)
-      heatTl?.seek(dataFill * D);
+      heatTl?.seek(dataFill);
       // bars grow from bottom, staggered
       const anBarP = dataFill;
       if (anSearch) { const bars = Array.from(anSearch.children); const n = bars.length; bars.forEach((b, i) => { const prog = sm(seg(anBarP, (i / n) * 0.4, (i / n) * 0.4 + 0.6)); const h = (anSearchH[i] || 0) * prog; b.setAttribute('y', String(502 - h)); b.setAttribute('height', String(h)); }); }
@@ -966,21 +962,18 @@ import "./BuildFlow.css";
     if (reduce) {
       apply(0.60);
     } else {
+      // ScrollTrigger measures scroll progress over the tall #snz-build section: 0 when its top hits
+      // the viewport top, 1 when its bottom hits the viewport bottom — exactly the old
+      // -rect.top/(offsetHeight - vh) ratio, now declarative (it also handles resize refresh). The
+      // existing sticky child still does the visual pinning, so no DOM/CSS changes are needed.
+      const st = ScrollTrigger.create({ trigger: sec, start: 'top top', end: 'bottom bottom' });
+      // gsap.ticker owns the frame loop (rAF, display-rate) so the eased gates keep settling after
+      // the user stops scrolling; each tick reads the latest ScrollTrigger progress and applies it.
       let lastP = -1;
-      const update = () => {
-        const r = sec.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const total = sec.offsetHeight - vh;
-        const p = total > 0 ? Math.max(-0.07, Math.min(1, -r.top / total)) : 0;
+      gsap.ticker.add(() => {
+        const p = st.progress;
         if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
-      };
-      // anime.js engine owns the frame loop now: a looping timer ticks update() every frame
-      // (engine default 240fps = display-rate, matching the former requestAnimationFrame tick),
-      // so the gate-settling code keeps running after the user stops scrolling. The scroll/resize
-      // listeners stay so a change registers the same frame it happens.
-      createTimer({ loop: true, onUpdate: update });
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update, { passive: true });
+      });
       apply(0);
     }
   }
