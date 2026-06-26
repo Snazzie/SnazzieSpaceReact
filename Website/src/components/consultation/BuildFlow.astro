@@ -698,7 +698,7 @@ import "./BuildFlow.css";
       if (gApi) gApi.style.opacity = '0';
 
       // CONNECT+: simple API card follows Banch (slides center → right)
-      const apiCardShow = trig('side', p >= 0.53);
+      const apiCardShow = trig('side', p >= 0.49);
       if (gApiCard) { gApiCard.setAttribute('transform', 'translate(660 300)'); gApiCard.style.opacity = (apiCardShow * (1 - sm(seg(p, 0.93, 0.98)))).toFixed(3); }
       // ENGINE overlay: fade the marquee+browser in over the ENGINE phase. On the way OUT, view 4
       // (web app + mobile) SHRINKS onto the on-screen slot where the "YOUR PRODUCT" card (gCore) lands,
@@ -718,7 +718,9 @@ import "./BuildFlow.css";
         // handoff: shrink ONLY the browser+phone box down onto gCore's live on-screen slot. Measure real
         // rects each frame so the moving camera is accounted for; offsetWidth ignores the transform we
         // set here, so reading it back is feedback-free.
-        const hand = reduce ? 0 : sm(seg(p, 0.44, 0.55));
+        // view-4 → SCALE handoff is TRIGGERED, not scrubbed: crossing the threshold plays the
+        // shrink-into-card over real time (and reverses on scroll-up), like the seq2/traffic gates.
+        const hand = reduce ? 0 : trig('hand', p >= 0.50);
         const baseScale = lerp(0.5, 1.0, seq2);          // entry zoom-into-place (product only)
         if (purProdi) {
           purProdi.style.transformOrigin = 'center center';
@@ -755,19 +757,19 @@ import "./BuildFlow.css";
       // ---- CONNECT: product card left (280,300), backend right (700,300) ----
       const pSideBy = apiCardShow;
       if (gCore) { gCore.setAttribute('transform', 'translate(340 300)'); gCore.style.opacity = (pSideBy * dissolve).toFixed(3); }
-      if (cnApi) { const cv = trig('cn', p >= 0.61); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
+      if (cnApi) { const cv = trig('cn', p >= 0.52); cnApi.setAttribute('x1', '432'); cnApi.setAttribute('y1', '300'); cnApi.setAttribute('x2', '568'); cnApi.setAttribute('y2', '300'); cnApi.style.strokeDashoffset = String(1 - cv); cnApi.style.opacity = (cv * 0.7 * dissolve).toFixed(3); if (cnApiPulse1) cnApiPulse1.style.opacity = (cv * dissolve).toFixed(3); if (cnApiPulse2) cnApiPulse2.style.opacity = (cv * dissolve).toFixed(3); }
 
       // ---- TRAFFIC → SCALE: customer grows through 3 size steps, infra balloons ----
       // TRAFFIC arrival is scroll-TRIGGERED (eased gate), not scrubbed: crossing 0.60 plays
       // the crowd/title in over real time and reverses on scroll-up.
-      const sIn = trig('traffic', p >= 0.60);
+      const sIn = trig('traffic', p >= 0.52);
       if (bizTitle) bizTitle.style.opacity = (sIn * dissolve).toFixed(3);
 
       // Customer size as 3 INDIVIDUAL scroll-triggered steps. Each size owns a scroll
       // zone; crossing one sets the target tier and `tierAnim` eases toward it over real
       // time. Because the ease chases the target in BOTH directions, every step pops in
       // on the way down and pops back out on the way up (inverse on scroll-up).
-      const SCALE_ZONES = [0.62, 0.71, 0.80];   // p thresholds → small / medium / enterprise
+      const SCALE_ZONES = [0.52, 0.71, 0.80];   // p thresholds → small / medium / enterprise
       let sizeTier = -1;
       for (let i = 0; i < SCALE_ZONES.length; i++) if (p >= SCALE_ZONES[i]) sizeTier = i;
       const tierTarget = Math.max(0, sizeTier);
