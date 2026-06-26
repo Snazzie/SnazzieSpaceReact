@@ -382,7 +382,7 @@ export function initBuildFlow() {
       // zone; crossing one sets the target tier and `tierAnim` eases toward it over real
       // time. Because the ease chases the target in BOTH directions, every step pops in
       // on the way down and pops back out on the way up (inverse on scroll-up).
-      const SCALE_ZONES = [0.50, 0.71, 0.80];   // p thresholds → small / medium / enterprise
+      const SCALE_ZONES = [0.54, 0.66, 0.78];   // p thresholds → small / medium / enterprise (evened to kill dead scroll between tiers)
       let sizeTier = -1;
       for (let i = 0; i < SCALE_ZONES.length; i++) if (p >= SCALE_ZONES[i]) sizeTier = i;
       const tierTarget = Math.max(0, sizeTier);
