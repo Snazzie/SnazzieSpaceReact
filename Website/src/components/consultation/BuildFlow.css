@@ -74,6 +74,12 @@
 @keyframes pur-disco{ 0%,18%,100%{ -webkit-text-fill-color:rgba(200,200,193,.5); } 5%{ -webkit-text-fill-color:#fff; } 11%{ -webkit-text-fill-color:rgba(198,244,50,.92); } }
 @keyframes pur-disco-ic{ 0%,18%,100%{ fill:rgba(200,200,193,.5); } 8%{ fill:var(--accent); } }
 
+/* solid panels behind the corner text blocks so the marquee (and any busy stage bg) never bleeds
+   through and hurts legibility. Each hugs its content with padding + radius and reads as a chip. */
+.snz-bcaps .cap{ background:rgba(12,12,12,.84); border:1px solid rgba(255,255,255,.07);
+  border-radius:14px; padding:16px 20px; }
+.snz-track{ background:rgba(12,12,12,.84); border:1px solid rgba(255,255,255,.07);
+  border-radius:14px; padding:14px 18px; box-sizing:border-box; }
 .pur-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
 /* browser + phone dock share a centered row; when the dock expands the whole row
    widens, so the browser shifts left to make space for the phone */
@@ -120,10 +126,11 @@
   width:42px; height:6px; border-radius:3px; background:rgba(255,255,255,.18); }
 .pur-dot{ width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); }
 .pur-dot.on{ background:var(--accent); }
-.pur-cap{ display:flex; align-items:center; gap:13px; }
+.pur-cap{ display:flex; align-items:center; gap:13px;
+  background:rgba(12,12,12,.84); border:1px solid rgba(255,255,255,.07); border-radius:14px; padding:9px 16px; }
 .pur-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
 .pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
-.pur-cap small{ color:#9a9a92; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
+.pur-cap small{ color:#c4c4bc; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
 @media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; } #snz-purpose[data-cat="all"] .pur-it, #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; } }
 
 /* ===== small-screen fit ===== desktop visuals unchanged; below these widths the

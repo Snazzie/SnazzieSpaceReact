@@ -114,7 +114,7 @@ import "./BuildFlow.css";
     <div id="snz-hero1" style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
       <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 01 — DESIGN ]</div>
       <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:#F2F0EA;max-width:15ch">Endless design possibilities.</h2>
-      <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:#9a9a92;max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
+      <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:#c4c4bc;max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
     </div>
     <!-- stage -->
     <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0;z-index:1">
@@ -403,8 +403,8 @@ import "./BuildFlow.css";
         </div>
       </div>
       <!-- captions -->
-      <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:300px">
-        <div style="text-align:right;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#7c7c74;margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
+      <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:392px">
+        <div style="text-align:right;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#a6a69e;margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
         <div style="position:relative;height:10px;margin-bottom:9px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
             <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(255,255,255,.12)">
@@ -418,7 +418,7 @@ import "./BuildFlow.css";
         <div style="position:relative;height:11px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
             {buildTrack.map((label, i) => (
-              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent)" : "#4a4a44"};font:600 9px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
+              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent)" : "#4a4a44"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
             ))}
           </div>
         </div>
@@ -426,9 +426,9 @@ import "./BuildFlow.css";
       <div class="snz-bcaps" style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
           <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-            <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
-            <h3 style="margin:0 0 9px;font:800 30px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">{c.title}</h3>
-            <p style={`margin:0;max-width:${c.max}px;font:400 13.5px/1.6 'JetBrains Mono',monospace;color:#9a9a92`}>{c.body}</p>
+            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
+            <h3 style="margin:0 0 9px;font:800 34px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">{c.title}</h3>
+            <p style={`margin:0;max-width:${c.max}px;font:400 15px/1.6 'JetBrains Mono',monospace;color:#c4c4bc`}>{c.body}</p>
           </div>
         ))}
       </div>
