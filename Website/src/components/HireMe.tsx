@@ -5,6 +5,7 @@ import {
   Briefcase,
   ClipboardCheck,
   Cloud,
+  Compass,
   Globe,
   Handshake,
   Server,
@@ -186,12 +187,6 @@ export function HireMe() {
         })}
       </motion.ul>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        {paths.map((path, i) => (
-          <PathCard key={path.title} path={path} index={i} />
-        ))}
-      </div>
-
       <motion.a
         {...headingProps}
         href={LINKEDIN}
@@ -206,19 +201,44 @@ export function HireMe() {
         <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </motion.a>
 
-      <motion.p
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {paths.map((path, i) => (
+          <PathCard key={path.title} path={path} index={i} />
+        ))}
+      </div>
+
+      <motion.a
         {...headingProps}
-        className="mt-4 text-xs text-muted-foreground"
+        href="/consultation/"
+        onPointerMove={
+          reduce
+            ? undefined
+            : (e) => {
+                const el = e.currentTarget;
+                const r = el.getBoundingClientRect();
+                el.style.setProperty("--cx", `${e.clientX - r.left}px`);
+                el.style.setProperty("--cy", `${e.clientY - r.top}px`);
+              }
+        }
+        className="group relative mt-4 flex items-center gap-4 overflow-hidden rounded-2xl border border-border bg-card p-6 transition duration-200 hover:-translate-y-1 hover:border-zinc-500"
       >
-        See how I work and what I offer on the{" "}
-        <a
-          href="/consultation/"
-          className="underline underline-offset-2 transition-colors hover:text-foreground"
-        >
-          consulting page
-        </a>
-        .
-      </motion.p>
+        <Spotlight />
+        <div className="relative z-20 flex size-11 shrink-0 items-center justify-center rounded-lg border bg-secondary border-border text-foreground/70">
+          <Compass className="size-5" />
+        </div>
+        <div className="relative z-20 flex-1">
+          <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            Consulting
+          </span>
+          <h3 className="mt-1 text-lg font-semibold text-foreground">
+            See how I work and what I offer
+          </h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+            Process, services and pricing on the consultation page.
+          </p>
+        </div>
+        <ArrowUpRight className="relative z-20 size-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
+      </motion.a>
     </section>
   );
 }
