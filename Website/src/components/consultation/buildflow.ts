@@ -475,7 +475,10 @@ export function initBuildFlow() {
       }
       const repCols = 5;
       const repColX = [666, 686, 706, 726, 746];   // column centres, abs (card right half)
-      const repRowY = [288, 312];        // row centres, abs
+      // single populated row (tiers 0/1) sits vertically centred (300); as the 2nd row
+      // spins up at tier 2, row 0 eases up to 288 so both rows straddle centre.
+      const twoRowP = clamp(tierAnim - 1, 0, 1);
+      const repRowY = [lerp(300, 288, twoRowP), 312];   // row centres, abs
       const nodeNeed = [0, 1, 1, 1, 2, 2, 2, 2, 2, 2]; // step each replica joins at (1 → 4 → 10)
       scSqs.forEach((s, i) => {
         if (!s) return;
