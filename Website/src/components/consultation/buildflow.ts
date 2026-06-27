@@ -561,21 +561,32 @@ export function initBuildFlow() {
       // gsap.ticker owns the frame loop (rAF, display-rate) so the eased gates keep settling after
       // the user stops scrolling; each tick reads the latest ScrollTrigger progress and applies it.
       let lastP = -1;
+      // SCRUB SMOOTHING: raw st.progress advances in uneven bursts under trackpad/wheel input, so
+      // feeding it straight into the scrubbed camera/backend seeks makes the morph stutter even at
+      // full fps — the jitter is in the scroll->progress MAPPING, not the frame rate. Ease pSmooth
+      // toward the live scroll position over ~SCRUB seconds (the GSAP `scrub` feel) and drive the
+      // whole apply() off pSmooth, so every layer moves off one damped clock. Snaps onto the target
+      // when input stops, so gate end-states (p=0/1) are still reached exactly.
+      let pSmooth = st.progress;
+      const SCRUB = 0.3;       // catch-up time constant (s); higher = smoother but laggier
       // marquee velocity-boost tuneables
       const SPEED_MAX = 900;   // px/s of extra drift at full scroll velocity
       const VEL_REF = 6000;    // scroll px/s mapping to ~full boost
       let velLastT = performance.now();
       gsap.ticker.add(() => {
-        const p = st.progress;
+        const nowT = performance.now();
+        const dt = Math.min(0.05, (nowT - velLastT) / 1000); // clamp survives tab-away
+        velLastT = nowT;
+        const target = st.progress;
+        pSmooth += (target - pSmooth) * Math.min(1, dt / SCRUB);
+        if (Math.abs(target - pSmooth) < 1e-4) pSmooth = target; // settle exactly when idle
+        const p = pSmooth;
         if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
         // marquee velocity boost: scroll speed (either direction) adds extra forward
         // drift along each row's OWN direction. Pure accumulation — never reverses —
         // wrapped to the marquee period so it stays seamless. When not scrolling the
         // offset just holds; the base CSS animation keeps the row drifting.
         if (purRows.length) {
-          const nowT = performance.now();
-          const dt = Math.min(0.05, (nowT - velLastT) / 1000); // clamp survives tab-away
-          velLastT = nowT;
           const live = !!purpose && purpose.classList.contains('snz-live');
           const boost = live ? Math.tanh(Math.abs(st.getVelocity()) / VEL_REF) * SPEED_MAX : 0;
           if (boost > 0.5) {
