@@ -133,10 +133,13 @@ const steps = [
     background: #0c0c0a; border: 2px solid rgba(255,255,255,.18);
     transition: border-color .4s, background .4s, box-shadow .4s, transform .4s;
   }
-  .snz-proc-node .ic { display: block; width: 32px; height: 32px; color: #6a6a62; transition: color .4s, opacity .3s; }
+  .snz-proc-node .ic { display: block; width: 32px; height: 32px; color: #6a6a62; transition: color .4s, opacity .2s; }
+  /* coming back (node no longer active): wait for the scene to fade out first, so
+     the icon and scene are never both visible */
+  .snz-proc-node:not(.scene-active) .ic { transition: color .4s, opacity .2s ease .3s; }
   .snz-proc-node :global(svg) { width: 32px; height: 32px; }
   /* active node shows the scene, so fade its static icon out */
-  .snz-proc-node.on.scene-active .ic { opacity: 0; }
+  .snz-proc-node.scene-active .ic { opacity: 0; }
   .snz-proc-node .num {
     position: absolute; top: -26px; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .14em; color: #6a6a62; transition: color .4s;
   }
@@ -156,7 +159,8 @@ const steps = [
   .snz-proc-node.scene-active .scene { opacity: 1; }
 
   /* ---- centered active text ---- */
-  .snz-proc-step { position: relative; z-index: 2; min-height: 150px; width: 100%; max-width: 620px; }
+  /* fixed height so varying body length never shifts the rail/icons above it */
+  .snz-proc-step { position: relative; z-index: 2; height: 180px; width: 100%; max-width: 620px; }
   .snz-proc-swap { transition: opacity .3s, transform .3s; }
 
   .snz-proc-hint { position: absolute; bottom: 5vh; left: 50%; transform: translateX(-50%); animation: snz-proc-bob 1.8s ease-in-out infinite; }
@@ -169,6 +173,7 @@ const steps = [
     .snz-proc-node { width: 64px; height: 64px; }
     .snz-proc-node .ic, .snz-proc-node :global(svg) { width: 24px; height: 24px; }
     .snz-proc-node .num { top: -22px; font-size: 10px; }
+    .snz-proc-step { height: 230px; }
   }
 
   /* ---- reduced motion: drop the animation, show the list ---- */
@@ -261,7 +266,8 @@ const steps = [
         const p = total > 0 ? clamp(-wrap.getBoundingClientRect().top / total, 0, 1) : 0;
 
         fill.style.transform = 'translateY(-50%) scaleX(' + p + ')';
-        const act = Math.round(p * (N - 1));
+        // frontier = last lit node, so the scene only plays on a node that's lit
+        const act = Math.floor(p * (N - 1) + 0.001);
         nodes.forEach((node, i) => {
           node.classList.toggle('on', fr(i) <= p + 0.001);
           node.classList.toggle('scene-active', i === act);

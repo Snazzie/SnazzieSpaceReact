@@ -20,8 +20,8 @@
 /* shared, animatable sweep offset (registered so it can be keyframed inside calc()) */
 @property --shim{ syntax:'<length>'; inherits:false; initial-value:0px; }
 /* promote each row to its own compositor layer once: scroll loop = pure transform, zero repaint */
-.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; will-change:transform; }
-.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; will-change:transform; }
+.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; will-change:transform, translate; }
+.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; will-change:transform, translate; }
 /* the marquee + per-item shimmer are `infinite`; keep them paused until the overlay is actually
    visible (JS toggles .snz-live). pause/resume preserves position, so this never causes a jump. */
 .pur-row, #snz-purpose .pur-it, #snz-purpose .pur-it .pur-ic{ animation-play-state:paused; }
