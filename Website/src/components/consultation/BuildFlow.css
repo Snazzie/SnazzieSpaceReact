@@ -134,6 +134,14 @@
 .pur-step{ font:800 13px 'Archivo',sans-serif; color:#0b0b0b; background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
 .pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent); }
 .pur-cap small{ color:#c4c4bc; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
+/* desktop: enlarge the browser step caption (step / title / sub) for readability — phones keep the
+   compact sizes above so the chip still fits under the scaled-down browser. */
+@media (min-width: 641px){
+  .pur-cap{ gap:15px; padding:11px 18px; }
+  .pur-step{ font-size:16px; padding:5px 9px; }
+  .pur-title{ font-size:15px; letter-spacing:1.6px; }
+  .pur-cap small{ font-size:13px; }
+}
 @media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; }
   /* no reveal cascade: show the "all" words statically lit (the latched end-state) instead of the
      0% black they'd otherwise be stuck on with the animation killed. */
