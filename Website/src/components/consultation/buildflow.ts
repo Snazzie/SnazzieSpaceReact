@@ -111,7 +111,16 @@ export function initBuildFlow() {
     let purStage = -1;
     const purPlop = (view: El) => {
       const els = Array.from(view.querySelectorAll('.pur-pl')) as unknown as El[];
-      els.forEach((el, idx) => { el.classList.remove('go'); void el.offsetWidth; el.style.animationDelay = (idx * 50) + 'ms'; el.classList.add('go'); });
+      // restart the pop animations with NO synchronous forced reflow. The old `void offsetWidth`
+      // (even once) forced a layout of the whole sticky section — which holds the 230vmax / 416-word
+      // marquee, and the trace flagged the DOM as large — costing ~60ms+ on the very frame a stage
+      // flip happens, i.e. the scroll-through spike the lag complaint is about. Removing .go then
+      // re-adding it across a double-rAF lets the removal flush through the normal render pipeline
+      // (no forced sync layout); the pop just retriggers ~1 frame later, which is imperceptible.
+      els.forEach((el) => el.classList.remove('go'));
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        els.forEach((el, idx) => { el.style.animationDelay = (idx * 50) + 'ms'; el.classList.add('go'); });
+      }));
     };
     const purShow = (n: number) => {
       if (n === purStage) return;
@@ -241,6 +250,7 @@ export function initBuildFlow() {
     let scaleAnimActive = false;
     let purLastTx = 0, purLastTy = 0;             // last translate applied to the persisting product, so we can
                                                   // back it out next frame and recover its true natural centre
+    let purHandLast = 0;                          // last frame's handoff value — gates the layout reads below
 
     const apply = (p: number) => {
       const draw = (el: El | null, d: number) => { if (el) { el.style.strokeDashoffset = String(1 - d); el.style.opacity = d > 0 ? '1' : '0'; } };
@@ -254,15 +264,19 @@ export function initBuildFlow() {
         pk.style.opacity = active ? '1' : '0';
       };
 
-      // PERF: batch all layout reads at the TOP of the frame, before any style writes below.
-      // The handoff used to read these rects mid-apply (after writing camera/SVG/opacity styles),
-      // forcing a synchronous reflow every frame (~4s total across a scroll-through). Reading here,
-      // while layout is still clean from the previous frame, makes them free; one frame of latency
-      // on the camera-relative position is imperceptible.
+      // PERF: batch all layout reads at the TOP of the frame, before any style writes below, AND only
+      // when the view4->card handoff is actually live (p>=~0.50, or still easing back). These rects
+      // are consumed ONLY inside the `hand > 0` handoff branch; reading them every frame forced a full
+      // layout of a large DOM through the ENTIRE earlier ENGINE phase (p~0.1-0.45) — exactly the
+      // stage-transition window — for values that branch never used. Gating it makes every ENGINE
+      // frame reflow-free, which is the scroll-through-transitions lag. One frame of camera-relative
+      // latency on entry to the handoff is imperceptible.
       let hoGr: DOMRect | null = null, hoPr: DOMRect | null = null, hoBrW = 560, hoPrH = 366;
-      if (gCore && purProdi && stageEl) { hoGr = gCore.getBoundingClientRect(); hoPr = purProdi.getBoundingClientRect(); }
-      if (purBrowser) hoBrW = purBrowser.offsetWidth;
-      if (purProdi) hoPrH = purProdi.offsetHeight || 366;
+      if (!reduce && (p >= 0.49 || purHandLast > 0.001) && gCore && purProdi && stageEl) {
+        hoGr = gCore.getBoundingClientRect(); hoPr = purProdi.getBoundingClientRect();
+        if (purBrowser) hoBrW = purBrowser.offsetWidth;
+        hoPrH = purProdi.offsetHeight || 366;
+      }
 
       // single frame delta drives all time-eased (trigger) animations
       if (frameLastT < 0) frameLastT = nowMs();
@@ -358,6 +372,7 @@ export function initBuildFlow() {
         // view-4 → SCALE handoff is TRIGGERED, not scrubbed: crossing the threshold plays the
         // shrink-into-card over real time (and reverses on scroll-up), like the seq2/traffic gates.
         const hand = reduce ? 0 : trig('hand', p >= 0.50);
+        purHandLast = hand;                              // next frame's read-gate (handoff easing back)
         const baseScale = lerp(0.5, 1.0, seq2);          // entry zoom-into-place (product only)
         if (purProdi) {
           purProdi.style.transformOrigin = 'center center';

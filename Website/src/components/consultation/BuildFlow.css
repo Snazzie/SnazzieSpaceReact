@@ -43,8 +43,12 @@
   background-position:calc(var(--bgx,0px) + var(--shim,0px)) 0;
   -webkit-background-clip:text; background-clip:text;
   animation:pur-shim 2s linear infinite;
-  transition:-webkit-text-fill-color .5s ease-in-out, opacity .5s ease-in-out; }
-.pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:fill .5s ease-in-out, opacity .5s ease-in-out; opacity:.5; }
+  /* ONLY opacity transitions on a stage flip. text-fill-color is NOT transitioned: animating it
+     re-rasters all 416 clipped-text words every frame for 0.5s, which spiked transition frames to
+     ~160ms (vs ~41ms steady) while scrolling. The fill now SNAPS in one repaint (invisible anyway
+     on the opacity:0 words that are fading), and opacity does the visible fade. */
+  transition:opacity .5s ease-in-out; }
+.pur-ic{ height:.56em; width:auto; fill:rgba(255,255,255,.12); flex:none; transition:opacity .5s ease-in-out; opacity:.5; }
 /* non-matching items are fully hidden (opacity:0); only the active category shows. The .5s opacity
    transition fades them out/in as the category switches. Their HIDDEN fill is the lit colour (text:
    transparent => the gradient shows; icon: accent), NOT gray — a gray hidden-fill made every word
