@@ -3,6 +3,8 @@ import '@/styles/global.css';
 import BaseHead from '@/components/BaseHead.astro';
 import Nav from '@/components/consultation/Nav.astro';
 import Hero from '@/components/consultation/Hero.astro';
+import Statement from '@/components/consultation/Statement.astro';
+import WireColumns from '@/components/consultation/WireColumns.astro';
 import BuildFlow from '@/components/consultation/BuildFlow.astro';
 import Services from '@/components/consultation/Services.astro';
 import Comparison from '@/components/consultation/Comparison.astro';
@@ -32,8 +34,19 @@ import Footer from '@/components/consultation/Footer.astro';
   <body>
     <div id="snz-root" style="background:#0a0a0a;color:#F2F0EA;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip">
       <Nav />
-      <Hero />
-      <BuildFlow />
+      <!-- hero, statement and the build story share ONE wireframe wall (#snz-wbg, booted + animated by buildflow.ts) -->
+      <div id="snz-wallzone" style="position:relative;background:#0b0b0b">
+        <!-- out-of-flow layer holding a viewport-tall sticky wall behind everything in the zone -->
+        <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+          <div id="snz-wbg" aria-hidden="true" style="position:sticky;top:var(--snz-nav-h,56px);height:calc(100vh - var(--snz-nav-h,56px));display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.55;overflow:hidden;will-change:transform">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0b0b0b 0%,transparent 12%,transparent 88%,#0b0b0b 100%);z-index:1;pointer-events:none"></div>
+            <WireColumns />
+          </div>
+        </div>
+        <Hero />
+        <Statement />
+        <BuildFlow />
+      </div>
       <Services />
       <Comparison />
       <Transparency />

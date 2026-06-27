@@ -51,6 +51,37 @@ export function initBuildFlow() {
     requestAnimationFrame(() => {
       wbg.querySelectorAll<HTMLElement>('.snz-bf-col').forEach((col) => col.classList.add('snz-bf-go'));
     });
+
+    // Scroll-velocity boost for the wall columns (active across hero + statement + build).
+    // Base drift is the CSS `transform` animation; the boost accumulates EXTRA forward drift
+    // along each column's OWN direction on the independent `translate` property (composites,
+    // never fights the animation). Any scroll speed (either direction) adds forward drift;
+    // wrapped to the column's repeat period so the loop stays seamless. Idle = offset holds.
+    const W_SPEED_MAX = 1100; // px/s of extra drift at full scroll velocity
+    const W_VEL_REF = 6000;   // scroll px/s mapping to ~full boost
+    const wOff = new WeakMap<HTMLElement, number>();
+    const wPer = new WeakMap<HTMLElement, number>();
+    let wLastY = window.scrollY;
+    let wLastT = performance.now();
+    gsap.ticker.add(() => {
+      const nowT = performance.now();
+      const dt = Math.min(0.05, (nowT - wLastT) / 1000); // clamp survives tab-away
+      wLastT = nowT;
+      const y = window.scrollY;
+      const vel = dt > 0 ? (y - wLastY) / dt : 0;
+      wLastY = y;
+      const boost = Math.tanh(Math.abs(vel) / W_VEL_REF) * W_SPEED_MAX;
+      if (boost <= 0.5) return;
+      wbg.querySelectorAll<HTMLElement>('.snz-bf-col').forEach((col) => {
+        let per = wPer.get(col);
+        if (!per) { per = col.scrollHeight / 2; wPer.set(col, per); }
+        if (!per) return;
+        const dir = col.classList.contains('snz-bf-col-b') ? 1 : -1; // b drifts down, a/c up
+        const nx = ((wOff.get(col) || 0) + dir * boost * dt) % per;
+        wOff.set(col, nx);
+        col.style.translate = '0 ' + nx.toFixed(2) + 'px';
+      });
+    });
   }
 
   const sec = $('snz-build');
