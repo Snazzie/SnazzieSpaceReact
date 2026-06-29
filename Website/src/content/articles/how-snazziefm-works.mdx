@@ -1,0 +1,74 @@
+---
+title: "How Snazzie FM Works"
+date: 2026-06-29
+excerpt: "A fictional radio station built on real engineering — TTS voice synthesis, a Web Audio API[EY1 P IY0 AY1] scheduler, per-clip FLAC delivery, and RMS loudness normalization keeping speech, ads, and music at one level."
+tags: ["audio", "react", "typescript", "tts", "web-development"]
+draft: false
+---
+
+Snazzie FM is a fictional radio station. The conversations are scripted, the hosts aren't real, and the ads are for businesses that don't exist. But the audio pipeline that delivers all of it is completely real — and more involved than it looks.
+
+You can [explore the audio timeline](https://snazzie.space/snazziefm/behindthescenes/timeline/) directly if you'd rather hear it than read about it.
+
+## The data model
+
+Every episode is a JSON file. Each file has a slug, a title, a description, and an array of `lines` — one entry per spoken clip:
+
+```json
+{
+  "speaker": "ronnie",
+  "text": "You're listening to The Truth Hour on Snazzie FM.",
+  "timestamp": 0.0,
+  "duration": 9.4,
+  "overlap": 0,
+  "audio": "/snazziefm/audio/the-truth-hour/0.flac"
+}
+```
+
+`timestamp` and `duration` are real — they come from the generated audio, not from estimates. `overlap` is a negative offset that tightens the gap between one speaker finishing and the next starting. A value of `-0.15` means the next clip begins 150ms before the previous one fully ends, which is how natural conversation sounds.
+
+There are over sixty episodes at this point, plus a pool of pre-produced ad spots. Each one follows the same structure.
+
+## TTS generation
+
+Every clip is generated locally with OmniVoice on a CUDA GPU. Each `lines` entry maps to one FLAC file. The Python script reads the episode JSON, sends each line's text to the model with the appropriate voice, and writes the output to `public/audio/<episode>/<index>.flac`.
+
+After generation, the script measures the actual duration of each clip and writes those timestamps back into the JSON. That's what makes the timeline accurate — the timestamps aren't authored, they're measured from the real audio.
+
+Unusual words, acronyms, and tech terms get CMU ARPAbet annotations in the source text before generation. The display layer strips those markers out; the TTS model receives the phonemes instead. This is the same system used for article narration on this site — if you've hit play on an article, you've already heard it working.
+
+## The scheduler
+
+On the player side, everything runs through the Web Audio API[EY1 P IY0 AY1] directly — no audio library wrapper.
+
+The scheduler keeps a queue of what plays next. Between each episode, a block of six ads fires — a mix of pre-produced spots and InstaAd content. Every third transition gets a music break. The order is:
+
+```
+episode → 6 ads → episode → 6 ads → episode → music break → episode → ...
+```
+
+Ads are drawn from a pool without repeating until the pool is exhausted, then the pool reshuffles. The scheduler tracks which ads have aired in the current rotation and picks accordingly.
+
+Each clip is a decoded `AudioBuffer`. The scheduler decodes them ahead of time and hands them to `AudioBufferSourceNode` for playback. There's no streaming — the clip must be fully decoded before it plays, which is fine for short speech clips and keeps the playback model simple.
+
+## Loudness normalization
+
+Speech, ads, and music all record at different levels. Without normalization, you'd hear jarring volume swings every time a clip changes.
+
+The engine measures each buffer's integrated RMS once, caches the result, and derives a linear gain that brings that buffer to a target of −20 dBFS. That gain gets applied via a `GainNode` inserted between the source and the output. The gain is clamped — a minimum of 0.05 (−26 dB) and a maximum of 4 (+12 dB) — so near-silent buffers don't explode and already-hot sources get pulled down to a reasonable level.
+
+This runs per-clip, not per-session. The cache is a `WeakMap` keyed on `AudioBuffer`, so the measurement only happens once per buffer lifetime.
+
+## The timeline view
+
+The [audio timeline](/snazziefm/behindthescenes/timeline/) renders each speaker as a horizontal lane. Clips are positioned left-to-right based on their `timestamp`, scaled to the total duration of the episode. A playhead tracks the current position in real time.
+
+Clicking anywhere on the timeline seeks to that position — the scheduler recalculates which clip should be active and resumes from there.
+
+This view is built in React with raw DOM measurements for the lane widths. There's no canvas — everything is positioned `div`s with percentage-based `left` and `width` values calculated from `timestamp / totalDuration`.
+
+## What makes it feel like radio
+
+The technical parts are straightforward once you name them. What makes it feel like a radio station is the pacing work — the overlap values tuned per-conversation, the ad blocks timed to match real commercial breaks, the music transitions giving the listener a moment to breathe.
+
+That part is manual. Every `-0.15` in a JSON file is a judgment call about when one character sounds natural interrupting another. The pipeline just faithfully executes it.
