@@ -1,0 +1,23 @@
+---
+// Closing CTA: final call to get in touch.
+const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
+---
+<section id="snz-close" class="py-[120px] px-14 relative overflow-hidden max-[760px]:py-20 max-[760px]:px-[22px]">
+  <div id="snz-closebg" class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(circle at 70% 40%,rgba(198,244,50,.08),transparent 55%)"></div>
+  <div data-reveal class="relative max-w-[900px]">
+    <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[22px]">[ 09 ] LET'S BUILD</div>
+    <h2 class="snz-display m-0 font-extrabold text-[76px] leading-[0.96] font-['Archivo'] tracking-[-0.04em]">Got a project<br>in mind?</h2>
+    <p class="mt-[30px] mb-10 mx-0 max-w-[540px] font-normal text-[16px] leading-[1.65] font-['JetBrains_Mono'] text-[#a8a89f]">Tell me what you are building and where it is stuck. I will come back with a clear scope and price. The first call is free and there is no obligation to go ahead.</p>
+    <div class="flex gap-[14px] flex-wrap">
+      <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[var(--ink)] py-4 px-6 no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+      <span class="snz-magwrap"><a data-mag href="mailto:info@snazzie.space" class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] border border-[rgba(255,255,255,0.22)] text-[#F2F0EA] py-4 px-6 no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">EMAIL ME</a></span>
+    </div>
+    <!-- risk-reversal reassurances -->
+    <div class="flex flex-wrap gap-x-7 gap-y-3 mt-9">
+      {['Free, no-obligation first call', 'Deposit credited in full', 'Up to 5 design rounds', 'You own it outright'].map((r) => (
+        <span class="inline-flex items-center gap-2 font-medium text-[12.5px] font-['JetBrains_Mono'] text-[#9a9a92]"><span class="text-[var(--accent)]">✓</span> {r}</span>
+      ))}
+    </div>
+    <p class="mt-7 mb-0 font-medium text-[12px] font-['JetBrains_Mono'] tracking-[.04em] text-[#7c7c74]">I only take on a handful of builds at a time, so slots are limited.</p>
+  </div>
+</section>

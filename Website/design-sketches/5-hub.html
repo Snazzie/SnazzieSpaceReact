@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5 · Radial hub</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .hub{ position:relative; width:640px; height:540px; max-width:94vw; }
+  .center{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:4;
+    width:158px; height:158px; border-radius:50%; border:1.8px solid var(--accent); background:var(--panel);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;
+    box-shadow:0 0 0 8px rgba(198,244,50,.04), 0 0 70px rgba(198,244,50,.12); }
+  .center .t{ font:800 15px 'Archivo',sans-serif; letter-spacing:-.02em; text-align:center; line-height:1.1; }
+  .center .s{ font:600 9px 'JetBrains Mono'; letter-spacing:2px; color:var(--accent); }
+  .ring{ position:absolute; left:50%; top:50%; width:430px; height:430px; transform:translate(-50%,-50%);
+    border:1px dashed rgba(255,255,255,.10); border-radius:50%; animation:spin 40s linear infinite; }
+  @keyframes spin{ to{ transform:translate(-50%,-50%) rotate(360deg); } }
+  .node{ position:absolute; width:150px; transform:translate(-50%,-50%); z-index:3;
+    border:1.4px solid rgba(255,255,255,.2); border-radius:12px; background:var(--panel); padding:12px 14px; text-align:center;
+    transition:border-color .4s ease, box-shadow .4s ease; }
+  .node.active{ border-color:var(--accent); box-shadow:0 0 22px rgba(198,244,50,.22); }
+  .node .top{ font:600 9px 'JetBrains Mono'; letter-spacing:1.5px; color:var(--accent); margin-bottom:6px; }
+  .node .prov{ font:600 14px 'Archivo',sans-serif; }
+  .spokes{ position:absolute; inset:0; pointer-events:none; z-index:1; }
+  .spoke{ stroke:rgba(255,255,255,.14); stroke-width:1.6; fill:none; }
+  .spark{ stroke:var(--accent); stroke-width:2.6; stroke-dasharray:5 9; fill:none; opacity:0;
+    animation:flow .5s linear infinite; }
+  @keyframes flow{ to{ stroke-dashoffset:-14; } }
+</style></head>
+<body><div class="stage">
+  <div class="caption"><div class="kicker">02 — ENGINE</div><h2>Everything plugs into your product.</h2>
+    <p>Your product sits at the hub. Capabilities ring around it and energize one by one, each picked from the best providers.</p></div>
+  <div class="tag">[ RADIAL HUB ]</div>
+  <div class="hub">
+    <div class="ring"></div>
+    <svg class="spokes" viewBox="0 0 640 540"><g id="spokeG"></g></svg>
+    <div class="center"><div class="t">YOUR<br>PRODUCT</div><div class="s">THE HUB</div></div>
+    <div id="nodes"></div>
+  </div>
+  <a class="backlink" href="./">‹ all designs</a>
+</div>
+<script src="_cycle.js"></script><script>
+  const cx=320, cy=270, R=205;
+  const nodes=document.getElementById('nodes'), spokeG=document.getElementById('spokeG');
+  const NS='http://www.w3.org/2000/svg';
+  const angs = CAPS.map((_,i)=> -90 + i*(360/CAPS.length));
+  CAPS.forEach((c,i)=>{
+    const a=angs[i]*Math.PI/180, x=cx+R*Math.cos(a), y=cy+R*Math.sin(a);
+    const n=document.createElement('div'); n.className='node'; n.id='n'+i;
+    n.style.left=x+'px'; n.style.top=y+'px';
+    n.innerHTML=`<div class="top">${c.label}</div><div class="prov" data-providers="${c.providers.join('|')}"></div>`;
+    nodes.appendChild(n);
+    const ix=cx+72*Math.cos(a), iy=cy+72*Math.sin(a), ox=cx+(R-46)*Math.cos(a), oy=cy+(R-46)*Math.sin(a);
+    const base=document.createElementNS(NS,'line'); base.setAttribute('class','spoke');
+    base.setAttribute('x1',ix);base.setAttribute('y1',iy);base.setAttribute('x2',ox);base.setAttribute('y2',oy); spokeG.appendChild(base);
+    const sp=document.createElementNS(NS,'line'); sp.setAttribute('class','spark'); sp.id='s'+i;
+    sp.setAttribute('x1',ix);sp.setAttribute('y1',iy);sp.setAttribute('x2',ox);sp.setAttribute('y2',oy); spokeG.appendChild(sp);
+  });
+  startCycle();
+  let k=0;
+  setInterval(()=>{
+    CAPS.forEach((_,i)=>{ document.getElementById('n'+i).classList.remove('active'); document.getElementById('s'+i).style.opacity='0'; });
+    const i=k%CAPS.length; document.getElementById('n'+i).classList.add('active'); document.getElementById('s'+i).style.opacity='1'; k++;
+  }, 1100);
+</script>
+</body></html>

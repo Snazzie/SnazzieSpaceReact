@@ -1,0 +1,395 @@
+---
+// THE BUILD — scroll-driven story: site + app merge into a product, the backend
+// docks and explodes into modules, traffic arrives, it scales, then analytics.
+
+import {
+  siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare,
+  siGoogleadsense, siGoogleadmob, siGoogleads,
+  siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai,
+  siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia,
+  siAuth0, siClerk, siOkta,
+  siAnthropic, siGooglegemini, siMistralai, siPerplexity, siHuggingface, siReplicate,
+  siSanity, siContentful, siNotion, siGhost, siDirectus, siStrapi,
+  siResend, siMailgun, siMailchimp,
+  siSentry, siDatadog, siPosthog, siPlausibleanalytics, siMixpanel,
+  siCloudinary, siLinear, siIntercom, siZendesk, siHubspot, siDiscord,
+  type SimpleIcon,
+} from "simple-icons";
+
+// ENGINE: skewed tech-services marquee (background) + a browser that morphs through
+// the shapes one product can take (landing → store → content → app), scroll-driven.
+// Each service is tagged with a category; the marquee lights up the category that
+// matches the current morph stage (host → pay → cms → app) and dims the rest.
+const cat = (c: string) => (i: SimpleIcon) => ({ title: i.title, path: i.path, cat: c });
+const services = [
+  ...[siCloudflare, siGooglecloud, siVercel, siNetlify, siDigitalocean, siRender, siRailway, siHetzner, siVultr, siFastly, siAkamai].map(cat("host")),
+  ...[siStripe, siPaypal, siRevenuecat, siPaddle, siLemonsqueezy, siSquare, siGoogleadsense, siGoogleadmob, siGoogleads].map(cat("pay")),
+  ...[siSanity, siContentful, siNotion, siGhost, siDirectus, siStrapi, siCloudinary, siMailchimp, siResend, siMailgun].map(cat("cms")),
+  ...[siSupabase, siFirebase, siPlanetscale, siNeon, siConvex, siUpstash, siAlgolia, siAuth0, siClerk, siOkta,
+    siAnthropic, siGooglegemini, siMistralai, siPerplexity, siHuggingface, siReplicate,
+    siSentry, siDatadog, siPosthog, siPlausibleanalytics, siMixpanel, siLinear, siIntercom, siZendesk, siHubspot, siDiscord].map(cat("app")),
+];
+// stage index (0..3) → highlighted category
+const PUR_CATS = ["host", "pay", "cms", "app"];
+// deterministic per-row shuffle (no Math.random at build time)
+// PERF + CORRECTNESS: keep each row narrow. The row's transform animation promotes it to a GPU
+// layer sized to its full content × devicePixelRatio; if that exceeds the GPU max texture (~16384)
+// the browser CLIPS the layer and glyphs past the limit render black/missing. 16 items (×2 dupes)
+// at the reduced font/gap below keeps the row well under the limit. Fewer nodes also = less paint.
+const shuffle = (n: number) => { const a = services.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (i * 7 + n * 3) % (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a.slice(0, 16); };
+// Density comes from MORE ROWS (vertical), not wider rows: each row is its own compositor layer
+// sized to its width, so stacking rows never approaches the per-layer texture limit, while wider
+// rows would. 13 rows of 16 shuffled items reads as a dense, endless field.
+const PURPOSE_ROWS = Array.from({ length: 13 }, (_, r) => ({ dir: r % 2 ? "r" : "l", dur: 44 + (r % 5) * 6, items: shuffle(r) }));
+
+// Scroll-step captions (cap1..cap6). cap1 stays visible; rest start hidden.
+const buildCaps = [
+  { label: "01 — DESIGN", title: "Endless design possibilities.", body: "Catered entirely to your brand. Website, app, or both, no templates, no limits, designed from scratch around you.", max: 460 },
+  { label: "02 — PURPOSE", title: "Built around what it's for.", body: "A landing page, a store, a content engine, a full app, the same product shaped to whatever your business needs to do.", max: 480 },
+  { label: "03 — SCALE", title: "Scales with your customers.", body: "As word spreads more customers arrive, from a small shop with a hundred visitors to an enterprise with half a million, and the infrastructure scales right along with them.", max: 500 },
+  { label: "04 — DATA", title: "And you see it all.", body: "Live analytics show your traffic, revenue and what's working, so you know what to do next.", max: 480 },
+];
+
+// Step tracker labels (tk1..tk6) — first is active (accent), rest dim.
+const buildTrack = ["01 DESIGN", "02 PURPOSE", "03 SCALE", "04 DATA"];
+
+// Phone app screen repeated twice for the scroll loop (UNIT 1 at o=0, UNIT 2 at o=240).
+const phoneUnits = [0, 240];
+
+// Styles + keyframes live in a sibling stylesheet (global, not scoped — every selector is
+// uniquely `pur-`/`snz-` prefixed). Bundled by Vite via this import.
+import "./BuildFlow.css";
+---
+<section id="snz-build" style="position:relative;z-index:1;height:900vh;background:transparent;border-bottom:1px solid rgba(255,255,255,.08)">
+  <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
+    <!-- wireframe background wall lives in the page-level #snz-wallzone (shared with the hero) -->
+    <!-- stage 1 hero: design wall headline (fades out as the zoom into a tile begins) -->
+    <div id="snz-hero1" style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 01 — DESIGN ]</div>
+      <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:#F2F0EA;max-width:15ch">Endless design possibilities.</h2>
+      <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:#c4c4bc;max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
+    </div>
+    <!-- stage -->
+    <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0;z-index:1">
+      <svg id="snz-flow" viewBox="0 0 1000 600" style="width:100%;max-width:1120px;height:100%;max-height:72vh;overflow:visible" aria-hidden="true">
+        <defs>
+          <!-- gradient pulses for traffic lines (x1/y1/x2/y2 animated via JS) -->
+        </defs>
+        <g id="camera">
+        <!-- customers (left only) — traffic as a number -->
+        <g id="customers" opacity="0">
+          <text id="custNum" x="145" y="312" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="46" letter-spacing="-0.02em">0</text>
+          <circle id="pkReq" r="4.5" fill="var(--accent)" opacity="0"></circle>
+        </g>
+        <!-- connectors -->
+        <line id="cnApi" x1="468" y1="286" x2="616" y2="214" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity="0"></line>
+        <line id="cnApiPulse1" x1="432" y1="298" x2="568" y2="298" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="cnApiPulse2" x1="568" y1="302" x2="432" y2="302" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <line id="ciAcc" x1="672" y1="250" x2="572" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciPay" x1="700" y1="250" x2="700" y2="298" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciCms" x1="688" y1="250" x2="636" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciEcom" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciDyn" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
+        <circle id="pkApi" r="5" fill="var(--accent)" opacity="0"></circle>
+        <!-- backend card (used in CONNECT+ phases — simple label, no vector) -->
+        <g id="gApiCard" opacity="0" transform="translate(700 300)">
+          <rect id="apiCardBox" x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
+          <text x="-46" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
+        </g>
+        <!-- SCALE: backend node replicates — identical replica icons spin up in a
+             contained grid inside the API card's right half. JS drives count. -->
+        <g id="gReplicas" opacity="0">
+          {Array.from({ length: 10 }, (_, i) => (
+            <g id={`gsq${i}`} opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+          ))}
+        </g>
+        <!-- core product -->
+        <g id="gCore" opacity="0" transform="translate(380 290)">
+          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <!-- placeholder content: shown ONLY for reduced-motion (where the live view-4 element can't
+               persist into this card). In normal motion JS hides this and the real product seats here. -->
+          <g id="gCorePh">
+          <!-- web-app dashboard (mirrors segment-2 view 4): nav + stat chips + bar chart -->
+          <rect x="-82" y="-39" width="86" height="60" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.1"></rect>
+          <rect x="-78" y="-35" width="20" height="3" rx="1.5" fill="var(--accent)"></rect>
+          <circle cx="-2" cy="-33.5" r="2" fill="rgba(255,255,255,.25)"></circle>
+          <rect x="-78" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-75" y="-24" width="9" height="3" rx="1.5" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="-58" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-55" y="-24" width="7" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
+          <rect x="-38" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
+          <rect x="-35" y="-24" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
+          <rect x="-78" y="-11" width="74" height="28" rx="3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"></rect>
+          <rect x="-74" y="7" width="4" height="7" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-67" y="2" width="4" height="12" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-60" y="5" width="4" height="9" rx="1" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="-53" y="-2" width="4" height="16" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="-46" y="3" width="4" height="11" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-39" y="-4" width="4" height="18" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="-32" y="0" width="4" height="14" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="-25" y="-6" width="4" height="20" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <!-- docked native phone (mobile half of view 4) -->
+          <rect x="16" y="-37" width="40" height="68" rx="8" fill="#0c0c0c" stroke="rgba(255,255,255,.4)" stroke-width="1.2"></rect>
+          <rect x="32" y="-33" width="8" height="2" rx="1" fill="rgba(255,255,255,.2)"></rect>
+          <rect x="21" y="-24" width="30" height="15" rx="2" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1"></rect>
+          <rect x="24" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="29" y="-15" width="3" height="5" rx="1" fill="rgba(198,244,50,.6)"></rect>
+          <rect x="34" y="-14" width="3" height="4" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="39" y="-17" width="3" height="7" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="44" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
+          <rect x="21" y="-5" width="30" height="9" rx="2" fill="rgba(198,244,50,.12)"></rect>
+          <circle cx="27" cy="23" r="2" fill="var(--accent)"></circle>
+          <circle cx="36" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
+          <circle cx="45" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
+          </g><!-- /gCorePh -->
+        </g>
+        <!-- BACKEND purpose — terminal vector -->
+        <g id="gApi" opacity="0" transform="translate(500 700)">
+          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
+          <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></line>
+          <circle cx="-138" cy="-101" r="5" fill="var(--accent)"></circle>
+          <circle cx="-120" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
+          <circle cx="-102" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
+          <text x="0" y="-95" text-anchor="middle" fill="rgba(255,255,255,.35)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">API ENDPOINTS</text>
+          <!-- endpoint rows: method badge | path | latency bar | ms -->
+          <rect x="-140" y="-72" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-60" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-60" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/auth</text>
+          <rect x="20" y="-70" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-70" width="34" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-60" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">12ms</text>
+
+          <rect x="-140" y="-48" width="48" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-36" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">POST</text>
+          <text x="-84" y="-36" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/payments</text>
+          <rect x="20" y="-46" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-46" width="22" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-36" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">8ms</text>
+
+          <rect x="-140" y="-24" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="-12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/content</text>
+          <rect x="20" y="-22" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="-22" width="44" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="-12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">4ms</text>
+
+          <rect x="-140" y="0" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
+          <text x="-136" y="12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/ai-agent</text>
+          <rect x="20" y="2" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
+          <rect x="20" y="2" width="14" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
+          <text x="106" y="12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">24ms</text>
+
+          <line x1="-160" y1="32" x2="160" y2="32" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <circle cx="-138" cy="46" r="3" fill="var(--accent)"></circle>
+          <text x="-128" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">DB</text>
+          <circle cx="-96" cy="46" r="3" fill="var(--accent)"></circle>
+          <text x="-86" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">Cache</text>
+          <text x="106" y="50" text-anchor="end" fill="rgba(198,244,50,.48)" font-family="JetBrains Mono,monospace" font-size="9">99.9% up</text>
+          <g id="capgrp">
+            {Array.from({ length: 8 }, (_, i) => (
+              <rect class="capbar" id={`cb${i}`} x={-76 + i * 21} y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+            ))}
+          </g>
+        </g>
+        <!-- ENGINE now rendered as an HTML overlay (#snz-purpose) below; nothing here -->
+        <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
+        <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciProdAnPulse" x1="340" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="ciApiAnPulse"  x1="660" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <!-- analytics mini-card (SCALE phase) — after connectors so it paints over them -->
+        <g id="gAnalytics" opacity="0" transform="translate(500 460)">
+          <rect x="-128" y="-78" width="256" height="156" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <!-- ANALYTICS as real Archivo-800 glyph outlines; stroke-drawn then filled -->
+          <g id="snzWord" fill="var(--accent)" fill-opacity="0" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round">
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-77.22 14L-68.45 -9.36L-61.14 -9.36L-52.36 14L-58.86 14L-60.25 9.95L-69.57 9.95L-70.96 14ZM-68.11 5.4L-61.75 5.4L-63.41 0.47Q-63.55 0.09 -63.74 -0.47Q-63.92 -1.03 -64.11 -1.66Q-64.3 -2.29 -64.47 -2.93Q-64.64 -3.58 -64.81 -4.05L-65.05 -4.05Q-65.18 -3.41 -65.44 -2.59Q-65.69 -1.78 -65.95 -0.96Q-66.2 -0.14 -66.41 0.47Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-50.68 14L-50.68 -3.92L-46.09 -3.92L-45.68 -1.37L-45.44 -1.37Q-44.76 -2.29 -43.88 -2.97Q-43 -3.65 -41.87 -3.99Q-40.75 -4.33 -39.49 -4.33Q-37.56 -4.33 -36.21 -3.61Q-34.87 -2.9 -34.16 -1.47Q-33.44 -0.04 -33.44 2.17L-33.44 14L-39.02 14L-39.02 2.95Q-39.02 2.2 -39.21 1.67Q-39.39 1.15 -39.73 0.77Q-40.07 0.4 -40.58 0.23Q-41.09 0.06 -41.74 0.06Q-42.72 0.06 -43.47 0.52Q-44.22 0.98 -44.66 1.74Q-45.1 2.51 -45.1 3.53L-45.1 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-24.97 14.41Q-26.1 14.41 -27.17 14.19Q-28.24 13.97 -29.1 13.41Q-29.97 12.84 -30.48 11.86Q-30.99 10.87 -30.99 9.38Q-30.99 7.44 -30.18 6.21Q-29.36 4.99 -27.81 4.29Q-26.27 3.6 -24.07 3.32Q-21.88 3.05 -19.16 3.05L-19.16 1.93Q-19.16 1.15 -19.47 0.62Q-19.77 0.09 -20.37 -0.2Q-20.96 -0.48 -21.95 -0.48Q-22.83 -0.48 -23.49 -0.28Q-24.16 -0.08 -24.5 0.31Q-24.84 0.71 -24.84 1.25L-24.84 1.56L-30.28 1.56Q-30.31 1.39 -30.31 1.27Q-30.31 1.15 -30.31 0.94Q-30.31 -0.65 -29.31 -1.84Q-28.31 -3.03 -26.44 -3.68Q-24.57 -4.33 -21.91 -4.33Q-19.43 -4.33 -17.58 -3.71Q-15.73 -3.1 -14.65 -1.84Q-13.58 -0.59 -13.58 1.45L-13.58 9.1Q-13.58 9.68 -13.26 10.02Q-12.94 10.36 -12.46 10.36L-11.31 10.36L-11.31 13.8Q-11.68 13.97 -12.48 14.19Q-13.28 14.41 -14.4 14.41Q-15.56 14.41 -16.42 14.12Q-17.29 13.83 -17.85 13.3Q-18.41 12.78 -18.62 12.06L-18.85 12.06Q-19.5 12.74 -20.37 13.29Q-21.23 13.83 -22.37 14.12Q-23.51 14.41 -24.97 14.41ZM-22.9 10.57Q-22.08 10.57 -21.4 10.33Q-20.72 10.09 -20.23 9.66Q-19.74 9.24 -19.45 8.63Q-19.16 8.02 -19.16 7.3L-19.16 6.11Q-21.1 6.11 -22.49 6.38Q-23.89 6.66 -24.63 7.23Q-25.38 7.81 -25.38 8.7Q-25.38 9.34 -25.06 9.77Q-24.74 10.19 -24.19 10.38Q-23.65 10.57 -22.9 10.57Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-9.7 14L-9.7 -10.62L-4.12 -10.62L-4.12 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M2.29 20.7Q1.06 20.7 0.14 20.51Q-0.77 20.32 -1.15 20.19L-1.15 16.65L1.2 16.65Q2.15 16.65 2.83 16.23Q3.51 15.8 3.9 15.21Q4.29 14.61 4.46 14L-2.61 -3.92L3.34 -3.92L5.99 3.94Q6.2 4.48 6.45 5.35Q6.71 6.21 6.96 7.11Q7.22 8.02 7.39 8.73L7.59 8.73Q7.73 8.25 7.9 7.62Q8.07 7 8.24 6.33Q8.41 5.67 8.59 5.06Q8.78 4.45 8.92 3.97L11.19 -3.92L16.74 -3.92L10.55 13.29Q9.97 14.85 9.27 16.21Q8.58 17.57 7.62 18.57Q6.67 19.58 5.36 20.14Q4.05 20.7 2.29 20.7Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M24.54 14.41Q22.81 14.41 21.6 13.88Q20.39 13.35 19.8 12.3Q19.2 11.25 19.2 9.75L19.2 0.13L16.86 0.13L16.86 -3.92L19.37 -3.92L20.53 -9.15L24.74 -9.15L24.74 -3.92L28.25 -3.92L28.25 0.13L24.74 0.13L24.74 8.39Q24.74 9.34 25.12 9.85Q25.49 10.36 26.48 10.36L28.25 10.36L28.25 13.83Q27.8 13.97 27.14 14.12Q26.48 14.27 25.8 14.34Q25.12 14.41 24.54 14.41Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M30.65 -6.33L30.65 -10.62L36.22 -10.62L36.22 -6.33ZM30.65 14L30.65 -3.92L36.22 -3.92L36.22 14Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M48.24 14.41Q45.28 14.41 43.21 13.39Q41.13 12.37 40.03 10.28Q38.92 8.19 38.92 5.02Q38.92 1.86 40.05 -0.23Q41.17 -2.32 43.24 -3.34Q45.32 -4.36 48.24 -4.36Q50.14 -4.36 51.76 -3.92Q53.37 -3.48 54.58 -2.56Q55.79 -1.64 56.43 -0.25Q57.08 1.15 57.08 3.09L51.61 3.09Q51.61 1.93 51.22 1.18Q50.82 0.43 50.08 0.06Q49.33 -0.31 48.21 -0.31Q46.91 -0.31 46.12 0.23Q45.32 0.77 44.94 1.83Q44.57 2.88 44.57 4.45L44.57 5.67Q44.57 7.2 44.94 8.25Q45.32 9.31 46.17 9.84Q47.02 10.36 48.34 10.36Q49.5 10.36 50.26 10Q51.03 9.65 51.44 8.88Q51.84 8.12 51.84 6.96L57.08 6.96Q57.08 8.83 56.43 10.24Q55.79 11.65 54.6 12.57Q53.41 13.49 51.78 13.95Q50.14 14.41 48.24 14.41Z"></path>
+            <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M67.59 14.41Q65.83 14.41 64.28 14.03Q62.73 13.66 61.56 12.95Q60.39 12.23 59.72 11.18Q59.06 10.12 59.06 8.73Q59.06 8.59 59.06 8.48Q59.06 8.36 59.09 8.25L64.36 8.25Q64.36 8.32 64.36 8.41Q64.36 8.49 64.36 8.56Q64.4 9.31 64.86 9.8Q65.32 10.29 66.06 10.52Q66.81 10.74 67.7 10.74Q68.34 10.74 69.07 10.6Q69.8 10.46 70.31 10.12Q70.82 9.78 70.82 9.14Q70.82 8.42 70.2 8.05Q69.57 7.68 68.53 7.42Q67.49 7.17 66.3 6.93Q65.11 6.66 63.91 6.32Q62.7 5.98 61.7 5.38Q60.69 4.79 60.08 3.83Q59.47 2.88 59.47 1.42Q59.47 -0.14 60.13 -1.25Q60.79 -2.35 61.95 -3.03Q63.11 -3.71 64.62 -4.02Q66.13 -4.33 67.83 -4.33Q69.4 -4.33 70.81 -4.02Q72.22 -3.71 73.36 -3.09Q74.5 -2.46 75.14 -1.49Q75.79 -0.52 75.79 0.77Q75.79 0.94 75.77 1.13Q75.75 1.32 75.75 1.39L70.52 1.39L70.52 1.11Q70.52 0.54 70.14 0.16Q69.77 -0.21 69.12 -0.43Q68.48 -0.65 67.7 -0.65Q67.19 -0.65 66.69 -0.57Q66.2 -0.48 65.79 -0.33Q65.38 -0.18 65.13 0.09Q64.87 0.37 64.87 0.77Q64.87 1.28 65.32 1.61Q65.76 1.93 66.52 2.13Q67.29 2.34 68.21 2.58Q69.46 2.85 70.86 3.14Q72.25 3.43 73.49 3.95Q74.73 4.48 75.5 5.52Q76.26 6.55 76.26 8.36Q76.26 10.06 75.58 11.23Q74.9 12.4 73.71 13.1Q72.52 13.8 70.96 14.1Q69.4 14.41 67.59 14.41Z"></path>
+          </g>
+        </g>
+        <!-- SCALE: business-size title above the product -->
+        <g id="bizTitle" opacity="0">
+          <text id="bizNum" x="500" y="210" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">1,000</text>
+          <text id="bizSize" x="500" y="232" text-anchor="middle" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="12" letter-spacing="2.5">SMALL BUSINESS</text>
+        </g>
+        <!-- ===== ANALYTICS inside camera — natural size when camera zoom=3.4x ===== -->
+        <g id="analytics" opacity="0" transform="translate(500,460) scale(0.2941) translate(-500,-300)">
+          <rect x="64" y="34" width="872" height="532" rx="16" fill="#0b0b0b" stroke="rgba(255,255,255,.16)" stroke-width="1.5"></rect>
+          <text x="92" y="72" fill="#F2F0EA" font-family="Archivo,sans-serif" font-weight="800" font-size="21" letter-spacing="-0.02em">Analytics</text>
+          <text x="92" y="91" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10" letter-spacing="1">LAST 7 DAYS · LIVE</text>
+          <!-- stat tiles -->
+          <g font-family="Archivo,sans-serif">
+            <text id="anStatRev" x="92" y="150" fill="var(--accent)" font-weight="800" font-size="34" letter-spacing="-0.02em">£0.0K</text>
+            <text x="92" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">REVENUE</text>
+            <text id="anStatVis" x="300" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
+            <text x="300" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">VISITORS</text>
+            <text id="anStatSrc" x="508" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0.0M</text>
+            <text x="508" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SEARCH IMPRESSIONS</text>
+            <text id="anStatSig" x="716" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
+            <text x="716" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SIGN-UPS</text>
+          </g>
+          <line x1="92" y1="196" x2="908" y2="196" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <line x1="500" y1="210" x2="500" y2="556" stroke="rgba(255,255,255,.08)" stroke-width="1"></line>
+          <line x1="92" y1="392" x2="908" y2="392" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <!-- TL: traffic line -->
+          <text x="92" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">TRAFFIC OVER TIME</text>
+          <polyline id="anChart" points="92,360 130,350 168,356 206,334 244,322 282,326 320,302 358,292 396,300 434,274 472,250" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- TR: engagement heatmap -->
+          <text x="520" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">ENGAGEMENT HEATMAP</text>
+          <g id="anHeat"></g>
+          <!-- BL: search impressions -->
+          <text x="92" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">SEARCH IMPRESSIONS</text>
+          <text x="472" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 34%</text>
+          <g id="anSearch"></g>
+          <!-- BR: revenue -->
+          <text x="520" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">REVENUE / WEEK</text>
+          <text x="908" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 21%</text>
+          <g id="anRev"></g>
+        </g>
+        </g>
+      </svg>
+      <!-- ENGINE overlay (HTML): skewed services marquee + scroll-morphing browser -->
+      <div id="snz-purpose" style="position:absolute;inset:0;opacity:0;pointer-events:none;overflow:hidden">
+        <div class="pur-bg">
+          {PURPOSE_ROWS.map((row, r) => (
+            <div class={`pur-row ${row.dir}`} style={`--dur:${row.dur}s`}>
+              {[...row.items, ...row.items].map((s, k) => (
+                <span class="pur-it" data-cat={s.cat} style={`--fd:${(((r * 17 + k * 13) % 38) / 10).toFixed(2)}s;--fdur:${(1.6 + ((r * 7 + k * 11) % 18) / 10).toFixed(2)}s`}><svg viewBox="0 0 24 24" class="pur-ic" aria-hidden="true"><path d={s.path}></path></svg>{s.title}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div class="pur-fg">
+          <div class="pur-prod">
+          <div class="pur-prodi">
+          <div class="pur-browser">
+            <div class="pur-chrome"><i></i><i></i><i></i><div class="pur-url"></div></div>
+            <div class="pur-screen">
+              <!-- 01 landing -->
+              <div class="pur-view on" id="ev0">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="pur-btn pur-pl" style="width:64px;height:18px"></div></div>
+                <div class="pur-rw" style="gap:22px;align-items:center">
+                  <div class="pur-cl" style="flex:1;gap:10px">
+                    <div class="pur-bar pur-pl" style="height:18px;width:88%"></div>
+                    <div class="pur-bar pur-pl" style="height:18px;width:62%"></div>
+                    <div class="pur-bar dim pur-pl" style="height:7px;width:92%;margin-top:5px"></div>
+                    <div class="pur-bar dim pur-pl" style="height:7px;width:78%"></div>
+                    <div class="pur-rw" style="gap:9px;margin-top:10px"><div class="pur-btn pur-pl" style="width:84px;height:26px"></div><div class="pur-box pur-pl" style="width:70px;height:26px;border-radius:8px"></div></div>
+                  </div>
+                  <div class="pur-box pur-pl" style="flex:1;height:128px"></div>
+                </div>
+                <div class="pur-grid3" style="margin-top:18px"><div class="pur-box pur-pl" style="height:66px"></div><div class="pur-box pur-pl" style="height:66px"></div><div class="pur-box pur-pl" style="height:66px"></div></div>
+              </div>
+              <!-- 02 store -->
+              <div class="pur-view" id="ev1">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="pur-box pur-pl" style="width:24px;height:18px;border-radius:6px"></div></div>
+                <div class="pur-rw" style="justify-content:space-between;align-items:center;margin-bottom:12px"><div class="pur-bar pur-pl" style="height:12px;width:110px"></div><div class="pur-rw" style="gap:7px"><div class="pur-bar dim pur-pl" style="height:16px;width:48px;border-radius:8px"></div><div class="pur-bar dim pur-pl" style="height:16px;width:48px;border-radius:8px"></div></div></div>
+                <div class="pur-grid2">
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                  <div class="pur-pl"><div class="pur-box" style="height:62px"></div><div class="pur-bar" style="height:6px;margin-top:7px;width:70%"></div><div class="pur-bar acc" style="height:8px;margin-top:5px;width:34%"></div><div class="pur-btn" style="height:14px;margin-top:7px;border-radius:7px"></div></div>
+                </div>
+              </div>
+              <!-- 03 content -->
+              <div class="pur-view" id="ev2">
+                <div class="pur-nav"><div class="lg pur-pl"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div><div class="lk pur-pl"></div></div>
+                <div class="pur-bar pur-pl" style="height:15px;width:54%;margin-bottom:4px"></div>
+                <div class="pur-bar dim pur-pl" style="height:7px;width:40%;margin-bottom:12px"></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:70%"></div><div class="pur-bar dim" style="height:6px;width:90%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:60%"></div><div class="pur-bar dim" style="height:6px;width:88%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
+                <div class="pur-post pur-pl"><div class="pur-box" style="width:72px;height:46px;flex:none"></div><div class="pur-cl" style="gap:6px;flex:1"><div class="pur-bar" style="height:8px;width:66%"></div><div class="pur-bar dim" style="height:6px;width:84%"></div><div class="pur-bar acc" style="height:6px;width:24%"></div></div></div>
+              </div>
+              <!-- 04 web app (dashboard) — phone docks to the right of the browser (see .pur-appdock) -->
+              <div class="pur-view" id="ev3" style="padding:0;display:flex">
+                <div class="pur-rail pur-pl"><div class="rl"></div><div class="rd on"></div><div class="rd"></div><div class="rd"></div><div class="rd"></div></div>
+                <div class="pur-cl" style="flex:1;padding:16px 18px;gap:0;min-width:0">
+                  <div class="pur-nav"><div class="pur-bar pur-pl" style="height:10px;width:80px"></div><div class="sp"></div><div class="lk pur-pl"></div><div class="pur-box pur-pl" style="width:20px;height:20px;border-radius:50%"></div></div>
+                  <div class="pur-rw" style="gap:9px;margin-bottom:11px">
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar acc" style="height:13px;width:54%"></div><div class="pur-bar dim" style="height:5px;width:70%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar" style="height:13px;width:42%"></div><div class="pur-bar dim" style="height:5px;width:64%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar" style="height:13px;width:46%"></div><div class="pur-bar dim" style="height:5px;width:72%;margin-top:6px"></div></div>
+                    <div class="pur-box pur-pl" style="flex:1;height:50px;padding:9px"><div class="pur-bar acc" style="height:13px;width:40%"></div><div class="pur-bar dim" style="height:5px;width:66%;margin-top:6px"></div></div>
+                  </div>
+                  <div class="pur-rw" style="gap:11px">
+                    <div class="pur-box pur-pl" style="flex:2;height:120px;padding:12px;display:flex;align-items:flex-end;gap:6px">
+                      <div class="pur-bar dim" style="width:8px;height:30%"></div><div class="pur-bar dim" style="width:8px;height:46%"></div><div class="pur-bar dim" style="width:8px;height:40%"></div><div class="pur-bar acc" style="width:8px;height:62%"></div><div class="pur-bar dim" style="width:8px;height:54%"></div><div class="pur-bar acc" style="width:8px;height:78%"></div><div class="pur-bar dim" style="width:8px;height:70%"></div><div class="pur-bar acc" style="width:8px;height:92%"></div><div class="pur-bar acc" style="width:8px;height:100%"></div>
+                    </div>
+                    <div class="pur-cl" style="flex:1;gap:8px">
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar dim" style="height:6px;flex:1"></div></div>
+                      <div class="pur-rw pur-pl" style="gap:7px;align-items:center"><div class="pur-box" style="width:15px;height:15px;border-radius:50%"></div><div class="pur-bar dim" style="height:6px;flex:1"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- native mobile app: collapsed by default, expands right of the browser on the web-app stage -->
+          <div class="pur-appdock">
+            <div class="pur-phone" style="width:140px;height:288px">
+              <div class="pur-cl" style="gap:8px;padding:22px 11px 11px;height:100%">
+                <div class="pur-rw" style="align-items:center;gap:8px"><div class="pur-box" style="width:20px;height:20px;border-radius:50%"></div><div class="pur-cl" style="gap:4px;flex:1"><div class="pur-bar" style="height:6px;width:58%"></div><div class="pur-bar dim" style="height:4px;width:40%"></div></div></div>
+                <div class="pur-box" style="height:60px;margin-top:2px;display:flex;align-items:flex-end;gap:5px;padding:9px"><div class="pur-bar dim" style="width:7px;height:40%"></div><div class="pur-bar dim" style="width:7px;height:60%"></div><div class="pur-bar acc" style="width:7px;height:85%"></div><div class="pur-bar dim" style="width:7px;height:55%"></div><div class="pur-bar acc" style="width:7px;height:100%"></div></div>
+                <div class="pur-rw" style="gap:8px"><div class="pur-box" style="flex:1;height:36px"></div><div class="pur-box" style="flex:1;height:36px"></div></div>
+                <div class="pur-rw" style="align-items:center;gap:8px"><div class="pur-box" style="width:17px;height:17px;border-radius:50%"></div><div class="pur-cl" style="gap:4px;flex:1"><div class="pur-bar" style="height:5px;width:70%"></div><div class="pur-bar dim" style="height:4px;width:50%"></div></div></div>
+                <div style="flex:1"></div>
+                <div class="pur-rw" style="justify-content:space-around;border-top:1px solid rgba(255,255,255,.08);padding-top:9px"><div class="pur-dot on"></div><div class="pur-dot"></div><div class="pur-dot"></div><div class="pur-dot"></div></div>
+              </div>
+            </div>
+          </div>
+          </div><!-- /pur-prodi -->
+          </div><!-- /pur-prod -->
+          <div class="pur-cap"><span class="pur-step" id="pur-step">01</span><span class="pur-title" id="pur-title">A LANDING PAGE</span><small id="pur-sub">just a clean first impression</small></div>
+        </div>
+      </div>
+      <!-- captions -->
+      <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:392px">
+        <div style="text-align:right;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#a6a69e;margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
+        <div style="position:relative;height:10px;margin-bottom:9px">
+          <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
+            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(255,255,255,.12)">
+              <div id="fProg" style="height:100%;width:0;background:var(--accent);transition:width .08s linear"></div>
+            </div>
+            {buildTrack.map((_, i) => (
+              <span id={`td${i + 1}`} style={`position:absolute;top:50%;left:${[0, 25, 50, 75][i]}%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#0b0b0b;border:2px solid #2f2f2a;transition:border-color .4s ease,background .4s ease,box-shadow .4s ease`}></span>
+            ))}
+          </div>
+        </div>
+        <div style="position:relative;height:11px">
+          <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
+            {buildTrack.map((label, i) => (
+              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent)" : "#4a4a44"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="snz-bcaps" style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
+        {buildCaps.map((c, i) => (
+          <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
+            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
+            <h3 style="margin:0 0 9px;font:800 34px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">{c.title}</h3>
+            <p style={`margin:0;max-width:${c.max}px;font:400 15px/1.6 'JetBrains Mono',monospace;color:#c4c4bc`}>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initBuildFlow } from './buildflow';
+  initBuildFlow();
+</script>

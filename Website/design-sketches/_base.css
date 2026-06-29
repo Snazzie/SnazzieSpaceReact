@@ -1,0 +1,19 @@
+/* shared look — matches the consultation page */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+:root{ --accent:#C6F432; --bg:#0b0b0b; --panel:#0e0e0e; --ink:#F2F0EA; --dim:#7c7c74; }
+*{ box-sizing:border-box; }
+html,body{ margin:0; height:100%; background:var(--bg); color:var(--ink);
+  font-family:'JetBrains Mono',monospace; -webkit-font-smoothing:antialiased; }
+.stage{ position:relative; min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; overflow:hidden; padding:40px; }
+.caption{ position:absolute; left:40px; top:34px; max-width:520px; }
+.caption .kicker{ font:600 11px 'JetBrains Mono',monospace; letter-spacing:.2em; color:var(--accent); margin-bottom:12px; }
+.caption h2{ margin:0 0 10px; font:800 30px 'Archivo',sans-serif; letter-spacing:-.02em; }
+.caption p{ margin:0; max-width:460px; font:400 13.5px/1.6 'JetBrains Mono',monospace; color:var(--dim); }
+.tag{ position:absolute; right:40px; top:34px; font:600 11px 'JetBrains Mono',monospace; letter-spacing:.12em; color:var(--dim); }
+.backlink{ position:fixed; left:18px; bottom:16px; z-index:50; font:600 11px 'JetBrains Mono',monospace;
+  letter-spacing:.1em; color:var(--dim); text-decoration:none; border:1px solid rgba(255,255,255,.12);
+  padding:8px 12px; border-radius:8px; background:rgba(255,255,255,.02); }
+.backlink:hover{ color:var(--accent); border-color:var(--accent); }
+.prov{ color:var(--ink); }
+.prov::after{ content:'\25B8'; color:var(--accent); margin-left:8px; font-size:.8em; opacity:.7; }

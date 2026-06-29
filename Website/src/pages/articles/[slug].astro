@@ -55,6 +55,7 @@ function buildTtsScript(body: string): string {
   t = t.replace(/[›»«‹]/g, '');                               // strip decorative arrow/quote chars
   t = t.replace(/\n+/g, ' ... ');                              // flatten newlines → inline pause markers
   t = t.replace(/ {2,}/g, ' ');                               // collapse spaces created by flatten
+  t = t.replace(/^(?:\s*\.\.\.\s*)+/, '').replace(/(?:\s*\.\.\.\s*)+$/, ''); // drop leading/trailing pause markers from stripped imports/components
   return t.trim();
 }
 

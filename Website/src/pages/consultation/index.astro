@@ -1,0 +1,159 @@
+---
+import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+import Nav from '@/components/consultation/Nav.astro';
+import Hero from '@/components/consultation/Hero.astro';
+import Statement from '@/components/consultation/Statement.astro';
+import WireColumns from '@/components/consultation/WireColumns.astro';
+import BuildFlow from '@/components/consultation/BuildFlow.astro';
+import Services from '@/components/consultation/Services.astro';
+import Work from '@/components/consultation/Work.astro';
+import Comparison from '@/components/consultation/Comparison.astro';
+import Transparency from '@/components/consultation/Transparency.astro';
+import Pricing from '@/components/consultation/Pricing.astro';
+import Ownership from '@/components/consultation/Ownership.astro';
+import Process from '@/components/consultation/Process.astro';
+import Faq from '@/components/consultation/Faq.astro';
+import Closing from '@/components/consultation/Closing.astro';
+import Footer from '@/components/consultation/Footer.astro';
+
+// Structured data: who is behind this and what is offered.
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Snazzie',
+  description:
+    'Freelance software engineer building bespoke websites, mobile apps and full products for individuals and small businesses in the UK.',
+  areaServed: 'GB',
+  url: 'https://snazzie.space/consultation/',
+  email: 'info@snazzie.space',
+  priceRange: 'From £1500',
+  serviceType: ['Web development', 'Mobile app development', 'Product development'],
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead
+      title="Freelance Web Developer & App Builder (UK) | Snazzie"
+      description="Bespoke, hand-built websites, mobile apps and products for individuals and small businesses. From £1500, owned by you outright, with optional monthly care."
+      path="/consultation/"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="snz-root" style="background:#0a0a0a;color:#F2F0EA;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip">
+      <Nav />
+      <!-- hero, statement and the build story share ONE wireframe wall (#snz-wbg, booted + animated by buildflow.ts) -->
+      <div id="snz-wallzone" style="position:relative;background:#0b0b0b">
+        <!-- out-of-flow layer holding a viewport-tall sticky wall behind everything in the zone -->
+        <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+          <div id="snz-wbg" aria-hidden="true" style="position:sticky;top:var(--snz-nav-h,56px);height:calc(100vh - var(--snz-nav-h,56px));display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.55;overflow:hidden;will-change:transform">
+            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0b0b0b 0%,transparent 12%,transparent 88%,#0b0b0b 100%);z-index:1;pointer-events:none"></div>
+            <WireColumns />
+          </div>
+        </div>
+        <Hero />
+        <Statement />
+        <BuildFlow />
+      </div>
+      <Services />
+      <Work />
+      <Comparison />
+      <Transparency />
+      <Ownership />
+      <Pricing />
+      <Process />
+      <Faq />
+      <Closing />
+      <Footer />
+    </div>
+
+    <script>
+      // Page-wide reveal-on-scroll + magnetic buttons.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('is-in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const el = entry.target as HTMLElement;
+                el.style.transitionDelay = (el.dataset.delay || 0) + 'ms';
+                el.classList.add('is-in');
+                io.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -10% 0px' },
+        );
+        els.forEach((el) => io.observe(el));
+
+        // Magnetic hover on tagged buttons.
+        document.querySelectorAll<HTMLElement>('[data-mag]').forEach((el) => {
+          el.addEventListener('mousemove', (ev) => {
+            const r = el.getBoundingClientRect();
+            const x = ev.clientX - r.left - r.width / 2;
+            const y = ev.clientY - r.top - r.height / 2;
+            el.style.transform = 'translate(' + (x * 0.28).toFixed(1) + 'px,' + (y * 0.4).toFixed(1) + 'px)';
+          });
+          el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
+        });
+      }
+    </script>
+
+    <style is:global>
+      @keyframes snz-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+      @keyframes snz-scan { 0% { transform: translateY(0); } 100% { transform: translateY(260px); } }
+      @keyframes snz-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+      @keyframes snz-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+      @keyframes snz-appscroll { 0% { transform: translateY(0); } 100% { transform: translateY(-240px); } }
+      @keyframes snz-ring { 0% { transform: scale(1); opacity: .4; } 100% { transform: scale(2.4); opacity: 0; } }
+      @keyframes snz-dotflow { to { stroke-dashoffset: -0.2; } }
+
+      :root { --accent: #C6F432; --ink: #0a0a0a; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+      }
+      [data-reveal].is-in { opacity: 1; transform: none; }
+
+      #snz-build .cap { transition: opacity .55s ease, transform .55s ease; }
+      .snz-magwrap { display: inline-block; }
+
+      .snz-card:hover { background: #101010 !important; transform: translateY(-4px); }
+      .snz-step:hover { padding-left: 14px; }
+
+      @media (max-width: 880px) {
+        #snz-hero { grid-template-columns: 1fr !important; }
+        #snz-hero .snz-right { border-left: none !important; border-top: 1px solid rgba(255,255,255,.1) !important; }
+        #snz-svc { grid-template-columns: 1fr !important; }
+        #snz-stats { grid-template-columns: 1fr 1fr !important; }
+        #snz-pricegrid { grid-template-columns: 1fr !important; }
+        .snz-h1 { font-size: 46px !important; }
+        .snz-display { font-size: 42px !important; }
+        #snz-build { height: 600vh !important; }
+        #snz-build .cap h3 { font-size: 23px !important; }
+        #snz-buildtop { padding: 18px 24px 0 !important; }
+        #snz-buildtop .snz-track { display: none !important; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] { transition: none; }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+// Sticky top navigation for the consultation page.
+const LINKS = [
+  { href: '#snz-build', label: 'THE BUILD' },
+  { href: '#snz-services', label: 'SERVICES' },
+  { href: '#snz-pricing', label: 'PRICING' },
+  { href: '#snz-process', label: 'PROCESS' },
+];
+---
+<nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(10,10,10,0.72)] backdrop-blur-[14px] border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
+  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA] no-underline flex-none">SNAZZIE<span class="text-[var(--accent)]">°</span></a>
+  <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
+    <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
+      {LINKS.map((l) => (
+        <a href={l.href} class="text-[#a8a89f] no-underline">{l.label}</a>
+      ))}
+    </div>
+    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent)] border border-[rgba(198,244,50,0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+  </div>
+</nav>

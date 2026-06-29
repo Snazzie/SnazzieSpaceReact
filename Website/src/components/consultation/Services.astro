@@ -1,0 +1,33 @@
+---
+// Services grid: the things people come to me to build.
+const services = [
+  { n: '01', title: 'Websites', body: 'A one-of-a-kind website, built by hand from a blank page — no templates, no WordPress. Designed around you and truly yours to own.' },
+  { n: '02', title: 'Mobile apps', body: 'Apps for iPhone and Android, built once and sent to both app stores — smooth, fast and right at home on a phone.' },
+  { n: '03', title: 'Products, from scratch', body: 'Got an idea? I take it from a sketch to a real, working product people can use — designed and built with you at every step.' },
+  { n: '04', title: 'The engine behind it', body: 'The behind-the-scenes part that makes everything work — accounts, logins, payments and data, set up to be safe and to grow with you.' },
+  { n: '05', title: 'Smart AI features', body: 'Helpful AI built into your product where it genuinely adds value — answering questions, cutting out busywork — never gimmicks.' },
+  { n: '06', title: 'A second opinion', body: "Already had something built? I'll review it and tell you in plain English what's working, what's risky, and what to fix first." },
+];
+---
+<section id="snz-services" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+  <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
+    <div>
+      <div class="inline-flex items-center gap-2 mb-[18px] py-[6px] pl-[10px] pr-[14px] rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)]">
+        <span class="w-[6px] h-[6px] rounded-full bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]"></span>
+        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[#6a6a62]">01</span>
+        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)]">CAPABILITIES</span>
+      </div>
+      <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">What I build</h2>
+    </div>
+    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Whatever you need made, I can probably make it. A few of the things people come to me for — explained without the jargon.</p>
+  </div>
+  <div id="snz-svc" class="grid grid-cols-3 gap-px bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)]">
+    {services.map((s, i) => (
+      <div data-reveal data-delay={(i % 3) * 70} class="snz-card bg-[#0a0a0a] pt-[34px] pb-[34px] px-[30px] cursor-default transition-[background,transform] duration-[.35s] ease">
+        <div class="font-bold text-[13px] font-['JetBrains_Mono'] text-[#3a3a36] mb-[46px]">{s.n}</div>
+        <h3 class="mt-0 mb-3 mx-0 font-bold text-[22px] font-['Archivo'] tracking-[-0.02em]">{s.title}</h3>
+        <p class="m-0 font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">{s.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
