@@ -225,6 +225,7 @@
 .rl-section-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--amber-dim),transparent);}
 .rl-hits-label{font-family:'VT323',monospace;font-size:1rem;letter-spacing:.1em;
   color:#8a754f;text-transform:uppercase;align-self:center;white-space:nowrap;}
+.rl-hits-note{margin:0 0 1rem;color:var(--amber-dim);font-size:.95rem;letter-spacing:.05em;}
 
 /* schedule */
 .rl-schedule{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}

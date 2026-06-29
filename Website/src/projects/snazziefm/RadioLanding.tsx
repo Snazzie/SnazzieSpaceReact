@@ -417,9 +417,6 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
       <footer className="rl-footer">
         <span>
           SNAZZIE FM &middot; All transmissions are fictional
-          <span className="rl-footer-note">
-            Every Snazzie FM Original references a program &mdash; listen in on the lyrics.
-          </span>
         </span>
         <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
       </footer>

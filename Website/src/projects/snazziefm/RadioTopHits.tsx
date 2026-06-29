@@ -16,6 +16,9 @@ export default function RadioTopHits({ music, musicIdx, musicPlaying, musicLoadi
         <span className="rl-hits-label">Snazzie FM Originals</span>
         <span className="rl-section-rule" />
       </h2>
+      <p className="rl-hits-note">
+        Every Snazzie FM Original references a program &mdash; listen in on the lyrics.
+      </p>
       <ol className="rl-hits">
         {music.map((track, i) => {
           const isActive = musicIdx === i;
