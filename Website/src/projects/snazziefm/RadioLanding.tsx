@@ -150,7 +150,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
           </div>
         </div>
 
-        <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
+        <a href="/snazziefm/behindthescenes/" className="rl-bts-link">See Tech Behind &rarr;</a>
       </header>
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -418,7 +418,7 @@ export default function RadioLanding({ episodes, music = [], ads = [], cast }: P
         <span>
           SNAZZIE FM &middot; All transmissions are fictional
         </span>
-        <a href="/snazziefm/behindthescenes" className="rl-bts-link">See Tech Behind &rarr;</a>
+        <a href="/snazziefm/behindthescenes/" className="rl-bts-link">See Tech Behind &rarr;</a>
       </footer>
     </div>
   );

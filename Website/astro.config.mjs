@@ -48,7 +48,11 @@ function radioSaveDevPlugin() {
 export default defineConfig({
   site: "https://snazzie.space",
   base: "/",
-  integrations: [consentHeadIntegration(), ttsTxtIntegration(), react(), mdx(), sitemap()],
+  integrations: [consentHeadIntegration(), ttsTxtIntegration(), react(), mdx(), sitemap({
+    serialize(item) {
+      return { ...item, lastmod: new Date().toISOString() };
+    },
+  })],
 
   markdown: {
     processor: unified({ rehypePlugins: [rehypeStripTtsMarkers] }),

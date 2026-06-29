@@ -47,7 +47,7 @@ export default function RadioAdSpot({ ad, adIndex, adIdx, adPlaying, adLoading, 
         </button>
         <p className="rl-adspot-fine">
           Your voice on the radio, instantly.{" "}
-          <a href="/snazziefm/instaad" className="rl-adspot-tos">Terms and conditions apply.</a>
+          <a href="/snazziefm/instaad/" className="rl-adspot-tos">Terms and conditions apply.</a>
         </p>
       </div>
     </section>
