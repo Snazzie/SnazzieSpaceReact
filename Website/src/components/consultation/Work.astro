@@ -1,0 +1,132 @@
+---
+// Selected work + credibility proof. Pulls REAL shipped products from the
+// shared projects data so nothing here is invented. Testimonials render only
+// when real quotes are supplied (none yet) — see `testimonials` below.
+import { projects } from '@/data/projects';
+
+// Curate: featured, client-relevant products, capped to 6 for this page.
+const PREFERRED = [
+  'Lunar Portfolio',
+  'CloudCat',
+  'Better Task Manager',
+  'RaceIQ',
+  'Snazzie FM',
+  'Worth My Time',
+];
+const byTitle = (t: string) => projects.find((p) => p.title === t);
+const work = PREFERRED.map(byTitle).filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+// Honest, data-derived proof points (no invented numbers).
+const shipped = projects.length;
+const proof = [
+  { value: `${shipped}+`, label: 'products designed & shipped' },
+  { value: 'Web · iOS · Android', label: 'and desktop, one builder' },
+  { value: 'Solo, end to end', label: 'design, build and backend' },
+];
+
+// TODO(owner): add real client quotes here to switch this block on.
+// Leave empty to render nothing — never ship placeholder testimonials.
+const testimonials: { quote: string; name: string; role: string }[] = [];
+---
+<section id="snz-work" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+  <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
+    <div>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 02 ] SELECTED WORK</div>
+      <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em] max-[760px]:text-[42px]">Real products, shipped</h2>
+    </div>
+    <p class="m-0 max-w-[360px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Not mock-ups or themes. A few things I have designed and built end to end, live and in people's hands.</p>
+  </div>
+
+  <!-- founder: who you actually talk to (real details from the main site) -->
+  <div data-reveal class="grid grid-cols-[auto_1fr] gap-7 items-center border border-[rgba(255,255,255,0.1)] bg-[#0c0c0c] p-8 mb-7 max-[620px]:grid-cols-1 max-[620px]:gap-5 max-[620px]:p-7">
+    <img
+      src="/images/avatar.webp"
+      alt="Aaron, the engineer you work with"
+      width="112"
+      height="112"
+      loading="lazy"
+      decoding="async"
+      class="w-[112px] h-[112px] rounded-full object-cover border border-[rgba(255,255,255,0.12)] max-[620px]:w-[88px] max-[620px]:h-[88px]"
+    />
+    <div>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-2.5">WHO YOU WORK WITH</div>
+      <h3 class="m-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA]">Aaron <span class="font-medium text-[16px] text-[#7c7c74]">(Snazzie)</span></h3>
+      <p class="mt-1 mb-3 font-medium text-[12.5px] font-['JetBrains_Mono'] tracking-[.04em] text-[#9a9a92]">Software Engineer · All Stack · England</p>
+      <p class="m-0 max-w-[560px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#cfcfc7]">Full-stack across frontend, backend, cross-platform apps and cloud, focused on performance and clean systems. You deal with the person building it, start to finish. No account managers, no handoffs.</p>
+    </div>
+  </div>
+
+  <!-- credibility strip (real, data-derived) -->
+  <div data-reveal class="grid grid-cols-3 gap-px bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)] mb-7 max-[760px]:grid-cols-1">
+    {proof.map((p) => (
+      <div class="bg-[#0a0a0a] py-[26px] px-8">
+        <div class="font-extrabold text-[24px] font-['Archivo'] tracking-[-0.02em] text-[var(--accent)]">{p.value}</div>
+        <div class="font-medium text-[12px] font-['JetBrains_Mono'] text-[#7c7c74] mt-1.5">{p.label}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- work grid -->
+  <div id="snz-workgrid" class="grid grid-cols-3 gap-px bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)] max-[980px]:grid-cols-2 max-[680px]:grid-cols-1">
+    {work.map((p, i) => {
+      const external = p.href.startsWith('http');
+      return (
+        <a
+          data-reveal
+          data-delay={(i % 3) * 70}
+          href={p.href}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
+          class="snz-work-card group bg-[#0a0a0a] flex flex-col no-underline transition-[background,transform] duration-[.35s] ease"
+        >
+          <div class="relative aspect-[16/10] overflow-hidden bg-[#0c0c0c] border-b border-[rgba(255,255,255,0.06)]">
+            <img
+              src={p.image}
+              alt={p.title}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full transition-transform duration-[.5s] ease group-hover:scale-[1.04]"
+              style={`object-fit:${p.imageFit === 'contain' ? 'contain' : 'cover'};${p.imageFit === 'contain' ? 'padding:18px' : ''}`}
+            />
+          </div>
+          <div class="p-7 flex flex-col flex-1 max-[760px]:p-6">
+            <div class="flex items-center justify-between gap-3 mb-2.5">
+              <h3 class="m-0 font-bold text-[20px] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA]">{p.title}</h3>
+              <span class="font-bold text-[12px] font-['JetBrains_Mono'] text-[#3a3a36] group-hover:text-[var(--accent)] transition-colors">↗</span>
+            </div>
+            <p class="m-0 font-normal text-[13px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92] flex-1">{p.description}</p>
+            {p.tech && (
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                {p.tech.slice(0, 4).map((t) => (
+                  <span class="font-medium text-[10px] font-['JetBrains_Mono'] tracking-[.04em] text-[#7c7c74] border border-[rgba(255,255,255,0.1)] rounded-full py-[3px] px-2.5">{t}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      );
+    })}
+  </div>
+
+  {testimonials.length > 0 && (
+    <div id="snz-quotes" class="grid grid-cols-2 gap-6 mt-7 max-[760px]:grid-cols-1">
+      {testimonials.map((t) => (
+        <figure data-reveal class="m-0 border border-[rgba(255,255,255,0.1)] bg-[#0c0c0c] p-9 rounded-[16px]">
+          <blockquote class="m-0 font-normal text-[15px] leading-[1.6] font-['JetBrains_Mono'] text-[#cfcfc7]">“{t.quote}”</blockquote>
+          <figcaption class="mt-5 font-['JetBrains_Mono'] text-[12px] text-[#7c7c74]"><span class="text-[var(--accent)] font-semibold">{t.name}</span> · {t.role}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .snz-work-card:hover { background: #101010; transform: translateY(-4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .snz-work-card { transition: none; }
+    .snz-work-card:hover { transform: none; }
+  }
+  @media (max-width: 860px) {
+    #snz-work { padding: 64px 22px !important; }
+  }
+</style>
