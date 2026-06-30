@@ -170,6 +170,12 @@ Generates `Website/public/audio/<slug>.flac` and `<slug>-waveform.json`.
 
 Regenerate all: `python scripts/generate-audio.py --all` (or `.venv-tts/bin/python ...` on Mac)
 
+Add `--validate` to transcribe the rendered audio with `faster-whisper tiny.en` and warn on missing words:
+
+```bash
+.venv-tts/bin/python scripts/generate-audio.py <slug> --validate
+```
+
 ## Step 5 — Verify build
 
 Build already ran in Step 4. Check it passed with no errors.

@@ -68,7 +68,43 @@ def generate_waveform(slug: str) -> None:
     print(f"  waveform: {out.name}")
 
 
-def generate(slug: str, model) -> None:
+_WHISPER_MODEL = None
+
+def _get_whisper():
+    global _WHISPER_MODEL
+    if _WHISPER_MODEL is None:
+        from faster_whisper import WhisperModel
+        device = detect_device()
+        _WHISPER_MODEL = WhisperModel("tiny.en", device=device, compute_type="float16" if device != "cpu" else "int8")
+    return _WHISPER_MODEL
+
+
+def _text_words(text: str) -> list[str]:
+    import re
+    return re.findall(r"[a-z']+", text.lower())
+
+
+def validate_audio(audio: "np.ndarray", expected_text: str, slug: str) -> None:
+    """Transcribe rendered audio with Whisper and warn on missing words."""
+    import io
+    expected = _text_words(expected_text)
+    if not expected:
+        return
+    buf = io.BytesIO()
+    sf.write(buf, audio[0], SAMPLE_RATE, format="wav")
+    buf.seek(0)
+    segs, _ = _get_whisper().transcribe(buf, language="en")
+    transcript = " ".join(s.text for s in segs)
+    got = set(_text_words(transcript))
+    missing = [w for w in expected if w not in got]
+    if missing:
+        pct = len(missing) / len(expected) * 100
+        print(f"  WARNING {slug}: {len(missing)}/{len(expected)} words missing ({pct:.0f}%) — {missing[:10]}{'...' if len(missing) > 10 else ''}")
+    else:
+        print(f"  validate: ok ({len(expected)} words)")
+
+
+def generate(slug: str, model, validate: bool = False) -> None:
     txt = AUDIO_DIR / f"{slug}.txt"
     if not txt.exists():
         print(f"  skip (no .txt — run bun build first): {slug}")
@@ -80,6 +116,8 @@ def generate(slug: str, model) -> None:
 
     audio = model.generate(text=text, ref_audio=REF_AUDIO, ref_text=REF_TEXT, instruct=SPEECH_INSTRUCT, speed=SPEECH_SPEED)
     sf.write(str(out), audio[0], SAMPLE_RATE, format="flac")
+    if validate:
+        validate_audio(audio, text, slug)
     generate_waveform(slug)
     print(f"  done: {slug}")
 
@@ -121,6 +159,7 @@ def main() -> None:
     parser.add_argument("--sample", nargs=2, metavar=("NAME", "TEXT"),
                         help="Generate a single sample clip: --sample <name> <text>")
     parser.add_argument("--seed", type=int, default=SEED, help=f"RNG seed for reproducible output (default: {SEED})")
+    parser.add_argument("--validate", action="store_true", help="Transcribe each rendered clip with Whisper and warn if words are missing.")
     args = parser.parse_args()
     SEED = args.seed
     torch.manual_seed(SEED)
@@ -153,7 +192,7 @@ def main() -> None:
 
     print(f"Generating audio for {len(slugs)} article(s)...")
     for slug in slugs:
-        generate(slug, model)
+        generate(slug, model, validate=args.validate)
 
 
 if __name__ == "__main__":
