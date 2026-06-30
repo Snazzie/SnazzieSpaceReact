@@ -92,6 +92,12 @@ Format: `word[CMU phonemes]` — display shows `word`, TTS says the phoneme sequ
 | `Hono` | "ho-no" | `Hono[HH OW1 N OW0]` |
 | `PostCSS` | "post-C-S-S" | `PostCSS[P OW1 S T S IY1 EH1 S EH1 S]` |
 
+**Common mispronunciations** (words TTS gets wrong):
+
+| Written | Wrong | Right | Marker |
+|---------|-------|-------|--------|
+| `rougher` | "rouer" | "ruffer" | `rougher[R AH1 F ER0]` |
+
 For new terms: look up the CMU pronunciation dictionary, or spell each letter/syllable as ARPAbet phonemes.
 
 ### Domain names in prose

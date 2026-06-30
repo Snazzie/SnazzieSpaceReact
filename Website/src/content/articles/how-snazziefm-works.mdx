@@ -37,6 +37,10 @@ After generation, the script decodes each FLAC, measures its actual duration, an
 
 Terms and acronyms get CMU ARPAbet phoneme annotations in the source text before being sent to the model. The display layer strips those markers out; the voice model receives the phoneme sequence instead of the raw text. This is the same pipeline used for article narration on this site.
 
+Speed is also a tunable parameter. Some voice clones come out slow and slightly slurred at their default rate — the pacing works for the reference material but drags on radio. The generation script applies a global speed multiplier (currently 1.15x) that tightens delivery across all voices and gives the station a sense of urgency without sounding rushed.
+
+After generation, each clip goes through a validation pass. The script runs `faster-whisper` (`tiny.en` model) on the rendered audio and transcribes it back to text. That transcript is compared word-by-word against the original line. If any words are missing, the script prints a warning with the clip index, speaker, and the specific words that didn't make it through. The validation catches mispronounced words the phoneme annotations didn't fully fix, swallowed consonants at the end of clips, and the occasional model hallucination where the voice just skips a phrase. It doesn't auto-retry — the warning is the signal to check that clip manually and decide whether it needs a new take.
+
 ## The Web Audio API architecture
 
 The audio engine uses the Web Audio API[EY1 P IY0 AY1] directly — no library wrapper. Everything goes through a single shared `AudioContext`, and every clip is an `AudioBufferSourceNode` connected to a shared analyser chain.
@@ -132,7 +136,7 @@ That gain gets applied via a GainNode[G EY1 N N OW1 D] between the source and th
 
 ## Ad scheduling
 
-Between every episode, a commercial break fires. The break contains six ads, drawn from two pools: "Pro" spots (pre-produced, polished) and InstaAds (rougher, blunder-style spots). The scheduler alternates between the two types and enforces a hard rule: InstaAds never air back-to-back.
+Between every episode, a commercial break fires. The break contains six ads, drawn from two pools: "Pro" spots (pre-produced, polished) and InstaAds (rougher[R AH1 F ER0], blunder-style spots). The scheduler alternates between the two types and enforces a hard rule: InstaAds never air back-to-back.
 
 The Pro pool uses a shuffle bag — every spot plays before any repeats. The InstaAd pool groups spots by business (a business may have two takes), shuffles businesses, and keeps takes in order within each business. When a pool drains, it reshuffles — but the spots that aired in the current block get pushed to the back of the new cycle so the same ad can't appear twice in one break.
 

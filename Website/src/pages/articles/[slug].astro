@@ -14,7 +14,9 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const tocHeadings = headings.filter(h => h.depth === 2);
+const hasToc = tocHeadings.length >= 2;
 
 const formattedDate = post.data.date.toLocaleDateString('en-GB', {
   year: 'numeric',
@@ -145,6 +147,9 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
         { "@type": "ListItem", "position": 3, "name": post.data.title }
       ]
     })} />
+    <style>
+      .prose h2, .prose h3, .prose h4 { scroll-margin-top: 5rem; }
+    </style>
   </head>
   <body class="bg-background text-foreground antialiased">
     <header id="sticky-header" class="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-white/5 -translate-y-full transition-transform duration-200">
@@ -188,7 +193,31 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
     </header>
 
     <main class="min-h-screen pt-10 pb-24">
-      <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="px-4 sm:px-6 lg:px-8">
+        <div class={`mx-auto ${hasToc ? 'xl:flex xl:gap-16 xl:items-start xl:max-w-[1200px] max-w-3xl' : 'max-w-3xl'}`}>
+
+          {hasToc && (
+            <aside class="hidden xl:block xl:w-52 xl:shrink-0">
+              <nav class="sticky top-24" aria-label="Table of contents">
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-white/25 mb-4">On this page</p>
+                <ul class="space-y-1">
+                  {tocHeadings.map(h => (
+                    <li>
+                      <a
+                        href={`#${h.slug}`}
+                        data-toc-link={h.slug}
+                        class="block text-sm text-white/40 hover:text-white/70 transition-colors leading-snug py-0.5 border-l border-transparent hover:border-white/20 pl-3 -ml-3"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </aside>
+          )}
+
+          <article class={`min-w-0 w-full ${hasToc ? 'mx-auto xl:mx-0' : ''}`}>
 
         <nav aria-label="Breadcrumb" class="mb-8">
           <a href="/articles/" class="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
@@ -302,7 +331,9 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
           </a>
         </nav>
 
-      </article>
+          </article>
+        </div>
+      </div>
     </main>
 
     <script is:inline>
@@ -455,6 +486,53 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
         });
         resizeCanvas(bodyCanvas);
         requestAnimationFrame(function () { resizeCanvas(stickyCanvas); });
+      })();
+    </script>
+    <script is:inline>
+      (function () {
+        // Heading anchor link icons (show on hover, click copies anchor to URL)
+        var linkSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:0.85em;height:0.85em;display:inline-block;vertical-align:middle"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+        document.querySelectorAll('.prose h2, .prose h3').forEach(function (h) {
+          if (!h.id) return;
+          h.style.position = 'relative';
+          var a = document.createElement('a');
+          a.href = '#' + h.id;
+          a.setAttribute('aria-label', 'Link to this section');
+          a.innerHTML = linkSvg;
+          a.style.cssText = 'position:absolute;right:0;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.15s;color:rgba(255,255,255,0.3);padding:0.15em 0.25em;';
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            history.pushState(null, '', '#' + h.id);
+            h.scrollIntoView({ behavior: 'smooth' });
+          });
+          h.addEventListener('mouseenter', function () { a.style.opacity = '1'; });
+          h.addEventListener('mouseleave', function () { a.style.opacity = '0'; });
+          h.appendChild(a);
+        });
+
+        // TOC active state via IntersectionObserver
+        var tocLinks = document.querySelectorAll('[data-toc-link]');
+        if (!tocLinks.length) return;
+        var activeClass = ['text-white', 'border-l', 'border-white/40', 'pl-3', '-ml-3'];
+        var inactiveClass = ['text-white/40', 'border-l', 'border-transparent', 'pl-3', '-ml-3'];
+        function setActive(slug) {
+          tocLinks.forEach(function (link) {
+            var isActive = link.getAttribute('data-toc-link') === slug;
+            activeClass.forEach(function (c) { link.classList.toggle(c, isActive); });
+            inactiveClass.forEach(function (c) {
+              if (!isActive) link.classList.add(c);
+              else link.classList.remove('text-white/40', 'border-transparent');
+            });
+          });
+        }
+        var headingEls = Array.from(document.querySelectorAll('.prose h2[id]'));
+        if (!headingEls.length) return;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-10% 0px -80% 0px' });
+        headingEls.forEach(function (h) { io.observe(h); });
       })();
     </script>
     <script is:inline>
