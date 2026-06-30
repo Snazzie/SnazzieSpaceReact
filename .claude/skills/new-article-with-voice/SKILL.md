@@ -130,34 +130,45 @@ React, Astro, Tailwind, Python, Rust, Go, Node, Bun, Docker — TTS handles thes
 
 ## Step 4 — Generate audio
 
-The build auto-generates `.txt` TTS scripts into `Website/public/audio/` via the `tts-txt-generator` Astro integration. Delete `dist/` first to prevent stale cache, then build:
+The build auto-generates `.txt` TTS scripts into `Website/public/audio/` via the `tts-txt-generator` Astro integration. The integration also writes to `dist/audio/` on build:done so Astro's public-dir restore doesn't clobber the output.
+
+**Validate txt before generating audio.** Read `Website/public/audio/<slug>.txt` and confirm content matches MDX changes. Only proceed once the txt is correct.
+
+### macOS (Apple Silicon — MPS)
+
+```bash
+# txt is written by bun run build; validate it first
+cd /Users/acoop/Documents/GitHub/SnazzieSpaceReact/Website && bun run build
+head -c 200 public/audio/<slug>.txt
+
+# Generate FLAC + waveform
+cd /Users/acoop/Documents/GitHub/SnazzieSpaceReact
+.venv-tts/bin/python scripts/generate-audio.py <slug>
+```
+
+Uses MPS (Metal Performance Shaders) device automatically on Apple Silicon.
+
+### Windows (CUDA GPU)
 
 ```powershell
+# Build + validate txt
 Remove-Item -Recurse -Force "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\dist" -ErrorAction SilentlyContinue
 Set-Location "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website"
 bun run build
-```
-
-**Validate txt before generating audio.** Read the first few lines of `Website/public/audio/<slug>.txt` and confirm the content matches your MDX changes.
-
-```powershell
 Get-Content "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact\Website\public\audio\<slug>.txt" | Select-Object -First 3
-```
 
-Only proceed once the txt reflects the current MDX.
-
-Then generate audio — Python reads the `.txt`, sends to OmniVoice, writes FLAC:
-
-```powershell
+# Generate FLAC + waveform
 $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH", "User") + ";" + [System.Environment]::GetEnvironmentVariable("PATH", "Machine")
 $env:PYTHONIOENCODING = "utf-8"
 Set-Location "C:\Users\acoop\Documents\GitHub\SnazzieSpaceReact"
 python scripts/generate-audio.py <slug>
 ```
 
+Uses CUDA automatically when a GPU is available; falls back to CPU otherwise.
+
 Generates `Website/public/audio/<slug>.flac` and `<slug>-waveform.json`.
 
-Regenerate all: `python scripts/generate-audio.py --all`
+Regenerate all: `python scripts/generate-audio.py --all` (or `.venv-tts/bin/python ...` on Mac)
 
 ## Step 5 — Verify build
 
