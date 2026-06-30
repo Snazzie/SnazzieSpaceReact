@@ -46,6 +46,12 @@ function mdxToTtsScript(content) {
   // Remove data-tts-skip blocks
   content = removeSkipBlocks(content);
 
+  // Strip fenced code blocks entirely (must run before inline-code strip —
+  // otherwise the fence's triple-backtick confuses the single-backtick regex
+  // and swallows adjacent inline code like `AudioContext`).
+  // Use \x60 (backtick) to avoid any bundler/template-literal parsing edge cases.
+  content = content.replace(/\x60{3}[\s\S]*?\x60{3}/g, '');
+
   // Strip JSX expressions {expr}
   content = content.replace(/\{[^}]*\}/g, '');
 
@@ -92,11 +98,27 @@ function generateAllTxt() {
   }
 }
 
+function generateAllTxtToDist(dir) {
+  // Write txt files to a custom dir (dist/audio) so Astro's public-dir restore
+  // after build doesn't clobber the files written to public/audio in build:start.
+  mkdirSync(dir, { recursive: true });
+  const files = readdirSync(ARTICLES_DIR).filter(f => f.endsWith('.mdx'));
+  for (const file of files) {
+    const slug = basename(file, '.mdx');
+    const content = readFileSync(join(ARTICLES_DIR, file), 'utf-8');
+    const txt = mdxToTtsScript(content);
+    writeFileSync(join(dir, `${slug}.txt`), txt, 'utf-8');
+    // Also keep public/audio in sync so the Python audio-gen script can find them.
+    writeFileSync(join(AUDIO_DIR, `${slug}.txt`), txt, 'utf-8');
+  }
+}
+
 export default function ttsTxtIntegration() {
   return {
     name: 'tts-txt-generator',
     hooks: {
       'astro:build:start': generateAllTxt,
+      'astro:build:done': ({ dir }) => generateAllTxtToDist(join(fileURLToPath(dir), 'audio')),
       'astro:server:start': generateAllTxt,
     },
   };
