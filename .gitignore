@@ -349,3 +349,6 @@ scripts/_speakers.txt
 .env
 .env.*
 !.env.example
+
+# Auto-generated TTS scripts (derived from MDX, regenerated on build)
+Website/public/audio/*.txt
