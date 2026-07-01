@@ -75,12 +75,17 @@ def _get_whisper():
     if _WHISPER_MODEL is None:
         from faster_whisper import WhisperModel
         device = detect_device()
-        _WHISPER_MODEL = WhisperModel("tiny.en", device=device, compute_type="float16" if device != "cpu" else "int8")
+        # ctranslate2 (faster-whisper backend) only supports cuda/cpu — not mps
+        whisper_device = "cuda" if device == "cuda" else "cpu"
+        _WHISPER_MODEL = WhisperModel("tiny.en", device=whisper_device, compute_type="float16" if whisper_device == "cuda" else "int8")
     return _WHISPER_MODEL
 
 
 def _text_words(text: str) -> list[str]:
     import re
+    # Strip ARPAbet phoneme blocks [...] before extracting words — they appear in
+    # the TTS script as pronunciation overrides and aren't spoken as literal letters.
+    text = re.sub(r'\[[^\]]*\]', '', text)
     return re.findall(r"[a-z']+", text.lower())
 
 
