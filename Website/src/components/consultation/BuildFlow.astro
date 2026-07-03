@@ -60,14 +60,14 @@ const phoneUnits = [0, 240];
 // uniquely `pur-`/`snz-` prefixed). Bundled by Vite via this import.
 import "./BuildFlow.css";
 ---
-<section id="snz-build" style="position:relative;z-index:1;height:900vh;background:transparent;border-bottom:1px solid rgba(255,255,255,.08)">
+<section id="snz-build" style="position:relative;z-index:1;height:900vh;background:transparent;border-bottom:1px solid rgba(var(--line-rgb),.08)">
   <div id="snz-buildsticky" style="position:sticky;top:var(--snz-nav-h, 0px);height:calc(100vh - var(--snz-nav-h, 0px));overflow:hidden;display:flex;flex-direction:column">
     <!-- wireframe background wall lives in the page-level #snz-wallzone (shared with the hero) -->
     <!-- stage 1 hero: design wall headline (fades out as the zoom into a tile begins) -->
     <div id="snz-hero1" style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
-      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:18px">[ 01 — DESIGN ]</div>
-      <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:#F2F0EA;max-width:15ch">Endless design possibilities.</h2>
-      <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:#c4c4bc;max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-text);margin-bottom:18px">[ 01 — DESIGN ]</div>
+      <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:var(--ink0);max-width:15ch">Endless design possibilities.</h2>
+      <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:var(--ink2);max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
     </div>
     <!-- stage -->
     <div style="flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 40px 0;z-index:1">
@@ -78,133 +78,133 @@ import "./BuildFlow.css";
         <g id="camera">
         <!-- customers (left only) — traffic as a number -->
         <g id="customers" opacity="0">
-          <text id="custNum" x="145" y="312" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="46" letter-spacing="-0.02em">0</text>
-          <circle id="pkReq" r="4.5" fill="var(--accent)" opacity="0"></circle>
+          <text id="custNum" x="145" y="312" text-anchor="middle" fill="var(--accent-vis)" font-family="Archivo,sans-serif" font-weight="800" font-size="46" letter-spacing="-0.02em">0</text>
+          <circle id="pkReq" r="4.5" fill="var(--accent-vis)" opacity="0"></circle>
         </g>
         <!-- connectors -->
-        <line id="cnApi" x1="468" y1="286" x2="616" y2="214" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" opacity="0"></line>
-        <line id="cnApiPulse1" x1="432" y1="298" x2="568" y2="298" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
-        <line id="cnApiPulse2" x1="568" y1="302" x2="432" y2="302" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
-        <line id="ciAcc" x1="672" y1="250" x2="572" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciPay" x1="700" y1="250" x2="700" y2="298" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciCms" x1="688" y1="250" x2="636" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciEcom" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <line id="ciDyn" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" opacity="0"></line>
-        <circle id="pkApi" r="5" fill="var(--accent)" opacity="0"></circle>
+        <line id="cnApi" x1="468" y1="286" x2="616" y2="214" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="1.6" stroke-linecap="round" opacity="0"></line>
+        <line id="cnApiPulse1" x1="432" y1="298" x2="568" y2="298" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="cnApiPulse2" x1="568" y1="302" x2="432" y2="302" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <line id="ciAcc" x1="672" y1="250" x2="572" y2="304" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciPay" x1="700" y1="250" x2="700" y2="298" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciAgent" x1="728" y1="250" x2="828" y2="304" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciCms" x1="688" y1="250" x2="636" y2="398" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciEcom" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <line id="ciDyn" x1="712" y1="250" x2="764" y2="398" pathLength="1" fill="none" stroke="rgba(var(--line-rgb),.3)" stroke-width="1.5" opacity="0"></line>
+        <circle id="pkApi" r="5" fill="var(--accent-vis)" opacity="0"></circle>
         <!-- backend card (used in CONNECT+ phases — simple label, no vector) -->
         <g id="gApiCard" opacity="0" transform="translate(700 300)">
-          <rect id="apiCardBox" x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
-          <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
-          <text x="-46" y="6" text-anchor="middle" fill="#E9E7E1" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
+          <rect id="apiCardBox" x="-92" y="-48" width="184" height="96" rx="13" fill="var(--bg2)" stroke="var(--accent-vis)" stroke-width="1.8"></rect>
+          <path d="M -27.4,-3.9 L -21.2,-3.0 L -21.2,3.0 L -27.4,3.9 L -30.1,10.4 L -26.3,15.4 L -30.6,19.7 L -35.6,15.9 L -42.1,18.6 L -43.0,24.8 L -49.0,24.8 L -49.9,18.6 L -56.3,15.9 L -61.4,19.7 L -65.7,15.4 L -61.9,10.4 L -64.6,3.9 L -70.8,3.0 L -70.8,-3.0 L -64.6,-3.9 L -61.9,-10.4 L -65.7,-15.4 L -61.4,-19.7 L -56.3,-15.9 L -49.9,-18.6 L -49.1,-24.8 L -43.0,-24.8 L -42.1,-18.6 L -35.6,-15.9 L -30.6,-19.7 L -26.3,-15.4 L -30.1,-10.4 Z" fill="none" stroke="var(--accent-vis)" stroke-width="1.4" stroke-linejoin="round" style="transform-box:fill-box;transform-origin:center;animation:snz-spin 8s linear infinite"></path>
+          <text x="-46" y="6" text-anchor="middle" fill="var(--ink-c)" font-family="Archivo,sans-serif" font-weight="800" font-size="16" letter-spacing="-0.02em">API</text>
         </g>
         <!-- SCALE: backend node replicates — identical replica icons spin up in a
              contained grid inside the API card's right half. JS drives count. -->
         <g id="gReplicas" opacity="0">
           {Array.from({ length: 10 }, (_, i) => (
-            <g id={`gsq${i}`} opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(255,255,255,.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(198,244,50,.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(255,255,255,.2)"></rect></g>
+            <g id={`gsq${i}`} opacity="0"><rect x="-9" y="-11" width="18" height="22" rx="3" fill="var(--bg2)" stroke="var(--accent-vis)" stroke-width="1.1"></rect><circle cx="-4.5" cy="-6" r="1.5" fill="var(--accent-vis)"></circle><circle cx="0.5" cy="-6" r="1.5" fill="rgba(var(--line-rgb),.3)"></circle><rect x="-6" y="-1" width="12" height="2.4" rx="1.2" fill="rgba(var(--accent-rgb),.5)"></rect><rect x="-6" y="4" width="8" height="2.4" rx="1.2" fill="rgba(var(--line-rgb),.2)"></rect></g>
           ))}
         </g>
         <!-- core product -->
         <g id="gCore" opacity="0" transform="translate(380 290)">
-          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <rect x="-92" y="-48" width="184" height="96" rx="13" fill="var(--bg2)" stroke="var(--accent-vis)" stroke-width="1.8"></rect>
           <!-- placeholder content: shown ONLY for reduced-motion (where the live view-4 element can't
                persist into this card). In normal motion JS hides this and the real product seats here. -->
           <g id="gCorePh">
           <!-- web-app dashboard (mirrors segment-2 view 4): nav + stat chips + bar chart -->
-          <rect x="-82" y="-39" width="86" height="60" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.1"></rect>
-          <rect x="-78" y="-35" width="20" height="3" rx="1.5" fill="var(--accent)"></rect>
-          <circle cx="-2" cy="-33.5" r="2" fill="rgba(255,255,255,.25)"></circle>
-          <rect x="-78" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
-          <rect x="-75" y="-24" width="9" height="3" rx="1.5" fill="rgba(198,244,50,.6)"></rect>
-          <rect x="-58" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
-          <rect x="-55" y="-24" width="7" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
-          <rect x="-38" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"></rect>
-          <rect x="-35" y="-24" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.3)"></rect>
-          <rect x="-78" y="-11" width="74" height="28" rx="3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1"></rect>
-          <rect x="-74" y="7" width="4" height="7" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="-67" y="2" width="4" height="12" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="-60" y="5" width="4" height="9" rx="1" fill="rgba(198,244,50,.6)"></rect>
-          <rect x="-53" y="-2" width="4" height="16" rx="1" fill="rgba(198,244,50,.7)"></rect>
-          <rect x="-46" y="3" width="4" height="11" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="-39" y="-4" width="4" height="18" rx="1" fill="rgba(198,244,50,.7)"></rect>
-          <rect x="-32" y="0" width="4" height="14" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="-25" y="-6" width="4" height="20" rx="1" fill="rgba(198,244,50,.7)"></rect>
+          <rect x="-82" y="-39" width="86" height="60" rx="4" fill="none" stroke="rgba(var(--line-rgb),.35)" stroke-width="1.1"></rect>
+          <rect x="-78" y="-35" width="20" height="3" rx="1.5" fill="var(--accent-vis)"></rect>
+          <circle cx="-2" cy="-33.5" r="2" fill="rgba(var(--line-rgb),.25)"></circle>
+          <rect x="-78" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(var(--line-rgb),.18)" stroke-width="1"></rect>
+          <rect x="-75" y="-24" width="9" height="3" rx="1.5" fill="rgba(var(--accent-rgb),.6)"></rect>
+          <rect x="-58" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(var(--line-rgb),.18)" stroke-width="1"></rect>
+          <rect x="-55" y="-24" width="7" height="3" rx="1.5" fill="rgba(var(--line-rgb),.3)"></rect>
+          <rect x="-38" y="-27" width="18" height="11" rx="2" fill="none" stroke="rgba(var(--line-rgb),.18)" stroke-width="1"></rect>
+          <rect x="-35" y="-24" width="8" height="3" rx="1.5" fill="rgba(var(--line-rgb),.3)"></rect>
+          <rect x="-78" y="-11" width="74" height="28" rx="3" fill="none" stroke="rgba(var(--line-rgb),.14)" stroke-width="1"></rect>
+          <rect x="-74" y="7" width="4" height="7" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="-67" y="2" width="4" height="12" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="-60" y="5" width="4" height="9" rx="1" fill="rgba(var(--accent-rgb),.6)"></rect>
+          <rect x="-53" y="-2" width="4" height="16" rx="1" fill="rgba(var(--accent-rgb),.7)"></rect>
+          <rect x="-46" y="3" width="4" height="11" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="-39" y="-4" width="4" height="18" rx="1" fill="rgba(var(--accent-rgb),.7)"></rect>
+          <rect x="-32" y="0" width="4" height="14" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="-25" y="-6" width="4" height="20" rx="1" fill="rgba(var(--accent-rgb),.7)"></rect>
           <!-- docked native phone (mobile half of view 4) -->
-          <rect x="16" y="-37" width="40" height="68" rx="8" fill="#0c0c0c" stroke="rgba(255,255,255,.4)" stroke-width="1.2"></rect>
-          <rect x="32" y="-33" width="8" height="2" rx="1" fill="rgba(255,255,255,.2)"></rect>
-          <rect x="21" y="-24" width="30" height="15" rx="2" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1"></rect>
-          <rect x="24" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="29" y="-15" width="3" height="5" rx="1" fill="rgba(198,244,50,.6)"></rect>
-          <rect x="34" y="-14" width="3" height="4" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="39" y="-17" width="3" height="7" rx="1" fill="rgba(198,244,50,.7)"></rect>
-          <rect x="44" y="-13" width="3" height="3" rx="1" fill="rgba(255,255,255,.25)"></rect>
-          <rect x="21" y="-5" width="30" height="9" rx="2" fill="rgba(198,244,50,.12)"></rect>
-          <circle cx="27" cy="23" r="2" fill="var(--accent)"></circle>
-          <circle cx="36" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
-          <circle cx="45" cy="23" r="2" fill="rgba(255,255,255,.2)"></circle>
+          <rect x="16" y="-37" width="40" height="68" rx="8" fill="var(--bg2)" stroke="rgba(var(--line-rgb),.4)" stroke-width="1.2"></rect>
+          <rect x="32" y="-33" width="8" height="2" rx="1" fill="rgba(var(--line-rgb),.2)"></rect>
+          <rect x="21" y="-24" width="30" height="15" rx="2" fill="none" stroke="rgba(var(--line-rgb),.16)" stroke-width="1"></rect>
+          <rect x="24" y="-13" width="3" height="3" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="29" y="-15" width="3" height="5" rx="1" fill="rgba(var(--accent-rgb),.6)"></rect>
+          <rect x="34" y="-14" width="3" height="4" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="39" y="-17" width="3" height="7" rx="1" fill="rgba(var(--accent-rgb),.7)"></rect>
+          <rect x="44" y="-13" width="3" height="3" rx="1" fill="rgba(var(--line-rgb),.25)"></rect>
+          <rect x="21" y="-5" width="30" height="9" rx="2" fill="rgba(var(--accent-rgb),.12)"></rect>
+          <circle cx="27" cy="23" r="2" fill="var(--accent-vis)"></circle>
+          <circle cx="36" cy="23" r="2" fill="rgba(var(--line-rgb),.2)"></circle>
+          <circle cx="45" cy="23" r="2" fill="rgba(var(--line-rgb),.2)"></circle>
           </g><!-- /gCorePh -->
         </g>
         <!-- BACKEND purpose — terminal vector -->
         <g id="gApi" opacity="0" transform="translate(500 700)">
-          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="#0b0b0b" stroke="rgba(255,255,255,.42)" stroke-width="2"></rect>
-          <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(255,255,255,.22)" stroke-width="1.5"></line>
-          <circle cx="-138" cy="-101" r="5" fill="var(--accent)"></circle>
-          <circle cx="-120" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
-          <circle cx="-102" cy="-101" r="5" fill="rgba(255,255,255,.25)"></circle>
-          <text x="0" y="-95" text-anchor="middle" fill="rgba(255,255,255,.35)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">API ENDPOINTS</text>
+          <rect id="apiBox" x="-160" y="-120" width="320" height="240" rx="13" fill="var(--bg1)" stroke="rgba(var(--line-rgb),.42)" stroke-width="2"></rect>
+          <line x1="-160" y1="-82" x2="160" y2="-82" stroke="rgba(var(--line-rgb),.22)" stroke-width="1.5"></line>
+          <circle cx="-138" cy="-101" r="5" fill="var(--accent-vis)"></circle>
+          <circle cx="-120" cy="-101" r="5" fill="rgba(var(--line-rgb),.25)"></circle>
+          <circle cx="-102" cy="-101" r="5" fill="rgba(var(--line-rgb),.25)"></circle>
+          <text x="0" y="-95" text-anchor="middle" fill="rgba(var(--line-rgb),.35)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="10" letter-spacing="1.5">API ENDPOINTS</text>
           <!-- endpoint rows: method badge | path | latency bar | ms -->
-          <rect x="-140" y="-72" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
-          <text x="-136" y="-60" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
-          <text x="-92" y="-60" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/auth</text>
-          <rect x="20" y="-70" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
-          <rect x="20" y="-70" width="34" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
-          <text x="106" y="-60" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">12ms</text>
+          <rect x="-140" y="-72" width="40" height="14" rx="3" fill="rgba(var(--accent-rgb),.18)"></rect>
+          <text x="-136" y="-60" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-60" fill="rgba(var(--line-rgb),.5)" font-family="JetBrains Mono,monospace" font-size="9">/auth</text>
+          <rect x="20" y="-70" width="52" height="6" rx="3" fill="rgba(var(--line-rgb),.1)"></rect>
+          <rect x="20" y="-70" width="34" height="6" rx="3" fill="var(--accent-vis)" fill-opacity=".7"></rect>
+          <text x="106" y="-60" text-anchor="end" fill="rgba(var(--line-rgb),.4)" font-family="JetBrains Mono,monospace" font-size="9">12ms</text>
 
-          <rect x="-140" y="-48" width="48" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
-          <text x="-136" y="-36" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">POST</text>
-          <text x="-84" y="-36" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/payments</text>
-          <rect x="20" y="-46" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
-          <rect x="20" y="-46" width="22" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
-          <text x="106" y="-36" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">8ms</text>
+          <rect x="-140" y="-48" width="48" height="14" rx="3" fill="rgba(var(--accent-rgb),.18)"></rect>
+          <text x="-136" y="-36" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">POST</text>
+          <text x="-84" y="-36" fill="rgba(var(--line-rgb),.5)" font-family="JetBrains Mono,monospace" font-size="9">/payments</text>
+          <rect x="20" y="-46" width="52" height="6" rx="3" fill="rgba(var(--line-rgb),.1)"></rect>
+          <rect x="20" y="-46" width="22" height="6" rx="3" fill="var(--accent-vis)" fill-opacity=".7"></rect>
+          <text x="106" y="-36" text-anchor="end" fill="rgba(var(--line-rgb),.4)" font-family="JetBrains Mono,monospace" font-size="9">8ms</text>
 
-          <rect x="-140" y="-24" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
-          <text x="-136" y="-12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
-          <text x="-92" y="-12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/content</text>
-          <rect x="20" y="-22" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
-          <rect x="20" y="-22" width="44" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
-          <text x="106" y="-12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">4ms</text>
+          <rect x="-140" y="-24" width="40" height="14" rx="3" fill="rgba(var(--accent-rgb),.18)"></rect>
+          <text x="-136" y="-12" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="-12" fill="rgba(var(--line-rgb),.5)" font-family="JetBrains Mono,monospace" font-size="9">/content</text>
+          <rect x="20" y="-22" width="52" height="6" rx="3" fill="rgba(var(--line-rgb),.1)"></rect>
+          <rect x="20" y="-22" width="44" height="6" rx="3" fill="var(--accent-vis)" fill-opacity=".7"></rect>
+          <text x="106" y="-12" text-anchor="end" fill="rgba(var(--line-rgb),.4)" font-family="JetBrains Mono,monospace" font-size="9">4ms</text>
 
-          <rect x="-140" y="0" width="40" height="14" rx="3" fill="rgba(198,244,50,.18)"></rect>
-          <text x="-136" y="12" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
-          <text x="-92" y="12" fill="rgba(255,255,255,.5)" font-family="JetBrains Mono,monospace" font-size="9">/ai-agent</text>
-          <rect x="20" y="2" width="52" height="6" rx="3" fill="rgba(255,255,255,.1)"></rect>
-          <rect x="20" y="2" width="14" height="6" rx="3" fill="var(--accent)" fill-opacity=".7"></rect>
-          <text x="106" y="12" text-anchor="end" fill="rgba(255,255,255,.4)" font-family="JetBrains Mono,monospace" font-size="9">24ms</text>
+          <rect x="-140" y="0" width="40" height="14" rx="3" fill="rgba(var(--accent-rgb),.18)"></rect>
+          <text x="-136" y="12" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="9">GET</text>
+          <text x="-92" y="12" fill="rgba(var(--line-rgb),.5)" font-family="JetBrains Mono,monospace" font-size="9">/ai-agent</text>
+          <rect x="20" y="2" width="52" height="6" rx="3" fill="rgba(var(--line-rgb),.1)"></rect>
+          <rect x="20" y="2" width="14" height="6" rx="3" fill="var(--accent-vis)" fill-opacity=".7"></rect>
+          <text x="106" y="12" text-anchor="end" fill="rgba(var(--line-rgb),.4)" font-family="JetBrains Mono,monospace" font-size="9">24ms</text>
 
-          <line x1="-160" y1="32" x2="160" y2="32" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
-          <circle cx="-138" cy="46" r="3" fill="var(--accent)"></circle>
-          <text x="-128" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">DB</text>
-          <circle cx="-96" cy="46" r="3" fill="var(--accent)"></circle>
-          <text x="-86" y="50" fill="rgba(255,255,255,.38)" font-family="JetBrains Mono,monospace" font-size="9">Cache</text>
-          <text x="106" y="50" text-anchor="end" fill="rgba(198,244,50,.48)" font-family="JetBrains Mono,monospace" font-size="9">99.9% up</text>
+          <line x1="-160" y1="32" x2="160" y2="32" stroke="rgba(var(--line-rgb),.1)" stroke-width="1"></line>
+          <circle cx="-138" cy="46" r="3" fill="var(--accent-vis)"></circle>
+          <text x="-128" y="50" fill="rgba(var(--line-rgb),.38)" font-family="JetBrains Mono,monospace" font-size="9">DB</text>
+          <circle cx="-96" cy="46" r="3" fill="var(--accent-vis)"></circle>
+          <text x="-86" y="50" fill="rgba(var(--line-rgb),.38)" font-family="JetBrains Mono,monospace" font-size="9">Cache</text>
+          <text x="106" y="50" text-anchor="end" fill="rgba(var(--accent-rgb),.48)" font-family="JetBrains Mono,monospace" font-size="9">99.9% up</text>
           <g id="capgrp">
             {Array.from({ length: 8 }, (_, i) => (
-              <rect class="capbar" id={`cb${i}`} x={-76 + i * 21} y="118" width="13" height="0" rx="2" fill="var(--accent)" opacity="0"></rect>
+              <rect class="capbar" id={`cb${i}`} x={-76 + i * 21} y="118" width="13" height="0" rx="2" fill="var(--accent-vis)" opacity="0"></rect>
             ))}
           </g>
         </g>
         <!-- ENGINE now rendered as an HTML overlay (#snz-purpose) below; nothing here -->
         <!-- connectors: product→analytics, api→analytics (dim base + gradient pulse) -->
-        <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
-        <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.4" opacity="0"></line>
-        <line id="ciProdAnPulse" x1="340" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
-        <line id="ciApiAnPulse"  x1="660" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="#C6F432" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
+        <line id="ciProdAn" x1="340" y1="348" x2="500" y2="392" fill="none" stroke="rgba(var(--line-rgb),.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciApiAn"  x1="660" y1="348" x2="500" y2="392" fill="none" stroke="rgba(var(--line-rgb),.15)" stroke-width="1.4" opacity="0"></line>
+        <line id="ciProdAnPulse" x1="340" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite"></line>
+        <line id="ciApiAnPulse"  x1="660" y1="348" x2="500" y2="392" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="2" stroke-dasharray="0.06 0.14" stroke-linecap="round" opacity="0" style="animation:snz-dotflow 0.55s linear infinite 0.14s"></line>
         <!-- analytics mini-card (SCALE phase) — after connectors so it paints over them -->
         <g id="gAnalytics" opacity="0" transform="translate(500 460)">
-          <rect x="-128" y="-78" width="256" height="156" rx="13" fill="#0c0c0c" stroke="var(--accent)" stroke-width="1.8"></rect>
+          <rect x="-128" y="-78" width="256" height="156" rx="13" fill="var(--bg2)" stroke="var(--accent-vis)" stroke-width="1.8"></rect>
           <!-- ANALYTICS as real Archivo-800 glyph outlines; stroke-drawn then filled -->
-          <g id="snzWord" fill="var(--accent)" fill-opacity="0" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round">
+          <g id="snzWord" fill="var(--accent-vis)" fill-opacity="0" stroke="var(--accent-vis)" stroke-width="1" stroke-linejoin="round">
             <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-77.22 14L-68.45 -9.36L-61.14 -9.36L-52.36 14L-58.86 14L-60.25 9.95L-69.57 9.95L-70.96 14ZM-68.11 5.4L-61.75 5.4L-63.41 0.47Q-63.55 0.09 -63.74 -0.47Q-63.92 -1.03 -64.11 -1.66Q-64.3 -2.29 -64.47 -2.93Q-64.64 -3.58 -64.81 -4.05L-65.05 -4.05Q-65.18 -3.41 -65.44 -2.59Q-65.69 -1.78 -65.95 -0.96Q-66.2 -0.14 -66.41 0.47Z"></path>
             <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-50.68 14L-50.68 -3.92L-46.09 -3.92L-45.68 -1.37L-45.44 -1.37Q-44.76 -2.29 -43.88 -2.97Q-43 -3.65 -41.87 -3.99Q-40.75 -4.33 -39.49 -4.33Q-37.56 -4.33 -36.21 -3.61Q-34.87 -2.9 -34.16 -1.47Q-33.44 -0.04 -33.44 2.17L-33.44 14L-39.02 14L-39.02 2.95Q-39.02 2.2 -39.21 1.67Q-39.39 1.15 -39.73 0.77Q-40.07 0.4 -40.58 0.23Q-41.09 0.06 -41.74 0.06Q-42.72 0.06 -43.47 0.52Q-44.22 0.98 -44.66 1.74Q-45.1 2.51 -45.1 3.53L-45.1 14Z"></path>
             <path data-ln pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M-24.97 14.41Q-26.1 14.41 -27.17 14.19Q-28.24 13.97 -29.1 13.41Q-29.97 12.84 -30.48 11.86Q-30.99 10.87 -30.99 9.38Q-30.99 7.44 -30.18 6.21Q-29.36 4.99 -27.81 4.29Q-26.27 3.6 -24.07 3.32Q-21.88 3.05 -19.16 3.05L-19.16 1.93Q-19.16 1.15 -19.47 0.62Q-19.77 0.09 -20.37 -0.2Q-20.96 -0.48 -21.95 -0.48Q-22.83 -0.48 -23.49 -0.28Q-24.16 -0.08 -24.5 0.31Q-24.84 0.71 -24.84 1.25L-24.84 1.56L-30.28 1.56Q-30.31 1.39 -30.31 1.27Q-30.31 1.15 -30.31 0.94Q-30.31 -0.65 -29.31 -1.84Q-28.31 -3.03 -26.44 -3.68Q-24.57 -4.33 -21.91 -4.33Q-19.43 -4.33 -17.58 -3.71Q-15.73 -3.1 -14.65 -1.84Q-13.58 -0.59 -13.58 1.45L-13.58 9.1Q-13.58 9.68 -13.26 10.02Q-12.94 10.36 -12.46 10.36L-11.31 10.36L-11.31 13.8Q-11.68 13.97 -12.48 14.19Q-13.28 14.41 -14.4 14.41Q-15.56 14.41 -16.42 14.12Q-17.29 13.83 -17.85 13.3Q-18.41 12.78 -18.62 12.06L-18.85 12.06Q-19.5 12.74 -20.37 13.29Q-21.23 13.83 -22.37 14.12Q-23.51 14.41 -24.97 14.41ZM-22.9 10.57Q-22.08 10.57 -21.4 10.33Q-20.72 10.09 -20.23 9.66Q-19.74 9.24 -19.45 8.63Q-19.16 8.02 -19.16 7.3L-19.16 6.11Q-21.1 6.11 -22.49 6.38Q-23.89 6.66 -24.63 7.23Q-25.38 7.81 -25.38 8.7Q-25.38 9.34 -25.06 9.77Q-24.74 10.19 -24.19 10.38Q-23.65 10.57 -22.9 10.57Z"></path>
@@ -218,41 +218,41 @@ import "./BuildFlow.css";
         </g>
         <!-- SCALE: business-size title above the product -->
         <g id="bizTitle" opacity="0">
-          <text id="bizNum" x="500" y="210" text-anchor="middle" fill="var(--accent)" font-family="Archivo,sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">1,000</text>
-          <text id="bizSize" x="500" y="232" text-anchor="middle" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="12" letter-spacing="2.5">SMALL BUSINESS</text>
+          <text id="bizNum" x="500" y="210" text-anchor="middle" fill="var(--accent-vis)" font-family="Archivo,sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">1,000</text>
+          <text id="bizSize" x="500" y="232" text-anchor="middle" fill="var(--ink3)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="12" letter-spacing="2.5">SMALL BUSINESS</text>
         </g>
         <!-- ===== ANALYTICS inside camera — natural size when camera zoom=3.4x ===== -->
         <g id="analytics" opacity="0" transform="translate(500,460) scale(0.2941) translate(-500,-300)">
-          <rect x="64" y="34" width="872" height="532" rx="16" fill="#0b0b0b" stroke="rgba(255,255,255,.16)" stroke-width="1.5"></rect>
-          <text x="92" y="72" fill="#F2F0EA" font-family="Archivo,sans-serif" font-weight="800" font-size="21" letter-spacing="-0.02em">Analytics</text>
-          <text x="92" y="91" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10" letter-spacing="1">LAST 7 DAYS · LIVE</text>
+          <rect x="64" y="34" width="872" height="532" rx="16" fill="var(--bg1)" stroke="rgba(var(--line-rgb),.16)" stroke-width="1.5"></rect>
+          <text x="92" y="72" fill="var(--ink0)" font-family="Archivo,sans-serif" font-weight="800" font-size="21" letter-spacing="-0.02em">Analytics</text>
+          <text x="92" y="91" fill="var(--ink5)" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10" letter-spacing="1">LAST 7 DAYS · LIVE</text>
           <!-- stat tiles -->
           <g font-family="Archivo,sans-serif">
-            <text id="anStatRev" x="92" y="150" fill="var(--accent)" font-weight="800" font-size="34" letter-spacing="-0.02em">£0.0K</text>
-            <text x="92" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">REVENUE</text>
-            <text id="anStatVis" x="300" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
-            <text x="300" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">VISITORS</text>
-            <text id="anStatSrc" x="508" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0.0M</text>
-            <text x="508" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SEARCH IMPRESSIONS</text>
-            <text id="anStatSig" x="716" y="150" fill="#F2F0EA" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
-            <text x="716" y="172" fill="#7c7c74" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SIGN-UPS</text>
+            <text id="anStatRev" x="92" y="150" fill="var(--accent-vis)" font-weight="800" font-size="34" letter-spacing="-0.02em">£0.0K</text>
+            <text x="92" y="172" fill="var(--ink5)" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">REVENUE</text>
+            <text id="anStatVis" x="300" y="150" fill="var(--ink0)" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
+            <text x="300" y="172" fill="var(--ink5)" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">VISITORS</text>
+            <text id="anStatSrc" x="508" y="150" fill="var(--ink0)" font-weight="800" font-size="34" letter-spacing="-0.02em">0.0M</text>
+            <text x="508" y="172" fill="var(--ink5)" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SEARCH IMPRESSIONS</text>
+            <text id="anStatSig" x="716" y="150" fill="var(--ink0)" font-weight="800" font-size="34" letter-spacing="-0.02em">0</text>
+            <text x="716" y="172" fill="var(--ink5)" font-family="JetBrains Mono,monospace" font-weight="500" font-size="10">SIGN-UPS</text>
           </g>
-          <line x1="92" y1="196" x2="908" y2="196" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
-          <line x1="500" y1="210" x2="500" y2="556" stroke="rgba(255,255,255,.08)" stroke-width="1"></line>
-          <line x1="92" y1="392" x2="908" y2="392" stroke="rgba(255,255,255,.1)" stroke-width="1"></line>
+          <line x1="92" y1="196" x2="908" y2="196" stroke="rgba(var(--line-rgb),.1)" stroke-width="1"></line>
+          <line x1="500" y1="210" x2="500" y2="556" stroke="rgba(var(--line-rgb),.08)" stroke-width="1"></line>
+          <line x1="92" y1="392" x2="908" y2="392" stroke="rgba(var(--line-rgb),.1)" stroke-width="1"></line>
           <!-- TL: traffic line -->
-          <text x="92" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">TRAFFIC OVER TIME</text>
-          <polyline id="anChart" points="92,360 130,350 168,356 206,334 244,322 282,326 320,302 358,292 396,300 434,274 472,250" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <text x="92" y="224" fill="var(--ink3)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">TRAFFIC OVER TIME</text>
+          <polyline id="anChart" points="92,360 130,350 168,356 206,334 244,322 282,326 320,302 358,292 396,300 434,274 472,250" pathLength="1" fill="none" stroke="var(--accent-vis)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
           <!-- TR: engagement heatmap -->
-          <text x="520" y="224" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">ENGAGEMENT HEATMAP</text>
+          <text x="520" y="224" fill="var(--ink3)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">ENGAGEMENT HEATMAP</text>
           <g id="anHeat"></g>
           <!-- BL: search impressions -->
-          <text x="92" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">SEARCH IMPRESSIONS</text>
-          <text x="472" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 34%</text>
+          <text x="92" y="420" fill="var(--ink3)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">SEARCH IMPRESSIONS</text>
+          <text x="472" y="420" text-anchor="end" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 34%</text>
           <g id="anSearch"></g>
           <!-- BR: revenue -->
-          <text x="520" y="420" fill="#9a9a92" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">REVENUE / WEEK</text>
-          <text x="908" y="420" text-anchor="end" fill="var(--accent)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 21%</text>
+          <text x="520" y="420" fill="var(--ink3)" font-family="JetBrains Mono,monospace" font-weight="600" font-size="11">REVENUE / WEEK</text>
+          <text x="908" y="420" text-anchor="end" fill="var(--accent-vis)" font-family="JetBrains Mono,monospace" font-weight="700" font-size="11">▲ 21%</text>
           <g id="anRev"></g>
         </g>
         </g>
@@ -346,7 +346,7 @@ import "./BuildFlow.css";
                 <div class="pur-rw" style="gap:8px"><div class="pur-box" style="flex:1;height:36px"></div><div class="pur-box" style="flex:1;height:36px"></div></div>
                 <div class="pur-rw" style="align-items:center;gap:8px"><div class="pur-box" style="width:17px;height:17px;border-radius:50%"></div><div class="pur-cl" style="gap:4px;flex:1"><div class="pur-bar" style="height:5px;width:70%"></div><div class="pur-bar dim" style="height:4px;width:50%"></div></div></div>
                 <div style="flex:1"></div>
-                <div class="pur-rw" style="justify-content:space-around;border-top:1px solid rgba(255,255,255,.08);padding-top:9px"><div class="pur-dot on"></div><div class="pur-dot"></div><div class="pur-dot"></div><div class="pur-dot"></div></div>
+                <div class="pur-rw" style="justify-content:space-around;border-top:1px solid rgba(var(--line-rgb),.08);padding-top:9px"><div class="pur-dot on"></div><div class="pur-dot"></div><div class="pur-dot"></div><div class="pur-dot"></div></div>
               </div>
             </div>
           </div>
@@ -357,21 +357,21 @@ import "./BuildFlow.css";
       </div>
       <!-- captions -->
       <div class="snz-track" style="position:absolute;right:56px;bottom:24px;width:392px">
-        <div style="text-align:right;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#a6a69e;margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
+        <div style="text-align:right;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.18em;color:var(--ink-b);margin-bottom:12px">[ THE BUILD ] — one builder, the whole stack</div>
         <div style="position:relative;height:10px;margin-bottom:9px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
-            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(255,255,255,.12)">
-              <div id="fProg" style="height:100%;width:0;background:var(--accent);transition:width .08s linear"></div>
+            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:2px;background:rgba(var(--line-rgb),.12)">
+              <div id="fProg" style="height:100%;width:0;background:var(--accent-vis);transition:width .08s linear"></div>
             </div>
             {buildTrack.map((_, i) => (
-              <span id={`td${i + 1}`} style={`position:absolute;top:50%;left:${[0, 25, 50, 75][i]}%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#0b0b0b;border:2px solid #2f2f2a;transition:border-color .4s ease,background .4s ease,box-shadow .4s ease`}></span>
+              <span id={`td${i + 1}`} style={`position:absolute;top:50%;left:${[0, 25, 50, 75][i]}%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:var(--bg1);border:2px solid var(--dim1);transition:border-color .4s ease,background .4s ease,box-shadow .4s ease`}></span>
             ))}
           </div>
         </div>
         <div style="position:relative;height:11px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
             {buildTrack.map((label, i) => (
-              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent)" : "#4a4a44"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
+              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent-vis)" : "var(--dim0)"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
             ))}
           </div>
         </div>
@@ -379,9 +379,9 @@ import "./BuildFlow.css";
       <div class="snz-bcaps" style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
           <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">{c.label}</div>
-            <h3 style="margin:0 0 9px;font:800 34px 'Archivo',sans-serif;letter-spacing:-0.02em;color:#F2F0EA">{c.title}</h3>
-            <p style={`margin:0;max-width:${c.max}px;font:400 15px/1.6 'JetBrains Mono',monospace;color:#c4c4bc`}>{c.body}</p>
+            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-text);margin-bottom:12px">{c.label}</div>
+            <h3 style="margin:0 0 9px;font:800 34px 'Archivo',sans-serif;letter-spacing:-0.02em;color:var(--ink0)">{c.title}</h3>
+            <p style={`margin:0;max-width:${c.max}px;font:400 15px/1.6 'JetBrains Mono',monospace;color:var(--ink2)`}>{c.body}</p>
           </div>
         ))}
       </div>

@@ -95,48 +95,48 @@ const rows: { label: string; cells: Cell[] }[] = [
 ];
 
 const dot = (tone?: string) =>
-  tone === 'good' ? 'var(--accent)' : tone === 'mid' ? '#c9a227' : '#9a3b3b';
+  tone === 'good' ? 'var(--accent)' : tone === 'mid' ? 'var(--tone-mid)' : 'var(--tone-bad)';
 const ink = (tone?: string) =>
-  tone === 'good' ? '#F2F0EA' : tone === 'mid' ? '#b8b8b0' : '#8a8a82';
+  tone === 'good' ? 'var(--ink0)' : tone === 'mid' ? 'var(--ink-mid)' : 'var(--ink4)';
 ---
-<section id="snz-compare" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)]">
+<section id="snz-compare" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)]">
   <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
     <div>
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 03 ] THE CHOICE</div>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)] mb-[18px]">[ 03 ] THE CHOICE</div>
       <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">Three ways to do it</h2>
     </div>
-    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
+    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink4)]">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
   </div>
 
-  <div id="snz-cmp" class="snz-cmp-desktop border border-[rgba(255,255,255,0.1)]">
+  <div id="snz-cmp" class="snz-cmp-desktop border border-[rgba(var(--line-rgb),0.1)]">
     <!-- column heads -->
-    <div class="snz-cmp-grid grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(255,255,255,0.08)] gap-[1px]">
-      <div class="bg-[#0a0a0a]"></div>
+    <div class="snz-cmp-grid grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(var(--line-rgb),0.08)] gap-[1px]">
+      <div class="bg-[var(--bg0)]"></div>
       {cols.map((c, i) => (
         <div
           data-reveal
           data-delay={i * 80}
-          class={`py-[30px] px-[26px] relative ${c.hero ? 'snz-cmp-hero' : 'bg-[#0a0a0a]'}`}
-          style={c.hero ? 'background:linear-gradient(180deg,rgba(198,244,50,.12),#0c0c0c);box-shadow:inset 0 0 0 1px var(--accent)' : ''}
+          class={`py-[30px] px-[26px] relative ${c.hero ? 'snz-cmp-hero' : 'bg-[var(--bg0)]'}`}
+          style={c.hero ? 'background:linear-gradient(180deg,rgba(var(--accent-rgb),.12),var(--bg2));box-shadow:inset 0 0 0 1px var(--accent)' : ''}
         >
           {c.hero && (
-            <div class="absolute top-[-1px] right-[-1px] font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[#0a0a0a] py-[6px] px-3">PICK ME</div>
+            <div class="absolute top-[-1px] right-[-1px] font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[var(--ink)] py-[6px] px-3">PICK ME</div>
           )}
-          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[14px] ${c.hero ? 'text-[var(--accent)]' : 'text-[#6a6a62]'}`}>{c.kicker}</div>
-          <h3 class={`m-0 mb-2 font-extrabold ${c.hero ? 'text-[30px]' : 'text-[22px]'} leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[#F2F0EA]' : 'text-[#cfcfc7]'}`}>{c.title}</h3>
-          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[#7c7c74]">{c.sub}</p>
+          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[14px] ${c.hero ? 'text-[var(--accent-text)]' : 'text-[var(--ink6)]'}`}>{c.kicker}</div>
+          <h3 class={`m-0 mb-2 font-extrabold ${c.hero ? 'text-[30px]' : 'text-[22px]'} leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[var(--ink0)]' : 'text-[var(--ink1)]'}`}>{c.title}</h3>
+          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink5)]">{c.sub}</p>
         </div>
       ))}
     </div>
 
     <!-- rows -->
     {rows.map((r, ri) => (
-      <div data-reveal data-delay={ri * 50} class="snz-cmp-grid snz-cmp-row grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(255,255,255,0.08)] gap-[1px] border-t border-[rgba(255,255,255,0.06)]">
-        <div class="snz-cmp-lab bg-[#0a0a0a] py-[22px] px-[26px] flex items-center font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.04em] text-[#6a6a62] uppercase">{r.label}</div>
+      <div data-reveal data-delay={ri * 50} class="snz-cmp-grid snz-cmp-row grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(var(--line-rgb),0.08)] gap-[1px] border-t border-[rgba(var(--line-rgb),0.06)]">
+        <div class="snz-cmp-lab bg-[var(--bg0)] py-[22px] px-[26px] flex items-center font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.04em] text-[var(--ink6)] uppercase">{r.label}</div>
         {r.cells.map((cell, ci) => {
           const hero = cols[ci].hero;
           return (
-            <div style={`background:${hero ? 'rgba(198,244,50,.05)' : '#0a0a0a'};padding:22px 26px;display:flex;gap:12px;align-items:flex-start;${hero ? 'box-shadow:inset 1px 0 0 rgba(198,244,50,.25),inset -1px 0 0 rgba(198,244,50,.25)' : ''}`}>
+            <div style={`background:${hero ? 'rgba(var(--accent-rgb),.05)' : 'var(--bg0)'};padding:22px 26px;display:flex;gap:12px;align-items:flex-start;${hero ? 'box-shadow:inset 1px 0 0 rgba(var(--accent-rgb),.25),inset -1px 0 0 rgba(var(--accent-rgb),.25)' : ''}`}>
               <span style={`flex:none;width:7px;height:7px;border-radius:50%;margin-top:6px;background:${dot(cell.tone)};${cell.tone === 'good' ? 'box-shadow:0 0 8px var(--accent)' : ''}`}></span>
               <span style={`font:400 13.5px/1.5 'JetBrains Mono',monospace;color:${ink(cell.tone)}`}>{cell.text}</span>
             </div>
@@ -152,23 +152,23 @@ const ink = (tone?: string) =>
       <div
         data-reveal
         data-delay={ci * 70}
-        class={`snz-cmp-card relative mb-[14px] border ${c.hero ? 'border-[var(--accent)]' : 'border-[rgba(255,255,255,0.1)]'}`}
-        style={c.hero ? 'background:linear-gradient(180deg,rgba(198,244,50,.1),#0a0a0a)' : 'background:#0a0a0a'}
+        class={`snz-cmp-card relative mb-[14px] border ${c.hero ? 'border-[var(--accent)]' : 'border-[rgba(var(--line-rgb),0.1)]'}`}
+        style={c.hero ? 'background:linear-gradient(180deg,rgba(var(--accent-rgb),.1),var(--bg0))' : 'background:var(--bg0)'}
       >
         {c.hero && (
-          <div class="absolute top-0 right-0 font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[#0a0a0a] py-[5px] px-[10px]">PICK ME</div>
+          <div class="absolute top-0 right-0 font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[var(--ink)] py-[5px] px-[10px]">PICK ME</div>
         )}
-        <div class="py-[22px] px-[22px] border-b border-[rgba(255,255,255,0.08)]">
-          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[12px] ${c.hero ? 'text-[var(--accent)]' : 'text-[#6a6a62]'}`}>{c.kicker}</div>
-          <h3 class={`m-0 mb-2 font-extrabold text-[24px] leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[#F2F0EA]' : 'text-[#cfcfc7]'}`}>{c.title}</h3>
-          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[#7c7c74]">{c.sub}</p>
+        <div class="py-[22px] px-[22px] border-b border-[rgba(var(--line-rgb),0.08)]">
+          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[12px] ${c.hero ? 'text-[var(--accent-text)]' : 'text-[var(--ink6)]'}`}>{c.kicker}</div>
+          <h3 class={`m-0 mb-2 font-extrabold text-[24px] leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[var(--ink0)]' : 'text-[var(--ink1)]'}`}>{c.title}</h3>
+          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink5)]">{c.sub}</p>
         </div>
         <div>
           {rows.map((r) => {
             const cell = r.cells[ci];
             return (
-              <div class="py-[16px] px-[22px] border-b border-[rgba(255,255,255,0.05)] last:border-b-0">
-                <div class="font-semibold text-[10.5px] font-['JetBrains_Mono'] tracking-[.1em] text-[#6a6a62] uppercase mb-[8px]">{r.label}</div>
+              <div class="py-[16px] px-[22px] border-b border-[rgba(var(--line-rgb),0.05)] last:border-b-0">
+                <div class="font-semibold text-[10.5px] font-['JetBrains_Mono'] tracking-[.1em] text-[var(--ink6)] uppercase mb-[8px]">{r.label}</div>
                 <div class="flex gap-[10px] items-start">
                   <span style={`flex:none;width:7px;height:7px;border-radius:50%;margin-top:6px;background:${dot(cell.tone)};${cell.tone === 'good' ? 'box-shadow:0 0 8px var(--accent)' : ''}`}></span>
                   <span style={`font:400 13.5px/1.5 'JetBrains Mono',monospace;color:${ink(cell.tone)}`}>{cell.text}</span>
@@ -183,30 +183,30 @@ const ink = (tone?: string) =>
 
   <!-- ownership + how-I-work strip (merged from the old Ownership / Transparency sections) -->
   <div id="snz-cmp-strip" class="grid grid-cols-2 gap-6 mt-6">
-    <div data-reveal class="border border-[rgba(255,255,255,0.1)] p-9 bg-[#0c0c0c] rounded-[18px]">
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent)] mb-[14px]">OWNERSHIP</div>
+    <div data-reveal class="border border-[rgba(var(--line-rgb),0.1)] p-9 bg-[var(--bg2)] rounded-[18px]">
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent-text)] mb-[14px]">OWNERSHIP</div>
       <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Yours. Really yours.</h3>
-      <p class="mt-0 mb-6 mx-0 font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">When the job's done you hold the keys, and you choose who runs it.</p>
+      <p class="mt-0 mb-6 mx-0 font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink3)]">When the job's done you hold the keys, and you choose who runs it.</p>
       <div class="flex flex-col gap-[10px]">
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Code, domain and accounts, all in your name from day one</div>
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Run it yourself: pay the providers directly, no markup, walk away anytime</div>
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Or hands-off: I admin the lot for you from £40/mo, cancel anytime</div>
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--accent-text)]">+</span> Code, domain and accounts, all in your name from day one</div>
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--accent-text)]">+</span> Run it yourself: pay the providers directly, no markup, walk away anytime</div>
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--accent-text)]">+</span> Or hands-off: I admin the lot for you from £40/mo, cancel anytime</div>
       </div>
     </div>
-    <div data-reveal data-delay="90" class="border border-[rgba(255,255,255,0.1)] p-9 bg-[#0c0c0c] rounded-[18px]">
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent)] mb-[14px]">HOW I WORK</div>
+    <div data-reveal data-delay="90" class="border border-[rgba(var(--line-rgb),0.1)] p-9 bg-[var(--bg2)] rounded-[18px]">
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent-text)] mb-[14px]">HOW I WORK</div>
       <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">AI-accelerated, human-built</h3>
-      <p class="mt-0 mb-0 mx-0 font-normal text-[13.5px] leading-[1.65] font-['JetBrains_Mono'] text-[#9a9a92]">Being honest about the toolkit: I use AI to speed through the groundwork, so more of your budget goes on the design, the detail and the engineering. AI is a power tool, not the builder. Every line is reviewed, owned and shipped by me, a real software engineer you can call.</p>
+      <p class="mt-0 mb-0 mx-0 font-normal text-[13.5px] leading-[1.65] font-['JetBrains_Mono'] text-[var(--ink3)]">Being honest about the toolkit: I use AI to speed through the groundwork, so more of your budget goes on the design, the detail and the engineering. AI is a power tool, not the builder. Every line is reviewed, owned and shipped by me, a real software engineer you can call.</p>
     </div>
   </div>
 
   <!-- verdict band -->
-  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
+  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
     <div>
       <h3 class="m-0 mb-2 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Same money. A site that's actually yours.</h3>
-      <p class="m-0 max-w-[560px] font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">Skip the template tax and the plugin treadmill. One person, hand-building something built around you — and a real human to call when you need one.</p>
+      <p class="m-0 max-w-[560px] font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink3)]">Skip the template tax and the plugin treadmill. One person, hand-building something built around you — and a real human to call when you need one.</p>
     </div>
-    <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[#0a0a0a] py-[15px] px-[22px] no-underline transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]">GET IN TOUCH →</a></span>
+    <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[var(--ink)] py-[15px] px-[22px] no-underline transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]">GET IN TOUCH →</a></span>
   </div>
 </section>
 

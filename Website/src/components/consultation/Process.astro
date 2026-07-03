@@ -33,7 +33,7 @@ const steps = [
   { n: '05', icon: 'check', title: 'Estimate & fee', body: 'Once the design is agreed, you get a delivery-date estimate and a fee. With that signed off, work begins.' },
 ];
 ---
-<section id="snz-process" class="relative border-b border-[rgba(255,255,255,0.08)]">
+<section id="snz-process" class="relative border-b border-[rgba(var(--line-rgb),0.08)]">
   <!-- ===================== SCROLL-DRIVEN STEP RAIL ===================== -->
   <div id="snz-proc-anim">
     <div class="snz-proc-pin">
@@ -41,7 +41,7 @@ const steps = [
       <div aria-hidden="true" class="snz-proc-glow"></div>
 
       <div class="snz-proc-head">
-        <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[14px]">[ 05 ] PROCESS</div>
+        <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)] mb-[14px]">[ 05 ] PROCESS</div>
         <h2 class="snz-display m-0 font-extrabold text-[clamp(34px,4.5vw,58px)] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">How it works</h2>
       </div>
 
@@ -63,16 +63,16 @@ const steps = [
       <!-- centered active-step text -->
       <div class="snz-proc-step">
         <div class="snz-proc-swap" id="snz-proc-swap">
-          <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[10px]" id="snz-proc-mn">STEP 01 / 05</div>
+          <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)] mb-[10px]" id="snz-proc-mn">STEP 01 / 05</div>
           <h3 class="m-0 mb-[14px] font-bold text-[clamp(24px,3vw,34px)] font-['Archivo'] tracking-[-0.02em]" id="snz-proc-mt">{steps[0].title}</h3>
-          <p class="m-0 mx-auto max-w-[560px] font-normal text-[14px] leading-[1.65] font-['JetBrains_Mono'] text-[#9a9a92]" id="snz-proc-mp">{steps[0].body}</p>
+          <p class="m-0 mx-auto max-w-[560px] font-normal text-[14px] leading-[1.65] font-['JetBrains_Mono'] text-[var(--ink3)]" id="snz-proc-mp">{steps[0].body}</p>
         </div>
       </div>
 
       <!-- full step data for the swap -->
       <script type="application/json" id="snz-proc-data" set:html={JSON.stringify(steps.map((s) => ({ n: s.n, title: s.title, body: s.body })))} />
 
-      <div class="snz-proc-hint font-['JetBrains_Mono'] text-[10px] tracking-[.2em] text-[#6a6a62]">↓ SCROLL ↓</div>
+      <div class="snz-proc-hint font-['JetBrains_Mono'] text-[10px] tracking-[.2em] text-[var(--ink6)]">↓ SCROLL ↓</div>
     </div>
   </div>
 
@@ -80,19 +80,19 @@ const steps = [
   <div id="snz-proc-static" class="py-24 px-14 max-[760px]:py-16 max-[760px]:px-[22px]">
     <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[40px]">
       <div>
-        <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)] mb-[18px]">[ 05 ] PROCESS</div>
+        <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)] mb-[18px]">[ 05 ] PROCESS</div>
         <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em] max-[760px]:text-[42px]">How it works</h2>
       </div>
-      <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">From first email to final design, no guesswork.</p>
+      <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink4)]">From first email to final design, no guesswork.</p>
     </div>
-    <div class="border-t border-[rgba(255,255,255,0.1)]">
+    <div class="border-t border-[rgba(var(--line-rgb),0.1)]">
       {steps.map((s) => (
-        <div class="grid grid-cols-[64px_1fr] gap-6 py-7 border-b border-[rgba(255,255,255,0.1)] items-start max-[760px]:grid-cols-[52px_1fr] max-[760px]:gap-4">
-          <div class="w-[54px] h-[54px] rounded-[15px] border border-[rgba(198,244,50,0.3)] bg-[rgba(198,244,50,0.07)] grid place-items-center text-[var(--accent)] [&_svg]:w-6 [&_svg]:h-6" set:html={svg(s.icon)} />
+        <div class="grid grid-cols-[64px_1fr] gap-6 py-7 border-b border-[rgba(var(--line-rgb),0.1)] items-start max-[760px]:grid-cols-[52px_1fr] max-[760px]:gap-4">
+          <div class="w-[54px] h-[54px] rounded-[15px] border border-[rgba(var(--accent-rgb),0.3)] bg-[rgba(var(--accent-rgb),0.07)] grid place-items-center text-[var(--accent-text)] [&_svg]:w-6 [&_svg]:h-6" set:html={svg(s.icon)} />
           <div>
-            <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.16em] text-[var(--accent)] mb-[6px]">STEP {s.n}</div>
+            <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.16em] text-[var(--accent-text)] mb-[6px]">STEP {s.n}</div>
             <h3 class="mt-0 mb-[10px] font-bold text-[22px] font-['Archivo']">{s.title}</h3>
-            <p class="m-0 max-w-[620px] font-normal text-[14px] leading-[1.65] font-['JetBrains_Mono'] text-[#9a9a92]">{s.body}</p>
+            <p class="m-0 max-w-[620px] font-normal text-[14px] leading-[1.65] font-['JetBrains_Mono'] text-[var(--ink3)]">{s.body}</p>
           </div>
         </div>
       ))}
@@ -111,7 +111,7 @@ const steps = [
   }
   .snz-proc-glow {
     position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(60% 50% at 50% 42%, rgba(198,244,50,.06), transparent 70%);
+    background: radial-gradient(60% 50% at 50% 42%, rgba(var(--accent-rgb),.06), transparent 70%);
   }
   .snz-proc-head { position: relative; z-index: 2; }
 
@@ -121,19 +121,19 @@ const steps = [
   .snz-proc-rail-fill {
     position: absolute; top: 50%; left: 46px; right: 46px; height: 2px; border-radius: 2px;
   }
-  .snz-proc-rail-bed { background: rgba(255,255,255,.1); transform: translateY(-50%); }
+  .snz-proc-rail-bed { background: rgba(var(--line-rgb),.1); transform: translateY(-50%); }
   .snz-proc-rail-fill {
-    background: var(--accent); box-shadow: 0 0 10px rgba(198,244,50,.6);
+    background: var(--accent); box-shadow: 0 0 10px rgba(var(--accent-rgb),.6);
     transform-origin: left center; transform: translateY(-50%) scaleX(0); transition: transform .15s linear;
   }
   .snz-proc-nodes { position: relative; z-index: 1; display: flex; justify-content: space-between; height: 100%; align-items: center; }
   .snz-proc-node {
     position: relative; width: 92px; height: 92px; border-radius: 50%;
     display: grid; place-items: center; flex: none;
-    background: #0c0c0a; border: 2px solid rgba(255,255,255,.18);
+    background: var(--bg-node); border: 2px solid rgba(var(--line-rgb),.18);
     transition: border-color .4s, background .4s, box-shadow .4s, transform .4s;
   }
-  .snz-proc-node .ic { display: block; width: 32px; height: 32px; color: #6a6a62; transition: color .4s, opacity .2s; }
+  .snz-proc-node .ic { display: block; width: 32px; height: 32px; color: var(--ink6); transition: color .4s, opacity .2s; }
   /* coming back (node no longer active): wait for the scene to fade out first, so
      the icon and scene are never both visible */
   .snz-proc-node:not(.scene-active) .ic { transition: color .4s, opacity .2s ease .3s; }
@@ -141,15 +141,15 @@ const steps = [
   /* active node shows the scene, so fade its static icon out */
   .snz-proc-node.scene-active .ic { opacity: 0; }
   .snz-proc-node .num {
-    position: absolute; top: -26px; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .14em; color: #6a6a62; transition: color .4s;
+    position: absolute; top: -26px; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .14em; color: var(--ink6); transition: color .4s;
   }
   .snz-proc-node.on {
     border-color: var(--accent);
-    background: linear-gradient(rgba(198,244,50,.12), rgba(198,244,50,.12)), #0c0c0a;
-    box-shadow: 0 0 0 5px rgba(198,244,50,.07), 0 0 22px rgba(198,244,50,.4); transform: scale(1.06);
+    background: linear-gradient(rgba(var(--accent-rgb),.12), rgba(var(--accent-rgb),.12)), var(--bg-node);
+    box-shadow: 0 0 0 5px rgba(var(--accent-rgb),.07), 0 0 22px rgba(var(--accent-rgb),.4); transform: scale(1.06);
   }
-  .snz-proc-node.on .ic { color: var(--accent); }
-  .snz-proc-node.on .num { color: var(--accent); }
+  .snz-proc-node.on .ic { color: var(--accent-text); }
+  .snz-proc-node.on .num { color: var(--accent-text); }
 
   /* ---- per-step scene (plays inside the active circle) ---- */
   .snz-proc-node .scene {
@@ -186,11 +186,11 @@ const steps = [
 
 <!-- scene SVGs are injected via set:html (unscoped), so their styling + animations live here -->
 <style is:global>
-  .snz-proc-node .scene .sc { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 4px rgba(198,244,50,.4)); }
+  .snz-proc-node .scene .sc { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 4px rgba(var(--accent-rgb),.4)); }
   .snz-proc-node .scene .ln { fill: none; stroke: var(--accent); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
-  .snz-proc-node .scene .ln.dim { stroke: rgba(255,255,255,.3); }
+  .snz-proc-node .scene .ln.dim { stroke: rgba(var(--line-rgb),.3); }
   .snz-proc-node .scene .fil { fill: var(--accent); }
-  .snz-proc-node .scene .cursor { fill: #0c0c0a; }
+  .snz-proc-node .scene .cursor { fill: var(--bg-node); }
 
   /* animations only run on the active node's scene */
   .snz-proc-node.scene-active .scene .plane { animation: sc-fly 3.4s ease-in-out infinite; }

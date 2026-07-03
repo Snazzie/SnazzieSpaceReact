@@ -9,24 +9,24 @@ const services = [
   { n: '06', title: 'A second opinion', body: "Already had something built? I'll review it and tell you in plain English what's working, what's risky, and what to fix first." },
 ];
 ---
-<section id="snz-services" class="py-24 px-14 border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+<section id="snz-services" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
   <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
     <div>
-      <div class="inline-flex items-center gap-2 mb-[18px] py-[6px] pl-[10px] pr-[14px] rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)]">
+      <div class="inline-flex items-center gap-2 mb-[18px] py-[6px] pl-[10px] pr-[14px] rounded-full border border-[rgba(var(--line-rgb),0.1)] bg-[rgba(var(--line-rgb),0.03)]">
         <span class="w-[6px] h-[6px] rounded-full bg-[var(--accent)] shadow-[0_0_8px_var(--accent)]"></span>
-        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[#6a6a62]">01</span>
-        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent)]">CAPABILITIES</span>
+        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--ink6)]">01</span>
+        <span class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)]">CAPABILITIES</span>
       </div>
       <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em]">What I build</h2>
     </div>
-    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#8a8a82]">Whatever you need made, I can probably make it. A few of the things people come to me for — explained without the jargon.</p>
+    <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink4)]">Whatever you need made, I can probably make it. A few of the things people come to me for — explained without the jargon.</p>
   </div>
-  <div id="snz-svc" class="grid grid-cols-3 gap-px bg-[rgba(255,255,255,0.08)] border border-[rgba(255,255,255,0.08)]">
+  <div id="snz-svc" class="grid grid-cols-3 gap-px bg-[rgba(var(--line-rgb),0.08)] border border-[rgba(var(--line-rgb),0.08)]">
     {services.map((s, i) => (
-      <div data-reveal data-delay={(i % 3) * 70} class="snz-card bg-[#0a0a0a] pt-[34px] pb-[34px] px-[30px] cursor-default transition-[background,transform] duration-[.35s] ease">
-        <div class="font-bold text-[13px] font-['JetBrains_Mono'] text-[#3a3a36] mb-[46px]">{s.n}</div>
+      <div data-reveal data-delay={(i % 3) * 70} class="snz-card bg-[var(--bg0)] pt-[34px] pb-[34px] px-[30px] cursor-default transition-[background,transform] duration-[.35s] ease">
+        <div class="font-bold text-[13px] font-['JetBrains_Mono'] text-[var(--ink7)] mb-[46px]">{s.n}</div>
         <h3 class="mt-0 mb-3 mx-0 font-bold text-[22px] font-['Archivo'] tracking-[-0.02em]">{s.title}</h3>
-        <p class="m-0 font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">{s.body}</p>
+        <p class="m-0 font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink3)]">{s.body}</p>
       </div>
     ))}
   </div>

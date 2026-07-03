@@ -7,14 +7,51 @@ const LINKS = [
   { href: '#snz-process', label: 'PROCESS' },
 ];
 ---
-<nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(10,10,10,0.72)] backdrop-blur-[14px] border-b border-[rgba(255,255,255,0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
-  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[#F2F0EA] no-underline flex-none">SNAZZIE<span class="text-[var(--accent)]">°</span></a>
+<nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(var(--nav-rgb),0.72)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
+  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-text)]">°</span></a>
   <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
     <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (
-        <a href={l.href} class="text-[#a8a89f] no-underline">{l.label}</a>
+        <a href={l.href} class="text-[var(--ink-a)] no-underline">{l.label}</a>
       ))}
     </div>
-    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent)] border border-[rgba(198,244,50,0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+    <button
+      id="snz-theme-toggle"
+      type="button"
+      aria-label="Switch to dark theme"
+      class="snz-theme-toggle inline-flex items-center justify-center w-8 h-8 flex-none bg-transparent cursor-pointer text-[var(--ink-a)] border border-[rgba(var(--line-rgb),0.14)] transition-colors duration-200 hover:text-[var(--accent-text)] hover:border-[rgba(var(--accent-rgb),0.5)]"
+    >
+      <svg class="snz-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="snz-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent-text)] border border-[rgba(var(--accent-rgb),0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
   </div>
 </nav>
+
+<style>
+  /* icon reflects the CURRENT theme; pure-CSS swap keeps it correct on first paint (no-flash). */
+  .snz-icon-moon { display: none; }
+  html[data-theme="dark"] .snz-icon-sun { display: none; }
+  html[data-theme="dark"] .snz-icon-moon { display: inline-block; }
+</style>
+
+<script>
+  // Theme toggle: flip data-theme on <html>, persist to localStorage, broadcast a snz-theme-change event.
+  const root = document.documentElement;
+  const btn = document.getElementById('snz-theme-toggle');
+  if (btn) {
+    const syncLabel = () => {
+      const dark = root.getAttribute('data-theme') === 'dark';
+      btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    };
+    syncLabel();
+    btn.addEventListener('click', () => {
+      const dark = root.getAttribute('data-theme') === 'dark';
+      if (dark) root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', 'dark');
+      try { localStorage.setItem('snz-theme', dark ? 'light' : 'dark'); } catch (e) { /* private mode: session-only */ }
+      syncLabel();
+      window.dispatchEvent(new CustomEvent('snz-theme-change'));
+    });
+  }
+</script>

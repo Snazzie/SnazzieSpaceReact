@@ -220,18 +220,19 @@ export function initBuildFlow() {
         const hot = Math.exp(-(Math.pow(c - 7, 2) / 9 + Math.pow(r - 1.6, 2) / 3.2));
         const noise = Math.abs((Math.sin(c * 12.9 + r * 78.2) * 43758.5453) % 1);
         const v = Math.max(0.05, Math.min(0.95, hot * 0.9 + noise * 0.18 + 0.05));
-        const cell = mk('rect', { x: x0 + c * (cw + gx), y: y0 + r * (ch + gy), width: cw, height: ch, rx: 2, fill: 'var(--accent)', 'fill-opacity': v.toFixed(2), opacity: 0 });
+        // fill via inline style (not attr) so var() resolves + re-reads on theme switch; graphic accent -> accent-vis
+        const cell = mk('rect', { x: x0 + c * (cw + gx), y: y0 + r * (ch + gy), width: cw, height: ch, rx: 2, 'fill-opacity': v.toFixed(2), opacity: 0, style: 'fill:var(--accent-vis)' });
         anHeat.appendChild(cell);
         anHeatCells.push(cell as unknown as El);
       }
     }
     if (anSearch && !anSearch.childNodes.length) {
       const n = 14, x0 = 96, base = 502, bw = 18, step = 27, maxH = 64;
-      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.25 + 0.7 * t + 0.12 * Math.sin(i * 1.7)) * maxH; anSearchH.push(h); anSearch.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, fill: 'rgba(198,244,50,.6)' })); }
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.25 + 0.7 * t + 0.12 * Math.sin(i * 1.7)) * maxH; anSearchH.push(h); anSearch.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, style: 'fill:rgba(var(--accent-rgb),.6)' })); }
     }
     if (anRev && !anRev.childNodes.length) {
       const n = 12, x0 = 524, base = 502, bw = 20, step = 32, maxH = 64;
-      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRevH.push(h); anRev.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, fill: 'var(--accent)' })); }
+      for (let i = 0; i < n; i++) { const t = i / (n - 1); const h = (0.22 + 0.72 * t + 0.1 * Math.sin(i * 2.1 + 1)) * maxH; anRevH.push(h); anRev.appendChild(mk('rect', { x: x0 + i * step, y: base, width: bw, height: 0, rx: 2, style: 'fill:var(--accent-vis)' })); }
     }
 
     const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -581,11 +582,11 @@ export function initBuildFlow() {
       const phase = p < 0.105 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
       // cap index 0 (DESIGN) is covered by the centered #snz-hero1, so never show the top-left duplicate
       caps.forEach((c, i) => { if (c) { const on = i === phase && i !== 0; c.style.opacity = on ? '1' : '0'; c.style.transform = on ? 'translateY(0)' : 'translateY(12px)'; } });
-      track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent)' : '#4a4a44'; });
+      track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent-text)' : 'var(--dim0)'; });
       dots.forEach((d, i) => { if (!d) return; const on = i <= phase;
-        d.style.background = on ? 'var(--accent)' : '#0b0b0b';
-        d.style.borderColor = on ? 'var(--accent)' : '#2f2f2a';
-        d.style.boxShadow = i === phase ? '0 0 0 4px rgba(198,244,50,.18)' : 'none';
+        d.style.background = on ? 'var(--accent-vis)' : 'var(--bg1)';
+        d.style.borderColor = on ? 'var(--accent-vis)' : 'var(--dim1)';
+        d.style.boxShadow = i === phase ? '0 0 0 4px rgba(var(--accent-rgb),.18)' : 'none';
       });
       // fill maps p → dot positions piecewise so it lands ON each dot exactly at its section threshold
       // (dots are evenly spaced but the section thresholds in p are not)
@@ -679,7 +680,7 @@ export function initBuildFlow() {
     // glow sweep driven by scroll
     const gp1 = ((prog * 130) % 110) - 5;
     const gp2 = (((1 - prog) * 130) % 110) - 5;
-    const glow = (p: number) => `linear-gradient(90deg,rgba(198,244,50,.05) 0%,rgba(198,244,50,.05) ${Math.max(0,p-10).toFixed(1)}%,rgba(198,244,50,.65) ${p.toFixed(1)}%,rgba(198,244,50,.05) ${Math.min(100,p+10).toFixed(1)}%,rgba(198,244,50,.05) 100%)`;
+    const glow = (p: number) => `linear-gradient(90deg,rgba(var(--accent-rgb),.05) 0%,rgba(var(--accent-rgb),.05) ${Math.max(0,p-10).toFixed(1)}%,rgba(var(--accent-rgb),.65) ${p.toFixed(1)}%,rgba(var(--accent-rgb),.05) ${Math.min(100,p+10).toFixed(1)}%,rgba(var(--accent-rgb),.05) 100%)`;
     if (snzSr1) snzSr1.style.backgroundImage = glow(gp1);
     if (snzSr2) snzSr2.style.backgroundImage = glow(gp2);
     // accent color sweep: each word shifts white→lime staggered across scroll progress
