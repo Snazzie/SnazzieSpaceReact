@@ -1,0 +1,62 @@
+---
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
+
+const covers = [
+  { title: 'The engine behind it', body: 'Backend systems, APIs and infrastructure built to hold up under real load.' },
+  { title: 'Smart AI features', body: 'AI added where it genuinely helps, wired into your existing product.' },
+  { title: 'A second opinion', body: 'An outside, technical read on what you already have, before you commit further.' },
+];
+
+const fits = [
+  'Larger teams with an existing codebase',
+  'Funded startups scaling past the MVP',
+  'Ongoing advisory alongside your own engineers',
+  'A one-off technical review or audit',
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Software engineering consulting',
+  provider: { '@type': 'Person', name: 'Aaron (Snazzie)' },
+  areaServed: 'GB',
+  url: 'https://snazzie.space/consultation/services/consulting/',
+};
+---
+<ConsultationLayout
+  title="Engineering Advisory & Consulting | Snazzie"
+  description="Backend systems, AI features and independent technical advisory for larger teams and funded startups. Priced to fit, not off a rate card."
+  path="/consultation/services/consulting/"
+  schema={serviceSchema}
+>
+  <section class="pt-24 pb-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-16 max-[760px]:px-[22px]">
+    <a href="/consultation/#snz-services" class="inline-block mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline">← All services</a>
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">TEAMS & ENTERPRISE</div>
+    <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em] max-w-[720px]">Engineering advisory & consulting</h1>
+    <p class="m-0 max-w-[560px] font-['JetBrains_Mono'] font-normal text-[15px] leading-[1.7] text-[var(--ink3)]">For teams that already have a product, an engineer, or an idea that's outgrown a single freelance build. Priced to fit the engagement, not off this page.</p>
+    <span class="snz-magwrap inline-block mt-8"><a data-mag href="mailto:consulting@snazzie.space" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+  </section>
+
+  <section class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">WHAT'S COVERED</div>
+    <div class="grid grid-cols-3 gap-6 mb-[54px] max-[900px]:grid-cols-1">
+      {covers.map((c) => (
+        <div class="border border-[rgba(var(--line-rgb),0.12)] p-7 bg-[var(--bg2)] flex flex-col">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[19px] tracking-[-0.02em]">{c.title}</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.6] text-[var(--ink3)]">{c.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">WHO THIS FITS</div>
+    <div class="border border-[rgba(var(--line-rgb),0.12)] p-8 bg-[var(--bg2)] flex flex-col gap-[9px] mb-6">
+      {fits.map((f) => (
+        <div class="font-['JetBrains_Mono'] font-normal text-[13px] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">·</span> {f}</div>
+      ))}
+    </div>
+
+    <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)]">
+      <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">Day rate, fixed-scope or retainer, whichever fits the engagement. No package tiers here, we agree it together on a call.</p>
+    </div>
+  </section>
+</ConsultationLayout>

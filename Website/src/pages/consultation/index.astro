@@ -1,19 +1,15 @@
 ---
-import '@/styles/global.css';
-import BaseHead from '@/components/BaseHead.astro';
-import Nav from '@/components/consultation/Nav.astro';
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Hero from '@/components/consultation/Hero.astro';
 import Statement from '@/components/consultation/Statement.astro';
 import WireColumns from '@/components/consultation/WireColumns.astro';
 import BuildFlow from '@/components/consultation/BuildFlow.astro';
-import Services from '@/components/consultation/Services.astro';
 import Work from '@/components/consultation/Work.astro';
 import Comparison from '@/components/consultation/Comparison.astro';
 import Pricing from '@/components/consultation/Pricing.astro';
 import Process from '@/components/consultation/Process.astro';
 import Faq from '@/components/consultation/Faq.astro';
 import Closing from '@/components/consultation/Closing.astro';
-import Footer from '@/components/consultation/Footer.astro';
 
 // Structured data: who is behind this and what is offered.
 const serviceSchema = {
@@ -40,174 +36,29 @@ const serviceSchema = {
 };
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <!-- no-flash theme boot: must run before any style/link paints. Default (no key / 'light') = light. -->
-    <script is:inline>try{if(localStorage.getItem('snz-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
-    <BaseHead
-      title="Freelance Web Developer & App Builder (UK) | Snazzie"
-      description="Bespoke, hand-built websites, mobile apps and products for individuals and small businesses. From £1500, owned by you outright, with optional monthly care."
-      path="/consultation/"
-    />
-    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- non-blocking font load: media="print" defers apply until onload flips it, so first paint isn't blocked on the CSS fetch -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-  </head>
-  <body>
-    <div id="snz-root" style="background:var(--bg0);color:var(--ink0);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip">
-      <Nav />
-      <!-- hero, statement and the build story share ONE wireframe wall (#snz-wbg, booted + animated by buildflow.ts) -->
-      <div id="snz-wallzone" style="position:relative;background:var(--bg1)">
-        <!-- out-of-flow layer holding a viewport-tall sticky wall behind everything in the zone -->
-        <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
-          <div id="snz-wbg" aria-hidden="true" style="position:sticky;top:var(--snz-nav-h,56px);height:calc(100vh - var(--snz-nav-h,56px));display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.55;overflow:hidden;will-change:transform">
-            <div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg1) 0%,transparent 12%,transparent 88%,var(--bg1) 100%);z-index:1;pointer-events:none"></div>
-            <WireColumns />
-          </div>
-        </div>
-        <Hero />
-        <Statement />
-        <BuildFlow />
+<ConsultationLayout
+  title="Freelance Web Developer & App Builder (UK) | Snazzie"
+  description="Bespoke, hand-built websites, mobile apps and products for individuals and small businesses. From £1500, owned by you outright, with optional monthly care."
+  path="/consultation/"
+  schema={serviceSchema}
+>
+  <!-- hero, statement and the build story share ONE wireframe wall (#snz-wbg, booted + animated by buildflow.ts) -->
+  <div id="snz-wallzone" style="position:relative;background:var(--bg1)">
+    <!-- out-of-flow layer holding a viewport-tall sticky wall behind everything in the zone -->
+    <div style="position:absolute;inset:0;z-index:0;pointer-events:none">
+      <div id="snz-wbg" aria-hidden="true" style="position:sticky;top:var(--snz-nav-h,56px);height:calc(100vh - var(--snz-nav-h,56px));display:flex;gap:18px;padding:0 14px;align-items:flex-start;opacity:0.55;overflow:hidden;will-change:transform">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg1) 0%,transparent 12%,transparent 88%,var(--bg1) 100%);z-index:1;pointer-events:none"></div>
+        <WireColumns />
       </div>
-      <Services />
-      <Work />
-      <Comparison />
-      <Pricing />
-      <Process />
-      <Faq />
-      <Closing />
-      <Footer />
     </div>
-
-    <script>
-      // Page-wide reveal-on-scroll + magnetic buttons.
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
-      if (reduce || !('IntersectionObserver' in window)) {
-        els.forEach((el) => el.classList.add('is-in'));
-      } else {
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const el = entry.target as HTMLElement;
-                el.style.transitionDelay = (el.dataset.delay || 0) + 'ms';
-                el.classList.add('is-in');
-                io.unobserve(el);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -10% 0px' },
-        );
-        els.forEach((el) => io.observe(el));
-
-        // Magnetic hover on tagged buttons.
-        document.querySelectorAll<HTMLElement>('[data-mag]').forEach((el) => {
-          el.addEventListener('mousemove', (ev) => {
-            const r = el.getBoundingClientRect();
-            const x = ev.clientX - r.left - r.width / 2;
-            const y = ev.clientY - r.top - r.height / 2;
-            el.style.transform = 'translate(' + (x * 0.28).toFixed(1) + 'px,' + (y * 0.4).toFixed(1) + 'px)';
-          });
-          el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
-        });
-      }
-    </script>
-
-    <style is:global>
-      @keyframes snz-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-      @keyframes snz-scan { 0% { transform: translateY(0); } 100% { transform: translateY(260px); } }
-      @keyframes snz-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
-      @keyframes snz-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-      @keyframes snz-appscroll { 0% { transform: translateY(0); } 100% { transform: translateY(-240px); } }
-      @keyframes snz-ring { 0% { transform: scale(1); opacity: .4; } 100% { transform: scale(2.4); opacity: 0; } }
-      @keyframes snz-dotflow { to { stroke-dashoffset: -0.2; } }
-
-      /* ===== consultation palette — :root is the LIGHT theme (default); html[data-theme=dark] restores today's exact dark values (pixel-identical). ===== */
-      :root {
-        --bg0:#f4f3ee; --bg1:#f1f0ea; --bg2:#edece6; --bg3:#e9e8e1; --bg4:#e5e4dd; --bg5:#e0dfd8;
-        --ink0:#141410; --ink1:#33332c; --ink2:#3d3d35; --ink3:#55554c; --ink4:#5e5e55; --ink5:#60605a; --ink6:#62625a; --ink7:#85847a;
-        --line-rgb:12,12,8;
-        --accent:#C6F432; --accent-rgb:132,168,16; --accent-vis:#84a810;
-        --ink:#0a0a0a;
-        --tone-mid:#7d6209; --tone-bad:#9a3b3b;
-        --dim0:#85847a; --dim1:#c9c8c0;
-        /* extra one-off tones mapped from stray literals (dark values below are pixel-identical to originals) */
-        --bg-deep:#dcdbd4; --bg-node:#e9e8e1;
-        --ink-a:#55554c; --ink-b:#5e5e55; --ink-mid:#3d3d35; --ink-c:#141410;
-        --nav-rgb:244,243,238; --chip-rgb:237,236,230; --shadow-rgb:90,88,80; --shine-rgb:170,205,40;
-        --pure0:#141410;
-        /* BuildFlow marquee: light = black words swept/flashed with brand highlighter lime */
-        --mq-base-rgb:20,20,16; --mq-base-a:.92; --mq-shine-rgb:198,244,50; --mq-peak:#C6F432; --mq-flash:#C6F432; --mq-ic-lit:#141410;
-        color-scheme:light;
-      }
-      html[data-theme="dark"] {
-        --bg0:#0a0a0a; --bg1:#0b0b0b; --bg2:#0c0c0c; --bg3:#0e0e0e; --bg4:#101010; --bg5:#141414;
-        --ink0:#F2F0EA; --ink1:#cfcfc7; --ink2:#c4c4bc; --ink3:#9a9a92; --ink4:#8a8a82; --ink5:#82827a; --ink6:#7f7f77; --ink7:#5f5f58;
-        --line-rgb:255,255,255;
-        --accent:#C6F432; --accent-rgb:198,244,50; --accent-vis:#C6F432;
-        --ink:#0a0a0a;
-        --tone-mid:#c9a227; --tone-bad:#9a3b3b;
-        --dim0:#66665f; --dim1:#2f2f2a;
-        --bg-deep:#080808; --bg-node:#0c0c0a;
-        --ink-a:#a8a89f; --ink-b:#a6a69e; --ink-mid:#b8b8b0; --ink-c:#E9E7E1;
-        --nav-rgb:10,10,10; --chip-rgb:12,12,12; --shadow-rgb:0,0,0; --shine-rgb:224,255,140;
-        --pure0:#fff;
-        /* BuildFlow marquee: dark keeps today's exact lime/white values */
-        --mq-base-rgb:198,244,50; --mq-base-a:.5; --mq-shine-rgb:224,255,140; --mq-peak:#fff; --mq-flash:#fff; --mq-ic-lit:#C6F432;
-        color-scheme:dark;
-      }
-      html { scroll-behavior: smooth; }
-      body { margin: 0; }
-
-      [data-reveal] {
-        opacity: 0;
-        transform: translateY(28px);
-        transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
-      }
-      [data-reveal].is-in { opacity: 1; transform: none; }
-
-      #snz-build .cap { transition: opacity .55s ease, transform .55s ease; }
-      .snz-magwrap { display: inline-block; }
-
-      .snz-card:hover { background: var(--bg4) !important; transform: translateY(-4px); }
-      .snz-step:hover { padding-left: 14px; }
-
-      /* Light theme: wireframe wall lines are near-black at low alpha, so the wall reads too faint.
-         Boost each wireframe's opacity in light mode (dark mode uses white lines and already reads fine). */
-      :root:not([data-theme="dark"]) #snz-wbg svg { opacity: .82 !important; }
-
-      @media (max-width: 880px) {
-        #snz-hero { grid-template-columns: 1fr !important; }
-        #snz-hero .snz-right { border-left: none !important; border-top: 1px solid rgba(var(--line-rgb),.1) !important; }
-        #snz-svc { grid-template-columns: 1fr !important; }
-        #snz-stats { grid-template-columns: 1fr 1fr !important; }
-        #snz-pricegrid { grid-template-columns: 1fr !important; }
-        .snz-h1 { font-size: 46px !important; }
-        .snz-display { font-size: 42px !important; }
-        #snz-build { height: 600vh !important; }
-        #snz-build .cap h3 { font-size: 23px !important; }
-        #snz-buildtop { padding: 18px 24px 0 !important; }
-        #snz-buildtop .snz-track { display: none !important; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        [data-reveal] { transition: none; }
-      }
-    </style>
-  </body>
-</html>
+    <Hero />
+    <Statement />
+    <BuildFlow />
+  </div>
+  <Work />
+  <Comparison />
+  <Pricing />
+  <Process />
+  <Faq />
+  <Closing />
+</ConsultationLayout>

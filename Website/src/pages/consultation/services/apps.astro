@@ -1,0 +1,69 @@
+---
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
+
+const covers = [
+  'Mobile apps (iOS & Android)',
+  'Web products, from scratch',
+  'The backend & database behind it',
+  'App-store submission & release',
+  'Payments, accounts & onboarding',
+  'AI features baked in where useful',
+];
+
+const steps = [
+  { n: '01', title: 'Discovery call', body: 'Talk through the idea, who it’s for, and what "done" looks like.' },
+  { n: '02', title: 'Scope & quote', body: 'A written breakdown of what gets built and a fixed or staged price, before any code.' },
+  { n: '03', title: 'Build in the open', body: 'Regular check-ins as it comes together, not a black box until launch day.' },
+  { n: '04', title: 'Launch & handover', body: 'Shipped to the store or the web, source and accounts handed to you.' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Mobile app and product development',
+  provider: { '@type': 'Person', name: 'Aaron (Snazzie)' },
+  areaServed: 'GB',
+  url: 'https://snazzie.space/consultation/services/apps/',
+};
+---
+<ConsultationLayout
+  title="Mobile App & Product Development | Snazzie"
+  description="Turn an idea into a real app or product. Scoped and priced after a call, built and handed over to you outright."
+  path="/consultation/services/apps/"
+  schema={serviceSchema}
+>
+  <section class="pt-24 pb-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-16 max-[760px]:px-[22px]">
+    <a href="/consultation/#snz-services" class="inline-block mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline">← All services</a>
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">FOUNDERS & IDEAS</div>
+    <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em] max-w-[720px]">Turn your idea into an app</h1>
+    <p class="m-0 max-w-[560px] font-['JetBrains_Mono'] font-normal text-[15px] leading-[1.7] text-[var(--ink3)]">Mobile apps and products built from scratch, end to end. Every idea is a different shape, so this is scoped and priced with you before anything is built — not squeezed into a fixed package.</p>
+    <span class="snz-magwrap inline-block mt-8"><a data-mag href="mailto:consulting@snazzie.space" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">TALK THROUGH YOUR IDEA →</a></span>
+  </section>
+
+  <section class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">WHAT'S COVERED</div>
+    <div class="grid grid-cols-3 gap-px bg-[rgba(var(--line-rgb),0.08)] border border-[rgba(var(--line-rgb),0.08)] mb-[54px] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+      {covers.map((c, i) => (
+        <div class="snz-card bg-[var(--bg0)] py-[26px] px-[24px] flex items-center gap-3">
+          <span class="w-[7px] h-[7px] flex-none bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent)"></span>
+          <span class="font-['Archivo'] font-bold text-[15px] tracking-[-0.01em]">{c}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">HOW PRICING WORKS</div>
+    <div class="grid grid-cols-4 gap-6 max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+      {steps.map((s) => (
+        <div class="border border-[rgba(var(--line-rgb),0.12)] p-6 bg-[var(--bg2)] flex flex-col">
+          <div class="font-['JetBrains_Mono'] font-bold text-[13px] text-[var(--accent-vis)] mb-3">{s.n}</div>
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.015em]">{s.title}</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.6] text-[var(--ink3)]">{s.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)] mt-6">
+      <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">No fixed catalogue price, because two apps called "simple" can be a week apart in build time. You get a real number once we've talked, not a guess.</p>
+    </div>
+  </section>
+</ConsultationLayout>

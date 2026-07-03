@@ -1,144 +1,63 @@
 ---
-// Pricing: bespoke website headline price, monthly care, enterprise band.
-const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
-
-const metrics = [
-  { value: '95+', label: 'FAST' },
-  { value: '100', label: 'EASY TO USE' },
-  { value: '100', label: 'FOUND ON GOOGLE' },
-];
-
-const bespokeFeatures = [
-  'Hand-built — no WordPress or templates',
-  'A one-of-a-kind design, just for you',
-  'Fast, easy to use & easy to find',
-  'Privacy-first & UK GDPR compliant',
-  'Honest hosting costs — no padding',
-  'Mobile & tablet responsive',
-  'Visitor insights from day one',
-  'Live on your own web address',
-];
-
-const launchReady = [
-  'Domain & DNS set up',
-  'Hosting with free SSL (HTTPS)',
-  'UK GDPR & cookie consent',
-  'SEO from the first line of code',
-  'AI-search ready (ChatGPT & co.)',
-  'Analytics from day one',
-  'Accessibility & speed checks',
-];
-
-const careFeatures = [
-  'Web content & copy updates',
-  'Analytics tracking & reporting',
-  'Ongoing SEO optimisation',
-  'Legal obligations upkeep (GDPR & cookie-consent)',
-  'Hosting & uptime kept healthy',
+// Services: three ways people work with me, each linking to its own detail + full pricing page.
+const segments = [
+  {
+    slug: 'websites',
+    audience: 'SMALL BUSINESS',
+    title: 'A website for your business',
+    price: 'From £1500',
+    priceNote: 'one-off',
+    blurb: 'Hand-built, launch-ready, and yours to own outright.',
+  },
+  {
+    slug: 'apps',
+    audience: 'FOUNDERS & IDEAS',
+    title: 'Turn your idea into an app',
+    price: 'Scoped after a call',
+    priceNote: '',
+    blurb: 'Mobile apps and products built from scratch, priced to what you need.',
+  },
+  {
+    slug: 'consulting',
+    audience: 'TEAMS & ENTERPRISE',
+    title: 'Engineering advisory & consulting',
+    price: 'Scoped after a call',
+    priceNote: '',
+    blurb: 'Backend systems, AI features, or a second opinion on what you have.',
+  },
 ];
 ---
-<section id="snz-pricing" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+<section id="snz-services" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
   <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
     <div>
-      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">[ 04 ] PRICING</div>
-      <h2 class="snz-display m-0 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em]">A simple place to start</h2>
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">[ 03 ] SERVICES</div>
+      <h2 class="snz-display m-0 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em]">What I build, and what it costs</h2>
     </div>
-    <p class="m-0 max-w-[340px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.6] text-[var(--ink4)]">Want a website? Here's the simple way to start. Anything bigger — an app, a product, a service — is priced once we understand it together.</p>
+    <p class="m-0 max-w-[340px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.6] text-[var(--ink4)]">Whatever you need made, I can probably make it. Pick where you're starting from.</p>
   </div>
 
-  <div id="snz-pricegrid" class="grid grid-cols-[1.4fr_1fr] gap-6">
-    <!-- bespoke -->
-    <div data-reveal class="border border-[rgba(var(--line-rgb),0.12)] p-10 bg-[var(--bg2)] flex flex-col">
-      <div class="flex items-baseline justify-between flex-wrap gap-2.5">
-        <h3 class="m-0 font-['Archivo'] font-extrabold text-[30px] tracking-[-0.025em]">Bespoke website</h3>
-        <div class="font-['Archivo'] font-bold text-[28px] text-[var(--accent-vis)]">From £1500 <span class="font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink5)]">one-off</span></div>
-      </div>
-      <p class="mt-[18px] mb-7 max-w-[480px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.65] text-[var(--ink3)]">Hand-built from a blank page, designed around your business, and yours to own outright. The price is purely development — your domain and any hosting are paid separately, at cost.</p>
-      <div class="grid grid-cols-3 gap-[1px] bg-[rgba(var(--line-rgb),0.1)] border border-[rgba(var(--line-rgb),0.1)] mb-7">
-        {metrics.map((m) => (
-          <div class="bg-[var(--bg2)] py-[18px] px-5">
-            <div class="font-['Archivo'] font-extrabold text-[30px] text-[var(--accent-vis)]">{m.value}</div>
-            <div class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--ink5)] mt-1">{m.label}</div>
+  <div id="snz-svc" class="grid grid-cols-3 gap-6 max-[900px]:grid-cols-1">
+    {segments.map((s, i) => (
+      <a
+        data-reveal
+        data-delay={i * 90}
+        data-mag
+        href={`/consultation/services/${s.slug}/`}
+        class="snz-card group flex flex-col justify-between gap-7 border border-[rgba(var(--line-rgb),0.12)] p-8 bg-[var(--bg2)] no-underline transition-[background,transform] duration-[.35s] ease"
+        style="transition:transform .3s cubic-bezier(.2,.8,.2,1),background .35s ease"
+      >
+        <div>
+          <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.16em] text-[var(--accent-vis)] mb-4">{s.audience}</div>
+          <h3 class="m-0 mb-3 font-['Archivo'] font-extrabold text-[24px] leading-[1.1] tracking-[-0.02em] text-[var(--ink0)]">{s.title}</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.6] text-[var(--ink3)]">{s.blurb}</p>
+        </div>
+        <div class="flex items-end justify-between gap-3">
+          <div class="font-['Archivo'] font-bold text-[20px] text-[var(--ink0)]">
+            {s.price}{s.priceNote && <span class="font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink5)]"> {s.priceNote}</span>}
           </div>
-        ))}
-      </div>
-      <div class="snz-bespoke-feats grid grid-cols-2 gap-x-7 gap-y-3 max-[760px]:grid-cols-1 max-[760px]:gap-2.5">
-        {bespokeFeatures.map((f) => (
-          <div class="font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.5] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">+</span> {f}</div>
-        ))}
-      </div>
-    </div>
-    <!-- care -->
-    <div data-reveal data-delay="90" class="flex flex-col gap-6">
-      <div class="border border-[rgba(var(--line-rgb),0.12)] p-8 bg-[var(--bg2)] flex-1">
-        <div class="flex items-baseline justify-between gap-2.5 mb-1.5">
-          <h4 class="m-0 font-['Archivo'] font-bold text-[20px] tracking-[-0.01em]">Monthly care</h4>
-          <span class="font-['Archivo'] font-bold text-[18px] text-[var(--ink0)]">From £40<span class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--ink5)]">/mo</span></span>
+          <span class="font-['JetBrains_Mono'] text-[var(--accent-vis)] opacity-0 -translate-x-1 transition-[opacity,transform] duration-[.35s] ease group-hover:opacity-100 group-hover:translate-x-0">→</span>
         </div>
-        <div class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--accent-vis)] mb-[18px]">OPTIONAL · CANCEL ANYTIME</div>
-        <p class="mt-0 mb-[18px] font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.6] text-[var(--ink3)]">Keep the site current and growing without lifting a finger.</p>
-        <div class="flex flex-col gap-[9px]">
-          {careFeatures.map((f) => (
-            <div class="font-['JetBrains_Mono'] font-normal text-[12.5px] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">·</span> {f}</div>
-          ))}
-        </div>
-      </div>
-      <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)]">
-        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">Apps, products or anything more involved are priced once we've scoped it together. Domains and hosting are paid straight to the providers — no markup, no padded packages, no fake security fees.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- worked example: what a real, simple site actually costs -->
-  <div data-reveal class="mt-6 border border-[rgba(var(--line-rgb),0.12)] bg-[var(--bg2)] p-9 max-[760px]:p-7">
-    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.18em] text-[var(--accent-vis)] mb-[18px]">FOR EXAMPLE</div>
-    <div class="grid grid-cols-[1.2fr_1fr] gap-9 items-start max-[760px]:grid-cols-1 max-[760px]:gap-6">
-      <div>
-        <h3 class="mt-0 mb-3 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em]">A typical small-business site</h3>
-        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.65] text-[var(--ink3)]">A five-page site for a local business: home, about, services, gallery and contact. Hand-built, fast, mobile-ready and live on your own domain. Here is the honest, all-in picture, no surprises later.</p>
-      </div>
-      <div class="flex flex-col gap-[1px] bg-[rgba(var(--line-rgb),0.1)] border border-[rgba(var(--line-rgb),0.1)]">
-        <div class="flex items-baseline justify-between gap-4 bg-[var(--bg2)] py-[14px] px-5">
-          <span class="font-['JetBrains_Mono'] text-[13px] text-[var(--ink1)]">Build (one-off)</span>
-          <span class="font-['Archivo'] font-bold text-[18px] text-[var(--accent-vis)]">from £1500</span>
-        </div>
-        <div class="flex items-baseline justify-between gap-4 bg-[var(--bg2)] py-[14px] px-5">
-          <span class="font-['JetBrains_Mono'] text-[13px] text-[var(--ink1)]">Domain</span>
-          <span class="font-['JetBrains_Mono'] font-medium text-[13px] text-[var(--ink3)]">~£12/yr, no markup</span>
-        </div>
-        <div class="flex items-baseline justify-between gap-4 bg-[var(--bg2)] py-[14px] px-5">
-          <span class="font-['JetBrains_Mono'] text-[13px] text-[var(--ink1)]">Hosting</span>
-          <span class="font-['JetBrains_Mono'] font-medium text-[13px] text-[var(--ink3)]">often £0 for a simple site</span>
-        </div>
-        <div class="flex items-baseline justify-between gap-4 bg-[var(--bg2)] py-[14px] px-5">
-          <span class="font-['JetBrains_Mono'] text-[13px] text-[var(--ink1)]">Time to live</span>
-          <span class="font-['JetBrains_Mono'] font-medium text-[13px] text-[var(--ink3)]">a few weeks</span>
-        </div>
-        <div class="flex items-baseline justify-between gap-4 py-[14px] px-5" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg2))">
-          <span class="font-['JetBrains_Mono'] font-semibold text-[12px] tracking-[.06em] text-[var(--ink0)]">YOU OWN IT</span>
-          <span class="font-['JetBrains_Mono'] font-semibold text-[13px] text-[var(--accent-vis)]">outright, forever</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- launch-ready band: everything a proper launch needs is included -->
-  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 max-[760px]:py-7 max-[760px]:px-6" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
-    <h3 class="mt-0 mb-2 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em]">Launch-ready. Nothing forgotten.</h3>
-    <p class="mt-0 mb-6 max-w-[640px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.6] text-[var(--ink3)]">A website is more than a nice design. Everything a proper launch needs is handled as part of the build, so you go live secure, compliant, and easy to find: on Google and in AI chats like ChatGPT.</p>
-    <div class="flex flex-wrap gap-x-7 gap-y-3">
-      {launchReady.map((f) => (
-        <span class="inline-flex items-center gap-2 font-['JetBrains_Mono'] font-medium text-[12.5px] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">✓</span> {f}</span>
-      ))}
-    </div>
-  </div>
-
-  <!-- enterprise band -->
-  <div data-reveal class="mt-6 border border-[rgba(var(--line-rgb),0.12)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,var(--bg3),var(--bg0))">
-    <div>
-      <h3 class="mt-0 mb-2 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em]">Bigger team or investor-backed?</h3>
-      <p class="m-0 max-w-[560px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.6] text-[var(--ink3)]">Larger teams, funded startups and ongoing advisory work differently — priced to fit, not off this page. Let's talk about what you need.</p>
-    </div>
-    <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.04em] border border-[var(--accent)] text-[var(--accent-vis)] py-[15px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+      </a>
+    ))}
   </div>
 </section>
