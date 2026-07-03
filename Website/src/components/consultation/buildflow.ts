@@ -173,20 +173,27 @@ export function initBuildFlow() {
       const prev = purStage;
       const dir = n > prev ? 1 : -1;   // scroll-forward slides the new view in from the right, back from the left
       purStage = n;
-      purViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
-      if (purpose) { purpose.dataset.cat = PUR_CATS[n]; purpose.toggleAttribute('data-app', n === 3); }
-      if (purStep) purStep.textContent = String(n + 1).padStart(2, '0');
-      if (purTitle) purTitle.textContent = PUR_META[n][0];
-      if (purSub) purSub.textContent = PUR_META[n][1];
+      // READS BEFORE WRITES: the GSAP calls read style/layout (getComputedStyle, transform
+      // parsing) when they start, and every DOM write in this function — the .on class toggles,
+      // the caption textContent, and especially the data-cat flip (which invalidates all ~500
+      // marquee nodes via [data-cat] selectors) — dirties the tree. With writes first, GSAP's
+      // reads forced a synchronous style+layout pass of the whole sticky section inside the flip
+      // frame's script (the ~100-150ms LoAF script spike at each stage swap). GSAP goes first on
+      // a clean tree; all writes follow and settle in the normal style phase, once.
       const inc = purViews[n];
       if (inc) {
         // slide the incoming view in with eased velocity (power3.out = quick then settle).
         if (reduce) gsap.set(inc, { xPercent: 0, opacity: 1 });
         else gsap.fromTo(inc, { xPercent: dir * 12, opacity: 0 }, { xPercent: 0, opacity: 1, duration: 0.55, ease: 'power3.out', overwrite: true });
-        purPlop(inc as El);
       }
       // slide the outgoing view out the opposite way so the switch reads as a directional swipe.
       if (!reduce && prev >= 0 && purViews[prev]) gsap.to(purViews[prev], { xPercent: -dir * 12, opacity: 0, duration: 0.4, ease: 'power2.in', overwrite: true });
+      purViews.forEach((v, j) => { if (v) v.classList.toggle('on', j === n); });
+      if (purStep) purStep.textContent = String(n + 1).padStart(2, '0');
+      if (purTitle) purTitle.textContent = PUR_META[n][0];
+      if (purSub) purSub.textContent = PUR_META[n][1];
+      if (inc) purPlop(inc as El);
+      if (purpose) { purpose.dataset.cat = PUR_CATS[n]; purpose.toggleAttribute('data-app', n === 3); }
     };
     const cnApi = $('cnApi'), cnApiPulse1 = $('cnApiPulse1'), cnApiPulse2 = $('cnApiPulse2');
     const ciAcc = $('ciAcc'), ciPay = $('ciPay'), ciAgent = $('ciAgent'), ciCms = $('ciCms'), ciEcom = $('ciEcom'), ciDyn = $('ciDyn');
@@ -675,8 +682,14 @@ export function initBuildFlow() {
   const stmtEl = document.getElementById('snz-stmt');
   const stmtWords = stmtEl ? Array.from(stmtEl.querySelectorAll<HTMLElement>('.snz-w')) : [];
   const sm3 = (t: number) => t * t * (3 - 2 * t);
+  // updateSlide runs on EVERY window scroll event but only animates nodes inside #snz-stmt.
+  // Unconditionally it cost a getBoundingClientRect (forced layout of the whole page — including
+  // the 400+ word BuildFlow marquee, whose per-frame style writes keep the tree dirty while that
+  // section is scrolling) plus ~60 word-color style writes, per scroll event, page-wide. Gate it
+  // to when the statement section is anywhere near the viewport.
+  let stmtNear = false;
   const updateSlide = () => {
-    if (!stmtEl) return;
+    if (!stmtEl || !stmtNear) return;
     const r = stmtEl.getBoundingClientRect();
     const prog = (window.innerHeight - r.top) / (window.innerHeight + r.height);
     const x = (prog - 0.5) * 260;
@@ -716,6 +729,10 @@ export function initBuildFlow() {
       w.style.color = `rgb(${rv},${gv},${bv})`;
     });
   };
+  if (stmtEl) {
+    // also refresh on entry so a no-scroll landing mid-section still gets styled
+    new IntersectionObserver(([e]) => { stmtNear = e.isIntersecting; if (stmtNear) updateSlide(); }, { rootMargin: '50%' }).observe(stmtEl);
+  }
   window.addEventListener('scroll', updateSlide, { passive: true });
   updateSlide();
 

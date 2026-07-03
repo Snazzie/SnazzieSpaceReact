@@ -54,11 +54,11 @@ export const projects: Project[] = [
     description:
       "A mobile app that brings your investments, pensions and savings into one place, so you can see your true net worth and whether your money is really growing.",
     href: "https://lunarportfolio.com",
-    image: "/lunar-home-sm.webp",
+    image: "/lunar-shot.webp",
     featured: true,
-    imageFit: "contain",
-    imgWidth: 400,
-    imgHeight: 867,
+    imageFit: "cover",
+    imgWidth: 2880,
+    imgHeight: 1800,
     tech: [
       "iOS",
       "Android",
@@ -123,11 +123,11 @@ export const projects: Project[] = [
     description:
       "A dashboard that keeps an eye on the behind-the-scenes systems that power an app and warns the team the moment something starts to go wrong.",
     href: "https://cloudcat.dev",
-    image: "/cloudcat-dashboard.webp",
+    image: "/cloudcat-shot.webp",
     featured: true,
-    imageFit: "contain",
-    imgWidth: 1200,
-    imgHeight: 507,
+    imageFit: "cover",
+    imgWidth: 2880,
+    imgHeight: 1800,
     tech: [
       "C#",
       "Rust",
@@ -169,11 +169,11 @@ export const projects: Project[] = [
     description:
       "A polished replacement for the built-in Task Manager on Windows and Mac that shows exactly what a computer is doing and what's slowing it down.",
     href: "https://bettertaskmanager.com",
-    image: "/btm-performance.webp",
+    image: "/btm-shot.webp",
     featured: true,
-    imageFit: "contain",
-    imgWidth: 1200,
-    imgHeight: 707,
+    imageFit: "cover",
+    imgWidth: 2880,
+    imgHeight: 1800,
     tech: [
       "Windows",
       "macOS",
@@ -234,11 +234,11 @@ export const projects: Project[] = [
     description:
       "A free tool that turns a UK salary into what you really earn per hour after tax, then shows how many hours of work any purchase actually costs you.",
     href: "/worthmytime",
-    image: "/wmt.png",
+    image: "/wmt-shot.webp",
     featured: true,
-    imageFit: "contain",
-    imgWidth: 1389,
-    imgHeight: 1570,
+    imageFit: "cover",
+    imgWidth: 2880,
+    imgHeight: 1800,
     tech: ["Astro", "React", "TypeScript", "Tailwind", "Vite", "Bun", "big.js", "Vitest"],
     details: [
       "Works out your true hourly pay once tax and other deductions are taken off",
