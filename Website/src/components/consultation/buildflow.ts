@@ -61,18 +61,33 @@ export function initBuildFlow() {
     const W_VEL_REF = 6000;   // scroll px/s mapping to ~full boost
     const wOff = new WeakMap<HTMLElement, number>();
     const wPer = new WeakMap<HTMLElement, number>();
-    let wLastY = window.scrollY;
+    // PERF: the ticker must NEVER read window.scrollY. It runs first each gsap tick, right after
+    // scroll-driven style writes have dirtied layout, so a scrollY read there forced a synchronous
+    // layout of the whole document (incl. the 480-word BuildFlow marquee) on EVERY scroll frame —
+    // a DevTools trace measured ~3s of reflow across a 4s scroll, the page-wide scroll lag.
+    // A passive scroll listener fires before the rAF/style-write phase, when layout is clean.
+    let wScrollY = window.scrollY;
+    window.addEventListener('scroll', () => { wScrollY = window.scrollY; }, { passive: true });
+    // the wall only backs the hero/statement sections — skip the work entirely when off-screen.
+    let wallVis = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => { wallVis = es[0].isIntersecting; }).observe(wbg);
+    }
+    const wCols = () => wbg.querySelectorAll<HTMLElement>('.snz-bf-col');
+    let wColsCached: HTMLElement[] | null = null;
+    let wLastY = wScrollY;
     let wLastT = performance.now();
     gsap.ticker.add(() => {
       const nowT = performance.now();
       const dt = Math.min(0.05, (nowT - wLastT) / 1000); // clamp survives tab-away
       wLastT = nowT;
-      const y = window.scrollY;
+      const y = wScrollY;
       const vel = dt > 0 ? (y - wLastY) / dt : 0;
       wLastY = y;
+      if (!wallVis) return;
       const boost = Math.tanh(Math.abs(vel) / W_VEL_REF) * W_SPEED_MAX;
       if (boost <= 0.5) return;
-      wbg.querySelectorAll<HTMLElement>('.snz-bf-col').forEach((col) => {
+      (wColsCached ??= Array.from(wCols())).forEach((col) => {
         let per = wPer.get(col);
         if (!per) { per = col.scrollHeight / 2; wPer.set(col, per); }
         if (!per) return;
