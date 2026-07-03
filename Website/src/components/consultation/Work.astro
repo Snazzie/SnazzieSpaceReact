@@ -2,7 +2,17 @@
 // Selected work + credibility proof. Pulls REAL shipped products from the
 // shared projects data so nothing here is invented. Testimonials render only
 // when real quotes are supplied (none yet) — see `testimonials` below.
+import { getImage } from 'astro:assets';
 import { projects } from '@/data/projects';
+import raceiqImg from '@/assets/logos/raceiq.png';
+
+// Some project images (e.g. RaceIQ) are src assets, not public files — the raw
+// URL in projects.ts 404s unless remapped to the Astro-optimized asset, same
+// as the main page does.
+const raceiq = await getImage({ src: raceiqImg, format: 'webp', width: 512 });
+const imageOverrides: Record<string, string> = {
+  '/logos/raceiq.png': raceiq.src,
+};
 
 // Curate: featured, client-relevant products, capped to 6 for this page.
 const PREFERRED = [
@@ -80,14 +90,39 @@ const testimonials: { quote: string; name: string; role: string }[] = [];
           class="snz-work-card group bg-[#0a0a0a] flex flex-col no-underline transition-[background,transform] duration-[.35s] ease"
         >
           <div class="relative aspect-[16/10] overflow-hidden bg-[#0c0c0c] border-b border-[rgba(255,255,255,0.06)]">
-            <img
-              src={p.image}
-              alt={p.title}
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full transition-transform duration-[.5s] ease group-hover:scale-[1.04]"
-              style={`object-fit:${p.imageFit === 'contain' ? 'contain' : 'cover'};${p.imageFit === 'contain' ? 'padding:18px' : ''}`}
-            />
+            {p.video ? (
+              <>
+                <!-- landing-page style showcase: looping video bg, logo floats on top and fades out on hover -->
+                <video
+                  class="snz-work-video absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+                  src={p.video}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true"
+                ></video>
+                <div aria-hidden="true" class="snz-work-video-wash absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[rgba(10,10,10,0.55)] to-transparent transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
+                <img
+                  src={imageOverrides[p.image] ?? p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  decoding="async"
+                  class="snz-work-video-logo relative w-full h-full transition-opacity duration-300 group-hover:opacity-0"
+                  style={`object-fit:${p.imageFit === 'contain' ? 'contain' : 'cover'};${p.imageFit === 'contain' ? 'padding:18px' : ''}`}
+                />
+              </>
+            ) : (
+              <img
+                src={imageOverrides[p.image] ?? p.image}
+                alt={p.title}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full transition-transform duration-[.5s] ease group-hover:scale-[1.04]"
+                style={`object-fit:${p.imageFit === 'contain' ? 'contain' : 'cover'};${p.imageFit === 'contain' ? 'padding:18px' : ''}`}
+              />
+            )}
           </div>
           <div class="p-7 flex flex-col flex-1 max-[760px]:p-6">
             <div class="flex items-center justify-between gap-3 mb-2.5">
@@ -125,8 +160,22 @@ const testimonials: { quote: string; name: string; role: string }[] = [];
   @media (prefers-reduced-motion: reduce) {
     .snz-work-card { transition: none; }
     .snz-work-card:hover { transform: none; }
+    /* no motion: drop the looping video, show the static logo tile as before */
+    .snz-work-video, .snz-work-video-wash { display: none; }
+    .snz-work-video-logo { opacity: 1 !important; }
   }
   @media (max-width: 860px) {
     #snz-work { padding: 64px 22px !important; }
   }
 </style>
+
+<script>
+  // Reduced motion: the CSS hides the showcase videos, but stop them fetching/decoding too.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLVideoElement>('.snz-work-video').forEach((v) => {
+      v.pause();
+      v.removeAttribute('src');
+      v.load();
+    });
+  }
+</script>

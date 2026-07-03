@@ -29,6 +29,16 @@ const serviceSchema = {
   email: 'info@snazzie.space',
   priceRange: 'From £1500',
   serviceType: ['Web development', 'Mobile app development', 'Product development'],
+  image: 'https://snazzie.space/images/avatar.webp',
+  sameAs: ['https://linkedin.com/in/cooper-a-m/', 'https://snazzie.space/'],
+  founder: { '@type': 'Person', name: 'Aaron (Snazzie)', jobTitle: 'Software Engineer' },
+  knowsAbout: [
+    'Search engine optimisation',
+    'AI search discoverability',
+    'UK GDPR compliance',
+    'Web hosting and domains',
+    'Web performance',
+  ],
 };
 ---
 
@@ -43,10 +53,19 @@ const serviceSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- non-blocking font load: media="print" defers apply until onload flips it, so first paint isn't blocked on the CSS fetch -->
     <link
       href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body>
     <div id="snz-root" style="background:#0a0a0a;color:#F2F0EA;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip">

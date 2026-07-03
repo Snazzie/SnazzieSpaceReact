@@ -19,6 +19,16 @@ const bespokeFeatures = [
   'Live on your own web address',
 ];
 
+const launchReady = [
+  'Domain & DNS set up',
+  'Hosting with free SSL (HTTPS)',
+  'UK GDPR & cookie consent',
+  'SEO from the first line of code',
+  'AI-search ready (ChatGPT & co.)',
+  'Analytics from day one',
+  'Accessibility & speed checks',
+];
+
 const careFeatures = [
   'Web content & copy updates',
   'Analytics tracking & reporting',
@@ -109,6 +119,17 @@ const careFeatures = [
           <span class="font-['JetBrains_Mono'] font-semibold text-[13px] text-[var(--accent)]">outright, forever</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- launch-ready band: everything a proper launch needs is included -->
+  <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 max-[760px]:py-7 max-[760px]:px-6" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
+    <h3 class="mt-0 mb-2 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em]">Launch-ready. Nothing forgotten.</h3>
+    <p class="mt-0 mb-6 max-w-[640px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.6] text-[#9a9a92]">A website is more than a nice design. Everything a proper launch needs is handled as part of the build, so you go live secure, compliant, and easy to find: on Google and in AI chats like ChatGPT.</p>
+    <div class="flex flex-wrap gap-x-7 gap-y-3">
+      {launchReady.map((f) => (
+        <span class="inline-flex items-center gap-2 font-['JetBrains_Mono'] font-medium text-[12.5px] text-[#cfcfc7]"><span class="text-[var(--accent)]">✓</span> {f}</span>
+      ))}
     </div>
   </div>
 
