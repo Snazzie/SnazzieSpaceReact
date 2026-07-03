@@ -65,7 +65,7 @@ import "./BuildFlow.css";
     <!-- wireframe background wall lives in the page-level #snz-wallzone (shared with the hero) -->
     <!-- stage 1 hero: design wall headline (fades out as the zoom into a tile begins) -->
     <div id="snz-hero1" style="position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 32px">
-      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-text);margin-bottom:18px">[ 01 — DESIGN ]</div>
+      <div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-vis);margin-bottom:18px">[ 01 — DESIGN ]</div>
       <h2 style="margin:0;font:800 clamp(34px,6vw,76px)/1.02 'Archivo',sans-serif;letter-spacing:-0.03em;color:var(--ink0);max-width:15ch">Endless design possibilities.</h2>
       <p style="margin:20px 0 0;font:400 15px/1.65 'JetBrains Mono',monospace;color:var(--ink2);max-width:540px">Catered entirely to your brand. Website, app, or both, no templates, designed from scratch around you.</p>
     </div>
@@ -379,7 +379,7 @@ import "./BuildFlow.css";
       <div class="snz-bcaps" style="position:absolute;left:56px;bottom:26px;height:118px;width:520px;max-width:60%">
         {buildCaps.map((c, i) => (
           <div id={`cap${i + 1}`} class="cap" style="position:absolute;left:0;bottom:0;opacity:0">
-            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-text);margin-bottom:12px">{c.label}</div>
+            <div style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--accent-vis);margin-bottom:12px">{c.label}</div>
             <h3 style="margin:0 0 9px;font:800 34px 'Archivo',sans-serif;letter-spacing:-0.02em;color:var(--ink0)">{c.title}</h3>
             <p style={`margin:0;max-width:${c.max}px;font:400 15px/1.6 'JetBrains Mono',monospace;color:var(--ink2)`}>{c.body}</p>
           </div>

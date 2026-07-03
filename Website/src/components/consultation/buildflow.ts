@@ -597,7 +597,7 @@ export function initBuildFlow() {
       const phase = p < 0.105 ? 0 : (p < 0.60 ? 1 : (p < 0.88 ? 2 : 3));
       // cap index 0 (DESIGN) is covered by the centered #snz-hero1, so never show the top-left duplicate
       caps.forEach((c, i) => { if (c) { const on = i === phase && i !== 0; c.style.opacity = on ? '1' : '0'; c.style.transform = on ? 'translateY(0)' : 'translateY(12px)'; } });
-      track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent-text)' : 'var(--dim0)'; });
+      track.forEach((t, i) => { if (t) t.style.color = i <= phase ? 'var(--accent-vis)' : 'var(--dim0)'; });
       dots.forEach((d, i) => { if (!d) return; const on = i <= phase;
         d.style.background = on ? 'var(--accent-vis)' : 'var(--bg1)';
         d.style.borderColor = on ? 'var(--accent-vis)' : 'var(--dim1)';

@@ -8,7 +8,7 @@ const LINKS = [
 ];
 ---
 <nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(var(--nav-rgb),0.72)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
-  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-text)]">°</span></a>
+  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
   <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
     <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (
@@ -19,12 +19,12 @@ const LINKS = [
       id="snz-theme-toggle"
       type="button"
       aria-label="Switch to dark theme"
-      class="snz-theme-toggle inline-flex items-center justify-center w-8 h-8 flex-none bg-transparent cursor-pointer text-[var(--ink-a)] border border-[rgba(var(--line-rgb),0.14)] transition-colors duration-200 hover:text-[var(--accent-text)] hover:border-[rgba(var(--accent-rgb),0.5)]"
+      class="snz-theme-toggle inline-flex items-center justify-center w-8 h-8 flex-none bg-transparent cursor-pointer text-[var(--ink-a)] border border-[rgba(var(--line-rgb),0.14)] transition-colors duration-200 hover:text-[var(--accent-vis)] hover:border-[rgba(var(--accent-rgb),0.5)]"
     >
       <svg class="snz-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       <svg class="snz-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent-text)] border border-[rgba(var(--accent-rgb),0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent-vis)] border border-[rgba(var(--accent-rgb),0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
   </div>
 </nav>
 

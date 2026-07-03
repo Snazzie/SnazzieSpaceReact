@@ -161,7 +161,7 @@
 .pur-cap{ display:flex; align-items:center; gap:13px;
   background:rgba(var(--chip-rgb),.84); border:1px solid rgba(var(--line-rgb),.07); border-radius:14px; padding:9px 16px; }
 .pur-step{ font:800 13px 'Archivo',sans-serif; color:var(--ink); background:var(--accent); border-radius:7px; padding:4px 8px; letter-spacing:-.02em; }
-.pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent-text); }
+.pur-title{ font:700 12px 'JetBrains Mono',monospace; letter-spacing:2px; color:var(--accent-vis); }
 .pur-cap small{ color:var(--ink2); font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; }
 /* desktop: enlarge the browser step caption (step / title / sub) for readability — phones keep the
    compact sizes above so the chip still fits under the scaled-down browser. */
@@ -214,7 +214,7 @@
 }
 #snz-stmt.snz-in .snz-ghost { transform:translateY(0); }
 .snz-stmt-label {
-  font:600 11px 'JetBrains Mono',monospace; letter-spacing:.2em; color:var(--accent-text);
+  font:600 11px 'JetBrains Mono',monospace; letter-spacing:.2em; color:var(--accent-vis);
   margin-bottom:28px; opacity:0; transform:translateY(10px);
   transition:opacity .5s ease, transform .5s ease;
 }
@@ -226,7 +226,7 @@
   transition:opacity .6s ease, transform .6s ease;
   transition-delay:var(--d,0s);
 }
-.snz-w.snz-accent { color:var(--accent-text); }
+.snz-w.snz-accent { color:var(--accent-vis); }
 #snz-stmt.snz-in .snz-w { opacity:1; transform:translateY(0); }
 #snz-row1, #snz-row2 { display:block; white-space:nowrap; will-change:transform; }
 #snz-row1 .snz-w, #snz-row2 .snz-w { opacity:1; transform:none; transition:none; }

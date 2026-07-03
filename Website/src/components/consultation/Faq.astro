@@ -53,18 +53,18 @@ const faqSchema = {
 <section id="snz-faq" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
   <div data-reveal class="flex flex-col items-center text-center gap-5 mb-[44px]">
     <div>
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-text)] mb-[18px]">[ 06 ] QUESTIONS</div>
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.2em] text-[var(--accent-vis)] mb-[18px]">[ 06 ] QUESTIONS</div>
       <h2 class="snz-display m-0 font-extrabold text-[60px] leading-[0.98] font-['Archivo'] tracking-[-0.035em] max-[760px]:text-[42px]">The honest answers</h2>
     </div>
     <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink4)]">The things people ask before we start. Anything else, just email me.</p>
   </div>
 
-  <div class="border-t border-[rgba(var(--line-rgb),0.1)]">
+  <div class="max-w-[760px] mx-auto border-t border-[rgba(var(--line-rgb),0.1)]">
     {faqs.map((f, i) => (
       <details data-reveal data-delay={(i % 4) * 50} class="snz-faq group border-b border-[rgba(var(--line-rgb),0.1)]">
         <summary class="flex items-center justify-between gap-6 py-6 cursor-pointer list-none select-none">
           <span class="font-bold text-[clamp(17px,2.2vw,22px)] font-['Archivo'] tracking-[-0.01em] text-[var(--ink0)]">{f.q}</span>
-          <span aria-hidden="true" class="snz-faq-ico flex-none w-7 h-7 grid place-items-center rounded-full border border-[rgba(var(--line-rgb),0.18)] text-[var(--accent-text)] text-[16px] leading-none transition-transform duration-300">+</span>
+          <span aria-hidden="true" class="snz-faq-ico flex-none w-7 h-7 grid place-items-center rounded-full border border-[rgba(var(--line-rgb),0.18)] text-[var(--accent-vis)] text-[16px] leading-none transition-transform duration-300">+</span>
         </summary>
         <p class="m-0 pb-7 pr-12 max-w-[760px] font-normal text-[14px] leading-[1.7] font-['JetBrains_Mono'] text-[var(--ink3)] max-[760px]:pr-0">{f.a}</p>
       </details>
