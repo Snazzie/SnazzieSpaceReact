@@ -677,20 +677,30 @@ export function initBuildFlow() {
     const row2X = row2End + (1 - slideP) * (180 - row2End);
     if (snzRow1) { snzRow1.style.transform = `translateX(${row1X.toFixed(1)}px)`; snzRow1.style.opacity = slideP.toFixed(3); }
     if (snzRow2) { snzRow2.style.transform = `translateX(${row2X.toFixed(1)}px)`; snzRow2.style.opacity = slideP.toFixed(3); }
+    // Palette is theme-dependent: the dark theme sweeps near-white→lime, but on the light
+    // theme both of those wash out on the cream bg, so use ink→olive instead. Read live so a
+    // runtime theme toggle is picked up on the next scroll frame.
+    const light = document.documentElement.getAttribute('data-theme') !== 'dark';
+    // marquee glow: low/high alpha floor is higher in light mode so faint words stay legible
+    const glowLo = light ? 0.22 : 0.05;
+    const glowHi = light ? 0.9 : 0.65;
     // glow sweep driven by scroll
     const gp1 = ((prog * 130) % 110) - 5;
     const gp2 = (((1 - prog) * 130) % 110) - 5;
-    const glow = (p: number) => `linear-gradient(90deg,rgba(var(--accent-rgb),.05) 0%,rgba(var(--accent-rgb),.05) ${Math.max(0,p-10).toFixed(1)}%,rgba(var(--accent-rgb),.65) ${p.toFixed(1)}%,rgba(var(--accent-rgb),.05) ${Math.min(100,p+10).toFixed(1)}%,rgba(var(--accent-rgb),.05) 100%)`;
+    const glow = (p: number) => `linear-gradient(90deg,rgba(var(--accent-rgb),${glowLo}) 0%,rgba(var(--accent-rgb),${glowLo}) ${Math.max(0,p-10).toFixed(1)}%,rgba(var(--accent-rgb),${glowHi}) ${p.toFixed(1)}%,rgba(var(--accent-rgb),${glowLo}) ${Math.min(100,p+10).toFixed(1)}%,rgba(var(--accent-rgb),${glowLo}) 100%)`;
     if (snzSr1) snzSr1.style.backgroundImage = glow(gp1);
     if (snzSr2) snzSr2.style.backgroundImage = glow(gp2);
-    // accent color sweep: each word shifts white→lime staggered across scroll progress
+    // accent color sweep: each word shifts off→accent staggered across scroll progress.
+    // off = resting ink, on = accent; both per-theme so the headline keeps contrast on cream.
+    const off = light ? [20, 20, 16] : [242, 240, 234];
+    const on = light ? [95, 125, 12] : [198, 244, 50];
     const n = stmtWords.length;
     stmtWords.forEach((w, i) => {
       const thresh = 0.30 + (i / n) * 0.40;
       const t = Math.max(0, Math.min(1, (prog - thresh) / 0.13));
-      const rv = Math.round(242 + (198 - 242) * t);
-      const gv = Math.round(240 + (244 - 240) * t);
-      const bv = Math.round(234 + (50 - 234) * t);
+      const rv = Math.round(off[0] + (on[0] - off[0]) * t);
+      const gv = Math.round(off[1] + (on[1] - off[1]) * t);
+      const bv = Math.round(off[2] + (on[2] - off[2]) * t);
       w.style.color = `rgb(${rv},${gv},${bv})`;
     });
   };

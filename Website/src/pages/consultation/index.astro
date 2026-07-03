@@ -142,14 +142,14 @@ const serviceSchema = {
         --bg0:#f4f3ee; --bg1:#f1f0ea; --bg2:#edece6; --bg3:#e9e8e1; --bg4:#e5e4dd; --bg5:#e0dfd8;
         --ink0:#141410; --ink1:#33332c; --ink2:#3d3d35; --ink3:#55554c; --ink4:#5e5e55; --ink5:#6a6a60; --ink6:#787870; --ink7:#b5b4ac;
         --line-rgb:12,12,8;
-        --accent:#C6F432; --accent-rgb:112,140,10; --accent-text:#5f7d0c; --accent-vis:#7d9b1e;
+        --accent:#C6F432; --accent-rgb:132,168,16; --accent-text:#5a8a00; --accent-vis:#84a810;
         --ink:#0a0a0a;
         --tone-mid:#8a6d10; --tone-bad:#9a3b3b;
         --dim0:#b0afa6; --dim1:#c9c8c0;
         /* extra one-off tones mapped from stray literals (dark values below are pixel-identical to originals) */
         --bg-deep:#dcdbd4; --bg-node:#e9e8e1;
         --ink-a:#55554c; --ink-b:#5e5e55; --ink-mid:#3d3d35; --ink-c:#141410;
-        --nav-rgb:244,243,238; --chip-rgb:237,236,230; --shadow-rgb:90,88,80; --shine-rgb:150,175,40;
+        --nav-rgb:244,243,238; --chip-rgb:237,236,230; --shadow-rgb:90,88,80; --shine-rgb:170,205,40;
         --pure0:#141410;
         color-scheme:light;
       }
@@ -182,6 +182,10 @@ const serviceSchema = {
 
       .snz-card:hover { background: var(--bg4) !important; transform: translateY(-4px); }
       .snz-step:hover { padding-left: 14px; }
+
+      /* Light theme: wireframe wall lines are near-black at low alpha, so the wall reads too faint.
+         Boost each wireframe's opacity in light mode (dark mode uses white lines and already reads fine). */
+      :root:not([data-theme="dark"]) #snz-wbg svg { opacity: .82 !important; }
 
       @media (max-width: 880px) {
         #snz-hero { grid-template-columns: 1fr !important; }
