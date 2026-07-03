@@ -92,9 +92,9 @@ const testimonials: { quote: string; name: string; role: string }[] = [];
           <div class="relative aspect-[16/10] overflow-hidden bg-[#0c0c0c] border-b border-[rgba(255,255,255,0.06)]">
             {p.video ? (
               <>
-                <!-- landing-page style showcase: looping video bg, logo floats on top and fades out on hover -->
+                <!-- landing-page style showcase: looping video fills the tile; static logo only as reduced-motion fallback -->
                 <video
-                  class="snz-work-video absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+                  class="snz-work-video absolute inset-0 w-full h-full object-cover pointer-events-none"
                   src={p.video}
                   autoplay
                   muted
@@ -103,13 +103,12 @@ const testimonials: { quote: string; name: string; role: string }[] = [];
                   preload="metadata"
                   aria-hidden="true"
                 ></video>
-                <div aria-hidden="true" class="snz-work-video-wash absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[rgba(10,10,10,0.55)] to-transparent transition-opacity duration-300 group-hover:opacity-0 pointer-events-none"></div>
                 <img
                   src={imageOverrides[p.image] ?? p.image}
                   alt={p.title}
                   loading="lazy"
                   decoding="async"
-                  class="snz-work-video-logo relative w-full h-full transition-opacity duration-300 group-hover:opacity-0"
+                  class="snz-work-video-logo relative w-full h-full opacity-0"
                   style={`object-fit:${p.imageFit === 'contain' ? 'contain' : 'cover'};${p.imageFit === 'contain' ? 'padding:18px' : ''}`}
                 />
               </>
@@ -161,7 +160,7 @@ const testimonials: { quote: string; name: string; role: string }[] = [];
     .snz-work-card { transition: none; }
     .snz-work-card:hover { transform: none; }
     /* no motion: drop the looping video, show the static logo tile as before */
-    .snz-work-video, .snz-work-video-wash { display: none; }
+    .snz-work-video { display: none; }
     .snz-work-video-logo { opacity: 1 !important; }
   }
   @media (max-width: 860px) {
