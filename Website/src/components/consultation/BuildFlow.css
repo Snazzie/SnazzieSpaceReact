@@ -19,43 +19,45 @@
   letter-spacing:-.03em; padding:4px 0 24px; border-bottom:1px solid rgba(var(--line-rgb),.04); }
 /* shared, animatable sweep offset (registered so it can be keyframed inside calc()) */
 @property --shim{ syntax:'<length>'; inherits:false; initial-value:0px; }
-/* promote each row to its own compositor layer once: scroll loop = pure transform, zero repaint */
-.pur-row.l{ animation:pur-ml var(--dur,52s) linear infinite; will-change:transform, translate; }
-.pur-row.r{ animation:pur-mr var(--dur,52s) linear infinite; will-change:transform, translate; }
-/* the marquee + per-item shimmer are `infinite`; keep them paused until the overlay is actually
-   visible (JS toggles .snz-live). pause/resume preserves position, so this never causes a jump. */
-.pur-row, #snz-purpose .pur-it, #snz-purpose .pur-it .pur-ic{ animation-play-state:paused; }
-#snz-purpose.snz-live .pur-row,
-#snz-purpose.snz-live .pur-it,
-#snz-purpose.snz-live .pur-it .pur-ic{ animation-play-state:running; }
-@keyframes pur-ml{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@keyframes pur-mr{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+/* rows are SCROLL-DRIVEN: JS maps the pin progress onto each row's `translate` property (wrapped
+   to one copy's width, so the loop stays seamless both directions). No self-running animation —
+   zero work while the user isn't scrolling. .r holds a -50% base transform so its left edge is
+   pre-filled; the scroll offset composes on top via the separate `translate` property. */
+.pur-row.l, .pur-row.r{ will-change:translate; }
+.pur-row.r{ transform:translateX(-50%); }
+/* play-state gating lives BELOW the "all"-stage rules — `animation:` shorthands reset
+   play-state, so the pause/resume rules must come later in the cascade to win. */
 @keyframes pur-shim{ from{--shim:0px} to{--shim:-600px} }
 /* --bgx (set by JS = -offsetLeft of the item within its row) anchors every item's gradient to the
    ROW origin, so the 600px band is continuous across all words; --shim animates the sweep across
    the whole row in unison. Result: one coherent band travelling over all the text, but the clip is
    per-item so it never hits the oversized-layer clip bug. */
 .pur-it{ display:inline-flex; align-items:center; gap:.26em; margin-right:34px; color:transparent;
-  background-image:linear-gradient(100deg, rgba(var(--accent-rgb),.5) 0%, rgba(var(--accent-rgb),.5) 40%,
-    rgba(var(--shine-rgb),.92) 47%, rgba(var(--line-rgb),1) 50%, rgba(var(--shine-rgb),.92) 53%,
-    rgba(var(--accent-rgb),.5) 60%, rgba(var(--accent-rgb),.5) 100%);
+  background-image:linear-gradient(100deg, rgba(var(--mq-base-rgb),var(--mq-base-a,.5)) 0%, rgba(var(--mq-base-rgb),var(--mq-base-a,.5)) 40%,
+    rgba(var(--mq-shine-rgb),.92) 47%, var(--mq-peak) 50%, rgba(var(--mq-shine-rgb),.92) 53%,
+    rgba(var(--mq-base-rgb),var(--mq-base-a,.5)) 60%, rgba(var(--mq-base-rgb),var(--mq-base-a,.5)) 100%);
   background-repeat:repeat-x; background-size:600px 100%;
   background-position:calc(var(--bgx,0px) + var(--shim,0px)) 0;
   -webkit-background-clip:text; background-clip:text;
   animation:pur-shim 2s linear infinite;
+  /* each word keeps its own compositor layer: the stage-flip opacity fades then run entirely on
+     the compositor instead of promoting/rasterising ~240 words on the flip frame (the flip lag). */
+  will-change:opacity;
   /* ONLY opacity transitions on a stage flip. text-fill-color is NOT transitioned: animating it
      re-rasters all 416 clipped-text words every frame for 0.5s, which spiked transition frames to
      ~160ms (vs ~41ms steady) while scrolling. The fill now SNAPS in one repaint (invisible anyway
      on the opacity:0 words that are fading), and opacity does the visible fade. */
   transition:opacity .5s ease-in-out; }
-.pur-ic{ height:.56em; width:auto; fill:rgba(var(--line-rgb),.12); flex:none; transition:opacity .5s ease-in-out; opacity:.5; }
+/* icons get their own tiny layer too — otherwise their .5s opacity fade re-rasters the parent
+   word's texture every frame of every flip, which re-creates the repaint storm we just removed. */
+.pur-ic{ height:.56em; width:auto; fill:rgba(var(--line-rgb),.12); flex:none; transition:opacity .5s ease-in-out; opacity:.5; will-change:opacity; }
 /* non-matching items are fully hidden (opacity:0); only the active category shows. The .5s opacity
    transition fades them out/in as the category switches. Their HIDDEN fill is the lit colour (text:
    transparent => the gradient shows; icon: accent), NOT gray — a gray hidden-fill made every word
    transition lime->gray on the way out (e.g. scrolling all->cms), producing a gray flash. Fading
    from the lit colour keeps the fade-out lime the whole way. Matching + "all" set opacity:1 below. */
 #snz-purpose[data-cat] .pur-it{ -webkit-text-fill-color:transparent; opacity:0; }
-#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(var(--accent-rgb),.4); opacity:0; }
+#snz-purpose[data-cat] .pur-it .pur-ic{ fill:rgba(var(--mq-base-rgb),.4); opacity:0; }
 #snz-purpose[data-cat="host"] .pur-it[data-cat="host"],
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"],
 #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"],
@@ -65,16 +67,43 @@
 #snz-purpose[data-cat="pay"]  .pur-it[data-cat="pay"]  .pur-ic,
 #snz-purpose[data-cat="cms"]  .pur-it[data-cat="cms"]  .pur-ic,
 #snz-purpose[data-cat="app"]  .pur-it[data-cat="app"]  .pur-ic,
-#snz-purpose[data-cat="all"] .pur-it .pur-ic{ fill:rgba(var(--accent-rgb),.4); opacity:.95; }
+#snz-purpose[data-cat="all"] .pur-it .pur-ic{ fill:rgba(var(--mq-base-rgb),.4); opacity:.95; }
 /* "all" stage (web app + mobile): REVEAL CASCADE — the wall opens fully black, then each name/icon
-   flashes white on its own staggered delay (var(--fd)) and LATCHES lit (lime). Runs ONCE, not a
-   loop: `both` fill-mode holds the 0% black before its delay and the 100% lit colour after, so a
-   word never falls back to dark once it has flashed in. Solid colours only (background-image:none)
-   so the clipped gradient's static shimmer band never peeks through. */
-#snz-purpose[data-cat="all"] .pur-it{ animation: pur-reveal .6s ease-out var(--fd,0s) both; background-image:none; }
-#snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-reveal-ic .6s ease-out var(--fd,0s) both; }
-@keyframes pur-reveal{ 0%{ -webkit-text-fill-color:var(--bg1); } 55%{ -webkit-text-fill-color:var(--pure0); } 100%{ -webkit-text-fill-color:rgba(var(--accent-rgb),.92); } }
-@keyframes pur-reveal-ic{ 0%{ fill:var(--bg1); } 55%{ fill:var(--pure0); } 100%{ fill:var(--accent-vis); } }
+   flashes white on its own staggered delay (var(--fd)) and LATCHES lit (lime). `both` fill-mode
+   holds the 0% black before its delay and the 100% lit colour after, so a word never falls back to
+   dark once it has flashed in. Solid colours only (background-image:none) so the clipped gradient's
+   static shimmer band never peeks through.
+   After the latch, pur-twinkle (listed second, so it wins the fill-color once its delay elapses)
+   re-flashes each word forever. Per-item --fd (phase) + --fdur (period, 1.6–3.4s, scaled ×3 →
+   4.8–10.2s cycles) desync the flashes so the wall twinkles pseudo-randomly. The flash window is
+   a narrow slice of the cycle, so at any moment only a handful of words are mid-interpolation —
+   the rest hold a constant value and never repaint. */
+#snz-purpose[data-cat="all"] .pur-it{ animation: pur-reveal .6s ease-out var(--fd,0s) both,
+  pur-twinkle calc(var(--fdur,2.4s)*3) ease-in-out calc(var(--fd,0s) + .6s) infinite; background-image:none; }
+#snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation: pur-reveal-ic .6s ease-out var(--fd,0s) both,
+  pur-twinkle-ic calc(var(--fdur,2.4s)*3) ease-in-out calc(var(--fd,0s) + .6s) infinite; }
+@keyframes pur-reveal{ 0%{ -webkit-text-fill-color:var(--bg1); } 55%{ -webkit-text-fill-color:var(--mq-flash); } 100%{ -webkit-text-fill-color:rgba(var(--mq-base-rgb),.92); } }
+@keyframes pur-reveal-ic{ 0%{ fill:var(--bg1); } 55%{ fill:var(--mq-flash); } 100%{ fill:var(--mq-ic-lit); } }
+@keyframes pur-twinkle{ 0%,86%,100%{ -webkit-text-fill-color:rgba(var(--mq-base-rgb),.92); } 93%{ -webkit-text-fill-color:var(--mq-flash); } }
+@keyframes pur-twinkle-ic{ 0%,86%,100%{ fill:var(--mq-ic-lit); } 93%{ fill:var(--mq-flash); } }
+
+/* ===== animation play-state gating (must stay after every `animation:` shorthand above) =====
+   1) nothing ticks until the overlay is on screen (.snz-live, toggled by JS); pause/resume
+      preserves position, so this never causes a jump.
+   2) single-category stages: HIDDEN words don't tick the shim. ~3/4 of the wall is opacity:0
+      there, but each running --shim animation still costs a per-word main-thread style recalc
+      every frame. Words of one category pause/resume as a set, so the shared sweep band stays
+      coherent across the words that are actually visible. */
+#snz-purpose .pur-it, #snz-purpose .pur-it .pur-ic{ animation-play-state:paused; }
+#snz-purpose.snz-live .pur-it,
+#snz-purpose.snz-live .pur-it .pur-ic{ animation-play-state:running; }
+#snz-purpose.snz-live[data-cat="host"] .pur-it:not([data-cat="host"]),
+#snz-purpose.snz-live[data-cat="pay"]  .pur-it:not([data-cat="pay"]),
+#snz-purpose.snz-live[data-cat="cms"]  .pur-it:not([data-cat="cms"]){ animation-play-state:paused; }
+/* off-screen with data-cat="all" left on the node: the reveal/twinkle shorthands above would
+   otherwise run (they reset play-state), ticking 480 fill-color animations while invisible. */
+#snz-purpose:not(.snz-live) .pur-it,
+#snz-purpose:not(.snz-live) .pur-it .pur-ic{ animation-play-state:paused; }
 
 /* solid panels behind the corner text blocks so the marquee (and any busy stage bg) never bleeds
    through and hurts legibility. Each hugs its content with padding + radius and reads as a chip. */
@@ -142,11 +171,11 @@
   .pur-title{ font-size:15px; letter-spacing:1.6px; }
   .pur-cap small{ font-size:13px; }
 }
-@media (prefers-reduced-motion: reduce){ .pur-row{ animation:none; } .pur-pl{ opacity:1; }
+@media (prefers-reduced-motion: reduce){ .pur-pl{ opacity:1; }
   /* no reveal cascade: show the "all" words statically lit (the latched end-state) instead of the
      0% black they'd otherwise be stuck on with the animation killed. */
-  #snz-purpose[data-cat="all"] .pur-it{ animation:none; -webkit-text-fill-color:rgba(var(--accent-rgb),.92); }
-  #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; fill:var(--accent-vis); } }
+  #snz-purpose[data-cat="all"] .pur-it{ animation:none; -webkit-text-fill-color:rgba(var(--mq-base-rgb),.92); }
+  #snz-purpose[data-cat="all"] .pur-it .pur-ic{ animation:none; fill:var(--mq-ic-lit); } }
 
 /* ===== small-screen fit ===== desktop visuals unchanged; below these widths the
    morphing browser + docked phone and the bottom UI are scaled to stay on-screen. */

@@ -106,15 +106,15 @@ export function initBuildFlow() {
         });
       });
     }
-    // Scroll-velocity boost for the background marquee rows. Base drift is a CSS
-    // `transform` animation; we accumulate EXTRA forward distance on the independent
-    // `translate` property (composites, never fights the animation). The boost only
-    // ever advances each row along its own drift direction (scroll up or down), so it
-    // never rubber-bands backward; the accumulated offset wraps by the marquee period
-    // (one repeating copy) so the loop stays seamless. Driven from the ticker below.
+    // Background marquee rows are SCROLL-DRIVEN: pin progress maps straight onto each row's
+    // `translate` property (composites; .r's -50% base transform stays untouched), wrapped by
+    // the marquee period (one repeating copy) so the loop is seamless in both directions.
+    // No self-running animation — the rows cost nothing while the user isn't scrolling.
     const purRows = purpose ? Array.from(purpose.querySelectorAll('.pur-row')) as HTMLElement[] : [];
-    const purRowVx = purRows.map(() => 0);     // accumulated extra px (wrapped to period)
     const purRowPeriod = purRows.map(() => 0); // one marquee copy width; measured lazily
+    // per-row speed variety: reuse the old animation-duration var (--dur) as a rate — a row that
+    // looped in 24s drifts ~2x faster per scroll px than the 52s baseline.
+    const purRowRate = purRows.map((r) => 52 / (parseFloat(r.style.getPropertyValue('--dur')) || 52));
     const measurePurPeriods = () => purRows.forEach((r, i) => { purRowPeriod[i] = r.scrollWidth / 2; });
     if (purRows.length) {
       requestAnimationFrame(() => requestAnimationFrame(measurePurPeriods));
@@ -619,9 +619,9 @@ export function initBuildFlow() {
       // when input stops, so gate end-states (p=0/1) are still reached exactly.
       let pSmooth = st.progress;
       const SCRUB = 0.3;       // catch-up time constant (s); higher = smoother but laggier
-      // marquee velocity-boost tuneables
-      const SPEED_MAX = 900;   // px/s of extra drift at full scroll velocity
-      const VEL_REF = 6000;    // scroll px/s mapping to ~full boost
+      // marquee scroll-drive: px of row travel across the full pin (wrapped to the period)
+      const MQ_DRIFT = 2600;
+      let purLastRowP = -1;
       let velLastT = performance.now();
       gsap.ticker.add(() => {
         const nowT = performance.now();
@@ -632,21 +632,18 @@ export function initBuildFlow() {
         if (Math.abs(target - pSmooth) < 1e-4) pSmooth = target; // settle exactly when idle
         const p = pSmooth;
         if (Math.abs(p - lastP) > 0.0004 || scaleAnimActive) { lastP = p; apply(p); }
-        // marquee velocity boost: scroll speed (either direction) adds extra forward
-        // drift along each row's OWN direction. Pure accumulation — never reverses —
-        // wrapped to the marquee period so it stays seamless. When not scrolling the
-        // offset just holds; the base CSS animation keeps the row drifting.
-        if (purRows.length) {
+        // marquee rows react to scroll POSITION: the damped progress maps onto each row's
+        // offset (each along its own direction), wrapped to the marquee period so the loop
+        // is seamless. Rows only update when p moves — idle scroll = zero marquee work.
+        if (purRows.length && !reduce && p !== purLastRowP) {
           const live = !!purpose && purpose.classList.contains('snz-live');
-          const boost = live ? Math.tanh(Math.abs(st.getVelocity()) / VEL_REF) * SPEED_MAX : 0;
-          if (boost > 0.5) {
+          if (live) {
+            purLastRowP = p;
             for (let i = 0; i < purRows.length; i++) {
               const per = purRowPeriod[i] || (purRowPeriod[i] = purRows[i].scrollWidth / 2);
               if (!per) continue;
               const dir = purRows[i].classList.contains('r') ? 1 : -1;
-              const nx = (purRowVx[i] + dir * boost * dt) % per; // wrap = seamless
-              purRowVx[i] = nx;
-              purRows[i].style.translate = nx.toFixed(2) + 'px';
+              purRows[i].style.translate = ((dir * p * MQ_DRIFT * purRowRate[i]) % per).toFixed(2) + 'px';
             }
           }
         }

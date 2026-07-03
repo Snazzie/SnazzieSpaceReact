@@ -151,6 +151,8 @@ const serviceSchema = {
         --ink-a:#55554c; --ink-b:#5e5e55; --ink-mid:#3d3d35; --ink-c:#141410;
         --nav-rgb:244,243,238; --chip-rgb:237,236,230; --shadow-rgb:90,88,80; --shine-rgb:170,205,40;
         --pure0:#141410;
+        /* BuildFlow marquee: light = black words swept/flashed with brand highlighter lime */
+        --mq-base-rgb:20,20,16; --mq-base-a:.92; --mq-shine-rgb:198,244,50; --mq-peak:#C6F432; --mq-flash:#C6F432; --mq-ic-lit:#141410;
         color-scheme:light;
       }
       html[data-theme="dark"] {
@@ -165,6 +167,8 @@ const serviceSchema = {
         --ink-a:#a8a89f; --ink-b:#a6a69e; --ink-mid:#b8b8b0; --ink-c:#E9E7E1;
         --nav-rgb:10,10,10; --chip-rgb:12,12,12; --shadow-rgb:0,0,0; --shine-rgb:224,255,140;
         --pure0:#fff;
+        /* BuildFlow marquee: dark keeps today's exact lime/white values */
+        --mq-base-rgb:198,244,50; --mq-base-a:.5; --mq-shine-rgb:224,255,140; --mq-peak:#fff; --mq-flash:#fff; --mq-ic-lit:#C6F432;
         color-scheme:dark;
       }
       html { scroll-behavior: smooth; }
