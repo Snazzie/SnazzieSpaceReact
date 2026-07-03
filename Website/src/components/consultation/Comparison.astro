@@ -181,6 +181,25 @@ const ink = (tone?: string) =>
     ))}
   </div>
 
+  <!-- ownership + how-I-work strip (merged from the old Ownership / Transparency sections) -->
+  <div id="snz-cmp-strip" class="grid grid-cols-2 gap-6 mt-6">
+    <div data-reveal class="border border-[rgba(255,255,255,0.1)] p-9 bg-[#0c0c0c] rounded-[18px]">
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent)] mb-[14px]">OWNERSHIP</div>
+      <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Yours. Really yours.</h3>
+      <p class="mt-0 mb-6 mx-0 font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[#9a9a92]">When the job's done you hold the keys, and you choose who runs it.</p>
+      <div class="flex flex-col gap-[10px]">
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Code, domain and accounts, all in your name from day one</div>
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Run it yourself: pay the providers directly, no markup, walk away anytime</div>
+        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[#cfcfc7]"><span class="text-[var(--accent)]">+</span> Or hands-off: I admin the lot for you from £40/mo, cancel anytime</div>
+      </div>
+    </div>
+    <div data-reveal data-delay="90" class="border border-[rgba(255,255,255,0.1)] p-9 bg-[#0c0c0c] rounded-[18px]">
+      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent)] mb-[14px]">HOW I WORK</div>
+      <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">AI-accelerated, human-built</h3>
+      <p class="mt-0 mb-0 mx-0 font-normal text-[13.5px] leading-[1.65] font-['JetBrains_Mono'] text-[#9a9a92]">Being honest about the toolkit: I use AI to speed through the groundwork, so more of your budget goes on the design, the detail and the engineering. AI is a power tool, not the builder. Every line is reviewed, owned and shipped by me, a real software engineer you can call.</p>
+    </div>
+  </div>
+
   <!-- verdict band -->
   <div data-reveal class="mt-6 border border-[var(--accent)] py-9 px-10 flex items-center justify-between flex-wrap gap-6" style="background:linear-gradient(90deg,rgba(198,244,50,.1),#0a0a0a)">
     <div>
@@ -197,5 +216,6 @@ const ink = (tone?: string) =>
     #snz-compare { padding: 64px 22px !important; }
     .snz-cmp-desktop { display: none !important; }
     .snz-cmp-mobile { display: block; }
+    #snz-cmp-strip { grid-template-columns: 1fr !important; }
   }
 </style>
