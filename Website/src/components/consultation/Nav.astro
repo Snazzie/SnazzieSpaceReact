@@ -5,13 +5,32 @@ const LINKS = [
   { href: '#snz-services', label: 'SERVICES' },
   { href: '#snz-process', label: 'PROCESS' },
 ];
+
+const SERVICE_LINKS = [
+  { href: '/consultation/services/websites', label: 'Websites' },
+  { href: '/consultation/services/apps', label: 'Apps' },
+  { href: '/consultation/services/consulting', label: 'Consulting' },
+];
 ---
 <nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(var(--nav-rgb),0.72)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
   <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
   <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
     <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (
-        <a href={l.href} class="text-[var(--ink-a)] no-underline">{l.label}</a>
+        l.label === 'SERVICES' ? (
+          <div class="snz-services-drop relative">
+            <a href={l.href} class="text-[var(--ink-a)] no-underline">{l.label}</a>
+            <div class="snz-services-menu absolute top-full left-1/2 pt-3 opacity-0 invisible transition-[opacity,transform,visibility] duration-150" style="--sy:-4px">
+              <div class="flex flex-col min-w-[160px] bg-[rgba(var(--nav-rgb),0.96)] backdrop-blur-[14px] border border-[rgba(var(--line-rgb),0.14)] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
+                {SERVICE_LINKS.map((s) => (
+                  <a href={s.href} class="px-4 py-3 text-[var(--ink-a)] no-underline border-b border-[rgba(var(--line-rgb),0.08)] last:border-b-0 hover:text-[var(--accent-vis)] hover:bg-[rgba(var(--accent-rgb),0.08)] transition-colors duration-150">{s.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a href={l.href} class="text-[var(--ink-a)] no-underline">{l.label}</a>
+        )
       ))}
     </div>
     <button
@@ -32,6 +51,14 @@ const LINKS = [
   .snz-icon-moon { display: none; }
   html[data-theme="dark"] .snz-icon-sun { display: none; }
   html[data-theme="dark"] .snz-icon-moon { display: inline-block; }
+
+  .snz-services-menu { transform: translate(-50%, var(--sy, 0)); }
+  .snz-services-drop:hover .snz-services-menu,
+  .snz-services-drop:focus-within .snz-services-menu {
+    opacity: 1;
+    visibility: visible;
+    --sy: 0px;
+  }
 </style>
 
 <script>

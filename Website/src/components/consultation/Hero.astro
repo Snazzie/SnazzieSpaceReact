@@ -21,19 +21,11 @@ const stats = [
       </div>
     </div>
     <!-- DIVIDER WALL -->
-    <div id="snz-heroDiv" style="position:relative;background:var(--bg-deep);display:flex;flex-direction:column;align-items:center;overflow:hidden">
-      <!-- left border -->
-      <div style="position:absolute;top:0;bottom:0;left:12px;width:2px;background:rgba(var(--line-rgb),.55)"></div>
-      <!-- right border -->
-      <div style="position:absolute;top:0;bottom:0;right:12px;width:2px;background:rgba(var(--line-rgb),.55)"></div>
-      <!-- inner fill between borders -->
-      <div style="position:absolute;top:0;bottom:0;left:14px;right:14px;background:rgba(var(--line-rgb),.02)"></div>
-      <!-- tick marks spanning full width between borders -->
-      {[12,22,32,42,52,62,72,82,88].map(pct => (
-        <div style={`position:absolute;top:${pct}%;left:14px;right:14px;height:1px;background:rgba(var(--line-rgb),.12)`}></div>
-      ))}
-      <!-- centre diamond -->
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);width:12px;height:12px;background:var(--pure0);z-index:1"></div>
+    <div id="snz-heroDiv" style="position:relative;background:var(--bg-deep);overflow:hidden">
+      <!-- fading vertical line -->
+      <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;transform:translateX(-50%);background:linear-gradient(to bottom,rgba(var(--line-rgb),0) 0%,rgba(var(--line-rgb),.4) 18%,rgba(var(--line-rgb),.4) 82%,rgba(var(--line-rgb),0) 100%)"></div>
+      <!-- centre glow dot -->
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--accent-vis);box-shadow:0 0 14px 3px var(--accent-vis);z-index:1"></div>
     </div>
     <!-- RIGHT : transparent, reveals the shared wireframe wall behind -->
     <div class="snz-right" style="position:relative;background:transparent;overflow:hidden"></div>
