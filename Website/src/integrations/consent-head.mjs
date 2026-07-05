@@ -36,7 +36,7 @@ gtag('consent','default',{
   ad_personalization:'granted'
 });
 // The consultation pages carry no ad units — skip the AdSense loader there.
-if (!location.pathname.startsWith('/consultation')) {
+if (!location.pathname.startsWith('/consulting')) {
   var s=document.createElement('script');
   s.async=true;
   s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${PUBLISHER}';

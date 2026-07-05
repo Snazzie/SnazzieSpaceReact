@@ -1,19 +1,19 @@
 ---
 // Sticky top navigation for the consultation page.
 const LINKS = [
-  { href: '#snz-build', label: 'THE BUILD' },
-  { href: '#snz-services', label: 'SERVICES' },
-  { href: '#snz-process', label: 'PROCESS' },
+  { href: '/consulting#snz-build', label: 'THE BUILD' },
+  { href: '/consulting#snz-services', label: 'SERVICES' },
+  { href: '/consulting#snz-process', label: 'PROCESS' },
 ];
 
 const SERVICE_LINKS = [
-  { href: '/consultation/services/websites', label: 'Websites' },
-  { href: '/consultation/services/apps', label: 'Apps' },
-  { href: '/consultation/services/consulting', label: 'Consulting' },
+  { href: '/consulting/services/websites', label: 'Websites' },
+  { href: '/consulting/services/apps', label: 'Apps' },
+  { href: '/consulting/services/consulting', label: 'Consulting' },
 ];
 ---
 <nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(var(--nav-rgb),0.72)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
-  <a href="/consultation#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
+  <a href="/consulting#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
   <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
     <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (

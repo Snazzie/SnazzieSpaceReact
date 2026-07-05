@@ -10,7 +10,7 @@ re-profile so future changes do not regress it.
 The standard cold-load Core-Web-Vitals workflow is the WRONG tool here — the cost is **runtime,
 during scroll**, not load. Profile like this:
 
-1. `bun dev`, navigate to `/consultation`.
+1. `bun dev`, navigate to `/consulting`.
 2. `emulate({cpuThrottlingRate: 4})` (or 6) — this Mac runs the section at ~87fps unthrottled, so
    throttling is required to expose the cost.
 3. Park the scroll inside the section first — the ENGINE overlay (`#snz-purpose`) only fades in

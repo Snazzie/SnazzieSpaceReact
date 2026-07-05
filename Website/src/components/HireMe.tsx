@@ -209,7 +209,7 @@ export function HireMe() {
 
       <motion.a
         {...headingProps}
-        href="/consultation/"
+        href="/consulting/"
         onPointerMove={
           reduce
             ? undefined
