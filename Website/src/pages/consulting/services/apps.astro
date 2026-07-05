@@ -1,6 +1,7 @@
 ---
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
+import FindYourFit from '@/components/consultation/FindYourFit.astro';
 
 const covers = [
   'Mobile apps (iOS & Android)',
@@ -71,6 +72,8 @@ const serviceSchema = {
       </div>
     </div>
   </section>
+
+  <FindYourFit start="apps" />
 
   <Closing />
 </ConsultationLayout>

@@ -1,6 +1,7 @@
 ---
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
+import FindYourFit from '@/components/consultation/FindYourFit.astro';
 
 const chapters = [
   {
@@ -99,6 +100,8 @@ const chapters = [
       <span class="snz-magwrap self-start"><a data-mag href="/consulting/find-your-fit/?s=websites" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">FIND YOUR FIT →</a></span>
     </div>
   </section>
+
+  <FindYourFit start="websites" />
 
   <Closing />
 </ConsultationLayout>

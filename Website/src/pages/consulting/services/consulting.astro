@@ -1,6 +1,7 @@
 ---
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
+import FindYourFit from '@/components/consultation/FindYourFit.astro';
 
 const covers = [
   { title: 'The engine behind it', body: 'Backend systems, APIs and infrastructure built to hold up under real load.' },
@@ -64,6 +65,8 @@ const serviceSchema = {
       </div>
     </div>
   </section>
+
+  <FindYourFit start="advisory" />
 
   <Closing />
 </ConsultationLayout>
