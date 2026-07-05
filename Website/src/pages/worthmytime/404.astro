@@ -1,0 +1,32 @@
+---
+import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <BaseHead
+      title="Page not found — Worth My Time"
+      description="The page you were looking for does not exist."
+      path="/worthmytime/404"
+      noindex={true}
+    />
+  </head>
+  <body class="bg-background text-foreground">
+    <main class="min-h-screen grid place-items-center px-6 text-center">
+      <div class="max-w-md">
+        <p class="text-7xl font-black tracking-tight text-foreground/90">404</p>
+        <h1 class="mt-4 text-xl font-semibold">This page does not exist</h1>
+        <p class="mt-2 text-muted-foreground">
+          The link is broken or the page has moved. No wasted hours here.
+        </p>
+        <a
+          href="/worthmytime/"
+          class="mt-8 inline-block rounded-full border border-foreground/20 px-6 py-2.5 text-sm font-medium transition hover:bg-foreground hover:text-background"
+          >Back to Worth My Time</a
+        >
+      </div>
+    </main>
+  </body>
+</html>

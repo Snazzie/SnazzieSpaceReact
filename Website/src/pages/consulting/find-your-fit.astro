@@ -1,0 +1,17 @@
+---
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
+import FindYourFit from '@/components/consultation/FindYourFit.astro';
+---
+<ConsultationLayout
+  title="Find Your Fit | Snazzie"
+  description="Answer a couple of quick questions and get pointed at the right website option and an honest price. No email required."
+  path="/consulting/find-your-fit/"
+>
+  <section class="pt-14 pb-2 px-14 max-[760px]:pt-10 max-[760px]:px-[22px]">
+    <div class="max-w-[760px] mx-auto">
+      <a href="/consulting/" class="inline-block mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline">← Back to consulting</a>
+    </div>
+  </section>
+
+  <FindYourFit />
+</ConsultationLayout>

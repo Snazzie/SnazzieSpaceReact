@@ -1,0 +1,32 @@
+---
+import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <BaseHead
+      title="Page not found — Articles"
+      description="The article you were looking for does not exist."
+      path="/articles/404"
+      noindex={true}
+    />
+  </head>
+  <body class="bg-background text-foreground">
+    <main class="min-h-screen grid place-items-center px-6 text-center">
+      <div class="max-w-md">
+        <p class="text-7xl font-black tracking-tight text-foreground/90">404</p>
+        <h1 class="mt-4 text-xl font-semibold">This article does not exist</h1>
+        <p class="mt-2 text-muted-foreground">
+          The link is broken or the post has moved. Browse what's actually here.
+        </p>
+        <a
+          href="/articles/"
+          class="mt-8 inline-block rounded-full border border-foreground/20 px-6 py-2.5 text-sm font-medium transition hover:bg-foreground hover:text-background"
+          >All articles</a
+        >
+      </div>
+    </main>
+  </body>
+</html>

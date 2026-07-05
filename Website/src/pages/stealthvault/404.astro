@@ -1,0 +1,32 @@
+---
+import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <BaseHead
+      title="Page not found — StealthVault"
+      description="The page you were looking for does not exist."
+      path="/stealthvault/404"
+      noindex={true}
+    />
+  </head>
+  <body class="bg-black text-foreground antialiased">
+    <main class="min-h-screen grid place-items-center px-6 text-center">
+      <div class="max-w-md">
+        <p class="font-mono text-7xl font-bold tracking-tight text-foreground/90">404</p>
+        <h1 class="mt-4 text-xl font-semibold">This page does not exist</h1>
+        <p class="mt-2 text-muted-foreground">
+          The link is broken or the page has moved. Nothing is stored at this address.
+        </p>
+        <a
+          href="/stealthvault/"
+          class="mt-8 inline-block rounded-full border border-white/20 px-6 py-2.5 text-sm font-medium transition-colors hover:bg-white/10"
+          >Back to StealthVault</a
+        >
+      </div>
+    </main>
+  </body>
+</html>

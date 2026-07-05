@@ -1,103 +1,79 @@
 ---
+import BuilderTradeoff from './BuilderTradeoff.astro';
 // Bold three-way comparison: build it yourself (WordPress/Squarespace),
 // hire a WordPress developer, or work with me. "Me" column is the hero.
-const LINKEDIN = 'https://linkedin.com/in/cooper-a-m/';
-
+// Chip-ladder: one criterion per row, three options as chips.
+// cells order is [diy (you + website builder), dev (WP shop), me (winner)].
 type Cell = { text: string; tone?: 'bad' | 'mid' | 'good' };
-
-const cols = [
-  { key: 'diy', kicker: 'GO IT ALONE', title: 'You + WordPress / Squarespace', sub: 'Drag, drop, hope.' },
-  { key: 'dev', kicker: 'HIRE A SHOP', title: 'A WordPress web developer', sub: 'Same templates, your money.' },
-  { key: 'me', kicker: 'WORK WITH ME', title: 'Me', sub: 'Hand-built, start to finish.', hero: true },
-];
 
 const rows: { label: string; cells: Cell[] }[] = [
   {
-    label: 'The design',
+    label: 'Experience',
     cells: [
-      { text: 'Often ends up looking home-made — flow and wording not quite there', tone: 'bad' },
-      { text: 'A bought theme, dressed as custom', tone: 'mid' },
-      { text: 'Unique, professional, from a blank canvas', tone: 'good' },
+      { text: 'Little idea what actually works', tone: 'bad' },
+      { text: 'Drag-and-drop, not real devs', tone: 'bad' },
+      { text: 'Pro engineer across many technologies', tone: 'good' },
     ],
   },
   {
-    label: 'Who builds it',
+    label: 'Look & feel',
     cells: [
-      { text: 'You, on YouTube tutorials', tone: 'bad' },
-      { text: 'Often a theme setup, sometimes outsourced', tone: 'mid' },
-      { text: 'Me — a real software engineer', tone: 'good' },
-    ],
-  },
-  {
-    label: 'The approach',
-    cells: [
-      { text: 'One tool for everything, like it or not', tone: 'bad' },
-      { text: "WordPress for everything, even when it doesn't fit", tone: 'mid' },
-      { text: 'Right tools picked per job — no over-complication, best value and experience', tone: 'good' },
-    ],
-  },
-  {
-    label: 'Time to live',
-    cells: [
-      { text: 'Weeks of evenings', tone: 'bad' },
-      { text: 'Their queue, their pace', tone: 'mid' },
-      { text: 'An agreed date I drive to', tone: 'good' },
+      { text: 'Looks home-made', tone: 'bad' },
+      { text: 'A dressed-up template, like every other WP site', tone: 'bad' },
+      { text: 'Professional, optimised structure, unique brand-matching identity', tone: 'good' },
     ],
   },
   {
     label: 'Speed',
     cells: [
-      { text: 'Plugin bloat — slow, heavy pages', tone: 'bad' },
-      { text: 'WordPress overhead, slow out the box', tone: 'mid' },
-      { text: 'Hand-built and lightweight — loads fast', tone: 'good' },
+      { text: 'Slow and clunky', tone: 'bad' },
+      { text: 'Bloated, laggy', tone: 'bad' },
+      { text: 'Loads fast', tone: 'good' },
     ],
   },
   {
     label: 'Security',
     cells: [
-      { text: 'WordPress plugins — vulnerable from day one', tone: 'bad' },
-      { text: 'Often charges for SSL and "security" that is free elsewhere', tone: 'mid' },
-      { text: 'Secure by build — SSL/HTTPS free and included, no fake fees', tone: 'good' },
+      { text: 'Insecure builder logins and plugins', tone: 'bad' },
+      { text: 'Pay extra for basics, still insecure', tone: 'bad' },
+      { text: 'Secure by design, no extra cost', tone: 'good' },
     ],
   },
   {
-    label: 'SEO',
+    label: 'Found on search engines',
     cells: [
-      { text: 'Bolted on, fingers crossed', tone: 'bad' },
-      { text: 'Sold back as paid extras', tone: 'mid' },
-      { text: 'Baked in: found on Google and in AI chats', tone: 'good' },
+      { text: 'Hit or miss', tone: 'bad' },
+      { text: 'Costs extra', tone: 'bad' },
+      { text: 'Google, Bing, AI chat', tone: 'good' },
     ],
   },
   {
-    label: 'The real cost',
+    label: 'Price',
     cells: [
-      { text: 'Cheap, then endless add-ons', tone: 'mid' },
-      { text: '£2k to £5k, plus monthly fees', tone: 'bad' },
-      { text: 'From £1500, hosting at cost (often zero host cost for simple websites)', tone: 'good' },
+      { text: 'Your time + paid add-ons', tone: 'bad' },
+      { text: '£2k to £5k, plus monthly', tone: 'bad' },
+      { text: 'From £1,500', tone: 'good' },
     ],
   },
   {
-    label: 'Who owns it',
+    label: 'Maintenance',
     cells: [
-      { text: 'Squarespace does — leave, it dies', tone: 'bad' },
-      { text: 'Locked to their stack', tone: 'mid' },
-      { text: 'You, outright, forever', tone: 'good' },
+      { text: 'All on you', tone: 'bad' },
+      { text: 'Ongoing fees', tone: 'bad' },
+      { text: 'No monthly fee, changes from £20', tone: 'good' },
     ],
   },
   {
     label: 'When it breaks',
     cells: [
-      { text: 'A 2019 forum thread', tone: 'bad' },
-      { text: 'A ticket and a queue', tone: 'mid' },
-      { text: 'Text me — I built it', tone: 'good' },
+      { text: 'Search a forum', tone: 'bad' },
+      { text: 'Wait in a queue', tone: 'bad' },
+      { text: 'Just text me', tone: 'good' },
     ],
   },
 ];
 
-const dot = (tone?: string) =>
-  tone === 'good' ? 'var(--accent)' : tone === 'mid' ? 'var(--tone-mid)' : 'var(--tone-bad)';
-const ink = (tone?: string) =>
-  tone === 'good' ? 'var(--ink0)' : tone === 'mid' ? 'var(--ink-mid)' : 'var(--ink4)';
+const pad = (i: number) => String(i + 1).padStart(2, '0');
 ---
 <section id="snz-compare" class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)]">
   <div data-reveal class="flex items-end justify-between flex-wrap gap-5 mb-[54px]">
@@ -108,96 +84,26 @@ const ink = (tone?: string) =>
     <p class="m-0 max-w-[340px] font-normal text-[14px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink4)]">Same goal, three very different roads. Here's the honest version, side by side — no spin.</p>
   </div>
 
-  <div id="snz-cmp" class="snz-cmp-desktop border border-[rgba(var(--line-rgb),0.1)]">
-    <!-- column heads -->
-    <div class="snz-cmp-grid grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(var(--line-rgb),0.08)] gap-[1px]">
-      <div class="bg-[var(--bg0)]"></div>
-      {cols.map((c, i) => (
-        <div
-          data-reveal
-          data-delay={i * 80}
-          class={`py-[30px] px-[26px] relative ${c.hero ? 'snz-cmp-hero' : 'bg-[var(--bg0)]'}`}
-          style={c.hero ? 'background:linear-gradient(180deg,rgba(var(--accent-rgb),.12),var(--bg2));box-shadow:inset 0 0 0 1px var(--accent)' : ''}
-        >
-          {c.hero && (
-            <div class="absolute top-[-1px] right-[-1px] font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[var(--ink)] py-[6px] px-3">PICK ME</div>
-          )}
-          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[14px] ${c.hero ? 'text-[var(--accent-vis)]' : 'text-[var(--ink6)]'}`}>{c.kicker}</div>
-          <h3 class={`m-0 mb-2 font-extrabold ${c.hero ? 'text-[30px]' : 'text-[22px]'} leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[var(--ink0)]' : 'text-[var(--ink1)]'}`}>{c.title}</h3>
-          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink5)]">{c.sub}</p>
-        </div>
-      ))}
-    </div>
-
-    <!-- rows -->
+  <div class="snz-ladder">
     {rows.map((r, ri) => (
-      <div data-reveal data-delay={ri * 50} class="snz-cmp-grid snz-cmp-row grid grid-cols-[1.05fr_1fr_1fr_1.15fr] bg-[rgba(var(--line-rgb),0.08)] gap-[1px] border-t border-[rgba(var(--line-rgb),0.06)]">
-        <div class="snz-cmp-lab bg-[var(--bg0)] py-[22px] px-[26px] flex items-center font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.04em] text-[var(--ink6)] uppercase">{r.label}</div>
-        {r.cells.map((cell, ci) => {
-          const hero = cols[ci].hero;
-          return (
-            <div style={`background:${hero ? 'rgba(var(--accent-rgb),.05)' : 'var(--bg0)'};padding:22px 26px;display:flex;gap:12px;align-items:flex-start;${hero ? 'box-shadow:inset 1px 0 0 rgba(var(--accent-rgb),.25),inset -1px 0 0 rgba(var(--accent-rgb),.25)' : ''}`}>
-              <span style={`flex:none;width:7px;height:7px;border-radius:50%;margin-top:6px;background:${dot(cell.tone)};${cell.tone === 'good' ? 'box-shadow:0 0 8px var(--accent)' : ''}`}></span>
-              <span style={`font:400 13.5px/1.5 'JetBrains Mono',monospace;color:${ink(cell.tone)}`}>{cell.text}</span>
-            </div>
-          );
-        })}
-      </div>
-    ))}
-  </div>
-
-  <!-- mobile: one card per option, each listing every row -->
-  <div class="snz-cmp-mobile">
-    {cols.map((c, ci) => (
-      <div
-        data-reveal
-        data-delay={ci * 70}
-        class={`snz-cmp-card relative mb-[14px] border ${c.hero ? 'border-[var(--accent)]' : 'border-[rgba(var(--line-rgb),0.1)]'}`}
-        style={c.hero ? 'background:linear-gradient(180deg,rgba(var(--accent-rgb),.1),var(--bg0))' : 'background:var(--bg0)'}
-      >
-        {c.hero && (
-          <div class="absolute top-0 right-0 font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.14em] bg-[var(--accent)] text-[var(--ink)] py-[5px] px-[10px]">PICK ME</div>
-        )}
-        <div class="py-[22px] px-[22px] border-b border-[rgba(var(--line-rgb),0.08)]">
-          <div class={`font-bold text-[10px] font-['JetBrains_Mono'] tracking-[.18em] mb-[12px] ${c.hero ? 'text-[var(--accent-vis)]' : 'text-[var(--ink6)]'}`}>{c.kicker}</div>
-          <h3 class={`m-0 mb-2 font-extrabold text-[24px] leading-[1.04] font-['Archivo'] tracking-[-0.025em] ${c.hero ? 'text-[var(--ink0)]' : 'text-[var(--ink1)]'}`}>{c.title}</h3>
-          <p class="m-0 font-normal text-[12.5px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink5)]">{c.sub}</p>
-        </div>
-        <div>
-          {rows.map((r) => {
-            const cell = r.cells[ci];
-            return (
-              <div class="py-[16px] px-[22px] border-b border-[rgba(var(--line-rgb),0.05)] last:border-b-0">
-                <div class="font-semibold text-[10.5px] font-['JetBrains_Mono'] tracking-[.1em] text-[var(--ink6)] uppercase mb-[8px]">{r.label}</div>
-                <div class="flex gap-[10px] items-start">
-                  <span style={`flex:none;width:7px;height:7px;border-radius:50%;margin-top:6px;background:${dot(cell.tone)};${cell.tone === 'good' ? 'box-shadow:0 0 8px var(--accent)' : ''}`}></span>
-                  <span style={`font:400 13.5px/1.5 'JetBrains Mono',monospace;color:${ink(cell.tone)}`}>{cell.text}</span>
-                </div>
-              </div>
-            );
-          })}
+      <div data-reveal data-delay={ri * 40} class="snz-lrow">
+        <div class="snz-lcrit"><span class="snz-lnum">{pad(ri)}</span>{r.label}</div>
+        <div class="snz-lset">
+          <div class="snz-chip snz-win">
+            <div class="snz-who"><span class="snz-dot"></span>Me ✓</div>
+            <div class="snz-txt">{r.cells[2].text}</div>
+          </div>
+          <div class="snz-chip">
+            <div class="snz-who"><span class="snz-dot"></span>You + website builder</div>
+            <div class="snz-txt">{r.cells[0].text}</div>
+          </div>
+          <div class="snz-chip">
+            <div class="snz-who"><span class="snz-dot"></span>WP shop</div>
+            <div class="snz-txt">{r.cells[1].text}</div>
+          </div>
         </div>
       </div>
     ))}
-  </div>
-
-  <!-- ownership + how-I-work strip (merged from the old Ownership / Transparency sections) -->
-  <div id="snz-cmp-strip" class="grid grid-cols-2 gap-6 mt-6">
-    <div data-reveal class="border border-[rgba(var(--line-rgb),0.1)] p-9 bg-[var(--bg2)] rounded-[18px]">
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent-vis)] mb-[14px]">OWNERSHIP</div>
-      <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Yours. Really yours.</h3>
-      <p class="mt-0 mb-6 mx-0 font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink3)]">When the job's done you hold the keys, and you choose who runs it.</p>
-      <div class="flex flex-col gap-[10px]">
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--ink0)]">+</span> Run it yourself: pay the providers directly, no markup, walk away anytime</div>
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">+</span> Or hands-off: I admin the lot for you from £40/mo, cancel anytime</div>
-        <div class="font-normal text-[13px] leading-[1.5] font-['JetBrains_Mono'] text-[var(--ink1)]"><span class="text-[var(--ink0)]">+</span> Move it anywhere, anytime — no lock-in, no exit fees</div>
-      </div>
-    </div>
-    <div data-reveal data-delay="90" class="border border-[rgba(var(--line-rgb),0.1)] p-9 bg-[var(--bg2)] rounded-[18px]">
-      <div class="font-semibold text-[11px] font-['JetBrains_Mono'] tracking-[.18em] text-[var(--accent-vis)] mb-[14px]">HOW I WORK</div>
-      <h3 class="mt-0 mb-2 mx-0 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">AI-accelerated, human-built</h3>
-      <p class="mt-0 mb-0 mx-0 font-normal text-[13.5px] leading-[1.65] font-['JetBrains_Mono'] text-[var(--ink3)]">Being honest about the toolkit: I use AI to speed through the groundwork, so more of your budget goes on the design, the detail and the engineering. AI is a power tool, not the builder. Every line is reviewed, owned and shipped by me, a real software engineer you can call.</p>
-    </div>
   </div>
 
   <!-- verdict band -->
@@ -206,16 +112,37 @@ const ink = (tone?: string) =>
       <h3 class="m-0 mb-2 font-extrabold text-[26px] font-['Archivo'] tracking-[-0.02em]">Same money. A site that's actually yours.</h3>
       <p class="m-0 max-w-[560px] font-normal text-[13.5px] leading-[1.6] font-['JetBrains_Mono'] text-[var(--ink3)]">Skip the template tax and the plugin treadmill. One person, hand-building something built around you — and a real human to call when you need one.</p>
     </div>
-    <span class="snz-magwrap"><a data-mag href={LINKEDIN} class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[var(--ink)] py-[15px] px-[22px] no-underline transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]">GET IN TOUCH →</a></span>
+    <span class="snz-magwrap"><a href="/consulting/find-your-fit/" class="inline-block font-bold text-[13px] font-['JetBrains_Mono'] tracking-[.04em] bg-[var(--accent)] text-[var(--ink)] py-[15px] px-[22px] no-underline transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]">FIND YOUR FIT →</a></span>
   </div>
+
+  <!-- honest tradeoff: the one thing a builder genuinely does differently -->
+  <div class="mt-6"><BuilderTradeoff /></div>
 </section>
 
 <style>
-  .snz-cmp-mobile { display: none; }
+  /* section-scoped semantic tones: winner green, competitors orange (muted, professional) */
+  #snz-compare { --snz-good: #2C7A54; --snz-bad: #B15A2B; max-width: 1040px; margin-left: auto; margin-right: auto; }
+  :global(html[data-theme="dark"]) #snz-compare { --snz-good: #5FB98A; --snz-bad: #C77E52; }
+
+  .snz-ladder { margin-top: 4px; }
+  .snz-lrow {
+    display: grid; grid-template-columns: 200px 1fr; gap: 26px; align-items: center;
+    padding: 18px 0; border-top: 1px solid rgba(var(--line-rgb), 0.08);
+  }
+  .snz-lrow:first-child { border-top: none; }
+  .snz-lcrit { font: 700 18px/1.2 'Archivo', sans-serif; letter-spacing: -0.02em; color: var(--ink0); }
+  .snz-lnum { display: block; font: 600 11px/1 'JetBrains Mono', monospace; letter-spacing: .12em; color: var(--ink6); margin-bottom: 6px; }
+  .snz-lset { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 22px; }
+  .snz-who { display: flex; align-items: center; gap: 7px; font: 600 11px/1 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--ink6); margin-bottom: 9px; }
+  .snz-txt { font: 400 15px/1.5 'JetBrains Mono', monospace; color: var(--ink4); }
+  .snz-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--snz-bad); flex: none; }
+  .snz-win .snz-who { color: var(--snz-good); }
+  .snz-win .snz-txt { color: var(--ink0); font-weight: 500; }
+  .snz-win .snz-dot { background: var(--snz-good); }
+
   @media (max-width: 860px) {
     #snz-compare { padding: 64px 22px !important; }
-    .snz-cmp-desktop { display: none !important; }
-    .snz-cmp-mobile { display: block; }
-    #snz-cmp-strip { grid-template-columns: 1fr !important; }
+    .snz-lrow { grid-template-columns: 1fr; gap: 14px; }
+    .snz-lset { grid-template-columns: 1fr; gap: 18px; }
   }
 </style>

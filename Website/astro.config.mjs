@@ -12,6 +12,7 @@ import tailwindcss from '@tailwindcss/vite';
 import rehypeStripTtsMarkers from './src/lib/remark-strip-tts-markers.mjs';
 import ttsTxtIntegration from './src/integrations/tts-script.mjs';
 import consentHeadIntegration from './src/integrations/consent-head.mjs';
+import nested404Integration from './src/integrations/nested-404.mjs';
 
 /** Dev-only endpoint: persist retimed radio clips back to the episode JSON.
  *  Active only under `astro dev`; never included in the production build. */
@@ -52,7 +53,7 @@ export default defineConfig({
     serialize(item) {
       return { ...item, lastmod: new Date().toISOString() };
     },
-  })],
+  }), nested404Integration()],
 
   markdown: {
     processor: unified({ rehypePlugins: [rehypeStripTtsMarkers] }),

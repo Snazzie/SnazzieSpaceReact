@@ -1,0 +1,240 @@
+---
+// Self-service questionnaire: a few branching questions route the visitor to a
+// tailored recommendation and a pre-filled mailto CTA. Pure client-side, no deps.
+const MAIL = 'consulting@snazzie.space';
+
+const steps = {
+  service: {
+    q: 'What are you looking to build?',
+    opts: [
+      { label: 'A website', next: 'haveSite' },
+      { label: 'A mobile app or product', next: 'appStage' },
+      { label: 'Advice or a second opinion', next: 'advisoryNeeds' },
+    ],
+  },
+  haveSite: {
+    q: 'Do you already have a website?',
+    opts: [
+      { label: 'No, starting fresh', next: 'needs' },
+      { label: 'Yes, I have one', next: 'platform' },
+    ],
+  },
+  appStage: {
+    q: 'Where are you with your idea?',
+    opts: [
+      { label: 'Just an idea, needs scoping', result: 'app' },
+      { label: 'I have designs or a spec ready', result: 'app' },
+      { label: 'Improving an app I already have', result: 'app' },
+    ],
+  },
+  advisoryNeeds: {
+    q: 'What do you need a hand with?',
+    opts: [
+      { label: 'Backend or systems', result: 'advisory' },
+      { label: 'AI features', result: 'advisory' },
+      { label: 'A second opinion on what I have', result: 'advisory' },
+    ],
+  },
+  platform: {
+    q: 'What is it built on?',
+    opts: [
+      { label: 'A builder (WordPress, Wix, Squarespace…)', next: 'builderNeeds' },
+      { label: 'Custom built, or not sure', next: 'customNeeds' },
+    ],
+  },
+  builderNeeds: {
+    q: 'Does it need logins, bookings or live content?',
+    opts: [
+      { label: 'No, it is a brochure or marketing site', result: 'convert' },
+      { label: 'Yes, it does more than show information', result: 'dynamic' },
+    ],
+  },
+  customNeeds: {
+    q: 'What are you after?',
+    opts: [
+      { label: 'A fresh rebuild', next: 'needs' },
+      { label: 'Changes or a second opinion', result: 'talk' },
+    ],
+  },
+  needs: {
+    q: 'Will it need logins, bookings or live-editable content?',
+    opts: [
+      { label: 'No, mostly pages and information', result: 'static' },
+      { label: 'Yes, it needs to do things', result: 'dynamic' },
+      { label: 'Not sure yet', result: 'talk' },
+    ],
+  },
+} as const;
+
+const results = {
+  static: {
+    tag: 'YOUR FIT',
+    title: 'A bespoke static website',
+    price: 'From £1500 · hosting free',
+    blurb: 'Fast, secure pages hand-built around your business. Perfect for most small businesses, and hosted free for as long as it is live.',
+    subject: 'Bespoke static website enquiry',
+  },
+  dynamic: {
+    tag: 'YOUR FIT',
+    title: 'A dynamic website',
+    price: 'From £2500 · hosting from free',
+    blurb: 'Everything the static build gives you, plus the parts you want editable yourself, and any logins, bookings or databases you need.',
+    subject: 'Dynamic website enquiry',
+  },
+  convert: {
+    tag: 'YOUR FIT',
+    title: 'Convert your site to static',
+    price: 'From £200 · then hosting free',
+    blurb: 'I rebuild your existing brochure site as a fast static site that looks the same, and your monthly hosting bill drops to zero.',
+    subject: 'Convert my site to static',
+  },
+  app: {
+    tag: 'YOUR FIT',
+    title: 'A mobile app or product',
+    price: 'Scoped after a call',
+    blurb: 'Built from scratch and priced to what you actually need. Tell me the idea and where it is, and I will come back with a clear scope.',
+    subject: 'App / product enquiry',
+  },
+  advisory: {
+    tag: 'YOUR FIT',
+    title: 'Engineering advice',
+    price: 'Scoped after a call',
+    blurb: 'Backend systems, AI features, or a second opinion on what you already have. A short call first to see where I can help most.',
+    subject: 'Advisory enquiry',
+  },
+  talk: {
+    tag: 'LET US TALK',
+    title: 'A quick call to scope it',
+    price: 'Free, no obligation',
+    blurb: 'Your case is worth a two-minute chat so I can point you at the right option and an honest price.',
+    subject: 'Website advice',
+  },
+} as const;
+
+// Deep-link map: /consulting/find-your-fit/?s=<key> jumps straight into a branch.
+const startMap = { websites: 'haveSite', apps: 'appStage', advisory: 'advisoryNeeds' } as const;
+---
+<section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+  <div class="max-w-[760px] mx-auto">
+    <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">FIND YOUR FIT</div>
+    <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Not sure what you need?</h2>
+    <p class="m-0 mb-10 font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">Answer a couple of questions and I'll point you at the right option and an honest price. No email required to see it.</p>
+
+    <div id="fyf" class="border border-[rgba(var(--line-rgb),0.14)] p-8 max-[760px]:p-6" data-mail={MAIL} data-start-map={JSON.stringify(startMap)}>
+      <!-- progress -->
+      <div class="flex items-center gap-3 mb-6">
+        <div class="flex-1 h-[3px] bg-[rgba(var(--line-rgb),0.1)]"><div id="fyf-bar" class="h-full bg-[var(--accent)] transition-[width] duration-300" style="width:0%"></div></div>
+        <button id="fyf-restart" type="button" class="hidden font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] bg-transparent border-0 cursor-pointer">START OVER</button>
+      </div>
+
+      <!-- question -->
+      <div id="fyf-q">
+        <h3 id="fyf-qt" class="m-0 mb-6 font-['Archivo'] font-extrabold text-[22px] leading-[1.2] tracking-[-0.02em] text-[var(--ink0)]"></h3>
+        <div id="fyf-opts" class="flex flex-col gap-3"></div>
+      </div>
+
+      <!-- result -->
+      <div id="fyf-r" class="hidden">
+        <div id="fyf-rtag" class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.18em] text-[var(--accent-vis)] mb-3"></div>
+        <h3 id="fyf-rt" class="m-0 mb-1 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em] text-[var(--ink0)]"></h3>
+        <div id="fyf-rp" class="mb-4 font-['Archivo'] font-bold text-[16px] text-[var(--accent-vis)]"></div>
+        <p id="fyf-rb" class="m-0 mb-6 font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]"></p>
+        <label id="fyf-domain-wrap" class="block mb-6 max-w-[420px]">
+          <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">ALREADY HAVE A DOMAIN? (OPTIONAL)</span>
+          <input id="fyf-domain" type="text" inputmode="url" autocomplete="off" placeholder="yourbusiness.co.uk" class="w-full font-['JetBrains_Mono'] text-[14px] text-[var(--ink0)] bg-[var(--bg1)] border border-[rgba(var(--line-rgb),0.14)] py-[11px] px-4 outline-none focus:border-[var(--accent)]" />
+        </label>
+        <label class="block mb-6 max-w-[560px]">
+          <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">YOUR BUSINESS & WHAT YOU NEED (OPTIONAL)</span>
+          <textarea id="fyf-brief" rows="3" autocomplete="off" placeholder="A line or two about your business and the problem you want solved." class="w-full resize-y font-['JetBrains_Mono'] text-[14px] leading-[1.6] text-[var(--ink0)] bg-[var(--bg1)] border border-[rgba(var(--line-rgb),0.14)] py-[11px] px-4 outline-none focus:border-[var(--accent)]"></textarea>
+        </label>
+        <span class="snz-magwrap"><a id="fyf-cta" data-mag href="#" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">GET IN TOUCH →</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ steps, results }}>
+  (() => {
+    const root = document.getElementById('fyf');
+    if (!root) return;
+    const mail = root.dataset.mail;
+    const startMap = JSON.parse(root.dataset.startMap || '{}');
+    const param = new URLSearchParams(location.search).get('s');
+    const initialKey = startMap[param] || 'service';
+    const qWrap = document.getElementById('fyf-q');
+    const rWrap = document.getElementById('fyf-r');
+    const qt = document.getElementById('fyf-qt');
+    const opts = document.getElementById('fyf-opts');
+    const bar = document.getElementById('fyf-bar');
+    const restart = document.getElementById('fyf-restart');
+    const domainInput = document.getElementById('fyf-domain');
+    const briefInput = document.getElementById('fyf-brief');
+    const cta = document.getElementById('fyf-cta');
+    let depth = 0;
+    let path = [];
+    let current = null;
+
+    const showQuestion = (key) => {
+      const step = steps[key];
+      depth++;
+      bar.style.width = Math.min(depth * 28, 90) + '%';
+      qt.textContent = step.q;
+      opts.innerHTML = '';
+      step.opts.forEach((o) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className =
+          "text-left font-['JetBrains_Mono'] font-medium text-[14px] leading-[1.4] text-[var(--ink1)] border border-[rgba(var(--line-rgb),0.14)] bg-[var(--bg1)] py-[15px] px-5 cursor-pointer transition-[background,border-color] duration-200 hover:bg-[var(--bg4)] hover:border-[var(--accent)]";
+        b.textContent = o.label;
+        b.addEventListener('click', () => {
+          path.push({ q: step.q, a: o.label });
+          o.result ? showResult(o.result) : showQuestion(o.next);
+        });
+        opts.appendChild(b);
+      });
+      restart.classList.toggle('hidden', depth <= 1);
+    };
+
+    const buildHref = (r) => {
+      const lines = ['Hi, the site quiz suggested: ' + r.title + ' (' + r.price + ').', '', 'My answers:'];
+      path.forEach((p) => lines.push('- ' + p.q + ' ' + p.a));
+      const domain = domainInput.value.trim();
+      if (domain) lines.push('', 'My domain: ' + domain);
+      const brief = briefInput.value.trim();
+      lines.push('', 'About my business & what I need:', brief || '(add a line or two here)');
+      return 'mailto:' + mail + '?subject=' + encodeURIComponent(r.subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    };
+
+    const websiteResults = ['static', 'dynamic', 'convert', 'talk'];
+    const showResult = (key) => {
+      current = results[key];
+      qWrap.classList.add('hidden');
+      rWrap.classList.remove('hidden');
+      bar.style.width = '100%';
+      restart.classList.remove('hidden');
+      document.getElementById('fyf-domain-wrap').classList.toggle('hidden', !websiteResults.includes(key));
+      document.getElementById('fyf-rtag').textContent = current.tag;
+      document.getElementById('fyf-rt').textContent = current.title;
+      document.getElementById('fyf-rp').textContent = current.price;
+      document.getElementById('fyf-rb').textContent = current.blurb;
+      cta.href = buildHref(current);
+    };
+
+    const refresh = () => { if (current) cta.href = buildHref(current); };
+    domainInput.addEventListener('input', refresh);
+    briefInput.addEventListener('input', refresh);
+
+    restart.addEventListener('click', () => {
+      depth = 0;
+      path = [];
+      current = null;
+      domainInput.value = '';
+      briefInput.value = '';
+      rWrap.classList.add('hidden');
+      qWrap.classList.remove('hidden');
+      showQuestion(initialKey);
+    });
+
+    showQuestion(initialKey);
+  })();
+</script>

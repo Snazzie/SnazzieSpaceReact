@@ -1,0 +1,30 @@
+---
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
+---
+
+<ConsultationLayout
+  title="Page not found — Snazzie"
+  description="The page you were looking for does not exist."
+  path="/consulting/404"
+>
+  <main
+    style="min-height:70vh;display:grid;place-items:center;text-align:center;padding:6rem 1.5rem"
+  >
+    <div style="max-width:34rem">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:5rem;font-weight:700;line-height:1;color:var(--acc,var(--ink0))">
+        404
+      </p>
+      <h1 style="margin-top:1rem;font-size:1.5rem;font-weight:800;color:var(--ink0)">
+        This page does not exist
+      </h1>
+      <p style="margin-top:0.75rem;color:var(--ink1)">
+        The link is broken or the page has moved. Let's get you back to the work.
+      </p>
+      <a
+        href="/consulting/"
+        style="margin-top:2rem;display:inline-block;border-radius:9999px;background:var(--ink0);color:var(--bg0);padding:0.7rem 1.6rem;font-size:0.9rem;font-weight:600;text-decoration:none"
+        >Back to services</a
+      >
+    </div>
+  </main>
+</ConsultationLayout>

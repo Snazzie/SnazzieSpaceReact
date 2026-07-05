@@ -1,29 +1,26 @@
 ---
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
+import BuilderTradeoff from '@/components/consultation/BuilderTradeoff.astro';
 
 const metrics = [
-  { value: '95+', label: 'FAST', tag: 'PERFORMANCE' },
-  { value: '100', label: 'EASY TO USE', tag: 'ACCESSIBILITY' },
-  { value: '100', label: 'FOUND ON GOOGLE', tag: 'SEO' },
+  { value: '95+', label: 'PERFORMANCE', tag: 'FAST' },
+  { value: '100', label: 'ACCESSIBILITY', tag: 'EASY TO USE' },
+  { value: '100', label: 'SEO', tag: 'GOOGLE, BING & AI CHAT' },
 ];
 
 const launchReady = [
   'Domain & DNS set up',
-  'Hosting with free SSL (HTTPS)',
+  'Secure from the beginning: free SSL (HTTPS)',
   'UK GDPR & cookie consent',
-  'SEO from the first line of code',
+  'Search engine optimisation from the first line of code',
+  'Crawler optimisation: XML sitemap & robots.txt, submitted to search engines',
+  'Google Business Profile & Maps listing',
   'AI-search ready (ChatGPT & co.)',
   'Analytics from day one',
   'Accessibility & speed checks',
-];
-
-const careFeatures = [
-  'Web content & copy updates',
-  'Analytics tracking & reporting',
-  'Ongoing SEO optimisation',
-  'Legal obligations upkeep (GDPR & cookie-consent)',
-  'Hosting & uptime kept healthy',
+  'Business email set up (you@yourbusiness.co.uk)',
+  'Documentation: the tools and platforms used, and how to edit it yourself',
 ];
 
 const serviceSchema = {
@@ -37,98 +34,340 @@ const serviceSchema = {
 };
 ---
 <ConsultationLayout
-  title="Bespoke Websites From £1500 | Snazzie"
-  description="Hand-built websites for small businesses, from £1500. Launch-ready, SEO-first, and yours to own outright, with optional monthly care."
+  title="Get Your Business Found Online From £1500 | Snazzie"
+  description="Website, SEO and Google Maps for small businesses, from £1500. Your whole online presence built and optimised so customers find you, and yours to own outright."
   path="/consulting/services/websites/"
   schema={serviceSchema}
 >
-  <section class="pt-14 pb-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
+  <!-- HERO -->
+  <section class="pt-14 pb-14 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
     <div class="max-w-[1100px] mx-auto">
       <a href="/consulting/#snz-services" class="inline-block mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline">← All services</a>
       <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">SMALL BUSINESS</div>
-      <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em] max-w-[720px]">A website for your business</h1>
-      <p class="m-0 max-w-[560px] font-['JetBrains_Mono'] font-normal text-[15px] leading-[1.7] text-[var(--ink3)]">Hand-built from a blank page, designed around your business, and yours to own outright. No page builders, no templates, no monthly platform fees.</p>
+      <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[64px] leading-[0.96] tracking-[-0.035em] max-w-[760px] max-[760px]:text-[42px]">Get your business found online</h1>
+      <p class="m-0 max-w-[600px] font-['JetBrains_Mono'] font-normal text-[15px] leading-[1.7] text-[var(--ink3)]">Website, SEO and Google Maps in one package: your whole online presence hand-built and optimised so customers find you, and yours to own outright. No page builders, no templates: just clean, fast code built around your business.</p>
+
+      <!-- trust stats -->
+      <div class="mt-11 flex flex-wrap gap-x-14 gap-y-6">
+        {metrics.map((m) => (
+          <div>
+            <div class="font-['Archivo'] font-extrabold text-[40px] leading-none text-[var(--accent-vis)] tracking-[-0.03em]">{m.value}</div>
+            <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.06em] text-[var(--ink1)] mt-2">{m.label}</div>
+            <div class="font-['JetBrains_Mono'] font-normal text-[10px] tracking-[0.1em] text-[var(--ink5)] mt-0.5">{m.tag}</div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-4 font-['JetBrains_Mono'] font-normal text-[10px] tracking-[0.1em] text-[var(--ink5)]">MEASURED ON GOOGLE LIGHTHOUSE</div>
+
+      <!-- hero CTA -->
+      <div class="mt-10 flex items-center gap-6 flex-wrap">
+        <span class="snz-magwrap"><a data-mag href="/consulting/find-your-fit/?s=websites" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">FIND YOUR FIT →</a></span>
+        <span class="font-['JetBrains_Mono'] font-normal text-[12.5px] text-[var(--ink5)]">From £1500, one-off. Yours to own outright.</span>
+      </div>
     </div>
   </section>
 
-  <section class="py-24 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-16 max-[760px]:px-[22px]">
+  <!-- WHAT'S INCLUDED -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
     <div class="max-w-[1100px] mx-auto">
-      <div class="grid grid-cols-[1.4fr_1fr] gap-6 max-[900px]:grid-cols-1">
-        <!-- bespoke -->
-        <div class="border border-[rgba(var(--line-rgb),0.12)] p-10 bg-[var(--bg2)] flex flex-col">
-          <div class="flex items-baseline justify-between flex-wrap gap-2.5">
-            <h2 class="m-0 font-['Archivo'] font-extrabold text-[30px] tracking-[-0.025em]">Bespoke website</h2>
-            <div class="font-['Archivo'] font-bold text-[28px] text-[var(--accent-vis)]">From £1500 <span class="font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink5)]">one-off</span></div>
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">WHAT'S INCLUDED</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Launch-ready. Nothing forgotten.</h2>
+      <p class="m-0 mb-11 max-w-[600px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">Handled as part of every build, so you go live secure, compliant, and easy to find: on Google, Google Maps, and in AI chats.</p>
+      <div class="grid grid-cols-2 gap-x-14 max-[640px]:grid-cols-1">
+        {launchReady.map((f) => (
+          <div class="flex items-start gap-3 py-[13px] border-t border-[rgba(var(--line-rgb),0.08)] font-['JetBrains_Mono'] font-medium text-[14px] leading-[1.5] text-[var(--ink1)]">
+            <span class="text-[var(--accent-vis)] mt-px">✓</span> {f}
           </div>
-          <p class="mt-[18px] mb-7 max-w-[480px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.65] text-[var(--ink3)]">The price is purely development — your domain and any hosting are paid separately, at cost.</p>
-          <div class="grid grid-cols-3 gap-[1px] bg-[rgba(var(--line-rgb),0.1)] border border-[rgba(var(--line-rgb),0.1)] mb-7">
-            {metrics.map((m) => (
-              <div class="bg-[var(--bg2)] py-[18px] px-5">
-                <div class="font-['Archivo'] font-extrabold text-[30px] text-[var(--accent-vis)]">{m.value}</div>
-                <div class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--ink5)] mt-1">{m.label}</div>
-                <div class="font-['JetBrains_Mono'] font-normal text-[9px] tracking-[0.08em] text-[var(--ink6,var(--ink5))] opacity-60 mt-0.5">{m.tag}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STATIC OR DYNAMIC: product education, self-select before price -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">WHICH ONE DO YOU NEED?</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Static or dynamic</h2>
+      <p class="m-0 mb-11 max-w-[600px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">The difference is how your content changes: updated live by you, or updated through development. That decides your build price and hosting cost.</p>
+      <div class="grid grid-cols-2 border-t border-[rgba(var(--line-rgb),0.12)] max-[760px]:grid-cols-1">
+        <div class="py-8 pr-12 border-r border-[rgba(var(--line-rgb),0.12)] max-[760px]:pr-0 max-[760px]:border-r-0">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[22px] tracking-[-0.02em]">Static website</h3>
+          <p class="mt-0 mb-4 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">Content updates through development: when it changes, I update it.</p>
+          <ul class="list-none m-0 mb-5 p-0 flex flex-col gap-[8px]">
+            {[
+              'Fast, lightweight pages that show your business off',
+              'Hosted free, always',
+              'What most businesses need',
+            ].map((f) => (
+              <li class="flex items-start gap-3 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.5] text-[var(--ink1)]"><span class="text-[var(--accent-vis)] mt-px">✓</span> {f}</li>
+            ))}
+          </ul>
+          <div class="flex gap-8">
+            <div>
+              <div class="font-['JetBrains_Mono'] text-[11px] tracking-[.06em] text-[var(--ink5)] mb-1">BUILD</div>
+              <div class="font-['Archivo'] font-bold text-[19px] text-[var(--accent-vis)]">from £1500</div>
+            </div>
+            <div class="border-l border-[rgba(var(--line-rgb),0.12)] pl-8">
+              <div class="font-['JetBrains_Mono'] text-[11px] tracking-[.06em] text-[var(--ink5)] mb-1">HOSTING</div>
+              <div class="font-['Archivo'] font-bold text-[19px] text-[var(--accent-vis)]">always free</div>
+            </div>
+          </div>
+        </div>
+        <div class="py-8 pl-12 max-[760px]:pl-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[22px] tracking-[-0.02em]">Dynamic website</h3>
+          <p class="mt-0 mb-4 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">Content updates live: I design the site, you edit the content.</p>
+          <ul class="list-none m-0 mb-5 p-0 flex flex-col gap-[8px]">
+            {[
+              'Edit text and images yourself; layout stays as designed',
+              'Logins, bookings and databases, if you need them',
+              'Built on what your site actually has to do',
+            ].map((f) => (
+              <li class="flex items-start gap-3 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.5] text-[var(--ink1)]"><span class="text-[var(--accent-vis)] mt-px">✓</span> {f}</li>
+            ))}
+          </ul>
+          <div class="flex gap-8">
+            <div>
+              <div class="font-['JetBrains_Mono'] text-[11px] tracking-[.06em] text-[var(--ink5)] mb-1">BUILD</div>
+              <div class="font-['Archivo'] font-bold text-[19px] text-[var(--accent-vis)]">from £2500</div>
+            </div>
+            <div class="border-l border-[rgba(var(--line-rgb),0.12)] pl-8">
+              <div class="font-['JetBrains_Mono'] text-[11px] tracking-[.06em] text-[var(--ink5)] mb-1">HOSTING</div>
+              <div class="font-['Archivo'] font-bold text-[19px] text-[var(--accent-vis)]">from £0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDER VS CUSTOM -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">BUILDER OR BUILT FROM SCRATCH</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Why not just use a website builder?</h2>
+      <p class="m-0 mb-11 max-w-[600px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">Builders are quick and fully in your hands. The trade is what you give up on speed, search and ownership.</p>
+      <BuilderTradeoff />
+    </div>
+  </section>
+
+  <!-- SPEED CHECK: compare a competitor's real Lighthouse score -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.08),var(--bg0))">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">SEE FOR YOURSELF</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Check a rival's site speed</h2>
+      <p class="m-0 mb-8 max-w-[620px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">My builds score 95+ on Google's own test. Paste a competitor's site, or your current one, and run it through Google PageSpeed Insights. Most builder and WordPress sites come back slow.</p>
+      <form id="snz-psi" class="flex gap-3 max-w-[620px] flex-wrap max-[520px]:flex-col">
+        <input id="snz-psi-url" type="text" inputmode="url" autocomplete="off" placeholder="competitor.co.uk" class="flex-1 min-w-[220px] font-['JetBrains_Mono'] text-[14px] text-[var(--ink0)] bg-[var(--bg1)] border border-[rgba(var(--line-rgb),0.14)] py-[13px] px-4 outline-none focus:border-[var(--accent)]" />
+        <button type="submit" class="snz-magwrap font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[13px] px-[22px] border-0 cursor-pointer whitespace-nowrap">CHECK THEIR SCORE →</button>
+      </form>
+      <p class="mt-4 font-['JetBrains_Mono'] font-normal text-[11.5px] text-[var(--ink5)]">Opens Google PageSpeed Insights in a new tab. Independent, and nothing to do with me.</p>
+    </div>
+  </section>
+  <script is:inline>
+    (() => {
+      const form = document.getElementById('snz-psi');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let v = document.getElementById('snz-psi-url').value.trim();
+        if (!v) return;
+        if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+        window.open('https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(v), '_blank', 'noopener');
+      });
+    })();
+  </script>
+
+  <!-- WHAT HOSTING USUALLY COSTS: why free static hosting matters -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">WHAT HOSTING USUALLY COSTS</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Builders keep charging. I don't.</h2>
+      <p class="m-0 mb-8 max-w-[600px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">WordPress and builder sites keep charging every month, for as long as the site is live. A static site from me is hosted free, so that column stays at zero.</p>
+      <div class="overflow-x-auto border border-[rgba(var(--line-rgb),0.12)]">
+        <table class="w-full border-collapse font-['JetBrains_Mono'] text-[13px] min-w-[460px]">
+          <thead>
+            <tr class="text-left text-[var(--ink5)]">
+              <th class="font-medium text-[11px] tracking-[.06em] py-3 px-5 border-b border-[rgba(var(--line-rgb),0.12)]">PLATFORM</th>
+              <th class="font-medium text-[11px] tracking-[.06em] py-3 px-5 border-b border-l border-[rgba(var(--line-rgb),0.1)]">TYPICAL / MONTH</th>
+              <th class="font-medium text-[11px] tracking-[.06em] py-3 px-5 border-b border-l border-[rgba(var(--line-rgb),0.1)]">OVER 3 YEARS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { p: 'Managed WordPress (WP Engine & co.)', mo: '£20 to £25', yr: '~£800' },
+              { p: 'Shared WordPress host (at renewal)', mo: '£10 to £15', yr: '~£450' },
+              { p: 'Wix Premium', mo: '£10 to £22', yr: '~£580' },
+              { p: 'Squarespace', mo: '£12 to £30', yr: '~£750' },
+            ].map((r) => (
+              <tr class="text-[var(--ink2)]">
+                <td class="py-3 px-5 border-b border-[rgba(var(--line-rgb),0.08)]">{r.p}</td>
+                <td class="py-3 px-5 border-b border-l border-[rgba(var(--line-rgb),0.08)] text-[var(--ink0)] font-medium">{r.mo}</td>
+                <td class="py-3 px-5 border-b border-l border-[rgba(var(--line-rgb),0.08)] text-[var(--ink0)] font-medium">{r.yr}</td>
+              </tr>
+            ))}
+            <tr style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.12),var(--bg0))">
+              <td class="py-3 px-5 font-['Archivo'] font-extrabold text-[14px] text-[var(--ink0)]">Static site from me</td>
+              <td class="py-3 px-5 border-l border-[rgba(var(--line-rgb),0.1)] font-['Archivo'] font-bold text-[var(--accent-vis)]">£0</td>
+              <td class="py-3 px-5 border-l border-[rgba(var(--line-rgb),0.1)] font-['Archivo'] font-bold text-[var(--accent-vis)]">£0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 font-['JetBrains_Mono'] font-normal text-[11.5px] leading-[1.6] text-[var(--ink5)]">Typical figures, for comparison. Most hosts advertise a low intro rate, then renew higher, so the real cost is what you pay year after year.</p>
+      <p class="mt-2 font-['JetBrains_Mono'] font-normal text-[11.5px] leading-[1.6] text-[var(--ink5)]">Many also mark up your domain: cheap the first year, then renewed well above cost. Yours is registered in your own account at the going rate, around £12 a year, with no markup from me.</p>
+    </div>
+  </section>
+
+  <!-- NO MONTHLY MAINTENANCE FEE: why it's unnecessary -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">NO MONTHLY MAINTENANCE FEE</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Why you don't pay me every month</h2>
+      <p class="m-0 mb-11 max-w-[640px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">Most agencies bill a monthly maintenance fee. On a site built like this, there is simply nothing for it to cover, so I don't charge one. A small-business site rarely changes month to month, so paying only when you actually need something works out cheaper than a standing fee for work that mostly isn't happening.</p>
+      <div class="grid grid-cols-3 gap-x-12 border-t border-[rgba(var(--line-rgb),0.12)] max-[760px]:grid-cols-1">
+        <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] pr-10 max-[760px]:border-r-0 max-[760px]:pr-0">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">Nothing to keep updating</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">No bloated plugins, no CMS to patch every month. Hand-built code has no moving parts sitting there waiting to break, so there is no update treadmill to bill you for.</p>
+        </div>
+        <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] px-10 max-[760px]:border-r-0 max-[760px]:px-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">Secure from the get-go</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">HTTPS from day one and almost no attack surface: no login, no plugin, no database to break into. Security you would normally pay a monthly plan for is just how it's built.</p>
+        </div>
+        <div class="py-6 pl-10 max-[760px]:pl-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">No manufactured upsell</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">A maintenance retainer exists to create recurring revenue, not because your site needs it. You pay only when you actually want something changed, and nothing the rest of the time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">PRICING</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Simple, honest pricing</h2>
+
+      <div class="grid grid-cols-2 border-t border-[rgba(var(--line-rgb),0.12)] max-[760px]:grid-cols-1">
+        <!-- bespoke plan -->
+        <div class="py-9 pr-12 border-r border-[rgba(var(--line-rgb),0.12)] flex flex-col max-[760px]:pr-0 max-[760px]:border-r-0">
+          <h3 class="m-0 font-['Archivo'] font-extrabold text-[24px] tracking-[-0.02em]">Bespoke website</h3>
+          <div class="mt-4 mb-1 font-['Archivo'] font-bold text-[40px] text-[var(--accent-vis)] tracking-[-0.03em]">From £1500 <span class="font-['JetBrains_Mono'] font-medium text-[13px] text-[var(--ink5)]">one-off</span></div>
+          <p class="mt-4 mb-4 max-w-[440px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">Purely development: hand-built from a blank page, designed around your business.</p>
+          <ul class="list-none m-0 mb-7 p-0 max-w-[440px] flex flex-col gap-[9px]">
+            {[
+              'Up to six pages included, then £200 per additional page',
+              'Up to five rounds of design changes until you love it',
+              'Domain and hosting paid separately, at cost',
+            ].map((f) => (
+              <li class="flex items-start gap-3 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.5] text-[var(--ink1)]"><span class="text-[var(--accent-vis)] mt-px">✓</span> {f}</li>
+            ))}
+          </ul>
+          <span class="snz-magwrap mt-auto self-start"><a data-mag href="/consulting/find-your-fit/?s=websites" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">FIND YOUR FIT →</a></span>
+        </div>
+        <!-- pay-as-you-go changes -->
+        <div class="py-9 pl-12 flex flex-col max-[760px]:pl-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="m-0 font-['Archivo'] font-extrabold text-[24px] tracking-[-0.02em]">Changes when you need them</h3>
+            <span class="font-['JetBrains_Mono'] font-medium text-[10px] tracking-[.1em] text-[var(--accent-vis)]">PAY AS YOU GO</span>
+          </div>
+          <div class="mt-4 mb-1 font-['Archivo'] font-bold text-[40px] text-[var(--accent-vis)] tracking-[-0.03em]">From £20 <span class="font-['JetBrains_Mono'] font-medium text-[13px] text-[var(--ink5)]">per change</span></div>
+          <p class="mt-4 mb-5 max-w-[440px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">No monthly fees. You only pay when you want something changed, priced by how big the job is. The rest of the time the site just runs, hosted free, nothing to pay.</p>
+          <div class="border-t border-[rgba(var(--line-rgb),0.12)]">
+            {[
+              { t: 'Simple content change', p: '£20' },
+              { t: 'SEO optimisation revisit', p: 'from £100' },
+              { t: 'Large page or redesign', p: 'from £200 per page' },
+            ].map((c) => (
+              <div class="flex items-center justify-between gap-4 py-[11px] border-b border-[rgba(var(--line-rgb),0.08)]">
+                <span class="font-['JetBrains_Mono'] font-normal text-[13px] text-[var(--ink1)]">{c.t}</span>
+                <span class="font-['Archivo'] font-bold text-[15px] text-[var(--ink0)] whitespace-nowrap">{c.p}</span>
               </div>
             ))}
-          </div>
-          <span class="snz-magwrap mt-auto self-start"><a data-mag href="mailto:consulting@snazzie.space" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">START A WEBSITE →</a></span>
-        </div>
-        <!-- care -->
-        <div class="flex flex-col gap-6">
-          <div class="border border-[rgba(var(--line-rgb),0.12)] p-8 bg-[var(--bg2)] flex-1">
-            <div class="flex items-baseline justify-between gap-2.5 mb-1.5">
-              <h3 class="m-0 font-['Archivo'] font-bold text-[20px] tracking-[-0.01em]">Monthly care</h3>
-              <span class="font-['Archivo'] font-bold text-[18px] text-[var(--ink0)]">From £40<span class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--ink5)]">/mo</span></span>
-            </div>
-            <div class="font-['JetBrains_Mono'] font-medium text-[11px] text-[var(--accent-vis)] mb-[18px]">OPTIONAL · CANCEL ANYTIME</div>
-            <p class="mt-0 mb-[18px] font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.6] text-[var(--ink3)]">Keep the site current and growing without lifting a finger.</p>
-            <div class="flex flex-col gap-[9px]">
-              {careFeatures.map((f) => (
-                <div class="font-['JetBrains_Mono'] font-normal text-[12.5px] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">·</span> {f}</div>
-              ))}
-            </div>
-          </div>
-          <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)]">
-            <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">Domains and hosting are paid straight to the providers — no markup, no padded packages, no fake security fees.</p>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-6 mt-6 items-stretch max-[900px]:grid-cols-1">
-        <!-- worked example -->
-        <div class="border border-[rgba(var(--line-rgb),0.12)] bg-[var(--bg2)] p-7 flex flex-col">
-          <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.18em] text-[var(--accent-vis)] mb-3">FOR EXAMPLE</div>
-          <h3 class="mt-0 mb-2 font-['Archivo'] font-extrabold text-[19px] tracking-[-0.02em]">A typical small-business site</h3>
-          <p class="mt-0 mb-4 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.6] text-[var(--ink3)]">A five-page site: home, about, services, gallery and contact. Hand-built and honestly priced, no surprises later.</p>
-          <div class="flex flex-col gap-[1px] bg-[rgba(var(--line-rgb),0.1)] border border-[rgba(var(--line-rgb),0.1)] mt-auto">
-            <div class="flex items-baseline justify-between gap-3 bg-[var(--bg2)] py-[10px] px-4">
-              <span class="font-['JetBrains_Mono'] text-[12px] text-[var(--ink1)]">Build</span>
-              <span class="font-['Archivo'] font-bold text-[15px] text-[var(--accent-vis)]">from £1500</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-3 bg-[var(--bg2)] py-[10px] px-4">
-              <span class="font-['JetBrains_Mono'] text-[12px] text-[var(--ink1)]">Domain</span>
-              <span class="font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink3)]">~£12/yr</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-3 bg-[var(--bg2)] py-[10px] px-4">
-              <span class="font-['JetBrains_Mono'] text-[12px] text-[var(--ink1)]">Hosting</span>
-              <span class="font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink3)]">often £0</span>
-            </div>
-            <div class="flex items-baseline justify-between gap-3 py-[10px] px-4" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg2))">
-              <span class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.06em] text-[var(--ink0)]">YOU OWN IT</span>
-              <span class="font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--accent-vis)]">outright</span>
-            </div>
+      <!-- worked-example cost strip -->
+      <div class="mt-11">
+        <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.18em] text-[var(--accent-vis)] mb-4">A TYPICAL SMALL-BUSINESS SITE</div>
+        <div class="flex flex-wrap items-stretch border border-[rgba(var(--line-rgb),0.12)]">
+          <div class="flex-1 min-w-[130px] py-[14px] px-5 border-r border-[rgba(var(--line-rgb),0.1)]">
+            <div class="font-['JetBrains_Mono'] text-[11px] text-[var(--ink5)] mb-1">Build</div>
+            <div class="font-['Archivo'] font-bold text-[17px] text-[var(--accent-vis)]">from £1500</div>
+          </div>
+          <div class="flex-1 min-w-[130px] py-[14px] px-5 border-r border-[rgba(var(--line-rgb),0.1)]">
+            <div class="font-['JetBrains_Mono'] text-[11px] text-[var(--ink5)] mb-1">Domain</div>
+            <div class="font-['Archivo'] font-bold text-[17px] text-[var(--ink1)]">~£12/yr</div>
+          </div>
+          <div class="flex-1 min-w-[130px] py-[14px] px-5 border-r border-[rgba(var(--line-rgb),0.1)]">
+            <div class="font-['JetBrains_Mono'] text-[11px] text-[var(--ink5)] mb-1">Hosting</div>
+            <div class="font-['Archivo'] font-bold text-[17px] text-[var(--ink1)]">from £0</div>
+          </div>
+          <div class="flex-1 min-w-[130px] py-[14px] px-5" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
+            <div class="font-['JetBrains_Mono'] text-[11px] text-[var(--ink5)] mb-1">You own it</div>
+            <div class="font-['Archivo'] font-bold text-[17px] text-[var(--accent-vis)]">outright</div>
           </div>
         </div>
+      </div>
 
-        <!-- launch-ready -->
-        <div class="border border-[var(--accent)] p-7 flex flex-col" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
-          <h3 class="mt-0 mb-2 font-['Archivo'] font-extrabold text-[19px] tracking-[-0.02em]">Launch-ready. Nothing forgotten.</h3>
-          <p class="mt-0 mb-4 font-['JetBrains_Mono'] font-normal text-[12.5px] leading-[1.6] text-[var(--ink3)]">Handled as part of every build, so you go live secure, compliant, and easy to find — on Google and in AI chats.</p>
-          <div class="flex flex-col gap-[7px] mt-auto">
-            {launchReady.map((f) => (
-              <span class="inline-flex items-center gap-2 font-['JetBrains_Mono'] font-medium text-[12px] text-[var(--ink1)]"><span class="text-[var(--accent-vis)]">✓</span> {f}</span>
-            ))}
-          </div>
+      <!-- convert existing WordPress to static -->
+      <div class="mt-11 border border-[var(--accent)] p-8 flex items-center justify-between gap-8 flex-wrap max-[760px]:p-6" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
+        <div class="max-w-[600px]">
+          <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[.18em] text-[var(--accent-vis)] mb-3">ALREADY ON WORDPRESS, WIX OR SQUARESPACE?</div>
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[24px] tracking-[-0.02em] text-[var(--ink0)]">Convert it to static, from £200</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">If your site on WordPress, Wix, Squarespace or any other builder is a brochure or marketing site with no logins or bookings, I rebuild it as a static site that looks the same and loads faster. Your monthly hosting drops to free from then on.</p>
         </div>
+        <a href="/consulting/find-your-fit/?s=websites" class="self-start font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] text-[var(--accent-vis)] no-underline border-b border-[var(--accent-vis)] pb-0.5 whitespace-nowrap">Convert my site →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALWAYS YOURS band -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.08),var(--bg0))">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">ALWAYS YOUR OWN</div>
+      <p class="m-0 mb-9 max-w-[820px] font-['Archivo'] font-bold text-[26px] leading-[1.35] tracking-[-0.02em] text-[var(--ink0)] max-[760px]:text-[20px]">I build the product; you pay the providers <span class="text-[var(--accent-vis)]">directly</span>, no middle-man markup ever. Everything is set up in your own accounts, and I maintain it through a service account you can revoke anytime.</p>
+      <div class="grid grid-cols-3 gap-x-12 border-t border-[rgba(var(--line-rgb),0.12)] max-[760px]:grid-cols-1">
+        <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] pr-10 max-[760px]:border-r-0 max-[760px]:pr-0">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">You own it outright</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">The site and every account are yours from day one. Nothing is locked behind me or a platform, so you can never be held hostage.</p>
+        </div>
+        <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] px-10 max-[760px]:border-r-0 max-[760px]:px-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">Free tiers, direct to you</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">Because the accounts are yours, you get the platforms' free tiers and best pricing directly. No reseller in the middle adding markup.</p>
+        </div>
+        <div class="py-6 pl-10 max-[760px]:pl-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+          <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em]">Revoke me anytime</h3>
+          <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">My access is a service account you control. Pull it whenever you like and carry on yourself, or bring in anyone else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROWS INTO: digital-presence guidance pack (info product, not done-for-you) -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">GROWS INTO · PRESENCE PACK</div>
+      <h2 class="m-0 mb-4 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">The website is step one</h2>
+      <p class="m-0 mb-11 max-w-[640px] font-['JetBrains_Mono'] font-normal text-[14px] leading-[1.7] text-[var(--ink3)]">Your site is built to be found. The Presence Pack is a plain-English guide to everything else that moves the needle: exactly what to set up, in what order, and the best-value places to get it. You do it, I tell you how.</p>
+      <div class="grid grid-cols-3 gap-x-10 border-t border-[rgba(var(--line-rgb),0.12)] max-[900px]:grid-cols-2 max-[560px]:grid-cols-1">
+        {[
+          { t: 'Google Business Profile', d: 'How to claim, complete and post so you rank in the local map pack.' },
+          { t: 'Off-site SEO', d: 'The recommendations that lift your ranking beyond your own site: backlinks, mentions, and the directories and citations worth being listed in.' },
+          { t: 'Content & keywords', d: 'What to write about, and the search terms to aim each page at.' },
+          { t: 'Social profiles', d: 'Which platforms fit your business, set up to point back to your site.' },
+          { t: 'Where to buy what', d: 'Best-value places for business email, domains and the tools you need, so you never overpay.' },
+          { t: 'Legal must-haves', d: 'The digital requirements to stay compliant: privacy policy, cookie consent, terms, accessibility and UK GDPR basics.' },
+        ].map((s) => (
+          <div class="py-6 font-['JetBrains_Mono']">
+            <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em] text-[var(--ink0)]">{s.t}</h3>
+            <p class="m-0 font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">{s.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-9 flex items-center gap-6 flex-wrap">
+        <a href="/consulting/services/presence-pack/" class="font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] text-[var(--accent-vis)] no-underline border-b border-[var(--accent-vis)] pb-0.5">FIND OUT MORE →</a>
+        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12.5px] text-[var(--ink5)]">A one-off guide, not a monthly service. Yours to work through at your own pace.</p>
       </div>
     </div>
   </section>

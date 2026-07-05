@@ -1,0 +1,43 @@
+---
+import '@/styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Off the dial — Snazzie FM"
+      description="This frequency is dead air. The page you were looking for does not exist."
+      path="/snazziefm/404"
+      noindex={true}
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monoton&family=Bebas+Neue&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <style>html,body{background:#0a0704;}</style>
+  </head>
+  <body class="bg-background text-foreground">
+    <main style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:2rem;color:#f5e6c8">
+      <div style="max-width:34rem">
+        <p style="font-family:'Monoton',cursive;font-size:clamp(3.5rem,14vw,6rem);color:#ff5470;line-height:1;text-shadow:0 0 18px rgba(255,84,112,0.55)">
+          404
+        </p>
+        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,6vw,2.6rem);letter-spacing:0.06em;margin-top:0.75rem;color:#ffd166">
+          Dead Air On This Frequency
+        </h1>
+        <p style="font-family:'VT323',monospace;font-size:1.35rem;margin-top:0.75rem;opacity:0.85">
+          Nothing broadcasting here. Tune back to the show.
+        </p>
+        <a
+          href="/snazziefm/"
+          style="font-family:'Bebas Neue',sans-serif;letter-spacing:0.1em;margin-top:2rem;display:inline-block;border:2px solid #ff5470;color:#ff5470;border-radius:9999px;padding:0.6rem 1.8rem;font-size:1.15rem;text-decoration:none"
+          >Back to Snazzie FM</a
+        >
+      </div>
+    </main>
+  </body>
+</html>

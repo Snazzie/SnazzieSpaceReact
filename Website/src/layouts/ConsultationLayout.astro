@@ -46,7 +46,7 @@ const { title, description, path, schema } = Astro.props;
     </div>
 
     <script>
-      // Page-wide reveal-on-scroll + magnetic buttons.
+      // Page-wide reveal-on-scroll.
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
       if (reduce || !('IntersectionObserver' in window)) {
@@ -66,17 +66,6 @@ const { title, description, path, schema } = Astro.props;
           { threshold: 0.12, rootMargin: '0px 0px -10% 0px' },
         );
         els.forEach((el) => io.observe(el));
-
-        // Magnetic hover on tagged buttons.
-        document.querySelectorAll<HTMLElement>('[data-mag]').forEach((el) => {
-          el.addEventListener('mousemove', (ev) => {
-            const r = el.getBoundingClientRect();
-            const x = ev.clientX - r.left - r.width / 2;
-            const y = ev.clientY - r.top - r.height / 2;
-            el.style.transform = 'translate(' + (x * 0.28).toFixed(1) + 'px,' + (y * 0.4).toFixed(1) + 'px)';
-          });
-          el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
-        });
       }
     </script>
 
@@ -91,7 +80,7 @@ const { title, description, path, schema } = Astro.props;
 
       /* ===== consultation palette — :root is the LIGHT theme (default); html[data-theme=dark] restores today's exact dark values (pixel-identical). ===== */
       :root {
-        --bg0:#f4f3ee; --bg1:#f1f0ea; --bg2:#edece6; --bg3:#e9e8e1; --bg4:#e5e4dd; --bg5:#e0dfd8;
+        --bg0:#ffffff; --bg1:#fbfbf9; --bg2:#f6f6f3; --bg3:#f1f1ed; --bg4:#ececE7; --bg5:#e6e6e0;
         --ink0:#141410; --ink1:#33332c; --ink2:#3d3d35; --ink3:#55554c; --ink4:#5e5e55; --ink5:#60605a; --ink6:#62625a; --ink7:#85847a;
         --line-rgb:12,12,8;
         --accent:#C6F432; --accent-rgb:132,168,16; --accent-vis:#84a810;
@@ -99,9 +88,9 @@ const { title, description, path, schema } = Astro.props;
         --tone-mid:#7d6209; --tone-bad:#9a3b3b;
         --dim0:#85847a; --dim1:#c9c8c0;
         /* extra one-off tones mapped from stray literals (dark values below are pixel-identical to originals) */
-        --bg-deep:#dcdbd4; --bg-node:#e9e8e1;
+        --bg-deep:#eeeee9; --bg-node:#f1f1ed;
         --ink-a:#55554c; --ink-b:#5e5e55; --ink-mid:#3d3d35; --ink-c:#141410;
-        --nav-rgb:244,243,238; --chip-rgb:237,236,230; --shadow-rgb:90,88,80; --shine-rgb:170,205,40;
+        --nav-rgb:255,255,255; --chip-rgb:246,246,243; --shadow-rgb:90,88,80; --shine-rgb:170,205,40;
         --pure0:#141410;
         /* BuildFlow marquee: light = black words swept/flashed with brand highlighter lime */
         --mq-base-rgb:20,20,16; --mq-base-a:.92; --mq-shine-rgb:198,244,50; --mq-peak:#C6F432; --mq-flash:#C6F432; --mq-ic-lit:#141410;

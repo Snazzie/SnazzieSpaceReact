@@ -1,0 +1,104 @@
+---
+import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
+import Closing from '@/components/consultation/Closing.astro';
+
+const chapters = [
+  {
+    t: 'Google Business Profile',
+    d: 'Your single biggest lever for local customers. How to claim and verify the profile, fill every field Google rewards, pick the right categories, and post regularly so you show up in the local map pack when people search nearby.',
+  },
+  {
+    t: 'Directories & listings',
+    d: 'The citations that actually count, from industry directories to local ones, and how to keep your name, address and phone identical everywhere so Google trusts the data. Includes a checklist of where to submit and what to avoid.',
+  },
+  {
+    t: 'Social profiles',
+    d: 'Which platforms are worth your time for your kind of business, and which are not. How to set each one up so it looks professional, links back to your site, and reinforces your search presence rather than scattering it.',
+  },
+  {
+    t: 'Content & keywords',
+    d: 'How to find the terms your customers actually type, and turn them into pages and posts worth writing. Simple, repeatable, no jargon: what to write, how to structure it, and how often.',
+  },
+  {
+    t: 'Off-site SEO boosts',
+    d: 'The ranking factors that live outside your website: backlinks, mentions, reviews and being listed where Google looks. What genuinely moves the needle, and the shortcuts that get sites penalised.',
+  },
+  {
+    t: 'Where to buy what',
+    d: 'Best-value places for business email, domains, and every tool you might need, with the traps to avoid. Written to save you far more than the pack costs, and to keep every account in your own name.',
+  },
+  {
+    t: 'Legal must-haves',
+    d: 'The digital requirements to stay compliant: privacy policy, cookie consent, terms, accessibility and UK GDPR basics. What you must have, in plain English, without paying a solicitor for the obvious.',
+  },
+  {
+    t: 'Measuring it',
+    d: 'How to read your analytics so you know what is actually working, which channels bring customers, and where to spend your next hour of effort. No vanity metrics.',
+  },
+];
+---
+<ConsultationLayout
+  title="The Presence Pack | Grow Beyond Your Website | Snazzie"
+  description="A plain-English guide to everything beyond your website that gets you found: Google Business Profile, listings, social, content, off-site SEO, tools and legal. You do it, I tell you how."
+  path="/consulting/services/presence-pack/"
+>
+  <!-- HERO -->
+  <section class="pt-14 pb-14 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <a href="/consulting/services/websites/" class="inline-block mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline">← Back to websites</a>
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">GROWS INTO · PRESENCE PACK</div>
+      <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[64px] leading-[0.96] tracking-[-0.035em] max-w-[820px] max-[760px]:text-[42px]">Everything beyond the website that gets you found</h1>
+      <p class="m-0 max-w-[640px] font-['JetBrains_Mono'] font-normal text-[15px] leading-[1.7] text-[var(--ink3)]">A one-off, plain-English guide to the work that grows your reach: exactly what to set up, in what order, and the best-value places to get it. You do it yourself, at your own pace. I just tell you how.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto grid grid-cols-3 gap-x-12 border-t border-[rgba(var(--line-rgb),0.12)] max-[760px]:grid-cols-1">
+      <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] pr-10 max-[760px]:border-r-0 max-[760px]:pr-0">
+        <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em] text-[var(--ink0)]">A guide, not a service</h3>
+        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">One-off, no monthly fees. You keep it and work through it whenever suits.</p>
+      </div>
+      <div class="py-6 border-r border-[rgba(var(--line-rgb),0.12)] px-10 max-[760px]:border-r-0 max-[760px]:px-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+        <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em] text-[var(--ink0)]">Plain English</h3>
+        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">Written for a business owner, not a marketer. No jargon, just the steps that matter.</p>
+      </div>
+      <div class="py-6 pl-10 max-[760px]:pl-0 max-[760px]:border-t max-[760px]:border-[rgba(var(--line-rgb),0.12)]">
+        <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[17px] tracking-[-0.01em] text-[var(--ink0)]">Tailored to you</h3>
+        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">Built around your business and where your customers actually look.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">WHAT'S INSIDE</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Eight chapters, start to finish</h2>
+      <div class="border-t border-[rgba(var(--line-rgb),0.12)]">
+        {chapters.map((c, i) => (
+          <div class="grid grid-cols-[64px_1fr] gap-6 py-7 border-b border-[rgba(var(--line-rgb),0.08)] max-[560px]:grid-cols-1 max-[560px]:gap-2">
+            <div class="font-['JetBrains_Mono'] font-semibold text-[13px] text-[var(--accent-vis)] pt-1">{String(i + 1).padStart(2, '0')}</div>
+            <div>
+              <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[21px] tracking-[-0.02em] text-[var(--ink0)]">{c.t}</h3>
+              <p class="m-0 max-w-[720px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">{c.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.1),var(--bg0))">
+    <div class="max-w-[1100px] mx-auto flex items-center justify-between gap-8 flex-wrap">
+      <div class="max-w-[620px]">
+        <h2 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[28px] tracking-[-0.02em] text-[var(--ink0)] max-[760px]:text-[22px]">Want the Presence Pack for your business?</h2>
+        <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">It is added on when you want it, never bundled in upfront. Tell me about your business and I will scope it for you.</p>
+      </div>
+      <span class="snz-magwrap self-start"><a data-mag href="/consulting/find-your-fit/?s=websites" class="inline-block font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] bg-[var(--accent)] text-[var(--ink)] py-[14px] px-[22px] no-underline" style="transition:transform .3s cubic-bezier(.2,.8,.2,1)">FIND YOUR FIT →</a></span>
+    </div>
+  </section>
+
+  <Closing />
+</ConsultationLayout>
