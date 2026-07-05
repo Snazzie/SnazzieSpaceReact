@@ -110,7 +110,7 @@
 .snz-bcaps .cap{ background:rgba(var(--chip-rgb),.84); border:1px solid rgba(var(--line-rgb),.07);
   border-radius:14px; padding:16px 20px; }
 .snz-track{ background:rgba(var(--chip-rgb),.84); border:1px solid rgba(var(--line-rgb),.07);
-  border-radius:14px; padding:14px 18px; box-sizing:border-box; }
+  border-radius:14px; padding:14px 22px 14px 18px; box-sizing:border-box; }
 .pur-fg{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; }
 /* browser + phone dock share a centered row; when the dock expands the whole row
    widens, so the browser shifts left to make space for the phone */

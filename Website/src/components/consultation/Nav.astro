@@ -13,14 +13,14 @@ const SERVICE_LINKS = [
 ];
 ---
 <nav id="snz-cnav" class="sticky top-0 z-50 flex items-center justify-between gap-4 py-4 px-10 bg-[rgba(var(--nav-rgb),0.72)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-[14px] max-[760px]:px-5">
-  <a href="#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
+  <a href="/consultation#snz-top" class="font-extrabold text-[17px] font-['Archivo'] tracking-[-0.02em] text-[var(--ink0)] no-underline flex-none">SNAZZIE<span class="text-[var(--accent-vis)]">°</span></a>
   <div class="flex items-center gap-7 font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
     <div class="snz-cnav-links flex items-center gap-7 max-[760px]:hidden">
       {LINKS.map((l) => (
         l.label === 'SERVICES' ? (
-          <div class="snz-services-drop relative">
+          <div class="snz-services-drop relative self-stretch flex items-center">
             <a href={l.href} class="text-[var(--ink-a)] no-underline">{l.label}</a>
-            <div class="snz-services-menu absolute top-full left-1/2 pt-3 opacity-0 invisible transition-[opacity,transform,visibility] duration-150" style="--sy:-4px">
+            <div class="snz-services-menu absolute left-1/2 opacity-0 invisible transition-[opacity,transform,visibility] duration-150" style="--sy:-4px; top:calc(100% + 2rem)">
               <div class="flex flex-col min-w-[160px] bg-[rgba(var(--nav-rgb),0.96)] backdrop-blur-[14px] border border-[rgba(var(--line-rgb),0.14)] shadow-[0_12px_28px_rgba(0,0,0,0.18)]">
                 {SERVICE_LINKS.map((s) => (
                   <a href={s.href} class="px-4 py-3 text-[var(--ink-a)] no-underline border-b border-[rgba(var(--line-rgb),0.08)] last:border-b-0 hover:text-[var(--accent-vis)] hover:bg-[rgba(var(--accent-rgb),0.08)] transition-colors duration-150">{s.label}</a>
@@ -42,9 +42,27 @@ const SERVICE_LINKS = [
       <svg class="snz-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       <svg class="snz-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--accent-vis)] border border-[rgba(var(--accent-rgb),0.35)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--accent)]" style="box-shadow:0 0 10px var(--accent);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+    <span class="snz-cnav-avail inline-flex items-center gap-2 text-[var(--ink)] bg-[var(--accent)] border border-[var(--accent)] py-[7px] px-3 whitespace-nowrap flex-none"><span class="w-[7px] h-[7px] rounded-full bg-[var(--ink)]" style="box-shadow:0 0 10px var(--ink);animation:snz-pulse 2s ease infinite"></span>AVAILABLE</span>
+    <button
+      id="snz-cnav-burger"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      class="hidden max-[760px]:inline-flex items-center justify-center w-8 h-8 flex-none bg-transparent cursor-pointer text-[var(--ink-a)] border border-[rgba(var(--line-rgb),0.14)] transition-colors duration-200 hover:text-[var(--accent-vis)] hover:border-[rgba(var(--accent-rgb),0.5)]"
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
 </nav>
+
+<div id="snz-cnav-mobile" class="hidden max-[760px]:flex flex-col opacity-0 invisible -translate-y-2 transition-[opacity,transform,visibility] duration-150 fixed inset-x-0 top-[57px] z-40 bg-[rgba(var(--nav-rgb),0.96)] backdrop-blur-[14px] border-b border-[rgba(var(--line-rgb),0.14)] font-semibold text-[12px] font-['JetBrains_Mono'] tracking-[.06em]">
+  {LINKS.map((l) => (
+    <a href={l.href} class="px-5 py-4 text-[var(--ink-a)] no-underline border-b border-[rgba(var(--line-rgb),0.08)]">{l.label}</a>
+  ))}
+  {SERVICE_LINKS.map((s) => (
+    <a href={s.href} class="px-5 py-3 pl-8 text-[var(--ink-a)] no-underline border-b border-[rgba(var(--line-rgb),0.08)] last:border-b-0">{s.label}</a>
+  ))}
+</div>
 
 <style>
   /* icon reflects the CURRENT theme; pure-CSS swap keeps it correct on first paint (no-flash). */
@@ -58,6 +76,12 @@ const SERVICE_LINKS = [
     opacity: 1;
     visibility: visible;
     --sy: 0px;
+  }
+
+  #snz-cnav-mobile.snz-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 </style>
 
@@ -78,6 +102,28 @@ const SERVICE_LINKS = [
       try { localStorage.setItem('snz-theme', dark ? 'light' : 'dark'); } catch (e) { /* private mode: session-only */ }
       syncLabel();
       window.dispatchEvent(new CustomEvent('snz-theme-change'));
+    });
+  }
+
+  // Mobile burger: toggle the link panel, close on outside click or link tap.
+  const burger = document.getElementById('snz-cnav-burger');
+  const mobileMenu = document.getElementById('snz-cnav-mobile');
+  if (burger && mobileMenu) {
+    const setOpen = (open: boolean) => {
+      mobileMenu.classList.toggle('snz-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    burger.addEventListener('click', () => {
+      setOpen(!mobileMenu.classList.contains('snz-open'));
+    });
+    mobileMenu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).tagName === 'A') setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target as Node) && !burger.contains(e.target as Node)) {
+        setOpen(false);
+      }
     });
   }
 </script>

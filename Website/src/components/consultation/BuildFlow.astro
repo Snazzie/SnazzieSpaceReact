@@ -371,7 +371,7 @@ import "./BuildFlow.css";
         <div style="position:relative;height:11px">
           <div style="position:absolute;left:5px;right:5px;top:0;bottom:0">
             {buildTrack.map((label, i) => (
-              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;transform:translateX(-50%);white-space:nowrap;color:${i === 0 ? "var(--accent-vis)" : "var(--dim0)"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
+              <span id={`tk${i + 1}`} style={`position:absolute;left:${[0, 25, 50, 75][i]}%;white-space:nowrap;color:${i === 0 ? "var(--accent-vis)" : "var(--dim0)"};font:600 11px 'JetBrains Mono',monospace;letter-spacing:.04em;transition:color .4s ease`}>{label}</span>
             ))}
           </div>
         </div>
