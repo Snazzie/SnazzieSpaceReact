@@ -126,6 +126,7 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
     <div id="fyf" class="border border-[rgba(var(--line-rgb),0.14)] p-8 max-[760px]:p-6" data-mail={MAIL} data-start-map={JSON.stringify(startMap)} data-start={start}>
       <!-- progress -->
       <div class="flex items-center gap-3 mb-6">
+        <button id="fyf-back-step" type="button" class="hidden font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] bg-transparent border-0 cursor-pointer">← BACK</button>
         <div class="flex-1 h-[3px] bg-[rgba(var(--line-rgb),0.1)]"><div id="fyf-bar" class="h-full bg-[var(--accent)] transition-[width] duration-300" style="width:0%"></div></div>
         <button id="fyf-restart" type="button" class="hidden font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] bg-transparent border-0 cursor-pointer">START OVER</button>
       </div>
@@ -151,12 +152,8 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
         <h3 class="m-0 mb-1 font-['Archivo'] font-extrabold text-[26px] tracking-[-0.02em] text-[var(--ink0)]">Tell me a bit more</h3>
         <p class="m-0 mb-8 font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">All optional. It just gives me a head start before we talk.</p>
         <label id="fyf-domain-wrap" class="block mb-6 max-w-[420px]">
-          <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">ALREADY HAVE A DOMAIN? (OPTIONAL)</span>
+          <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">DOMAIN OR CURRENT WEBSITE? (OPTIONAL)</span>
           <input id="fyf-domain" type="text" inputmode="url" autocomplete="off" placeholder="yourbusiness.co.uk" class="w-full font-['JetBrains_Mono'] text-[14px] text-[var(--ink0)] bg-[var(--bg1)] border border-[rgba(var(--line-rgb),0.14)] py-[11px] px-4 outline-none focus:border-[var(--accent)]" />
-        </label>
-        <label id="fyf-site-wrap" class="block mb-6 max-w-[420px]">
-          <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">GOT A CURRENT WEBSITE? (OPTIONAL)</span>
-          <input id="fyf-site" type="text" inputmode="url" autocomplete="off" placeholder="https://yourbusiness.co.uk" class="w-full font-['JetBrains_Mono'] text-[14px] text-[var(--ink0)] bg-[var(--bg1)] border border-[rgba(var(--line-rgb),0.14)] py-[11px] px-4 outline-none focus:border-[var(--accent)]" />
         </label>
         <label class="block mb-6 max-w-[560px]">
           <span class="block font-['JetBrains_Mono'] font-medium text-[11px] tracking-[.08em] text-[var(--ink5)] mb-2">YOUR BUSINESS & WHAT YOU NEED (OPTIONAL)</span>
@@ -189,17 +186,22 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
     const bar = document.getElementById('fyf-bar');
     const restart = document.getElementById('fyf-restart');
     const domainInput = document.getElementById('fyf-domain');
-    const siteInput = document.getElementById('fyf-site');
     const briefInput = document.getElementById('fyf-brief');
     const cta = document.getElementById('fyf-cta');
-    let depth = 0;
-    let path = [];
+    const backStep = document.getElementById('fyf-back-step');
+    let stack = [];   // question keys shown, in order; last is current
+    let path = [];    // answered {q,a}; length === stack.length - 1 while on a question
     let current = null;
 
     const showQuestion = (key) => {
+      stack.push(key);
+      renderQuestion();
+    };
+
+    const renderQuestion = () => {
+      const key = stack[stack.length - 1];
       const step = steps[key];
-      depth++;
-      bar.style.width = Math.min(depth * 28, 90) + '%';
+      bar.style.width = Math.min(stack.length * 28, 90) + '%';
       qt.textContent = step.q;
       opts.innerHTML = '';
       step.opts.forEach((o) => {
@@ -209,21 +211,41 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
           "text-left font-['JetBrains_Mono'] font-medium text-[14px] leading-[1.4] text-[var(--ink1)] border border-[rgba(var(--line-rgb),0.14)] bg-[var(--bg1)] py-[15px] px-5 cursor-pointer transition-[background,border-color] duration-200 hover:bg-[var(--bg4)] hover:border-[var(--accent)]";
         b.textContent = o.label;
         b.addEventListener('click', () => {
+          path = path.slice(0, stack.length - 1);
           path.push({ q: step.q, a: o.label });
           o.result ? showResult(o.result) : showQuestion(o.next);
         });
         opts.appendChild(b);
       });
-      restart.classList.toggle('hidden', depth <= 1);
+      const atStart = stack.length <= 1;
+      restart.classList.toggle('hidden', atStart);
+      backStep.classList.toggle('hidden', atStart);
     };
+
+    // Step back one question (or from the result back to the last question).
+    const goBackStep = () => {
+      if (!rWrap.classList.contains('hidden')) {
+        // On result view: return to the question that produced it.
+        rWrap.classList.add('hidden');
+        eWrap.classList.add('hidden');
+        qWrap.classList.remove('hidden');
+        current = null;
+        path = path.slice(0, stack.length - 1);
+        renderQuestion();
+        return;
+      }
+      if (stack.length <= 1) return;
+      stack.pop();
+      path = path.slice(0, stack.length - 1);
+      renderQuestion();
+    };
+    backStep.addEventListener('click', goBackStep);
 
     const buildHref = (r) => {
       const lines = ['Hi, the site quiz suggested: ' + r.title + ' (' + r.price + ').', '', 'My answers:'];
       path.forEach((p) => lines.push('- ' + p.q + ' ' + p.a));
       const domain = domainInput.value.trim();
-      if (domain) lines.push('', 'My domain: ' + domain);
-      const site = siteInput.value.trim();
-      if (site) lines.push('', 'My current website: ' + site);
+      if (domain) lines.push('', 'My domain / current website: ' + domain);
       const brief = briefInput.value.trim();
       lines.push('', 'About my business & what I need:', brief || '(add a line or two here)');
       return 'mailto:' + mail + '?subject=' + encodeURIComponent(r.subject) + '&body=' + encodeURIComponent(lines.join('\n'));
@@ -236,6 +258,7 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
       rWrap.classList.remove('hidden');
       bar.style.width = '100%';
       restart.classList.remove('hidden');
+      backStep.classList.remove('hidden');
       document.getElementById('fyf-domain-wrap').classList.toggle('hidden', !websiteResults.includes(key));
       document.getElementById('fyf-rtag').textContent = current.tag;
       document.getElementById('fyf-rt').textContent = current.title;
@@ -247,6 +270,7 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
     const showEnquiry = () => {
       rWrap.classList.add('hidden');
       eWrap.classList.remove('hidden');
+      backStep.classList.add('hidden');
       cta.href = buildHref(current);
     };
 
@@ -254,19 +278,18 @@ const { start } = Astro.props as { start?: keyof typeof startMap };
     back.addEventListener('click', () => {
       eWrap.classList.add('hidden');
       rWrap.classList.remove('hidden');
+      backStep.classList.remove('hidden');
     });
 
     const refresh = () => { if (current) cta.href = buildHref(current); };
     domainInput.addEventListener('input', refresh);
-    siteInput.addEventListener('input', refresh);
     briefInput.addEventListener('input', refresh);
 
     restart.addEventListener('click', () => {
-      depth = 0;
+      stack = [];
       path = [];
       current = null;
       domainInput.value = '';
-      siteInput.value = '';
       briefInput.value = '';
       rWrap.classList.add('hidden');
       eWrap.classList.add('hidden');
