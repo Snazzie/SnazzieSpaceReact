@@ -102,6 +102,7 @@ const images: Record<string, string> = {
       twitterTitle="Aaron Cooper - Full-Stack Engineer"
       twitterDescription="Building scalable applications with React, TypeScript, and cloud infrastructure."
     />
+    <link rel="preload" as="image" href="/images/avatar.webp" fetchpriority="high" />
     <meta name="google-adsense-account" content="ca-pub-8304271204200662" />
     <link rel="profile" href="https://linkedin.com/in/cooper-a-m/" />
     <link rel="me" href="https://github.com/snazzie" />
@@ -133,6 +134,20 @@ const images: Record<string, string> = {
         "Cloudflare Workers",
         "AI Agents"
       ]
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Snazzie",
+      "url": "https://snazzie.space",
+      "logo": "https://snazzie.space/favicon.svg",
+      "founder": {
+        "@type": "Person",
+        "name": "Aaron Cooper",
+        "sameAs": ["https://github.com/snazzie", "https://linkedin.com/in/cooper-a-m/"]
+      },
+      "sameAs": ["https://github.com/snazzie", "https://linkedin.com/in/cooper-a-m/"]
     })} />
 
     <script type="application/ld+json">
@@ -194,13 +209,37 @@ const images: Record<string, string> = {
           "position": 5,
           "name": "GitHub Stats",
           "item": "https://snazzie.space/#github"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Articles",
+          "item": "https://snazzie.space/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Consulting",
+          "item": "https://snazzie.space/consulting/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Snazzie FM",
+          "item": "https://snazzie.space/snazziefm/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Worth My Time",
+          "item": "https://snazzie.space/worthmytime/"
         }
       ]
     }
     </script>
   </head>
   <body class="relative bg-background text-foreground antialiased [overflow-x:clip]">
-    <Nav client:load role="navigation" aria-label="Main navigation" />
+    <Nav client:idle role="navigation" aria-label="Main navigation" />
     <main role="main">
       <Intro client:visible avatarSrc={images[avatarUrl]} />
       <Career client:visible />

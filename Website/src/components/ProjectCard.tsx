@@ -277,7 +277,7 @@ export function ProjectCard({
           rel="noopener noreferrer"
           aria-label={`Open ${title}`}
           onClick={(e) => e.stopPropagation()}
-          className="absolute right-3 top-3 z-30 text-muted-foreground transition-colors hover:text-foreground"
+          className="absolute right-1 top-1 z-30 flex min-h-11 min-w-11 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowUpRight className="size-4" />
         </a>

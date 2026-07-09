@@ -63,6 +63,12 @@ function Media({
   const cls =
     "h-auto max-h-[32svh] md:max-h-[55svh] w-auto max-w-full rounded-2xl bg-secondary" +
     (index === 0 ? "" : " border border-border");
+  // aspect-ratio reserves layout space before preload="none" fetches metadata,
+  // preventing a CLS jump when the video's real dimensions arrive.
+  const videoStyle =
+    project.imgWidth && project.imgHeight
+      ? { aspectRatio: `${project.imgWidth} / ${project.imgHeight}` }
+      : undefined;
   if (video && !reduce) {
     return (
       <video
@@ -74,6 +80,7 @@ function Media({
         loop
         playsInline
         className={cls}
+        style={videoStyle}
       />
     );
   }

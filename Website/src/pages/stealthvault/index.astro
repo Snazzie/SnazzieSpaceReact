@@ -64,6 +64,14 @@ const APPSTORE_URL = '#';
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "author": { "@type": "Person", "name": "Aaron Cooper", "url": "https://snazzie.space" }
     })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://snazzie.space/" },
+        { "@type": "ListItem", "position": 2, "name": "StealthVault", "item": "https://snazzie.space/stealthvault/" }
+      ]
+    })} />
   </head>
   <body class="bg-black text-foreground antialiased">
     <!-- Own nav, linking to sub routes -->
@@ -102,6 +110,11 @@ const APPSTORE_URL = '#';
           height="88"
           class="mx-auto mb-8 size-20 rounded-2xl border border-border shadow-lg"
         />
+        <nav aria-label="Breadcrumb" class="mb-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <a href="/" class="hover:text-foreground transition-colors">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page" class="text-foreground">StealthVault</span>
+        </nav>
         <h1 class="text-balance text-4xl font-bold tracking-tight sm:text-5xl">
           Your media. Encrypted. On your device.
         </h1>

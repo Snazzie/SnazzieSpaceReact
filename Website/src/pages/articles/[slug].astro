@@ -126,9 +126,13 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
         "url": "https://snazzie.space"
       },
       "publisher": {
-        "@type": "Person",
-        "name": "Aaron Cooper",
-        "url": "https://snazzie.space"
+        "@type": "Organization",
+        "name": "Snazzie",
+        "url": "https://snazzie.space",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://snazzie.space/favicon.svg"
+        }
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -237,6 +241,9 @@ writeFileSync(join(audioDir, `${post.id}.txt`), ttsScript, 'utf8');
             {post.data.title}
           </h1>
           <p class="mt-4 text-lg text-white/60">{post.data.excerpt}</p>
+          <p class="mt-4 text-sm text-white/40">
+            Published by <a href="/" class="text-white/60 hover:text-white transition-colors">Aaron Cooper</a>
+          </p>
           {post.data.tags.length > 0 && (
             <div class="mt-6">
               <TagList tags={post.data.tags} />

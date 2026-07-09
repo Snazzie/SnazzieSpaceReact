@@ -2,6 +2,7 @@
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
 import FindYourFit from '@/components/consultation/FindYourFit.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 const covers = [
   'Mobile apps (iOS & Android)',
@@ -19,6 +20,32 @@ const steps = [
   { n: '04', title: 'Launch & handover', body: 'Shipped to the store or the web, source and accounts handed to you.' },
 ];
 
+const fits = [
+  'A founder with an idea and no in-house engineer yet',
+  'An existing business that wants an app or portal, not just a website',
+  'A concept that needs a working prototype before it can be pitched or tested',
+  'Someone who has been quoted by an agency and wants a second, direct opinion',
+];
+
+const faqs = [
+  {
+    q: 'What does it cost?',
+    a: 'There is no catalogue price because apps vary too much for one. A small single-screen tool and a multi-user product with payments are both "an app" and a week apart in build time. You get a fixed or staged number after the discovery call, in writing, before anything is built.',
+  },
+  {
+    q: 'Do I own the code and accounts?',
+    a: 'Yes. App-store, hosting and service accounts are set up in your name from the start, and the source is handed over on launch. Nothing is licensed back to you or held on a platform I control.',
+  },
+  {
+    q: 'What if the scope changes partway through?',
+    a: 'Normal for a first build. Small adjustments are absorbed; anything that meaningfully grows the scope gets a written add-on quote before I build it, so the price never moves without you agreeing first.',
+  },
+  {
+    q: 'Can you work with an idea that is not fully formed yet?',
+    a: 'That is what the discovery call is for. Part of the job is turning a rough idea into a scoped, buildable plan, not just taking a finished spec and coding it.',
+  },
+];
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -27,6 +54,13 @@ const serviceSchema = {
   areaServed: 'GB',
   url: 'https://snazzie.space/consulting/services/apps/',
 };
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Consulting', href: '/consulting/' },
+  { name: 'Services', href: '/consulting/#snz-services' },
+  { name: 'Apps' },
+];
 ---
 <ConsultationLayout
   title="Mobile App & Product Development | Snazzie"
@@ -36,6 +70,7 @@ const serviceSchema = {
 >
   <section class="pt-14 pb-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
     <div class="max-w-[1100px] mx-auto">
+      <Breadcrumbs items={crumbs} class="mb-5" />
       <a href="/consulting/#snz-services" class="inline-flex items-center mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline border border-[rgba(var(--line-rgb),0.2)] py-[9px] px-[14px] hover:text-[var(--ink)] hover:border-[rgba(var(--line-rgb),0.4)] transition-colors">← All services</a>
       <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">FOUNDERS & IDEAS</div>
       <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em] max-w-[720px]">Turn your idea into an app</h1>
@@ -69,6 +104,51 @@ const serviceSchema = {
 
       <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)] mt-6">
         <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">No fixed catalogue price, because two apps called "simple" can be a week apart in build time. You get a real number once we've talked, not a guess.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS FITS -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">WHO THIS FITS</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Built for the early stage</h2>
+      <div class="grid grid-cols-2 gap-x-14 max-[640px]:grid-cols-1">
+        {fits.map((f) => (
+          <div class="flex items-start gap-3 py-[13px] border-t border-[rgba(var(--line-rgb),0.08)] font-['JetBrains_Mono'] font-medium text-[14px] leading-[1.5] text-[var(--ink1)]">
+            <span class="text-[var(--accent-vis)] mt-px">✓</span> {f}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">COMMON QUESTIONS</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Before you get in touch</h2>
+      <div class="border-t border-[rgba(var(--line-rgb),0.12)]">
+        {faqs.map((f) => (
+          <details class="group py-5 border-b border-[rgba(var(--line-rgb),0.1)]">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-['Archivo'] font-bold text-[17px] tracking-[-0.01em]">
+              {f.q}
+              <span class="text-[var(--accent-vis)] transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 mb-0 max-w-[720px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">OTHER SERVICES</div>
+      <div class="flex gap-8 flex-wrap">
+        <a href="/consulting/services/websites/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Website design & build →</a>
+        <a href="/consulting/services/consulting/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Engineering advisory & consulting →</a>
       </div>
     </div>
   </section>

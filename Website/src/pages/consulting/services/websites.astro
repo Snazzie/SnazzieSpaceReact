@@ -3,6 +3,7 @@ import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
 import FindYourFit from '@/components/consultation/FindYourFit.astro';
 import BuilderTradeoff from '@/components/consultation/BuilderTradeoff.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 const metrics = [
   { value: '95+', label: 'PERFORMANCE', tag: 'FAST' },
@@ -27,22 +28,39 @@ const launchReady = [
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  name: 'Website Design & Build',
+  description: 'Hand-built websites, SEO and Google Maps setup for small businesses in the UK.',
   serviceType: 'Web development',
   provider: { '@type': 'Person', name: 'Aaron (Snazzie)' },
   areaServed: 'GB',
-  offers: { '@type': 'Offer', priceCurrency: 'GBP', price: '1500', priceSpecification: { '@type': 'PriceSpecification', minPrice: '1500' } },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Website builds',
+    itemListElement: [
+      { '@type': 'Offer', name: 'Static website', priceCurrency: 'GBP', price: '1500' },
+      { '@type': 'Offer', name: 'Dynamic website', priceCurrency: 'GBP', price: '2500' },
+    ],
+  },
   url: 'https://snazzie.space/consulting/services/websites/',
 };
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Consulting', href: '/consulting/' },
+  { name: 'Services', href: '/consulting/#snz-services' },
+  { name: 'Websites' },
+];
 ---
 <ConsultationLayout
   title="Get Your Business Found Online From £1500 | Snazzie"
-  description="Website, SEO and Google Maps for small businesses, from £1500. Your whole online presence built and optimised so customers find you, and yours to own outright."
+  description="Website, SEO and Google Maps for small businesses, from £1500. Built and optimised so customers find you, yours to own outright."
   path="/consulting/services/websites/"
   schema={serviceSchema}
 >
   <!-- HERO -->
   <section class="pt-14 pb-14 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
     <div class="max-w-[1100px] mx-auto">
+      <Breadcrumbs items={crumbs} class="mb-5" />
       <a href="/consulting/#snz-services" class="inline-flex items-center mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline border border-[rgba(var(--line-rgb),0.2)] py-[9px] px-[14px] hover:text-[var(--ink)] hover:border-[rgba(var(--line-rgb),0.4)] transition-colors">← All services</a>
       <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">SMALL BUSINESS</div>
       <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[64px] leading-[0.96] tracking-[-0.035em] max-w-[760px] max-[760px]:text-[42px]">Get your business found online</h1>
@@ -369,6 +387,17 @@ const serviceSchema = {
       <div class="mt-9 flex items-center gap-6 flex-wrap">
         <a href="/consulting/services/presence-pack/" class="font-['JetBrains_Mono'] font-bold text-[12.5px] tracking-[0.04em] text-[var(--accent-vis)] no-underline border-b border-[var(--accent-vis)] pb-0.5">FIND OUT MORE →</a>
         <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12.5px] text-[var(--ink5)]">A one-off guide, not a monthly service. Yours to work through at your own pace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">OTHER SERVICES</div>
+      <div class="flex gap-8 flex-wrap">
+        <a href="/consulting/services/apps/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Mobile app & product development →</a>
+        <a href="/consulting/services/consulting/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Engineering advisory & consulting →</a>
       </div>
     </div>
   </section>

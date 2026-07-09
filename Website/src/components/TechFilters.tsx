@@ -48,7 +48,7 @@ export function TechFilters({
               type="button"
               aria-pressed={on}
               onClick={() => selectConstellation(on ? null : p)}
-              className="shrink-0 snap-start rounded-full border px-3 py-1 text-[11px] font-medium transition-colors duration-200"
+              className="inline-flex min-h-11 shrink-0 snap-start items-center rounded-full border px-3 py-1 text-[11px] font-medium transition-colors duration-200"
               style={
                 on
                   ? {
@@ -75,7 +75,7 @@ export function TechFilters({
                 type="button"
                 aria-pressed={on}
                 onClick={() => setCat(c.key)}
-                className="shrink-0 snap-start rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200"
+                className="inline-flex min-h-11 shrink-0 snap-start items-center rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors duration-200"
                 style={
                   on
                     ? { background: c.color, borderColor: c.color, color: "#0a0a0c" }

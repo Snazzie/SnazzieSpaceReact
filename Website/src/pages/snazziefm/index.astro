@@ -21,6 +21,14 @@ import BaseHead from '@/components/BaseHead.astro';
       rel="stylesheet"
     />
   <style>html,body{background:#0a0704;}</style>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://snazzie.space/" },
+        { "@type": "ListItem", "position": 2, "name": "Snazzie FM", "item": "https://snazzie.space/snazziefm/" }
+      ]
+    })} />
   </head>
   <body class="bg-background text-foreground">
     <RadioLanding client:load episodes={EPISODES} music={MUSIC_TRACKS} ads={ADS} cast={CAST} />

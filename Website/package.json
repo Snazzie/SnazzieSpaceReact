@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
-    "deploy": "astro build && wrangler pages deploy dist",
+    "deploy": "astro build && wrangler pages deploy dist && node scripts/indexnow-submit.mjs",
     "audio": "python ../scripts/generate-audio.py --seed 42",
     "audio:all": "python ../scripts/generate-audio.py --seed 42 --all",
     "audio:waveforms": "python ../scripts/generate-audio.py --seed 42 --waveforms",

@@ -65,6 +65,8 @@ function Layer({ src, depth, mx, my }: { src: string; depth: number; mx: MV; my:
       src={src}
       alt=""
       aria-hidden
+      loading="lazy"
+      fetchPriority="low"
       onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
       style={{ x, y }}
       className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale"

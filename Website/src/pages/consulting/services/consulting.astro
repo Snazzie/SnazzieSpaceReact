@@ -2,6 +2,7 @@
 import ConsultationLayout from '@/layouts/ConsultationLayout.astro';
 import Closing from '@/components/consultation/Closing.astro';
 import FindYourFit from '@/components/consultation/FindYourFit.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
 
 const covers = [
   { title: 'The engine behind it', body: 'Backend systems, APIs and infrastructure built to hold up under real load.' },
@@ -16,6 +17,31 @@ const fits = [
   'A one-off technical review or audit',
 ];
 
+const models = [
+  { t: 'Day rate', d: 'For focused, time-boxed work: a review, a spike, a specific feature. Billed for the days actually worked.' },
+  { t: 'Fixed scope', d: 'A defined piece of work with a written spec and a fixed price, agreed before I start.' },
+  { t: 'Retainer', d: 'A set number of days each month, ongoing, for teams that want the same engineer available on tap.' },
+];
+
+const faqs = [
+  {
+    q: 'How is this different from the app or website builds?',
+    a: 'Those are done-for-you builds with a fixed scope from a blank page. This is for teams that already have a codebase, an engineer, or a product in production, where the work is advisory, backend, or alongside people you already employ.',
+  },
+  {
+    q: 'Do you sign NDAs?',
+    a: 'Yes, standard practice for this kind of work. Happy to sign yours or work from mine.',
+  },
+  {
+    q: 'Can you work alongside our existing engineers rather than replace them?',
+    a: 'That is the normal shape of this engagement: brought in for backend depth, AI features, or an outside technical read, working with your team rather than instead of them.',
+  },
+  {
+    q: 'What does a typical audit or review look like?',
+    a: 'A structured pass over the codebase and architecture, then a written report: what is solid, what is risky, and what I would do differently, with concrete next steps rather than a vague grade.',
+  },
+];
+
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -24,6 +50,13 @@ const serviceSchema = {
   areaServed: 'GB',
   url: 'https://snazzie.space/consulting/services/consulting/',
 };
+
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Consulting', href: '/consulting/' },
+  { name: 'Services', href: '/consulting/#snz-services' },
+  { name: 'Advisory' },
+];
 ---
 <ConsultationLayout
   title="Engineering Advisory & Consulting | Snazzie"
@@ -33,6 +66,7 @@ const serviceSchema = {
 >
   <section class="pt-14 pb-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:pt-10 max-[760px]:px-[22px]">
     <div class="max-w-[1100px] mx-auto">
+      <Breadcrumbs items={crumbs} class="mb-5" />
       <a href="/consulting/#snz-services" class="inline-flex items-center mb-6 font-['JetBrains_Mono'] font-semibold text-[12px] text-[var(--ink5)] no-underline border border-[rgba(var(--line-rgb),0.2)] py-[9px] px-[14px] hover:text-[var(--ink)] hover:border-[rgba(var(--line-rgb),0.4)] transition-colors">← All services</a>
       <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-[18px]">TEAMS & ENTERPRISE</div>
       <h1 class="snz-display m-0 mb-5 font-['Archivo'] font-extrabold text-[60px] leading-[0.98] tracking-[-0.035em] max-w-[720px]">Engineering advisory & consulting</h1>
@@ -62,6 +96,52 @@ const serviceSchema = {
 
       <div class="border border-[rgba(var(--line-rgb),0.1)] p-[22px] bg-[var(--bg0)]">
         <p class="m-0 font-['JetBrains_Mono'] font-normal text-[12px] leading-[1.6] text-[var(--ink5)]">Day rate, fixed-scope or retainer, whichever fits the engagement. No package tiers here, we agree it together on a call.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW ENGAGEMENTS ARE PRICED -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">HOW IT'S PRICED</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Three ways to engage</h2>
+      <div class="grid grid-cols-3 gap-6 max-[900px]:grid-cols-1">
+        {models.map((m) => (
+          <div class="border-t border-[rgba(var(--line-rgb),0.12)] pt-6">
+            <h3 class="m-0 mb-2 font-['Archivo'] font-extrabold text-[19px] tracking-[-0.02em]">{m.t}</h3>
+            <p class="m-0 font-['JetBrains_Mono'] font-normal text-[13px] leading-[1.65] text-[var(--ink3)]">{m.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-14 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">COMMON QUESTIONS</div>
+      <h2 class="m-0 mb-11 font-['Archivo'] font-extrabold text-[38px] leading-[1.02] tracking-[-0.03em] max-[760px]:text-[28px]">Before you get in touch</h2>
+      <div class="border-t border-[rgba(var(--line-rgb),0.12)]">
+        {faqs.map((f) => (
+          <details class="group py-5 border-b border-[rgba(var(--line-rgb),0.1)]">
+            <summary class="cursor-pointer list-none flex items-center justify-between gap-4 font-['Archivo'] font-bold text-[17px] tracking-[-0.01em]">
+              {f.q}
+              <span class="text-[var(--accent-vis)] transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-3 mb-0 max-w-[720px] font-['JetBrains_Mono'] font-normal text-[13.5px] leading-[1.7] text-[var(--ink3)]">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section class="py-16 px-14 border-b border-[rgba(var(--line-rgb),0.08)] max-[760px]:py-12 max-[760px]:px-[22px]">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="font-['JetBrains_Mono'] font-semibold text-[11px] tracking-[0.2em] text-[var(--accent-vis)] mb-4">OTHER SERVICES</div>
+      <div class="flex gap-8 flex-wrap">
+        <a href="/consulting/services/websites/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Website design & build →</a>
+        <a href="/consulting/services/apps/" class="font-['JetBrains_Mono'] font-bold text-[13px] tracking-[0.02em] text-[var(--ink1)] no-underline border-b border-[rgba(var(--line-rgb),0.3)] pb-0.5 hover:text-[var(--accent-vis)] hover:border-[var(--accent-vis)]">Mobile app & product development →</a>
       </div>
     </div>
   </section>
