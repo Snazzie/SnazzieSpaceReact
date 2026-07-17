@@ -50,6 +50,33 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Decentralised Storage Market",
+    description:
+      "A trustless storage marketplace where files are split into erasure-coded shards across independent providers, who prove they still hold your data with on-chain Merkle proofs — or lose their stake.",
+    href: "/decentralised-storage",
+    image: "/decentralised-storage/card.png",
+    featured: true,
+    imageFit: "cover",
+    imgWidth: 2400,
+    imgHeight: 1350,
+    tech: [
+      "Solidity",
+      "Foundry",
+      "Go",
+      "IPFS",
+      "Merkle Proofs",
+      "Docker",
+      "Astro",
+      "React",
+      "TypeScript",
+    ],
+    details: [
+      "Files are erasure-coded into S×R shards with on-chain anti-affinity, so no single provider holds enough to reconstruct your data",
+      "Providers answer periodic Merkle challenges to prove they still hold each shard; failure or timeout slashes their stake and re-lets the shard to honest providers",
+      "A full off-chain Go stack (embedded IPFS/bitswap nodes) for clients, providers and keepers settles against Solidity contracts for payment, staking and reputation",
+    ],
+  },
+  {
     title: "Lunar Portfolio",
     description:
       "A mobile app that brings your investments, pensions and savings into one place, so you can see your true net worth and whether your money is really growing.",
