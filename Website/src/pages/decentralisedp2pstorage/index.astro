@@ -1,0 +1,979 @@
+---
+import Layout from "../../layouts/DecentralisedP2PLayout.astro";
+import FeeSankey from "../../components/decentralisedp2pstorage/FeeSankey.tsx";
+
+// Provider asks (supply): min price to store a shard. Ascending.
+const asks = [
+	{ price: 42, qty: 6, rep: "A" },
+	{ price: 48, qty: 9, rep: "A" },
+	{ price: 55, qty: 14, rep: "B" },
+	{ price: 63, qty: 11, rep: "B" },
+	{ price: 70, qty: 7, rep: "C" },
+];
+// Client bids (demand): max price willing to pay. Descending.
+const bids = [
+	{ price: 60, qty: 12 },
+	{ price: 55, qty: 10 },
+	{ price: 50, qty: 8 },
+	{ price: 44, qty: 15 },
+	{ price: 38, qty: 5 },
+];
+const maxQty = Math.max(...asks.map((a) => a.qty), ...bids.map((b) => b.qty));
+const clearing = 55; // where top bid meets cheapest acceptable ask
+
+// Provider scoring — mirrors keeper/matcher.go penaltyBPFromStats (basis points, integer).
+const ratioBP = (good, bad) => (good + bad === 0 ? 10000 : Math.round((good * 10000) / (good + bad)));
+function scoreProvider(p) {
+	const deal = ratioBP(p.completed, p.slashed);
+	const proof = ratioBP(p.pass, p.fail);
+	const hasAudit = p.aOk + p.aFail > 0;
+	const audit = hasAudit ? ratioBP(p.aOk, p.aFail) : null;
+	const parts = hasAudit ? [deal, proof, audit] : [deal, proof];
+	const reputationBP = Math.round(parts.reduce((a, b) => a + b, 0) / parts.length);
+	const penaltyBP = 20000 - reputationBP; // 10000..20000
+	const multiplier = penaltyBP / 10000; // 1.0x .. 2.0x
+	const effective = Math.round(p.ask * multiplier);
+	return { ...p, deal, proof, audit, reputationBP, penaltyBP, multiplier, effective };
+}
+const providers = [
+	{ name: "alpha", completed: 48, slashed: 0, pass: 120, fail: 0, aOk: 30, aFail: 0, ask: 52 },
+	{ name: "bravo", completed: 40, slashed: 2, pass: 90, fail: 6, aOk: 20, aFail: 1, ask: 48 },
+	{ name: "charlie", completed: 20, slashed: 8, pass: 40, fail: 15, aOk: 0, aFail: 0, ask: 42 },
+	{ name: "delta", completed: 5, slashed: 12, pass: 10, fail: 25, aOk: 2, aFail: 9, ask: 40 },
+].map(scoreProvider).sort((a, b) => a.effective - b.effective);
+const tier = (bp) => (bp >= 9500 ? "ok" : bp >= 8000 ? "mid" : "bad");
+const tierBorder = { ok: "border-verify", mid: "border-warn", bad: "border-slash" };
+const tierFill = { ok: "bg-verify", mid: "bg-warn", bad: "bg-slash" };
+const tierMult = { ok: "text-verify bg-verify-soft", mid: "text-warn bg-warn-soft", bad: "text-slash bg-slash-soft" };
+
+const idx = (n) => String(n).padStart(2, "0");
+
+const plainIcons = [
+	// Upload — file
+	'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>',
+	// Split — shredded strips
+	'<rect x="5" y="3" width="14" height="7" rx="1"/><path d="M7 13v7M10 13v7M13 13v7M16 13v7"/>',
+	// Match — scattered nodes
+	'<circle cx="12" cy="12" r="2.3" fill="currentColor" stroke="none"/><circle cx="5" cy="5" r="1.9"/><circle cx="19" cy="5" r="1.9"/><circle cx="5" cy="19" r="1.9"/><circle cx="19" cy="19" r="1.9"/><path d="M10.4 10.4 6.4 6.4M13.6 10.4l4-4M10.4 13.6l-4 4M13.6 13.6l4 4"/>',
+	// Prove — shield check
+	'<path d="M12 3l7 3v5c0 4.6-3.1 7.8-7 9-3.9-1.2-7-4.4-7-9V6z"/><path d="M8.7 12l2.3 2.3 4.3-4.6"/>',
+	// Slash — stacked deposit
+	'<ellipse cx="12" cy="6.5" rx="7" ry="2.6"/><path d="M5 6.5v5c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-5"/><path d="M5 11.5v5c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6v-5"/>',
+	// Retrieve — file check
+	'<path d="M6 3h8l4 4v14H6z"/><path d="M8.7 13.5l2.3 2.3 4.3-4.6"/>',
+];
+const plain = [
+	{ tag: "Upload", t: "You have a file", d: "A photo, a backup, anything — stored somewhere that won't lose it or read it." },
+	{ tag: "Split", t: "It gets shredded", d: "Chopped into pieces and copied — like shredding a letter and photocopying each strip." },
+	{ tag: "Match", t: "Pieces spread out", d: "Each piece goes to a different stranger's computer. No one holds the whole thing." },
+	{ tag: "Prove", t: "They must prove it", d: "The network quizzes each host: prove you still hold piece #4 — or get fined." },
+	{ tag: "Slash", t: "Money keeps them honest", d: "Hosts post a deposit to join. Lose data or lie, and it's taken away automatically." },
+	{ tag: "Retrieve", t: "You get it back, whole", d: "Enough copies survive to rebuild your file — checked to be byte-identical." },
+].map((x, i) => ({ ...x, icon: plainIcons[i], ok: i >= 3 }));
+
+const payouts = [
+	{ t: "Provider", d: "The bulk — streamed as they keep proving they hold your data. Their pay for the service.", tag: "≈97.5% + collateral back", tone: "verify" },
+	{ t: "Keeper / protocol", d: "A small cut funds the matcher and auditor — the machinery that pairs deals and catches cheaters.", tag: "capped fee (≤10%), on by default", tone: "warn" },
+	{ t: "The chain", d: "Tiny gas fee per transaction, paid to whoever runs the blockchain. Standard, unavoidable, external.", tag: "network gas", tone: "hair" },
+];
+
+const economicsNotes = [
+	{ t: "Cheaters pay you", d: "If a provider loses your data, their collateral for that deal is handed straight to you — not the protocol. You're compensated, automatically." },
+	{ t: "No skimming on failure", d: "The keeper's cut only applies to completed deals. A failed deal refunds the client in full — the protocol earns nothing from your loss." },
+	{ t: "Every token accounted for", d: "The contract can't mint or hide funds. What you pay in always equals provider + fee + collateral out — provable on-chain." },
+];
+
+const contractNotes = [
+	{ t: "No counterparty risk", d: "Payment sits escrowed in the contract, not with the client or a middleman. It only moves per rules anyone can read in advance — nobody can freeze it, spend it, or quietly change the terms." },
+	{ t: "Enforcement is automatic", d: "Slashing, refunds and payouts fire the instant a proof fails or a deal completes. No support ticket, no arbitrator, no waiting on a company's goodwill." },
+	{ t: "Every rule is public", d: "The contract code and every past deal, payment and slash are on-chain and auditable by anyone — not a private ledger you have to take on faith." },
+];
+
+const marketNotes = [
+	{ t: "No admin price", d: "There is no oracle or operator setting rates. Price emerges from what providers offer and clients accept." },
+	{ t: "Reputation tilts the book", d: "Asks are ranked by an effective price — a weak proof/completion record ranks a provider as if pricier, so reliability wins deals." },
+	{ t: "Match = a deal", d: "When a bid covers the cheapest eligible ask, the keeper pairs them by price-time priority and opens the on-chain deal." },
+];
+
+const scoringNotes = [
+	{ t: "New providers aren't punished", d: "No history scores neutral (1.0×) — a clean slate, not a penalty. Honest veterans still outrank them once they build a record." },
+	{ t: "Audits fold in when earned", d: "Retrieval-audit reliability only counts once a provider has real audit history, so an absent signal never helps or hurts." },
+	{ t: "Slashing scars the score", d: "A failed proof or timeout burns stake and drops deal/proof ratios — raising the price multiplier on every future bid." },
+];
+
+const slaNotes = [
+	{ t: "Judged against your own commitment", d: "A provider commits to a minimum uptime and is scored against that number, not a universal 100% — realistic for home hardware, priced accordingly." },
+	{ t: "Provable, not just voted", d: "Every challenge leaves an on-chain artifact: a valid proof, or its absence. A member who reports 'miss' against a proof that's on-chain is provably lying — discarded, and their own stake is at risk." },
+	{ t: "Slash pays the people watching", d: "A breach slashes collateral proportional to the shortfall. Most goes to the wronged client, a cut funds the protocol, and a bounty pays the keepers who caught it — policing your peers is worth something." },
+];
+
+const tech = [
+	{ t: "Solidity smart contracts", d: "PaymentToken, StorageMarket order book, DealManager lifecycle, ProofVerifier and ReputationRegistry run on-chain. The chain is the source of truth for deals, payments, and slashing." },
+	{ t: "Embedded IPFS (boxo / bitswap)", d: "Each actor runs an in-process bitswap node — no DHT. Shards move directly between clients and providers over content-addressed transfers." },
+	{ t: "Merkle challenge–response proofs", d: "Files are chunked at 1 KiB; each leaf is keccak256(index || chunk). Providers prove they still hold a shard by answering random Merkle challenges, or get slashed." },
+	{ t: "Erasure-coded shards + anti-affinity", d: "A file splits into S shards × R copies — you choose S and R to dial durability up or down. On-chain anti-affinity spreads pieces across distinct providers so no single node can hold a whole stripe." },
+	{ t: "Go off-chain stack", d: "Clients, providers, and keepers are Go daemons. A keeper matches bids to asks by price + reputation and audits providers with challenges and timeouts." },
+	{ t: "Provider staking + slashing", d: "Providers stake to participate. Failed proofs (SlashedFailedProof) or missed deadlines (SlashedTimeout) burn stake and drop reputation — cheating costs money." },
+];
+
+const features = [
+	{ t: "Trustless by proof", d: "You never trust a provider's word. Every stored shard is provably held or the provider is slashed on-chain." },
+	{ t: "Survives cheaters", d: "Retrieval reconstructs the file from surviving honest copies and verifies it byte-for-byte, even when nodes go offline or corrupt data." },
+	{ t: "Reputation-ranked matching", d: "The keeper ranks bids by price and reputation, so reliable providers win more deals over time." },
+	{ t: "Real cross-node demo", d: "make demo spins up a 9-node market (7 honest + 2 cheaters) in containers with real cross-container bitswap." },
+	{ t: "One-command local run", d: "make demo-local runs the whole 20-provider market as goroutines in a single process — no Docker needed." },
+	{ t: "Live distribution view", d: "A React UI shows shards distribute, cheaters turn red, and balances + reputation update in real time." },
+];
+
+const useCases = [
+	{ t: "Censorship-resistant storage", d: "No central operator can pull your data. Content lives across independent, economically-bonded providers." },
+	{ t: "Verifiable archival", d: "Prove data is still held over time via periodic Merkle challenges — useful for compliance and long-term backups." },
+	{ t: "Storage marketplaces", d: "A working reference for a token-priced order book where supply and demand for storage meet on-chain." },
+	{ t: "Research + teaching", d: "A minimal, readable end-to-end model of proofs-of-storage, slashing, and erasure coding to learn or build from." },
+];
+
+const shareSteps = [
+	{ t: "Encrypted in your browser", d: "The file is sealed with a key generated on your device (AES-GCM). The key is never uploaded — providers and gateways only ever hold ciphertext." },
+	{ t: "A pointer, not a payload", d: "The link names the manifest, not the file. The recipient resolves it to a shard map, pulls the encrypted pieces peer-to-peer, and rebuilds locally." },
+	{ t: "Verified before it opens", d: "The manifest carries the Merkle root. Every shard is checked against it as it arrives, so a tampered or missing piece is caught before anything is decrypted." },
+	{ t: "Revoke by re-keying", d: "Rotate the key and republish the manifest; links you already shared resolve to shards they can no longer decrypt. Optional expiry can be baked into the deal." },
+];
+
+const toneBorder = { hair: "border-hair", verify: "border-verify", slash: "border-slash", warn: "border-warn", signal: "border-signal" };
+const toneTag = {
+	verify: "text-verify bg-verify-soft border-verify/20",
+	warn: "text-warn bg-warn-soft border-warn/20",
+	slash: "text-slash bg-slash-soft border-slash/20",
+	hair: "text-ink bg-paper-soft border-hair",
+};
+
+const eyebrow = "font-mono text-xs font-semibold uppercase tracking-widest text-signal mb-3.5";
+const h2 = "text-3xl sm:text-4xl font-semibold tracking-tight text-ink mb-3.5";
+const lede = "text-muted max-w-xl mb-10 text-[17px] leading-relaxed";
+const section = "py-20 sm:py-22 border-t border-dashed border-hair";
+const wrap = "max-w-[1120px] mx-auto px-6";
+const card = "border border-hair rounded-xl p-5";
+const noteGrid = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4";
+
+let sectionCount = 0;
+const sec = (label) => `§${idx(++sectionCount)} — ${label}`;
+
+const nav = [
+	{ href: "#plain", label: "How it works" },
+	{ href: "#market", label: "Market" },
+	{ href: "#scoring", label: "Reputation" },
+	{ href: "#sla", label: "SLA" },
+	{ href: "#tech", label: "Tech" },
+	{ href: "#share", label: "Share" },
+];
+---
+
+<Layout>
+	<header class="sticky top-0 z-50 bg-paper/85 backdrop-blur-md border-b border-hair">
+		<div class={`${wrap} h-16 flex items-center gap-7`}>
+			<a href="#top" class="flex items-center gap-2.5 font-mono font-semibold text-[13px] tracking-wide text-ink">
+				<span class="w-2.5 h-2.5 bg-signal rounded-sm inline-block"></span>
+				STORAGE&nbsp;MARKET
+			</a>
+			<nav class="hidden sm:flex gap-6 ml-auto items-center font-mono text-xs">
+				{nav.map((n) => <a href={n.href} class="text-muted hover:text-ink transition">{n.label}</a>)}
+				<a href="https://github.com/" target="_blank" rel="noreferrer" class="text-muted hover:text-ink transition">GitHub</a>
+			</nav>
+		</div>
+	</header>
+
+	<section id="top" class="relative overflow-hidden border-b border-hair">
+		<div aria-hidden="true" class="absolute inset-0 opacity-55 pointer-events-none [background-image:radial-gradient(#e4e1da_1px,transparent_1px)] [background-size:24px_24px] [mask-image:linear-gradient(180deg,#000_0%,transparent_85%)]"></div>
+		<div class={`relative ${wrap} py-22 sm:py-24 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center`}>
+			<div>
+				<span class="inline-block font-mono text-xs font-medium tracking-wide text-signal bg-signal-soft border border-signal/15 rounded-full px-3.5 py-1.5 mb-6.5">
+					Solidity · Go · IPFS bitswap
+				</span>
+				<h1 class="text-4xl sm:text-6xl font-bold tracking-tight leading-[1.03] max-w-[14ch] mb-5.5 text-ink text-balance">
+					Decentralised storage, kept honest by proof
+				</h1>
+				<p class="text-muted max-w-[46ch] mb-8.5 text-lg leading-relaxed text-pretty">
+					Files split into erasure-coded shards, spread across independent providers, and held to account by on-chain Merkle proofs and slashing. Cheat, and you lose your stake.
+				</p>
+				<div class="flex gap-3 flex-wrap mb-8.5">
+					<a href="#plain" class="inline-flex items-center gap-2 bg-signal text-white font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:bg-signal/85 transition">
+						How it works <span aria-hidden="true">→</span>
+					</a>
+				</div>
+				<div class="flex flex-wrap gap-x-4.5 gap-y-2 font-mono text-xs text-muted">
+					<span>keccak256 leaves</span><span class="text-hair">·</span>
+					<span>erasure S×R shards</span><span class="text-hair">·</span>
+					<span>price-time matching</span>
+				</div>
+			</div>
+
+			<div class="border border-hair rounded-2xl bg-paper p-5">
+				<div class="flex justify-between items-center mb-2 font-mono text-[11px] uppercase tracking-widest text-muted">
+					<span>shard distribution</span>
+					<span class="flex items-center gap-1.5 text-verify"><span class="w-1.5 h-1.5 rounded-full bg-verify inline-block"></span>live</span>
+				</div>
+				<svg viewBox="0 0 460 240" role="img" aria-label="One file split into shards distributed across providers" class="w-full h-auto block">
+					<defs>
+						<marker id="harrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+							<path d="M0 0 L10 5 L0 10 z" fill="#c9c5bb" />
+						</marker>
+					</defs>
+					<line x1="100" y1="120" x2="176" y2="47" stroke="#1b2a4a" stroke-width="1.6" stroke-dasharray="5 7" opacity="0.85" />
+					<line x1="100" y1="120" x2="176" y2="94" stroke="#1b2a4a" stroke-width="1.6" stroke-dasharray="5 7" opacity="0.85" />
+					<line x1="100" y1="120" x2="176" y2="141" stroke="#1b2a4a" stroke-width="1.6" stroke-dasharray="5 7" opacity="0.85" />
+					<line x1="100" y1="120" x2="176" y2="188" stroke="#1b2a4a" stroke-width="1.6" stroke-dasharray="5 7" opacity="0.85" />
+					<line x1="244" y1="47" x2="328" y2="47" stroke="#c9c5bb" stroke-width="1.6" marker-end="url(#harrow)" />
+					<line x1="244" y1="94" x2="328" y2="94" stroke="#c9c5bb" stroke-width="1.6" marker-end="url(#harrow)" />
+					<line x1="244" y1="141" x2="328" y2="141" stroke="#c9c5bb" stroke-width="1.6" marker-end="url(#harrow)" />
+					<line x1="244" y1="188" x2="328" y2="188" stroke="#c9c5bb" stroke-width="1.6" marker-end="url(#harrow)" />
+					<rect x="8" y="90" width="92" height="60" rx="9" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.5" />
+					<text x="54" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#14231f">FILE</text>
+					<text x="54" y="133" text-anchor="middle" font-size="10" fill="#6b6f66">backup.zip</text>
+					<rect x="176" y="32" width="68" height="30" rx="6" fill="#ffffff" stroke="#1b2a4a" stroke-width="1.4" />
+					<text x="210" y="51" text-anchor="middle" font-size="12" font-weight="600" fill="#1b2a4a">S1</text>
+					<rect x="176" y="79" width="68" height="30" rx="6" fill="#ffffff" stroke="#1b2a4a" stroke-width="1.4" />
+					<text x="210" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#1b2a4a">S2</text>
+					<rect x="176" y="126" width="68" height="30" rx="6" fill="#ffffff" stroke="#1b2a4a" stroke-width="1.4" />
+					<text x="210" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#1b2a4a">S3</text>
+					<rect x="176" y="173" width="68" height="30" rx="6" fill="#ffffff" stroke="#1b2a4a" stroke-width="1.4" />
+					<text x="210" y="192" text-anchor="middle" font-size="12" font-weight="600" fill="#1b2a4a">S4</text>
+					<rect x="328" y="30" width="124" height="34" rx="7" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+					<text x="342" y="51" font-size="11.5" font-weight="600" fill="#0f6e4f">provider ✓</text>
+					<rect x="328" y="77" width="124" height="34" rx="7" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+					<text x="342" y="98" font-size="11.5" font-weight="600" fill="#0f6e4f">provider ✓</text>
+					<rect x="328" y="124" width="124" height="34" rx="7" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+					<text x="342" y="145" font-size="11.5" font-weight="600" fill="#0f6e4f">provider ✓</text>
+					<rect x="328" y="171" width="124" height="34" rx="7" fill="#fbeaea" stroke="#9b1c1c" stroke-width="1.4" />
+					<text x="342" y="192" font-size="11.5" font-weight="600" fill="#9b1c1c">provider ✗</text>
+				</svg>
+				<div class="flex flex-wrap gap-x-4.5 gap-y-2 mt-3 font-mono text-[11px] text-muted">
+					<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-verify inline-block"></span>proof held</span>
+					<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-slash inline-block"></span>slashed — rebuilt from survivors</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="border-b border-hair">
+		<div class={`${wrap} grid grid-cols-2 sm:grid-cols-4`}>
+			<div class="py-7.5 px-6.5 border-r border-hair">
+				<div class="font-mono text-3xl font-bold text-signal leading-none">1 KiB</div>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mt-2">Merkle proof leaf</div>
+			</div>
+			<div class="py-7.5 px-6.5 border-r border-hair">
+				<div class="font-mono text-3xl font-bold text-slash leading-none">2.0×</div>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mt-2">max slashing multiplier</div>
+			</div>
+			<div class="py-7.5 px-6.5 sm:border-r border-hair">
+				<div class="font-mono text-3xl font-bold text-verify leading-none">≤10%</div>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mt-2">protocol fee · on by default</div>
+			</div>
+			<div class="py-7.5 px-6.5">
+				<div class="font-mono text-3xl font-bold text-signal leading-none">20</div>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mt-2">providers in local demo</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="plain" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("In plain English")}</p>
+			<h2 class={h2}>What is this, really?</h2>
+			<p class={lede}>Instead of trusting one company to hold your files, you rent space from many strangers' computers — and they have to keep proving they still have your data, or they lose money. No trust required.</p>
+
+			<div class="flex flex-wrap items-start justify-center gap-1">
+				{plain.map((x, i) => (
+					<>
+						<div class="flex-1 basis-[140px] min-w-[126px] text-center">
+							<div class="inline-block relative my-2 mb-4">
+								<div class={`w-[68px] h-[68px] rounded-[18px] border-[1.5px] flex items-center justify-center ${x.ok ? "border-verify bg-verify-soft" : "border-signal bg-paper"}`}>
+									<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke={x.ok ? "#0f6e4f" : "#1b2a4a"} stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={x.icon} />
+								</div>
+								<span class={`absolute -top-2 -right-2.5 font-mono text-[10px] font-bold rounded-full px-1.5 py-0.5 border ${x.ok ? "text-verify bg-verify-soft border-verify/35" : "text-signal bg-signal-soft border-signal/25"}`}>{idx(i + 1)}</span>
+							</div>
+							<div class="font-mono text-[10px] font-semibold uppercase tracking-wide text-muted mb-1">{x.tag}</div>
+							<h3 class="font-semibold text-ink mb-1.5 text-[15px]">{x.t}</h3>
+							<p class="text-muted text-[13px] leading-snug">{x.d}</p>
+						</div>
+						{i < plain.length - 1 && (
+							<div class="flex-none self-start mt-8.5">
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9c5bb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+							</div>
+						)}
+					</>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="share" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Sharing")}</p>
+			<h2 class={h2}>Encrypt here, share with a link</h2>
+			<p class={lede}>
+				Your file is encrypted in your browser <em>before</em> it is ever shredded — the key is generated on your device and never uploaded, so providers only ever hold ciphertext. To share, hand someone a single link carrying the <strong class="text-ink font-semibold">manifest</strong> (shard map + Merkle root) and that <strong class="text-ink font-semibold">key</strong>, tucked in the URL fragment where it never reaches a server.
+			</p>
+
+			<div class={`${card} mb-6`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-4">client-side encryption · plaintext &amp; key never leave your device</div>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+					<div class="border-[1.5px] border-signal rounded-lg p-4.5 bg-signal-soft">
+						<div class="flex items-center gap-2.5 mb-3.5">
+							<span class="font-mono text-[11px] font-semibold tracking-wide px-2.5 py-1 rounded-md bg-signal text-white">YOUR DEVICE</span>
+						</div>
+						<div class="grid gap-2.5">
+							<div class="flex items-center gap-2.5">
+								<span class="w-7 h-7 rounded-md bg-paper border border-signal/25 flex items-center justify-center shrink-0">
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a9720c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11.5 12.5 20 4M17 7l2.5 2.5M14.5 9.5 17 12"/></svg>
+								</span>
+								<span class="text-[13.5px] text-ink">Key generated locally</span>
+							</div>
+							<div class="flex items-center gap-2.5">
+								<span class="w-7 h-7 rounded-md bg-paper border border-signal/25 flex items-center justify-center shrink-0">
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b2a4a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+								</span>
+								<span class="text-[13.5px] text-ink">File encrypted (AES-GCM)</span>
+							</div>
+							<div class="flex items-center gap-2.5">
+								<span class="w-7 h-7 rounded-md bg-paper border border-signal/25 flex items-center justify-center shrink-0">
+									<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b2a4a" stroke-width="1.8"><rect x="5" y="3" width="14" height="6" rx="1"/><path d="M8 12v8M12 12v8M16 12v8"/></svg>
+								</span>
+								<span class="text-[13.5px] text-ink">Shredded into encrypted shards</span>
+							</div>
+						</div>
+					</div>
+					<div class="border border-hair rounded-lg p-4.5 bg-paper-soft">
+						<div class="flex items-center gap-2.5 mb-3.5">
+							<span class="font-mono text-[11px] font-semibold tracking-wide px-2.5 py-1 rounded-md bg-ink text-white">NETWORK</span>
+							<span class="text-muted text-xs">holds ciphertext only</span>
+						</div>
+						<div class="flex flex-wrap gap-2">
+							{["S1", "S2", "S3", "S4"].map((s) => (
+								<span class="inline-flex items-center gap-1.5 font-mono text-xs px-2.5 py-1.5 rounded-md bg-paper border border-verify/30 text-verify">
+									<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0f6e4f" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>{s}
+								</span>
+							))}
+						</div>
+						<p class="text-muted text-xs mt-3.5 leading-relaxed">Only encrypted shards leave your machine — no provider, keeper or gateway can read the file.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class={`${card} mb-10`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-4">shareable link · capability URL</div>
+				<div class="flex gap-3 items-stretch flex-wrap">
+					<div class="flex-1 basis-80 min-w-0 flex items-center bg-paper-soft border border-hair rounded-lg px-3.5 py-3 font-mono text-[13.5px] leading-relaxed break-all">
+						<span class="text-signal">https://dsm.link/f/</span><span class="text-verify font-semibold">bafybeigk7d3q…q4</span><span class="text-warn font-semibold">#k=7f3a9c…e19</span>
+					</div>
+					<button id="copy-share" type="button" class="shrink-0 inline-flex items-center justify-center gap-2 min-w-[132px] bg-signal text-white font-semibold text-sm rounded-lg px-5 hover:bg-signal/85 transition">
+						<span data-copy-label>Copy link</span>
+					</button>
+				</div>
+				<div class="flex flex-wrap gap-x-6 gap-y-2.5 mt-4 font-mono text-[11.5px] text-muted">
+					<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-signal inline-block"></span>gateway · any DSM node</span>
+					<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-verify inline-block"></span>manifest CID · shard map + Merkle root</span>
+					<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-sm bg-warn inline-block"></span>decryption key · stays in the # fragment</span>
+				</div>
+				<div class="flex items-start gap-2.5 mt-4 pt-4 border-t border-hair text-muted text-[13px] leading-relaxed">
+					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6b6f66" stroke-width="1.8" class="shrink-0 mt-0.5"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+					<span>The part after <code class="text-warn font-mono">#</code> is the URL fragment — browsers keep it client-side and never send it in a request. Gateways and providers only ever see encrypted shards.</span>
+				</div>
+			</div>
+
+			<div class={noteGrid}>
+				{shareSteps.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="benefits" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Why bother")}</p>
+			<h2 class={h2}>What you get out of it</h2>
+			<p class={lede}>The same job as a cloud drive — but nobody in the middle you have to trust.</p>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+				<div class="border border-hair rounded-xl overflow-hidden bg-paper">
+					<div class="flex items-center gap-2.5 px-5 py-4 bg-slash-soft border-b border-slash/20">
+						<span class="w-7 h-7 rounded-md bg-paper border border-slash/25 flex items-center justify-center shrink-0">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9b1c1c" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+						</span>
+						<span class="font-mono text-xs uppercase tracking-wide text-slash font-semibold">Normal cloud storage</span>
+					</div>
+					<ul class="grid gap-3.5 p-5">
+						{[
+							"One company can lose, leak, or lock your data",
+							"They can read your files",
+							"They can raise prices or shut down",
+							"\"Trust us, it's backed up\" — you can't check",
+							"One outage takes everyone offline",
+						].map((t) => (
+							<li class="grid grid-cols-[22px_1fr] gap-2.5 items-start text-muted text-[14.5px] leading-snug">
+								<span class="w-5.5 h-5.5 rounded-md bg-slash-soft flex items-center justify-center mt-px">
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9b1c1c" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+								</span>
+								{t}
+							</li>
+						))}
+					</ul>
+				</div>
+				<div class="border-[1.5px] border-verify/40 rounded-xl overflow-hidden bg-paper shadow-[0_10px_30px_-20px_rgba(15,110,79,0.6)]">
+					<div class="flex items-center gap-2.5 px-5 py-4 bg-verify-soft border-b border-verify/20">
+						<span class="w-7 h-7 rounded-md bg-paper border border-verify/30 flex items-center justify-center shrink-0">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0f6e4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+						</span>
+						<span class="font-mono text-xs uppercase tracking-wide text-verify font-semibold">This network</span>
+					</div>
+					<ul class="grid gap-3.5 p-5">
+						{[
+							"Spread across many independent hosts, with redundancy you control — no single point of failure",
+							"Hosts hold scrambled pieces, not readable files",
+							"Peers set the price on an open market — not central giants",
+							"Hosts must prove your data is safe, on the record",
+							"Cheaters are fined automatically; honest ones earn",
+						].map((t) => (
+							<li class="grid grid-cols-[22px_1fr] gap-2.5 items-start text-ink text-[14.5px] leading-snug">
+								<span class="w-5.5 h-5.5 rounded-md bg-verify-soft flex items-center justify-center mt-px">
+									<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0f6e4f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+								</span>
+								{t}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+
+			<div class="mt-7 border border-hair rounded-xl bg-paper-soft p-6">
+				<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1.5 mb-5">
+					<h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-signal">Where it fits</h3>
+					<span class="text-muted text-sm">— anywhere you need storage you can verify instead of trust.</span>
+				</div>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-7.5 gap-y-5">
+					{useCases.map((x) => (
+						<div class="border-l-2 border-signal pl-4">
+							<h4 class="font-semibold text-ink mb-1 text-[15.5px]">{x.t}</h4>
+							<p class="text-muted text-[13.5px] leading-relaxed">{x.d}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="economics" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Follow the money")}</p>
+			<h2 class={h2}>Who gets paid, and for what</h2>
+			<p class={lede}>You pay one storage fee. It splits three ways — and none of it relies on trust. Every payout is a rule in the contract, not a promise.</p>
+
+			<div class={`${card} mb-10`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-4">one market-cleared fee → revenue split · band width = share</div>
+				<FeeSankey client:visible />
+				<p class="text-muted text-[13.5px] mt-3.5 max-w-[640px] leading-relaxed">Band width ≈ share of the fee. Every split is a rule in the contract — the provider earns the bulk as they keep proving, the keeper's cut (on by default, capped ≤10%) only applies to <em>completed</em> deals. Network gas is a separate, external cost paid to whoever runs the blockchain — not part of this split.</p>
+			</div>
+
+			<div class={noteGrid}>
+				{[...payouts.map((x) => ({ t: x.t, d: `${x.d} (${x.tag})` })), ...economicsNotes].map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="why-contracts" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Why smart contracts")}</p>
+			<h2 class={h2}>Code as the referee, not a company</h2>
+			<p class={lede}>An off-chain marketplace still needs someone to hold the money and decide who's honest. Putting the rules in a smart contract removes that someone.</p>
+
+			<div class={`${card} mb-10`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-4">funds in escrow → released only by code</div>
+				<svg viewBox="0 0 660 240" role="img" aria-label="Escrow flow: client and provider fund a contract that either pays the provider or slashes to the client" class="w-full h-auto block">
+					<defs>
+						<marker id="earrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+							<path d="M0 0 L10 5 L0 10 z" fill="#9aa0a6" />
+						</marker>
+					</defs>
+					<line x1="176" y1="52" x2="252" y2="98" stroke="#9aa0a6" stroke-width="1.6" marker-end="url(#earrow)" />
+					<line x1="176" y1="188" x2="252" y2="126" stroke="#0f6e4f" stroke-width="1.6" marker-end="url(#earrow)" />
+					<line x1="412" y1="98" x2="484" y2="52" stroke="#0f6e4f" stroke-width="2" marker-end="url(#earrow)" />
+					<line x1="412" y1="126" x2="484" y2="188" stroke="#9b1c1c" stroke-width="2" marker-end="url(#earrow)" />
+					<text x="430" y="66" font-size="10.5" fill="#0f6e4f">honoured</text>
+					<text x="430" y="170" font-size="10.5" fill="#9b1c1c">slashed</text>
+					<rect x="24" y="24" width="152" height="56" rx="10" fill="#f4f6f8" stroke="#6b6f66" stroke-width="1.5" />
+					<text x="40" y="48" font-size="13" font-weight="700" fill="#14231f">Client</text>
+					<text x="40" y="66" font-size="10.5" fill="#6b6f66">pays fee up front</text>
+					<rect x="24" y="160" width="152" height="56" rx="10" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.5" />
+					<text x="40" y="184" font-size="13" font-weight="700" fill="#0f6e4f">Provider</text>
+					<text x="40" y="202" font-size="10.5" fill="#3f6f5c">locks collateral</text>
+					<rect x="252" y="80" width="160" height="66" rx="10" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.8" />
+					<text x="332" y="108" text-anchor="middle" font-size="13.5" font-weight="700" fill="#14231f">Smart contract</text>
+					<text x="332" y="127" text-anchor="middle" font-size="10.5" fill="#6b6f66">escrow · rules in code</text>
+					<rect x="484" y="24" width="152" height="56" rx="10" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.5" />
+					<text x="500" y="48" font-size="13" font-weight="700" fill="#0f6e4f">Proof holds</text>
+					<text x="500" y="66" font-size="10.5" fill="#3f6f5c">payment streams</text>
+					<rect x="484" y="160" width="152" height="56" rx="10" fill="#fbeaea" stroke="#9b1c1c" stroke-width="1.5" />
+					<text x="500" y="184" font-size="13" font-weight="700" fill="#9b1c1c">Fails / timeout</text>
+					<text x="500" y="202" font-size="10.5" fill="#8a3a3a">collateral → client</text>
+				</svg>
+				<p class="text-muted text-[13.5px] mt-3.5 max-w-[660px] leading-relaxed">Neither party holds the money — the contract does. Slashing, refunds and payouts fire automatically the instant a proof passes, fails, or a deadline lapses. No arbitrator, no support ticket.</p>
+			</div>
+
+			<div class={noteGrid}>
+				{contractNotes.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="network" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("The network")}</p>
+			<h2 class={h2}>How the market is wired</h2>
+			<p class={lede}>Client posts a request. The keeper matches bids and spreads shards across providers. Everyone settles on the chain — cheaters get slashed.</p>
+
+			<div class={card}>
+				<svg viewBox="0 0 900 460" role="img" aria-label="Network diagram: client, keeper, providers and chain" class="w-full h-auto block">
+					<defs>
+						<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+							<path d="M0 0 L10 5 L0 10 z" fill="#c9c5bb" />
+						</marker>
+					</defs>
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="150" y1="120" x2="430" y2="120" marker-end="url(#arrow)" />
+					<line stroke="#1b2a4a" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity="0.9" x1="150" y1="120" x2="430" y2="120" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="470" y1="140" x2="720" y2="70" marker-end="url(#arrow)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="470" y1="150" x2="720" y2="170" marker-end="url(#arrow)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="470" y1="160" x2="720" y2="270" marker-end="url(#arrow)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="470" y1="170" x2="720" y2="370" marker-end="url(#arrow)" />
+					<line stroke="#1b2a4a" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity="0.9" x1="470" y1="140" x2="720" y2="70" />
+					<line stroke="#1b2a4a" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity="0.9" x1="470" y1="150" x2="720" y2="170" />
+					<line stroke="#1b2a4a" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity="0.9" x1="470" y1="160" x2="720" y2="270" />
+					<line stroke="#1b2a4a" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity="0.9" x1="470" y1="170" x2="720" y2="370" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="760" y1="100" x2="450" y2="410" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="760" y1="200" x2="450" y2="410" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="760" y1="300" x2="450" y2="410" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="760" y1="400" x2="450" y2="410" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="450" y1="180" x2="450" y2="390" />
+					<g>
+						<rect x="40" y="90" width="110" height="60" rx="6" fill="#f4f6f8" stroke="#6b6f66" stroke-width="1.4" />
+						<text x="95" y="116" text-anchor="middle" font-size="14" font-weight="600" fill="#14231f">Client</text>
+						<text x="95" y="134" text-anchor="middle" font-size="11" fill="#6b6f66">uploads file</text>
+					</g>
+					<g>
+						<rect x="360" y="95" width="110" height="70" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="415" y="122" text-anchor="middle" font-size="14" font-weight="600" fill="#14231f">Keeper</text>
+						<text x="415" y="140" text-anchor="middle" font-size="11" fill="#6b6f66">match + audit</text>
+					</g>
+					<g>
+						<rect x="720" y="45" width="140" height="50" rx="6" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+						<text x="740" y="68" font-size="14" font-weight="600" fill="#0f6e4f">Provider ✓</text>
+						<text x="740" y="84" font-size="11" fill="#6b6f66">shard held</text>
+					</g>
+					<g>
+						<rect x="720" y="145" width="140" height="50" rx="6" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+						<text x="740" y="168" font-size="14" font-weight="600" fill="#0f6e4f">Provider ✓</text>
+						<text x="740" y="184" font-size="11" fill="#6b6f66">shard held</text>
+					</g>
+					<g>
+						<rect x="720" y="245" width="140" height="50" rx="6" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+						<text x="740" y="268" font-size="14" font-weight="600" fill="#0f6e4f">Provider ✓</text>
+						<text x="740" y="284" font-size="11" fill="#6b6f66">shard held</text>
+					</g>
+					<g>
+						<rect x="720" y="345" width="140" height="50" rx="6" fill="#fbeaea" stroke="#9b1c1c" stroke-width="1.4" />
+						<text x="740" y="368" font-size="14" font-weight="600" fill="#9b1c1c">Provider ✗</text>
+						<text x="740" y="384" font-size="11" fill="#6b6f66">slashed</text>
+					</g>
+					<g>
+						<rect x="330" y="395" width="240" height="46" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="450" y="416" text-anchor="middle" font-size="14" font-weight="600" fill="#14231f">On-chain contracts</text>
+						<text x="450" y="432" text-anchor="middle" font-size="11" fill="#6b6f66">payments · proofs · slashing</text>
+					</g>
+				</svg>
+				<ul class="flex flex-wrap gap-x-6 gap-y-2 text-muted text-[13px] mt-4 font-mono">
+					<li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-verify inline-block"></span> honest provider — proves it holds the shard</li>
+					<li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-slash inline-block"></span> cheater — failed proof or timeout, stake burned</li>
+					<li class="flex items-center gap-2"><span class="w-5.5 h-0 border-t-2 border-dashed border-signal inline-block"></span> shard transfer (bitswap)</li>
+					<li class="flex items-center gap-2"><span class="w-5.5 h-0 border-t-2 border-dotted border-hair inline-block"></span> on-chain settlement</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="market" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Price discovery")}</p>
+			<h2 class={h2}>A peer-to-peer order book</h2>
+			<p class={lede}>
+				No central giant sets the price. Providers post <strong class="text-ink font-semibold">asks</strong> (the least they'll accept per shard); clients post <strong class="text-ink font-semibold">bids</strong> (the most they'll pay). The keeper clears the cheapest reputation-adjusted ask against each open bid — supply and demand find the price on-chain.
+			</p>
+
+			<div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] border border-hair rounded-xl overflow-hidden font-mono">
+				<div class="p-5">
+					<div class="flex justify-between text-[11px] uppercase tracking-wide text-muted mb-3 font-sans">
+						<span>Provider asks · supply</span><span>qty</span>
+					</div>
+					{asks.slice().reverse().map((a) => (
+						<div class="relative grid grid-cols-[auto_1fr_auto] items-center gap-2.5 py-1.5 px-2">
+							<span class="absolute inset-y-0 right-0 bg-slash/10 rounded" style={`width:${((a.qty / maxQty) * 100).toFixed(1)}%`}></span>
+							<span class="relative font-bold text-slash">{a.price}</span>
+							<span class="relative text-muted text-xs">rep {a.rep}</span>
+							<span class="relative text-ink text-right tabular-nums">{a.qty}</span>
+						</div>
+					))}
+				</div>
+
+				<div class="flex md:flex-col justify-center items-center px-5 py-3 md:py-0 gap-0.5 bg-paper-soft border-y md:border-y-0 md:border-x border-hair">
+					<span class="text-[0.68rem] uppercase tracking-widest text-muted font-sans">clearing price</span>
+					<span class="text-2xl md:text-[34px] font-bold text-signal leading-none">{clearing}</span>
+					<span class="text-xs text-muted font-sans">tokens / shard</span>
+				</div>
+
+				<div class="p-5">
+					<div class="flex justify-between text-[11px] uppercase tracking-wide text-muted mb-3 font-sans">
+						<span>Client bids · demand</span><span>qty</span>
+					</div>
+					{bids.map((b) => (
+						<div class="relative grid grid-cols-[auto_1fr_auto] items-center gap-2.5 py-1.5 px-2">
+							<span class="absolute inset-y-0 left-0 bg-signal/10 rounded" style={`width:${((b.qty / maxQty) * 100).toFixed(1)}%`}></span>
+							<span class="relative font-bold text-signal">{b.price}</span>
+							<span class="relative text-muted text-xs">max pay</span>
+							<span class="relative text-ink text-right tabular-nums">{b.qty}</span>
+						</div>
+					))}
+				</div>
+			</div>
+
+			<div class={`${noteGrid} mt-10`}>
+				{marketNotes.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="scoring" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Provider scoring")}</p>
+			<h2 class={h2}>Reputation is priced in</h2>
+			<p class={lede}>
+				Every provider carries an on-chain track record. Three ratios — deal completion, proof pass rate, retrieval audits — average into a reputation score. That score becomes a price multiplier: a spotless record stays at 1.0×, a fully-bad one doubles to 2.0×. Cheap-but-unreliable sinks below honest providers that cost a bit more.
+			</p>
+
+			<div class="flex flex-wrap items-center gap-3 mb-9 border-y border-hair py-4 font-mono">
+				<code class="text-signal text-[13.5px]">reputationBP = avg(deal%, proof%, audit%)</code>
+				<span class="text-muted text-xs uppercase tracking-wide">then</span>
+				<code class="text-signal text-[13.5px]">effectivePrice = ask × (2 − reputationBP)</code>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+				{providers.map((p, i) => (
+					<article class={`${card} ${toneBorder[tier(p.reputationBP)]} border-l-4`}>
+						<header class="flex items-center gap-2.5 mb-4">
+							<span class="font-mono text-[11px] text-muted">{idx(i + 1)}</span>
+							<span class="font-mono font-semibold flex-1 text-sm text-ink">provider-{p.name}</span>
+							<span class={`font-mono font-bold text-sm px-2.5 py-0.5 rounded-full ${tierMult[tier(p.reputationBP)]}`}>{p.multiplier.toFixed(2)}×</span>
+						</header>
+
+						<div class="grid gap-2.5 mb-4">
+							<div class="grid grid-cols-[120px_1fr_38px] items-center gap-2.5">
+								<span class="text-xs text-muted">deal completion</span>
+								<span class="h-1.5 bg-paper-soft rounded-full overflow-hidden block"><span class={`block h-full rounded-full ${tierFill[tier(p.deal)]}`} style={`width:${p.deal / 100}%`}></span></span>
+								<span class="text-xs text-right tabular-nums text-ink font-mono">{(p.deal / 100).toFixed(0)}%</span>
+							</div>
+							<div class="grid grid-cols-[120px_1fr_38px] items-center gap-2.5">
+								<span class="text-xs text-muted">proof pass rate</span>
+								<span class="h-1.5 bg-paper-soft rounded-full overflow-hidden block"><span class={`block h-full rounded-full ${tierFill[tier(p.proof)]}`} style={`width:${p.proof / 100}%`}></span></span>
+								<span class="text-xs text-right tabular-nums text-ink font-mono">{(p.proof / 100).toFixed(0)}%</span>
+							</div>
+							<div class="grid grid-cols-[120px_1fr_38px] items-center gap-2.5">
+								<span class="text-xs text-muted">retrieval audits</span>
+								{p.audit === null ? (
+									<span class="h-1.5 bg-paper-soft rounded-full overflow-hidden block"><span class="block h-full w-full opacity-50" style="background: repeating-linear-gradient(90deg, #e4e1da 0 6px, transparent 6px 12px);"></span></span>
+								) : (
+									<span class="h-1.5 bg-paper-soft rounded-full overflow-hidden block"><span class={`block h-full rounded-full ${tierFill[tier(p.audit)]}`} style={`width:${p.audit / 100}%`}></span></span>
+								)}
+								<span class="text-xs text-right tabular-nums text-ink font-mono">{p.audit === null ? "—" : `${(p.audit / 100).toFixed(0)}%`}</span>
+							</div>
+						</div>
+
+						<footer class="flex gap-4 flex-wrap text-sm text-muted tabular-nums font-mono">
+							<span>ask <b class="text-ink">{p.ask}</b></span>
+							<span><b class="text-signal">{p.effective}</b> effective</span>
+							<span class="ml-auto">score {(p.reputationBP / 100).toFixed(0)}</span>
+						</footer>
+					</article>
+				))}
+			</div>
+
+			<div class={noteGrid}>
+				{scoringNotes.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="sla" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Uptime SLA")}</p>
+			<h2 class={h2}>A committee keeps your provider honest</h2>
+			<p class={lede}>
+				A provider commits to a minimum uptime and prices around it. A rotating quorum of staked keepers — not the client — challenges them to prove it, every epoch. Fall short, and collateral is slashed proportional to the shortfall: the client is refunded, and the keepers who caught it get paid from the slash.
+			</p>
+
+			<div class={card}>
+				<svg viewBox="0 0 980 420" role="img" aria-label="Diagram: committee of keepers challenging a provider, quorum vote, graduated slash" class="w-full h-auto block">
+					<defs>
+						<marker id="arrowSla" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+							<path d="M0 0 L10 5 L0 10 z" fill="#c9c5bb" />
+						</marker>
+					</defs>
+
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="200" y1="70" x2="380" y2="180" marker-end="url(#arrowSla)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="200" y1="150" x2="380" y2="195" marker-end="url(#arrowSla)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="200" y1="230" x2="380" y2="210" marker-end="url(#arrowSla)" />
+					<line stroke="#c9c5bb" stroke-width="1.6" fill="none" x1="200" y1="310" x2="380" y2="225" marker-end="url(#arrowSla)" />
+
+					<line stroke="#0f6e4f" stroke-width="1.6" stroke-dasharray="6 8" fill="none" x1="380" y1="180" x2="200" y2="90" />
+					<line stroke="#0f6e4f" stroke-width="1.6" stroke-dasharray="6 8" fill="none" x1="380" y1="195" x2="200" y2="170" />
+					<line stroke="#9b1c1c" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="380" y1="210" x2="200" y2="250" />
+					<line stroke="#0f6e4f" stroke-width="1.6" stroke-dasharray="6 8" fill="none" x1="380" y1="225" x2="200" y2="330" />
+
+					<g>
+						<rect x="60" y="45" width="140" height="50" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="80" y="68" font-size="13" font-weight="600" fill="#14231f">Keeper A</text>
+						<text x="80" y="84" font-size="10.5" fill="#6b6f66">challenge #12</text>
+					</g>
+					<g>
+						<rect x="60" y="125" width="140" height="50" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="80" y="148" font-size="13" font-weight="600" fill="#14231f">Keeper B</text>
+						<text x="80" y="164" font-size="10.5" fill="#6b6f66">challenge #12</text>
+					</g>
+					<g>
+						<rect x="60" y="205" width="140" height="50" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="80" y="228" font-size="13" font-weight="600" fill="#14231f">Keeper C</text>
+						<text x="80" y="244" font-size="10.5" fill="#6b6f66">challenge #12</text>
+					</g>
+					<g>
+						<rect x="60" y="285" width="140" height="50" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="80" y="308" font-size="13" font-weight="600" fill="#14231f">Keeper D</text>
+						<text x="80" y="324" font-size="10.5" fill="#6b6f66">challenge #12</text>
+					</g>
+
+					<g>
+						<rect x="380" y="150" width="150" height="110" rx="6" fill="#f4f6f8" stroke="#6b6f66" stroke-width="1.4" />
+						<text x="455" y="185" text-anchor="middle" font-size="15" font-weight="600" fill="#14231f">Provider</text>
+						<text x="455" y="203" text-anchor="middle" font-size="11" fill="#6b6f66">committed 90%</text>
+						<text x="455" y="221" text-anchor="middle" font-size="11" fill="#9b1c1c">measured 81%</text>
+						<text x="455" y="239" text-anchor="middle" font-size="10.5" fill="#6b6f66">2 proved · 1 missed · 1 proved</text>
+					</g>
+
+					<line stroke="#1b2a4a" stroke-width="2" fill="none" x1="530" y1="205" x2="650" y2="205" marker-end="url(#arrowSla)" />
+					<g>
+						<rect x="650" y="165" width="170" height="80" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="735" y="192" text-anchor="middle" font-size="13" font-weight="600" fill="#14231f">Quorum vote</text>
+						<text x="735" y="210" text-anchor="middle" font-size="10.5" fill="#6b6f66">shortfall 900 bps</text>
+						<text x="735" y="226" text-anchor="middle" font-size="10.5" fill="#9b1c1c">breach — slash fires</text>
+					</g>
+
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="700" y1="245" x2="595" y2="335" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="735" y1="245" x2="755" y2="335" />
+					<line stroke="#c9c5bb" stroke-width="1.6" stroke-dasharray="2 5" fill="none" x1="770" y1="245" x2="895" y2="335" />
+
+					<g>
+						<rect x="525" y="345" width="140" height="46" rx="6" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.4" />
+						<text x="595" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#0f6e4f">Client refund</text>
+						<text x="595" y="382" text-anchor="middle" font-size="10" fill="#6b6f66">bulk of the slash</text>
+					</g>
+					<g>
+						<rect x="685" y="345" width="140" height="46" rx="6" fill="#eef1f6" stroke="#1b2a4a" stroke-width="1.4" />
+						<text x="755" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#14231f">Committee bounty</text>
+						<text x="755" y="382" text-anchor="middle" font-size="10" fill="#6b6f66">paid to reporters</text>
+					</g>
+					<g>
+						<rect x="845" y="345" width="100" height="46" rx="6" fill="#fbeaea" stroke="#9b1c1c" stroke-width="1.4" />
+						<text x="895" y="366" text-anchor="middle" font-size="12" font-weight="600" fill="#9b1c1c">Chain cut</text>
+						<text x="895" y="382" text-anchor="middle" font-size="10" fill="#6b6f66">protocol fee</text>
+					</g>
+				</svg>
+				<ul class="flex flex-wrap gap-x-6 gap-y-2 text-muted text-[13px] mt-4 font-mono">
+					<li class="flex items-center gap-2"><span class="w-5.5 h-0 border-t-2 border-solid border-hair inline-block"></span> challenge issued</li>
+					<li class="flex items-center gap-2"><span class="w-5.5 h-0 border-t-2 border-dashed border-verify inline-block"></span> proof served in window</li>
+					<li class="flex items-center gap-2"><span class="w-5.5 h-0 border-t-2 border-dotted border-slash inline-block"></span> missed / timed out</li>
+					<li class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-slash inline-block"></span> quorum breach — graduated slash, not all-or-nothing</li>
+				</ul>
+			</div>
+
+			<div class={`${noteGrid} mt-10`}>
+				{slaNotes.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="tech" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("The technology")}</p>
+			<h2 class={h2}>Proofs, not promises</h2>
+			<p class={lede}>A thin on-chain contract layer plus an off-chain Go stack. The chain settles payments and slashing; bitswap moves the bytes.</p>
+
+			<div class={`${card} mb-8`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-3.5">Merkle challenge–response · prove you still hold leaf 2</div>
+				<svg viewBox="0 0 620 220" role="img" aria-label="Merkle tree: a random leaf challenge with its proof path to the signed root" class="w-full h-auto block">
+					<line x1="310" y1="54" x2="150" y2="104" stroke="#e4e1da" stroke-width="1.6" />
+					<line x1="310" y1="54" x2="470" y2="104" stroke="#0f6e4f" stroke-width="2" />
+					<line x1="150" y1="132" x2="70" y2="170" stroke="#e4e1da" stroke-width="1.6" />
+					<line x1="150" y1="132" x2="230" y2="170" stroke="#e4e1da" stroke-width="1.6" />
+					<line x1="470" y1="132" x2="390" y2="170" stroke="#0f6e4f" stroke-width="2" />
+					<line x1="470" y1="132" x2="550" y2="170" stroke="#1b2a4a" stroke-width="1.6" stroke-dasharray="4 5" />
+					<rect x="266" y="26" width="88" height="30" rx="7" fill="#eef1f6" stroke="#0f6e4f" stroke-width="1.6" />
+					<text x="310" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#0f6e4f">ROOT</text>
+					<rect x="108" y="104" width="84" height="30" rx="7" fill="#ffffff" stroke="#c9c5bb" stroke-width="1.4" />
+					<text x="150" y="124" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6b6f66">H01</text>
+					<rect x="428" y="104" width="84" height="30" rx="7" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.6" />
+					<text x="470" y="124" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f6e4f">H23</text>
+					<rect x="30" y="170" width="80" height="30" rx="7" fill="#ffffff" stroke="#c9c5bb" stroke-width="1.4" />
+					<text x="70" y="190" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6b6f66">L0</text>
+					<rect x="190" y="170" width="80" height="30" rx="7" fill="#ffffff" stroke="#c9c5bb" stroke-width="1.4" />
+					<text x="230" y="190" text-anchor="middle" font-size="11.5" font-weight="600" fill="#6b6f66">L1</text>
+					<rect x="350" y="170" width="80" height="30" rx="7" fill="#e8f3ec" stroke="#0f6e4f" stroke-width="1.8" />
+					<text x="390" y="190" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0f6e4f">L2 ✓</text>
+					<rect x="510" y="170" width="80" height="30" rx="7" fill="#ffffff" stroke="#1b2a4a" stroke-width="1.4" stroke-dasharray="4 4" />
+					<text x="550" y="190" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1b2a4a">L3</text>
+				</svg>
+				<div class="flex flex-wrap gap-x-5 gap-y-2 mt-3.5 font-mono text-[11.5px] text-muted">
+					<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-verify-soft border-[1.4px] border-verify inline-block"></span>proof path returned by the provider</span>
+					<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-white border-[1.4px] border-dashed border-signal inline-block"></span>sibling hash supplied to recompute the root</span>
+				</div>
+			</div>
+
+			<div class={`${card} mb-8`}>
+				<div class="font-mono text-[11px] uppercase tracking-wide text-muted mb-4">system architecture · on-chain truth, off-chain work</div>
+				<div class="border border-signal/35 bg-signal-soft rounded-lg p-4.5">
+					<div class="flex flex-wrap items-center gap-2.5 mb-3.5">
+						<span class="font-mono text-[11px] font-semibold tracking-wide px-2.5 py-1 rounded-md bg-signal text-white">ON-CHAIN · Solidity</span>
+						<span class="text-muted text-[13px]">source of truth for deals, payments &amp; slashing</span>
+					</div>
+					<div class="flex flex-wrap gap-2">
+						{["PaymentToken", "StorageMarket · order book", "DealManager", "ProofVerifier", "ReputationRegistry"].map((s) => (
+							<span class="font-mono text-xs px-3 py-1.5 rounded-md bg-paper border border-signal/25 text-ink">{s}</span>
+						))}
+					</div>
+				</div>
+				<div class="flex items-center justify-center gap-3 py-3 font-mono text-[11px] text-muted">
+					<span>▲ settle payments · slash</span>
+					<span class="w-px h-5 bg-hair inline-block"></span>
+					<span>read deals · reputation ▼</span>
+				</div>
+				<div class="border border-hair bg-paper-soft rounded-lg p-4.5">
+					<div class="flex flex-wrap items-center gap-2.5 mb-3.5">
+						<span class="font-mono text-[11px] font-semibold tracking-wide px-2.5 py-1 rounded-md bg-ink text-white">OFF-CHAIN · Go daemons</span>
+						<span class="text-muted text-[13px]">run the market and move the bytes</span>
+					</div>
+					<div class="flex flex-wrap gap-2">
+						{["Client", "Provider · stakes", "Keeper · match + audit", "embedded IPFS · bitswap"].map((s) => (
+							<span class="font-mono text-xs px-3 py-1.5 rounded-md bg-paper border border-hair text-ink">{s}</span>
+						))}
+					</div>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				{tech.map((x, i) => (
+					<div class={card}>
+						<div class="font-mono text-[11px] text-muted mb-2.5">{idx(i + 1)}</div>
+						<h3 class="font-semibold text-ink mb-1.5 text-[15.5px]">{x.t}</h3>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section id="features" class={section}>
+		<div class={wrap}>
+			<p class={eyebrow}>{sec("Features")}</p>
+			<h2 class={h2}>Built to withstand bad actors</h2>
+			<p class={lede}>Honest providers get paid. Cheaters get slashed. Your file comes back verified.</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				{features.map((x) => (
+					<div class={card}>
+						<div class="flex items-center gap-2.5 mb-2">
+							<span class="w-6.5 h-6.5 rounded-md bg-verify-soft flex items-center justify-center shrink-0">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0f6e4f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+							</span>
+							<h3 class="font-semibold text-ink text-[15.5px]">{x.t}</h3>
+						</div>
+						<p class="text-muted text-sm leading-relaxed">{x.d}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-24 sm:py-25 border-t border-dashed border-hair text-center">
+		<div class={wrap}>
+			<h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink mb-4 text-balance">Storage you verify, not trust</h2>
+			<p class="text-muted max-w-[520px] mx-auto mb-8 text-lg leading-relaxed">Spin up the full market locally in one command, or read how every proof, payment and slash works on-chain.</p>
+			<div class="flex gap-3 justify-center flex-wrap">
+				<a href="https://github.com/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 bg-signal text-white font-semibold text-[15px] px-6 py-3.5 rounded-lg hover:bg-signal/85 transition">View the code <span aria-hidden="true">→</span></a>
+			</div>
+		</div>
+	</section>
+
+	<footer class="border-t border-hair py-8">
+		<div class={`${wrap} flex justify-between gap-3 flex-wrap text-muted text-sm font-mono`}>
+			<span>Decentralised Storage Market — Solidity + Go + embedded IPFS.</span>
+			<a class="text-signal hover:underline" href="#top">Back to top ↑</a>
+		</div>
+	</footer>
+</Layout>
+
+<script>
+	const shareUrl = "https://dsm.link/f/bafybeigk7d3q…q4#k=7f3a9c…e19";
+	const btn = document.getElementById("copy-share");
+	const label = btn?.querySelector("[data-copy-label]");
+	let resetTimer: ReturnType<typeof setTimeout> | undefined;
+
+	btn?.addEventListener("click", async () => {
+		try {
+			await navigator.clipboard.writeText(shareUrl);
+		} catch {
+			// clipboard API unavailable — no-op, link is still visible to copy manually
+		}
+		if (label) label.textContent = "Copied ✓";
+		clearTimeout(resetTimer);
+		resetTimer = setTimeout(() => {
+			if (label) label.textContent = "Copy link";
+		}, 1600);
+	});
+</script>

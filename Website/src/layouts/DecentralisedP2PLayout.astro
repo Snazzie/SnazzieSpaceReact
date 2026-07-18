@@ -1,0 +1,23 @@
+---
+import "../styles/decentralisedp2pstorage.css";
+
+const { title = "Decentralised Storage Market", description = "A trustless storage marketplace with on-chain proofs, erasure-coded shards, and slashing for cheaters." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/decentralisedp2pstorage/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body class="bg-paper text-ink antialiased font-sans leading-relaxed tracking-[-0.006em]">
+		<slot />
+	</body>
+</html>
