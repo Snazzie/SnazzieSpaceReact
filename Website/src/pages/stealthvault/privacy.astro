@@ -36,80 +36,87 @@ import BaseHead from '@/components/BaseHead.astro';
       </div>
 
       <h1 class="text-3xl font-bold tracking-tight mb-2">Privacy Policy</h1>
-      <p class="text-muted-foreground text-sm mb-10">StealthVault · Last updated June 3, 2025</p>
+      <p class="text-muted-foreground text-sm mb-10">StealthVault · Last updated October 22, 2026</p>
 
       <div class="prose prose-invert prose-sm max-w-none space-y-8 text-muted-foreground leading-relaxed">
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Overview</h2>
           <p>
-            StealthVault is a private, encrypted media vault. <strong class="text-foreground">Your vault content</strong> — photos, videos, albums, tags, and browsing data — is encrypted on your device and never leaves it unless you explicitly initiate a device-to-device sync or portal session on your local network. We never transmit your media to external servers.
+            StealthVault is an encrypted media vault. Photos, videos, albums, tags, and vault metadata are encrypted at rest on your device. The app has no hosted vault service. Websites receive browser requests; you can explicitly export encrypted backups through document providers or transfer data over your local network.
           </p>
           <p class="mt-3">
-            To keep the app stable and free, we use two third-party services from Google that collect limited, non-content data: <strong class="text-foreground">Firebase Crashlytics</strong> (crash and diagnostic data) and <strong class="text-foreground">Google AdMob</strong> (advertising). These are described below. They never receive your vault content.
+            Google AdMob processes advertising data, Firebase Crashlytics processes crash and diagnostic data including native crash reports, and RevenueCat processes subscription and entitlement data. We do not intentionally include vault keys, media, titles, or URLs in telemetry. Local vault encryption does not mean these services collect no data.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Data Stored on Your Device</h2>
-          <p>The following data is stored <strong class="text-foreground">locally on your device only</strong>, encrypted at rest:</p>
+          <p>The following vault data is encrypted at rest on your device:</p>
           <ul class="mt-3 list-disc list-inside space-y-1.5">
             <li>Media files (photos and videos) you import into the vault</li>
             <li>Album names and organization</li>
             <li>Tags and metadata you assign to media</li>
-            <li>Browser history and bookmarks from the in-app browser</li>
-            <li>Your vault passcode (stored as a derived key — never in plaintext)</li>
+            <li>Deliberately saved browser bookmarks and optional saved website cookies</li>
+            <li>Credential envelopes protecting the vault key; not your plaintext passcode or recovery phrase</li>
           </ul>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Encryption</h2>
           <p>
-            Media is encrypted with AES using a random data encryption key (DEK) that is itself wrapped by a key derived from your passcode. The DEK is held in memory only while the vault is unlocked and is zeroed out on lock. Encrypted blobs are stored in the app's private documents directory — inaccessible to other apps.
+            Media uses a random data encryption key (DEK); your passcode derives a separate key that wraps the DEK. SQLCipher protects vault metadata with a domain-separated key. Real and decoy vaults have separate keys and stores. Automatic lock gates the UI while previously authorized work may finish; Quick Lock cancels work and starts hard-lock cleanup. Managed memory, temporary caches, and flash storage can retain remnants. We do not promise forensic erasure or zeroing every key copy.
           </p>
         </section>
 
         <section>
+          <h2 class="text-lg font-semibold text-foreground mb-3">Recovery, Backups, and Deletion</h2>
+          <p>A separately enrolled and confirmed recovery phrase or legacy recovery key can replace a forgotten vault PIN. We hold no recovery secret or backdoor. Losing both the PIN and its recovery secret makes the vault unrecoverable. Restoring a purchase does not restore vault data.</p>
+          <p class="mt-3">Deleted media moves to Recently Deleted for up to 30 days; expiry is processed during app maintenance, not promised at an exact background time. Uninstalling removes app data subject to operating-system storage and backup behavior. Keep an external encrypted backup and its original recovery secret separately. A document provider controls the availability and durability of exported archives, including cloud-backed copies.</p>
+        </section>
+
+        <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Network Access</h2>
-          <p>StealthVault requests network access for two optional features only:</p>
+          <p>Network activity includes websites you visit, third-party SDK services, and these optional transfers:</p>
           <ul class="mt-3 list-disc list-inside space-y-1.5">
             <li>
-              <strong class="text-foreground">Web Portal</strong> — starts a local HTTP server on your device so you can access your vault from a browser on the same Wi-Fi network. No data is routed through the internet.
+              <strong class="text-foreground">Web Portal</strong> — an optional local HTTP server with PIN authentication. HTTP does not provide encrypted transport confidentiality; use only on a trusted network.
             </li>
             <li>
-              <strong class="text-foreground">Device Sync</strong> — transfers encrypted media between two devices on the same local network using a pairing code. No data is routed through the internet.
+              <strong class="text-foreground">Device Sync</strong> — explicitly paired devices reconcile over the local network after you compare and approve a matching safety code. Payloads use authenticated encryption; network addresses, timing, and traffic sizes may remain observable. Send Copies is a separate user-initiated transfer.
             </li>
+            <li><strong class="text-foreground">Encrypted Backup</strong> — authenticated, encrypted archives exported through a provider you choose. That provider may store the archive in a cloud service; keep its recovery secret separately.</li>
           </ul>
           <p class="mt-3">
-            Both features are opt-in and off by default. Neither transmits data to any external server.
+            Transfers require your action. They are distinct from browser requests, advertising, subscription processing, and diagnostic traffic.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">In-App Browser</h2>
           <p>
-            The built-in browser is a WebView with ad blocking. It does not use a proxy or VPN — it makes requests directly from your device. Browsing history and bookmarks are stored locally in the encrypted vault database. No browsing data is sent to us.
+            Browser visits, tabs, and navigation state are session-only; automatic browsing history is not saved. Deliberate bookmarks remain encrypted. If you choose Keep me logged in, cookies for listed websites and their subdomains are retained in the current encrypted vault across sessions and Quick Lock. No sites are preselected. Saved cookies are excluded from portable backup and device sync; remove a site or use Clear Cookies to delete them. Other sites remain session-only. Retention is best-effort: other site data is not retained and sites may require sign-in again. iOS applies conservative SameSite rules. Websites receive your requests and apply their own policies. Android profiles may write session data to disk; isolation is not forensic erasure, and unsupported isolation never falls back silently to a shared profile.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Subscriptions</h2>
           <p>
-            StealthVault uses <strong class="text-foreground">RevenueCat</strong> to manage in-app subscriptions. RevenueCat processes purchase data through Apple App Store or Google Play. Their privacy policy applies to that transaction data. We receive only an anonymous entitlement status — no payment details.
+            Apple or Google processes payments, with subscriptions and entitlements managed through <strong class="text-foreground">RevenueCat</strong>. We do not receive payment card details. RevenueCat processes purchase and entitlement information under its privacy policy; we do not claim this processing is anonymous.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Crash Reporting</h2>
           <p>
-            StealthVault uses <strong class="text-foreground">Firebase Crashlytics</strong> (a Google service) to collect crash reports and diagnostic data so we can fix bugs and improve stability. This may include device model, operating system version, app version, and the technical state of the app at the time of a crash. <strong class="text-foreground">It never includes your vault content</strong> (your media, albums, tags, or browsing data). Crashlytics data is processed by Google under <a href="https://firebase.google.com/support/privacy" class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity">Firebase's privacy and security terms</a>.
+            <strong class="text-foreground">Firebase Crashlytics</strong> collects crash and diagnostic information, including device/app information and native crash reports. We do not intentionally place vault keys, media, titles, or URLs in telemetry. Processing is subject to <a href="https://firebase.google.com/support/privacy" class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity">Firebase's privacy and security terms</a>.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Advertising</h2>
           <p>
-            StealthVault displays a single banner ad through <strong class="text-foreground">Google AdMob</strong>, configured to request <strong class="text-foreground">non-personalized ads only</strong>. We do not ask for tracking permission and do not use your device's advertising identifier to profile you — the app declares "no tracking" in its iOS privacy manifest. To serve a non-personalized ad, AdMob receives only coarse contextual information (such as approximate region derived from your IP and general device type) and an identifier used for frequency capping and fraud prevention; it is never used to build a profile of you. AdMob never receives your vault content. Google's use of this data is governed by the <a href="https://policies.google.com/technologies/ads" class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity">Google Ads policies</a>. A paid subscription removes ads entirely.
+            The free tier uses <strong class="text-foreground">Google AdMob</strong> banner and optional rewarded ads. Requests are configured as non-personalized, but identifiers and advertising/device data may still be processed; non-personalized does not mean anonymous or consent-free. The app checks the SDK's consent state before requesting ads and provides privacy options when required. Google's processing is described in the <a href="https://policies.google.com/technologies/ads" class="text-foreground underline underline-offset-2 hover:opacity-80 transition-opacity">Google Ads policies</a>. A paid subscription removes ads.
           </p>
         </section>
 
@@ -117,8 +124,8 @@ import BaseHead from '@/components/BaseHead.astro';
           <h2 class="text-lg font-semibold text-foreground mb-3">Permissions</h2>
           <ul class="list-disc list-inside space-y-1.5">
             <li><strong class="text-foreground">Photo Library</strong> — to import media into the vault and optionally delete originals after import.</li>
-            <li><strong class="text-foreground">Camera</strong> — to capture media directly into the vault (if implemented).</li>
-            <li><strong class="text-foreground">Face ID / Biometrics</strong> — to unlock the vault without typing your passcode. Biometric data never leaves the device's secure enclave.</li>
+            <li><strong class="text-foreground">Camera and Microphone</strong> — optional video/audio security recording after explicit acknowledgement and both permissions. Recording runs while the unlock screen is visible, saving clips after failed attempts, and continuously while the decoy vault is open. An indicator shows active recording. Existing captures remain accessible when recording is disabled.</li>
+            <li><strong class="text-foreground">Face ID / Biometrics</strong> — the operating system checks biometrics to authorize unlocking. StealthVault does not receive biometric templates.</li>
             <li><strong class="text-foreground">Local Network</strong> — for the Web Portal and Device Sync features.</li>
           </ul>
         </section>
@@ -126,7 +133,7 @@ import BaseHead from '@/components/BaseHead.astro';
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Age Requirement</h2>
           <p>
-            StealthVault is intended for adults aged 18 and over and is rated 17+. The app is not directed at anyone under 18, and we do not knowingly collect information from anyone under 18.
+            StealthVault is intended for adults aged 18 and over, not children. Store age ratings are determined by the current store questionnaires and available features.
           </p>
         </section>
 

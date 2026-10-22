@@ -43,14 +43,14 @@ import BaseHead from '@/components/BaseHead.astro';
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">How is my media encrypted?</h2>
           <p>
-            Every photo and video is encrypted on your device with <strong class="text-foreground">AES-256</strong> before it is written to storage. Files on disk are ciphertext — nothing readable is ever stored. The encryption key exists only in memory while the vault is unlocked, and it is wiped the moment the vault locks.
+            Media is encrypted on your device with <strong class="text-foreground">AES-256</strong>; SQLCipher protects vault metadata. Authorized operations may temporarily hold decrypted data in memory or caches. Automatic lock gates the UI; Quick Lock cancels work and starts hard-lock cleanup. Neither guarantees forensic erasure or zeroing every managed-memory copy.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">How does my passcode unlock the vault?</h2>
           <p>
-            StealthVault uses a <strong class="text-foreground">two-key design</strong>. A random <strong class="text-foreground">data key</strong> encrypts all your media; it is generated once and never leaves your device. Your passcode does not encrypt your media directly — instead it derives a separate key that <em>wraps</em> (encrypts) the data key.
+            StealthVault uses a <strong class="text-foreground">two-key design</strong>. A random <strong class="text-foreground">data key</strong> protects your media. Your passcode derives a separate key that wraps that data key; changing the passcode does not require re-encrypting every media file. Optional recovery credentials and device transfers follow their own explicit authorization flows.
           </p>
           <p class="mt-3">
             When you unlock, your passcode reconstructs the wrapping key, which unlocks the data key, which decrypts your media. Your passcode itself is never stored anywhere — not on the device, not in the cloud.
@@ -60,49 +60,54 @@ import BaseHead from '@/components/BaseHead.astro';
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Does changing my passcode re-encrypt all my files?</h2>
           <p>
-            <strong class="text-foreground">No.</strong> Because your passcode only protects the data key — not the media itself — changing it simply re-wraps that one small key under your new passcode. Your photos and videos are never touched, so the change is instant even with a large vault.
+            <strong class="text-foreground">No.</strong> Changing the PIN re-wraps the vault key rather than re-encrypting every media file. The operation still needs to complete successfully; keep a separate recovery secret and backup.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">What happens if I forget my passcode?</h2>
           <p>
-            Your data is <strong class="text-foreground">unrecoverable</strong>. There is no backdoor, no recovery email, and no master key. This is by design — it is what makes the vault private. If you forget your passcode and have no biometric unlock enrolled, the encrypted data cannot be opened by anyone, including us.
+            A separately enrolled and confirmed recovery phrase or legacy recovery key can replace a forgotten PIN. We cannot recover the vault for you: there is no developer-held secret or backdoor. Losing both PIN and recovery secret makes that vault unrecoverable. Restoring a subscription does not restore your files.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Is biometric unlock (Face ID / fingerprint) safe?</h2>
           <p>
-            Yes. When you enable biometrics, a copy of your data key is held in your device's hardware-backed secure storage (Secure Enclave on iOS, Keystore on Android) and released only after a successful biometric check by the operating system. We never see your biometric data — it never leaves the OS.
+            Biometric unlocking uses an operating-system check and OS-protected credential storage. The protection available depends on the device and its configuration. StealthVault does not receive biometric templates; biometrics are not a substitute for keeping your recovery secret safe.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Is anything sent to the cloud?</h2>
           <p>
-            No. StealthVault is offline-first. Encryption, decryption, and key handling all happen on your device. Device-to-device sync and the web portal transfer data directly over your local network — they do not pass through any server we control.
+            The app has no hosted vault service, but it is not network-free. Websites receive browsing requests; advertising, subscription, and crash-reporting SDKs process their respective data. An encrypted backup provider you choose may be cloud-backed. Paired sync and the optional local HTTP portal are separate features; HTTP portal traffic is not encrypted transport and needs a trusted network.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Do the ads track me?</h2>
           <p>
-            The free version shows a single banner ad, but it is configured to request <strong class="text-foreground">non-personalized ads only</strong> — we never ask for tracking permission, never use your device's advertising identifier to profile you, and the app declares "no tracking" in its iOS privacy manifest. The ad network only ever receives the coarse, anonymous context any web page sees (rough region and device type); it never receives your vault content or builds a profile of you. A paid subscription removes ads entirely.
+            The free tier uses banner and optional rewarded ads configured as <strong class="text-foreground">non-personalized</strong>. Advertising/device identifiers and related data may still be processed; this is not a promise of anonymity. SDK consent permission gates ad requests, with privacy options when required. A paid subscription removes ads. See the Privacy Policy for advertising, diagnostic, and subscription processing.
           </p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">What is the decoy vault?</h2>
           <p>
-            You can set up a second vault with its own separate passcode. It has its own independent encryption key and its own content. Entering the decoy passcode opens the decoy vault while your real vault stays hidden — giving you plausible deniability if you are ever forced to unlock.
+            A decoy vault has its own PIN, independent keys, and content. Entering its PIN opens that vault rather than the real vault. It is not a guarantee against coercion or forensic inspection. If you explicitly enable security video/audio recording, recording in decoy mode has a visible active indicator.
           </p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-foreground mb-3">Does the browser save my history or login?</h2>
+          <p>No automatic browsing history is saved. Deliberate bookmarks stay encrypted. Keep me logged in optionally retains only listed websites' cookies and their subdomains in the current encrypted vault across Quick Lock, not other site data. Saved cookies are excluded from backup and device sync; remove a site or clear cookies to delete them. Login retention is best-effort, including conservative iOS SameSite handling.</p>
         </section>
 
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">What can an attacker see if they steal my phone?</h2>
           <p>
-            On a locked device they see only encrypted files and a passcode prompt. The decryption key is not present until you successfully unlock, and repeated wrong attempts are rate-limited. Keeping your device's own lock screen enabled adds a second layer of protection.
+            Vault files are encrypted at rest and failed unlock attempts are rate-limited. An unlocked vault, previously authorized background work, temporary caches, and managed memory have different exposure than encrypted files. Device lock and a strong, separate vault PIN add protection, but the app does not promise forensic erasure.
           </p>
           <p class="mt-3">
             For the strongest protection against someone who can compel you to open the phone, we recommend:
@@ -117,7 +122,7 @@ import BaseHead from '@/components/BaseHead.astro';
         <section>
           <h2 class="text-lg font-semibold text-foreground mb-3">Do you have access to my files?</h2>
           <p>
-            No. We have no server-side copy of your media and no access to your keys or passcode. Even if compelled, we have nothing to hand over — your data only exists, decryptable, on your unlocked device.
+            We have no hosted vault copy or developer-held recovery key. Websites, providers, and third-party SDKs still process their respective data as described in the Privacy Policy. Keep your recovery secret private and retain an external encrypted backup if you need recovery after uninstall.
           </p>
         </section>
 

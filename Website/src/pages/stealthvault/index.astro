@@ -5,11 +5,11 @@ import BaseHead from '@/components/BaseHead.astro';
 const features = [
   {
     title: 'Encrypted at rest',
-    body: 'Every photo and video is AES-encrypted on-device with a key wrapped by your passcode. The decryption key lives in memory only while the vault is unlocked, and is zeroed on lock.',
+    body: 'Media and vault metadata are encrypted at rest. Your PIN protects a random vault key; a separately confirmed recovery secret can replace a forgotten PIN. No forensic-erasure promise.',
   },
   {
     title: 'Ad-blocking browser',
-    body: 'A built-in WebView browser with two-layer ad and tracker blocking lets you import media straight from the web. History and bookmarks stay inside the encrypted vault.',
+    body: 'Browser visits are session-only; deliberate bookmarks stay encrypted. Optionally retain listed websites’ cookies in the current encrypted vault across Quick Lock. Login retention is best-effort.',
   },
   {
     title: 'Biometric unlock',
@@ -17,11 +17,11 @@ const features = [
   },
   {
     title: 'Web portal',
-    body: 'Spin up a local HTTP server and reach your vault from a laptop browser on the same Wi-Fi. PIN-gated, session-cookie auth — nothing routes through the internet.',
+    body: 'Reach the optional PIN-authenticated HTTP portal from a browser on the same local network. HTTP is not encrypted transport; use only on a trusted network.',
   },
   {
     title: 'Device-to-device sync',
-    body: 'Move encrypted media between two devices over the local network with a 4-digit pairing code. Only the missing blobs transfer — no cloud, no servers.',
+    body: 'Explicitly pair devices by comparing their matching safety code, then sync media and folders over the local network with authenticated encryption. Send Copies is a separate transfer.',
   },
   {
     title: 'Albums, tags & reels',
@@ -49,7 +49,7 @@ const APPSTORE_URL = '#';
   <head>
     <BaseHead
       title="StealthVault — Private encrypted media vault"
-      description="StealthVault is a private, encrypted-at-rest media vault with an ad-blocking browser, biometric unlock, a local web portal, and device-to-device sync. Nothing leaves your device."
+      description="An encrypted-at-rest photo and video vault with recovery credentials, private browsing, optional saved website cookies, and local transfers. Ad-supported with optional subscriptions."
       path="/stealthvault/"
     />
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -59,7 +59,7 @@ const APPSTORE_URL = '#';
       "url": "https://snazzie.space/stealthvault/",
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "iOS, Android",
-      "description": "A private, encrypted-at-rest media vault with an ad-blocking browser, biometric unlock, a local web portal, and device-to-device sync. Nothing leaves your device.",
+      "description": "An encrypted-at-rest media vault with private browsing, recovery credentials, optional saved website cookies, and local transfers. Ad-supported with optional subscriptions.",
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.snazzie.stealthvault",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "author": { "@type": "Person", "name": "Aaron Cooper", "url": "https://snazzie.space" }
@@ -90,7 +90,10 @@ const APPSTORE_URL = '#';
             navLinks.map((link) => (
               <a
                 href={link.href}
-                class="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+                class:list={[
+                  "rounded-full px-3 py-1.5 text-sm whitespace-nowrap text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground",
+                  { "hidden sm:inline-flex": link.href.startsWith('#') },
+                ]}
               >
                 {link.label}
               </a>
@@ -120,8 +123,8 @@ const APPSTORE_URL = '#';
         </h1>
         <p class="mx-auto mt-5 max-w-xl text-balance text-lg text-muted-foreground leading-relaxed">
           StealthVault is a private, encrypted-at-rest media vault with a built-in ad-blocking
-          browser, biometric unlock, a local web portal, and device-to-device sync. Nothing ever
-          leaves your device unless you say so.
+          browser, recovery credentials, a local web portal, and device-to-device sync.
+          The free tier includes ads; websites and third-party services receive their respective requests.
         </p>
         <div id="get" class="mt-9 flex scroll-mt-24 flex-wrap items-center justify-center gap-3">
           <a
@@ -162,8 +165,8 @@ const APPSTORE_URL = '#';
       <!-- Features -->
       <section id="features" class="mx-auto max-w-5xl scroll-mt-24 px-6 py-12">
         <div class="mb-10 text-center">
-          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Everything stays local</h2>
-          <p class="mt-3 text-muted-foreground">Built for privacy from the first byte.</p>
+          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Your vault, encrypted at rest</h2>
+          <p class="mt-3 text-muted-foreground">Local vault storage, with explicit transfers and clear network disclosures.</p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
@@ -182,9 +185,9 @@ const APPSTORE_URL = '#';
         <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
           <h2 class="text-2xl font-bold tracking-tight">Privacy by design</h2>
           <p class="mt-4 text-muted-foreground leading-relaxed">
-            Your vault content — photos, videos, albums, tags, and browsing data — is encrypted on
-            your device and never transmitted to external servers. The web portal and device sync
-            are opt-in, off by default, and run only over your local network.
+            Vault media and metadata are encrypted at rest. Browser requests, optional document
+            providers, and advertising, subscription, and diagnostic SDKs have their own data flows.
+            Read the policy for recovery, saved cookies, recording consent, transfers, and storage limits.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a
